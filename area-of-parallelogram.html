@@ -13,6 +13,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Area of a Parallelogram — Cuemath</title>
+<meta name="description" content="Learn how to find the area of a parallelogram using base × perpendicular height, two sides and an angle, or diagonals. Interactive simulation and practice questions. Cuemath.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -226,6 +227,10 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 .footer-links{display:flex;gap:24px}
 .footer-links a{font-size:14px;color:var(--muted);text-decoration:none}
 .footer-copy{font-size:13px;color:var(--muted)}
+/* tooltip terms */
+.term{border-bottom:1.5px dashed var(--yellow);cursor:help;position:relative}
+.term::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:12px;line-height:1.4;padding:8px 12px;border-radius:6px;white-space:normal;width:max-content;max-width:240px;pointer-events:none;opacity:0;transition:opacity .15s;font-family:'DM Sans',sans-serif;font-style:normal;font-weight:400;z-index:10;text-align:center}
+.term:hover::after,.term.active::after{opacity:1}
 </style>
 </head>
 <body>
@@ -288,7 +293,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <h1>Area of a Parallelogram</h1>
 
     <div class="callout">
-      <strong>By the end of this page, you'll</strong> be able to find the area of any parallelogram — using base and height, two sides and an angle, or a pair of diagonals. You'll also see why the slant of a parallelogram is completely irrelevant to its area.
+      By the end of this page, you'll be able to find the area of any parallelogram — using base and height, two sides and an angle, or a pair of diagonals. You'll also see why the slant of a parallelogram is completely irrelevant to its area.
     </div>
 
     <h2>A parallelogram looks like a slanted rectangle — and it holds exactly the same area as the rectangle hiding inside it.</h2>
@@ -338,7 +343,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <p>Push a rectangle sideways — it becomes a parallelogram. The top and bottom edges stay the same length. The height stays the same. Has any area been gained or lost? Imagine cutting the triangle off one end and sliding it to the other side.</p>
     </div>
 
-    <p>The <strong>area of a parallelogram</strong> is the space enclosed within its four sides, measured in square units. A parallelogram has two pairs of parallel sides — opposite sides are equal in length.</p>
+    <p>The <strong>area of a parallelogram</strong> is the space enclosed within its four sides, measured in square units. A parallelogram has two pairs of <span class="term" data-tip="Lines that run in the same direction and never meet, no matter how far they extend">parallel sides</span> — opposite sides are equal in length.</p>
 
     <!-- SVG: proof that parallelogram = rectangle -->
     <svg viewBox="0 0 600 200" style="width:100%;max-width:600px;display:block;margin:20px auto;background:#f8fafc;border-radius:12px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
@@ -364,7 +369,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <text x="410" y="112" font-size="14" fill="#15803d" font-weight="700" font-family="DM Sans" text-anchor="middle">A = b × h</text>
     </svg>
 
-    <p>The key insight: slice the triangle off one slanted end and move it to the other side — you get a perfect rectangle with the same base and height. That's why <strong>A = base × height</strong>, every time.</p>
+    <p>The key insight: slice the triangle off one slanted end and move it to the other side — you get a perfect rectangle with the same <span class="term" data-tip="Any one of the two parallel sides chosen as the reference for area calculations">base</span> and <span class="term" data-tip="The perpendicular distance between the base and the opposite parallel side — always measured at a right angle, never along the slant side">height</span>. That's why <strong>A = base × height</strong>, every time.</p>
 
     <div class="think-box">
       <div class="think-label">Mini-check</div>
@@ -397,6 +402,11 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <div class="fc-formula">A = l × w</div>
         <div class="fc-note">A rectangle is a parallelogram with all right angles</div>
       </div>
+    <div class="think-box">
+      <div class="think-label">Mini-check</div>
+      <p>A parallelogram has a base of 10 cm, a slant side of 13 cm, and a perpendicular height of 5 cm. What is its area — and which of those three measurements is irrelevant?</p>
+    </div>
+
     </div>
   </div>
 
@@ -445,7 +455,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           <div class="fbox"><div class="flbl">Formula</div>A = base × height (h must be perpendicular to the base)</div>
           <ul class="step-list">
             <li><p>Identify the base — any side can serve as the base.</p></li>
-            <li><p>Find the <em>perpendicular</em> height: the distance between the base and the opposite parallel side, measured at a right angle. This is never the slant side.</p></li>
+            <li><p>Find the <span class="term" data-tip="The distance between the base and the opposite parallel side, measured at a right angle. Never the slant side.">perpendicular height</span>: the distance between the base and the opposite parallel side, measured at a right angle. This is never the <span class="term" data-tip="The non-perpendicular side of the parallelogram. It is always longer than or equal to the perpendicular height.">slant side</span>.</p></li>
             <li><p>Multiply base × height.</p></li>
           </ul>
           <div class="ex-row">
