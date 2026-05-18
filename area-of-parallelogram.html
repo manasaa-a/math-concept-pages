@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<!--
+  TODOs (deferred):
+  - Replace nav/footer with cuemath.com homepage versions
+  - Wire Mixpanel events
+  - JSON-LD schema (Article + VideoObject)
+  - SEO meta: title, description, OG, Twitter, hreflang, canonical
+  - URL: /math-concept-explanations/area-of-parallelogram/
+  - A/B experiment: competing with https://www.cuemath.com/measurement/area-of-parallelogram/
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Area of a Parallelogram — Cuemath</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1c1917;--ink2:#44403c;--muted:#78716c;
+  --border:#e7e5e4;--bg:#fafaf9;--surface:#fff;
+  --yellow:#f59e0b;--yellow-light:#fef3c7;
+  --green:#16a34a;--green-light:#dcfce7;
+  --red:#dc2626;--red-light:#fee2e2;
+  --blue:#2563eb;--blue-light:#dbeafe;
+  --purple:#7c3aed;--purple-light:#ede9fe;
+  --orange:#ea580c;--orange-light:#ffedd5;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;line-height:1.7;color:var(--ink);background:var(--bg)}
+h1,h2,h3{font-family:'Lora',serif;font-weight:700;color:var(--ink);line-height:1.25}
+h1{font-size:clamp(28px,4vw,42px);margin-bottom:20px}
+h2{font-size:clamp(22px,3vw,30px);margin-bottom:16px}
+h3{font-size:clamp(18px,2vw,22px);margin-bottom:12px}
+p{margin-bottom:14px;color:var(--ink2)}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+strong{font-weight:500;color:var(--ink)}
+.page-wrap{display:grid;grid-template-columns:220px 1fr;gap:48px;max-width:1120px;margin:0 auto;padding:0 24px}
+.content{min-width:0}
+@media(max-width:820px){.page-wrap{grid-template-columns:1fr}.toc-sidebar{display:none}}
+.section{padding:52px 0;border-bottom:1px solid var(--border)}
+.section:last-child{border-bottom:none}
+/* Nav */
+nav{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Lora',serif;font-weight:700;font-size:20px;color:var(--ink);text-decoration:none}
+.nav-cta{background:var(--yellow);color:var(--ink);font-weight:500;font-size:14px;padding:8px 18px;border-radius:6px;text-decoration:none}
+.nav-cta:hover{background:#d97706;text-decoration:none}
+/* Breadcrumb */
+.breadcrumb{background:var(--surface);border-bottom:1px solid var(--border);padding:10px 24px;font-size:13px;color:var(--muted);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.breadcrumb a{color:var(--muted)}
+.breadcrumb span{margin:0 6px}
+/* Mobile TOC */
+.mobile-toc{display:none;background:var(--blue-light);border:1px solid #bfdbfe;border-radius:10px;padding:16px;margin-bottom:32px}
+@media(max-width:820px){.mobile-toc{display:block}}
+.mobile-toc summary{font-weight:500;font-size:15px;cursor:pointer;color:var(--blue)}
+.mobile-toc ul{margin-top:12px;padding-left:16px;list-style:disc}
+.mobile-toc li{margin-bottom:6px}
+.mobile-toc a{font-size:14px;color:var(--ink2)}
+/* Callout */
+.callout{background:var(--yellow-light);border-left:4px solid var(--yellow);border-radius:8px;padding:16px 20px;margin:24px 0;font-size:15px;color:var(--ink2)}
+/* Think box */
+.think-box{background:var(--purple-light);border-left:4px solid var(--purple);border-radius:8px;padding:18px 20px;margin:24px 0}
+.think-label{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--purple);margin-bottom:8px}
+.think-box p{color:var(--ink2);margin-bottom:0}
+/* RW strip */
+.rw-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:24px 0}
+@media(max-width:600px){.rw-strip{grid-template-columns:1fr 1fr}}
+.rw-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.rw-card .emoji{font-size:28px;margin-bottom:8px}
+.rw-card strong{display:block;font-size:14px;font-weight:500;margin-bottom:4px}
+.rw-card p{font-size:13px;color:var(--muted);margin-bottom:0}
+/* Formula cards */
+.formula-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px 0}
+@media(max-width:560px){.formula-grid{grid-template-columns:1fr}}
+.formula-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px 18px}
+.formula-card .fc-tag{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
+.formula-card .fc-formula{font-family:monospace;font-size:19px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.formula-card .fc-note{font-size:13px;color:var(--muted)}
+.formula-card.hl{background:var(--blue-light);border-color:#93c5fd}
+.formula-card.hl .fc-formula{color:var(--blue)}
+/* Accordion */
+.accordion{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:16px 0}
+.accordion-item{border-bottom:1px solid var(--border)}
+.accordion-item:last-child{border-bottom:none}
+.accordion-btn{width:100%;background:var(--surface);border:none;padding:16px 20px;text-align:left;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.accordion-btn:hover{background:var(--bg)}
+.acc-ch{transition:transform .2s;font-size:12px;color:var(--muted)}
+.accordion-btn.open .acc-ch{transform:rotate(180deg)}
+.accordion-body{display:none;padding:0 20px 20px;background:var(--surface)}
+.accordion-body.open{display:block}
+.fbox{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px 18px;margin:12px 0;font-family:monospace;font-size:15px;color:var(--ink)}
+.flbl{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
+.ex-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+@media(max-width:550px){.ex-row{grid-template-columns:1fr}}
+.ex-card{background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:14px}
+.ex-lbl{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--green);margin-bottom:4px}
+.step-list{list-style:none;padding:0;margin:16px 0;counter-reset:step}
+.step-list li{counter-increment:step;display:flex;gap:14px;margin-bottom:14px;align-items:flex-start}
+.step-list li::before{content:counter(step);min-width:28px;height:28px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:2px}
+.step-list li p{margin-bottom:0;font-size:15px}
+/* Simulation */
+.sim-container{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0}
+.sim-canvas-wrap{width:100%;border-radius:10px;overflow:hidden;background:#f8fafc;border:1px solid var(--border);touch-action:none}
+.sim-canvas-wrap canvas{display:block;width:100%;cursor:crosshair}
+.sim-canvas-wrap canvas.dragging{cursor:grabbing}
+.sim-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+@media(max-width:480px){.sim-stats{grid-template-columns:1fr 1fr}}
+.sim-stat{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;text-align:center}
+.sim-stat .ss-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:2px}
+.sim-stat .ss-val{font-size:20px;font-weight:700;font-family:'Lora',serif;color:var(--ink)}
+.sim-stat .ss-unit{font-size:12px;color:var(--muted)}
+.sim-stat.hl-stat .ss-val{color:var(--blue)}
+.sim-discover{margin-top:12px;font-size:13px;color:var(--purple);font-weight:500}
+.sim-reset{background:none;border:1px solid var(--border);border-radius:6px;padding:6px 14px;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;color:var(--muted);margin-top:10px}
+.sim-reset:hover{border-color:var(--ink2);color:var(--ink)}
+/* CTA */
+.cta-inline{background:var(--blue-light);border-radius:8px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:24px 0}
+.cta-inline p{margin-bottom:0;font-size:15px;color:var(--ink2)}
+.btn-primary{background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer}
+.btn-primary:hover{background:#1d4ed8}
+.cta-band{background:linear-gradient(135deg,#1e3a8a 0%,#1d4ed8 100%);border-radius:16px;padding:40px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
+@media(max-width:600px){.cta-band{grid-template-columns:1fr;padding:28px}}
+.cta-band h3{color:#fff;margin-bottom:8px}
+.cta-band p{color:#bfdbfe;margin-bottom:20px;font-size:15px}
+.btn-white{background:#fff;color:#1e3a8a;border:none;padding:12px 24px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer}
+.cta-svg{width:120px;height:120px;flex-shrink:0}
+@media(max-width:600px){.cta-svg{display:none}}
+/* Practice */
+.practice-progress{height:6px;background:var(--border);border-radius:3px;margin-bottom:24px;overflow:hidden}
+.practice-bar{height:100%;background:var(--green);border-radius:3px;transition:width .4s}
+.question-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px;margin-bottom:16px;display:none}
+.question-card.active{display:block}
+.q-number{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
+.q-text{font-size:17px;font-weight:500;color:var(--ink);margin-bottom:20px}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+@media(max-width:500px){.choices{grid-template-columns:1fr}}
+.choice-btn{padding:12px 16px;border:1px solid var(--border);border-radius:8px;background:var(--bg);font-family:'DM Sans',sans-serif;font-size:15px;cursor:pointer;text-align:left;color:var(--ink);transition:border-color .15s,background .15s}
+.choice-btn:hover:not(:disabled){border-color:var(--blue);background:var(--blue-light)}
+.choice-btn.correct{background:var(--green-light);border-color:var(--green)}
+.choice-btn.wrong{background:var(--red-light);border-color:var(--red)}
+.hint-toggle{font-size:13px;color:var(--blue);cursor:pointer;margin-bottom:8px;background:none;border:none;font-family:'DM Sans',sans-serif;padding:0}
+.hint-text{display:none;font-size:14px;color:var(--muted);background:var(--yellow-light);padding:10px 14px;border-radius:6px;margin-bottom:12px}
+.q-feedback{display:none;font-size:14px;padding:12px 16px;border-radius:8px;margin-top:12px}
+.q-feedback.correct{background:var(--green-light);color:#14532d}
+.q-feedback.wrong{background:var(--red-light);color:#7f1d1d}
+.q-next{margin-top:16px;display:none}
+.completion-screen{display:none;text-align:center;padding:32px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.score-big{font-size:48px;font-weight:700;color:var(--green);font-family:'Lora',serif}
+/* KT table */
+.kt-table{width:100%;border-collapse:collapse;margin:16px 0}
+.kt-table th{background:var(--bg);padding:12px 16px;text-align:left;font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-bottom:2px solid var(--border)}
+.kt-table td{padding:14px 16px;border-bottom:1px solid var(--border);vertical-align:top}
+.kt-table td:first-child{font-family:'Lora',serif;font-weight:700;font-size:15px;color:var(--ink);width:220px}
+.kt-table td:last-child{font-size:15px;color:var(--ink2);line-height:1.65}
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-btn{width:100%;background:none;border:none;padding:18px 0;text-align:left;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-ch{font-size:14px;color:var(--muted);flex-shrink:0;transition:transform .2s;display:inline-block}
+.faq-btn.open .faq-ch{transform:rotate(180deg)}
+.faq-answer{display:none;padding-bottom:16px;font-size:15px;color:var(--ink2)}
+.faq-answer.open{display:block}
+/* Worksheet */
+.ws-card{background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:12px;padding:24px;display:flex;align-items:center;gap:20px;margin:16px 0}
+.ws-icon{font-size:40px;flex-shrink:0}
+.ws-btn{display:inline-block;background:var(--ink);color:#fff;padding:10px 20px;border-radius:6px;font-size:14px;font-weight:500;margin-top:10px;text-decoration:none}
+.ws-btn:hover{background:var(--ink2);text-decoration:none}
+/* Videos */
+.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:16px 0}
+@media(max-width:600px){.video-grid{grid-template-columns:1fr}}
+.video-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;text-decoration:none;display:block}
+.video-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.08);text-decoration:none}
+.video-thumb{position:relative;width:100%;padding-bottom:56.25%;background:#1e3a8a;overflow:hidden}
+.video-thumb img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+.play-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.play-circle{width:44px;height:44px;background:rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px}
+.video-info{padding:14px}
+.video-tag{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px}
+.video-title{font-size:14px;font-weight:500;color:var(--ink);line-height:1.4}
+.tag-concept{background:var(--blue-light);color:var(--blue);padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-puzzle{background:var(--yellow-light);color:#92400e;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-olympiad{background:var(--purple-light);color:var(--purple);padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+/* Concepts */
+.concepts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+@media(max-width:600px){.concepts-grid{grid-template-columns:1fr 1fr}}
+.concept-chip{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink2);text-decoration:none;text-align:center;display:block}
+.concept-chip:hover{border-color:var(--blue);color:var(--blue);text-decoration:none}
+/* Video embed */
+.video-embed{position:relative;width:100%;padding-bottom:56.25%;background:#0f172a;border-radius:12px;overflow:hidden;margin:20px 0}
+.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+/* TOC */
+.toc-sidebar{position:sticky;top:72px;align-self:start;padding-top:52px}
+.toc-inner{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px}
+.toc-title{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px}
+.toc-inner ul{list-style:none;padding:0}
+.toc-inner li{margin-bottom:4px}
+.toc-inner a{font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px;line-height:1.4}
+.toc-inner a:hover{color:var(--ink);background:var(--bg)}
+.toc-inner a.active{color:var(--blue);background:var(--blue-light);font-weight:500}
+/* Modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-box{background:var(--surface);border-radius:16px;max-width:480px;width:100%;padding:32px;position:relative;max-height:90vh;overflow-y:auto}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--muted)}
+.modal-step{display:none}.modal-step.active{display:block}
+.modal-title{font-family:'Lora',serif;font-size:22px;font-weight:700;margin-bottom:8px}
+.modal-sub{font-size:15px;color:var(--muted);margin-bottom:24px}
+.modal-option{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:12px;text-align:left;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:15px;display:flex;align-items:center;gap:12px}
+.modal-option:hover{border-color:var(--blue);background:var(--blue-light)}
+.opt-icon{font-size:22px}
+.form-field{margin-bottom:16px}
+.form-field label{display:block;font-size:13px;font-weight:500;color:var(--ink2);margin-bottom:6px}
+.form-field input,.form-field select{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);background:var(--bg)}
+.feeling-btns{display:flex;gap:10px;margin-top:4px}
+.feeling-btn{flex:1;padding:10px;border:1px solid var(--border);border-radius:8px;background:var(--bg);font-size:20px;cursor:pointer;text-align:center}
+.feeling-btn.selected{border-color:var(--blue);background:var(--blue-light)}
+.modal-submit{width:100%;background:var(--blue);color:#fff;border:none;padding:14px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;cursor:pointer;margin-top:8px}
+.grade-select{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:4px}
+.grade-chip{padding:8px;border:1px solid var(--border);border-radius:6px;background:var(--bg);font-size:13px;cursor:pointer;text-align:center;font-family:'DM Sans',sans-serif}
+.grade-chip.selected{background:var(--blue);color:#fff;border-color:var(--blue)}
+footer{background:var(--surface);border-top:1px solid var(--border);padding:32px 24px;margin-top:64px}
+.footer-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:14px;color:var(--muted);text-decoration:none}
+.footer-copy{font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">Cuemath</a>
+    <a class="nav-cta" href="#" onclick="openModal();return false">Try a free class →</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <div>
+    <a href="/">Home</a><span>›</span>
+    <a href="/math-concept-explanations/">Math Concepts</a><span>›</span>
+    <a href="/math-concept-explanations/measurement/">Measurement</a><span>›</span>
+    Area of a Parallelogram
+  </div>
+  <span style="font-size:12px;color:var(--muted)">⏱ 8 min read</span>
+</div>
+
+<div class="page-wrap">
+
+<aside class="toc-sidebar">
+  <div class="toc-inner">
+    <div class="toc-title">On this page</div>
+    <ul id="toc-list">
+      <li><a href="#what-is">What is it?</a></li>
+      <li><a href="#formulas">All Formulas</a></li>
+      <li><a href="#simulation">Interactive Shape</a></li>
+      <li><a href="#how-to">How to Calculate</a></li>
+      <li><a href="#practice">Practice</a></li>
+      <li><a href="#takeaways">Key Takeaways</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#worksheet">Worksheet</a></li>
+      <li><a href="#videos">Related Videos</a></li>
+    </ul>
+  </div>
+</aside>
+
+<main class="content">
+
+  <details class="mobile-toc">
+    <summary>Jump to a section</summary>
+    <ul>
+      <li><a href="#what-is">What is it?</a></li>
+      <li><a href="#formulas">All Formulas</a></li>
+      <li><a href="#simulation">Interactive Shape</a></li>
+      <li><a href="#how-to">How to Calculate</a></li>
+      <li><a href="#practice">Practice</a></li>
+      <li><a href="#takeaways">Key Takeaways</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#worksheet">Worksheet</a></li>
+      <li><a href="#videos">Related Videos</a></li>
+    </ul>
+  </details>
+
+  <!-- INTRO -->
+  <div class="section" id="intro" style="border-bottom:none;padding-bottom:0">
+    <h1>Area of a Parallelogram</h1>
+
+    <div class="callout">
+      <strong>By the end of this page, you'll</strong> be able to find the area of any parallelogram — using base and height, two sides and an angle, or a pair of diagonals. You'll also see why the slant of a parallelogram is completely irrelevant to its area.
+    </div>
+
+    <h2>A parallelogram looks like a slanted rectangle — and it holds exactly the same area as the rectangle hiding inside it.</h2>
+
+    <!-- VIDEO EMBED -->
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/pfamBrBf8BQ" title="Area of a Parallelogram" allowfullscreen loading="lazy"></iframe>
+    </div>
+
+    <!-- INLINE CTA -->
+    <div class="cta-inline">
+      <p>Need help with geometry? A Cuemath tutor will work through real shapes with you live.</p>
+      <button class="btn-primary" onclick="openModal()">Get 1:1 help →</button>
+    </div>
+
+    <!-- REAL-WORLD STRIP -->
+    <div class="rw-strip">
+      <div class="rw-card">
+        <div class="emoji">📐</div>
+        <strong>Floor Tiles</strong>
+        <p>Diamond-pattern tiles are rhombuses — a special parallelogram. Area tells you exactly how many to buy.</p>
+      </div>
+      <div class="rw-card">
+        <div class="emoji">🌾</div>
+        <strong>Farm Fields</strong>
+        <p>A parallelogram field with base 400 m and height 250 m has exactly 100,000 m² — same as a rectangular field.</p>
+      </div>
+      <div class="rw-card">
+        <div class="emoji">☀️</div>
+        <strong>Solar Panels</strong>
+        <p>Rooftop solar arrays mounted at an angle form parallelogram layouts — area determines energy output.</p>
+      </div>
+      <div class="rw-card">
+        <div class="emoji">🏛️</div>
+        <strong>Architecture</strong>
+        <p>Slanted walls in modern buildings are parallelogram faces — architects compute area before specifying cladding.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT IS -->
+  <div class="section" id="what-is">
+    <h2>What is the Area of a Parallelogram?</h2>
+
+    <div class="think-box">
+      <div class="think-label">Think about it</div>
+      <p>Push a rectangle sideways — it becomes a parallelogram. The top and bottom edges stay the same length. The height stays the same. Has any area been gained or lost? Imagine cutting the triangle off one end and sliding it to the other side.</p>
+    </div>
+
+    <p>The <strong>area of a parallelogram</strong> is the space enclosed within its four sides, measured in square units. A parallelogram has two pairs of parallel sides — opposite sides are equal in length.</p>
+
+    <!-- SVG: proof that parallelogram = rectangle -->
+    <svg viewBox="0 0 600 200" style="width:100%;max-width:600px;display:block;margin:20px auto;background:#f8fafc;border-radius:12px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+      <!-- Step 1: parallelogram with cut triangle -->
+      <polygon points="60,160 220,160 260,50 100,50" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+      <!-- cut triangle highlighted -->
+      <polygon points="60,160 100,160 100,50" fill="#93c5fd" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <!-- height dashed -->
+      <line x1="100" y1="50" x2="100" y2="160" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <rect x="100" y="151" width="9" height="9" fill="none" stroke="#16a34a" stroke-width="1.5"/>
+      <text x="116" y="115" font-size="12" fill="#16a34a" font-family="DM Sans">h</text>
+      <text x="155" y="178" font-size="12" fill="#2563eb" font-family="DM Sans" text-anchor="middle">b</text>
+      <text x="160" y="30" font-size="12" fill="#44403c" font-family="DM Sans" text-anchor="middle">Parallelogram</text>
+      <!-- Arrow -->
+      <text x="290" y="112" font-size="22" fill="#94a3b8" font-family="DM Sans">→</text>
+      <!-- Step 2: rectangle (cut triangle moved to right) -->
+      <rect x="330" y="50" width="160" height="110" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+      <!-- moved triangle -->
+      <polygon points="330,160 370,160 330,50" fill="#86efac" stroke="#16a34a" stroke-width="1.5"/>
+      <text x="400" y="178" font-size="12" fill="#16a34a" font-family="DM Sans" text-anchor="middle">b</text>
+      <text x="340" y="115" font-size="12" fill="#16a34a" font-family="DM Sans">h</text>
+      <text x="410" y="30" font-size="12" fill="#44403c" font-family="DM Sans" text-anchor="middle">Rectangle (same area!)</text>
+      <text x="410" y="112" font-size="14" fill="#15803d" font-weight="700" font-family="DM Sans" text-anchor="middle">A = b × h</text>
+    </svg>
+
+    <p>The key insight: slice the triangle off one slanted end and move it to the other side — you get a perfect rectangle with the same base and height. That's why <strong>A = base × height</strong>, every time.</p>
+
+    <div class="think-box">
+      <div class="think-label">Mini-check</div>
+      <p>A rectangle is 9 cm wide and 4 cm tall. Now push its top edge 5 cm to the right — it becomes a parallelogram. What is its area? (It's the same as the rectangle.)</p>
+    </div>
+  </div>
+
+  <!-- FORMULAS -->
+  <div class="section" id="formulas">
+    <h2>All Formulas at a Glance</h2>
+    <p>Choose the formula based on what information you have:</p>
+    <div class="formula-grid">
+      <div class="formula-card">
+        <div class="fc-tag">Base and Height (most common)</div>
+        <div class="fc-formula">A = b × h</div>
+        <div class="fc-note">h must be perpendicular to b — not the slant side</div>
+      </div>
+      <div class="formula-card">
+        <div class="fc-tag">Two Adjacent Sides + Included Angle</div>
+        <div class="fc-formula">A = a × b × sin(θ)</div>
+        <div class="fc-note">a, b = adjacent sides; θ = angle between them</div>
+      </div>
+      <div class="formula-card">
+        <div class="fc-tag">Diagonals + Intersecting Angle</div>
+        <div class="fc-formula">A = ½ × d₁ × d₂ × sin(x)</div>
+        <div class="fc-note">d₁, d₂ = diagonal lengths; x = angle between diagonals</div>
+      </div>
+      <div class="formula-card">
+        <div class="fc-tag">Special case: Rectangle (θ = 90°)</div>
+        <div class="fc-formula">A = l × w</div>
+        <div class="fc-note">A rectangle is a parallelogram with all right angles</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIMULATION -->
+  <div class="section" id="simulation">
+    <h2>Interactive Parallelogram Explorer</h2>
+    <p>Drag any corner to reshape the parallelogram. The dotted rectangle shows the equivalent area. Try dragging vertex D sideways — and watch what happens to the area.</p>
+
+    <div class="sim-container">
+      <div class="sim-canvas-wrap" id="sim-wrap">
+        <canvas id="paraCanvas" height="300"></canvas>
+      </div>
+      <div class="sim-stats">
+        <div class="sim-stat">
+          <div class="ss-label">Base</div>
+          <div class="ss-val" id="stat-base">—</div>
+          <div class="ss-unit">units</div>
+        </div>
+        <div class="sim-stat">
+          <div class="ss-label">Height</div>
+          <div class="ss-val" id="stat-height">—</div>
+          <div class="ss-unit">units</div>
+        </div>
+        <div class="sim-stat hl-stat">
+          <div class="ss-label">Area = b × h</div>
+          <div class="ss-val" id="stat-area">—</div>
+          <div class="ss-unit">sq units</div>
+        </div>
+      </div>
+      <p class="sim-discover">💡 Drag vertex <strong>D</strong> (top-left) left or right — the shape leans further, but the area <em>never changes</em>. Only the base and perpendicular height determine area.</p>
+      <button class="sim-reset" onclick="resetPara()">↺ Reset shape</button>
+    </div>
+  </div>
+
+  <!-- HOW TO CALCULATE -->
+  <div class="section" id="how-to">
+    <h2>How to Calculate the Area</h2>
+
+    <div class="accordion">
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          <span>Using Base and Height</span><span class="acc-ch">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="fbox"><div class="flbl">Formula</div>A = base × height (h must be perpendicular to the base)</div>
+          <ul class="step-list">
+            <li><p>Identify the base — any side can serve as the base.</p></li>
+            <li><p>Find the <em>perpendicular</em> height: the distance between the base and the opposite parallel side, measured at a right angle. This is never the slant side.</p></li>
+            <li><p>Multiply base × height.</p></li>
+          </ul>
+          <div class="ex-row">
+            <div class="ex-card">
+              <div class="ex-lbl">Example 1</div>
+              Base = 10 in, Height = 5 in<br>
+              A = 10 × 5 = <strong>50 in²</strong>
+            </div>
+            <div class="ex-card">
+              <div class="ex-lbl">Example 2</div>
+              Base = 20 in, Height = 8 in<br>
+              A = 20 × 8 = <strong>160 in²</strong>
+            </div>
+          </div>
+          <div class="ex-card" style="max-width:360px;margin-top:8px">
+            <div class="ex-lbl">Finding the other altitude</div>
+            Area = 50 in², base = 6 in →<br>
+            Height to 6-in side = 50 ÷ 6 ≈ <strong>8.3 in</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          <span>Using Two Adjacent Sides and an Angle</span><span class="acc-ch">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="fbox"><div class="flbl">Formula</div>A = a × b × sin(θ)</div>
+          <p style="font-size:15px;color:var(--ink2)">Use this when you know two side lengths but not the perpendicular height. The angle θ is the one formed between the two sides.</p>
+          <div class="ex-row">
+            <div class="ex-card">
+              <div class="ex-lbl">Example: sides 4 and 6, angle 30°</div>
+              A = 4 × 6 × sin(30°)<br>
+              = 24 × 0.5 = <strong>12 sq units</strong>
+            </div>
+            <div class="ex-card">
+              <div class="ex-lbl">Special case: θ = 90° (rectangle)</div>
+              A = 4 × 6 × sin(90°)<br>
+              = 24 × 1 = <strong>24 sq units</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          <span>Finding Height When Area is Known</span><span class="acc-ch">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="fbox"><div class="flbl">Rearranged formula</div>h = Area ÷ base</div>
+          <p style="font-size:15px;color:var(--ink2)">If you know the area and one side, you can always find the corresponding height. This is useful in reverse problems.</p>
+          <div class="ex-row">
+            <div class="ex-card">
+              <div class="ex-lbl">Example 1</div>
+              Area = 2500 in², base = 250 in<br>
+              h = 2500 ÷ 250 = <strong>10 in</strong>
+            </div>
+            <div class="ex-card">
+              <div class="ex-lbl">Example 2</div>
+              Area = 420 m², height = 60 m<br>
+              base = 420 ÷ 60 = <strong>7 m</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          <span>Using Diagonals</span><span class="acc-ch">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="fbox"><div class="flbl">Formula</div>A = ½ × d₁ × d₂ × sin(x)</div>
+          <p style="font-size:15px;color:var(--ink2)">Where d₁ and d₂ are the two diagonal lengths, and x is the angle at which they intersect. Most useful for rhombuses, where the diagonals are perpendicular (sin 90° = 1).</p>
+          <div class="ex-card" style="max-width:360px">
+            <div class="ex-lbl">Rhombus with perpendicular diagonals 8 and 6</div>
+            A = ½ × 8 × 6 × sin(90°) = ½ × 48 = <strong>24 sq units</strong>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA 1 -->
+  <div class="section" style="padding:40px 0">
+    <div class="cta-band">
+      <div>
+        <h3>Still mixing up height and slant side?</h3>
+        <p>It's the most common mistake in geometry. A Cuemath tutor will give you a visual rule you'll never forget.</p>
+        <button class="btn-white" onclick="openModal()">Book a free class →</button>
+      </div>
+      <svg class="cta-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="56" fill="rgba(255,255,255,.1)"/>
+        <polygon points="25,90 55,90 95,35 65,35" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+        <line x1="55" y1="35" x2="55" y2="90" stroke="#fde68a" stroke-width="2" stroke-dasharray="5,3"/>
+        <text x="60" y="112" text-anchor="middle" font-size="13" fill="white" font-family="DM Sans" font-weight="bold">A = b × h</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- PRACTICE -->
+  <div class="section" id="practice">
+    <h2>Practice</h2>
+    <div class="practice-progress"><div class="practice-bar" id="prog-bar" style="width:0%"></div></div>
+
+    <!-- Q1 -->
+    <div class="question-card active" id="q1">
+      <div class="q-number">Question 1 of 5</div>
+      <div class="q-text">What is the area of this parallelogram?</div>
+      <svg viewBox="0 0 280 160" style="width:100%;max-width:280px;display:block;margin:0 0 16px;background:#f8fafc;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,130 210,130 240,40 80,40" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+        <line x1="80" y1="40" x2="80" y2="130" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <rect x="80" y="122" width="8" height="8" fill="none" stroke="#16a34a" stroke-width="1.5"/>
+        <text x="130" y="148" font-size="12" fill="#44403c" font-family="DM Sans" text-anchor="middle">b = 8 cm</text>
+        <text x="90" y="90" font-size="12" fill="#16a34a" font-family="DM Sans">h = 5 cm</text>
+      </svg>
+      <div class="choices">
+        <button class="choice-btn" onclick="checkAns(this,'correct','q1')">40 cm²</button>
+        <button class="choice-btn" onclick="checkAns(this,'wrong','q1')">20 cm²</button>
+        <button class="choice-btn" onclick="checkAns(this,'wrong','q1')">13 cm²</button>
+        <button class="choice-btn" onclick="checkAns(this,'wrong','q1')">80 cm²</button>
+      </div>
+      <button class="hint-toggle" onclick="toggleHint('h1')">💡 Show hint</button>
+      <div class="hint-text" id="h1">Use A = base × height. The green dashed line is the perpendicular height — not the slant side.</div>
+      <div class="q-feedback" id="fb1"></div>
+      <div class="q-next" id="next1"><button class="btn-primary" onclick="nextQ(2)">Next →</button></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question-card" id="q2">
+      <div class="q-number">Question 2 of 5</div>
+      <div class="q-text">A parallelogram has a base of 12 cm and a perpendicular height of 7 cm. What is its area?</div>
+      <div class="choices">
+        <button class="choice-btn" onclick="checkAns(this,'wrong','q2')">42 cm²</button>
+        <button class="choice-btn" onclick="checkAns(this,'correct','q2')">84 cm²</button>
+        <button class="choice-btn" onclick="checkAns(this,'wrong','q2')">38 cm²</button>
+        <button class="choice-btn" onclick="checkAns(this,'wrong','q2')">168 cm²</button>
+      </div>
+      <button class="hint-toggle" onclick="toggleHint('h2')">💡 Show hint</button>
+      <div class="hint-text" id="h2">A = base × height = 12 × 7.</div>
+      <div class="q-feedback" id="fb2"></div>
+      <div class="q-next" id="next2"><button class="btn-primary" onclick="nextQ(3)">Next →</button></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question-card" id="q3">
+      <div class="q-number">Question 3 of 5</div>
+      <div class="q-text">A parallelogram has area 96 cm² and base 12 cm. What is its perpendicular height?</div>
+      <div class="choices">
+        <button class="choice-btn" onclick="checkAns(this,'wrong','q3')">4 cm</button>
+        <button class="choice-btn" onclick="checkAns(this,'wrong','q3')">6 cm</button>
+        <button class="choice-btn" onclick="checkAns(this,'correct','q3')">8 cm</button>
+        <button class="choice-btn" onclick="checkAns(this,'wrong','q3')">12 cm</button>
+      </div>
+      <button class="hint-toggle" onclick="toggleHint('h3')">💡 Show hint</button>
+      <div class="hint-text" id="h3">Rearrange A = b × h: h = A ÷ b = 96 ÷ 12.</div>
+      <div class="q-feedback" id="fb3"></div>
+      <div class="q-next" id="next3"><button class="btn-primary" onclick="nextQ(4)">Next →</button></div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question-card" id="q4">
+      <div class="q-number">Question 4 of 5</div>
+      <div class="q-text">A farmer's parallelogram-shaped field has a base of 400 m and a height of 250 m. What is the area in hectares? (1 hectare = 10,000 m²)</div>
+      <div class="choices">
+        <button class="choice-btn" onclick="checkAns(this,'wrong','q4')">5 ha</button>
+        <button class="choice-btn" onclick="checkAns(this,'correct','q4')">10 ha</button>
+        <button class="choice-btn" onclick="checkAns(this,'wrong','q4')">25 ha</button>
+        <button class="choice-btn" onclick="checkAns(this,'wrong','q4')">100 ha</button>
+      </div>
+      <button class="hint-toggle" onclick="toggleHint('h4')">💡 Show hint</button>
+      <div class="hint-text" id="h4">First find the area in m²: 400 × 250. Then divide by 10,000 to convert to hectares.</div>
+      <div class="q-feedback" id="fb4"></div>
+      <div class="q-next" id="next4"><button class="btn-primary" onclick="nextQ(5)">Next →</button></div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question-card" id="q5">
+      <div class="q-number">Question 5 of 5</div>
+      <div class="q-text">A parallelogram has height twice its base. Its area is 72 cm². What is the length of the base?</div>
+      <div class="choices">
+        <button class="choice-btn" onclick="checkAns(this,'wrong','q5')">4 cm</button>
+        <button class="choice-btn" onclick="checkAns(this,'wrong','q5')">9 cm</button>
+        <button class="choice-btn" onclick="checkAns(this,'correct','q5')">6 cm</button>
+        <button class="choice-btn" onclick="checkAns(this,'wrong','q5')">12 cm</button>
+      </div>
+      <button class="hint-toggle" onclick="toggleHint('h5')">💡 Show hint</button>
+      <div class="hint-text" id="h5">Let base = b, so height = 2b. Then A = b × 2b = 2b² = 72. Solve for b.</div>
+      <div class="q-feedback" id="fb5"></div>
+      <div class="q-next" id="next5"><button class="btn-primary" onclick="showCompletion()">See results →</button></div>
+    </div>
+
+    <div class="completion-screen" id="completion">
+      <div class="score-big" id="final-score">0/5</div>
+      <p id="completion-msg" style="color:var(--ink2);font-size:16px;margin-top:8px"></p>
+      <button class="btn-primary" style="margin-top:20px" onclick="openModal()">Book a free class to go deeper →</button>
+    </div>
+  </div>
+
+  <!-- CTA 2 -->
+  <div class="section" style="padding:40px 0">
+    <div class="cta-band">
+      <div>
+        <h3>Ready to tackle area of all quadrilaterals?</h3>
+        <p>Parallelogram, trapezium, rhombus — they're all connected. A Cuemath tutor will show you the pattern.</p>
+        <button class="btn-white" onclick="openModal()">Start free →</button>
+      </div>
+      <svg class="cta-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="56" fill="rgba(255,255,255,.1)"/>
+        <polygon points="20,90 50,90 100,35 70,35" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+        <rect x="50" y="35" width="50" height="55" fill="rgba(255,255,255,.08)" stroke="#fde68a" stroke-width="1.5" stroke-dasharray="5,3"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- KEY TAKEAWAYS -->
+  <div class="section" id="takeaways">
+    <h2>Key Takeaways</h2>
+    <table class="kt-table">
+      <thead><tr><th>Term / Formula</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td>Parallelogram</td><td>A four-sided figure with two pairs of parallel sides. Opposite sides are equal. Rectangles, rhombuses, and squares are all special parallelograms.</td></tr>
+        <tr><td>A = b × h</td><td>Area equals base times perpendicular height. The slant side is irrelevant — only the perpendicular distance between the two parallel sides matters.</td></tr>
+        <tr><td>Perpendicular Height</td><td>The distance measured at a right angle from the base to the opposite side. Always shorter than or equal to the slant side.</td></tr>
+        <tr><td>A = ab sin(θ)</td><td>Alternative formula using two adjacent sides (a, b) and the included angle θ. When θ = 90°, this reduces to the rectangle formula A = ab.</td></tr>
+        <tr><td>A = ½ d₁d₂ sin(x)</td><td>Diagonal formula — used when both diagonal lengths and their intersecting angle are known. For a rhombus, x = 90° and sin(x) = 1.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">What is the area of a parallelogram?<span class="faq-ch">▼</span></button>
+        <div class="faq-answer">The area is the 2D space enclosed within the parallelogram's four sides. The formula is A = base × perpendicular height. The result is always measured in square units (cm², m², etc.).</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">Is the area of a parallelogram the same as a rectangle?<span class="faq-ch">▼</span></button>
+        <div class="faq-answer">Yes — if they share the same base and perpendicular height. You can prove this visually: slice the triangle off one slanted end of the parallelogram and slide it to the other end, forming a perfect rectangle. No area is added or removed.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">Why does the slant not affect the area?<span class="faq-ch">▼</span></button>
+        <div class="faq-answer">Because area depends on base × perpendicular height, and the perpendicular height stays constant regardless of how much the shape leans. Imagine pushing the top row of a stack of papers sideways — the paper stack covers the same desktop area no matter how tilted it gets.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">How do you find the area without the height?<span class="faq-ch">▼</span></button>
+        <div class="faq-answer">Use the adjacent-sides formula: A = a × b × sin(θ), where a and b are the two side lengths and θ is the angle between them. If you know the diagonals, use A = ½ × d₁ × d₂ × sin(x) instead.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">What is the area of a rhombus?<span class="faq-ch">▼</span></button>
+        <div class="faq-answer">A rhombus is a parallelogram with all four sides equal. Its area is A = base × height (same formula). If you know the diagonals d₁ and d₂, you can also use A = ½ × d₁ × d₂ because a rhombus's diagonals are always perpendicular.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">Can either pair of opposite sides be used as the base?<span class="faq-ch">▼</span></button>
+        <div class="faq-answer">Yes. A parallelogram has two pairs of parallel sides, so either pair can serve as the base — as long as you use the corresponding perpendicular height. Both choices give the same area.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">How do you find the height if only the area and base are known?<span class="faq-ch">▼</span></button>
+        <div class="faq-answer">Rearrange A = b × h to get h = A ÷ b. For example, if the area is 96 cm² and the base is 12 cm, then h = 96 ÷ 12 = 8 cm.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">What units is the area measured in?<span class="faq-ch">▼</span></button>
+        <div class="faq-answer">Area is always in square units. If base and height are in cm, the area is in cm². If in metres, it's m². Always write the unit squared in your answer.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORKSHEET -->
+  <div class="section" id="worksheet">
+    <h2>Downloadable Worksheet</h2>
+    <p>Grade 7 area practice — parallelograms, rectangles, and mixed quadrilateral problems.</p>
+    <div class="ws-card">
+      <div class="ws-icon">📄</div>
+      <div>
+        <strong style="font-size:16px;display:block;margin-bottom:4px">Grade 7 | Area Worksheet</strong>
+        <span style="font-size:14px;color:var(--muted)">PDF · Parallelograms and area problems</span><br>
+        <a class="ws-btn" href="area-of-parallelogram-worksheet.pdf" download="Cuemath-Area-of-Parallelogram-Worksheet-Grade7.pdf">Download PDF ↓</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- RELATED VIDEOS -->
+  <div class="section" id="videos">
+    <h2>Related Videos</h2>
+    <div class="video-grid">
+      <a class="video-card" href="https://www.youtube.com/watch?v=gAsasanxsFw" target="_blank" rel="noopener">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/gAsasanxsFw/mqdefault.jpg" alt="Chinese Grade 5 exam — parallelogram and triangles" loading="lazy">
+          <div class="play-ov"><div class="play-circle">▶</div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag"><span class="tag-olympiad">Olympiad</span> · Grades 6–8</div>
+          <div class="video-title">Chinese Grade 5 exam — parallelogram and triangles</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=lFs1nXCO5kU" target="_blank" rel="noopener">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/lFs1nXCO5kU/mqdefault.jpg" alt="Hexagon area puzzle" loading="lazy">
+          <div class="play-ov"><div class="play-circle">▶</div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag"><span class="tag-puzzle">Puzzle</span> · Grades 6–8</div>
+          <div class="video-title">Hexagon area puzzle — an elegant solution</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=MOQA3egVMIQ" target="_blank" rel="noopener">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/MOQA3egVMIQ/mqdefault.jpg" alt="A tricky shaded area puzzle" loading="lazy">
+          <div class="play-ov"><div class="play-circle">▶</div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag"><span class="tag-puzzle">Puzzle</span> · Grades 6–8</div>
+          <div class="video-title">A tricky shaded area puzzle</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- RELATED CONCEPTS -->
+  <div class="section" id="related" style="padding-bottom:40px">
+    <h2>Related Concepts</h2>
+    <div class="concepts-grid">
+      <a class="concept-chip" href="#">Area of a Triangle</a>
+      <a class="concept-chip" href="#">Area of a Trapezium</a>
+      <a class="concept-chip" href="#">Area of a Rhombus</a>
+      <a class="concept-chip" href="#">Perimeter of a Parallelogram</a>
+      <a class="concept-chip" href="#">Properties of Parallelograms</a>
+      <a class="concept-chip" href="#">Area of a Rectangle</a>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a class="nav-logo" href="/">Cuemath</a>
+    <div class="footer-links">
+      <a href="/math-concept-explanations/">Math Concepts</a>
+      <a href="/about/">About</a>
+      <a href="#" onclick="openModal();return false">Try a Free Class</a>
+    </div>
+    <span class="footer-copy">© 2024 Cuemath</span>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-step active" id="step1">
+      <div class="modal-title">What are you looking for?</div>
+      <div class="modal-sub">We'll point you in the right direction.</div>
+      <button class="modal-option" onclick="goStep(2)"><span class="opt-icon">🎓</span><span><strong>1:1 classes with a Cuemath tutor</strong><br><small style="color:var(--muted);font-weight:300">Live sessions, personalised to your level</small></span></button>
+      <button class="modal-option" onclick="closeModal()"><span class="opt-icon">📚</span><span><strong>Explore more concepts</strong><br><small style="color:var(--muted);font-weight:300">Browse the Math Concepts library</small></span></button>
+    </div>
+    <div class="modal-step" id="step2">
+      <div class="modal-title">Who are you?</div>
+      <div class="modal-sub">This helps us tailor your first session.</div>
+      <button class="modal-option" onclick="goStep('3a')"><span class="opt-icon">🧑‍🎓</span><span><strong>Student</strong></span></button>
+      <button class="modal-option" onclick="goStep('3b')"><span class="opt-icon">👨‍👩‍👧</span><span><strong>Parent</strong></span></button>
+      <button class="modal-option" onclick="goStep('3c')"><span class="opt-icon">📐</span><span><strong>Teacher / Tutor</strong></span></button>
+    </div>
+    <div class="modal-step" id="step3a">
+      <div class="modal-title">Let's set up your trial class</div>
+      <div class="modal-sub">Takes 30 seconds.</div>
+      <div class="form-field"><label>Your grade</label>
+        <div class="grade-select" id="grade-btns">
+          <button class="grade-chip" onclick="selGrade(this)">6</button>
+          <button class="grade-chip" onclick="selGrade(this)">7</button>
+          <button class="grade-chip" onclick="selGrade(this)">8</button>
+          <button class="grade-chip" onclick="selGrade(this)">9+</button>
+        </div>
+      </div>
+      <div class="form-field"><label>How do you feel about maths?</label>
+        <div class="feeling-btns">
+          <button class="feeling-btn" onclick="selFeeling(this)">😰</button>
+          <button class="feeling-btn" onclick="selFeeling(this)">😐</button>
+          <button class="feeling-btn" onclick="selFeeling(this)">😊</button>
+        </div>
+      </div>
+      <div class="form-field"><label>Your first name</label><input type="text" placeholder="e.g. Arjun"></div>
+      <div class="form-field"><label>Parent's phone number</label><input type="tel" placeholder="+91 98765 43210"></div>
+      <button class="modal-submit" onclick="goStep('done')">Book my free class →</button>
+    </div>
+    <div class="modal-step" id="step3b">
+      <div class="modal-title">Book a free trial for your child</div>
+      <div class="modal-sub">We'll match them with the right tutor.</div>
+      <div class="form-field"><label>Your name</label><input type="text" placeholder="Parent's name"></div>
+      <div class="form-field"><label>Child's name</label><input type="text" placeholder="Child's name"></div>
+      <div class="form-field"><label>Child's grade</label>
+        <select><option value="">Select grade</option><option>Grade 6</option><option>Grade 7</option><option>Grade 8</option><option>Grade 9</option></select>
+      </div>
+      <div class="form-field"><label>Your phone number</label><input type="tel" placeholder="+91 98765 43210"></div>
+      <div class="form-field"><label>Your email</label><input type="email" placeholder="you@example.com"></div>
+      <button class="modal-submit" onclick="goStep('done')">Book free class →</button>
+    </div>
+    <div class="modal-step" id="step3c">
+      <div class="modal-title">You're in the right place</div>
+      <div class="modal-sub">Here's what we offer for educators.</div>
+      <button class="modal-option" onclick="closeModal()"><span class="opt-icon">🏫</span><span><strong>Become a Cuemath tutor</strong></span></button>
+      <button class="modal-option" onclick="closeModal()"><span class="opt-icon">📖</span><span><strong>Explore more content</strong></span></button>
+    </div>
+    <div class="modal-step" id="stepdone">
+      <div style="text-align:center;padding:20px 0">
+        <div style="font-size:56px;margin-bottom:16px">🎉</div>
+        <div class="modal-title" style="text-align:center">You're booked!</div>
+        <p style="color:var(--muted);font-size:15px;margin-top:8px">We'll send confirmation to your phone. See you in class!</p>
+        <button class="modal-submit" style="margin-top:24px" onclick="closeModal()">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ACCORDION */
+function toggleAcc(btn) {
+  var body = btn.nextElementSibling, open = btn.classList.contains('open');
+  btn.closest('.accordion').querySelectorAll('.accordion-btn').forEach(function(b) {
+    b.classList.remove('open'); b.nextElementSibling.classList.remove('open');
+  });
+  if (!open) { btn.classList.add('open'); body.classList.add('open'); }
+}
+function toggleFaq(btn) {
+  var a = btn.nextElementSibling, o = btn.classList.contains('open');
+  btn.classList.toggle('open', !o); a.classList.toggle('open', !o);
+}
+
+/* ── PARALLELOGRAM SIMULATION ── */
+var GRID = 20;
+var para; /* {A, B, C, D} — canvas pixel coords */
+/* ABCD: A=bottom-left, B=bottom-right, C=top-right, D=top-left */
+/* Constraint: C = B + (D - A), so the shape is always a valid parallelogram */
+var dragIdx = null; /* 0=A,1=B,2=D (C follows) */
+
+function defaultPara(W, H) {
+  var cx = W / 2, my = H / 2;
+  return [
+    [cx - 100, my + 55],  /* A */
+    [cx + 100, my + 55],  /* B */
+    [cx + 140, my - 55],  /* C = B + (D-A) */
+    [cx - 60,  my - 55]   /* D */
+  ];
+}
+
+function clampPt(p, W, H) {
+  return [Math.max(14, Math.min(W-14, p[0])), Math.max(14, Math.min(H-14, p[1]))];
+}
+
+function resetPara() {
+  var c = document.getElementById('paraCanvas');
+  para = defaultPara(c.width, c.height);
+  drawPara();
+}
+
+function drawPara() {
+  var canvas = document.getElementById('paraCanvas');
+  canvas.width = document.getElementById('sim-wrap').offsetWidth || 600;
+  canvas.height = 300;
+  var ctx = canvas.getContext('2d');
+  var W = canvas.width, H = canvas.height;
+  var A = para[0], B = para[1], C = para[2], D = para[3];
+
+  /* grid */
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  ctx.strokeStyle = '#e7e5e4'; ctx.lineWidth = 1;
+  for (var x = 0; x < W; x += GRID) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+  for (var y = 0; y < H; y += GRID) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+
+  /* compute base vector and height */
+  var bvx = B[0]-A[0], bvy = B[1]-A[1];
+  var baseLen = Math.sqrt(bvx*bvx + bvy*bvy);
+  /* height = perpendicular distance from D to line AB */
+  var height = 0, Fx = A[0], Fy = A[1];
+  if (baseLen > 0.01) {
+    var t = ((D[0]-A[0])*bvx + (D[1]-A[1])*bvy) / (baseLen*baseLen);
+    Fx = A[0] + t*bvx; Fy = A[1] + t*bvy;
+    var hpx = Math.sqrt((D[0]-Fx)*(D[0]-Fx)+(D[1]-Fy)*(D[1]-Fy));
+    height = hpx / GRID;
+  }
+  var base = baseLen / GRID;
+  var area = base * height;
+
+  /* dotted equivalent rectangle */
+  var nu = D[0]-Fx, nv = D[1]-Fy; /* vector from foot to D */
+  var rectA = A, rectB = B;
+  var rectD = [A[0]+nu, A[1]+nv];
+  var rectC = [B[0]+nu, B[1]+nv];
+  ctx.beginPath();
+  ctx.moveTo(rectA[0],rectA[1]); ctx.lineTo(rectB[0],rectB[1]);
+  ctx.lineTo(rectC[0],rectC[1]); ctx.lineTo(rectD[0],rectD[1]); ctx.closePath();
+  ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1.5; ctx.setLineDash([6,4]);
+  ctx.stroke(); ctx.setLineDash([]);
+
+  /* cut triangle shading (part that moves) */
+  var overlapX = D[0] - rectD[0], overlapY = D[1] - rectD[1]; /* = D - rectD */
+  /* left triangle: A, footA, D */
+  ctx.beginPath();
+  ctx.moveTo(A[0],A[1]); ctx.lineTo(Fx,Fy); ctx.lineTo(D[0],D[1]); ctx.closePath();
+  ctx.fillStyle = 'rgba(22,163,74,0.18)'; ctx.fill();
+
+  /* filled parallelogram */
+  ctx.beginPath();
+  ctx.moveTo(A[0],A[1]); ctx.lineTo(B[0],B[1]); ctx.lineTo(C[0],C[1]); ctx.lineTo(D[0],D[1]); ctx.closePath();
+  ctx.fillStyle = 'rgba(37,99,235,0.10)'; ctx.fill();
+  ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 2.5; ctx.setLineDash([]); ctx.stroke();
+
+  /* height dashed line */
+  ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1.8; ctx.setLineDash([5,4]);
+  ctx.beginPath(); ctx.moveTo(D[0],D[1]); ctx.lineTo(Fx,Fy); ctx.stroke();
+  ctx.setLineDash([]);
+  /* right-angle marker */
+  if (baseLen > 0.01) {
+    var bux = bvx/baseLen, buy = bvy/baseLen;
+    /* normal to base — ensure it points toward D (inside the shape) */
+    var nx0 = -bvy/baseLen, ny0 = bvx/baseLen;
+    var dot = (D[0]-Fx)*nx0 + (D[1]-Fy)*ny0;
+    var inx = dot >= 0 ? nx0 : -nx0;
+    var iny = dot >= 0 ? ny0 : -ny0;
+    var ms = 8;
+    ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(Fx + inx*ms, Fy + iny*ms);
+    ctx.lineTo(Fx + inx*ms + bux*ms, Fy + iny*ms + buy*ms);
+    ctx.lineTo(Fx + bux*ms, Fy + buy*ms);
+    ctx.stroke();
+    /* height label — offset along base direction so it sits beside the height line */
+    ctx.fillStyle = '#16a34a'; ctx.font = 'bold 12px DM Sans,sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('h', (D[0]+Fx)/2 + bux*18, (D[1]+Fy)/2 + buy*18);
+    /* base label — offset outward from base (away from D) */
+    ctx.fillStyle = '#2563eb'; ctx.font = 'bold 12px DM Sans,sans-serif';
+    ctx.fillText('b', (A[0]+B[0])/2 - inx*18, (A[1]+B[1])/2 - iny*18);
+  }
+
+  /* vertex dots */
+  var labels = ['A','B','C','D'], cols = ['#2563eb','#2563eb','#2563eb','#f59e0b'];
+  var loffs = [[-14,14],[10,14],[10,-10],[-14,-10]];
+  para.forEach(function(p,i) {
+    ctx.beginPath(); ctx.arc(p[0],p[1],8,0,Math.PI*2);
+    ctx.fillStyle = cols[i]; ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 2.5; ctx.stroke();
+    ctx.fillStyle = i===3 ? '#92400e' : '#1d4ed8';
+    ctx.font = 'bold 12px DM Sans,sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(labels[i], p[0]+loffs[i][0], p[1]+loffs[i][1]);
+  });
+
+  /* stats */
+  document.getElementById('stat-base').textContent = base.toFixed(1);
+  document.getElementById('stat-height').textContent = height.toFixed(1);
+  document.getElementById('stat-area').textContent = area.toFixed(1);
+}
+
+/* drag */
+(function() {
+  var canvas = document.getElementById('paraCanvas');
+  function getXY(evt) {
+    var r = canvas.getBoundingClientRect();
+    var sx = canvas.width/r.width, sy = canvas.height/r.height;
+    var cx = evt.touches ? evt.touches[0].clientX : evt.clientX;
+    var cy = evt.touches ? evt.touches[0].clientY : evt.clientY;
+    return [(cx-r.left)*sx, (cy-r.top)*sy];
+  }
+  /* only A(0), B(1), D(3) are draggable; C(2) follows */
+  var draggable = [0,1,3];
+  function nearest(xy) {
+    var best=-1, bestD=22;
+    draggable.forEach(function(i){
+      var p=para[i], d=Math.sqrt((xy[0]-p[0])*(xy[0]-p[0])+(xy[1]-p[1])*(xy[1]-p[1]));
+      if(d<bestD){bestD=d;best=i;}
+    });
+    return best;
+  }
+  canvas.addEventListener('mousedown', function(e){
+    dragIdx=nearest(getXY(e));
+    if(dragIdx>=0) canvas.classList.add('dragging');
+  });
+  canvas.addEventListener('mousemove', function(e){
+    if(dragIdx!==null && dragIdx>=0){
+      e.preventDefault();
+      var xy=getXY(e), W=canvas.width, H=canvas.height;
+      para[dragIdx]=clampPt(xy,W,H);
+      /* keep C following: C = B + (D - A) */
+      para[2]=[para[1][0]+para[3][0]-para[0][0], para[1][1]+para[3][1]-para[0][1]];
+      para[2]=clampPt(para[2],W,H);
+      drawPara();
+    } else {
+      canvas.style.cursor = nearest(getXY(e))>=0 ? 'grab' : 'crosshair';
+    }
+  });
+  canvas.addEventListener('mouseup', function(){ dragIdx=null; canvas.classList.remove('dragging'); });
+  canvas.addEventListener('mouseleave', function(){ dragIdx=null; canvas.classList.remove('dragging'); });
+  canvas.addEventListener('touchstart', function(e){ dragIdx=nearest(getXY(e)); e.preventDefault(); },{passive:false});
+  canvas.addEventListener('touchmove', function(e){
+    if(dragIdx===null||dragIdx<0)return; e.preventDefault();
+    var xy=getXY(e),W=canvas.width,H=canvas.height;
+    para[dragIdx]=clampPt(xy,W,H);
+    para[2]=[para[1][0]+para[3][0]-para[0][0], para[1][1]+para[3][1]-para[0][1]];
+    para[2]=clampPt(para[2],W,H);
+    drawPara();
+  },{passive:false});
+  canvas.addEventListener('touchend', function(){ dragIdx=null; });
+})();
+
+window.addEventListener('resize', function(){
+  var c=document.getElementById('paraCanvas'), newW=document.getElementById('sim-wrap').offsetWidth||600;
+  if(para){var sx=newW/c.width; para=para.map(function(p){return[p[0]*sx,p[1]];});}
+  drawPara();
+});
+
+(function(){
+  var c=document.getElementById('paraCanvas');
+  c.width=document.getElementById('sim-wrap').offsetWidth||600;
+  c.height=300;
+  para=defaultPara(c.width,c.height);
+  drawPara();
+})();
+
+/* PRACTICE */
+var score=0, answered={};
+var fbs={
+  q1:{correct:'Correct! A = 8 × 5 = 40 cm².',wrong:'Not quite. A = base × height = 8 × 5 = 40 cm². The slant side is not the height.'},
+  q2:{correct:'Correct! A = 12 × 7 = 84 cm².',wrong:'Not quite. A = base × perpendicular height = 12 × 7 = 84 cm².'},
+  q3:{correct:'Correct! h = A ÷ b = 96 ÷ 12 = 8 cm.',wrong:'Not quite. Rearrange A = b × h: h = 96 ÷ 12 = 8 cm.'},
+  q4:{correct:'Correct! 400 × 250 = 100,000 m² = 10 ha.',wrong:'Not quite. Area = 400 × 250 = 100,000 m². Divide by 10,000 = 10 ha.'},
+  q5:{correct:'Correct! Let b = base, h = 2b. Then 2b² = 72, b² = 36, b = 6 cm.',wrong:'Not quite. Let h = 2b. Area = b × 2b = 2b² = 72, so b² = 36, b = 6 cm.'}
+};
+function checkAns(btn,result,qid){
+  if(answered[qid])return; answered[qid]=true;
+  document.getElementById(qid).querySelectorAll('.choice-btn').forEach(function(b){b.disabled=true;});
+  btn.classList.add(result==='correct'?'correct':'wrong');
+  if(result==='correct')score++;
+  var fb=document.getElementById('fb'+qid.slice(1));
+  fb.className='q-feedback '+(result==='correct'?'correct':'wrong');
+  fb.textContent=fbs[qid][result==='correct'?'correct':'wrong'];
+  fb.style.display='block';
+  document.getElementById('next'+qid.slice(1)).style.display='block';
+  document.getElementById('prog-bar').style.width=(Object.keys(answered).length/5*100)+'%';
+}
+function nextQ(n){
+  document.querySelectorAll('.question-card').forEach(function(c){c.classList.remove('active');});
+  var el=document.getElementById('q'+n); if(el)el.classList.add('active');
+}
+function showCompletion(){
+  document.querySelectorAll('.question-card').forEach(function(c){c.classList.remove('active');});
+  document.getElementById('completion').style.display='block';
+  document.getElementById('final-score').textContent=score+'/5';
+  var msgs=['Let\'s revisit the sections above.','Keep going — re-read the base×height method.','Good effort. Check the accordion for the case you missed.','Good work — one to tighten up.','Great work! One small slip.','Perfect score! All formulas mastered.'];
+  document.getElementById('completion-msg').textContent=msgs[score];
+  document.getElementById('prog-bar').style.width='100%';
+}
+function toggleHint(id){var h=document.getElementById(id);h.style.display=h.style.display==='block'?'none':'block';}
+
+/* MODAL */
+function openModal(){
+  document.getElementById('modal').classList.add('open');
+  document.querySelectorAll('.modal-step').forEach(function(s){s.classList.remove('active');});
+  document.getElementById('step1').classList.add('active');
+}
+function closeModal(){document.getElementById('modal').classList.remove('open');}
+function goStep(id){document.querySelectorAll('.modal-step').forEach(function(s){s.classList.remove('active');});document.getElementById('step'+id).classList.add('active');}
+function selGrade(btn){document.querySelectorAll('#grade-btns .grade-chip').forEach(function(b){b.classList.remove('selected');});btn.classList.add('selected');}
+function selFeeling(btn){btn.closest('.feeling-btns').querySelectorAll('.feeling-btn').forEach(function(b){b.classList.remove('selected');});btn.classList.add('selected');}
+
+/* TOC scroll spy */
+var tocIds=['what-is','formulas','simulation','how-to','practice','takeaways','faq','worksheet','videos'];
+var spy=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    var l=document.querySelector('#toc-list a[href="#'+e.target.id+'"]');
+    if(e.isIntersecting&&l){document.querySelectorAll('#toc-list a').forEach(function(x){x.classList.remove('active');});l.classList.add('active');}
+  });
+},{rootMargin:'-20% 0px -60% 0px'});
+tocIds.forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el);});
+</script>
+</body>
+</html>

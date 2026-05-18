@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ── SEO ──────────────────────────────────────────────────────── -->
+  <title>Math Concept Explanations: School Math, Olympiad &amp; More | Cuemath</title>
+  <meta name="description" content="Every math concept explained clearly - school math, olympiad prep, puzzles, and math facts. Build real understanding with Cuemath." />
+  <link rel="canonical" href="https://www.cuemath.com/math-concept-explanations/" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="alternate" hreflang="en-us" href="https://www.cuemath.com/math-concept-explanations/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.cuemath.com/math-concept-explanations/" />
+
+  <!-- ── Open Graph (WhatsApp / Slack / social previews) ──────────── -->
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="Cuemath">
+  <meta property="og:url"          content="https://www.cuemath.com/math-concept-explanations/">
+  <meta property="og:title"        content="Math Concept Explanations: School Math, Olympiad &amp; More | Cuemath">
+  <meta property="og:description"  content="Every math concept explained clearly - school math, olympiad prep, puzzles, and math facts. Build real understanding with Cuemath.">
+  <meta property="og:image"        content="https://www.cuemath.com/images/math-concepts-og.jpg">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt"    content="Cuemath Math Concept Explanations - School Math, Olympiad, Puzzles and Math Facts">
+  <meta property="og:locale"       content="en_US">
+
+  <!-- ── Twitter card ─────────────────────────────────────────────── -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@cuemath">
+  <meta name="twitter:creator"     content="@cuemath">
+  <meta name="twitter:title"       content="Math Concept Explanations: School Math, Olympiad &amp; More | Cuemath">
+  <meta name="twitter:description" content="Every math concept explained clearly - school math, olympiad prep, puzzles, and math facts. Build real understanding with Cuemath.">
+  <meta name="twitter:image"       content="https://www.cuemath.com/images/math-concepts-og.jpg">
+  <meta name="twitter:image:alt"   content="Cuemath Math Concept Explanations - School Math, Olympiad, Puzzles and Math Facts">
+
+  <!-- ── Fonts: Cuemath brand fonts + Open Sans fallback ───────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* Athletics & Untitled Sans load from cuemath.com's CDN when integrated.
+       Open Sans is the exact fallback Cuemath specifies. */
+    :root {
+      --font-display: 'Athletics', 'Open Sans', sans-serif;
+      --font-body:    'Untitled Sans', 'Open Sans', sans-serif;
+      --yellow:       #ffba07;
+      --black:        #0d0d0d;
+      --grey-light:   #ebebeb;
+      --grey-mid:     #e0e0e0;
+      --grey-text:    #555;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-body);
+      background: #fff;
+      color: var(--black);
+      padding-top: 56px;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────────────────── */
+    nav {
+      display: flex; align-items: stretch;
+      height: 56px;
+      border-bottom: 1px solid #e0e0e0; background: #fff;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    }
+    .nav-logo {
+      display: flex; align-items: center;
+      padding: 0 24px; height: 100%;
+      text-decoration: none; flex-shrink: 0;
+      border-right: 1px solid #e0e0e0;
+    }
+    .nav-logo img { height: 28px; display: block; }
+    .nav-items {
+      display: flex; align-items: stretch; height: 100%;
+      flex: 1;
+    }
+    .nav-item {
+      position: relative; flex: 1;
+      display: flex; align-items: stretch;
+      border-right: 1px solid #e0e0e0;
+    }
+    .nav-item > a, .nav-item > button {
+      display: flex; align-items: center; justify-content: center; gap: 5px;
+      width: 100%; height: 100%; padding: 0 14px;
+      font-size: 13px; font-weight: 600; color: #222;
+      text-decoration: none; background: none; border: none;
+      cursor: pointer; white-space: nowrap;
+      font-family: var(--font-body);
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-item:hover > a, .nav-item:hover > button {
+      background: #000; color: #fff;
+    }
+    .nav-chevron {
+      display: inline-block; width: 6px; height: 6px;
+      border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg) translateY(-1px); flex-shrink: 0;
+    }
+    .nav-dropdown {
+      display: none; position: absolute; top: 100%; left: 0;
+      background: #fff; border: 1px solid #e0e0e0; min-width: 200px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1); z-index: 200; padding: 4px 0;
+    }
+    .nav-item:hover .nav-dropdown { display: block; }
+    .nav-dropdown a {
+      display: block; padding: 10px 20px;
+      font-size: 13px; font-weight: 500; color: #222;
+      text-decoration: none; white-space: nowrap;
+      transition: background 0.1s;
+    }
+    .nav-dropdown a:hover { background: #fff8e6; color: #000; }
+    .nav-dropdown a.current { font-weight: 700; color: #000; text-decoration: underline; }
+    .nav-dropdown-divider { border: none; border-top: 1px solid #f0f0f0; margin: 4px 0; }
+    .nav-cta {
+      display: flex; align-items: center;
+      height: 100%; padding: 0 24px;
+      background: var(--yellow); color: var(--black);
+      font-family: var(--font-body); font-size: 13px; font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap; transition: background 0.2s; flex-shrink: 0;
+    }
+    .nav-cta:hover { background: #e5a800; }
+    /* ── INLINE SEARCH (hover-to-expand) ────────────────────────────── */
+    .search-wrap {
+      margin-left: auto; flex-shrink: 0;
+      display: flex; align-items: center;
+      height: 34px; max-width: 34px; overflow: hidden;
+      border: 1.5px solid #e0e0e0; border-radius: 999px;
+      background: #fff; cursor: pointer;
+      transition: max-width 0.28s ease, border-color 0.2s;
+    }
+    .search-wrap:hover,
+    .search-wrap:focus-within {
+      max-width: 260px; border-color: #aaa; cursor: text;
+    }
+    .search-wrap svg {
+      flex-shrink: 0; width: 32px; min-width: 32px;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0.45;
+    }
+    #searchInput {
+      flex: 1; min-width: 0; border: none; outline: none;
+      font-family: var(--font-body); font-size: 13px; color: #0d0d0d;
+      background: transparent; padding: 0 12px 0 0; white-space: nowrap;
+    }
+    #searchInput::placeholder { color: #bbb; }
+    /* ── HERO ────────────────────────────────────────────────────────── */
+    .hero {
+      max-width: 720px; margin: 64px auto 48px;
+      padding: 0 24px; text-align: center;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: 42px; font-weight: 800;
+      letter-spacing: -1.2px; line-height: 1.15; margin-bottom: 0;
+    }
+    .hero-static {
+      display: block; white-space: nowrap;
+    }
+    .hero-cycling-line {
+      display: block; min-height: 1.2em;
+      font-size: 30px; font-weight: 700; letter-spacing: -0.6px;
+    }
+    .hero-word { color: var(--yellow); }
+    .hero-cursor {
+      display: inline-block; width: 2px; height: 0.72em;
+      background: var(--yellow); margin-left: 2px;
+      vertical-align: middle; border-radius: 1px;
+      animation: blink-cur 0.9s step-end infinite;
+    }
+    @keyframes blink-cur { 0%,100%{opacity:1} 50%{opacity:0} }
+    .hero-cta {
+      display: inline-block; margin-top: 22px;
+      font-family: var(--font-body); font-size: 16px; font-weight: 600;
+      color: var(--text); text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .hero-cta:hover { opacity: 0.6; }
+    .hero-cta-sub { font-weight: 400; color: var(--text); }
+    .filters-wrap {
+      max-width: 1100px; margin: 0 auto 40px;
+      padding: 0 24px; display: flex; flex-direction: column; gap: 10px;
+    }
+    .filter-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .filter-label {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.5px; color: #aaa; width: 44px; flex-shrink: 0;
+    }
+    .filter-btn {
+      padding: 7px 16px; border-radius: 999px; border: 1.5px solid #e0e0e0;
+      background: #fff; font-size: 13px; font-weight: 500; color: #555;
+      cursor: pointer; transition: all 0.15s;
+    }
+    .filter-btn:hover:not(.active):not(.grade-active) { border-color: #999; color: #0d0d0d; }
+    .filter-btn.active { background: #0d0d0d; border-color: #0d0d0d; color: #fff; }
+    .filter-btn.grade-active { background: #1a3a5c; border-color: #1a3a5c; color: #fff; }
+    .filter-count { font-size: 12px; color: #bbb; margin-left: 8px; }
+    .grid {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 24px;
+    }
+    .no-results {
+      grid-column: 1/-1; text-align: center;
+      padding: 64px 0; color: #aaa; font-size: 16px;
+    }
+    .card { cursor: pointer; border-radius: 4px; transition: transform 0.15s; }
+    .card:hover { transform: translateY(-4px); }
+    .thumb-wrap {
+      position: relative; border-radius: 4px; overflow: hidden;
+      aspect-ratio: 16/9; background: #000;
+    }
+    .thumb-wrap img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: opacity 0.2s;
+    }
+    .card:hover .thumb-wrap img { opacity: 0.85; }
+    .thumb-scrim {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 55%);
+    }
+    .play-icon {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 42px; height: 42px;
+      background: rgba(255,255,255,0.18); backdrop-filter: blur(4px);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.15s;
+    }
+    .card:hover .play-icon { opacity: 1; }
+    .play-icon::after {
+      content: ''; width: 0; height: 0; border-style: solid;
+      border-width: 7px 0 7px 14px;
+      border-color: transparent transparent transparent rgba(255,255,255,0.95);
+      margin-left: 3px;
+    }
+    .thumb-grade {
+      position: absolute; bottom: 8px; left: 10px;
+      font-size: 10px; font-weight: 600;
+      color: rgba(255,255,255,0.7); background: rgba(0,0,0,0.45);
+      padding: 2px 7px; border-radius: 4px;
+    }
+    .thumb-duration {
+      position: absolute; bottom: 8px; right: 10px;
+      font-size: 10px; font-weight: 600;
+      color: rgba(255,255,255,0.85); background: rgba(0,0,0,0.6);
+      padding: 2px 6px; border-radius: 4px; letter-spacing: 0.2px;
+    }
+    .card-body { padding: 12px 2px 0; }
+    .tag {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.2px; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 4px; margin-bottom: 7px;
+    }
+    .tag.concept   { background: #eef2ff; color: #4361ee; }
+    .tag.realworld { background: #fff4e0; color: #d97706; }
+    .tag.puzzle    { background: #f0fdf4; color: #16a34a; }
+    .tag.olympiad  { background: #f5f0ff; color: #7c3aed; }
+    .tag-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+    .tag.concept .tag-dot   { background: #4361ee; }
+    .tag.realworld .tag-dot { background: #d97706; }
+    .tag.puzzle .tag-dot    { background: #16a34a; }
+    .tag.olympiad .tag-dot  { background: #7c3aed; }
+    .card-title {
+      font-family: var(--font-body);
+      font-size: 14.5px; font-weight: 600; line-height: 1.45; color: var(--black);
+    }
+    .card-topic { font-size: 12px; color: #888; margin-top: 5px; }
+    .pagination {
+      max-width: 1100px; margin: 48px auto 0; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .page-btn {
+      display: flex; align-items: center; gap: 8px;
+      background: #fff; border: 1.5px solid var(--black); color: var(--black);
+      padding: 10px 24px; border-radius: 0;
+      font-family: var(--font-body); font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .page-btn:hover:not(:disabled) { background: var(--black); color: #fff; }
+    .page-btn:disabled { border-color: #e0e0e0; color: #ccc; cursor: default; }
+    .page-info { font-size: 13px; color: #888; }
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.82); z-index: 1001;
+      align-items: center; justify-content: center; padding: 24px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: #000; border-radius: 4px; overflow: hidden;
+      width: 100%; max-width: 860px; position: relative;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    }
+    .modal-close {
+      position: absolute; top: 10px; left: 10px; z-index: 10;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(0,0,0,0.55); border: none; color: #fff;
+      font-size: 18px; cursor: pointer; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+    }
+    .modal-close:hover { background: rgba(0,0,0,0.85); }
+    .modal-player { position: relative; width: 100%; aspect-ratio: 16/9; background: #0d0d0d; }
+    .modal-player iframe {
+      display: block; position: absolute; inset: 0;
+      width: 100%; height: 100%; border: none;
+    }
+    .modal-fallback {
+      display: none; position: absolute; inset: 0;
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 20px; background: #0d0d0d;
+    }
+    .modal-fallback.visible { display: flex; }
+    .fallback-thumb { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; opacity: 0.25; }
+    .fallback-content { position: relative; text-align: center; padding: 0 32px; }
+    .fallback-content p { font-size: 14px; color: rgba(255,255,255,0.55); margin-bottom: 16px; line-height: 1.5; }
+    .fallback-yt-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #ff0000; color: #fff; padding: 12px 24px;
+      border-radius: 8px; font-size: 15px; font-weight: 600;
+      text-decoration: none; transition: opacity 0.15s;
+    }
+    .fallback-yt-btn:hover { opacity: 0.88; }
+    .modal-info { padding: 16px 20px 20px; background: #111; }
+    .modal-tag {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.3px;
+      padding: 3px 9px; border-radius: 4px; margin-bottom: 8px;
+    }
+    .modal-tag.concept   { background: rgba(67,97,238,0.2); color: #7b9fff; }
+    .modal-tag.realworld { background: rgba(217,119,6,0.2); color: #f5a623; }
+    .modal-tag.puzzle    { background: rgba(22,163,74,0.2); color: #4ade80; }
+    .modal-tag.olympiad  { background: rgba(124,58,237,0.2); color: #c084fc; }
+    .modal-title { font-size: 16px; font-weight: 600; color: #fff; line-height: 1.4; }
+    .modal-actions { display: flex; align-items: center; gap: 10px; margin-top: 14px; }
+    .modal-next {
+      border-top: 1px solid rgba(255,255,255,0.1); padding: 14px 20px 16px;
+      background: #111;
+    }
+    .modal-next-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.7px; color: #555; margin-bottom: 10px;
+    }
+    .modal-next-card {
+      display: flex; align-items: center; gap: 12px;
+      cursor: pointer; padding: 8px; margin: -8px;
+      border-radius: 4px; transition: background 0.15s;
+    }
+    .modal-next-card:hover { background: rgba(255,255,255,0.06); }
+    .modal-next-thumb {
+      width: 96px; height: 54px; object-fit: cover;
+      border-radius: 3px; flex-shrink: 0; background: #222;
+    }
+    .modal-next-title {
+      font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.8);
+      line-height: 1.4;
+    }
+    .modal-next-meta { font-size: 11px; color: #555; margin-top: 3px; }
+    .modal-share-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 16px; border: 1.5px solid rgba(255,255,255,0.25);
+      background: transparent; color: rgba(255,255,255,0.8);
+      font-family: var(--font-body); font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: all 0.15s; border-radius: 0;
+    }
+    .modal-share-btn:hover { border-color: #fff; color: #fff; }
+    .modal-cta {
+      display: block; margin: 16px 20px 20px;
+      background: var(--yellow); color: var(--black);
+      font-family: var(--font-body); font-size: 14px; font-weight: 700;
+      text-align: center; padding: 13px; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .modal-cta:hover { background: #e5a800; }
+    /* ── SHARE SHEET ─────────────────────────────────────────────────── */
+    .share-sheet {
+      display: none; position: fixed; inset: 0; z-index: 1002;
+      align-items: center; justify-content: center;
+    }
+    .share-sheet.open { display: flex; }
+    .share-sheet-backdrop {
+      position: absolute; inset: 0; background: rgba(0,0,0,0.6);
+    }
+    .share-sheet-panel {
+      position: relative; background: #212121; border-radius: 14px;
+      width: 100%; max-width: 480px; padding: 20px 24px 24px;
+      margin: 0 16px;
+    }
+    .share-sheet-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .share-sheet-header span {
+      font-family: var(--font-display); font-size: 16px; font-weight: 700; color: #fff;
+    }
+    .share-sheet-close {
+      background: none; border: none; color: #aaa; font-size: 22px;
+      cursor: pointer; line-height: 1; padding: 0; display: flex;
+    }
+    .share-sheet-close:hover { color: #fff; }
+    .share-sheet-apps {
+      display: flex; gap: 20px; overflow-x: auto; padding-bottom: 4px;
+      scrollbar-width: none; margin-bottom: 20px;
+    }
+    .share-sheet-apps::-webkit-scrollbar { display: none; }
+    .share-app {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      flex-shrink: 0; cursor: pointer; text-decoration: none;
+      background: none; border: none; padding: 0;
+    }
+    .share-app-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .share-app span {
+      font-family: var(--font-body); font-size: 12px; color: #ccc;
+      white-space: nowrap;
+    }
+    .share-sheet-divider { border: none; border-top: 1px solid #333; margin: 0 0 16px; }
+    .share-sheet-copy-row {
+      display: flex; align-items: center; gap: 10px;
+      background: #333; border-radius: 8px; padding: 10px 14px;
+    }
+    .share-sheet-url {
+      flex: 1; font-family: var(--font-body); font-size: 13px;
+      color: #ccc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .share-sheet-copy-btn {
+      flex-shrink: 0; background: #3ea6ff; color: #000; border: none;
+      border-radius: 20px; padding: 6px 16px;
+      font-family: var(--font-body); font-size: 13px; font-weight: 700;
+      cursor: pointer; transition: background 0.15s;
+    }
+    .share-sheet-copy-btn:hover { background: #65b8ff; }
+    .share-sheet-copy-btn.copied { background: #4ade80; }
+    /* ── BOTTOM CTA ──────────────────────────────────────────────────── */
+    .bottom-cta { margin: 72px 0 0; border-top: 1px solid var(--black); }
+    .bottom-cta-inner {
+      max-width: 1100px; margin: 0 auto; padding: 48px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 32px;
+    }
+    .bottom-cta h3 {
+      font-family: var(--font-display);
+      font-size: 24px; font-weight: 800; letter-spacing: -0.3px;
+    }
+    .bottom-cta p { font-size: 15px; color: var(--grey-text); margin-top: 6px; }
+    .cta-btn {
+      background: var(--yellow); color: var(--black);
+      padding: 16px 32px; border-radius: 0;
+      font-family: var(--font-body); font-size: 15px; font-weight: 700;
+      white-space: nowrap; cursor: pointer; border: 1px solid var(--black);
+      text-decoration: none; transition: background 0.2s;
+    }
+    .cta-btn:hover { background: var(--black); color: #fff; }
+
+    /* ── FOOTER ──────────────────────────────────────────────────────── */
+    .site-footer {
+      background: #fff; border-top: 1px solid var(--black);
+      padding: 48px 24px 0;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 32px;
+    }
+    .footer-col h4 {
+      font-family: var(--font-body);
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.8px; color: var(--black); margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col li a {
+      font-size: 13px; color: #444; text-decoration: none; line-height: 1.4;
+      transition: color 0.15s;
+    }
+    .footer-col li a:hover { color: var(--black); }
+    .footer-col li a.highlight { font-weight: 700; color: var(--black); }
+    .footer-bar {
+      max-width: 1100px; margin: 32px auto 0;
+      padding: 20px 0; border-top: 1px solid var(--grey-mid);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .footer-bar-logo img { height: 22px; display: block; }
+    .footer-legal {
+      display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+    }
+    .footer-legal a {
+      font-size: 12px; color: #888; text-decoration: none;
+    }
+    .footer-legal a:hover { color: var(--black); }
+    .footer-bottom {
+      background: var(--grey-light);
+      padding: 16px 24px;
+      margin-top: 0;
+    }
+    .footer-bottom-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+    }
+    .footer-address { font-size: 11px; color: #666; line-height: 1.6; }
+    .footer-social { display: flex; gap: 8px; }
+    .footer-social a {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: #e0e0e0; display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: 12px; color: var(--black);
+      transition: background 0.15s;
+    }
+    .footer-social a:hover { background: var(--black); color: #fff; }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────────────── */
+    /* Tablet: 2-col grid, 3-col footer */
+    @media (max-width: 1100px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: repeat(3, 1fr); }
+    }
+    /* Mobile: single-col everything */
+    @media (max-width: 640px) {
+      body { padding-top: 52px; }
+      nav { height: 52px; }
+      .nav-items { display: none; }
+      .search-backdrop { top: 52px; }
+
+      .hero { padding: 36px 16px; margin-top: 40px; }
+      .hero-static { white-space: normal; }
+      .hero h1 { font-size: 26px; letter-spacing: -0.5px; }
+      .hero-cycling-line { font-size: 20px; letter-spacing: -0.2px; }
+      .hero-cta { font-size: 14px; }
+      .hero p { font-size: 15px; }
+      .filters-wrap { padding: 0 16px; gap: 10px; margin-bottom: 28px; }
+      .filter-label { font-size: 10px; width: 38px; }
+      .filter-btn { padding: 6px 12px; font-size: 12px; }
+      /* On narrow screens search wraps to its own line below grade buttons */
+      .search-wrap {
+        flex-basis: 100%; margin-left: 0; max-width: 100%;
+        margin-top: 4px;
+      }
+      .search-wrap:hover, .search-wrap:focus-within { max-width: 100%; }
+      #searchInput { padding: 0 12px 0 0; }
+      .grid { grid-template-columns: 1fr; padding: 0 16px; gap: 24px; }
+      .pagination { padding: 0 16px; margin-top: 28px; }
+      .page-btn { padding: 10px 18px; font-size: 13px; }
+      .page-info { font-size: 12px; }
+      .bottom-cta-inner { flex-direction: column; align-items: flex-start; padding: 32px 20px; gap: 20px; }
+      .footer-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .footer-bottom-inner { flex-direction: column; gap: 12px; }
+      /* Modal full-height on mobile */
+      .modal-overlay { padding: 0; align-items: flex-end; }
+      .modal { border-radius: 4px 4px 0 0; max-height: 92dvh; overflow-y: auto; }
+      .modal-close { top: -36px; }
+    }
+    @media (max-width: 400px) {
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://www.cuemath.com/">
+    <img src="https://d138zd1ktt9iqe.cloudfront.net/static/website-v3/cuemath-logo.svg" alt="Cuemath"
+         onerror="this.outerHTML='<span style=\'font-size:20px;font-weight:700;letter-spacing:-0.5px\'>Cue<span style=\'color:#ffba07\'>math</span></span>'">
+  </a>
+  <div class="nav-items">
+    <div class="nav-item">
+      <button>Math Classes <span class="nav-chevron"></span></button>
+      <div class="nav-dropdown">
+        <a href="https://www.cuemath.com/math-classes/elementary-math-k-2/">Elementary K–2</a>
+        <a href="https://www.cuemath.com/math-classes/elementary-math-3-5/">Elementary 3–5</a>
+        <a href="https://www.cuemath.com/math-classes/middle-school-math-6-8/">Middle School</a>
+        <a href="https://www.cuemath.com/test-prep/">Test Prep</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="https://www.cuemath.com/pricing/">Pricing</a>
+    </div>
+    <div class="nav-item">
+      <button>Resources <span class="nav-chevron"></span></button>
+      <div class="nav-dropdown">
+        <a href="https://www.cuemath.com/math-concept-explanations/" class="current">Math Concepts</a>
+        <hr class="nav-dropdown-divider">
+        <a href="https://www.cuemath.com/blog/">Blogs</a>
+        <a href="https://www.cuemath.com/math-puzzles/">Math Puzzles</a>
+        <a href="https://www.cuemath.com/math-test/">Math Test</a>
+        <a href="https://www.cuemath.com/mathfit/">MathFit Evaluation</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <button>About Us <span class="nav-chevron"></span></button>
+      <div class="nav-dropdown">
+        <a href="https://www.cuemath.com/our-impact/">Our Impact</a>
+        <a href="https://www.cuemath.com/tutors/">Our Tutors</a>
+        <a href="https://www.cuemath.com/about-us/">Our Story &amp; Mission</a>
+        <a href="https://www.cuemath.com/reviews/">Our Reviews</a>
+        <a href="https://www.cuemath.com/faqs/">FAQs</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="https://www.cuemath.com/become-a-tutor/">Become a Tutor</a>
+    </div>
+  </div>
+  <a href="https://www.cuemath.com/en-us/" class="nav-cta">Try a free class →</a>
+</nav>
+
+<div class="hero">
+  <h1>
+    <span class="hero-static">The Best Math Explanations</span>
+    <span class="hero-cycling-line"><span class="hero-word" id="heroWord"></span><span class="hero-cursor"></span></span>
+  </h1>
+  <a class="hero-cta" id="heroScrollCta" href="#grid">
+    Start Learning <span class="hero-cta-sub">— it's free</span>
+  </a>
+</div>
+
+<div class="filters-wrap">
+  <div class="filter-row">
+    <span class="filter-label">Type</span>
+    <button class="filter-btn active" data-type="all">All</button>
+    <button class="filter-btn" data-type="olympiad">Olympiad</button>
+    <button class="filter-btn" data-type="concept">Concepts</button>
+    <button class="filter-btn" data-type="puzzle">Puzzles</button>
+    <button class="filter-btn" data-type="realworld">Math Facts</button>
+  </div>
+  <div class="filter-row">
+    <span class="filter-label">Grade</span>
+    <button class="filter-btn grade-btn active" data-grade="all">All grades</button>
+    <button class="filter-btn grade-btn" data-grade="35">3 – 5</button>
+    <button class="filter-btn grade-btn" data-grade="68">6 – 8</button>
+    <button class="filter-btn grade-btn" data-grade="912">9 – 12</button>
+    <span class="filter-count" id="filterCount" style="margin-left:4px"></span>
+    <div class="search-wrap">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0d0d0d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="text" id="searchInput" placeholder="Search topics...">
+    </div>
+  </div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<div class="pagination" id="pagination" style="display:none">
+  <button class="page-btn" id="prevBtn">← Previous</button>
+  <span class="page-info" id="pageInfo"></span>
+  <button class="page-btn" id="nextBtn">Next →</button>
+</div>
+
+<div class="bottom-cta">
+  <div class="bottom-cta-inner">
+    <div>
+      <h3>Want to go deeper?</h3>
+      <p>Get personalised 1:1 math tutoring with a Cuemath expert.</p>
+    </div>
+    <a href="https://www.cuemath.com/en-us/" class="cta-btn">Try a free class →</a>
+  </div>
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>About Cuemath</h4>
+      <ul>
+        <li><a href="https://www.cuemath.com/about-us/">Our Story &amp; Mission</a></li>
+        <li><a href="https://www.cuemath.com/our-impact/">Our Impact</a></li>
+        <li><a href="https://www.cuemath.com/tutors/">Our Tutors</a></li>
+        <li><a href="https://www.cuemath.com/reviews/">Our Reviews</a></li>
+        <li><a href="https://www.cuemath.com/faqs/">FAQs</a></li>
+        <li><a href="https://www.cuemath.com/careers/">Careers</a></li>
+        <li><a href="https://www.cuemath.com/press/">Press</a></li>
+        <li><a href="https://www.cuemath.com/blog/">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Programs</h4>
+      <ul>
+        <li><a href="https://www.cuemath.com/math-classes/elementary-math-k-2/">Elementary K–2</a></li>
+        <li><a href="https://www.cuemath.com/math-classes/elementary-math-3-5/">Elementary 3–5</a></li>
+        <li><a href="https://www.cuemath.com/math-classes/middle-school-math-6-8/">Middle School 6–8</a></li>
+        <li><a href="https://www.cuemath.com/test-prep/">Test Prep</a></li>
+        <li><a href="https://www.cuemath.com/pricing/">Pricing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="https://www.cuemath.com/math-concept-explanations/" style="font-weight:600;color:#0d0d0d">Math Concepts</a></li>
+        <li><a href="https://www.cuemath.com/blog/">Blogs</a></li>
+        <li><a href="https://www.cuemath.com/math-puzzles/">Math Puzzles</a></li>
+        <li><a href="https://www.cuemath.com/math-test/">Math Test</a></li>
+        <li><a href="https://www.cuemath.com/mathfit/">MathFit Evaluation</a></li>
+        <li><a href="https://www.cuemath.com/math-worksheets/">Math Worksheets</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Math Tutoring</h4>
+      <ul>
+        <li><a href="https://www.cuemath.com/online-math-tutoring/">1:1 Online Tutoring</a></li>
+        <li><a href="https://www.cuemath.com/en-us/">Try a Free Class</a></li>
+        <li><a href="https://www.cuemath.com/pricing/">Pricing</a></li>
+        <li><a href="https://www.cuemath.com/tutors/">Find a Tutor</a></li>
+        <li><a href="https://www.cuemath.com/reviews/">Student Reviews</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Partner With Us</h4>
+      <ul>
+        <li><a href="https://www.cuemath.com/become-a-tutor/">Become a Tutor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div class="footer-bar-logo">
+      <img src="https://d138zd1ktt9iqe.cloudfront.net/static/website-v3/cuemath-logo.svg" alt="Cuemath"
+           onerror="this.outerHTML='<span style=\'font-size:16px;font-weight:700\'>Cuemath</span>'">
+    </div>
+    <div class="footer-legal">
+      <a href="https://www.cuemath.com/terms/">Terms &amp; Conditions</a>
+      <a href="https://www.cuemath.com/privacy/">Privacy Policy</a>
+      <span style="font-size:12px;color:#bbb">© 2026 Cuemath. All rights reserved.</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <div class="footer-address">
+        <strong>USA:</strong> CueLearn Inc, 1013 Centre Road, Suite 403-B, Wilmington, Delaware 19805<br>
+        <strong>India:</strong> Plot No. F-17/5, Golf Course Rd, Sector 42, Gurugram, Haryana 122009
+      </div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/cuemath" title="Facebook" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@CuemathStudio" title="YouTube" target="_blank" rel="noopener">
+          <svg width="14" height="10" viewBox="0 0 20 14" fill="currentColor"><path d="M19.6 2.2A2.5 2.5 0 0 0 17.8.4C16.3 0 10 0 10 0S3.7 0 2.2.4A2.5 2.5 0 0 0 .4 2.2C0 3.7 0 7 0 7s0 3.3.4 4.8A2.5 2.5 0 0 0 2.2 13.6C3.7 14 10 14 10 14s6.3 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8C20 10.3 20 7 20 7s0-3.3-.4-4.8z"/><path d="M8 10l5.2-3L8 4v6z" fill="#fff"/></svg>
+        </a>
+        <a href="https://www.instagram.com/cuemath/" title="Instagram" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://twitter.com/cuemath" title="X / Twitter" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/cuemath/" title="LinkedIn" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">×</button>
+    <div class="modal-player">
+      <iframe id="modalIframe" src="" allowfullscreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+      </iframe>
+      <div class="modal-fallback" id="modalFallback">
+        <img class="fallback-thumb" id="fallbackThumb" src="" alt="">
+        <div class="fallback-content">
+          <p>This video can't be played here —<br>watch it directly on YouTube.</p>
+          <a class="fallback-yt-btn" id="fallbackLink" href="#" target="_blank" rel="noopener">
+            <svg width="20" height="14" viewBox="0 0 20 14" fill="white">
+              <path d="M19.6 2.2A2.5 2.5 0 0 0 17.8.4C16.3 0 10 0 10 0S3.7 0 2.2.4A2.5 2.5 0 0 0 .4 2.2C0 3.7 0 7 0 7s0 3.3.4 4.8A2.5 2.5 0 0 0 2.2 13.6C3.7 14 10 14 10 14s6.3 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8C20 10.3 20 7 20 7s0-3.3-.4-4.8z"/>
+              <path d="M8 10l5.2-3L8 4v6z" fill="white"/>
+            </svg>
+            Watch on YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="modal-info">
+      <div class="modal-tag" id="modalTag"></div>
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-actions">
+        <button class="modal-share-btn" id="modalShareBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+          </svg>
+          Share
+        </button>
+      </div>
+    </div>
+    <a href="https://www.cuemath.com/en-us/" class="modal-cta" target="_blank" rel="noopener">Try a free class →</a>
+    <div class="modal-next" id="modalNext" style="display:none">
+      <div class="modal-next-label">Watch next</div>
+      <div class="modal-next-card" id="modalNextCard">
+        <img class="modal-next-thumb" id="modalNextThumb" src="" alt="">
+        <div>
+          <div class="modal-next-title" id="modalNextTitle"></div>
+          <div class="modal-next-meta" id="modalNextMeta"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SHARE SHEET ──────────────────────────────────────────────────── -->
+<div class="share-sheet" id="shareSheet">
+  <div class="share-sheet-backdrop" id="shareSheetBackdrop"></div>
+  <div class="share-sheet-panel">
+    <div class="share-sheet-header">
+      <span>Share</span>
+      <button class="share-sheet-close" id="shareSheetClose">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="share-sheet-apps">
+      <a class="share-app" id="ssWhatsapp" href="#" target="_blank" rel="noopener">
+        <div class="share-app-icon" style="background:#25D366">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <span>WhatsApp</span>
+      </a>
+      <a class="share-app" id="ssTwitter" href="#" target="_blank" rel="noopener">
+        <div class="share-app-icon" style="background:#000">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </div>
+        <span>X</span>
+      </a>
+      <a class="share-app" id="ssLinkedin" href="#" target="_blank" rel="noopener">
+        <div class="share-app-icon" style="background:#0A66C2">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </div>
+        <span>LinkedIn</span>
+      </a>
+      <a class="share-app" id="ssFacebook" href="#" target="_blank" rel="noopener">
+        <div class="share-app-icon" style="background:#1877F2">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </div>
+        <span>Facebook</span>
+      </a>
+      <a class="share-app" id="ssEmail" href="#" rel="noopener">
+        <div class="share-app-icon" style="background:#555">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        </div>
+        <span>Email</span>
+      </a>
+    </div>
+    <hr class="share-sheet-divider">
+    <div class="share-sheet-copy-row">
+      <span class="share-sheet-url" id="shareSheetUrl"></span>
+      <button class="share-sheet-copy-btn" id="shareSheetCopyBtn">Copy</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const GRADE_LABELS = { k2: 'K–2', '35': '3–5', '68': '6–8', '912': '9–12' };
+const TYPE_LABELS  = { concept: 'Concept', realworld: 'Math Facts', puzzle: 'Puzzle', olympiad: 'Olympiad' };
+
+const grid = document.getElementById('grid');
+const overlay = document.getElementById('modalOverlay');
+const modalIframe = document.getElementById('modalIframe');
+const modalFallback = document.getElementById('modalFallback');
+const fallbackThumb = document.getElementById('fallbackThumb');
+const fallbackLink = document.getElementById('fallbackLink');
+const modalTitle = document.getElementById('modalTitle');
+const modalTag = document.getElementById('modalTag');
+const modalClose = document.getElementById('modalClose');
+const searchInput  = document.getElementById('searchInput');
+const pagination   = document.getElementById('pagination');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const pageInfo = document.getElementById('pageInfo');
+const filterCount = document.getElementById('filterCount');
+const modalNext = document.getElementById('modalNext');
+const modalNextCard = document.getElementById('modalNextCard');
+const modalNextThumb = document.getElementById('modalNextThumb');
+const modalNextTitle = document.getElementById('modalNextTitle');
+const modalNextMeta = document.getElementById('modalNextMeta');
+
+const PAGE_SIZE = 24;
+let activeType = 'all';
+let activeGrade = 'all';
+let searchQuery = '';
+let currentVideo = null;
+let currentPage = 0;  // 0-indexed
+
+let uniqueVideos = [];
+
+function searchHaystack(v) {
+  const kw = Array.isArray(v.keywords) ? v.keywords.join(' ') : (v.keywords || '');
+  return ((v.title || '') + ' ' + (v.topic || '') + ' ' + kw).toLowerCase();
+}
+
+function searchScore(v, tokens) {
+  // 0 = no match. Higher = more tokens matched.
+  const hay = searchHaystack(v);
+  let hits = 0;
+  for (const t of tokens) if (t && hay.includes(t)) hits++;
+  return hits;
+}
+
+function renderGrid() {
+  const term = searchQuery.toLowerCase().trim();
+  const filterMatches = uniqueVideos.filter(v => {
+    const matchesType  = activeType === 'all'  || v.type === activeType;
+    const matchesGrade = activeGrade === 'all' || v.grade === activeGrade;
+    return matchesType && matchesGrade;
+  });
+
+  let matches;
+  if (!term) {
+    matches = filterMatches;
+  } else {
+    const tokens = term.split(/\s+/).filter(Boolean);
+    // Strict pass: every token must match (token-AND)
+    const strict = filterMatches.filter(v => searchScore(v, tokens) === tokens.length);
+    if (strict.length > 0) {
+      matches = strict;
+    } else {
+      // Fallback: at least one token matches, ranked by how many match
+      matches = filterMatches
+        .map(v => ({ v, s: searchScore(v, tokens) }))
+        .filter(x => x.s > 0)
+        .sort((a, b) => b.s - a.s)
+        .map(x => x.v);
+    }
+  }
+  const filtered = term ? matches : applyRowCycling(matches);
+
+  grid.innerHTML = '';
+
+  filterCount.textContent = `${filtered.length} video${filtered.length !== 1 ? 's' : ''}`;
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="no-results">No videos found. Try a different search or filter.</div>';
+    pagination.style.display = 'none';
+    return;
+  }
+
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+  if (currentPage >= totalPages) currentPage = totalPages - 1;
+  const start = currentPage * PAGE_SIZE;
+  const shown = filtered.slice(start, start + PAGE_SIZE);
+
+  shown.forEach(v => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    const durBadge = v.duration ? `<span class="thumb-duration">${v.duration}</span>` : '';
+    card.innerHTML = `
+      <div class="thumb-wrap">
+        <img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" alt="${v.title}"
+             onerror="this.style.display='none'">
+        <div class="thumb-scrim"></div>
+        <div class="play-icon"></div>
+        <span class="thumb-grade">${GRADE_LABELS[v.grade] || v.grade}</span>
+        ${durBadge}
+      </div>
+      <div class="card-body">
+        <span class="tag ${v.type}">
+          <span class="tag-dot"></span>
+          ${TYPE_LABELS[v.type] || v.type}
+        </span>
+        <div class="card-title">${v.title}</div>
+        <div class="card-topic">${v.topic}</div>
+      </div>
+    `;
+    card.addEventListener('click', () => openModal(v));
+    grid.appendChild(card);
+  });
+
+  if (totalPages > 1) {
+    pagination.style.display = 'flex';
+    prevBtn.disabled = currentPage === 0;
+    nextBtn.disabled = currentPage === totalPages - 1;
+    pageInfo.textContent = `${start + 1}–${Math.min(start + PAGE_SIZE, filtered.length)} of ${filtered.length} videos`;
+  } else {
+    pagination.style.display = 'none';
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+prevBtn.addEventListener('click', () => { currentPage--; renderGrid(); });
+nextBtn.addEventListener('click', () => { currentPage++; renderGrid(); });
+
+searchInput.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { searchInput.value = ''; searchQuery = ''; currentPage = 0; renderGrid(); searchInput.blur(); }
+});
+
+function showFallback() {
+  if (!currentVideo) return;
+  modalIframe.style.display = 'none';
+  fallbackThumb.src = `https://img.youtube.com/vi/${currentVideo.id}/hqdefault.jpg`;
+  fallbackLink.href = `https://www.youtube.com/watch?v=${currentVideo.id}`;
+  modalFallback.classList.add('visible');
+}
+
+function pickNextVideo(v) {
+  // Same topic first, then same type, excluding current video
+  const sameTopic = uniqueVideos.filter(u => u.id !== v.id && u.topic === v.topic);
+  if (sameTopic.length) return sameTopic[Math.floor(Math.random() * Math.min(sameTopic.length, 5))];
+  const sameType = uniqueVideos.filter(u => u.id !== v.id && u.type === v.type);
+  if (sameType.length) return sameType[Math.floor(Math.random() * Math.min(sameType.length, 5))];
+  return null;
+}
+
+function openModal(v) {
+  currentVideo = v;
+  modalIframe.style.display = 'block';
+  modalFallback.classList.remove('visible');
+  modalIframe.src = `https://www.youtube.com/embed/${v.id}?autoplay=1&rel=0&enablejsapi=1`;
+  modalTitle.textContent = v.title;
+  modalTag.textContent = TYPE_LABELS[v.type];
+  modalTag.className = `modal-tag ${v.type}`;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  // Watch next
+  const next = pickNextVideo(v);
+  if (next) {
+    modalNextThumb.src = `https://img.youtube.com/vi/${next.id}/mqdefault.jpg`;
+    modalNextTitle.textContent = next.title;
+    modalNextMeta.textContent = `${TYPE_LABELS[next.type]} · ${GRADE_LABELS[next.grade]}`;
+    modalNextCard.onclick = () => openModal(next);
+    modalNext.style.display = 'block';
+  } else {
+    modalNext.style.display = 'none';
+  }
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  modalIframe.src = '';
+  modalIframe.style.display = 'block';
+  modalFallback.classList.remove('visible');
+  currentVideo = null;
+  document.body.style.overflow = '';
+}
+
+window.addEventListener('message', function(e) {
+  if (!overlay.classList.contains('open')) return;
+  try {
+    const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+    if (data && data.event === 'onError') {
+      const code = data.info;
+      if (code === 100 || code === 101 || code === 150 || code === 153 || code === 2) showFallback();
+    }
+  } catch(err) {}
+});
+
+document.querySelectorAll('[data-type]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-type]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeType = btn.dataset.type;
+    currentPage = 0;
+    renderGrid();
+  });
+});
+
+document.querySelectorAll('[data-grade]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-grade]').forEach(b => b.classList.remove('active', 'grade-active'));
+    activeGrade = btn.dataset.grade;
+    btn.classList.add(activeGrade === 'all' ? 'active' : 'grade-active');
+    currentPage = 0;
+    renderGrid();
+  });
+});
+
+searchInput.addEventListener('input', e => {
+  searchQuery = e.target.value;
+  currentPage = 0;
+  renderGrid();
+});
+
+modalClose.addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+const modalShareBtn     = document.getElementById('modalShareBtn');
+const shareSheet        = document.getElementById('shareSheet');
+const shareSheetBackdrop= document.getElementById('shareSheetBackdrop');
+const shareSheetClose   = document.getElementById('shareSheetClose');
+const shareSheetUrl     = document.getElementById('shareSheetUrl');
+const shareSheetCopyBtn = document.getElementById('shareSheetCopyBtn');
+
+function openShareSheet(video) {
+  const url = `https://www.youtube.com/watch?v=${video.id}`;
+  const text = encodeURIComponent(video.title);
+  const encUrl = encodeURIComponent(url);
+
+  document.getElementById('ssWhatsapp').href  = `https://wa.me/?text=${encodeURIComponent(video.title + '\n' + url)}`;
+  document.getElementById('ssTwitter').href   = `https://twitter.com/intent/tweet?text=${text}&url=${encUrl}`;
+  document.getElementById('ssLinkedin').href  = `https://www.linkedin.com/sharing/share-offsite/?url=${encUrl}`;
+  document.getElementById('ssFacebook').href  = `https://www.facebook.com/sharer/sharer.php?u=${encUrl}`;
+  document.getElementById('ssEmail').href     = `mailto:?subject=${text}&body=${encodeURIComponent(url)}`;
+  shareSheetUrl.textContent = url;
+  shareSheetCopyBtn.textContent = 'Copy';
+  shareSheetCopyBtn.classList.remove('copied');
+  shareSheet.classList.add('open');
+}
+
+function closeShareSheet() { shareSheet.classList.remove('open'); }
+
+modalShareBtn.addEventListener('click', () => {
+  if (!currentVideo) return;
+  openShareSheet(currentVideo);
+});
+
+shareSheetBackdrop.addEventListener('click', closeShareSheet);
+shareSheetClose.addEventListener('click', closeShareSheet);
+
+shareSheetCopyBtn.addEventListener('click', () => {
+  navigator.clipboard.writeText(shareSheetUrl.textContent).then(() => {
+    shareSheetCopyBtn.textContent = 'Copied!';
+    shareSheetCopyBtn.classList.add('copied');
+  });
+});
+
+// Row-cycling order: each row of 3 videos is a single type, cycling
+// concept → olympiad → puzzle → realworld. Featured videos pin to the top
+// of their type bucket; rest sort by view count. Re-applied on every
+// filter change so grade/search filtering keeps the same row pattern.
+const TYPE_ORDER = ['concept', 'olympiad', 'puzzle', 'realworld'];
+const ROW_SIZE = 3;
+const FEATURED = {
+  // Concepts
+  //   Row 1  (page 1) — original: Parallelogram, Exterior angles, (a+b)²
+  //   Row 5  (page 1) — original: (a-b)², Percentages, 1/4 vs 1/3
+  //   Row 9  (page 2) — fractions focus: read/write, Improper, + Area of circle
+  //   Row 13 (page 2) — Mixed Numbers, 3D surface area, Divisibility
+  concept:   ['pfamBrBf8BQ', '5dZoX2z1nYk', 'V-vGiheOQWc',
+              'rBJKPuvMR_I', 'LYsmiU5uxfM', 'j3aPSHv0AHI',
+              'Nwl8F_4bPZQ', '7mPZIJl6YLs', 'wl36iNgkeXc',
+              'UiFA93vVdEc', '9Z2wlWDPV2Q', 's8AflhKiUIc'],
+  // Olympiad + competitive exams (SAT prep reclassified to olympiad)
+  //   Row 2  (page 1) — original: AMC 12, Kangaroo, AMC 8 2024
+  //   Row 6  (page 1) — AMC shorts: Chinese Grade 5, Prime/Composite, Cool AMC
+  //   Row 10 (page 2) — more AMC shorts: Wind chill, Creative AMC, Symmetry
+  //   Row 14 (page 2) — SAT prep sequence: Part 1, Part 2, Part 3 (never out of order)
+  olympiad:  ['TuBooJKo9-E', 'JKdbJRXyhCA', 'YhOFFit69EU',
+              'gAsasanxsFw', 'MhselvD1bnI', '3XI4qezW5QQ',
+              'mzZyYbVwmC4', 'hW_CwaKXQHk', '8rHwTZ1TONg',
+              'nFhK0ydOtBU', 'aabkRHIg5os', 'h9_egN-f0Xc'],
+  // Puzzles: page 1 curated, rest view-sorted
+  puzzle:    ['GsLeHhv9OF0', '8uJ6R1X_-dk', 'lFs1nXCO5kU',
+              '_V3KLU-klPk', 'MOQA3egVMIQ', 'AgOt4yC1OP0'],
+  // Real-world: page 1 curated, rest view-sorted
+  realworld: ['dSArXXKw0_M', 'ECz75l4t6eM', 'Qo3Kie0X0tw',
+              '20ecgJo7Jtk', '9uSnpIPDNFg', '9JtV3KzBFc8'],
+};
+
+// Deprioritized videos — pushed to the end of their type bucket regardless
+// of view count. Use for videos we don't want in the first 10 pages.
+const DEPRIORITIZED = new Set([
+  '-ObWiqGo6fI',  // 2 pizzas or 1 large — which gives you more?
+  'U3eEHKP9m_4',  // Which glass holds more liquid
+  '6MwA1VQQd84',  // Comparing fractions — which is bigger?
+]);
+
+// When a single type is selected via the filter, use this explicit ordering
+// instead of row-cycling. SAT series first (sequential), then AMC 8 in
+// problem-number order, then other olympiad content. "Problem 10" never
+// appears before "Problem 9".
+const FEATURED_BY_TYPE_FILTER = {
+  olympiad: [
+    // SAT Algebra Parts 1-7 (sequential)
+    'nFhK0ydOtBU', 'aabkRHIg5os', 'h9_egN-f0Xc', 'Tf-jYHhqZZo',
+    'QmRC6n7WjOk', 'zf0I4UioEmo', 'uiBHAuhSxfg',
+    // SAT Math Hacks 1-5 (sequential)
+    '_ufeXxpC4Xo', 'KvtaRuoOwys', 'hpQ-_NqRVFw', 'CmNSiliwbS0', '_Y_qGh-Bypk',
+    // 2024 AMC 8 problems 1-22 (sequential; missing #s fall to view-sort)
+    'I2QuW_em0-c', 'ZdpCui6kzg8', 'HJgrFqk_snE', 'T4DmYA4chJY', 'DHwOdQUbcHg',
+    'QjTa5G70aeI', '29L0XAExErs', 'BYGz1ct3V8M', 'EVdzvwUsfrY', 'T9utXpHlTP4',
+    'zUsbv5nPdiQ', '_iT6rlf3h78', 'wo_0xxqduqk', 'LLjzs8G98CM', '6tZytvrc_9o',
+    'kJWED_sggOs', 'Mek7XquLJUA', 'je47QqX-5HE', 'xXWxI22ml6s', 'CVJFhYqKzEc',
+    // 2023 AMC 8 (known problems in order)
+    'E4yhD1HXwQI', 'mzZyYbVwmC4', 'MhselvD1bnI',
+    // Other curated olympiad / AMC problems
+    'TuBooJKo9-E', 'JKdbJRXyhCA', 'YhOFFit69EU', 'gAsasanxsFw',
+    'bR9peCVMsn8', 'ZC-HAQcJ8_Y', 'NH0uIHPIP_k',
+    'hW_CwaKXQHk', '3XI4qezW5QQ', '8rHwTZ1TONg',
+  ],
+};
+
+// Grade-specific pins: only activate when that grade filter is selected.
+// These videos float to the top of their type bucket when filtered.
+const FEATURED_BY_GRADE = {
+  '35': {
+    concept:   ['WptOmo0Tv1Q'],
+    olympiad:  [],
+    puzzle:    [],
+    realworld: [],
+  },
+};
+
+function applyRowCycling(videos) {
+  // When a single type is filtered, use explicit sequential ordering.
+  // Row-cycling only makes sense for the "All" view across types.
+  if (activeType !== 'all' && FEATURED_BY_TYPE_FILTER[activeType]) {
+    const order = FEATURED_BY_TYPE_FILTER[activeType];
+    const orderIdx = new Map(order.map((id, i) => [id, i]));
+    const inType = videos.filter(v => v.type === activeType);
+    const curated = inType
+      .filter(v => orderIdx.has(v.id))
+      .sort((a, b) => orderIdx.get(a.id) - orderIdx.get(b.id));
+    const rest = inType
+      .filter(v => !orderIdx.has(v.id) && !DEPRIORITIZED.has(v.id))
+      .sort((a, b) => (b.view_count || 0) - (a.view_count || 0));
+    const dep = inType
+      .filter(v => DEPRIORITIZED.has(v.id))
+      .sort((a, b) => (b.view_count || 0) - (a.view_count || 0));
+    return [...curated, ...rest, ...dep];
+  }
+
+  const gradePins = FEATURED_BY_GRADE[activeGrade] || {};
+  const buckets = {};
+  TYPE_ORDER.forEach(t => {
+    const inType = videos.filter(v => v.type === t);
+    const extraPins = gradePins[t] || [];
+    const pinIds = [...new Set([...extraPins, ...FEATURED[t]])];
+    const pinnedSet = new Set(pinIds);
+    const pinnedVids = pinIds
+      .map(id => inType.find(v => v.id === id))
+      .filter(Boolean);
+    const nonPinned = inType.filter(v => !pinnedSet.has(v.id));
+    const rest        = nonPinned.filter(v => !DEPRIORITIZED.has(v.id))
+                                   .sort((a, b) => (b.view_count || 0) - (a.view_count || 0));
+    const depriorized = nonPinned.filter(v =>  DEPRIORITIZED.has(v.id))
+                                   .sort((a, b) => (b.view_count || 0) - (a.view_count || 0));
+    buckets[t] = [...pinnedVids, ...rest, ...depriorized];
+  });
+  const ordered = [];
+  let hasMore = true;
+  while (hasMore) {
+    hasMore = false;
+    for (const t of TYPE_ORDER) {
+      const chunk = buckets[t].splice(0, ROW_SIZE);
+      if (chunk.length > 0) {
+        ordered.push(...chunk);
+        hasMore = true;
+      }
+    }
+  }
+  return ordered;
+}
+
+fetch('videos.json')
+  .then(r => r.json())
+  .then(data => {
+    const seen = new Set();
+    uniqueVideos = data.filter(v => { if (seen.has(v.id)) return false; seen.add(v.id); return true; });
+    renderGrid();
+  })
+  .catch(() => {
+    grid.innerHTML = '<div class="no-results">Could not load videos. Please refresh.</div>';
+  });
+
+// ── HERO SCROLL CTA ──────────────────────────────────────────────────────
+document.getElementById('heroScrollCta').addEventListener('click', e => {
+  e.preventDefault();
+  const target = document.getElementById('grid');
+  const offset = target.getBoundingClientRect().top + window.scrollY - 80;
+  window.scrollTo({ top: offset, behavior: 'smooth' });
+});
+
+// ── HERO TYPEWRITER ───────────────────────────────────────────────────────
+(function() {
+  const words = ['Math Concepts', 'Puzzles', 'Math Facts', 'Olympiad Prep'];
+  const el = document.getElementById('heroWord');
+  let wi = 0, ci = 0, deleting = false;
+
+  function tick() {
+    const word = words[wi];
+    if (!deleting) {
+      el.textContent = word.slice(0, ++ci);
+      if (ci === word.length) { deleting = true; setTimeout(tick, 1800); return; }
+      setTimeout(tick, 75);
+    } else {
+      el.textContent = word.slice(0, --ci);
+      if (ci === 0) { deleting = false; wi = (wi + 1) % words.length; setTimeout(tick, 320); return; }
+      setTimeout(tick, 45);
+    }
+  }
+  tick();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  Video Concept Page — Can 5 odd numbers add up to 50? (Grades 3–5)
+  Puzzle / Parity. Video: https://www.youtube.com/watch?v=j1RTuxI6r_Y
+  Structure: challenge-first → try the picker → video → proof → practice
+  The simulation lets students attempt to find 5 odd numbers summing to 50
+  before the video and proof reveal why it is impossible.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Can 5 odd numbers add up to 50? | Cuemath Puzzle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#1c1917;--ink2:#44403c;--muted:#78716c;--border:#e7e5e4;--bg:#fafaf9;--surface:#fff;--yellow:#f59e0b;--yellow-light:#fef3c7;--green:#16a34a;--green-light:#dcfce7;--red:#dc2626;--red-light:#fee2e2;--odd-col:#7c3aed;--odd-light:#ede9fe}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:300;line-height:1.7;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:780px;margin:0 auto;padding:0 40px}
+  h1,h2,h3{font-family:'Lora',Georgia,serif;font-weight:700;letter-spacing:-0.5px}
+  h1{font-size:clamp(28px,4vw,44px);line-height:1.2}
+  h2{font-size:clamp(22px,3vw,30px);line-height:1.3;margin-bottom:18px}
+  h3{font-size:19px;line-height:1.35;margin-bottom:8px}
+  p{margin-bottom:16px} p:last-child{margin-bottom:0}
+  em{font-style:italic} strong{font-weight:600}
+  a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow);text-underline-offset:3px}
+  .eyebrow{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:8px}
+
+  .nav{position:sticky;top:0;z-index:100;background:rgba(250,250,249,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+  .nav-inner{max-width:1200px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{font-family:'Lora',serif;font-weight:700;font-size:22px}
+  .nav-cta{background:var(--ink);color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:500}
+
+  .breadcrumb-bar{border-bottom:1px solid var(--border);padding:14px 0;font-size:13px;color:var(--muted)}
+  .breadcrumb-bar .wrap{display:flex;justify-content:space-between;align-items:center}
+  .breadcrumb a{color:var(--muted);text-decoration:none}
+  .breadcrumb .sep{margin:0 8px;opacity:.5}
+
+  /* HOOK */
+  .hook{padding:64px 0 40px}
+  .video-badge{display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:#fff;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:16px}
+  .topic-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;margin-left:10px}
+  .hook h1{margin-bottom:12px}
+  .hook .subtitle{color:var(--muted);font-size:14px;margin-bottom:16px}
+  .hook .lead{font-size:18px;color:var(--ink2)}
+
+  /* CHALLENGE (try-first block) */
+  .challenge-section{padding:40px 0;border-top:1px solid var(--border)}
+  .challenge-section h2{margin-bottom:8px}
+  .challenge-section .sub{color:var(--muted);margin-bottom:28px;font-size:15px}
+
+  .picker-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px}
+  .slots{display:flex;gap:14px;justify-content:center;margin-bottom:28px;flex-wrap:wrap}
+  .slot{display:flex;flex-direction:column;align-items:center;gap:8px}
+  .slot-label{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+  .slot-stepper{display:flex;flex-direction:column;align-items:center;gap:0}
+  .slot-btn{width:52px;height:36px;background:var(--bg);border:1.5px solid var(--border);font-family:inherit;font-size:18px;font-weight:700;cursor:pointer;transition:background .1s;color:var(--ink)}
+  .slot-btn.up{border-radius:10px 10px 0 0;border-bottom:none}
+  .slot-btn.dn{border-radius:0 0 10px 10px;border-top:none}
+  .slot-btn:hover{background:var(--border)}
+  .slot-val{width:52px;height:52px;display:flex;align-items:center;justify-content:center;background:var(--odd-light);border:2px solid var(--odd-col);font-family:'Lora',serif;font-size:22px;font-weight:700;color:var(--odd-col)}
+
+  .sum-display{text-align:center;margin-bottom:20px}
+  .sum-number{font-family:'Lora',serif;font-size:64px;font-weight:700;line-height:1;color:var(--ink);transition:color .3s}
+  .sum-target{font-size:15px;color:var(--muted);margin-top:4px}
+  .parity-pill{display:inline-block;padding:6px 18px;border-radius:20px;font-size:14px;font-weight:700;margin-top:10px;letter-spacing:.5px}
+  .parity-pill.odd{background:var(--odd-light);color:var(--odd-col)}
+  .parity-pill.even{background:var(--green-light);color:var(--green)}
+
+  .attempt-note{font-size:14px;color:var(--muted);text-align:center;margin-top:16px;min-height:22px;font-style:italic}
+
+  .reveal-block{margin:20px 0 0;text-align:center}
+  .reveal-btn{background:none;border:1.5px solid var(--ink2);border-radius:8px;padding:12px 20px;font-family:inherit;font-size:15px;font-weight:500;color:var(--ink2);cursor:pointer;transition:all .15s}
+  .reveal-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .reveal-btn.opened{display:none}
+  .reveal-content{display:none;margin-top:16px;animation:fadeIn .4s ease}
+  .reveal-content.show{display:block}
+  .reveal-inner{background:var(--odd-light);border:1px solid #c4b5fd;border-radius:12px;padding:20px 24px;font-size:15px;color:var(--ink2);text-align:left;line-height:1.7}
+  .proof-chain{display:flex;flex-wrap:wrap;align-items:center;gap:8px;justify-content:center;margin:12px 0;font-family:'Lora',serif;font-size:16px;font-weight:600}
+  .p-odd{background:var(--odd-light);color:var(--odd-col);padding:4px 10px;border-radius:6px}
+  .p-even{background:var(--green-light);color:var(--green);padding:4px 10px;border-radius:6px}
+  .p-op{color:var(--muted);font-size:18px}
+
+  /* VIDEO */
+  .video-section{padding:48px 0;border-top:1px solid var(--border)}
+  .video-section h2{margin-bottom:8px}
+  .video-section .sub{color:var(--muted);margin-bottom:20px;font-size:15px}
+  .video-embed{border-radius:14px;overflow:hidden;border:1px solid var(--border);background:#000;aspect-ratio:16/9;margin-bottom:20px}
+  .video-embed iframe{width:100%;height:100%;border:none;display:block}
+  .video-points{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px}
+  .video-points h3{font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:12px;font-family:'DM Sans',sans-serif;font-weight:600}
+  .video-points ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .video-points li{font-size:15px;display:flex;align-items:baseline;gap:10px}
+  .video-points li::before{content:"→";color:var(--yellow);font-weight:700;flex-shrink:0}
+
+  /* EXPLAINER */
+  .explainer{padding:48px 0 24px;border-top:1px solid var(--border)}
+  .parity-demo{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:20px 0}
+  .parity-box{border-radius:12px;padding:20px;text-align:center}
+  .parity-box.odd-box{background:var(--odd-light);border:1.5px solid #c4b5fd}
+  .parity-box.even-box{background:var(--green-light);border:1.5px solid #86efac}
+  .parity-box .pb-label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+  .parity-box.odd-box .pb-label{color:var(--odd-col)}
+  .parity-box.even-box .pb-label{color:var(--green)}
+  .parity-box .pb-nums{font-family:'Lora',serif;font-size:22px;font-weight:700;margin-bottom:6px}
+  .parity-box .pb-desc{font-size:13px;color:var(--muted)}
+
+  .think-box{background:var(--surface);border:1.5px solid var(--border);border-left:4px solid var(--ink2);border-radius:0 10px 10px 0;padding:18px 22px;margin:28px 0}
+  .think-label{display:block;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink2);margin-bottom:8px}
+  .think-box p{font-size:16px;color:var(--ink);margin:0}
+
+  .add-table{background:var(--bg);border-radius:12px;padding:20px;margin:16px 0}
+  .add-row{display:flex;align-items:center;gap:14px;padding:8px 0;border-bottom:1px dashed var(--border);font-size:16px}
+  .add-row:last-child{border-bottom:none}
+  .add-expr{font-family:'Lora',serif;font-weight:600;flex:1}
+  .add-tag{font-size:12px;font-weight:700;padding:3px 10px;border-radius:4px}
+  .tag-odd{background:var(--odd-light);color:var(--odd-col)}
+  .tag-even{background:var(--green-light);color:var(--green)}
+
+  .insight{background:var(--yellow-light);border:1px solid #fcd34d;border-radius:12px;padding:24px 28px;margin:32px 0 8px;font-size:16px}
+
+  .mini-check{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin:28px 0}
+  .mini-label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink2);margin-bottom:10px}
+  .mini-q{font-size:17px;font-weight:500;margin-bottom:16px}
+  .mini-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .mini-opt{background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:14px;font-family:inherit;font-size:15px;cursor:pointer;transition:all .15s;color:var(--ink);font-weight:500;text-align:center}
+  .mini-opt:hover{border-color:var(--ink2)}
+  .mini-opt.correct{background:var(--green-light);border-color:var(--green);color:var(--green);transform:scale(1.03)}
+  .mini-opt.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);animation:shake .35s ease}
+  .mini-fb{margin-top:14px;font-size:14px;padding:12px 16px;background:var(--bg);border-radius:8px;display:none}
+  .mini-fb.show{display:block}
+  .mini-fb.correct{background:var(--green-light);color:var(--green)}
+  .mini-fb.wrong{background:var(--red-light);color:var(--red)}
+  .hint-link{background:none;border:none;font-family:inherit;font-size:13px;color:var(--muted);cursor:pointer;text-decoration:underline;text-decoration-color:var(--border);margin-top:8px;display:block;padding:0}
+  .hint-text{font-size:14px;color:var(--ink2);background:var(--bg);padding:10px 14px;border-radius:8px;margin-top:8px;display:none}
+  .hint-text.show{display:block;animation:fadeIn .3s ease}
+
+  .cta{background:var(--ink);color:#fff;border-radius:16px;padding:36px 40px;margin:8px 0 56px;display:grid;grid-template-columns:1.5fr auto;gap:32px;align-items:center}
+  .cta h3{font-family:'Lora',serif;color:#fff;font-size:24px;margin-bottom:8px;line-height:1.3}
+  .cta p{color:rgba(255,255,255,.78);font-size:15px;margin:0;line-height:1.6}
+  .cta-btn{background:var(--yellow);color:var(--ink);padding:14px 22px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;white-space:nowrap}
+
+  .practice{padding:48px 0 24px;border-top:1px solid var(--border)}
+  .practice .sub{color:var(--muted);margin-bottom:24px}
+  .practice-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;min-height:320px;display:flex;flex-direction:column}
+  .practice-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+  .progress-track{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-right:16px}
+  .progress-fill{height:100%;background:var(--green);border-radius:3px;width:0;transition:width .4s ease}
+  .q-counter{font-size:13px;color:var(--muted);font-weight:500;white-space:nowrap}
+  .practice-q{font-size:18px;font-weight:500;margin:18px 0;line-height:1.45}
+  .practice-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 8px}
+  .option-btn{background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:16px;font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;transition:all .15s;color:var(--ink);text-align:center}
+  .option-btn:hover:not(:disabled){border-color:var(--ink2)}
+  .option-btn:disabled{cursor:not-allowed}
+  .option-btn.correct{background:var(--green-light);border-color:var(--green);color:var(--green);transform:scale(1.03)}
+  .option-btn.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);animation:shake .35s ease}
+  .phint-btn{background:none;border:none;font-family:inherit;font-size:13px;color:var(--muted);cursor:pointer;text-decoration:underline;text-decoration-color:var(--border);padding:0;margin-top:4px}
+  .phint-text{font-size:14px;color:var(--ink2);background:var(--bg);border-radius:8px;padding:12px 14px;margin-top:8px;display:none}
+  .phint-text.show{display:block;animation:fadeIn .3s ease}
+  .practice-fb{background:var(--bg);border-radius:10px;padding:14px 18px;margin-top:8px;font-size:14px;color:var(--ink2);line-height:1.55;display:none}
+  .practice-fb.show{display:block}
+  .practice-fb.correct{background:var(--green-light);color:var(--green)}
+  .practice-fb.wrong{background:var(--red-light);color:var(--red)}
+  .practice-footer{display:flex;justify-content:flex-end;margin-top:auto;padding-top:16px}
+  .next-btn{background:var(--ink);color:#fff;border:none;padding:12px 22px;border-radius:8px;font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;display:none}
+  .next-btn.show{display:inline-block}
+  .completion{text-align:center;padding:32px 16px;display:none}
+  .completion.show{display:block;animation:fadeIn .6s ease}
+  .completion .emoji{font-size:56px;margin-bottom:8px}
+  .completion .score{font-family:'Lora',serif;font-size:48px;font-weight:700;margin-bottom:8px}
+  .completion .msg{font-size:16px;color:var(--ink2);max-width:380px;margin:0 auto}
+
+  .takeaways{padding:48px 0;border-top:1px solid var(--border)}
+  .takeaways h2{margin-bottom:20px}
+  .takeaways-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:8px 32px}
+  .tkrow{display:grid;grid-template-columns:180px 1fr;gap:24px;padding:16px 0;border-bottom:1px solid var(--border);align-items:baseline}
+  .tkrow:last-child{border-bottom:none}
+  .tkterm{font-family:'Lora',Georgia,serif;font-weight:700;font-size:16px;color:var(--ink)}
+  .tkdef{font-size:15px;color:var(--ink2);line-height:1.65}
+
+  .videos{padding:48px 0;border-top:1px solid var(--border)}
+  .videos h2{margin-bottom:8px}
+  .videos .vsub{color:var(--muted);margin-bottom:20px}
+  .video-list{display:flex;flex-direction:column;gap:10px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;text-decoration:none;color:var(--ink);transition:border-color .15s}
+  .video-card:hover{border-color:var(--ink2)}
+  .vthumb{width:60px;height:60px;background:var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .vthumb svg{width:26px;height:26px;fill:#fff}
+  .vtitle{font-family:'Lora',Georgia,serif;font-weight:600;font-size:16px;line-height:1.35;margin-bottom:4px}
+  .vdesc{font-size:13px;color:var(--muted)}
+  .varrow{font-size:18px;color:var(--muted)}
+
+  .related{padding:48px 0;border-top:1px solid var(--border)}
+  .related h2{margin-bottom:24px}
+  .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .related-col .col-label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:10px}
+  .related-col ul{list-style:none}
+  .related-col li{padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:6px;font-size:14px}
+
+  footer{border-top:1px solid var(--border);padding:28px 0 40px;background:var(--surface)}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  footer .links{display:flex;gap:22px}
+  footer .links a{color:var(--ink2);text-decoration:none;font-size:14px}
+  footer .copyright{font-size:13px;color:var(--muted)}
+
+  @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}60%{transform:translateX(6px)}}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.12)}100%{transform:scale(1)}}
+  .pop{animation:pop .3s ease}
+
+  @media(max-width:700px){
+    .wrap{padding:0 20px}
+    .slots{gap:8px}
+    .slot-val{width:44px;height:44px;font-size:18px}
+    .slot-btn{width:44px}
+    .parity-demo{grid-template-columns:1fr}
+    .cta{grid-template-columns:1fr;padding:28px}
+    .related-grid{grid-template-columns:1fr;gap:20px}
+    .practice-options{grid-template-columns:1fr}
+    .mini-options{grid-template-columns:1fr 1fr}
+    .tkrow{grid-template-columns:1fr;gap:4px}
+    h1{font-size:28px} h2{font-size:22px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Cuemath</div>
+    <a class="nav-cta" href="https://www.cuemath.com/en-us/">Try a free class →</a>
+  </div>
+</nav>
+
+<div class="breadcrumb-bar">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="../video-library.html">Math Concepts</a>
+      <span class="sep">›</span>
+      <span>Puzzles</span>
+      <span class="sep">›</span>
+      <span>Can 5 odd numbers add up to 50?</span>
+    </div>
+    <div>⏱ 5 min</div>
+  </div>
+</div>
+
+<!-- HOOK -->
+<section class="hook">
+  <div class="wrap">
+    <div>
+      <span class="video-badge">🎬 Video Concept Page</span>
+      <span class="topic-tag">Parity · Puzzle · Grades 3–5</span>
+    </div>
+    <h1>Can 5 odd numbers add up to 50?</h1>
+    <div class="subtitle">Parity · Puzzle · Grades 3–5</div>
+    <p class="lead" style="margin-top:12px">At first glance, it seems like you should be able to find five. Give it a try below — then watch the video and discover why it's actually impossible.</p>
+  </div>
+</section>
+
+<!-- CHALLENGE — try it first -->
+<section class="challenge-section">
+  <div class="wrap">
+    <div class="eyebrow">Try it first</div>
+    <h2>Pick 5 odd numbers. Can you reach 50?</h2>
+    <p class="sub">Use the arrows to choose any odd numbers you like. The running total updates instantly.</p>
+
+    <div class="picker-card">
+      <div class="slots" id="slots">
+        <!-- rendered by JS -->
+      </div>
+
+      <div class="sum-display">
+        <div class="sum-number" id="sum-display">5</div>
+        <div class="sum-target">out of 50</div>
+        <div><span class="parity-pill odd" id="parity-pill">🟣 ODD</span></div>
+      </div>
+
+      <div class="attempt-note" id="attempt-note">Adjust the numbers and try to reach 50.</div>
+
+      <div class="reveal-block">
+        <button class="reveal-btn" id="rev-btn">Can't reach 50? Find out why it's impossible →</button>
+        <div class="reveal-content" id="rev-content">
+          <div class="reveal-inner">
+            <strong>It's impossible — and here's why.</strong><br><br>
+            Any odd number + any odd number = even number. Always.<br>
+            <div class="proof-chain">
+              <span class="p-odd">Odd</span><span class="p-op">+</span><span class="p-odd">Odd</span><span class="p-op">=</span><span class="p-even">Even</span>
+              <span class="p-op">·</span>
+              <span class="p-even">Even</span><span class="p-op">+</span><span class="p-odd">Odd</span><span class="p-op">=</span><span class="p-odd">Odd</span>
+            </div>
+            So: (Odd + Odd) + (Odd + Odd) + Odd<br>
+            = Even + Even + Odd<br>
+            = Even + Odd<br>
+            = <strong>Odd</strong><br><br>
+            Five odd numbers <em>always</em> sum to an odd number. 50 is even — so five odd numbers can <strong>never</strong> reach it.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="video-section">
+  <div class="wrap">
+    <div class="eyebrow">Watch the answer</div>
+    <h2>Can 5 odd numbers add up to 50?</h2>
+    <p class="sub">This Cuemath video walks through the puzzle — and the parity argument that proves it's impossible.</p>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/j1RTuxI6r_Y"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+    <div class="video-points">
+      <h3>In this video</h3>
+      <ul>
+        <li>Why the answer is no — even though it seems like it should work</li>
+        <li>The parity rule: odd + odd = even, always</li>
+        <li>How to use this reasoning on similar puzzles</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EXPLAINER -->
+<section class="explainer">
+  <div class="wrap">
+    <div class="eyebrow">The idea behind the puzzle</div>
+    <h2>Odd and even — the parity rule</h2>
+
+    <div class="parity-demo">
+      <div class="parity-box odd-box">
+        <div class="pb-label">Odd numbers</div>
+        <div class="pb-nums">1, 3, 5, 7, 9, 11…</div>
+        <div class="pb-desc">Can't be split into two equal whole groups. Always end in 1, 3, 5, 7, or 9.</div>
+      </div>
+      <div class="parity-box even-box">
+        <div class="pb-label">Even numbers</div>
+        <div class="pb-nums">2, 4, 6, 8, 10, 12…</div>
+        <div class="pb-desc">Split perfectly into two equal groups. Always end in 0, 2, 4, 6, or 8.</div>
+      </div>
+    </div>
+
+    <div class="think-box">
+      <span class="think-label">Think about it</span>
+      <p>What happens when you add two odd numbers? Try a few: 1 + 3, 5 + 7, 9 + 11. Is the answer always odd, always even, or does it depend?</p>
+    </div>
+
+    <div class="add-table">
+      <div class="add-row"><span class="add-expr">1 + 3 = 4</span><span class="add-tag tag-even">even</span></div>
+      <div class="add-row"><span class="add-expr">5 + 7 = 12</span><span class="add-tag tag-even">even</span></div>
+      <div class="add-row"><span class="add-expr">9 + 11 = 20</span><span class="add-tag tag-even">even</span></div>
+      <div class="add-row"><span class="add-expr">3 + 15 = 18</span><span class="add-tag tag-even">even</span></div>
+    </div>
+
+    <p><strong>Odd + Odd = Even. Always.</strong> No exceptions. It doesn't matter which odd numbers you pick.</p>
+    <p>Now the puzzle uses <em>five</em> odd numbers. Let's see what happens step by step:</p>
+
+    <div class="add-table">
+      <div class="add-row"><span class="add-expr">Odd + Odd</span><span class="add-tag tag-even">= Even</span></div>
+      <div class="add-row"><span class="add-expr">Even + Odd</span><span class="add-tag tag-odd">= Odd</span></div>
+      <div class="add-row"><span class="add-expr">Odd + Odd</span><span class="add-tag tag-even">= Even</span></div>
+      <div class="add-row"><span class="add-expr">Even + Odd (5th number)</span><span class="add-tag tag-odd">= Odd ← always</span></div>
+    </div>
+
+    <div class="insight">
+      <strong>Five odd numbers always add up to an odd number.</strong> 50 is even. So the answer to the puzzle is: <strong>No</strong> — it is impossible, no matter which five odd numbers you choose.
+    </div>
+
+    <div class="mini-check" data-correct="0">
+      <div class="mini-label">Quick check</div>
+      <div class="mini-q">What is Odd + Odd + Odd?</div>
+      <div class="mini-options">
+        <button class="mini-opt" data-i="0">Odd</button>
+        <button class="mini-opt" data-i="1">Even</button>
+        <button class="mini-opt" data-i="2">It depends on the numbers</button>
+        <button class="mini-opt" data-i="3">Zero</button>
+      </div>
+      <button class="hint-link">Need a hint?</button>
+      <div class="hint-text">Odd + Odd = Even first. Then Even + Odd = ?</div>
+      <div class="mini-fb"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA #1 -->
+<div class="wrap">
+  <div class="cta">
+    <div>
+      <h3>Like puzzles that teach real math?</h3>
+      <p>Cuemath uses puzzles like this to build mathematical thinking — not just arithmetic. One-on-one with a live tutor.</p>
+    </div>
+    <a class="cta-btn" href="https://www.cuemath.com/en-us/">Try a free class →</a>
+  </div>
+</div>
+
+<!-- PRACTICE -->
+<section class="practice">
+  <div class="wrap">
+    <div class="eyebrow">Your turn</div>
+    <h2>Use the parity rule</h2>
+    <p class="sub">Four questions. Apply what you saw in the video — odd + odd, even + odd, and the pattern that follows.</p>
+    <div class="practice-card">
+      <div class="practice-header">
+        <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
+        <div class="q-counter" id="q-counter">Question 1 of 4</div>
+      </div>
+      <div id="prac-stage">
+        <div class="practice-q" id="prac-q"></div>
+        <div class="practice-options" id="prac-opts"></div>
+        <div style="margin:4px 0 8px">
+          <button class="phint-btn" id="phint-btn">Need a hint?</button>
+          <div class="phint-text" id="phint-text"></div>
+        </div>
+        <div class="practice-fb" id="prac-fb"></div>
+      </div>
+      <div class="completion" id="prac-done">
+        <div class="emoji" id="done-emoji">🎉</div>
+        <div class="score" id="done-score"></div>
+        <div class="msg" id="done-msg"></div>
+      </div>
+      <div class="practice-footer">
+        <button class="next-btn" id="next-btn">Next →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA #2 -->
+<div class="wrap">
+  <div class="cta">
+    <div>
+      <h3>Ready for harder puzzles?</h3>
+      <p>Parity is used in competition math, logic puzzles, and even computer science. A Cuemath tutor can take you further.</p>
+    </div>
+    <a class="cta-btn" href="https://www.cuemath.com/en-us/">Book a free class →</a>
+  </div>
+</div>
+
+<!-- TAKEAWAYS -->
+<section class="takeaways">
+  <div class="wrap">
+    <div class="eyebrow">Quick reference</div>
+    <h2>Key takeaways</h2>
+    <div class="takeaways-box">
+      <div class="tkrow"><span class="tkterm">Odd number</span><span class="tkdef">A whole number that cannot be split into two equal whole groups: 1, 3, 5, 7, 9… Always ends in 1, 3, 5, 7, or 9.</span></div>
+      <div class="tkrow"><span class="tkterm">Even number</span><span class="tkdef">A whole number that can be split into two equal groups: 2, 4, 6, 8, 10… Always ends in 0, 2, 4, 6, or 8.</span></div>
+      <div class="tkrow"><span class="tkterm">Odd + Odd</span><span class="tkdef">Always even. No exceptions. Example: 7 + 9 = 16 (even).</span></div>
+      <div class="tkrow"><span class="tkterm">Odd + Even</span><span class="tkdef">Always odd. Example: 5 + 4 = 9 (odd).</span></div>
+      <div class="tkrow"><span class="tkterm">Sum of 5 odds</span><span class="tkdef">Always odd. (O+O)+(O+O)+O = E+E+O = E+O = Odd. So five odd numbers can never sum to an even number like 50.</span></div>
+      <div class="tkrow"><span class="tkterm">Parity</span><span class="tkdef">The property of being odd or even. Used to prove things impossible — without computing every single case.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED VIDEOS -->
+<section class="videos">
+  <div class="wrap">
+    <div class="eyebrow">More from the library</div>
+    <h2>Related videos</h2>
+    <p class="vsub">More parity puzzles and number theory from Cuemath.</p>
+    <div class="video-list">
+      <a class="video-card" href="https://www.youtube.com/watch?v=6CZU0bsdwgw" target="_blank" rel="noopener">
+        <div class="vthumb"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div><div class="vtitle">Can three odd numbers add up to 30?</div><div class="vdesc">Concept · Grades 3–5 · Same parity argument, different puzzle</div></div>
+        <div class="varrow">→</div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=btglaHHpEqU" target="_blank" rel="noopener">
+        <div class="vthumb"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div><div class="vtitle">Parity Masterclass — Unlock your Mathematical Thinking</div><div class="vdesc">Olympiad · Grades 9–12 · Parity as a proof technique in competition math</div></div>
+        <div class="varrow">→</div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=26Ddv0U0QuU" target="_blank" rel="noopener">
+        <div class="vthumb"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div><div class="vtitle">Is the ant inside or outside? A parity puzzle</div><div class="vdesc">Puzzle · Grades 9–12 · Parity applied to a geometric puzzle</div></div>
+        <div class="varrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="related">
+  <div class="wrap">
+    <h2>Related concepts</h2>
+    <div class="related-grid">
+      <div class="related-col"><div class="col-label">Builds on</div><ul><li>Odd and even numbers</li><li>Addition</li><li>Logical reasoning</li></ul></div>
+      <div class="related-col"><div class="col-label">Connected to</div><ul><li>Divisibility rules</li><li>Number patterns</li><li>Proof by contradiction</li></ul></div>
+      <div class="related-col"><div class="col-label">Bridges to</div><ul><li>Modular arithmetic</li><li>Competition math (parity)</li><li>Computer science (binary)</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links"><a href="../video-library.html">Math Concepts</a><a href="https://www.cuemath.com/about-us/">About</a><a href="https://www.cuemath.com/en-us/">Try a Free Class</a></div>
+    <div class="copyright">© 2026 Cuemath</div>
+  </div>
+</footer>
+
+<script>
+  // ===== ODD NUMBER PICKER =====
+  const slotValues = [1, 1, 1, 1, 1];
+  let attempts = 0;
+
+  function renderSlots() {
+    const container = document.getElementById('slots');
+    container.innerHTML = '';
+    slotValues.forEach((val, idx) => {
+      const slot = document.createElement('div');
+      slot.className = 'slot';
+      slot.innerHTML = `
+        <div class="slot-label">No. ${idx + 1}</div>
+        <div class="slot-stepper">
+          <button class="slot-btn up" data-idx="${idx}">▲</button>
+          <div class="slot-val" id="sv-${idx}">${val}</div>
+          <button class="slot-btn dn" data-idx="${idx}">▼</button>
+        </div>
+      `;
+      container.appendChild(slot);
+    });
+    container.querySelectorAll('.slot-btn.up').forEach(btn => {
+      btn.addEventListener('click', () => { slotValues[btn.dataset.idx]++; if (slotValues[btn.dataset.idx] % 2 === 0) slotValues[btn.dataset.idx]++; updateSum(); });
+    });
+    container.querySelectorAll('.slot-btn.dn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        slotValues[btn.dataset.idx] -= 2;
+        if (slotValues[btn.dataset.idx] < 1) slotValues[btn.dataset.idx] = 1;
+        updateSum();
+      });
+    });
+  }
+
+  function updateSum() {
+    const sum = slotValues.reduce((a, b) => a + b, 0);
+    slotValues.forEach((v, i) => { document.getElementById('sv-' + i).textContent = v; });
+    const el = document.getElementById('sum-display');
+    el.textContent = sum;
+    el.classList.add('pop'); setTimeout(() => el.classList.remove('pop'), 300);
+
+    const isOdd = sum % 2 !== 0;
+    const pill = document.getElementById('parity-pill');
+    pill.className = 'parity-pill ' + (isOdd ? 'odd' : 'even');
+    pill.textContent = isOdd ? '🟣 ODD' : '🟢 EVEN';
+
+    if (sum !== slotValues[0]) attempts++;
+    const note = document.getElementById('attempt-note');
+    if (sum === 50) {
+      note.textContent = '50! But wait — check your numbers. Are all five actually odd?';
+    } else if (attempts > 4) {
+      note.textContent = 'The sum is always odd — notice the 🟣 pill never turns green. That\'s the clue.';
+    } else {
+      note.textContent = `Your sum is ${sum} — ${isOdd ? 'odd' : 'even'}. Keep adjusting!`;
+    }
+  }
+
+  document.getElementById('rev-btn').addEventListener('click', () => {
+    document.getElementById('rev-content').classList.add('show');
+    document.getElementById('rev-btn').classList.add('opened');
+  });
+
+  renderSlots();
+  updateSum();
+
+  // ===== MINI-CHECK =====
+  const mc = document.querySelector('.mini-check');
+  const correct = 0;
+  const opts = mc.querySelectorAll('.mini-opt');
+  const fb = mc.querySelector('.mini-fb');
+  const hl = mc.querySelector('.hint-link');
+  const ht = mc.querySelector('.hint-text');
+  hl.addEventListener('click', () => { ht.classList.toggle('show'); hl.textContent = ht.classList.contains('show') ? 'Hide hint' : 'Need a hint?'; });
+  opts.forEach(opt => {
+    opt.addEventListener('click', () => {
+      if (mc.dataset.answered) return;
+      mc.dataset.answered = '1';
+      const i = parseInt(opt.dataset.i, 10);
+      const right = i === correct;
+      opts[correct].classList.add('correct');
+      if (!right) opt.classList.add('wrong');
+      opts.forEach(o => o.disabled = true);
+      fb.classList.add('show', right ? 'correct' : 'wrong');
+      fb.textContent = right
+        ? '✓ Right — Odd+Odd = Even, then Even+Odd = Odd. Three odds always give an odd result.'
+        : '✗ Odd+Odd = Even first. Then Even+Odd = Odd. The result of three odds is always odd.';
+    });
+  });
+
+  // ===== PRACTICE =====
+  const questions = [
+    { q: 'Can 3 odd numbers add up to 30?', options: ['Yes', 'No — impossible', 'Only if they are large', 'Only with repeated numbers'], correct: 1, hint: 'Three odds: Odd+Odd = Even, then Even+Odd = Odd. Is 30 odd or even?', fb: { r: '✓ Right — 3 odds always sum to an odd number. 30 is even → impossible.', w: '✗ Three odd numbers sum to an odd number. 30 is even — impossible.' } },
+    { q: 'What is Odd + Even + Odd?', options: ['Odd', 'Even', 'Depends on the numbers', 'Zero'], correct: 1, hint: 'Work step by step: Odd+Even first, then that result + Odd.', fb: { r: '✓ Right — Odd+Even = Odd, then Odd+Odd = Even.', w: '✗ Odd+Even = Odd. Then Odd+Odd = Even. So Odd+Even+Odd = Even.' } },
+    { q: 'A group of students has an odd number of boys and an odd number of girls. Is the total number of students odd or even?', options: ['Odd', 'Even', 'Can\'t tell', 'Zero'], correct: 1, hint: 'Odd number of boys + odd number of girls. Apply the parity rule.', fb: { r: '✓ Right — odd + odd = even. The total is always even.', w: '✗ Odd + Odd = Even. So the total number of students is always even.' } },
+    { q: 'Which of these CAN be the sum of 4 odd numbers?', options: ['13', '19', '28', '33'], correct: 2, hint: 'Four odds: (Odd+Odd) + (Odd+Odd) = Even + Even = Even. Look for an even option.', fb: { r: '✓ Right — four odd numbers always sum to an even number. 28 is even.', w: '✗ Four odds = Even+Even = Even. Only 28 is even among the choices.' } }
+  ];
+  let qi = 0, score = 0, answered = false;
+  const nextBtn = document.getElementById('next-btn');
+  const phintBtn = document.getElementById('phint-btn');
+  const phintText = document.getElementById('phint-text');
+  phintBtn.addEventListener('click', () => { phintText.classList.toggle('show'); phintBtn.textContent = phintText.classList.contains('show') ? 'Hide hint' : 'Need a hint?'; });
+  function renderQ() {
+    const q = questions[qi];
+    document.getElementById('q-counter').textContent = `Question ${qi+1} of ${questions.length}`;
+    document.getElementById('prog-fill').style.width = `${(qi/questions.length)*100}%`;
+    document.getElementById('prac-q').textContent = q.q;
+    const optsBox = document.getElementById('prac-opts');
+    optsBox.innerHTML = '';
+    q.options.forEach((label, i) => { const b = document.createElement('button'); b.className='option-btn'; b.textContent=label; b.addEventListener('click',()=>answer(i)); optsBox.appendChild(b); });
+    document.getElementById('prac-fb').className='practice-fb'; document.getElementById('prac-fb').textContent='';
+    phintText.textContent=q.hint; phintText.classList.remove('show'); phintBtn.textContent='Need a hint?'; phintBtn.style.display='block';
+    nextBtn.classList.remove('show'); answered=false;
+  }
+  function answer(i) {
+    if (answered) return; answered=true;
+    const q=questions[qi]; const opts=document.querySelectorAll('.option-btn'); const right=i===q.correct;
+    opts[q.correct].classList.add('correct'); if(!right) opts[i].classList.add('wrong');
+    opts.forEach(o=>o.disabled=true); phintBtn.style.display='none';
+    const fb=document.getElementById('prac-fb'); fb.classList.add('show',right?'correct':'wrong');
+    fb.textContent=right?q.fb.r:q.fb.w; if(right) score++;
+    nextBtn.textContent=qi===questions.length-1?'See your score →':'Next →'; nextBtn.classList.add('show');
+  }
+  nextBtn.addEventListener('click', () => {
+    qi++;
+    if (qi>=questions.length) {
+      document.getElementById('prac-stage').style.display='none'; nextBtn.style.display='none';
+      document.getElementById('prog-fill').style.width='100%';
+      document.getElementById('q-counter').textContent=`${score} of ${questions.length} correct`;
+      document.getElementById('prac-done').classList.add('show');
+      const pct=score/questions.length;
+      document.getElementById('done-emoji').textContent=pct===1?'🏆':pct>=0.75?'🎉':'👍';
+      document.getElementById('done-score').textContent=`${score} / ${questions.length}`;
+      document.getElementById('done-msg').textContent=pct===1?'Perfect. You\'ve got parity — odd, even, and everything that follows.'
+        :pct>=0.75?'Strong. One slip — trace through the odd+even rule step by step for that question.'
+        :'Try the picker again and watch the 🟣 pill. The parity rule clicks fast once you feel it.';
+    } else renderQ();
+  });
+  renderQ();
+</script>
+</body>
+</html>

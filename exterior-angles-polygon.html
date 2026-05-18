@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  Video Concept Page — Exterior Angles of a Polygon (Grades 6–8)
+  Video: https://www.youtube.com/watch?v=5dZoX2z1nYk
+  Simulation: pick polygon (3–8 sides), hit "Walk it" — a dot traces the boundary,
+  exterior angle at each vertex is added to a running counter that always lands on 360°.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exterior Angles of a Polygon — why they always add to 360° | Cuemath</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#1c1917;--ink2:#44403c;--muted:#78716c;--border:#e7e5e4;--bg:#fafaf9;--surface:#fff;--yellow:#f59e0b;--yellow-light:#fef3c7;--green:#16a34a;--green-light:#dcfce7;--red:#dc2626;--red-light:#fee2e2}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:300;line-height:1.7;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:780px;margin:0 auto;padding:0 40px}
+  h1,h2,h3{font-family:'Lora',Georgia,serif;font-weight:700;letter-spacing:-0.5px}
+  h1{font-size:clamp(26px,4vw,40px);line-height:1.2}
+  h2{font-size:clamp(20px,3vw,28px);line-height:1.3;margin-bottom:16px}
+  h3{font-size:18px;line-height:1.35;margin-bottom:8px}
+  p{margin-bottom:14px} p:last-child{margin-bottom:0}
+  em{font-style:italic} strong{font-weight:600}
+  a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow);text-underline-offset:3px}
+  .eyebrow{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:8px}
+
+  .nav{position:sticky;top:0;z-index:100;background:rgba(250,250,249,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+  .nav-inner{max-width:1200px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{font-family:'Lora',serif;font-weight:700;font-size:22px}
+  .nav-cta{background:var(--ink);color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:500}
+
+  .breadcrumb-bar{border-bottom:1px solid var(--border);padding:14px 0;font-size:13px;color:var(--muted)}
+  .breadcrumb-bar .wrap{display:flex;justify-content:space-between;align-items:center}
+  .breadcrumb a{color:var(--muted);text-decoration:none}
+  .breadcrumb .sep{margin:0 8px;opacity:.5}
+
+  .hook{padding:48px 0 32px}
+  .video-badge{display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:#fff;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.5px;margin-bottom:16px}
+  .topic-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;margin-left:10px}
+  .hook h1{margin-bottom:12px}
+  .hook .lead{font-size:17px;color:var(--ink2);max-width:660px}
+
+  .video-section{padding:40px 0;border-top:1px solid var(--border)}
+  .video-section h2{margin-bottom:8px}
+  .video-section .sub{color:var(--muted);margin-bottom:20px;font-size:15px}
+  .video-embed{border-radius:14px;overflow:hidden;border:1px solid var(--border);background:#000;aspect-ratio:16/9;margin-bottom:20px}
+  .video-embed iframe{width:100%;height:100%;border:none;display:block}
+  .video-points{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px}
+  .video-points h3{font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:12px;font-family:'DM Sans',sans-serif;font-weight:600}
+  .video-points ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .video-points li{font-size:15px;display:flex;align-items:baseline;gap:10px}
+  .video-points li::before{content:"→";color:var(--yellow);font-weight:700;flex-shrink:0}
+
+  /* SIMULATION */
+  .sim-section{padding:48px 0;border-top:1px solid var(--border)}
+  .sim-section h2{margin-bottom:8px}
+  .sim-section .sub{color:var(--muted);margin-bottom:24px;font-size:15px}
+  .sim-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px}
+  .poly-picker{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+  .poly-btn{background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:10px 16px;font-family:inherit;font-weight:600;font-size:14px;cursor:pointer;transition:all .15s}
+  .poly-btn:hover{border-color:var(--ink2)}
+  .poly-btn.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .sim-main{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
+  .sim-svg-wrap{background:var(--bg);border-radius:12px;padding:12px;position:relative}
+  .sim-svg-wrap svg{width:100%;height:auto;display:block}
+  .sim-right{display:flex;flex-direction:column;gap:16px}
+  .angle-display{background:var(--ink);color:#fff;border-radius:12px;padding:20px;text-align:center}
+  .angle-total{font-family:'Lora',serif;font-size:52px;font-weight:700;line-height:1;transition:color .3s}
+  .angle-sublabel{font-size:13px;color:rgba(255,255,255,.7);margin-top:6px}
+  .each-angle-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+  .each-angle-val{font-family:'Lora',serif;font-size:28px;font-weight:700;color:var(--yellow)}
+  .each-angle-lbl{font-size:12px;color:var(--muted);margin-top:2px}
+  .vertices-row{display:flex;flex-wrap:wrap;gap:6px}
+  .vertex-chip{padding:6px 12px;border-radius:6px;font-size:13px;font-weight:600;background:var(--bg);border:1px solid var(--border);color:var(--muted);transition:all .3s}
+  .vertex-chip.done{background:var(--green-light);border-color:var(--green);color:var(--green)}
+  .vertex-chip.active{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+  .walk-btn{background:var(--yellow);color:var(--ink);border:none;border-radius:8px;padding:13px 20px;font-family:inherit;font-weight:700;font-size:15px;cursor:pointer;transition:background .15s;width:100%}
+  .walk-btn:hover{background:#fbbf24}
+  .walk-btn:disabled{opacity:.5;cursor:not-allowed}
+  .reset-link{background:none;border:none;font-family:inherit;font-size:13px;color:var(--muted);cursor:pointer;text-decoration:underline;text-align:center;display:block;margin-top:4px}
+  .insight-strip{background:var(--yellow-light);border:1px solid #fcd34d;border-radius:10px;padding:14px 18px;margin-top:16px;font-size:15px;color:var(--ink2)}
+
+  .cta{background:var(--ink);color:#fff;border-radius:16px;padding:32px 36px;margin:8px 0 48px;display:grid;grid-template-columns:1.5fr auto;gap:28px;align-items:center}
+  .cta h3{font-family:'Lora',serif;color:#fff;font-size:22px;margin-bottom:6px;line-height:1.3}
+  .cta p{color:rgba(255,255,255,.78);font-size:15px;margin:0;line-height:1.6}
+  .cta-btn{background:var(--yellow);color:var(--ink);padding:13px 20px;border-radius:10px;text-decoration:none;font-weight:600;font-size:14px;white-space:nowrap}
+
+  .reveal-block{margin:20px 0}
+  .reveal-btn{background:none;border:1.5px solid var(--ink2);border-radius:8px;padding:11px 18px;font-family:inherit;font-size:15px;font-weight:500;color:var(--ink2);cursor:pointer;transition:all .15s}
+  .reveal-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .reveal-btn.opened{display:none}
+  .reveal-content{display:none;margin-top:12px}
+  .reveal-content.show{display:block;animation:fadeIn .4s ease}
+  .reveal-inner{background:var(--yellow-light);border:1px solid #fcd34d;border-radius:10px;padding:16px 20px;font-size:15px}
+
+  .deeper{padding:40px 0;border-top:1px solid var(--border)}
+  .table-grid{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}
+  .table-grid th{background:var(--ink);color:#fff;padding:11px 14px;text-align:left;font-family:'Lora',serif;font-weight:600}
+  .table-grid td{padding:11px 14px;border-bottom:1px solid var(--border)}
+  .table-grid tr:last-child td{border-bottom:none}
+  .table-grid tr:nth-child(even) td{background:var(--bg)}
+
+  .practice{padding:48px 0 24px;border-top:1px solid var(--border)}
+  .practice .sub{color:var(--muted);margin-bottom:24px;font-size:15px}
+  .practice-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;min-height:320px;display:flex;flex-direction:column}
+  .practice-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .progress-track{flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden;margin-right:14px}
+  .progress-fill{height:100%;background:var(--green);border-radius:3px;width:0;transition:width .4s ease}
+  .q-counter{font-size:13px;color:var(--muted);font-weight:500;white-space:nowrap}
+  .practice-q{font-size:18px;font-weight:500;margin:16px 0;line-height:1.45}
+  .practice-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0 6px}
+  .option-btn{background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:14px;font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;transition:all .15s;color:var(--ink);text-align:center}
+  .option-btn:hover:not(:disabled){border-color:var(--ink2)}
+  .option-btn:disabled{cursor:not-allowed}
+  .option-btn.correct{background:var(--green-light);border-color:var(--green);color:var(--green);transform:scale(1.03)}
+  .option-btn.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);animation:shake .35s ease}
+  .phint-btn{background:none;border:none;font-family:inherit;font-size:13px;color:var(--muted);cursor:pointer;text-decoration:underline;text-decoration-color:var(--border);padding:0;margin-top:4px}
+  .phint-btn:hover{color:var(--ink2)}
+  .phint-text{font-size:14px;color:var(--ink2);background:var(--bg);border-radius:8px;padding:11px 14px;margin-top:8px;display:none}
+  .phint-text.show{display:block;animation:fadeIn .3s ease}
+  .practice-fb{background:var(--bg);border-radius:10px;padding:13px 16px;margin-top:8px;font-size:14px;color:var(--ink2);line-height:1.55;display:none}
+  .practice-fb.show{display:block}
+  .practice-fb.correct{background:var(--green-light);color:var(--green)}
+  .practice-fb.wrong{background:var(--red-light);color:var(--red)}
+  .practice-footer{display:flex;justify-content:flex-end;margin-top:auto;padding-top:14px}
+  .next-btn{background:var(--ink);color:#fff;border:none;padding:11px 20px;border-radius:8px;font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;display:none}
+  .next-btn.show{display:inline-block}
+  .completion{text-align:center;padding:28px 16px;display:none}
+  .completion.show{display:block;animation:fadeIn .6s ease}
+  .completion .emoji{font-size:52px;margin-bottom:8px}
+  .completion .score{font-family:'Lora',serif;font-size:44px;font-weight:700;margin-bottom:8px}
+  .completion .msg{font-size:15px;color:var(--ink2);max-width:360px;margin:0 auto}
+
+  .takeaways{padding:44px 0;border-top:1px solid var(--border)}
+  .takeaways h2{margin-bottom:18px}
+  .takeaways-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:6px 28px}
+  .tkrow{display:grid;grid-template-columns:190px 1fr;gap:20px;padding:14px 0;border-bottom:1px solid var(--border);align-items:baseline}
+  .tkrow:last-child{border-bottom:none}
+  .tkterm{font-family:'Lora',Georgia,serif;font-weight:700;font-size:15px;color:var(--ink)}
+  .tkdef{font-size:15px;color:var(--ink2);line-height:1.6}
+
+  .videos{padding:44px 0;border-top:1px solid var(--border)}
+  .videos h2{margin-bottom:8px}
+  .videos .vsub{color:var(--muted);margin-bottom:18px;font-size:15px}
+  .video-list{display:flex;flex-direction:column;gap:10px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;text-decoration:none;color:var(--ink);transition:border-color .15s}
+  .video-card:hover{border-color:var(--ink2)}
+  .vthumb{width:52px;height:52px;background:var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .vthumb svg{width:22px;height:22px;fill:#fff}
+  .vtitle{font-family:'Lora',Georgia,serif;font-weight:600;font-size:15px;line-height:1.35;margin-bottom:3px}
+  .vdesc{font-size:13px;color:var(--muted)}
+  .varrow{font-size:17px;color:var(--muted)}
+
+  .related{padding:44px 0;border-top:1px solid var(--border)}
+  .related h2{margin-bottom:20px}
+  .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .related-col .col-label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:8px}
+  .related-col ul{list-style:none}
+  .related-col li{padding:9px 13px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:6px;font-size:14px}
+
+  footer{border-top:1px solid var(--border);padding:24px 0 36px;background:var(--surface)}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  footer .links{display:flex;gap:20px}
+  footer .links a{color:var(--ink2);text-decoration:none;font-size:14px}
+  footer .copyright{font-size:13px;color:var(--muted)}
+
+  @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}60%{transform:translateX(6px)}}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+
+  @media(max-width:700px){
+    .wrap{padding:0 20px}
+    .sim-main{grid-template-columns:1fr;gap:20px}
+    .cta{grid-template-columns:1fr;padding:24px}
+    .related-grid{grid-template-columns:1fr;gap:18px}
+    .practice-options{grid-template-columns:1fr}
+    .tkrow{grid-template-columns:1fr;gap:4px}
+    h1{font-size:26px} h2{font-size:20px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Cuemath</div>
+    <a class="nav-cta" href="https://www.cuemath.com/en-us/">Try a free class →</a>
+  </div>
+</nav>
+
+<div class="breadcrumb-bar">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="../video-library.html">Math Concepts</a>
+      <span class="sep">›</span>
+      <span>Exterior Angles of a Polygon</span>
+    </div>
+    <div>⏱ 6 min</div>
+  </div>
+</div>
+
+<!-- HOOK -->
+<section class="hook">
+  <div class="wrap">
+    <div>
+      <span class="video-badge">🎬 Video Concept Page</span>
+      <span class="topic-tag">Polygon Angles · Grades 6–8</span>
+    </div>
+    <h1>Walk around any polygon and turn at every corner. You'll always spin exactly 360°.</h1>
+    <p class="lead" style="margin-top:14px">It doesn't matter how many sides or what shape. Watch the video, then walk around a polygon yourself and see the counter land on 360°.</p>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="video-section">
+  <div class="wrap">
+    <div class="eyebrow">Watch first</div>
+    <h2>Why exterior angles of any polygon add up to 360°</h2>
+    <p class="sub">This Cuemath video explores the property for triangles, quadrilaterals, pentagons — then proves it for any polygon.</p>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/5dZoX2z1nYk"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+    <div class="video-points">
+      <h3>In this video</h3>
+      <ul>
+        <li>What an exterior angle is — and how it differs from the interior angle</li>
+        <li>Check it for triangles, squares, pentagons, and hexagons</li>
+        <li>A general proof that works for any convex polygon</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULATION -->
+<section class="sim-section">
+  <div class="wrap">
+    <div class="eyebrow">Try it</div>
+    <h2>Pick a polygon. Walk it. Watch the counter hit 360°.</h2>
+    <p class="sub">Choose a polygon, then hit "Walk it". A dot traces the boundary, turning at each corner. The running total always lands on 360°.</p>
+
+    <div class="sim-card">
+      <div style="margin-bottom:16px">
+        <div style="font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--ink2);margin-bottom:10px">Choose polygon</div>
+        <div class="poly-picker" id="poly-picker">
+          <button class="poly-btn" data-n="3">Triangle (3)</button>
+          <button class="poly-btn active" data-n="4">Square (4)</button>
+          <button class="poly-btn" data-n="5">Pentagon (5)</button>
+          <button class="poly-btn" data-n="6">Hexagon (6)</button>
+          <button class="poly-btn" data-n="8">Octagon (8)</button>
+        </div>
+      </div>
+
+      <div class="sim-main">
+        <div class="sim-svg-wrap">
+          <svg id="sim-svg" viewBox="0 0 260 260" aria-label="Walking polygon simulation"></svg>
+        </div>
+        <div class="sim-right">
+          <div class="angle-display">
+            <div class="angle-total" id="angle-total">0°</div>
+            <div class="angle-sublabel">total exterior angle turned so far</div>
+          </div>
+          <div class="each-angle-box">
+            <div class="each-angle-val" id="each-angle">90°</div>
+            <div class="each-angle-lbl">each exterior angle (360° ÷ sides)</div>
+          </div>
+          <div style="font-size:13px;color:var(--muted);margin-bottom:4px">Vertices visited:</div>
+          <div class="vertices-row" id="vertices-row"></div>
+          <button class="walk-btn" id="walk-btn">Walk it →</button>
+          <button class="reset-link" id="reset-btn">Reset</button>
+        </div>
+      </div>
+
+      <div class="insight-strip" id="sim-insight">
+        <strong>Try all five polygons.</strong> Triangle, square, hexagon — the counter always lands on 360°. Change the shape, the individual angles change. The total never does.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA #1 -->
+<div class="wrap">
+  <div class="cta">
+    <div>
+      <h3>Like thinking through the proof?</h3>
+      <p>Cuemath teaches geometric reasoning — not just formulas. One-on-one with a live tutor who builds the logic with you.</p>
+    </div>
+    <a class="cta-btn" href="https://www.cuemath.com/en-us/">Try a free class →</a>
+  </div>
+</div>
+
+<!-- DEEPER -->
+<section class="deeper">
+  <div class="wrap">
+    <div class="eyebrow">Going further</div>
+    <h2>Regular polygons — a useful table</h2>
+    <p style="color:var(--ink2);margin-bottom:4px">For a regular polygon with n sides: each exterior angle = 360° ÷ n, each interior angle = 180° − exterior.</p>
+
+    <table class="table-grid">
+      <tr><th>Polygon</th><th>Sides</th><th>Each exterior</th><th>Each interior</th></tr>
+      <tr><td>Equilateral triangle</td><td>3</td><td>120°</td><td>60°</td></tr>
+      <tr><td>Square</td><td>4</td><td>90°</td><td>90°</td></tr>
+      <tr><td>Regular pentagon</td><td>5</td><td>72°</td><td>108°</td></tr>
+      <tr><td>Regular hexagon</td><td>6</td><td>60°</td><td>120°</td></tr>
+      <tr><td>Regular octagon</td><td>8</td><td>45°</td><td>135°</td></tr>
+    </table>
+
+    <div class="reveal-block">
+      <button class="reveal-btn" id="rev-btn">A regular polygon has each exterior angle = 40°. How many sides? Think first →</button>
+      <div class="reveal-content" id="rev-content">
+        <div class="reveal-inner"><strong>9 sides.</strong> n = 360° ÷ 40° = 9. It's a regular nonagon. You can always find the number of sides by dividing 360° by each exterior angle.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE -->
+<section class="practice">
+  <div class="wrap">
+    <div class="eyebrow">Test what you saw</div>
+    <h2>Questions from the video</h2>
+    <p class="sub">Four questions based on what the video covered. Use the hint if you need it.</p>
+    <div class="practice-card">
+      <div class="practice-header">
+        <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
+        <div class="q-counter" id="q-counter">Question 1 of 4</div>
+      </div>
+      <div id="prac-stage">
+        <div class="practice-q" id="prac-q"></div>
+        <div class="practice-options" id="prac-opts"></div>
+        <div style="margin:4px 0 6px">
+          <button class="phint-btn" id="phint-btn">Need a hint?</button>
+          <div class="phint-text" id="phint-text"></div>
+        </div>
+        <div class="practice-fb" id="prac-fb"></div>
+      </div>
+      <div class="completion" id="prac-done">
+        <div class="emoji" id="done-emoji">🎉</div>
+        <div class="score" id="done-score"></div>
+        <div class="msg" id="done-msg"></div>
+      </div>
+      <div class="practice-footer">
+        <button class="next-btn" id="next-btn">Next →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA #2 -->
+<div class="wrap">
+  <div class="cta">
+    <div>
+      <h3>Ready to go deeper?</h3>
+      <p>Interior angle sums, polygon construction, and geometric proof are the natural next steps. A Cuemath tutor walks you through them live.</p>
+    </div>
+    <a class="cta-btn" href="https://www.cuemath.com/en-us/">Book a free class →</a>
+  </div>
+</div>
+
+<!-- TAKEAWAYS -->
+<section class="takeaways">
+  <div class="wrap">
+    <div class="eyebrow">Quick reference</div>
+    <h2>Key takeaways</h2>
+    <div class="takeaways-box">
+      <div class="tkrow"><span class="tkterm">Interior angle</span><span class="tkdef">The angle inside the polygon at each vertex.</span></div>
+      <div class="tkrow"><span class="tkterm">Exterior angle</span><span class="tkdef">The supplement of the interior angle. Interior + exterior = 180°. It's the turn you make when walking the boundary.</span></div>
+      <div class="tkrow"><span class="tkterm">Sum of exterior angles</span><span class="tkdef">Always 360° for any convex polygon. Walking the full boundary returns you to your starting direction — one full rotation.</span></div>
+      <div class="tkrow"><span class="tkterm">Each exterior angle</span><span class="tkdef">For a regular polygon with n sides: 360° ÷ n.</span></div>
+      <div class="tkrow"><span class="tkterm">Finding n from angles</span><span class="tkdef">If each exterior angle is known: n = 360° ÷ each exterior angle.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED VIDEOS -->
+<section class="videos">
+  <div class="wrap">
+    <div class="eyebrow">More from the library</div>
+    <h2>Related videos</h2>
+    <p class="vsub">More Cuemath videos on polygon angles.</p>
+    <div class="video-list">
+      <a class="video-card" href="https://www.youtube.com/watch?v=ur0FpAS78Kc" target="_blank" rel="noopener">
+        <div class="vthumb"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div><div class="vtitle">Sum of exterior angles proof — just drive around</div><div class="vdesc">Concept · Grades 6–8</div></div>
+        <div class="varrow">→</div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=2dW7scizoZk" target="_blank" rel="noopener">
+        <div class="vthumb"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div><div class="vtitle">Sum of interior angles of a polygon</div><div class="vdesc">Concept · Grades 6–8</div></div>
+        <div class="varrow">→</div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=1MA2KTjyZNk" target="_blank" rel="noopener">
+        <div class="vthumb"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div><div class="vtitle">What is this angle?</div><div class="vdesc">Puzzle · Grades 6–8</div></div>
+        <div class="varrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="related">
+  <div class="wrap">
+    <h2>Related concepts</h2>
+    <div class="related-grid">
+      <div class="related-col"><div class="col-label">Builds on</div><ul><li>Angles on a straight line</li><li>Interior angles of a triangle</li><li>Supplementary angles</li></ul></div>
+      <div class="related-col"><div class="col-label">Operations</div><ul><li>Sum of interior angles</li><li>Regular polygon properties</li><li>Finding missing angles</li></ul></div>
+      <div class="related-col"><div class="col-label">Bridges to</div><ul><li>Tessellation</li><li>Geometric proof</li><li>Coordinate geometry</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links"><a href="../video-library.html">Math Concepts</a><a href="https://www.cuemath.com/about-us/">About</a><a href="https://www.cuemath.com/en-us/">Try a Free Class</a></div>
+    <div class="copyright">© 2026 Cuemath</div>
+  </div>
+</footer>
+
+<script>
+  const NS = 'http://www.w3.org/2000/svg';
+  let simN = 4;
+  let walking = false;
+  let walkStep = 0;
+  let runningTotal = 0;
+  let walkTimer = null;
+
+  function polyPoints(n, cx, cy, r) {
+    const pts = [];
+    for (let i = 0; i < n; i++) {
+      const a = -Math.PI / 2 + i * 2 * Math.PI / n;
+      pts.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]);
+    }
+    return pts;
+  }
+
+  function drawPolygon(n, walkerAt, doneUpTo) {
+    const svg = document.getElementById('sim-svg');
+    svg.innerHTML = '';
+    const cx = 130, cy = 130, r = 100;
+    const pts = polyPoints(n, cx, cy, r);
+    const extAngle = 360 / n;
+
+    // Polygon fill
+    const poly = document.createElementNS(NS, 'polygon');
+    poly.setAttribute('points', pts.map(p => p.join(',')).join(' '));
+    poly.setAttribute('fill', '#fde68a');
+    poly.setAttribute('stroke', '#92400e');
+    poly.setAttribute('stroke-width', 2);
+    poly.setAttribute('stroke-linejoin', 'round');
+    svg.appendChild(poly);
+
+    // Highlight edges walked
+    for (let i = 0; i < doneUpTo; i++) {
+      const p1 = pts[i], p2 = pts[(i + 1) % n];
+      const edge = document.createElementNS(NS, 'line');
+      edge.setAttribute('x1', p1[0]); edge.setAttribute('y1', p1[1]);
+      edge.setAttribute('x2', p2[0]); edge.setAttribute('y2', p2[1]);
+      edge.setAttribute('stroke', '#16a34a'); edge.setAttribute('stroke-width', 3);
+      svg.appendChild(edge);
+    }
+
+    // Vertex dots
+    pts.forEach((p, i) => {
+      const dot = document.createElementNS(NS, 'circle');
+      dot.setAttribute('cx', p[0]); dot.setAttribute('cy', p[1]); dot.setAttribute('r', 6);
+      dot.setAttribute('fill', i < doneUpTo ? '#16a34a' : i === doneUpTo ? '#f59e0b' : '#92400e');
+      dot.setAttribute('stroke', '#fff'); dot.setAttribute('stroke-width', 2);
+      svg.appendChild(dot);
+      // Vertex number
+      const lbl = document.createElementNS(NS, 'text');
+      const offset = 18;
+      const dx = p[0] - cx, dy = p[1] - cy;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      lbl.setAttribute('x', p[0] + dx/dist * offset);
+      lbl.setAttribute('y', p[1] + dy/dist * offset + 4);
+      lbl.setAttribute('text-anchor', 'middle');
+      lbl.setAttribute('font-size', '12'); lbl.setAttribute('font-weight', '600');
+      lbl.setAttribute('fill', i < doneUpTo ? '#16a34a' : '#78716c');
+      lbl.setAttribute('font-family', 'DM Sans, sans-serif');
+      lbl.textContent = i + 1;
+      svg.appendChild(lbl);
+    });
+
+    // Walker dot at current vertex
+    if (walkerAt !== null && walkerAt < n) {
+      const wp = pts[walkerAt];
+      const walker = document.createElementNS(NS, 'circle');
+      walker.setAttribute('cx', wp[0]); walker.setAttribute('cy', wp[1]); walker.setAttribute('r', 11);
+      walker.setAttribute('fill', '#f59e0b'); walker.setAttribute('stroke', '#1c1917'); walker.setAttribute('stroke-width', 2.5);
+      walker.style.animation = 'pulse 0.6s ease infinite';
+      svg.appendChild(walker);
+      // Exterior angle label at walker
+      if (walkerAt > 0) {
+        const albl = document.createElementNS(NS, 'text');
+        albl.setAttribute('x', wp[0]); albl.setAttribute('y', wp[1] - 18);
+        albl.setAttribute('text-anchor', 'middle'); albl.setAttribute('font-size', '13');
+        albl.setAttribute('font-weight', '700'); albl.setAttribute('fill', '#f59e0b');
+        albl.setAttribute('font-family', 'Lora, serif');
+        albl.textContent = `+${Math.round(extAngle)}°`;
+        svg.appendChild(albl);
+      }
+    }
+  }
+
+  function buildVertexChips(n) {
+    const row = document.getElementById('vertices-row');
+    row.innerHTML = '';
+    for (let i = 0; i < n; i++) {
+      const chip = document.createElement('div');
+      chip.className = 'vertex-chip';
+      chip.id = `chip-${i}`;
+      chip.textContent = `V${i + 1}`;
+      row.appendChild(chip);
+    }
+  }
+
+  function resetSim() {
+    if (walkTimer) clearTimeout(walkTimer);
+    walking = false; walkStep = 0; runningTotal = 0;
+    const extAngle = Math.round(360 / simN);
+    document.getElementById('angle-total').textContent = '0°';
+    document.getElementById('angle-total').style.color = '#fff';
+    document.getElementById('each-angle').textContent = extAngle + '°';
+    document.getElementById('walk-btn').disabled = false;
+    document.getElementById('walk-btn').textContent = 'Walk it →';
+    document.getElementById('sim-insight').innerHTML = '<strong>Try all five polygons.</strong> Triangle, square, hexagon — the counter always lands on 360°. Change the shape, the individual angles change. The total never does.';
+    buildVertexChips(simN);
+    drawPolygon(simN, 0, 0);
+  }
+
+  function doWalkStep() {
+    if (walkStep >= simN) {
+      // Complete!
+      document.getElementById('angle-total').textContent = '360°';
+      document.getElementById('angle-total').style.color = '#fbbf24';
+      document.getElementById('walk-btn').textContent = '✓ Done — try another polygon';
+      document.getElementById('walk-btn').disabled = false;
+      document.getElementById('sim-insight').innerHTML = `<strong>360° every time.</strong> This ${['triangle','square','pentagon','hexagon','','octagon'][simN-3] || simN + '-gon'} took ${simN} turns of ${Math.round(360/simN)}° each. ${simN} × ${Math.round(360/simN)}° = 360°. Change the polygon and walk again.`;
+      drawPolygon(simN, null, simN);
+      return;
+    }
+
+    const extAngle = 360 / simN;
+    if (walkStep > 0) runningTotal += extAngle;
+
+    // Update chips
+    for (let i = 0; i < simN; i++) {
+      const chip = document.getElementById(`chip-${i}`);
+      if (!chip) continue;
+      if (i < walkStep) chip.className = 'vertex-chip done';
+      else if (i === walkStep) chip.className = 'vertex-chip active';
+      else chip.className = 'vertex-chip';
+    }
+
+    document.getElementById('angle-total').textContent = Math.round(runningTotal) + '°';
+    drawPolygon(simN, walkStep, walkStep);
+    walkStep++;
+    walkTimer = setTimeout(doWalkStep, 900);
+  }
+
+  document.getElementById('walk-btn').addEventListener('click', () => {
+    if (walking) return;
+    walking = true;
+    walkStep = 0; runningTotal = 0;
+    document.getElementById('walk-btn').disabled = true;
+    document.getElementById('walk-btn').textContent = 'Walking…';
+    doWalkStep();
+  });
+
+  document.getElementById('reset-btn').addEventListener('click', resetSim);
+
+  document.querySelectorAll('.poly-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.poly-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      simN = parseInt(btn.dataset.n);
+      resetSim();
+    });
+  });
+
+  // ===== REVEAL =====
+  document.getElementById('rev-btn').addEventListener('click', () => {
+    document.getElementById('rev-content').classList.add('show');
+    document.getElementById('rev-btn').classList.add('opened');
+  });
+
+  // ===== PRACTICE =====
+  const questions = [
+    { q: 'In the video, why does walking around any polygon always give a total turn of 360°?', options: ['Because polygons have equal angles', 'You return to the same direction you started — one full rotation', 'It only works for regular polygons', 'Because each exterior angle is small'], correct: 1, hint: 'Think about what "walking around a closed shape and returning to your starting point" means for direction.', fb: { r: '✓ Right — you start and end facing the same direction, so you\'ve turned exactly 360°.', w: '✗ Walking a closed boundary always returns you to your starting direction — that\'s one full rotation = 360°.' } },
+    { q: 'An interior angle of a polygon is 120°. What is the exterior angle at that vertex?', options: ['120°', '240°', '60°', '90°'], correct: 2, hint: 'Interior + exterior = 180°.', fb: { r: '✓ Right — 180° − 120° = 60°.', w: '✗ They form a straight line: 180° − 120° = 60°.' } },
+    { q: 'A regular polygon has each exterior angle = 45°. How many sides does it have?', options: ['6', '10', '8', '9'], correct: 2, hint: 'Number of sides = 360° ÷ each exterior angle.', fb: { r: '✓ Right — 360° ÷ 45° = 8 sides (octagon).', w: '✗ Sides = 360° ÷ 45° = 8. A regular octagon.' } },
+    { q: 'An irregular polygon has four exterior angles: 95°, 80°, 72°, and 65°. It has 5 sides. What is the fifth exterior angle?', options: ['48°', '68°', '52°', '58°'], correct: 0, hint: 'All five must add to 360°. Subtract the known four from 360°.', fb: { r: '✓ Right — 95 + 80 + 72 + 65 = 312. Fifth angle = 360 − 312 = 48°.', w: '✗ Sum must be 360°. 95 + 80 + 72 + 65 = 312. Fifth = 360 − 312 = 48°.' } }
+  ];
+  let qi = 0, score = 0, answered = false;
+  const nextBtn = document.getElementById('next-btn');
+  const phintBtn = document.getElementById('phint-btn');
+  const phintText = document.getElementById('phint-text');
+  phintBtn.addEventListener('click', () => { phintText.classList.toggle('show'); phintBtn.textContent = phintText.classList.contains('show') ? 'Hide hint' : 'Need a hint?'; });
+  function renderQ() {
+    const q = questions[qi];
+    document.getElementById('q-counter').textContent = `Question ${qi+1} of ${questions.length}`;
+    document.getElementById('prog-fill').style.width = `${(qi/questions.length)*100}%`;
+    document.getElementById('prac-q').textContent = q.q;
+    const optsBox = document.getElementById('prac-opts');
+    optsBox.innerHTML = '';
+    q.options.forEach((label, i) => { const b = document.createElement('button'); b.className='option-btn'; b.textContent=label; b.addEventListener('click',()=>answer(i)); optsBox.appendChild(b); });
+    document.getElementById('prac-fb').className='practice-fb'; document.getElementById('prac-fb').textContent='';
+    phintText.textContent=q.hint; phintText.classList.remove('show'); phintBtn.textContent='Need a hint?'; phintBtn.style.display='block';
+    nextBtn.classList.remove('show'); answered=false;
+  }
+  function answer(i) {
+    if (answered) return; answered=true;
+    const q=questions[qi]; const opts=document.querySelectorAll('.option-btn'); const right=i===q.correct;
+    opts[q.correct].classList.add('correct'); if(!right) opts[i].classList.add('wrong');
+    opts.forEach(o=>o.disabled=true); phintBtn.style.display='none';
+    const fb=document.getElementById('prac-fb'); fb.classList.add('show',right?'correct':'wrong');
+    fb.textContent=right?q.fb.r:q.fb.w; if(right) score++;
+    nextBtn.textContent=qi===questions.length-1?'See score →':'Next →'; nextBtn.classList.add('show');
+  }
+  nextBtn.addEventListener('click', () => {
+    qi++;
+    if (qi>=questions.length) {
+      document.getElementById('prac-stage').style.display='none'; nextBtn.style.display='none';
+      document.getElementById('prog-fill').style.width='100%';
+      document.getElementById('q-counter').textContent=`${score} of ${questions.length} correct`;
+      document.getElementById('prac-done').classList.add('show');
+      const pct=score/questions.length;
+      document.getElementById('done-emoji').textContent=pct===1?'🏆':pct>=0.75?'🎉':'👍';
+      document.getElementById('done-score').textContent=`${score} / ${questions.length}`;
+      document.getElementById('done-msg').textContent=pct===1?'Perfect. 360° is yours for every polygon, every time.'
+        :pct>=0.75?'Strong. One slip — re-walk the simulation on that polygon to see the angle.'
+        :'Watch the video again and walk a few polygons in the simulation. The 360° rule becomes obvious once you\'ve felt it.';
+    } else renderQ();
+  });
+
+  // Init
+  resetSim();
+  renderQ();
+</script>
+</body>
+</html>

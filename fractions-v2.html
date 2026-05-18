@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  Math Concept Page — Variant A: Narrative-led (Fractions, Grades 3-5)
+  Distinguishing trait: practice is woven THROUGH the page as inline mini-checks
+  (one question after each visual diagram + one after deeper concepts), with a
+  shorter gamified block at the end. Mathigon-style story carries the page.
+
+  TODOs (deferred per current scope — to be locked once page structure is finalised):
+  - Replace minimal nav and footer with the cuemath.com homepage nav/footer
+  - Wire Mixpanel events (concept_page_view, simulation_used, related_concept_clicked, cta_clicked)
+  - URL structure: assumes flat (/math-concept-explanations/fractions/) — pending decision
+  - Add JSON-LD schema (Article + VideoObject)
+  - Parameterise CTA copy + URLs for A/B testing
+  - Add SEO meta: title, description, OG, Twitter, hreflang, canonical
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fractions — what they really mean, and how to read them | Cuemath</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1917;
+    --ink2: #44403c;
+    --muted: #78716c;
+    --border: #e7e5e4;
+    --bg: #fafaf9;
+    --surface: #ffffff;
+    --yellow: #f59e0b;
+    --yellow-light: #fef3c7;
+    --green: #16a34a;
+    --green-light: #dcfce7;
+    --red: #dc2626;
+    --red-light: #fee2e2;
+    --crust: #92400e;
+    --crust-empty: #e2c98a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 40px; }
+
+  h1, h2, h3 { font-family: 'Lora', Georgia, serif; font-weight: 700; letter-spacing: -0.5px; color: var(--ink); }
+  h1 { font-size: clamp(28px, 4vw, 42px); line-height: 1.2; }
+  h2 { font-size: clamp(22px, 3vw, 30px); line-height: 1.3; margin-bottom: 18px; }
+  h3 { font-size: 19px; line-height: 1.35; margin-bottom: 8px; }
+
+  p { margin-bottom: 16px; }
+  p:last-child { margin-bottom: 0; }
+
+  em { font-style: italic; color: var(--ink); }
+  strong { font-weight: 600; color: var(--ink); }
+
+  a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--yellow); text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+
+  /* ---------- NAV ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,250,249,0.95); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 14px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-family: 'Lora', serif; font-weight: 700; font-size: 22px; }
+  .nav-cta {
+    background: var(--ink); color: #fff;
+    padding: 10px 18px; border-radius: 8px;
+    text-decoration: none; font-size: 14px; font-weight: 500;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--ink2); }
+
+  /* ---------- BREADCRUMB ---------- */
+  .breadcrumb-bar {
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+    font-size: 13px; color: var(--muted);
+  }
+  .breadcrumb-bar .wrap { display: flex; justify-content: space-between; align-items: center; }
+  .breadcrumb a { color: var(--muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--ink); }
+  .breadcrumb .sep { margin: 0 8px; opacity: 0.5; }
+  .reading-time { display: flex; align-items: center; gap: 6px; }
+
+  /* ---------- HOOK ---------- */
+  .hook { padding: 64px 0 48px; }
+  .topic-tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 16px;
+  }
+  .hook h1 { margin-bottom: 12px; }
+  .hook .subtitle {
+    color: var(--muted); font-size: 14px;
+    margin-bottom: 24px;
+  }
+  .hook .lead { font-size: 18px; color: var(--ink2); margin-bottom: 40px; max-width: 660px; }
+
+  .hero-card {
+    background: var(--surface);
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 40px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 32px; align-items: center;
+    margin-bottom: 36px;
+  }
+  .hero-card .notation { text-align: center; }
+  .hero-card .frac-display {
+    font-family: 'Lora', serif; font-size: 88px; font-weight: 700;
+    color: var(--ink); line-height: 1;
+  }
+  .hero-card .frac-display .bar {
+    display: block; width: 90px; height: 4px;
+    background: var(--ink); margin: 4px auto;
+  }
+  .hero-card .frac-caption {
+    margin-top: 16px; color: var(--muted); font-size: 14px;
+  }
+
+  .real-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    margin-bottom: 32px;
+  }
+  .real-card {
+    background: var(--surface);
+    border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px;
+  }
+  .real-card .icon { font-size: 22px; margin-bottom: 8px; }
+  .real-card .ttl { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+  .real-card .desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  .loop-box {
+    background: var(--yellow-light);
+    border-left: 4px solid var(--yellow);
+    padding: 18px 22px; border-radius: 0 8px 8px 0;
+    font-size: 16px; color: var(--ink2);
+  }
+  .loop-box strong { color: var(--ink); }
+
+  /* ---------- EXPLAINER ---------- */
+  .explainer { padding: 56px 0 24px; border-top: 1px solid var(--border); }
+  .explainer .eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--yellow); margin-bottom: 8px;
+  }
+  .diagram {
+    display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px;
+    align-items: center;
+    padding: 32px 0;
+  }
+  .diagram svg { width: 100%; height: auto; max-width: 280px; margin: 0 auto; display: block; }
+  .diagram .body p { margin-bottom: 12px; }
+  .diagram .body p:last-child { margin-bottom: 0; }
+
+  /* ---------- TOOLTIP TERMS ---------- */
+  .term {
+    border-bottom: 1.5px dashed var(--yellow);
+    cursor: help;
+    position: relative;
+  }
+  .term::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%; transform: translateX(-50%);
+    background: var(--ink); color: #fff;
+    font-size: 12px; line-height: 1.4;
+    padding: 8px 12px; border-radius: 6px;
+    white-space: normal; width: max-content; max-width: 240px;
+    pointer-events: none;
+    opacity: 0; transition: opacity 0.15s;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal; font-weight: 400;
+    z-index: 10;
+    text-align: center;
+  }
+  .term:hover::after, .term.active::after { opacity: 1; }
+
+  /* ---------- MINI-CHECK (inline single-question) ---------- */
+  .mini-check {
+    background: var(--surface);
+    border: 1px solid var(--border); border-radius: 14px;
+    padding: 24px 28px;
+    margin: 28px 0;
+  }
+  .mini-check .label {
+    font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--ink2); margin-bottom: 10px;
+  }
+  .mini-check .q { font-size: 17px; font-weight: 500; margin-bottom: 16px; }
+  .mini-check .visual { margin: 12px 0 18px; }
+  .mini-check .visual svg { max-width: 140px; display: block; margin: 0 auto; }
+  .mini-check .options {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+  }
+  .mini-check .opt {
+    background: var(--bg); border: 1.5px solid var(--border);
+    border-radius: 8px; padding: 14px; font-family: inherit; font-size: 15px;
+    cursor: pointer; transition: all 0.15s;
+    color: var(--ink); font-weight: 500;
+  }
+  .mini-check .opt:hover { border-color: var(--ink2); }
+  .mini-check .opt.correct { background: var(--green-light); border-color: var(--green); color: var(--green); transform: scale(1.03); }
+  .mini-check .opt.wrong { background: var(--red-light); border-color: var(--red); color: var(--red); animation: shake 0.35s ease; }
+  .mini-check .feedback {
+    margin-top: 14px; font-size: 14px; color: var(--ink2);
+    padding: 12px 16px; background: var(--bg); border-radius: 8px;
+    display: none;
+  }
+  .mini-check .feedback.show { display: block; }
+  .mini-check .feedback.correct { background: var(--green-light); color: var(--green); }
+  .mini-check .feedback.wrong { background: var(--red-light); color: var(--red); }
+
+  /* ---------- INSIGHT BOX (loop closer) ---------- */
+  .insight {
+    background: var(--yellow-light);
+    border: 1px solid #fcd34d;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 32px 0 8px;
+    font-size: 16px;
+  }
+  .insight strong { color: var(--ink); }
+
+  /* ---------- SIMULATION ---------- */
+  .sim-section { padding: 64px 0; border-top: 1px solid var(--border); }
+  .sim-section h2 { margin-bottom: 8px; }
+  .sim-section .sub { color: var(--muted); margin-bottom: 28px; }
+
+  .sim-card {
+    background: var(--surface);
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 36px;
+    display: grid; grid-template-columns: 1.05fr 1fr;
+    gap: 36px; align-items: center;
+  }
+  .sim-canvas { display: flex; justify-content: center; align-items: center; }
+  .sim-canvas svg { width: 100%; max-width: 320px; height: auto; cursor: pointer; }
+  .sim-readout {
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .sim-readout .live {
+    text-align: center; padding: 18px;
+    background: var(--bg); border-radius: 10px;
+  }
+  .sim-readout .live .frac {
+    font-family: 'Lora', serif; font-size: 64px; font-weight: 700;
+    line-height: 1;
+  }
+  .sim-readout .live .frac .bar {
+    display: block; width: 64px; height: 3px;
+    background: var(--ink); margin: 4px auto;
+  }
+  .sim-readout .live .label {
+    font-size: 13px; color: var(--muted); margin-top: 8px;
+  }
+  .sim-readout .control-label {
+    font-size: 12px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--ink2); margin-bottom: 8px;
+  }
+  .denom-row { display: flex; gap: 6px; flex-wrap: wrap; }
+  .denom-btn {
+    background: var(--bg); border: 1.5px solid var(--border);
+    border-radius: 8px; padding: 10px 14px; font-family: inherit;
+    font-weight: 600; font-size: 14px; cursor: pointer;
+    transition: all 0.15s; min-width: 42px;
+  }
+  .denom-btn:hover { border-color: var(--ink2); }
+  .denom-btn.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .try-this {
+    font-style: italic; font-size: 14px; color: var(--ink2);
+    background: var(--yellow-light); padding: 12px 14px;
+    border-radius: 8px; line-height: 1.55;
+  }
+
+  /* ---------- CTA BANDS ---------- */
+  .cta {
+    background: var(--ink); color: #fff;
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin: 8px 0 56px;
+    display: grid; grid-template-columns: 1.5fr auto;
+    gap: 32px; align-items: center;
+  }
+  .cta h3 { font-family: 'Lora', serif; color: #fff; font-size: 24px; margin-bottom: 8px; line-height: 1.3; }
+  .cta p { color: rgba(255,255,255,0.78); font-size: 15px; margin: 0; line-height: 1.6; }
+  .cta-btn {
+    background: var(--yellow); color: var(--ink);
+    padding: 14px 22px; border-radius: 10px;
+    text-decoration: none; font-weight: 600; font-size: 15px;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .cta-btn:hover { background: #fbbf24; }
+
+  /* ---------- DEEPER CONCEPTS ---------- */
+  .deeper { padding: 32px 0 24px; border-top: 1px solid var(--border); }
+  .subtypes {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    margin: 24px 0 20px;
+  }
+  .subtype {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px;
+  }
+  .subtype .display {
+    font-family: 'Lora', serif; font-size: 36px; font-weight: 700;
+    text-align: center; margin-bottom: 12px;
+  }
+  .subtype .display .bar { display: block; width: 30px; height: 2.5px; background: var(--ink); margin: 3px auto; }
+  .subtype .display .mixed { display: inline-flex; align-items: baseline; gap: 4px; }
+  .subtype .display .mixed .small {
+    font-size: 22px; display: inline-flex; flex-direction: column; align-items: center;
+  }
+  .subtype .display .mixed .small .bar { width: 18px; height: 2px; }
+  .subtype h3 { font-size: 16px; margin-bottom: 6px; }
+  .subtype .desc { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+  .equiv-row {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px; margin-top: 20px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 18px; flex-wrap: wrap;
+  }
+  .equiv-row .e-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .equiv-row .e-item svg { width: 80px; height: 80px; }
+  .equiv-row .e-item .lbl {
+    font-family: 'Lora', serif; font-size: 22px; font-weight: 600;
+  }
+  .equiv-row .e-item .lbl .bar { display: block; width: 22px; height: 2px; background: var(--ink); margin: 2px auto; }
+  .equiv-row .eq { font-family: 'Lora', serif; font-size: 28px; color: var(--muted); }
+  .equiv-caption {
+    text-align: center; font-size: 14px; color: var(--muted);
+    margin-top: 12px; font-style: italic;
+  }
+
+  /* ---------- PRACTICE (gamified) ---------- */
+  .practice { padding: 56px 0 24px; border-top: 1px solid var(--border); }
+  .practice h2 { margin-bottom: 8px; }
+  .practice .sub { color: var(--muted); margin-bottom: 24px; }
+
+  .practice-card {
+    background: var(--surface);
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 32px;
+    min-height: 380px;
+    display: flex; flex-direction: column;
+  }
+  .practice-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 14px;
+  }
+  .progress-track {
+    flex: 1; height: 6px; background: var(--border);
+    border-radius: 3px; overflow: hidden; margin-right: 16px;
+  }
+  .progress-fill {
+    height: 100%; background: var(--green);
+    border-radius: 3px; width: 0;
+    transition: width 0.4s ease;
+  }
+  .q-counter {
+    font-size: 13px; color: var(--muted); font-weight: 500;
+    white-space: nowrap;
+  }
+  .practice-q {
+    font-size: 19px; font-weight: 500; margin: 18px 0;
+    line-height: 1.45;
+  }
+  .practice-visual { margin: 8px 0 18px; text-align: center; }
+  .practice-visual svg { max-width: 160px; display: inline-block; }
+  .practice-options {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    margin: 8px 0 18px;
+  }
+  .option-btn {
+    background: var(--bg); border: 1.5px solid var(--border);
+    border-radius: 10px; padding: 16px; font-family: inherit;
+    font-size: 15px; font-weight: 500; cursor: pointer;
+    transition: all 0.15s; color: var(--ink);
+    text-align: center;
+  }
+  .option-btn:hover:not(:disabled) { border-color: var(--ink2); }
+  .option-btn:disabled { cursor: not-allowed; }
+  .option-btn.correct {
+    background: var(--green-light); border-color: var(--green); color: var(--green);
+    transform: scale(1.03); transition: transform 0.15s;
+  }
+  .option-btn.wrong {
+    background: var(--red-light); border-color: var(--red); color: var(--red);
+    animation: shake 0.35s ease;
+  }
+  .practice-feedback {
+    background: var(--bg); border-radius: 10px;
+    padding: 14px 18px; margin-top: 6px;
+    font-size: 14px; color: var(--ink2); line-height: 1.55;
+    display: none;
+  }
+  .practice-feedback.show { display: block; }
+  .practice-feedback.correct { background: var(--green-light); color: var(--green); }
+  .practice-feedback.wrong { background: var(--red-light); color: var(--red); }
+  .practice-footer {
+    display: flex; justify-content: flex-end; margin-top: auto; padding-top: 16px;
+  }
+  .next-btn {
+    background: var(--ink); color: #fff;
+    border: none; padding: 12px 22px; border-radius: 8px;
+    font-family: inherit; font-weight: 500; font-size: 14px;
+    cursor: pointer; display: none;
+  }
+  .next-btn:hover { background: var(--ink2); }
+  .next-btn.show { display: inline-block; }
+
+  .completion {
+    text-align: center;
+    padding: 32px 16px;
+    display: none;
+  }
+  .completion.show { display: block; animation: fadeIn 0.6s ease; }
+  .completion .emoji { font-size: 56px; margin-bottom: 8px; }
+  .completion .score {
+    font-family: 'Lora', serif; font-size: 48px; font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .completion .msg {
+    font-size: 16px; color: var(--ink2); max-width: 380px; margin: 0 auto;
+  }
+
+  @keyframes shake {
+    0%,100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    60% { transform: translateX(6px); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---------- RELATED ---------- */
+  .related { padding: 48px 0; border-top: 1px solid var(--border); }
+  .related h2 { margin-bottom: 24px; }
+  .related-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  }
+  .related-col .col-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--yellow);
+    margin-bottom: 10px;
+  }
+  .related-col ul { list-style: none; padding: 0; }
+  .related-col li {
+    padding: 10px 14px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 8px;
+    margin-bottom: 6px; font-size: 14px; cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .related-col li:hover { border-color: var(--ink2); }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 0 40px;
+    background: var(--surface);
+  }
+  footer .wrap {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  footer .links { display: flex; gap: 22px; flex-wrap: wrap; }
+  footer .links a {
+    color: var(--ink2); text-decoration: none; font-size: 14px;
+  }
+  footer .links a:hover { color: var(--ink); }
+  footer .copyright { font-size: 13px; color: var(--muted); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 700px) {
+    .wrap { padding: 0 20px; }
+    .hero-card { grid-template-columns: 1fr; padding: 28px; gap: 24px; }
+    .real-strip { grid-template-columns: 1fr 1fr; }
+    .diagram { grid-template-columns: 1fr; gap: 20px; padding: 24px 0; }
+    .sim-card { grid-template-columns: 1fr; padding: 24px; gap: 24px; }
+    .cta { grid-template-columns: 1fr; padding: 28px; }
+    .subtypes { grid-template-columns: 1fr; }
+    .related-grid { grid-template-columns: 1fr; gap: 24px; }
+    .practice-options { grid-template-columns: 1fr; }
+    .mini-check .options { grid-template-columns: 1fr 1fr; }
+    .nav-inner { padding: 12px 20px; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Cuemath</div>
+    <a class="nav-cta" href="https://www.cuemath.com/en-us/">Try a free class →</a>
+  </div>
+</nav>
+
+<!-- ========== BREADCRUMB ========== -->
+<div class="breadcrumb-bar">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="../video-library.html">Math Concepts</a>
+      <span class="sep">›</span>
+      <span>Fractions</span>
+    </div>
+    <div class="reading-time">⏱ 8 min read</div>
+  </div>
+</div>
+
+<!-- ========== HOOK ========== -->
+<section class="hook">
+  <div class="wrap">
+    <div class="topic-tag">Fractions · Grades 3–5</div>
+    <h1>The first time you said "half" you were already doing fractions — you just didn't have a way to write it down yet.</h1>
+    <div class="subtitle">Introduction · Grades 3–5</div>
+    <p class="lead">When something gets split into equal parts, whole numbers stop being enough. You need a way to write <em>part of something</em>. That's all a fraction is — a precise way to say how much of a whole you have.</p>
+
+    <div class="hero-card">
+      <div>
+        <svg id="hook-pizza" viewBox="0 0 200 200" aria-label="Pizza with three of eight slices filled"></svg>
+      </div>
+      <div class="notation">
+        <div class="frac-display">
+          3<span class="bar"></span>8
+        </div>
+        <div class="frac-caption">three slices, out of eight equal parts</div>
+      </div>
+    </div>
+
+    <div class="real-strip">
+      <div class="real-card">
+        <div class="icon">🍕</div>
+        <div class="ttl">Sharing a pizza</div>
+        <div class="desc">Eight friends, one pizza — each person gets <em>1/8</em>.</div>
+      </div>
+      <div class="real-card">
+        <div class="icon">🥄</div>
+        <div class="ttl">Following a recipe</div>
+        <div class="desc">A cake needs <em>3/4</em> cup of flour — three out of four equal parts.</div>
+      </div>
+      <div class="real-card">
+        <div class="icon">💰</div>
+        <div class="ttl">Splitting a bill</div>
+        <div class="desc">Three friends share a $24 lunch. Each pays <em>1/3</em>.</div>
+      </div>
+      <div class="real-card">
+        <div class="icon">⏰</div>
+        <div class="ttl">Telling time</div>
+        <div class="desc">Half past three is <em>1/2</em> of an hour past 3.</div>
+      </div>
+    </div>
+
+    <div class="loop-box">
+      By the end of this page, you'll see exactly how to write <strong>"three slices out of eight"</strong> as <strong>3/8</strong> — and why that simple notation is more powerful than it first looks.
+    </div>
+  </div>
+</section>
+
+<!-- ========== EXPLAINER (with woven mini-checks) ========== -->
+<section class="explainer">
+  <div class="wrap">
+    <div class="eyebrow">Building the idea</div>
+    <h2>A fraction tells you "how much, out of a whole"</h2>
+
+    <!-- Diagram 1: equal parts -->
+    <div class="diagram">
+      <svg id="diag-equal" viewBox="0 0 200 200" aria-label="Pizza split into 4 equal parts, none filled"></svg>
+      <div class="body">
+        <p>Start with one whole thing — a pizza. Cut it into <strong>equal</strong> parts. The number of equal parts is called the <span class="term" data-tip="The bottom number — counts how many equal parts the whole is split into">denominator</span>.</p>
+        <p>This pizza has <em>four</em> equal parts. So the denominator is 4.</p>
+      </div>
+    </div>
+
+    <!-- Mini-check 1 -->
+    <div class="mini-check" data-correct="1">
+      <div class="label">Quick check</div>
+      <div class="q">A pizza is cut into 6 equal slices. What's the denominator?</div>
+      <div class="visual">
+        <svg id="mc1-pizza" viewBox="0 0 140 140" aria-label="Pizza split into 6 equal slices, none filled"></svg>
+      </div>
+      <div class="options">
+        <button class="opt" data-i="0">3</button>
+        <button class="opt" data-i="1">6</button>
+        <button class="opt" data-i="2">12</button>
+        <button class="opt" data-i="3">1</button>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <!-- Diagram 2: numerator -->
+    <div class="diagram">
+      <svg id="diag-numer" viewBox="0 0 200 200" aria-label="Pizza of four equal slices with three filled"></svg>
+      <div class="body">
+        <p>Now <em>take</em> some of those equal parts. The number you take is called the <span class="term" data-tip="The top number — counts how many equal parts you actually have">numerator</span>.</p>
+        <p>Three slices taken out of four. That's <strong>three-fourths</strong>, or <strong>3/4</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Mini-check 2 -->
+    <div class="mini-check" data-correct="0">
+      <div class="label">Quick check</div>
+      <div class="q">This pizza shows...</div>
+      <div class="visual">
+        <svg id="mc2-pizza" viewBox="0 0 140 140" aria-label="Pizza of eight slices with five filled"></svg>
+      </div>
+      <div class="options">
+        <button class="opt" data-i="0">5/8</button>
+        <button class="opt" data-i="1">8/5</button>
+        <button class="opt" data-i="2">3/8</button>
+        <button class="opt" data-i="3">1/2</button>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <!-- Diagram 3: reading the notation -->
+    <div class="diagram">
+      <svg id="diag-read" viewBox="0 0 200 200" aria-label="Fraction 3/8 with arrows to numerator and denominator"></svg>
+      <div class="body">
+        <p>Put them together with a bar. The number on top counts what you have. The number below counts the equal parts the whole is split into.</p>
+        <p>You read <em>3/8</em> as <strong>"three eighths"</strong> — three out of eight equal parts.</p>
+      </div>
+    </div>
+
+    <!-- Loop closer -->
+    <div class="insight">
+      Remember the pizza we started with — three slices taken out of eight? That's exactly <strong>3/8</strong>. You already had the idea. Now you have the notation to write it down.
+    </div>
+  </div>
+</section>
+
+<!-- ========== SIMULATION ========== -->
+<section class="sim-section">
+  <div class="wrap">
+    <div class="eyebrow" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;">Try it yourself</div>
+    <h2>Build your own fraction</h2>
+    <p class="sub">Click slices to fill them. Change how many slices the pizza has.</p>
+
+    <div class="sim-card">
+      <div class="sim-canvas">
+        <svg id="sim-pizza" viewBox="0 0 220 220" aria-label="Interactive pizza"></svg>
+      </div>
+      <div class="sim-readout">
+        <div class="live">
+          <div class="frac" id="sim-readout">
+            <span id="sim-num">0</span><span class="bar"></span><span id="sim-den">4</span>
+          </div>
+          <div class="label" id="sim-words">zero fourths · click slices to fill</div>
+        </div>
+        <div>
+          <div class="control-label">Number of slices</div>
+          <div class="denom-row" id="denom-row">
+            <button class="denom-btn" data-d="2">2</button>
+            <button class="denom-btn" data-d="3">3</button>
+            <button class="denom-btn active" data-d="4">4</button>
+            <button class="denom-btn" data-d="6">6</button>
+            <button class="denom-btn" data-d="8">8</button>
+            <button class="denom-btn" data-d="12">12</button>
+          </div>
+        </div>
+        <div class="try-this">
+          <strong>Try this:</strong> Make 4 slices and fill 2. Then change to 8 slices and fill 4. The pizza looks the same — what do you notice about the fractions?
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA #1 (immediately after simulation) ========== -->
+<div class="wrap">
+  <div class="cta">
+    <div>
+      <h3>Like how this feels?</h3>
+      <p>Cuemath teaches every concept this way — visuals first, intuition before rules, one-on-one with a live tutor who explains the why.</p>
+    </div>
+    <a class="cta-btn" href="https://www.cuemath.com/en-us/">Try a free class →</a>
+  </div>
+</div>
+
+<!-- ========== DEEPER CONCEPTS ========== -->
+<section class="deeper">
+  <div class="wrap">
+    <div class="eyebrow" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;">Going further</div>
+    <h2>The same idea, three different forms</h2>
+    <p style="color:var(--muted);margin-bottom:8px;">Once you can write fractions, you'll meet them in three flavours.</p>
+
+    <div class="subtypes">
+      <div class="subtype">
+        <div class="display">3<span class="bar"></span>4</div>
+        <h3>Proper</h3>
+        <div class="desc">Numerator is smaller than the denominator. Less than one whole.</div>
+      </div>
+      <div class="subtype">
+        <div class="display">5<span class="bar"></span>4</div>
+        <h3>Improper</h3>
+        <div class="desc">Numerator is bigger than the denominator. More than one whole.</div>
+      </div>
+      <div class="subtype">
+        <div class="display">
+          <span class="mixed">1<span class="small">1<span class="bar"></span>4</span></span>
+        </div>
+        <h3>Mixed</h3>
+        <div class="desc">A whole number with a proper fraction tagged on. Same value as 5/4.</div>
+      </div>
+    </div>
+
+    <div class="equiv-row">
+      <div class="e-item">
+        <svg id="eq-1" viewBox="0 0 100 100"></svg>
+        <div class="lbl">1<span class="bar"></span>2</div>
+      </div>
+      <div class="eq">=</div>
+      <div class="e-item">
+        <svg id="eq-2" viewBox="0 0 100 100"></svg>
+        <div class="lbl">2<span class="bar"></span>4</div>
+      </div>
+      <div class="eq">=</div>
+      <div class="e-item">
+        <svg id="eq-3" viewBox="0 0 100 100"></svg>
+        <div class="lbl">4<span class="bar"></span>8</div>
+      </div>
+    </div>
+    <div class="equiv-caption">Different numbers, same amount of pizza. These are <em>equivalent fractions</em>.</div>
+
+    <!-- Mini-check 3 -->
+    <div class="mini-check" data-correct="1">
+      <div class="label">Quick check</div>
+      <div class="q">Which of these is an <em>improper</em> fraction?</div>
+      <div class="options">
+        <button class="opt" data-i="0">3/8</button>
+        <button class="opt" data-i="1">5/4</button>
+        <button class="opt" data-i="2">1/2</button>
+        <button class="opt" data-i="3">2/3</button>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRACTICE (gamified, 4 questions) ========== -->
+<section class="practice">
+  <div class="wrap">
+    <div class="eyebrow" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;">Put it all together</div>
+    <h2>Practice — four quick rounds</h2>
+    <p class="sub">You've already done the warm-up checks. These are slightly harder.</p>
+
+    <div class="practice-card">
+      <div class="practice-header" id="prac-header">
+        <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
+        <div class="q-counter" id="q-counter">Question 1 of 4</div>
+      </div>
+      <div id="prac-stage">
+        <div class="practice-q" id="prac-q"></div>
+        <div class="practice-visual" id="prac-vis"></div>
+        <div class="practice-options" id="prac-opts"></div>
+        <div class="practice-feedback" id="prac-fb"></div>
+      </div>
+      <div class="completion" id="prac-done">
+        <div class="emoji" id="done-emoji">🎉</div>
+        <div class="score" id="done-score"></div>
+        <div class="msg" id="done-msg"></div>
+      </div>
+      <div class="practice-footer">
+        <button class="next-btn" id="next-btn">Next →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA #2 (immediately after practice) ========== -->
+<div class="wrap">
+  <div class="cta">
+    <div>
+      <h3>Ready to go deeper?</h3>
+      <p>A Cuemath tutor builds on exactly what you just practised — at your pace, live, with real problems tailored to you.</p>
+    </div>
+    <a class="cta-btn" href="https://www.cuemath.com/en-us/">Book a free class →</a>
+  </div>
+</div>
+
+<!-- (Video playlist section omitted — no playlist URL provided.) -->
+
+<!-- ========== RELATED ========== -->
+<section class="related">
+  <div class="wrap">
+    <h2>Related concepts</h2>
+    <div class="related-grid">
+      <div class="related-col">
+        <div class="col-label">Builds on</div>
+        <ul>
+          <li>Whole numbers</li>
+          <li>Equal parts &amp; sharing</li>
+          <li>Counting in groups</li>
+        </ul>
+      </div>
+      <div class="related-col">
+        <div class="col-label">Operations</div>
+        <ul>
+          <li>Adding fractions</li>
+          <li>Simplifying fractions</li>
+          <li>Comparing fractions</li>
+        </ul>
+      </div>
+      <div class="related-col">
+        <div class="col-label">Bridges to</div>
+        <ul>
+          <li>Decimals</li>
+          <li>Percentages</li>
+          <li>Ratios</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="../video-library.html">Math Concepts</a>
+      <a href="https://www.cuemath.com/about-us/">About</a>
+      <a href="https://www.cuemath.com/en-us/">Try a Free Class</a>
+    </div>
+    <div class="copyright">© 2026 Cuemath</div>
+  </div>
+</footer>
+
+<script>
+  // ===== SHARED PIZZA RENDERER =====
+  // drawPizza(svgEl, total, filledSet, r, sw, onClick)
+  function drawPizza(svgEl, total, filledSet, r, sw, onClick) {
+    const ns = 'http://www.w3.org/2000/svg';
+    svgEl.innerHTML = '';
+    const vb = svgEl.viewBox.baseVal;
+    const cx = vb.width / 2;
+    const cy = vb.height / 2;
+    const filled = new Set(filledSet);
+
+    // Defs: rim gradient + sauce gradient (per-svg unique id to avoid collision)
+    const defId = 'pd-' + Math.random().toString(36).slice(2, 7);
+    const defs = document.createElementNS(ns, 'defs');
+    defs.innerHTML = `
+      <radialGradient id="${defId}-sauce" cx="50%" cy="50%" r="65%">
+        <stop offset="0%" stop-color="#fde68a"/>
+        <stop offset="55%" stop-color="#f59e0b"/>
+        <stop offset="100%" stop-color="#d97706"/>
+      </radialGradient>
+    `;
+    svgEl.appendChild(defs);
+
+    const rimOuter = r;
+    const rimInner = r * 0.82;
+
+    function pt(rad, ang) {
+      return [cx + rad * Math.cos(ang), cy + rad * Math.sin(ang)];
+    }
+
+    // Per slice
+    for (let i = 0; i < total; i++) {
+      const a0 = -Math.PI / 2 + (i * 2 * Math.PI) / total;
+      const a1 = -Math.PI / 2 + ((i + 1) * 2 * Math.PI) / total;
+      const isFilled = filled.has(i);
+
+      // 1. Crust ring (annulus segment)
+      const [oA0x, oA0y] = pt(rimOuter, a0);
+      const [oA1x, oA1y] = pt(rimOuter, a1);
+      const [iA0x, iA0y] = pt(rimInner, a0);
+      const [iA1x, iA1y] = pt(rimInner, a1);
+      const largeArc = (a1 - a0) > Math.PI ? 1 : 0;
+
+      const crust = document.createElementNS(ns, 'path');
+      crust.setAttribute('d',
+        `M ${oA0x} ${oA0y}
+         A ${rimOuter} ${rimOuter} 0 ${largeArc} 1 ${oA1x} ${oA1y}
+         L ${iA1x} ${iA1y}
+         A ${rimInner} ${rimInner} 0 ${largeArc} 0 ${iA0x} ${iA0y}
+         Z`);
+      crust.setAttribute('fill', isFilled ? '#d97706' : '#e2c98a');
+      crust.setAttribute('stroke', '#92400e');
+      crust.setAttribute('stroke-width', sw * 0.5);
+      svgEl.appendChild(crust);
+
+      // 2. Inner fill (wedge from center to inner arc)
+      const inner = document.createElementNS(ns, 'path');
+      inner.setAttribute('d',
+        `M ${cx} ${cy}
+         L ${iA0x} ${iA0y}
+         A ${rimInner} ${rimInner} 0 ${largeArc} 1 ${iA1x} ${iA1y}
+         Z`);
+      inner.setAttribute('fill', isFilled ? `url(#${defId}-sauce)` : '#f5f0e8');
+      svgEl.appendChild(inner);
+
+      // 3. Pepperoni dots — only filled slices, only when r is large enough
+      if (isFilled && r > 30) {
+        const dots = [
+          { rad: rimInner * 0.55, t: 0.35 },
+          { rad: rimInner * 0.62, t: 0.65 },
+        ];
+        if (total <= 6) dots.push({ rad: rimInner * 0.40, t: 0.50 });
+        dots.forEach((d, di) => {
+          const a = a0 + (a1 - a0) * d.t;
+          const [px, py] = pt(d.rad, a);
+          const dot = document.createElementNS(ns, 'circle');
+          dot.setAttribute('cx', px);
+          dot.setAttribute('cy', py);
+          dot.setAttribute('r', sw * 1.2);
+          dot.setAttribute('fill', '#c0392b');
+          svgEl.appendChild(dot);
+        });
+      }
+
+      // 4. Divider line
+      if (total > 1) {
+        const div = document.createElementNS(ns, 'line');
+        div.setAttribute('x1', cx);
+        div.setAttribute('y1', cy);
+        div.setAttribute('x2', oA0x);
+        div.setAttribute('y2', oA0y);
+        div.setAttribute('stroke', '#92400e');
+        div.setAttribute('stroke-width', sw * 0.4);
+        svgEl.appendChild(div);
+      }
+
+      // 5. Click hit target (transparent, on top)
+      if (onClick) {
+        const hit = document.createElementNS(ns, 'path');
+        hit.setAttribute('d',
+          `M ${cx} ${cy}
+           L ${oA0x} ${oA0y}
+           A ${rimOuter} ${rimOuter} 0 ${largeArc} 1 ${oA1x} ${oA1y}
+           Z`);
+        hit.setAttribute('fill', 'transparent');
+        hit.style.cursor = 'pointer';
+        hit.addEventListener('click', () => onClick(i));
+        svgEl.appendChild(hit);
+      }
+    }
+
+    // 6. Outer circle border
+    const border = document.createElementNS(ns, 'circle');
+    border.setAttribute('cx', cx);
+    border.setAttribute('cy', cy);
+    border.setAttribute('r', rimOuter);
+    border.setAttribute('fill', 'none');
+    border.setAttribute('stroke', '#92400e');
+    border.setAttribute('stroke-width', sw * 0.6);
+    svgEl.appendChild(border);
+  }
+
+  // ===== STATIC PIZZAS =====
+  drawPizza(document.getElementById('hook-pizza'), 8, [0, 1, 2], 80, 2);
+  drawPizza(document.getElementById('diag-equal'), 4, [], 80, 2);
+  drawPizza(document.getElementById('mc1-pizza'), 6, [], 55, 1.6);
+  drawPizza(document.getElementById('diag-numer'), 4, [0, 1, 2], 80, 2);
+  drawPizza(document.getElementById('mc2-pizza'), 8, [0, 1, 2, 3, 4], 55, 1.6);
+
+  // Diagram 3: 3/8 with arrows
+  (function drawReadDiag() {
+    const svg = document.getElementById('diag-read');
+    const ns = 'http://www.w3.org/2000/svg';
+    svg.innerHTML = '';
+    // Big "3/8" centred
+    const fracG = document.createElementNS(ns, 'g');
+    fracG.setAttribute('font-family', 'Lora, serif');
+    fracG.setAttribute('font-weight', '700');
+    fracG.setAttribute('text-anchor', 'middle');
+    fracG.innerHTML = `
+      <text x="100" y="92" font-size="56" fill="#1c1917">3</text>
+      <line x1="72" y1="105" x2="128" y2="105" stroke="#1c1917" stroke-width="3"/>
+      <text x="100" y="155" font-size="56" fill="#1c1917">8</text>
+      <!-- numerator label -->
+      <text x="35" y="68" font-family="DM Sans, sans-serif" font-size="13" fill="#f59e0b" font-weight="600">numerator</text>
+      <line x1="55" y1="72" x2="78" y2="82" stroke="#f59e0b" stroke-width="1.5"/>
+      <!-- denominator label -->
+      <text x="165" y="178" font-family="DM Sans, sans-serif" font-size="13" fill="#f59e0b" font-weight="600">denominator</text>
+      <line x1="145" y1="170" x2="122" y2="155" stroke="#f59e0b" stroke-width="1.5"/>
+    `;
+    svg.appendChild(fracG);
+  })();
+
+  // Equivalence row pizzas (small)
+  drawPizza(document.getElementById('eq-1'), 2, [0], 38, 1.2);
+  drawPizza(document.getElementById('eq-2'), 4, [0, 1], 38, 1.2);
+  drawPizza(document.getElementById('eq-3'), 8, [0, 1, 2, 3], 38, 1.2);
+
+  // ===== TOOLTIP TAP SUPPORT =====
+  document.querySelectorAll('.term').forEach(t => {
+    t.addEventListener('click', (e) => {
+      e.stopPropagation();
+      document.querySelectorAll('.term.active').forEach(o => { if (o !== t) o.classList.remove('active'); });
+      t.classList.toggle('active');
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.term.active').forEach(t => t.classList.remove('active'));
+  });
+
+  // ===== MINI-CHECKS =====
+  const miniFeedback = {
+    0: ['That denominator counts equal parts. Try again — count the slices.', 'Right — six equal slices means the denominator is 6.'],
+    1: ['Numerator on top, denominator on bottom. Filled slices go up top.', 'Right — five filled out of eight equal parts is 5/8.'],
+    2: ['Improper means the numerator is bigger than the denominator.', 'Right — 5/4 has a bigger top than bottom, so it\'s improper.']
+  };
+  document.querySelectorAll('.mini-check').forEach((mc, idx) => {
+    const correct = parseInt(mc.dataset.correct, 10);
+    const opts = mc.querySelectorAll('.opt');
+    const fb = mc.querySelector('.feedback');
+    opts.forEach((opt) => {
+      opt.addEventListener('click', () => {
+        if (mc.dataset.answered) return;
+        mc.dataset.answered = 'true';
+        const i = parseInt(opt.dataset.i, 10);
+        const isRight = i === correct;
+        opts[correct].classList.add('correct');
+        if (!isRight) opt.classList.add('wrong');
+        opts.forEach(o => o.disabled = true);
+        fb.classList.add('show', isRight ? 'correct' : 'wrong');
+        fb.textContent = isRight
+          ? '✓ ' + miniFeedback[idx][1]
+          : '✗ ' + miniFeedback[idx][0];
+      });
+    });
+  });
+
+  // ===== SIMULATION =====
+  const sim = {
+    den: 4,
+    filled: new Set(),
+    svg: document.getElementById('sim-pizza'),
+    numEl: document.getElementById('sim-num'),
+    denEl: document.getElementById('sim-den'),
+    wordsEl: document.getElementById('sim-words')
+  };
+
+  const wordForm = (n) => {
+    const den = sim.den;
+    if (n === 0) return `zero ${denomWord(den)} · click slices to fill`;
+    if (den === 2) return n === 1 ? 'one half' : 'two halves (one whole)';
+    if (den === 3) {
+      return ['', 'one third', 'two thirds', 'three thirds (one whole)'][n];
+    }
+    return `${numWord(n)} ${denomWord(den)}${n === den ? ' (one whole)' : ''}`;
+  };
+  function numWord(n) {
+    return ['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve'][n] || n;
+  }
+  function denomWord(d) {
+    if (d === 2) return 'halves';
+    if (d === 3) return 'thirds';
+    if (d === 4) return 'fourths';
+    if (d === 6) return 'sixths';
+    if (d === 8) return 'eighths';
+    if (d === 12) return 'twelfths';
+    return 'parts';
+  }
+
+  function updateSim() {
+    drawPizza(sim.svg, sim.den, sim.filled, 90, 2.2, (i) => {
+      if (sim.filled.has(i)) sim.filled.delete(i); else sim.filled.add(i);
+      updateSim();
+    });
+    sim.numEl.textContent = sim.filled.size;
+    sim.denEl.textContent = sim.den;
+    sim.wordsEl.textContent = wordForm(sim.filled.size);
+  }
+  document.querySelectorAll('.denom-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.denom-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      sim.den = parseInt(btn.dataset.d, 10);
+      sim.filled = new Set();
+      updateSim();
+    });
+  });
+  updateSim();
+
+  // ===== PRACTICE GAME =====
+  const questions = [
+    {
+      q: 'A pizza is cut into 4 equal slices. Two are filled. What fraction is filled?',
+      visual: { type: 'pizza', total: 4, filled: [0, 1] },
+      options: ['1/2', '2/4', 'Both 1/2 and 2/4', 'They\'re different'],
+      correct: 2,
+      fb: {
+        right: '✓ Right — 2/4 and 1/2 are the same amount of pizza. They\'re equivalent.',
+        wrong: '✗ Look at the slices — 2 out of 4. That\'s 2/4, which is the same as 1/2 (half the pizza).'
+      }
+    },
+    {
+      q: 'A recipe needs 3/4 cup of flour. You only have a 1/4-cup measure. How many scoops do you need?',
+      options: ['1 scoop', '2 scoops', '3 scoops', '4 scoops'],
+      correct: 2,
+      fb: {
+        right: '✓ Yes — 3/4 is three of the 1/4 parts. Three scoops.',
+        wrong: '✗ 3/4 means three of the 1/4 parts. So you scoop the 1/4 measure three times.'
+      }
+    },
+    {
+      q: 'Which fraction is equal to 1/2?',
+      options: ['3/8', '4/8', '5/8', '8/4'],
+      correct: 1,
+      fb: {
+        right: '✓ Right — 4/8 is half the pizza, just split into more slices.',
+        wrong: '✗ Half means the numerator is exactly half the denominator. 4 is half of 8, so 4/8 = 1/2.'
+      }
+    },
+    {
+      q: 'A pizza is cut into 8 slices. 6 are eaten. What fraction is left?',
+      options: ['6/8', '2/8', '8/2', '2/6'],
+      correct: 1,
+      fb: {
+        right: '✓ Yes — 2 of 8 slices remain, so 2/8 is left.',
+        wrong: '✗ Eaten and left are different. 8 − 6 = 2 slices left, out of 8 total → 2/8.'
+      }
+    }
+  ];
+
+  let qi = 0;
+  let score = 0;
+  let answered = false;
+  const nextBtn = document.getElementById('next-btn');
+  const stage = document.getElementById('prac-stage');
+  const done = document.getElementById('prac-done');
+
+  function renderQ() {
+    const q = questions[qi];
+    document.getElementById('q-counter').textContent = `Question ${qi + 1} of ${questions.length}`;
+    document.getElementById('prog-fill').style.width = `${(qi / questions.length) * 100}%`;
+    document.getElementById('prac-q').textContent = q.q;
+
+    const visBox = document.getElementById('prac-vis');
+    visBox.innerHTML = '';
+    if (q.visual && q.visual.type === 'pizza') {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 160 160');
+      svg.style.maxWidth = '160px';
+      visBox.appendChild(svg);
+      drawPizza(svg, q.visual.total, q.visual.filled, 65, 1.8);
+    }
+
+    const optsBox = document.getElementById('prac-opts');
+    optsBox.innerHTML = '';
+    q.options.forEach((label, i) => {
+      const b = document.createElement('button');
+      b.className = 'option-btn';
+      b.textContent = label;
+      b.addEventListener('click', () => answer(i));
+      optsBox.appendChild(b);
+    });
+
+    document.getElementById('prac-fb').className = 'practice-feedback';
+    document.getElementById('prac-fb').textContent = '';
+    nextBtn.classList.remove('show');
+    answered = false;
+  }
+
+  function answer(i) {
+    if (answered) return;
+    answered = true;
+    const q = questions[qi];
+    const opts = document.querySelectorAll('.option-btn');
+    const isRight = i === q.correct;
+    opts[q.correct].classList.add('correct');
+    if (!isRight) opts[i].classList.add('wrong');
+    opts.forEach(o => o.disabled = true);
+
+    const fb = document.getElementById('prac-fb');
+    fb.classList.add('show', isRight ? 'correct' : 'wrong');
+    fb.textContent = isRight ? q.fb.right : q.fb.wrong;
+    if (isRight) score++;
+    nextBtn.textContent = (qi === questions.length - 1) ? 'See your score →' : 'Next →';
+    nextBtn.classList.add('show');
+  }
+
+  nextBtn.addEventListener('click', () => {
+    qi++;
+    if (qi >= questions.length) {
+      stage.style.display = 'none';
+      nextBtn.style.display = 'none';
+      document.getElementById('prog-fill').style.width = '100%';
+      document.getElementById('q-counter').textContent = `${score} of ${questions.length} correct`;
+      done.classList.add('show');
+      const pct = score / questions.length;
+      const emoji = pct === 1 ? '🏆' : pct >= 0.75 ? '🎉' : pct >= 0.5 ? '👍' : '💪';
+      const msgs = {
+        1: 'Perfect score. You\'ve got fractions down — and you earned the pizza.',
+        0.75: 'Almost perfect. One slip — go back and re-read the slice you missed.',
+        0.5: 'Halfway there. Re-read the diagram section, then try again.',
+        0.25: 'Tricky stuff — that\'s normal. Watch the simulation again, then come back.',
+        0: 'Don\'t worry. Scroll up and replay the simulation — fractions click fast once you see them.'
+      };
+      let msgKey = '0';
+      if (pct === 1) msgKey = '1';
+      else if (pct >= 0.75) msgKey = '0.75';
+      else if (pct >= 0.5) msgKey = '0.5';
+      else if (pct >= 0.25) msgKey = '0.25';
+      document.getElementById('done-emoji').textContent = emoji;
+      document.getElementById('done-score').textContent = `${score} / ${questions.length}`;
+      document.getElementById('done-msg').textContent = msgs[msgKey];
+    } else {
+      renderQ();
+    }
+  });
+  renderQ();
+</script>
+</body>
+</html>

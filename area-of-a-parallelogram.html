@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  Video Concept Page — Area of a Parallelogram (Grades 6–8)
+  Video: https://www.youtube.com/watch?v=pfamBrBf8BQ
+  Brilliant-inspired: interactive simulation (drag slant slider + rearrange animation),
+  video front and centre, practice tied directly to video content.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Area of a Parallelogram — the cut-and-slide proof | Cuemath</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#1c1917;--ink2:#44403c;--muted:#78716c;--border:#e7e5e4;--bg:#fafaf9;--surface:#fff;--yellow:#f59e0b;--yellow-light:#fef3c7;--green:#16a34a;--green-light:#dcfce7;--red:#dc2626;--red-light:#fee2e2}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:300;line-height:1.7;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:780px;margin:0 auto;padding:0 40px}
+  h1,h2,h3{font-family:'Lora',Georgia,serif;font-weight:700;letter-spacing:-0.5px}
+  h1{font-size:clamp(26px,4vw,40px);line-height:1.2}
+  h2{font-size:clamp(20px,3vw,28px);line-height:1.3;margin-bottom:16px}
+  h3{font-size:18px;line-height:1.35;margin-bottom:8px}
+  p{margin-bottom:14px} p:last-child{margin-bottom:0}
+  em{font-style:italic} strong{font-weight:600}
+  a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow);text-underline-offset:3px}
+  .eyebrow{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:8px}
+
+  .nav{position:sticky;top:0;z-index:100;background:rgba(250,250,249,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+  .nav-inner{max-width:1200px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{font-family:'Lora',serif;font-weight:700;font-size:22px}
+  .nav-cta{background:var(--ink);color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:500}
+
+  .breadcrumb-bar{border-bottom:1px solid var(--border);padding:14px 0;font-size:13px;color:var(--muted)}
+  .breadcrumb-bar .wrap{display:flex;justify-content:space-between;align-items:center}
+  .breadcrumb a{color:var(--muted);text-decoration:none}
+  .breadcrumb .sep{margin:0 8px;opacity:.5}
+
+  /* HOOK */
+  .hook{padding:48px 0 32px}
+  .video-badge{display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:#fff;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.5px;margin-bottom:16px}
+  .topic-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;margin-left:10px}
+  .hook h1{margin-bottom:12px}
+  .hook .lead{font-size:17px;color:var(--ink2);max-width:660px}
+
+  /* VIDEO SECTION */
+  .video-section{padding:40px 0;border-top:1px solid var(--border)}
+  .video-section h2{margin-bottom:8px}
+  .video-section .sub{color:var(--muted);margin-bottom:20px;font-size:15px}
+  .video-embed{border-radius:14px;overflow:hidden;border:1px solid var(--border);background:#000;aspect-ratio:16/9;margin-bottom:20px}
+  .video-embed iframe{width:100%;height:100%;border:none;display:block}
+  .video-points{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px}
+  .video-points h3{font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:12px;font-family:'DM Sans',sans-serif;font-weight:600}
+  .video-points ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .video-points li{font-size:15px;display:flex;align-items:baseline;gap:10px}
+  .video-points li::before{content:"→";color:var(--yellow);font-weight:700;flex-shrink:0}
+
+  /* THINK ABOUT IT */
+  .think-box{background:var(--surface);border:1.5px solid var(--border);border-left:4px solid var(--ink2);border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0}
+  .think-label{display:block;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink2);margin-bottom:6px}
+  .think-box p{font-size:15px;color:var(--ink);margin:0}
+
+  /* SIMULATION */
+  .sim-section{padding:48px 0;border-top:1px solid var(--border)}
+  .sim-section h2{margin-bottom:8px}
+  .sim-section .sub{color:var(--muted);margin-bottom:24px;font-size:15px}
+  .sim-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px}
+  .sim-top{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;margin-bottom:24px}
+  .sim-svg-wrap{background:var(--bg);border-radius:10px;padding:16px}
+  .sim-svg-wrap svg{width:100%;height:auto;display:block}
+  .sim-controls{display:flex;flex-direction:column;gap:18px}
+  .area-display{text-align:center;background:var(--yellow-light);border:1px solid #fcd34d;border-radius:10px;padding:16px}
+  .area-val{font-family:'Lora',serif;font-size:40px;font-weight:700;color:var(--ink);line-height:1}
+  .area-label{font-size:13px;color:var(--muted);margin-top:4px}
+  .slider-group{display:flex;flex-direction:column;gap:8px}
+  .slider-group label{font-size:13px;font-weight:600;color:var(--ink2);display:flex;justify-content:space-between}
+  .slider-group input[type=range]{width:100%;accent-color:var(--ink)}
+  .dim-row{display:flex;gap:8px}
+  .dim-box{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px;text-align:center}
+  .dim-box .val{font-family:'Lora',serif;font-size:22px;font-weight:700}
+  .dim-box .lbl{font-size:11px;color:var(--muted);margin-top:2px}
+  .sim-btns{display:flex;gap:10px;flex-wrap:wrap}
+  .sim-btn{background:var(--ink);color:#fff;border:none;border-radius:8px;padding:12px 18px;font-family:inherit;font-weight:600;font-size:14px;cursor:pointer;transition:background .15s}
+  .sim-btn:hover{background:var(--ink2)}
+  .sim-btn.secondary{background:var(--bg);color:var(--ink);border:1.5px solid var(--border)}
+  .sim-btn.secondary:hover{border-color:var(--ink2)}
+  .insight-strip{background:var(--yellow-light);border:1px solid #fcd34d;border-radius:10px;padding:16px 20px;margin-top:16px;font-size:15px;color:var(--ink2)}
+  .insight-strip strong{color:var(--ink)}
+
+  /* TOOLTIP */
+  .term{border-bottom:1.5px dashed var(--yellow);cursor:help;position:relative}
+  .term::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:12px;line-height:1.4;padding:8px 12px;border-radius:6px;white-space:normal;width:max-content;max-width:220px;pointer-events:none;opacity:0;transition:opacity .15s;font-family:'DM Sans',sans-serif;font-style:normal;font-weight:400;z-index:10;text-align:center}
+  .term:hover::after,.term.active::after{opacity:1}
+
+  /* CTA */
+  .cta{background:var(--ink);color:#fff;border-radius:16px;padding:32px 36px;margin:8px 0 48px;display:grid;grid-template-columns:1.5fr auto;gap:28px;align-items:center}
+  .cta h3{font-family:'Lora',serif;color:#fff;font-size:22px;margin-bottom:6px;line-height:1.3}
+  .cta p{color:rgba(255,255,255,.78);font-size:15px;margin:0;line-height:1.6}
+  .cta-btn{background:var(--yellow);color:var(--ink);padding:13px 20px;border-radius:10px;text-decoration:none;font-weight:600;font-size:14px;white-space:nowrap}
+
+  /* REVEAL */
+  .reveal-block{margin:20px 0}
+  .reveal-btn{background:none;border:1.5px solid var(--ink2);border-radius:8px;padding:11px 18px;font-family:inherit;font-size:15px;font-weight:500;color:var(--ink2);cursor:pointer;transition:all .15s}
+  .reveal-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .reveal-btn.opened{display:none}
+  .reveal-content{display:none;margin-top:12px}
+  .reveal-content.show{display:block;animation:fadeIn .4s ease}
+  .reveal-inner{background:var(--yellow-light);border:1px solid #fcd34d;border-radius:10px;padding:16px 20px;font-size:15px}
+
+  /* PRACTICE */
+  .practice{padding:48px 0 24px;border-top:1px solid var(--border)}
+  .practice h2{margin-bottom:6px}
+  .practice .sub{color:var(--muted);margin-bottom:24px;font-size:15px}
+  .practice-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;min-height:320px;display:flex;flex-direction:column}
+  .practice-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .progress-track{flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden;margin-right:14px}
+  .progress-fill{height:100%;background:var(--green);border-radius:3px;width:0;transition:width .4s ease}
+  .q-counter{font-size:13px;color:var(--muted);font-weight:500;white-space:nowrap}
+  .practice-q{font-size:18px;font-weight:500;margin:16px 0;line-height:1.45}
+  .practice-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0 6px}
+  .option-btn{background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:14px;font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;transition:all .15s;color:var(--ink);text-align:center}
+  .option-btn:hover:not(:disabled){border-color:var(--ink2)}
+  .option-btn:disabled{cursor:not-allowed}
+  .option-btn.correct{background:var(--green-light);border-color:var(--green);color:var(--green);transform:scale(1.03)}
+  .option-btn.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);animation:shake .35s ease}
+  .phint-btn{background:none;border:none;font-family:inherit;font-size:13px;color:var(--muted);cursor:pointer;text-decoration:underline;text-decoration-color:var(--border);padding:0;margin-top:4px}
+  .phint-btn:hover{color:var(--ink2)}
+  .phint-text{font-size:14px;color:var(--ink2);background:var(--bg);border-radius:8px;padding:11px 14px;margin-top:8px;display:none}
+  .phint-text.show{display:block;animation:fadeIn .3s ease}
+  .practice-fb{background:var(--bg);border-radius:10px;padding:13px 16px;margin-top:8px;font-size:14px;color:var(--ink2);line-height:1.55;display:none}
+  .practice-fb.show{display:block}
+  .practice-fb.correct{background:var(--green-light);color:var(--green)}
+  .practice-fb.wrong{background:var(--red-light);color:var(--red)}
+  .practice-footer{display:flex;justify-content:flex-end;margin-top:auto;padding-top:14px}
+  .next-btn{background:var(--ink);color:#fff;border:none;padding:11px 20px;border-radius:8px;font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;display:none}
+  .next-btn.show{display:inline-block}
+  .completion{text-align:center;padding:28px 16px;display:none}
+  .completion.show{display:block;animation:fadeIn .6s ease}
+  .completion .emoji{font-size:52px;margin-bottom:8px}
+  .completion .score{font-family:'Lora',serif;font-size:44px;font-weight:700;margin-bottom:8px}
+  .completion .msg{font-size:15px;color:var(--ink2);max-width:360px;margin:0 auto}
+
+  /* TAKEAWAYS */
+  .takeaways{padding:44px 0;border-top:1px solid var(--border)}
+  .takeaways h2{margin-bottom:18px}
+  .takeaways-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:6px 28px}
+  .tkrow{display:grid;grid-template-columns:180px 1fr;gap:20px;padding:14px 0;border-bottom:1px solid var(--border);align-items:baseline}
+  .tkrow:last-child{border-bottom:none}
+  .tkterm{font-family:'Lora',Georgia,serif;font-weight:700;font-size:15px;color:var(--ink)}
+  .tkdef{font-size:15px;color:var(--ink2);line-height:1.6}
+
+  /* VIDEOS */
+  .videos{padding:44px 0;border-top:1px solid var(--border)}
+  .videos h2{margin-bottom:8px}
+  .videos .vsub{color:var(--muted);margin-bottom:18px;font-size:15px}
+  .video-list{display:flex;flex-direction:column;gap:10px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;text-decoration:none;color:var(--ink);transition:border-color .15s}
+  .video-card:hover{border-color:var(--ink2)}
+  .vthumb{width:52px;height:52px;background:var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .vthumb svg{width:22px;height:22px;fill:#fff}
+  .vtitle{font-family:'Lora',Georgia,serif;font-weight:600;font-size:15px;line-height:1.35;margin-bottom:3px}
+  .vdesc{font-size:13px;color:var(--muted)}
+  .varrow{font-size:17px;color:var(--muted)}
+
+  .related{padding:44px 0;border-top:1px solid var(--border)}
+  .related h2{margin-bottom:20px}
+  .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .related-col .col-label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:8px}
+  .related-col ul{list-style:none}
+  .related-col li{padding:9px 13px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:6px;font-size:14px}
+
+  footer{border-top:1px solid var(--border);padding:24px 0 36px;background:var(--surface)}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  footer .links{display:flex;gap:20px}
+  footer .links a{color:var(--ink2);text-decoration:none;font-size:14px}
+  footer .copyright{font-size:13px;color:var(--muted)}
+
+  @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}60%{transform:translateX(6px)}}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+
+  @media(max-width:700px){
+    .wrap{padding:0 20px}
+    .sim-top{grid-template-columns:1fr;gap:20px}
+    .cta{grid-template-columns:1fr;padding:24px}
+    .related-grid{grid-template-columns:1fr;gap:18px}
+    .practice-options{grid-template-columns:1fr}
+    .tkrow{grid-template-columns:1fr;gap:4px}
+    h1{font-size:26px} h2{font-size:20px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Cuemath</div>
+    <a class="nav-cta" href="https://www.cuemath.com/en-us/">Try a free class →</a>
+  </div>
+</nav>
+
+<div class="breadcrumb-bar">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="../video-library.html">Math Concepts</a>
+      <span class="sep">›</span>
+      <span>Area of a Parallelogram</span>
+    </div>
+    <div>⏱ 6 min</div>
+  </div>
+</div>
+
+<!-- HOOK -->
+<section class="hook">
+  <div class="wrap">
+    <div>
+      <span class="video-badge">🎬 Video Concept Page</span>
+      <span class="topic-tag">Area · Grades 6–8</span>
+    </div>
+    <h1>A parallelogram looks like a tilted rectangle. Does tilting it change its area?</h1>
+    <p class="lead" style="margin-top:14px">The answer is no — and there's a beautiful geometric reason. Watch the video below, then use the simulation to feel it yourself.</p>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="video-section">
+  <div class="wrap">
+    <div class="eyebrow">Watch first</div>
+    <h2>Area of a parallelogram — two ways to see it</h2>
+    <p class="sub">This Cuemath video shows two proofs: cutting into a rectangle, and breaking into triangles.</p>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/pfamBrBf8BQ"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+    <div class="video-points">
+      <h3>In this video</h3>
+      <ul>
+        <li>Why the formula is base × height, not side × side</li>
+        <li>Proof 1 — cut a triangle from one end and slide it to the other (makes a rectangle)</li>
+        <li>Proof 2 — split the parallelogram into two equal triangles</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULATION -->
+<section class="sim-section">
+  <div class="wrap">
+    <div class="eyebrow">Try it</div>
+    <h2>Drag the slant. Watch the area stay the same.</h2>
+    <p class="sub">Move the slant slider left and right. The shape changes — but the area never does. Then hit Rearrange to see why.</p>
+
+    <div class="sim-card">
+      <div class="sim-top">
+        <div class="sim-svg-wrap">
+          <svg id="sim-svg" viewBox="0 0 300 180" aria-label="Interactive parallelogram"></svg>
+        </div>
+        <div class="sim-controls">
+          <div class="area-display">
+            <div class="area-val" id="area-val">48</div>
+            <div class="area-label">cm² — area stays constant</div>
+          </div>
+          <div class="dim-row">
+            <div class="dim-box"><div class="val" id="base-val">8</div><div class="lbl">base (cm)</div></div>
+            <div class="dim-box"><div class="val" id="height-val">6</div><div class="lbl">height (cm)</div></div>
+          </div>
+          <div class="slider-group">
+            <label>Slant <span id="slant-label">medium</span></label>
+            <input type="range" id="slant-slider" min="0" max="80" value="40">
+          </div>
+          <div class="slider-group">
+            <label>Base <span id="base-label">8 cm</span></label>
+            <input type="range" id="base-slider" min="4" max="12" value="8">
+          </div>
+          <div class="sim-btns">
+            <button class="sim-btn" id="rearrange-btn">Rearrange →</button>
+            <button class="sim-btn secondary" id="reset-btn">Reset</button>
+          </div>
+        </div>
+      </div>
+      <div class="insight-strip" id="sim-insight">
+        <strong>Notice:</strong> No matter how much you slant the parallelogram, base × height stays the same. The tilt is irrelevant to the area.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA #1 -->
+<div class="wrap">
+  <div class="cta">
+    <div>
+      <h3>Like this way of learning?</h3>
+      <p>Cuemath builds every formula from first principles — visuals first, rules second. One-on-one with a live tutor.</p>
+    </div>
+    <a class="cta-btn" href="https://www.cuemath.com/en-us/">Try a free class →</a>
+  </div>
+</div>
+
+<!-- DEEPER: Reveal -->
+<section style="padding:0 0 40px;border-top:1px solid var(--border);padding-top:40px">
+  <div class="wrap">
+    <div class="eyebrow">One more thing</div>
+    <h2>What about a rhombus — or a rectangle?</h2>
+    <p style="color:var(--ink2)">Both are special cases of a parallelogram. The same formula applies.</p>
+
+    <div class="think-box">
+      <span class="think-label">Think about it</span>
+      <p>A rectangle has base 7 cm and height 5 cm. Now tilt it slightly. The base and height stay the same. Does the area change?</p>
+    </div>
+
+    <div class="reveal-block">
+      <button class="reveal-btn" id="rev-btn">A rhombus has all sides 6 cm and perpendicular height 4 cm. What's its area? Think first →</button>
+      <div class="reveal-content" id="rev-content">
+        <div class="reveal-inner"><strong>24 cm².</strong> A rhombus is a parallelogram with equal sides. Area = base × perpendicular height = 6 × 4 = 24 cm². <em>Not</em> 6 × 6 = 36 cm² — that would only work if the sides were perpendicular (i.e., if it were a square).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE -->
+<section class="practice">
+  <div class="wrap">
+    <div class="eyebrow">Test what you saw</div>
+    <h2>Questions from the video</h2>
+    <p class="sub">Four questions based directly on what the video covered. Use the hint if you need a nudge.</p>
+    <div class="practice-card">
+      <div class="practice-header">
+        <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
+        <div class="q-counter" id="q-counter">Question 1 of 4</div>
+      </div>
+      <div id="prac-stage">
+        <div class="practice-q" id="prac-q"></div>
+        <div class="practice-options" id="prac-opts"></div>
+        <div style="margin:4px 0 6px">
+          <button class="phint-btn" id="phint-btn">Need a hint?</button>
+          <div class="phint-text" id="phint-text"></div>
+        </div>
+        <div class="practice-fb" id="prac-fb"></div>
+      </div>
+      <div class="completion" id="prac-done">
+        <div class="emoji" id="done-emoji">🎉</div>
+        <div class="score" id="done-score"></div>
+        <div class="msg" id="done-msg"></div>
+      </div>
+      <div class="practice-footer">
+        <button class="next-btn" id="next-btn">Next →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA #2 -->
+<div class="wrap">
+  <div class="cta">
+    <div>
+      <h3>Ready to go deeper?</h3>
+      <p>Area of triangles, trapeziums, and circles all connect to this idea. A Cuemath tutor builds the chain live.</p>
+    </div>
+    <a class="cta-btn" href="https://www.cuemath.com/en-us/">Book a free class →</a>
+  </div>
+</div>
+
+<!-- TAKEAWAYS -->
+<section class="takeaways">
+  <div class="wrap">
+    <div class="eyebrow">Quick reference</div>
+    <h2>Key takeaways</h2>
+    <div class="takeaways-box">
+      <div class="tkrow"><span class="tkterm">Parallelogram</span><span class="tkdef">A quadrilateral with two pairs of parallel sides. Opposite sides are equal.</span></div>
+      <div class="tkrow"><span class="tkterm">Base</span><span class="tkdef">Any side chosen as the reference. Typically the bottom side.</span></div>
+      <div class="tkrow"><span class="tkterm">Perpendicular height</span><span class="tkdef">The shortest distance between the base and the opposite parallel side — measured at 90°. <em>Never the slant side.</em></span></div>
+      <div class="tkrow"><span class="tkterm">Area</span><span class="tkdef">base × perpendicular height. A parallelogram can always be rearranged into a rectangle with the same base and height — so they share the same formula.</span></div>
+      <div class="tkrow"><span class="tkterm">Common mistake</span><span class="tkdef">Using the slant side as the height. Always use the perpendicular height.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED VIDEOS -->
+<section class="videos">
+  <div class="wrap">
+    <div class="eyebrow">More from the library</div>
+    <h2>Related videos</h2>
+    <p class="vsub">More Cuemath videos on parallelograms and area.</p>
+    <div class="video-list">
+      <a class="video-card" href="https://www.youtube.com/watch?v=t9i8STYqipA" target="_blank" rel="noopener">
+        <div class="vthumb"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div><div class="vtitle">Every quadrilateral hides a parallelogram inside</div><div class="vdesc">Concept · Grades 6–8</div></div>
+        <div class="varrow">→</div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=gAsasanxsFw" target="_blank" rel="noopener">
+        <div class="vthumb"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div><div class="vtitle">Chinese Grade 5 exam — parallelogram and triangles</div><div class="vdesc">Olympiad · Grades 6–8</div></div>
+        <div class="varrow">→</div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=MhRFrrxczrA" target="_blank" rel="noopener">
+        <div class="vthumb"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div><div class="vtitle">Geometry puzzle with a magical solution</div><div class="vdesc">Puzzle · Grades 6–8</div></div>
+        <div class="varrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="related">
+  <div class="wrap">
+    <h2>Related concepts</h2>
+    <div class="related-grid">
+      <div class="related-col"><div class="col-label">Builds on</div><ul><li>Area of a rectangle</li><li>Right angles</li><li>Parallel lines</li></ul></div>
+      <div class="related-col"><div class="col-label">Operations</div><ul><li>Area of a triangle</li><li>Area of a trapezium</li><li>Perimeter</li></ul></div>
+      <div class="related-col"><div class="col-label">Bridges to</div><ul><li>Area of a rhombus</li><li>Coordinate geometry</li><li>Vectors</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links"><a href="../video-library.html">Math Concepts</a><a href="https://www.cuemath.com/about-us/">About</a><a href="https://www.cuemath.com/en-us/">Try a Free Class</a></div>
+    <div class="copyright">© 2026 Cuemath</div>
+  </div>
+</footer>
+
+<script>
+  // ===== PARALLELOGRAM SIMULATION =====
+  const simSvg = document.getElementById('sim-svg');
+  const slantSlider = document.getElementById('slant-slider');
+  const baseSlider = document.getElementById('base-slider');
+  const NS = 'http://www.w3.org/2000/svg';
+
+  let rearranged = false;
+
+  function drawParallelogram(base, slant, height) {
+    simSvg.innerHTML = '';
+    const scale = 14;
+    const W = 300, H = 180;
+    const bPx = base * scale;
+    const hPx = height * scale;
+    const sPx = slant;
+    const padX = 20, padY = 20;
+    // Vertices: bottom-left, bottom-right, top-right, top-left
+    const pts = [
+      [padX, H - padY],
+      [padX + bPx, H - padY],
+      [padX + bPx + sPx, H - padY - hPx],
+      [padX + sPx, H - padY - hPx]
+    ];
+
+    // Fill
+    const poly = document.createElementNS(NS, 'polygon');
+    poly.setAttribute('points', pts.map(p => p.join(',')).join(' '));
+    poly.setAttribute('fill', '#fde68a');
+    poly.setAttribute('stroke', '#92400e');
+    poly.setAttribute('stroke-width', 2);
+    poly.setAttribute('stroke-linejoin', 'round');
+    simSvg.appendChild(poly);
+
+    // Height line (perpendicular)
+    const hx = pts[3][0];
+    const line = document.createElementNS(NS, 'line');
+    line.setAttribute('x1', hx); line.setAttribute('y1', pts[3][1]);
+    line.setAttribute('x2', hx); line.setAttribute('y2', pts[0][1]);
+    line.setAttribute('stroke', '#2563eb'); line.setAttribute('stroke-width', 1.5);
+    line.setAttribute('stroke-dasharray', '4 3');
+    simSvg.appendChild(line);
+    // Right angle
+    const ra = document.createElementNS(NS, 'path');
+    ra.setAttribute('d', `M ${hx} ${pts[0][1] - 10} L ${hx + 10} ${pts[0][1] - 10} L ${hx + 10} ${pts[0][1]}`);
+    ra.setAttribute('fill', 'none'); ra.setAttribute('stroke', '#2563eb'); ra.setAttribute('stroke-width', 1.2);
+    simSvg.appendChild(ra);
+
+    // Labels
+    function lbl(x, y, text, color, size) {
+      const t = document.createElementNS(NS, 'text');
+      t.setAttribute('x', x); t.setAttribute('y', y);
+      t.setAttribute('text-anchor', 'middle');
+      t.setAttribute('font-family', 'Lora, serif'); t.setAttribute('font-weight', 700);
+      t.setAttribute('font-size', size || 13); t.setAttribute('fill', color);
+      t.textContent = text;
+      simSvg.appendChild(t);
+    }
+    // Base label
+    lbl((pts[0][0] + pts[1][0]) / 2, pts[0][1] + 18, `${base} cm`, '#92400e', 13);
+    // Height label
+    lbl(hx - 22, (pts[3][1] + pts[0][1]) / 2 + 4, `${height} cm`, '#2563eb', 13);
+    // Slant side label if slanted
+    if (sPx > 10) {
+      const mx = (pts[1][0] + pts[2][0]) / 2 + 10;
+      const my = (pts[1][1] + pts[2][1]) / 2;
+      lbl(mx, my, '← slant', '#78716c', 11);
+    }
+  }
+
+  function drawRearranged(base, height) {
+    simSvg.innerHTML = '';
+    const scale = 14;
+    const W = 300, H = 180;
+    const bPx = base * scale;
+    const hPx = height * scale;
+    const padX = 40, padY = 20;
+
+    // Rectangle
+    const rect = document.createElementNS(NS, 'rect');
+    rect.setAttribute('x', padX); rect.setAttribute('y', H - padY - hPx);
+    rect.setAttribute('width', bPx); rect.setAttribute('height', hPx);
+    rect.setAttribute('fill', '#fde68a'); rect.setAttribute('stroke', '#92400e');
+    rect.setAttribute('stroke-width', 2);
+    simSvg.appendChild(rect);
+
+    // Labels
+    function lbl(x, y, text, color) {
+      const t = document.createElementNS(NS, 'text');
+      t.setAttribute('x', x); t.setAttribute('y', y); t.setAttribute('text-anchor', 'middle');
+      t.setAttribute('font-family', 'Lora, serif'); t.setAttribute('font-weight', 700);
+      t.setAttribute('font-size', 13); t.setAttribute('fill', color);
+      t.textContent = text; simSvg.appendChild(t);
+    }
+    lbl(padX + bPx / 2, H - padY + 18, `${base} cm`, '#92400e');
+    lbl(padX - 22, H - padY - hPx / 2 + 4, `${height} cm`, '#2563eb');
+
+    // "= Rectangle!" label
+    const note = document.createElementNS(NS, 'text');
+    note.setAttribute('x', W / 2); note.setAttribute('y', 20);
+    note.setAttribute('text-anchor', 'middle'); note.setAttribute('font-family', 'Lora, serif');
+    note.setAttribute('font-size', 14); note.setAttribute('font-weight', 700); note.setAttribute('fill', '#16a34a');
+    note.textContent = '= Rectangle! Area = base × height';
+    simSvg.appendChild(note);
+  }
+
+  function updateSim() {
+    if (rearranged) return;
+    const slant = parseInt(slantSlider.value);
+    const base = parseInt(baseSlider.value);
+    const height = 6;
+    document.getElementById('slant-label').textContent = slant < 20 ? 'slight' : slant < 55 ? 'medium' : 'steep';
+    document.getElementById('base-label').textContent = base + ' cm';
+    document.getElementById('base-val').textContent = base;
+    document.getElementById('height-val').textContent = height;
+    document.getElementById('area-val').textContent = base * height;
+    drawParallelogram(base, slant, height);
+  }
+
+  document.getElementById('rearrange-btn').addEventListener('click', () => {
+    rearranged = true;
+    const base = parseInt(baseSlider.value);
+    drawRearranged(base, 6);
+    document.getElementById('sim-insight').innerHTML = '<strong>There it is:</strong> Slide the triangle from one end to the other — the parallelogram becomes a rectangle. Same base, same height, same area. That\'s <em>why</em> the formula works.';
+    document.getElementById('rearrange-btn').textContent = '✓ Rearranged';
+    document.getElementById('rearrange-btn').disabled = true;
+  });
+
+  document.getElementById('reset-btn').addEventListener('click', () => {
+    rearranged = false;
+    document.getElementById('rearrange-btn').textContent = 'Rearrange →';
+    document.getElementById('rearrange-btn').disabled = false;
+    document.getElementById('sim-insight').innerHTML = '<strong>Notice:</strong> No matter how much you slant the parallelogram, base × height stays the same. The tilt is irrelevant to the area.';
+    updateSim();
+  });
+
+  slantSlider.addEventListener('input', updateSim);
+  baseSlider.addEventListener('input', updateSim);
+  updateSim();
+
+  // ===== REVEAL =====
+  document.getElementById('rev-btn').addEventListener('click', () => {
+    document.getElementById('rev-content').classList.add('show');
+    document.getElementById('rev-btn').classList.add('opened');
+  });
+
+  // ===== TOOLTIPS =====
+  document.querySelectorAll('.term').forEach(t => {
+    t.addEventListener('click', e => {
+      e.stopPropagation();
+      document.querySelectorAll('.term.active').forEach(o => { if (o !== t) o.classList.remove('active'); });
+      t.classList.toggle('active');
+    });
+  });
+  document.addEventListener('click', () => document.querySelectorAll('.term.active').forEach(t => t.classList.remove('active')));
+
+  // ===== PRACTICE =====
+  const questions = [
+    { q: 'In the video, a triangle is cut from one end of the parallelogram and moved to the other end. What shape is formed?', options: ['Triangle', 'Trapezium', 'Rectangle', 'Rhombus'], correct: 2, hint: 'The triangle fills the "missing" space on the other side.', fb: { r: '✓ Right — the cut-and-slide creates a rectangle with the same base and height.', w: '✗ The triangle slides to the opposite end and fills the gap, creating a rectangle.' } },
+    { q: 'A parallelogram has base 9 cm and perpendicular height 5 cm. Its slant side is 7 cm. What is its area?', options: ['63 cm²', '45 cm²', '35 cm²', '56 cm²'], correct: 1, hint: 'Use base × perpendicular height. Ignore the slant side.', fb: { r: '✓ Right — 9 × 5 = 45 cm². The slant side (7 cm) is not used.', w: '✗ Area = base × perpendicular height = 9 × 5 = 45 cm². Never use the slant side.' } },
+    { q: 'Two parallelograms share the same base and the same perpendicular height, but have different slant angles. Which has greater area?', options: ['The more slanted one', 'The less slanted one', 'They are equal', 'Cannot tell without the slant length'], correct: 2, hint: 'Area only depends on base × height — not the slant.', fb: { r: '✓ Right — same base, same height → same area. The simulation shows this clearly.', w: '✗ Area = base × height. Slant angle is irrelevant. Both have the same area.' } },
+    { q: 'A parallelogram has area 60 cm² and base 12 cm. What is its perpendicular height?', options: ['72 cm', '5 cm', '48 cm', '4.8 cm'], correct: 1, hint: 'Rearrange: height = area ÷ base.', fb: { r: '✓ Right — height = 60 ÷ 12 = 5 cm.', w: '✗ Height = area ÷ base = 60 ÷ 12 = 5 cm.' } }
+  ];
+  let qi = 0, score = 0, answered = false;
+  const nextBtn = document.getElementById('next-btn');
+  const phintBtn = document.getElementById('phint-btn');
+  const phintText = document.getElementById('phint-text');
+  phintBtn.addEventListener('click', () => { phintText.classList.toggle('show'); phintBtn.textContent = phintText.classList.contains('show') ? 'Hide hint' : 'Need a hint?'; });
+  function renderQ() {
+    const q = questions[qi];
+    document.getElementById('q-counter').textContent = `Question ${qi+1} of ${questions.length}`;
+    document.getElementById('prog-fill').style.width = `${(qi/questions.length)*100}%`;
+    document.getElementById('prac-q').textContent = q.q;
+    const optsBox = document.getElementById('prac-opts');
+    optsBox.innerHTML = '';
+    q.options.forEach((label, i) => { const b = document.createElement('button'); b.className='option-btn'; b.textContent=label; b.addEventListener('click',()=>answer(i)); optsBox.appendChild(b); });
+    document.getElementById('prac-fb').className='practice-fb'; document.getElementById('prac-fb').textContent='';
+    phintText.textContent=q.hint; phintText.classList.remove('show'); phintBtn.textContent='Need a hint?'; phintBtn.style.display='block';
+    nextBtn.classList.remove('show'); answered=false;
+  }
+  function answer(i) {
+    if (answered) return; answered=true;
+    const q=questions[qi]; const opts=document.querySelectorAll('.option-btn'); const right=i===q.correct;
+    opts[q.correct].classList.add('correct'); if(!right) opts[i].classList.add('wrong');
+    opts.forEach(o=>o.disabled=true); phintBtn.style.display='none';
+    const fb=document.getElementById('prac-fb'); fb.classList.add('show',right?'correct':'wrong');
+    fb.textContent=right?q.fb.r:q.fb.w; if(right) score++;
+    nextBtn.textContent=qi===questions.length-1?'See score →':'Next →'; nextBtn.classList.add('show');
+  }
+  nextBtn.addEventListener('click', () => {
+    qi++;
+    if (qi>=questions.length) {
+      document.getElementById('prac-stage').style.display='none'; nextBtn.style.display='none';
+      document.getElementById('prog-fill').style.width='100%';
+      document.getElementById('q-counter').textContent=`${score} of ${questions.length} correct`;
+      document.getElementById('prac-done').classList.add('show');
+      const pct=score/questions.length;
+      document.getElementById('done-emoji').textContent=pct===1?'🏆':pct>=0.75?'🎉':'👍';
+      document.getElementById('done-score').textContent=`${score} / ${questions.length}`;
+      document.getElementById('done-msg').textContent=pct===1?'Perfect score. Base × height is permanently yours now.'
+        :pct>=0.75?'Strong. One slip — check your answer and the simulation to see why.'
+        :'Watch the video once more, then play with the simulation. The slant-vs-height thing clicks fast.';
+    } else renderQ();
+  });
+  renderQ();
+</script>
+</body>
+</html>

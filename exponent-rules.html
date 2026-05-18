@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  Concept Page — Exponent Rules (Grades 7–9)
+  A/B Test Variant vs https://www.cuemath.com/algebra/exponent-rules/
+
+  STRUCTURE:
+  - H1 = keyword: "Exponent Rules"
+  - H2 = hook question
+  - Sticky TOC sidebar (left) + main content (right)
+  - 8 rules incl. Identity (a¹ = a) — missing from previous build
+  - Rule Explorer simulation (interactive, all 8 rules)
+  - Worked examples
+  - Student / Parent / Teacher mode toggle with dual CTA
+  - Modal form: Student (3-step) | Parent (Cuemath-style) | Teacher (2 buttons)
+  - Downloadable worksheet
+  - FAQ accordion
+  - A/B metrics: traffic, time-on-page, leads (trial bookings), drop-off
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exponent Rules — All 8 Laws Explained with Examples | Cuemath</title>
+<meta name="description" content="Learn all 8 exponent rules with step-by-step examples, an interactive rule explorer, practice questions, and a free downloadable worksheet. Cuemath.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#1c1917;--ink2:#44403c;--muted:#78716c;--border:#e7e5e4;--bg:#fafaf9;--surface:#fff;--yellow:#f59e0b;--yellow-light:#fef3c7;--green:#16a34a;--green-light:#dcfce7;--red:#dc2626;--red-light:#fee2e2;--blue:#2563eb;--blue-light:#dbeafe;--nav-h:64px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:300;line-height:1.7;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+
+  /* NAV */
+  .nav{position:sticky;top:0;z-index:200;background:rgba(250,250,249,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);height:var(--nav-h);display:flex;align-items:center}
+  .nav-inner{max-width:1120px;margin:0 auto;padding:0 32px;width:100%;display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{font-family:'Lora',serif;font-weight:700;font-size:22px}
+  .nav-cta{background:var(--ink);color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:500}
+
+  /* BREADCRUMB */
+  .breadcrumb-bar{border-bottom:1px solid var(--border);padding:12px 0;font-size:13px;color:var(--muted);background:var(--surface)}
+  .breadcrumb-bar .inner{max-width:1120px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center}
+  .breadcrumb a{color:var(--muted);text-decoration:none}
+  .breadcrumb .sep{margin:0 8px;opacity:.5}
+
+  /* PAGE GRID */
+  .page-grid{max-width:1120px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:220px 1fr;gap:52px;align-items:start;padding-top:40px;padding-bottom:80px}
+
+  /* TOC SIDEBAR */
+  .toc{position:sticky;top:calc(var(--nav-h) + 20px);max-height:calc(100vh - var(--nav-h) - 40px);overflow-y:auto;padding-bottom:20px}
+  .toc-title{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .toc-list{list-style:none;display:flex;flex-direction:column;gap:2px}
+  .toc-list a{display:block;padding:8px 12px;border-radius:8px;font-size:14px;color:var(--ink2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.4}
+  .toc-list a:hover{background:var(--border);color:var(--ink)}
+  .toc-list a.active{background:var(--yellow-light);color:var(--ink);border-left-color:var(--yellow);font-weight:500}
+  .toc-divider{height:1px;background:var(--border);margin:8px 12px}
+
+  /* CONTENT */
+  h1{font-family:'Lora',Georgia,serif;font-size:clamp(30px,4vw,44px);font-weight:700;letter-spacing:-0.5px;line-height:1.15;margin-bottom:10px}
+  h2{font-family:'Lora',Georgia,serif;font-size:clamp(20px,3vw,28px);font-weight:700;letter-spacing:-0.3px;line-height:1.25;margin-bottom:16px;padding-top:8px}
+  h3{font-family:'Lora',Georgia,serif;font-size:19px;font-weight:700;line-height:1.35;margin-bottom:10px}
+  p{margin-bottom:16px;line-height:1.75} p:last-child{margin-bottom:0}
+  em{font-style:italic} strong{font-weight:600}
+  a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow);text-underline-offset:3px}
+  .eyebrow{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;display:block}
+  .content-section{padding:40px 0;border-top:1px solid var(--border)}
+  .content-section:first-of-type{border-top:none;padding-top:24px}
+  sup{font-size:.65em;vertical-align:super;line-height:0}
+
+  .term{border-bottom:1.5px dashed var(--yellow);cursor:help;position:relative}
+  .term::after{content:attr(data-tip);position:absolute;bottom:calc(100%+6px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:12px;line-height:1.4;padding:8px 12px;border-radius:6px;white-space:normal;width:max-content;max-width:240px;pointer-events:none;opacity:0;transition:opacity .15s;font-family:'DM Sans',sans-serif;font-style:normal;font-weight:400;z-index:10;text-align:center}
+  .term:hover::after,.term.active::after{opacity:1}
+
+  /* HERO */
+  .hero-lead{font-size:18px;color:var(--ink2);margin:12px 0 28px;max-width:100%}
+  .rule-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+  .rule-pill{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;font-family:'Lora',serif;font-weight:700}
+
+  /* THINK BOX */
+  .think-box{background:var(--surface);border:1.5px solid var(--border);border-left:4px solid var(--ink2);border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0}
+  .think-label{display:block;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink2);margin-bottom:6px}
+  .think-box p{font-size:15px;color:var(--ink);margin:0}
+
+  .insight{background:var(--yellow-light);border:1px solid #fcd34d;border-radius:12px;padding:20px 24px;margin:24px 0;font-size:15px}
+
+  /* EXPAND BOX */
+  .expand-box{background:var(--bg);border-radius:12px;padding:20px 24px;margin:16px 0}
+  .expand-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px dashed var(--border);font-size:15px;flex-wrap:wrap}
+  .expand-row:last-child{border-bottom:none}
+  .exp-expr{font-family:'Lora',serif;font-weight:700}
+  .exp-result{font-family:'Lora',serif;font-weight:700;color:var(--yellow)}
+
+  /* 8 RULES GRID */
+  /* rules accordion */
+  .rules-accordion{border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:20px 0}
+  .rule-item{border-bottom:1px solid var(--border)}
+  .rule-item:last-child{border-bottom:none}
+  .rule-trigger{width:100%;background:var(--surface);border:none;text-align:left;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:16px;transition:background .15s}
+  .rule-trigger:hover{background:var(--bg)}
+  .rule-trigger.open{background:var(--yellow-light)}
+  .rt-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+  .rt-num{font-size:12px;font-weight:700;color:var(--muted);width:18px;flex-shrink:0}
+  .rt-name{font-family:'Lora',serif;font-size:15px;font-weight:700;color:var(--ink);flex-shrink:0}
+  .rt-formula{font-family:'Lora',serif;font-size:13px;color:var(--ink2);background:var(--bg);padding:3px 9px;border-radius:5px;white-space:nowrap}
+  .rt-icon{font-size:16px;color:var(--muted);transition:transform .2s;flex-shrink:0}
+  .rule-trigger.open .rt-icon{transform:rotate(45deg)}
+  .rule-body{display:none;padding:18px 20px 18px 50px;background:var(--bg);border-top:1px solid var(--border)}
+  .rule-body.show{display:block;animation:fadeIn .25s ease}
+  .rb-formula{font-family:'Lora',serif;font-size:20px;font-weight:700;margin-bottom:12px}
+  .rb-example{font-size:14px;color:var(--ink2);background:var(--surface);border-radius:7px;padding:10px 13px;margin-bottom:8px;line-height:1.5}
+  .rb-why{font-size:13px;color:var(--muted);font-style:italic;line-height:1.6;margin-bottom:10px}
+  .rb-try{background:none;border:1.5px solid var(--border);border-radius:7px;padding:8px 14px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;color:var(--ink2)}
+  .rb-try:hover{border-color:var(--yellow);background:var(--yellow-light);color:var(--ink)}
+  .rr-name{font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .rr-formula{font-family:'Lora',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:4px}
+  .rr-example{font-size:13px;color:var(--muted)}
+
+  /* RULE EXPLORER */
+  .rule-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+  .rule-tab{background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;color:var(--ink2);line-height:1.2;text-align:center}
+  .rule-tab:hover{border-color:var(--ink2)}
+  .rule-tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .rule-tab .tab-formula{display:block;font-family:'Lora',serif;font-size:14px;font-weight:700;margin-bottom:2px}
+  .rule-tab .tab-name{display:block;font-size:10px;font-weight:500;opacity:.8}
+  .demo-area{background:var(--bg);border-radius:14px;padding:24px}
+  .demo-formula{font-family:'Lora',serif;font-size:24px;font-weight:700;color:var(--ink);text-align:center;margin-bottom:18px;padding:14px;background:var(--surface);border-radius:10px;border:1px solid var(--border)}
+  .demo-inputs{display:flex;gap:12px;align-items:center;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
+  .input-group{display:flex;flex-direction:column;align-items:center;gap:5px}
+  .input-label{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+  .stepper{display:flex;align-items:center}
+  .stepper button{background:var(--surface);border:1.5px solid var(--border);width:30px;height:34px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;transition:background .1s}
+  .stepper button:first-child{border-radius:6px 0 0 6px}
+  .stepper button:last-child{border-radius:0 6px 6px 0}
+  .stepper button:hover{background:var(--border)}
+  .stepper .val{width:42px;height:34px;text-align:center;border:1.5px solid var(--border);border-left:none;border-right:none;font-family:'Lora',serif;font-size:15px;font-weight:700;background:var(--surface);color:var(--ink)}
+  .demo-steps{display:flex;flex-direction:column;gap:6px}
+  .step-line{display:flex;align-items:baseline;gap:8px;padding:9px 12px;border-radius:8px;animation:fadeIn .3s ease}
+  .step-line.expansion{background:var(--surface);border:1px solid var(--border)}
+  .step-line.result{background:var(--yellow-light);border:1px solid #fcd34d}
+  .step-line.why{background:var(--bg);font-style:italic;color:var(--ink2);font-size:13px}
+  .step-eq{color:var(--muted);font-size:14px;min-width:18px}
+  .step-expr{font-family:'Lora',serif;font-size:16px;font-weight:700}
+  .step-note{font-size:13px;color:var(--muted);margin-left:6px}
+
+  /* WORKED EXAMPLES */
+  .example-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 26px;margin-bottom:14px}
+  .example-card .ex-label{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .example-card .ex-q{font-family:'Lora',serif;font-size:18px;font-weight:700;margin-bottom:14px}
+  .example-card .ex-steps{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--ink2)}
+  .example-card .ex-step{display:flex;gap:10px;padding:7px 10px;border-radius:6px;background:var(--bg)}
+  .example-card .ex-step .num{font-weight:700;color:var(--muted);min-width:16px}
+  .example-card .ex-answer{margin-top:10px;font-family:'Lora',serif;font-size:18px;font-weight:700;color:var(--green);padding:10px 14px;background:var(--green-light);border-radius:8px;display:inline-block}
+
+  /* CTA SECTION */
+  .mode-section{padding:48px 0 24px;border-top:1px solid var(--border)}
+
+  /* QUIZ OPTIONS in modal */
+  .quiz-options{display:flex;flex-direction:column;gap:10px;margin:4px 0 16px}
+  .quiz-opt{background:var(--bg);border:2px solid var(--border);border-radius:12px;padding:14px 16px;text-align:left;cursor:pointer;font-family:inherit;transition:all .15s;display:flex;align-items:center;gap:14px;width:100%}
+  .quiz-opt:hover{border-color:var(--yellow);background:var(--yellow-light)}
+  .qo-emoji{font-size:22px;flex-shrink:0}
+  .qo-title{font-weight:600;font-size:15px;color:var(--ink);display:block;margin-bottom:2px}
+  .qo-desc{font-size:13px;color:var(--muted);display:block}
+
+  /* CTA BAND */
+  .cta-band{background:var(--ink);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr auto;align-items:stretch}
+  .cta-inner{padding:36px;display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+  .cta-text h3{font-family:'Lora',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:6px}
+  .cta-text p{font-size:15px;color:rgba(255,255,255,.75);margin:0;max-width:380px}
+  .cta-img{width:280px;object-fit:cover;object-position:center top;display:block}
+  .cta-buttons{display:flex;gap:10px;flex-wrap:wrap}
+  .cta-primary{background:var(--yellow);color:var(--ink);border:none;padding:14px 22px;border-radius:10px;font-family:inherit;font-weight:700;font-size:15px;cursor:pointer;white-space:nowrap;transition:background .15s}
+  .cta-primary:hover{background:#fbbf24}
+  .cta-secondary{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.25);padding:14px 22px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;white-space:nowrap;transition:background .15s}
+  .cta-secondary:hover{background:rgba(255,255,255,.18)}
+
+  /* PRACTICE */
+  .practice-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;min-height:320px;display:flex;flex-direction:column}
+  .practice-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .progress-track{flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden;margin-right:14px}
+  .progress-fill{height:100%;background:var(--green);border-radius:3px;width:0;transition:width .4s ease}
+  .q-counter{font-size:13px;color:var(--muted);font-weight:500;white-space:nowrap}
+  .practice-q{font-size:17px;font-weight:500;margin:16px 0;line-height:1.45}
+  .practice-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0}
+  .option-btn{background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:14px;font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;transition:all .15s;color:var(--ink);text-align:center}
+  .option-btn:hover:not(:disabled){border-color:var(--ink2)}
+  .option-btn:disabled{cursor:not-allowed}
+  .option-btn.correct{background:var(--green-light);border-color:var(--green);color:var(--green);transform:scale(1.03)}
+  .option-btn.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);animation:shake .35s ease}
+  .phint-btn{background:none;border:none;font-family:inherit;font-size:13px;color:var(--muted);cursor:pointer;text-decoration:underline;text-decoration-color:var(--border);padding:0;margin-top:4px}
+  .phint-text{font-size:14px;color:var(--ink2);background:var(--bg);border-radius:8px;padding:11px 14px;margin-top:7px;display:none}
+  .phint-text.show{display:block;animation:fadeIn .3s ease}
+  .practice-fb{background:var(--bg);border-radius:10px;padding:12px 16px;margin-top:7px;font-size:14px;color:var(--ink2);line-height:1.55;display:none}
+  .practice-fb.show{display:block}
+  .practice-fb.correct{background:var(--green-light);color:var(--green)}
+  .practice-fb.wrong{background:var(--red-light);color:var(--red)}
+  .practice-footer{display:flex;justify-content:flex-end;margin-top:auto;padding-top:14px}
+  .next-btn{background:var(--ink);color:#fff;border:none;padding:11px 20px;border-radius:8px;font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;display:none}
+  .next-btn.show{display:inline-block}
+  .completion{text-align:center;padding:28px 16px;display:none}
+  .completion.show{display:block;animation:fadeIn .6s ease}
+  .completion .score{font-family:'Lora',serif;font-size:44px;font-weight:700;margin-bottom:8px}
+  .completion .msg{font-size:15px;color:var(--ink2);max-width:340px;margin:0 auto}
+
+  /* WORKSHEET */
+  .worksheet-card{background:var(--blue-light);border:1px solid #93c5fd;border-radius:14px;padding:28px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+  .ws-icon{font-size:40px;flex-shrink:0}
+  .ws-text h3{font-family:'Lora',serif;font-size:18px;font-weight:700;margin-bottom:4px}
+  .ws-text p{font-size:14px;color:var(--ink2);margin:0}
+  .ws-btn{margin-left:auto;background:var(--blue);color:#fff;padding:13px 20px;border-radius:10px;text-decoration:none;font-weight:700;font-size:14px;white-space:nowrap;flex-shrink:0}
+  .ws-btn:hover{background:#1d4ed8}
+
+  /* FAQ */
+  .faq-item{border-bottom:1px solid var(--border)}
+  .faq-item:last-child{border-bottom:none}
+  .faq-q{width:100%;background:none;border:none;text-align:left;padding:16px 4px;font-family:'Lora',serif;font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
+  .faq-q .icon{font-size:18px;color:var(--muted);flex-shrink:0;transition:transform .2s}
+  .faq-q.open .icon{transform:rotate(45deg)}
+  .faq-a{font-size:15px;color:var(--ink2);padding:0 4px 16px;display:none;line-height:1.7}
+  .faq-a.show{display:block;animation:fadeIn .3s ease}
+
+  /* MODAL */
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
+  .modal-overlay.open{display:flex}
+  .modal-box{background:var(--surface);border-radius:20px;padding:36px;max-width:480px;width:100%;position:relative;max-height:90vh;overflow-y:auto}
+  .modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:22px;color:var(--muted);cursor:pointer;line-height:1}
+  .modal-close:hover{color:var(--ink)}
+  .modal-title{font-family:'Lora',serif;font-size:22px;font-weight:700;margin-bottom:6px}
+  .modal-sub{font-size:14px;color:var(--muted);margin-bottom:24px}
+  .modal-options{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+  .mo-btn{background:var(--bg);border:2px solid var(--border);border-radius:12px;padding:16px 18px;text-align:left;cursor:pointer;font-family:inherit;transition:all .15s}
+  .mo-btn:hover{border-color:var(--yellow);background:var(--yellow-light)}
+  .mo-btn .mo-title{font-weight:600;font-size:15px;color:var(--ink);display:block;margin-bottom:2px}
+  .mo-btn .mo-desc{font-size:13px;color:var(--muted)}
+  .form-group{margin-bottom:16px}
+  .form-label{display:block;font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:6px}
+  .form-input{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;font-family:inherit;font-size:15px;color:var(--ink);background:var(--bg)}
+  .form-input:focus{outline:none;border-color:var(--yellow)}
+  .form-select{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;font-family:inherit;font-size:15px;color:var(--ink);background:var(--bg)}
+  .feelings-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .feeling-btn{background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:12px 6px;font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;text-align:center;transition:all .15s}
+  .feeling-btn.selected,.feeling-btn:hover{background:var(--yellow-light);border-color:var(--yellow)}
+  .form-note{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}
+  .form-submit{width:100%;background:var(--ink);color:#fff;border:none;padding:14px;border-radius:10px;font-family:inherit;font-weight:700;font-size:15px;cursor:pointer;margin-top:8px}
+  .form-submit:hover{background:var(--ink2)}
+  .modal-step{display:none}
+  .modal-step.active{display:block;animation:fadeIn .3s ease}
+  .step-back{background:none;border:none;font-family:inherit;font-size:13px;color:var(--muted);cursor:pointer;padding:0;margin-bottom:16px;text-decoration:underline}
+  .modal-progress{display:flex;gap:6px;margin-bottom:24px}
+  .mp-dot{height:4px;flex:1;background:var(--border);border-radius:2px;transition:background .3s}
+  .mp-dot.done{background:var(--yellow)}
+  .teacher-btns{display:flex;flex-direction:column;gap:12px}
+  .teacher-btn{padding:16px;border-radius:12px;font-family:inherit;font-weight:700;font-size:15px;cursor:pointer;text-align:center;text-decoration:none;display:block;border:none}
+  .teacher-btn.primary{background:var(--ink);color:#fff}
+  .teacher-btn.secondary{background:var(--bg);color:var(--ink);border:1.5px solid var(--border)}
+
+  /* RELATED */
+  .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+  .related-col .col-label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:8px}
+  .related-col ul{list-style:none}
+  .related-col li{padding:9px 13px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:6px;font-size:14px}
+  .video-list{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;text-decoration:none;color:var(--ink);transition:border-color .15s}
+  .video-card:hover{border-color:var(--ink2)}
+  .vthumb{width:52px;height:52px;background:var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .vthumb svg{width:22px;height:22px;fill:#fff}
+  .vtitle{font-family:'Lora',Georgia,serif;font-weight:600;font-size:15px;line-height:1.35;margin-bottom:3px}
+  .vdesc{font-size:12px;color:var(--muted)}
+
+  footer{border-top:1px solid var(--border);padding:24px 0 36px;background:var(--surface);margin-top:60px}
+  footer .inner{max-width:1120px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  footer .links{display:flex;gap:20px}
+  footer .links a{color:var(--ink2);text-decoration:none;font-size:14px}
+  footer .copyright{font-size:13px;color:var(--muted)}
+
+  /* stepper editable input */
+  .stepper-input{width:44px;height:34px;text-align:center;border:1.5px solid var(--border);border-left:none;border-right:none;font-family:'Lora',serif;font-size:15px;font-weight:700;background:var(--surface);color:var(--ink);-moz-appearance:textfield}
+  .stepper-input::-webkit-outer-spin-button,.stepper-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  .stepper-input:focus{outline:none;background:var(--yellow-light)}
+
+  /* worked example: chain */
+  .ex-chain{display:flex;flex-direction:column;gap:0}
+  .ex-chain-expr{font-family:'Lora',serif;font-size:18px;font-weight:700;padding:10px 14px;background:var(--bg);border-radius:8px;display:inline-block}
+  .ex-chain-rule{font-size:12px;color:var(--muted);padding:4px 20px;display:flex;align-items:center;gap:6px}
+  .ex-chain-rule::before{content:'↓';color:var(--muted)}
+  .ex-chain-final{background:var(--yellow-light);border:1px solid #fcd34d}
+
+  /* worked example: distribution */
+  .ex-dist-row{display:flex;align-items:baseline;gap:6px;padding:6px 0;flex-wrap:wrap}
+  .ex-dist-main{font-family:'Lora',serif;font-size:18px;font-weight:700}
+  .ex-dist-factor{font-family:'Lora',serif;font-size:16px;font-weight:700;background:var(--bg);padding:4px 8px;border-radius:6px}
+  .ex-dist-op{font-size:16px;color:var(--muted)}
+  .ex-dist-result{font-family:'Lora',serif;font-size:20px;font-weight:700;padding:10px 0 0;border-top:1.5px solid var(--border);margin-top:8px}
+
+  /* worked example: step table */
+  .ex-table{width:100%;border-collapse:collapse}
+  .ex-table td{padding:10px 12px;border-bottom:1px dashed var(--border);vertical-align:top}
+  .ex-table td:first-child{font-family:'Lora',serif;font-size:17px;font-weight:700;white-space:nowrap;min-width:130px}
+  .ex-table td:last-child{font-size:13px;color:var(--muted);line-height:1.5}
+  .ex-table tr:last-child td{border-bottom:none;background:var(--yellow-light)}
+
+  /* worked example: equivalence display */
+  .ex-equiv{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;padding:8px 0}
+  .ex-equiv-node{text-align:center;padding:12px 16px}
+  .ex-equiv-node .node-expr{font-family:'Lora',serif;font-size:22px;font-weight:700;display:block;margin-bottom:6px}
+  .ex-equiv-node .node-label{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+  .ex-equiv-arrow{font-size:18px;color:var(--muted);padding:0 4px;margin-top:-16px}
+
+  /* real-world strip */
+  .real-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}
+  .real-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px}
+  .real-card .icon{font-size:22px;margin-bottom:8px}
+  .real-card .ttl{font-weight:600;font-size:14px;margin-bottom:4px}
+  .real-card .desc{font-size:13px;color:var(--muted);line-height:1.5}
+  .loop-box{background:var(--yellow-light);border-left:4px solid var(--yellow);padding:16px 20px;border-radius:0 8px 8px 0;font-size:15px;color:var(--ink2);margin-bottom:8px}
+
+  /* featured video block */
+  .featured-video{margin:28px 0;border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+  .fv-embed{aspect-ratio:16/9}
+  .fv-embed iframe{width:100%;height:100%;border:none;display:block}
+  .fv-placeholder{aspect-ratio:16/9;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:default}
+  .fv-play{width:64px;height:64px;background:rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;color:rgba(255,255,255,.7)}
+  .fv-title{font-family:'Lora',serif;font-size:18px;font-weight:700;color:#fff;text-align:center;padding:0 24px}
+  .fv-tag{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4)}
+
+  /* mobile TOC */
+  .mobile-toc{display:none;background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:28px;overflow:hidden}
+  .mobile-toc-btn{width:100%;background:none;border:none;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;color:var(--ink)}
+  .mobile-toc-body{display:none;border-top:1px solid var(--border);padding:6px 0}
+  .mobile-toc-body.open{display:block}
+  .mobile-toc-body a{display:block;padding:9px 16px;font-size:14px;color:var(--ink2);text-decoration:none;border-left:3px solid transparent;transition:all .15s}
+  .mobile-toc-body a:hover,.mobile-toc-body a.active{background:var(--bg);border-left-color:var(--yellow);color:var(--ink)}
+
+  @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}60%{transform:translateX(5px)}}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+  /* RESPONSIVE */
+  @media(max-width:820px){
+    .page-grid{grid-template-columns:1fr;gap:0;padding-top:24px}
+    .toc{display:none}
+    .mobile-toc{display:block}
+    .real-strip{grid-template-columns:1fr 1fr}
+    .nav-inner,.breadcrumb-bar .inner,footer .inner{padding:0 20px}
+  }
+  @media(max-width:600px){
+    .rules-ref{grid-template-columns:1fr}
+    .cta-band{grid-template-columns:1fr}
+    .cta-img{width:100%;height:180px;object-fit:cover;object-position:center 20%}
+    .cta-inner{padding:24px;flex-direction:column;align-items:flex-start}
+    .related-grid{grid-template-columns:1fr;gap:18px}
+    .practice-options{grid-template-columns:1fr}
+    .feelings-row{grid-template-columns:1fr 1fr 1fr}
+    h1{font-size:28px} h2{font-size:20px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Cuemath</div>
+    <a class="nav-cta" href="https://www.cuemath.com/en-us/">Try a free class →</a>
+  </div>
+</nav>
+
+<div class="breadcrumb-bar">
+  <div class="inner">
+    <div class="breadcrumb">
+      <a href="https://www.cuemath.com">Home</a><span class="sep">›</span>
+      <a href="https://www.cuemath.com/algebra/">Algebra</a><span class="sep">›</span>
+      <span>Exponent Rules</span>
+    </div>
+    <div style="font-size:13px;color:var(--muted)">⏱ 10 min read</div>
+  </div>
+</div>
+
+<div class="page-grid">
+
+  <!-- TOC SIDEBAR -->
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <ul class="toc-list" id="toc-list">
+      <li><a href="#what-are-exponents">What are exponents?</a></li>
+      <li><a href="#the-8-laws">The 8 exponent rules</a></li>
+      <li><a href="#rule-explorer">Rule Explorer</a></li>
+      <li><a href="#real-world">In the real world</a></li>
+      <div class="toc-divider"></div>
+      <li><a href="#practice">Practice questions</a></li>
+      <li><a href="#worksheet">Downloadable worksheet</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- MOBILE TOC (hidden on desktop) -->
+    <div class="mobile-toc">
+      <button class="mobile-toc-btn" id="mobile-toc-btn">
+        <span>On this page</span><span id="mtoc-icon">↓</span>
+      </button>
+      <div class="mobile-toc-body" id="mobile-toc-body">
+        <a href="#what-are-exponents">What are exponents?</a>
+        <a href="#the-8-laws">The 8 exponent rules</a>
+        <a href="#rule-explorer">Rule Explorer</a>
+        <a href="#practice">Practice questions</a>
+        <a href="#worksheet">Downloadable worksheet</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+
+    <!-- H1 + H2 (hook) -->
+    <h1>Exponent Rules</h1>
+    <div class="loop-box" style="margin:14px 0 20px">
+      By the end of this page, you'll have a working understanding of all 7 exponent rules — including <strong>why 2⁰ = 1</strong>, why negative exponents give fractions, and when each rule applies.
+    </div>
+    <h2>Why does 2⁰ equal 1?</h2>
+    <div class="featured-video">
+      <div class="fv-embed">
+        <iframe src="https://www.youtube.com/embed/9Fx6H-Qua1c"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-top:-16px;margin-bottom:12px;font-weight:600;letter-spacing:.3px">Exponent Rules: All 8 explained with examples</p>
+
+    <!-- CTA after video -->
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:28px">
+      <p style="margin:0;font-size:15px;color:var(--ink2)">Want a tutor to walk you through this? <strong>First class is free.</strong></p>
+      <button class="cta-primary" onclick="document.getElementById('cta-primary-btn').click()" style="white-space:nowrap">Try Cuemath →</button>
+    </div>
+
+    <div class="real-strip">
+      <div class="real-card"><div class="icon">💻</div><div class="ttl">Computer storage</div><div class="desc">1 gigabyte = 2<sup>30</sup> bytes. Every storage size is a power of 2.</div></div>
+      <div class="real-card"><div class="icon">📱</div><div class="ttl">Screen colours</div><div class="desc">256<sup>3</sup> ≈ 16.7 million colour combinations on your screen — a power of product rule.</div></div>
+      <div class="real-card"><div class="icon">💰</div><div class="ttl">Compound interest</div><div class="desc">Money growing at rate r for t years = principal × (1+r)<sup>t</sup>.</div></div>
+      <div class="real-card"><div class="icon">🔬</div><div class="ttl">Scientific notation</div><div class="desc">Avogadro's number: 6.022 × 10<sup>23</sup>. Exponents handle extreme scale.</div></div>
+    </div>
+
+    <!-- SECTION 1: WHAT ARE EXPONENTS -->
+    <section class="content-section" id="what-are-exponents">
+      <span class="eyebrow">The foundation</span>
+      <h2>What are exponents?</h2>
+      <p>An <span class="term" data-tip="The small raised number showing how many times to multiply the base by itself">exponent</span> (also called a <em>power</em> or <em>index</em>) tells you how many times the <span class="term" data-tip="The number being multiplied by itself. In 2³, the base is 2">base</span> is multiplied by itself.</p>
+
+      <div class="expand-box">
+        <div class="expand-row"><span class="exp-expr">2<sup>3</sup></span><span style="color:var(--muted)"> = </span><span>2 × 2 × 2</span><span style="color:var(--muted)"> = </span><span class="exp-result">8</span></div>
+        <div class="expand-row"><span class="exp-expr">5<sup>4</sup></span><span style="color:var(--muted)"> = </span><span>5 × 5 × 5 × 5</span><span style="color:var(--muted)"> = </span><span class="exp-result">625</span></div>
+        <div class="expand-row"><span class="exp-expr">x<sup>1</sup></span><span style="color:var(--muted)"> = </span><span>x (one copy of x)</span><span style="color:var(--muted)"> = </span><span class="exp-result">x</span></div>
+        <div class="expand-row"><span class="exp-expr">7<sup>0</sup></span><span style="color:var(--muted)"> = </span><span style="color:var(--muted);font-style:italic">follow the pattern: 7², 7¹, 7⁰…</span><span style="color:var(--muted)"> = </span><span class="exp-result">1</span></div>
+      </div>
+
+      <div class="think-box">
+        <span class="think-label">Think about it</span>
+        <p>Look at: 2⁴ = 16, 2³ = 8, 2² = 4, 2¹ = 2. Each step divides by 2. What does the pattern force 2⁰ to be?</p>
+      </div>
+    </section>
+
+    <!-- SECTION 2: THE 8 LAWS -->
+    <section class="content-section" id="the-8-laws">
+      <span class="eyebrow">All 8 rules</span>
+      <h2>The 8 exponent rules</h2>
+      <p>For rational functions, apply these in order. The first two rules require the <strong>same base</strong>. The others apply freely.</p>
+
+      <div class="rules-accordion">
+
+        <div class="rule-item">
+          <button class="rule-trigger"><div class="rt-left"><span class="rt-num">1</span><span class="rt-name">Product Rule</span><span class="rt-formula">aᵐ × aⁿ = aᵐ⁺ⁿ</span></div><span class="rt-icon">+</span></button>
+          <div class="rule-body">
+            <div class="rb-formula">a<sup>m</sup> × a<sup>n</sup> = a<sup>m+n</sup></div>
+            <div class="rb-example"><strong>Example:</strong> 2³ × 2⁵ = 2<sup>3+5</sup> = 2⁸ = 256</div>
+            <div class="rb-example"><strong>Note:</strong> Only works when the bases are the same.</div>
+            <div class="rb-why">Count the base factors — m from the first term, n from the second = m+n total.</div>
+            <button class="rb-try" data-jump="product">Try in Rule Explorer →</button>
+          </div>
+        </div>
+
+        <div class="rule-item">
+          <button class="rule-trigger"><div class="rt-left"><span class="rt-num">2</span><span class="rt-name">Quotient Rule</span><span class="rt-formula">aᵐ ÷ aⁿ = aᵐ⁻ⁿ</span></div><span class="rt-icon">+</span></button>
+          <div class="rule-body">
+            <div class="rb-formula">a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m−n</sup></div>
+            <div class="rb-example"><strong>Example:</strong> 3⁶ ÷ 3² = 3<sup>6−2</sup> = 3⁴ = 81</div>
+            <div class="rb-example"><strong>Note:</strong> Same base required. If m &lt; n the result is a negative exponent.</div>
+            <div class="rb-why">The n factors in the denominator cancel n from the numerator, leaving m−n.</div>
+            <button class="rb-try" data-jump="quotient">Try in Rule Explorer →</button>
+          </div>
+        </div>
+
+        <div class="rule-item">
+          <button class="rule-trigger"><div class="rt-left"><span class="rt-num">3</span><span class="rt-name">Zero Exponent</span><span class="rt-formula">a⁰ = 1</span></div><span class="rt-icon">+</span></button>
+          <div class="rule-body">
+            <div class="rb-formula">a<sup>0</sup> = 1 &nbsp;(a ≠ 0)</div>
+            <div class="rb-example"><strong>Example:</strong> 7⁰ = 1 &nbsp;·&nbsp; x⁰ = 1 &nbsp;·&nbsp; (−3)⁰ = 1</div>
+            <div class="rb-example"><strong>Note:</strong> 0⁰ is undefined — this rule only applies when a ≠ 0.</div>
+            <div class="rb-why">aᵐ ÷ aᵐ = a⁰. Anything divided by itself equals 1. So a⁰ = 1.</div>
+            <button class="rb-try" data-jump="zero">Try in Rule Explorer →</button>
+          </div>
+        </div>
+
+        <div class="rule-item">
+          <button class="rule-trigger"><div class="rt-left"><span class="rt-num">4</span><span class="rt-name">Negative Exponent</span><span class="rt-formula">a⁻ᵐ = 1/aᵐ</span></div><span class="rt-icon">+</span></button>
+          <div class="rule-body">
+            <div class="rb-formula">a<sup>−m</sup> = 1/a<sup>m</sup></div>
+            <div class="rb-example"><strong>Example:</strong> 2⁻³ = 1/2³ = 1/8 = 0.125</div>
+            <div class="rb-example"><strong>Note:</strong> A negative exponent means reciprocal — not a negative result.</div>
+            <div class="rb-why">a⁰ ÷ aᵐ = a⁻ᵐ. Since a⁰ = 1, we get a⁻ᵐ = 1/aᵐ.</div>
+            <button class="rb-try" data-jump="negative">Try in Rule Explorer →</button>
+          </div>
+        </div>
+
+        <div class="rule-item">
+          <button class="rule-trigger"><div class="rt-left"><span class="rt-num">5</span><span class="rt-name">Power of a Power</span><span class="rt-formula">(aᵐ)ⁿ = aᵐⁿ</span></div><span class="rt-icon">+</span></button>
+          <div class="rule-body">
+            <div class="rb-formula">(a<sup>m</sup>)<sup>n</sup> = a<sup>mn</sup></div>
+            <div class="rb-example"><strong>Example:</strong> (2³)⁴ = 2<sup>3×4</sup> = 2¹² = 4096</div>
+            <div class="rb-example"><strong>Common mistake:</strong> (2³)⁴ ≠ 2⁷ — multiply the exponents, don't add them.</div>
+            <div class="rb-why">n copies of aᵐ each give m factors of a — m × n factors total.</div>
+            <button class="rb-try" data-jump="power">Try in Rule Explorer →</button>
+          </div>
+        </div>
+
+        <div class="rule-item">
+          <button class="rule-trigger"><div class="rt-left"><span class="rt-num">6</span><span class="rt-name">Power of a Product</span><span class="rt-formula">(ab)ᵐ = aᵐbᵐ</span></div><span class="rt-icon">+</span></button>
+          <div class="rule-body">
+            <div class="rb-formula">(ab)<sup>m</sup> = a<sup>m</sup>b<sup>m</sup></div>
+            <div class="rb-example"><strong>Example:</strong> (2x)³ = 2³ × x³ = 8x³</div>
+            <div class="rb-example"><strong>Example:</strong> (3xy)² = 3² × x² × y² = 9x²y²</div>
+            <div class="rb-why">The exponent distributes to each factor inside the brackets.</div>
+            <button class="rb-try" data-jump="product-power">Try in Rule Explorer →</button>
+          </div>
+        </div>
+
+        <div class="rule-item">
+          <button class="rule-trigger"><div class="rt-left"><span class="rt-num">7</span><span class="rt-name">Power of a Quotient</span><span class="rt-formula">(a/b)ᵐ = aᵐ/bᵐ</span></div><span class="rt-icon">+</span></button>
+          <div class="rule-body">
+            <div class="rb-formula">(a/b)<sup>m</sup> = a<sup>m</sup>/b<sup>m</sup></div>
+            <div class="rb-example"><strong>Example:</strong> (x/y)³ = x³/y³</div>
+            <div class="rb-example"><strong>Example:</strong> (2/3)⁴ = 2⁴/3⁴ = 16/81</div>
+            <div class="rb-why">Same as Power of a Product — numerators group together, denominators group together.</div>
+            <button class="rb-try" data-jump="quotient-power">Try in Rule Explorer →</button>
+          </div>
+        </div>
+
+        <div class="rule-item" style="border-top:2px dashed var(--border)">
+          <button class="rule-trigger"><div class="rt-left"><span class="rt-num" style="opacity:.4">+</span><span class="rt-name">Fractional Exponent</span><span class="rt-formula">aᵐ/ⁿ = ⁿ√(aᵐ)</span></div><span class="rt-icon">+</span></button>
+          <div class="rule-body">
+            <div class="rb-formula">a<sup>m/n</sup> = <sup>n</sup>√(a<sup>m</sup>)</div>
+            <div class="rb-example"><strong>Example:</strong> 8<sup>2/3</sup> = ³√(8²) = ³√64 = 4</div>
+            <div class="rb-example"><strong>Special case:</strong> a<sup>1/n</sup> = <sup>n</sup>√a &nbsp;·&nbsp; Example: 16<sup>1/2</sup> = √16 = 4</div>
+            <div class="rb-why">Denominator → root index, numerator → power. Fractional exponents and radicals are two ways of writing the same thing.</div>
+            <button class="rb-try" data-jump="fractional">Try in Rule Explorer →</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: RULE EXPLORER -->
+    <section class="content-section" id="rule-explorer">
+      <span class="eyebrow">Interactive</span>
+      <h2>Rule Explorer — click a rule, see why it works</h2>
+      <p style="color:var(--muted);margin-bottom:20px">Select any rule. Adjust the base and exponents. The step-by-step expansion shows the logic, not just the answer.</p>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px">
+        <div class="rule-tabs" id="rule-tabs">
+          <button class="rule-tab active" data-rule="product"><span class="tab-formula">aᵐ·aⁿ</span><span class="tab-name">Product</span></button>
+          <button class="rule-tab" data-rule="quotient"><span class="tab-formula">aᵐ÷aⁿ</span><span class="tab-name">Quotient</span></button>
+          <button class="rule-tab" data-rule="zero"><span class="tab-formula">a⁰=1</span><span class="tab-name">Zero</span></button>
+          <button class="rule-tab" data-rule="fractional"><span class="tab-formula">aᵐ/ⁿ</span><span class="tab-name">Fractional</span></button>
+          <button class="rule-tab" data-rule="negative"><span class="tab-formula">a⁻ᵐ</span><span class="tab-name">Negative</span></button>
+          <button class="rule-tab" data-rule="power"><span class="tab-formula">(aᵐ)ⁿ</span><span class="tab-name">Power²</span></button>
+          <button class="rule-tab" data-rule="product-power"><span class="tab-formula">(ab)ᵐ</span><span class="tab-name">Prod^n</span></button>
+          <button class="rule-tab" data-rule="quotient-power"><span class="tab-formula">(a/b)ᵐ</span><span class="tab-name">Quot^n</span></button>
+        </div>
+        <div class="demo-area" id="demo-area"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="mode-section">
+      <div class="cta-band">
+        <div class="cta-inner">
+          <div class="cta-text">
+            <h3>Want to master exponents?</h3>
+            <p>One-on-one with a Cuemath tutor who builds from intuition — not just rules.</p>
+          </div>
+          <div class="cta-buttons">
+            <button class="cta-primary" id="cta-primary-btn">Try Cuemath →</button>
+            <a class="cta-secondary" href="../video-library.html">Explore more concepts</a>
+          </div>
+        </div>
+        <img class="cta-img" src="cta-1on1.png" alt="1:1 online class with Cuemath tutor">
+      </div>
+    </section>
+
+    <!-- SECTION 5: PRACTICE -->
+    <section class="content-section" id="practice">
+      <span class="eyebrow">Practice</span>
+      <h2>Five questions — apply the right rule</h2>
+      <p style="color:var(--muted);margin-bottom:20px">Each question uses a different exponent rule. Use the hint if you need to identify which one.</p>
+      <div class="practice-card">
+        <div class="practice-header">
+          <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
+          <div class="q-counter" id="q-counter">Question 1 of 5</div>
+        </div>
+        <div id="prac-stage">
+          <div class="practice-q" id="prac-q"></div>
+          <div class="practice-options" id="prac-opts"></div>
+          <div style="margin:4px 0 6px">
+            <button class="phint-btn" id="phint-btn">Need a hint?</button>
+            <div class="phint-text" id="phint-text"></div>
+          </div>
+          <div class="practice-fb" id="prac-fb"></div>
+        </div>
+        <div class="completion" id="prac-done">
+          <div style="font-size:52px;margin-bottom:8px" id="done-emoji">🎉</div>
+          <div class="score" id="done-score"></div>
+          <div class="msg" id="done-msg"></div>
+        </div>
+        <div class="practice-footer">
+          <button class="next-btn" id="next-btn">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: WORKSHEET -->
+    <section class="content-section" id="worksheet">
+      <span class="eyebrow">Free resource</span>
+      <h2>Downloadable worksheet</h2>
+      <p style="color:var(--muted);margin-bottom:20px">Printable practice problems covering all 8 exponent rules — ideal for homework or classroom use.</p>
+      <div class="worksheet-card">
+        <div class="ws-icon">📄</div>
+        <div class="ws-text">
+          <h3>Laws of Exponents — Worksheet</h3>
+          <p>25 practice problems · All 8 rules covered · Grades 7–9 · PDF, free to print</p>
+        </div>
+        <a class="ws-btn" href="exponent-rules-worksheet.pdf" download="Cuemath-Exponent-Rules-Worksheet.pdf">Download PDF ↓</a>
+      </div>
+    </section>
+
+    <!-- SECTION 7: FAQ -->
+    <section class="content-section" id="faq">
+      <span class="eyebrow">FAQ</span>
+      <h2>Frequently asked questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q">What are the 8 laws of exponents?<span class="icon">+</span></button>
+        <div class="faq-a">The 8 laws are: (1) Product — aᵐ × aⁿ = aᵐ⁺ⁿ, (2) Quotient — aᵐ ÷ aⁿ = aᵐ⁻ⁿ, (3) Zero — a⁰ = 1, (4) Identity — a¹ = a, (5) Negative — a⁻ᵐ = 1/aᵐ, (6) Power of a power — (aᵐ)ⁿ = aᵐⁿ, (7) Power of a product — (ab)ᵐ = aᵐbᵐ, (8) Power of a quotient — (a/b)ᵐ = aᵐ/bᵐ.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Why does any number to the power 0 equal 1?<span class="icon">+</span></button>
+        <div class="faq-a">Follow the pattern: 2³ = 8, 2² = 4, 2¹ = 2. Each step divides by 2. Continuing: 2⁰ = 2 ÷ 2 = 1. Also: aᵐ ÷ aᵐ = aᵐ⁻ᵐ = a⁰. But anything divided by itself = 1, so a⁰ = 1. Note: 0⁰ is undefined — this rule only applies when a ≠ 0.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">What is the fractional exponent rule?<span class="icon">+</span></button>
+        <div class="faq-a">a<sup>m/n</sup> = <sup>n</sup>√(a<sup>m</sup>). The denominator of the fraction becomes the root index; the numerator becomes the power. Example: 8<sup>2/3</sup> = ³√(8²) = ³√64 = 4. When the numerator is 1: a<sup>1/n</sup> = <sup>n</sup>√a. Example: 16<sup>1/2</sup> = √16 = 4. Fractional exponents and radicals are two ways of writing the same thing.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">What does a negative exponent mean?<span class="icon">+</span></button>
+        <div class="faq-a">A negative exponent means take the reciprocal: a⁻ᵐ = 1/aᵐ. Example: 2⁻³ = 1/2³ = 1/8. The negative exponent does not mean the result is negative — it means "divide by" instead of "multiply by". So 2⁻² = 0.25, which is positive.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Can the product rule be applied when bases are different?<span class="icon">+</span></button>
+        <div class="faq-a">No. The product rule (aᵐ × aⁿ = aᵐ⁺ⁿ) only works when the bases are the same. 2³ × 3⁴ cannot be simplified by adding exponents — these must be calculated separately: 8 × 81 = 648.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">What is the difference between (aᵐ)ⁿ and aᵐ × aⁿ?<span class="icon">+</span></button>
+        <div class="faq-a">(aᵐ)ⁿ is the power of a power — you multiply the exponents: (a²)³ = a⁶. aᵐ × aⁿ is the product rule — you add the exponents: a² × a³ = a⁵. A common mistake is confusing which operation applies. If the exponent is outside brackets, multiply; if it's a multiplication, add.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Can the exponent be a fraction?<span class="icon">+</span></button>
+        <div class="faq-a">Yes. A fractional exponent aᵐ/ⁿ = ⁿ√(aᵐ) — the denominator of the fraction becomes the root. Example: 8^(1/3) = ³√8 = 2. And 8^(2/3) = ³√(8²) = ³√64 = 4. This is called the fractional exponent rule, sometimes listed as a 9th law.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">How do I know which exponent rule to apply?<span class="icon">+</span></button>
+        <div class="faq-a">Ask these questions in order: (1) Are the bases the same? → Product or Quotient rule. (2) Is there a power outside brackets? → Power of Power, Product, or Quotient. (3) Is the exponent 0? → Zero rule. (4) Is the exponent 1? → Identity rule. (5) Is the exponent negative? → Negative rule. Most complex expressions need two or more rules applied in sequence.</div>
+      </div>
+    </section>
+
+    <!-- RELATED -->
+    <section class="content-section">
+      <span class="eyebrow">Related videos</span>
+      <h2>Watch it in action</h2>
+      <div class="video-list">
+        <a class="video-card" href="https://www.youtube.com/watch?v=9Fx6H-Qua1c" target="_blank" rel="noopener">
+          <div class="vthumb"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div><div class="vtitle">a⁰ = 1 … But why? Let's find out!</div><div class="vdesc">Concept · Grades 6–8 · The pattern proof for the zero exponent rule</div></div>
+          <span style="font-size:16px;color:var(--muted)">→</span>
+        </a>
+        <a class="video-card" href="https://www.youtube.com/watch?v=HXsQX9S7FiU" target="_blank" rel="noopener">
+          <div class="vthumb"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div><div class="vtitle">Amazing Exponent Manipulation!</div><div class="vdesc">Concept · Grades 6–8 · Combining multiple rules elegantly</div></div>
+          <span style="font-size:16px;color:var(--muted)">→</span>
+        </a>
+        <a class="video-card" href="https://www.youtube.com/watch?v=BHz_hvAjkTc" target="_blank" rel="noopener">
+          <div class="vthumb"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div><div class="vtitle">A hard exponent problem with an elegant solution</div><div class="vdesc">Olympiad · Grades 6–8</div></div>
+          <span style="font-size:16px;color:var(--muted)">→</span>
+        </a>
+      </div>
+
+      <div style="margin-top:40px">
+        <h2>Related concepts</h2>
+        <div class="related-grid">
+          <div class="related-col"><div class="col-label">Builds on</div><ul><li>Multiplication & division</li><li>Order of operations</li><li>Factors and multiples</li></ul></div>
+          <div class="related-col"><div class="col-label">Operations</div><ul><li>Scientific notation</li><li>Simplifying expressions</li><li>Fractional exponents</li></ul></div>
+          <div class="related-col"><div class="col-label">Bridges to</div><ul><li>Logarithms</li><li>Exponential growth</li><li>Polynomial expressions</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- /main -->
+</div><!-- /page-grid -->
+
+<footer>
+  <div class="inner">
+    <div class="links">
+      <a href="../video-library.html">Math Concepts</a>
+      <a href="https://www.cuemath.com/about-us/">About</a>
+      <a href="https://www.cuemath.com/en-us/">Try a Free Class</a>
+    </div>
+    <div class="copyright">© 2026 Cuemath</div>
+  </div>
+</footer>
+
+<!-- CTA MODAL -->
+<div class="modal-overlay" id="cta-modal">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close">×</button>
+    <div class="modal-progress">
+      <div class="mp-dot done" id="mp1"></div>
+      <div class="mp-dot" id="mp2"></div>
+      <div class="mp-dot" id="mp3"></div>
+    </div>
+
+    <!-- STEP 1: What are you looking for? -->
+    <div class="modal-step active" id="mstep-1">
+      <div class="modal-title">What are you looking for?</div>
+      <div class="modal-sub">Choose the option that fits you best</div>
+      <div class="quiz-options">
+        <button class="quiz-opt" id="q1-classes">
+          <span class="qo-emoji">🎓</span>
+          <div><span class="qo-title">1:1 classes with a Cuemath tutor</span><span class="qo-desc">Personalised sessions, live tutor, your pace</span></div>
+        </button>
+        <button class="quiz-opt" id="q1-explore">
+          <span class="qo-emoji">📚</span>
+          <div><span class="qo-title">Explore more concepts</span><span class="qo-desc">Browse the free concept library</span></div>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Who are you? -->
+    <div class="modal-step" id="mstep-2">
+      <button class="step-back" id="back-to-1">← Back</button>
+      <div class="modal-title">Who are you?</div>
+      <div class="modal-sub">So we can personalise your experience</div>
+      <div class="quiz-options">
+        <button class="quiz-opt" id="q2-student"><span class="qo-emoji">🧑‍🎓</span><div><span class="qo-title">Student</span><span class="qo-desc">I'm learning maths</span></div></button>
+        <button class="quiz-opt" id="q2-parent"><span class="qo-emoji">👨‍👩‍👧</span><div><span class="qo-title">Parent</span><span class="qo-desc">I'm looking for classes for my child</span></div></button>
+        <button class="quiz-opt" id="q2-teacher"><span class="qo-emoji">📐</span><div><span class="qo-title">Teacher / Tutor</span><span class="qo-desc">I teach or want to explore content</span></div></button>
+      </div>
+    </div>
+
+    <!-- STEP 3A: Student details -->
+    <div class="modal-step" id="mstep-3a">
+      <button class="step-back" id="back-to-2a">← Back</button>
+      <div class="modal-title">Almost done!</div>
+      <div class="modal-sub">We'll set up your free trial</div>
+      <div class="form-group"><label class="form-label">Your grade</label>
+        <select class="form-select"><option value="">Select grade</option><option>Grade 3</option><option>Grade 4</option><option>Grade 5</option><option>Grade 6</option><option>Grade 7</option><option>Grade 8</option><option>Grade 9</option><option>Grade 10</option><option>Grade 11</option><option>Grade 12</option></select>
+      </div>
+      <div class="form-group"><label class="form-label">How do you feel about maths?</label>
+        <div class="feelings-row">
+          <button class="feeling-btn">😰 Anxious</button>
+          <button class="feeling-btn">😊 It's okay</button>
+          <button class="feeling-btn">🔥 I love it!</button>
+        </div>
+      </div>
+      <div class="form-group"><label class="form-label">Your name</label><input class="form-input" type="text" placeholder="First name"></div>
+      <div class="form-group"><label class="form-label">Parent's phone</label><input class="form-input" type="tel" placeholder="+91 98765 43210"><p class="form-note">We'll call your parents to schedule a free trial — no spam, promise.</p></div>
+      <button class="form-submit" id="submit-student">Book my free trial →</button>
+    </div>
+
+    <!-- STEP 3B: Parent details -->
+    <div class="modal-step" id="mstep-3b">
+      <button class="step-back" id="back-to-2b">← Back</button>
+      <div class="modal-title">Book a free trial</div>
+      <div class="modal-sub">We'll set up a personalised session for your child</div>
+      <div class="form-group"><label class="form-label">Your name</label><input class="form-input" type="text" placeholder="Parent's name"></div>
+      <div class="form-group"><label class="form-label">Child's name</label><input class="form-input" type="text" placeholder="Child's first name"></div>
+      <div class="form-group"><label class="form-label">Child's grade</label>
+        <select class="form-select"><option value="">Select grade</option><option>Grade 3</option><option>Grade 4</option><option>Grade 5</option><option>Grade 6</option><option>Grade 7</option><option>Grade 8</option><option>Grade 9</option><option>Grade 10</option><option>Grade 11</option><option>Grade 12</option></select>
+      </div>
+      <div class="form-group"><label class="form-label">Phone number</label><input class="form-input" type="tel" placeholder="+91 98765 43210"></div>
+      <div class="form-group"><label class="form-label">Email address</label><input class="form-input" type="email" placeholder="you@email.com"></div>
+      <button class="form-submit" id="submit-parent">Book free trial →</button>
+    </div>
+
+    <!-- STEP 3C: Teacher -->
+    <div class="modal-step" id="mstep-3c">
+      <button class="step-back" id="back-to-2c">← Back</button>
+      <div class="modal-title">Welcome!</div>
+      <div class="modal-sub" style="margin-bottom:24px">Choose what fits you</div>
+      <div class="teacher-btns">
+        <a class="teacher-btn primary" href="https://www.cuemath.com/teach/" target="_blank" rel="noopener">Become a Cuemath tutor →</a>
+        <a class="teacher-btn secondary" href="../video-library.html">Explore more content</a>
+      </div>
+    </div>
+
+    <!-- DONE -->
+    <div class="modal-step" id="mstep-done">
+      <div style="text-align:center;padding:24px 0">
+        <div style="font-size:52px;margin-bottom:12px">🎉</div>
+        <div class="modal-title">You're all set!</div>
+        <div class="modal-sub" style="margin-bottom:0">Our team will be in touch shortly to schedule your first free session. Check WhatsApp too!</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // ===== RULE EXPLORER =====
+  const sim = { rule: 'product', a: 2, b: 3, m: 3, n: 2 };
+  function sup(n) { return `<sup>${n}</sup>`; }
+  function pow(a, e) { try { return Math.pow(a, e); } catch(x) { return '?'; } }
+  function repeat(base, times) { return Array(Math.max(1,times)).fill(base).join(' × '); }
+
+  function renderDemo() {
+    const { rule, a, b, m, n } = sim;
+    let formula = '', stepsHTML = '', inputsHTML = '';
+    if (rule === 'product') {
+      formula = `a${sup('m')} × a${sup('n')} = a${sup('m+n')}`;
+      inputsHTML = mkInputs(['a','m','n']);
+      stepsHTML = step(`${a}${sup(m)} × ${a}${sup(n)}`) + step(`(${repeat(a,m)}) × (${repeat(a,n)})`, `← expand`) + step(`${repeat(a,m+n)}`, `← ${m}+${n} = ${m+n} total`) + res(`${a}${sup(m+n)} = ${pow(a,m+n)}`) + why(`Counting ${a}s: ${m} from the first, ${n} from the second — ${m+n} total.`);
+    } else if (rule === 'quotient') {
+      const qm = Math.max(m, n+1);
+      formula = `a${sup('m')} ÷ a${sup('n')} = a${sup('m−n')}`;
+      inputsHTML = mkInputs(['a','m','n']);
+      stepsHTML = step(`${a}${sup(qm)} ÷ ${a}${sup(n)}`) + step(`${repeat(a,qm)} ÷ ${repeat(a,n)}`,`← expand`) + step(`${repeat(a,qm-n)||'1'}`, `← cancel ${n} pairs`) + res(`${a}${sup(qm-n)} = ${pow(a,qm-n)}`) + why(`The ${n} factors in the denominator cancel ${n} from the numerator.`);
+    } else if (rule === 'zero') {
+      formula = `a${sup('0')} = 1 &nbsp;(a ≠ 0)`;
+      inputsHTML = mkInputs(['a']);
+      stepsHTML = step(`${a}${sup(3)} = ${pow(a,3)}`) + step(`${a}${sup(2)} = ${pow(a,2)}`,`÷ ${a}`) + step(`${a}${sup(1)} = ${a}`,`÷ ${a}`) + res(`${a}${sup(0)} = 1`,`÷ ${a} — pattern forces this`) + why(`a⁰ = aᵐ ÷ aᵐ = 1. Also: anything divided by itself = 1.`);
+    } else if (rule === 'identity') {
+      formula = `a${sup('1')} = a`;
+      inputsHTML = mkInputs(['a']);
+      stepsHTML = step(`${a}${sup(1)}`) + step(`${a}`,`← one copy of ${a}`) + res(`${a}`) + why(`a¹ means "multiply ${a} by itself once." One copy of anything is itself.`);
+    } else if (rule === 'negative') {
+      formula = `a${sup('−m')} = 1/a${sup('m')}`;
+      inputsHTML = mkInputs(['a','m']);
+      stepsHTML = step(`${a}${sup(0)} = 1`) + step(`${a}${sup(-1)} = 1/${a}`,`÷ ${a}`) + step(`${a}${sup(-2)} = 1/${pow(a,2)}`,`÷ ${a}`) + res(`${a}${sup(-m)} = 1/${a}${sup(m)} = 1/${pow(a,m)}`) + why(`a⁰ ÷ aᵐ = a⁻ᵐ. But a⁰ = 1, so a⁻ᵐ = 1/aᵐ.`);
+    } else if (rule === 'power') {
+      formula = `(a${sup('m')})${sup('n')} = a${sup('mn')}`;
+      inputsHTML = mkInputs(['a','m','n']);
+      const prod = m*n;
+      stepsHTML = step(`(${a}${sup(m)})${sup(n)}`) + step(`${a}${sup(m)} × ${a}${sup(m)} × … (${n} times)`) + step(`${a}${sup(m+'×'+n)}`) + res(`${a}${sup(prod)} = ${pow(a,prod)}`) + why(`${n} copies of ${a}${sup(m)}, each with ${m} factors — ${m}×${n} = ${prod} total.`);
+    } else if (rule === 'product-power') {
+      formula = `(a·b)${sup('m')} = a${sup('m')}·b${sup('m')}`;
+      inputsHTML = mkInputs(['a','b','m']);
+      stepsHTML = step(`(${a}×${b})${sup(m)} = ${a*b}${sup(m)}`) + step(`(${repeat(a,m)}) × (${repeat(b,m)})`,`← group like terms`) + res(`${a}${sup(m)} × ${b}${sup(m)} = ${pow(a,m)} × ${pow(b,m)} = ${pow(a*b,m)}`) + why(`Multiplication is commutative — regroup ${a}s together and ${b}s together.`);
+    } else if (rule === 'quotient-power') {
+      formula = `(a/b)${sup('m')} = a${sup('m')}/b${sup('m')}`;
+      inputsHTML = mkInputs(['a','b','m']);
+      stepsHTML = step(`(${a}/${b})${sup(m)}`) + step(`(${a}/${b}) × (${a}/${b}) … (${m} times)`) + step(`${repeat(a,m)} ÷ ${repeat(b,m)}`) + res(`${a}${sup(m)}/${b}${sup(m)} = ${pow(a,m)}/${pow(b,m)}`) + why(`Numerators group together; denominators group together.`);
+    } else if (rule === 'fractional') {
+      formula = `a${sup('m/n')} = <sup>n</sup>√(a${sup('m')})`;
+      inputsHTML = mkInputs(['a','m','n']);
+      const inner = pow(a, m);
+      const result = Math.pow(a, m/n);
+      const isInt = Number.isInteger(result);
+      stepsHTML = step(`${a}${sup(m+'/'+n)}`) + step(`<sup>${n}</sup>√(${a}${sup(m)})`, `← denominator (${n}) becomes the root`) + step(`<sup>${n}</sup>√${inner}`, `← ${a}${sup(m)} = ${inner}`) + res(`${isInt ? result : result.toFixed(2)}${!isInt?' (approx)':''}`) + why(`Denominator → root index, numerator → power. a^(1/n) = nth root of a.`);
+    }
+    document.getElementById('demo-area').innerHTML = `<div class="demo-formula">${formula}</div><div class="demo-inputs" id="demo-inputs">${inputsHTML}</div><div class="demo-steps">${stepsHTML}</div>`;
+    attachSteppers();
+  }
+
+  function step(expr, note='') { return `<div class="step-line expansion"><span class="step-expr">${expr}</span>${note?`<span class="step-note">${note}</span>`:''}</div>`; }
+  function res(expr, note='') { return `<div class="step-line result"><span class="step-eq">=</span><span class="step-expr">${expr}</span>${note?`<span class="step-note">${note}</span>`:''}</div>`; }
+  function why(text) { return `<div class="step-line why">${text}</div>`; }
+
+  function mkInputs(fields) {
+    const labels = { a:'Base (a)', b:'Base (b)', m:'Exp (m)', n:'Exp (n)' };
+    const mins = { a:2, b:2, m:1, n:1 }, maxs = { a:6, b:6, m:6, n:5 };
+    return fields.map(f => `<div class="input-group"><div class="input-label">${labels[f]}</div><div class="stepper"><button data-field="${f}" data-dir="-1">−</button><input type="number" class="stepper-input" id="val-${f}" value="${sim[f]}" min="${mins[f]||1}" max="${maxs[f]||6}"><button data-field="${f}" data-dir="1">+</button></div></div>`).join('');
+  }
+  function attachSteppers() {
+    const mins = {a:2,b:2,m:1,n:1}, maxs = {a:6,b:6,m:6,n:5};
+    document.querySelectorAll('#demo-inputs .stepper button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const f = btn.dataset.field, dir = parseInt(btn.dataset.dir);
+        sim[f] = Math.min(maxs[f], Math.max(mins[f], sim[f]+dir));
+        renderDemo();
+      });
+    });
+    document.querySelectorAll('#demo-inputs .stepper-input').forEach(inp => {
+      inp.addEventListener('change', () => {
+        const f = inp.id.replace('val-', '');
+        sim[f] = Math.min(maxs[f]||6, Math.max(mins[f]||1, parseInt(inp.value)||1));
+        renderDemo();
+      });
+      inp.addEventListener('keydown', e => { if(e.key==='Enter') inp.blur(); });
+    });
+  }
+  document.querySelectorAll('.rule-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.rule-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active'); sim.rule = tab.dataset.rule;
+      if (sim.rule === 'quotient') { sim.m=5; sim.n=2; }
+      else if (sim.rule === 'fractional') { sim.a=8; sim.m=2; sim.n=3; }
+      else { sim.m=3; sim.n=2; }
+      renderDemo();
+    });
+  });
+  renderDemo();
+
+  // ===== MOBILE TOC =====
+  const mtocBtn = document.getElementById('mobile-toc-btn');
+  const mtocBody = document.getElementById('mobile-toc-body');
+  if (mtocBtn) {
+    mtocBtn.addEventListener('click', () => {
+      const open = mtocBody.classList.toggle('open');
+      document.getElementById('mtoc-icon').textContent = open ? '↑' : '↓';
+    });
+    mtocBody.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => { mtocBody.classList.remove('open'); document.getElementById('mtoc-icon').textContent = '↓'; });
+    });
+  }
+
+  // ===== RULES ACCORDION =====
+  document.querySelectorAll('.rule-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const body = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      document.querySelectorAll('.rule-trigger.open').forEach(b => {
+        b.classList.remove('open');
+        b.nextElementSibling.classList.remove('show');
+      });
+      if (!isOpen) { btn.classList.add('open'); body.classList.add('show'); }
+    });
+  });
+  document.querySelectorAll('.rb-try').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const ruleId = btn.dataset.jump;
+      document.querySelectorAll('.rule-tab').forEach(t => t.classList.remove('active'));
+      const tab = document.querySelector(`.rule-tab[data-rule="${ruleId}"]`);
+      if (tab) {
+        tab.classList.add('active'); sim.rule = ruleId;
+        if (ruleId === 'fractional') { sim.a=8; sim.m=2; sim.n=3; }
+        else if (ruleId === 'quotient') { sim.m=5; sim.n=2; }
+        else { sim.m=3; sim.n=2; }
+        renderDemo();
+      }
+      document.getElementById('rule-explorer').scrollIntoView({ behavior:'smooth' });
+    });
+  });
+
+  // ===== TOC SCROLL SPY =====
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  const sections = Array.from(tocLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        tocLinks.forEach(a => a.classList.remove('active'));
+        const match = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+        if (match) match.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => obs.observe(s));
+
+  // ===== FAQ =====
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const ans = btn.nextElementSibling;
+      const open = btn.classList.contains('open');
+      document.querySelectorAll('.faq-q.open').forEach(b => { b.classList.remove('open'); b.nextElementSibling.classList.remove('show'); });
+      if (!open) { btn.classList.add('open'); ans.classList.add('show'); }
+    });
+  });
+
+  // ===== TOOLTIPS =====
+  document.querySelectorAll('.term').forEach(t => {
+    t.addEventListener('click', e => {
+      e.stopPropagation();
+      document.querySelectorAll('.term.active').forEach(o => { if(o!==t) o.classList.remove('active'); });
+      t.classList.toggle('active');
+    });
+  });
+  document.addEventListener('click', () => document.querySelectorAll('.term.active').forEach(t => t.classList.remove('active')));
+
+  // ===== MODAL — quiz flow =====
+  function showModalStep(id) {
+    document.querySelectorAll('.modal-step').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+  function updateDots(n) {
+    ['mp1','mp2','mp3'].forEach((id,i) => document.getElementById(id).classList.toggle('done', i < n));
+  }
+  function openModal() { document.getElementById('cta-modal').classList.add('open'); showModalStep('mstep-1'); updateDots(1); }
+  function closeModal() { document.getElementById('cta-modal').classList.remove('open'); }
+
+  document.getElementById('cta-primary-btn').addEventListener('click', openModal);
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('cta-modal').addEventListener('click', e => { if(e.target===e.currentTarget) closeModal(); });
+
+  // Step 1
+  document.getElementById('q1-classes').addEventListener('click', () => { showModalStep('mstep-2'); updateDots(2); });
+  document.getElementById('q1-explore').addEventListener('click', () => { closeModal(); window.location.href='../video-library.html'; });
+  // Step 2
+  document.getElementById('q2-student').addEventListener('click', () => { showModalStep('mstep-3a'); updateDots(3); });
+  document.getElementById('q2-parent').addEventListener('click', () => { showModalStep('mstep-3b'); updateDots(3); });
+  document.getElementById('q2-teacher').addEventListener('click', () => { showModalStep('mstep-3c'); updateDots(3); });
+  // Back
+  document.getElementById('back-to-1').addEventListener('click', () => { showModalStep('mstep-1'); updateDots(1); });
+  document.getElementById('back-to-2a').addEventListener('click', () => { showModalStep('mstep-2'); updateDots(2); });
+  document.getElementById('back-to-2b').addEventListener('click', () => { showModalStep('mstep-2'); updateDots(2); });
+  document.getElementById('back-to-2c').addEventListener('click', () => { showModalStep('mstep-2'); updateDots(2); });
+  // Submit
+  document.getElementById('submit-student').addEventListener('click', () => showModalStep('mstep-done'));
+  document.getElementById('submit-parent').addEventListener('click', () => showModalStep('mstep-done'));
+  // Feeling buttons
+  document.querySelectorAll('.feeling-btn').forEach(btn => {
+    btn.addEventListener('click', () => { document.querySelectorAll('.feeling-btn').forEach(b => b.classList.remove('selected')); btn.classList.add('selected'); });
+  });
+
+  // ===== PRACTICE =====
+  const questions = [
+    { q:'Simplify: 3⁴ × 3⁵', options:['3⁹','3²⁰','9⁹','3⁴⁵'], correct:0, hint:'Same base → Product rule: add the exponents.', fb:{r:'✓ Right — 3⁴ × 3⁵ = 3⁴⁺⁵ = 3⁹.',w:'✗ Product rule with same base: add exponents. 3⁴ × 3⁵ = 3⁹.'} },
+    { q:'Simplify: 27^(1/3)', options:['3','9','81','1/27'], correct:0, hint:'Fractional exponent: a^(1/n) = nth root of a. What is the cube root of 27?', fb:{r:'✓ Right — 27^(1/3) = ³√27 = 3.',w:'✗ a^(1/n) = nth root of a. 27^(1/3) = ³√27 = 3.'} },
+    { q:'Simplify: (5³)⁴', options:['5¹²','5⁷','5³⁴','20¹²'], correct:0, hint:'Power of a power: multiply the exponents.', fb:{r:'✓ Right — (5³)⁴ = 5³×⁴ = 5¹².',w:'✗ Power of a power: multiply exponents. (5³)⁴ = 5¹².'} },
+    { q:'Simplify: 2⁸ ÷ 2³', options:['2⁵','2¹¹','2²⁴','1⁵'], correct:0, hint:'Same base → Quotient rule: subtract the exponents.', fb:{r:'✓ Right — 2⁸ ÷ 2³ = 2⁸⁻³ = 2⁵ = 32.',w:'✗ Quotient rule: 2⁸ ÷ 2³ = 2⁸⁻³ = 2⁵.'} },
+    { q:'Simplify: (2x)³', options:['2x³','6x³','8x³','2³x'], correct:2, hint:'Power of a product: raise each factor to the power separately.', fb:{r:'✓ Right — (2x)³ = 2³ × x³ = 8x³.',w:'✗ Power of a product: (2x)³ = 2³ × x³ = 8x³.'} }
+  ];
+  let qi=0, score=0, answered=false;
+  const nextBtn = document.getElementById('next-btn');
+  const phintBtn = document.getElementById('phint-btn');
+  const phintText = document.getElementById('phint-text');
+  phintBtn.addEventListener('click', () => { phintText.classList.toggle('show'); phintBtn.textContent = phintText.classList.contains('show') ? 'Hide hint' : 'Need a hint?'; });
+  function renderQ() {
+    const q = questions[qi];
+    document.getElementById('q-counter').textContent = `Question ${qi+1} of ${questions.length}`;
+    document.getElementById('prog-fill').style.width = `${(qi/questions.length)*100}%`;
+    document.getElementById('prac-q').textContent = q.q;
+    const optsBox = document.getElementById('prac-opts');
+    optsBox.innerHTML = '';
+    q.options.forEach((label,i) => { const b = document.createElement('button'); b.className='option-btn'; b.textContent=label; b.addEventListener('click',()=>answer(i)); optsBox.appendChild(b); });
+    document.getElementById('prac-fb').className='practice-fb'; document.getElementById('prac-fb').textContent='';
+    phintText.textContent=q.hint; phintText.classList.remove('show'); phintBtn.textContent='Need a hint?'; phintBtn.style.display='block';
+    nextBtn.classList.remove('show'); answered=false;
+  }
+  function answer(i) {
+    if(answered) return; answered=true;
+    const q=questions[qi]; const opts=document.querySelectorAll('.option-btn'); const right=i===q.correct;
+    opts[q.correct].classList.add('correct'); if(!right) opts[i].classList.add('wrong');
+    opts.forEach(o=>o.disabled=true); phintBtn.style.display='none';
+    const fb=document.getElementById('prac-fb'); fb.classList.add('show',right?'correct':'wrong');
+    fb.textContent=right?q.fb.r:q.fb.w; if(right) score++;
+    nextBtn.textContent=qi===questions.length-1?'See score →':'Next →'; nextBtn.classList.add('show');
+  }
+  nextBtn.addEventListener('click', () => {
+    qi++;
+    if(qi>=questions.length){
+      document.getElementById('prac-stage').style.display='none'; nextBtn.style.display='none';
+      document.getElementById('prog-fill').style.width='100%';
+      document.getElementById('q-counter').textContent=`${score} of ${questions.length} correct`;
+      document.getElementById('prac-done').classList.add('show');
+      const pct=score/questions.length;
+      document.getElementById('done-emoji').textContent=pct===1?'🏆':pct>=0.8?'🎉':'👍';
+      document.getElementById('done-score').textContent=`${score} / ${questions.length}`;
+      document.getElementById('done-msg').textContent=pct===1?'Perfect. All 8 rules are yours.'
+        :pct>=0.8?'Strong. Open the Rule Explorer for the one you missed.'
+        :'Go back to the Rule Explorer and trace through each expansion once more.';
+    } else renderQ();
+  });
+  renderQ();
+</script>
+</body>
+</html>

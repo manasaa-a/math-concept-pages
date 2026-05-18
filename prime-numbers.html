@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  Concept Page — Prime Numbers (Grades 5–8)
+  Pattern: fractions-v3 / integers style
+  Simulation: Sieve of Eratosthenes — interactive 1–100 grid, step-by-step or auto
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prime Numbers — what they are and why they matter | Cuemath</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#1c1917;--ink2:#44403c;--muted:#78716c;--border:#e7e5e4;--bg:#fafaf9;--surface:#fff;--yellow:#f59e0b;--yellow-light:#fef3c7;--green:#16a34a;--green-light:#dcfce7;--red:#dc2626;--red-light:#fee2e2}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:300;line-height:1.7;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:780px;margin:0 auto;padding:0 40px}
+  h1,h2,h3{font-family:'Lora',Georgia,serif;font-weight:700;letter-spacing:-0.5px}
+  h1{font-size:clamp(28px,4vw,42px);line-height:1.2}
+  h2{font-size:clamp(22px,3vw,30px);line-height:1.3;margin-bottom:18px}
+  h3{font-size:19px;line-height:1.35;margin-bottom:8px}
+  p{margin-bottom:16px} p:last-child{margin-bottom:0}
+  em{font-style:italic} strong{font-weight:600}
+  a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow);text-underline-offset:3px}
+  .eyebrow{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:8px}
+
+  .nav{position:sticky;top:0;z-index:100;background:rgba(250,250,249,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+  .nav-inner{max-width:1200px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{font-family:'Lora',serif;font-weight:700;font-size:22px}
+  .nav-cta{background:var(--ink);color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:500}
+
+  .breadcrumb-bar{border-bottom:1px solid var(--border);padding:14px 0;font-size:13px;color:var(--muted)}
+  .breadcrumb-bar .wrap{display:flex;justify-content:space-between;align-items:center}
+  .breadcrumb a{color:var(--muted);text-decoration:none}
+  .breadcrumb a:hover{color:var(--ink)}
+  .breadcrumb .sep{margin:0 8px;opacity:.5}
+
+  /* HOOK */
+  .hook{padding:64px 0 48px}
+  .topic-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:16px}
+  .hook h1{margin-bottom:12px}
+  .hook .subtitle{color:var(--muted);font-size:14px;margin-bottom:24px}
+  .hook .lead{font-size:18px;color:var(--ink2);margin-bottom:40px;max-width:660px}
+
+  .hero-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;margin-bottom:32px}
+  .prime-display{text-align:center}
+  .prime-nums{font-family:'Lora',serif;font-size:28px;font-weight:700;line-height:1.6;color:var(--ink)}
+  .prime-nums .p{color:var(--yellow)}
+  .prime-caption{margin-top:10px;color:var(--muted);font-size:14px}
+  .factors-box{background:var(--bg);border-radius:12px;padding:20px}
+  .factor-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);font-size:15px}
+  .factor-row:last-child{border-bottom:none}
+  .factor-num{font-family:'Lora',serif;font-weight:700;font-size:20px;width:36px}
+  .factor-tag{font-size:12px;font-weight:600;padding:3px 8px;border-radius:4px}
+  .tag-prime{background:var(--yellow-light);color:var(--yellow)}
+  .tag-comp{background:var(--border);color:var(--muted)}
+
+  .real-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px}
+  .real-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px}
+  .real-card .icon{font-size:22px;margin-bottom:8px}
+  .real-card .ttl{font-weight:600;font-size:14px;margin-bottom:4px}
+  .real-card .desc{font-size:13px;color:var(--muted);line-height:1.5}
+
+  .loop-box{background:var(--yellow-light);border-left:4px solid var(--yellow);padding:18px 22px;border-radius:0 8px 8px 0;font-size:16px;color:var(--ink2)}
+
+  /* THINK ABOUT IT */
+  .think-box{background:var(--surface);border:1.5px solid var(--border);border-left:4px solid var(--ink2);border-radius:0 10px 10px 0;padding:18px 22px;margin:28px 0}
+  .think-label{display:block;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink2);margin-bottom:8px}
+  .think-box p{font-size:16px;color:var(--ink);margin:0}
+
+  /* EXPLAINER */
+  .explainer{padding:56px 0 24px;border-top:1px solid var(--border)}
+  .diagram-row{display:grid;grid-template-columns:1fr 1.2fr;gap:36px;align-items:start;padding:24px 0}
+  .diagram-row .body p{margin-bottom:12px}
+
+  /* MINI-CHECK */
+  .mini-check{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin:28px 0}
+  .mini-label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink2);margin-bottom:10px}
+  .mini-q{font-size:17px;font-weight:500;margin-bottom:16px}
+  .mini-options{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .mini-opt{background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:14px;font-family:inherit;font-size:15px;cursor:pointer;transition:all .15s;color:var(--ink);font-weight:500;text-align:center}
+  .mini-opt:hover{border-color:var(--ink2)}
+  .mini-opt.correct{background:var(--green-light);border-color:var(--green);color:var(--green);transform:scale(1.03)}
+  .mini-opt.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);animation:shake .35s ease}
+  .mini-fb{margin-top:14px;font-size:14px;padding:12px 16px;background:var(--bg);border-radius:8px;display:none}
+  .mini-fb.show{display:block}
+  .mini-fb.correct{background:var(--green-light);color:var(--green)}
+  .mini-fb.wrong{background:var(--red-light);color:var(--red)}
+  .hint-link{background:none;border:none;font-family:inherit;font-size:13px;color:var(--muted);cursor:pointer;text-decoration:underline;text-decoration-color:var(--border);margin-top:8px;display:block;padding:0}
+  .hint-link:hover{color:var(--ink2)}
+  .hint-text{font-size:14px;color:var(--ink2);background:var(--bg);padding:10px 14px;border-radius:8px;margin-top:8px;display:none}
+  .hint-text.show{display:block;animation:fadeIn .3s ease}
+
+  .insight{background:var(--yellow-light);border:1px solid #fcd34d;border-radius:12px;padding:24px 28px;margin:32px 0 8px;font-size:16px}
+
+  /* SIEVE SIMULATION */
+  .sim-section{padding:64px 0;border-top:1px solid var(--border)}
+  .sim-section .sub{color:var(--muted);margin-bottom:24px}
+  .sieve-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px}
+  .sieve-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;margin-bottom:20px}
+  .sc{
+    aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+    border-radius:7px;font-size:13px;font-weight:600;cursor:default;
+    border:1.5px solid var(--border);background:var(--bg);color:var(--ink2);
+    transition:background .3s,color .3s,border-color .3s,opacity .3s;
+    font-family:'DM Sans',sans-serif;
+  }
+  .sc.prime{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+  .sc.composite{background:var(--bg);border-color:var(--border);color:var(--border);opacity:.45;text-decoration:line-through}
+  .sc.current-prime{background:var(--ink);border-color:var(--ink);color:#fff}
+  .sc.one{opacity:.35;border-style:dashed}
+  .sieve-step-msg{background:var(--bg);border-radius:10px;padding:14px 18px;font-size:15px;color:var(--ink2);margin-bottom:16px;min-height:50px;line-height:1.5}
+  .sieve-btns{display:flex;gap:10px;flex-wrap:wrap}
+  .sieve-btn{background:var(--ink);color:#fff;border:none;border-radius:8px;padding:12px 20px;font-family:inherit;font-weight:600;font-size:14px;cursor:pointer;transition:background .15s}
+  .sieve-btn:hover{background:var(--ink2)}
+  .sieve-btn:disabled{opacity:.4;cursor:not-allowed}
+  .sieve-btn.sec{background:var(--bg);color:var(--ink);border:1.5px solid var(--border)}
+  .sieve-btn.sec:hover{border-color:var(--ink2)}
+  .sieve-legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;font-size:13px}
+  .leg-item{display:flex;align-items:center;gap:6px}
+  .leg-sq{width:16px;height:16px;border-radius:4px;border:1.5px solid var(--border)}
+
+  /* REVEAL */
+  .reveal-block{margin:24px 0}
+  .reveal-btn{background:none;border:1.5px solid var(--ink2);border-radius:8px;padding:12px 20px;font-family:inherit;font-size:15px;font-weight:500;color:var(--ink2);cursor:pointer;transition:all .15s}
+  .reveal-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .reveal-btn.opened{display:none}
+  .reveal-content{display:none;margin-top:14px}
+  .reveal-content.show{display:block;animation:fadeIn .4s ease}
+  .reveal-inner{background:var(--yellow-light);border:1px solid #fcd34d;border-radius:10px;padding:18px 22px;font-size:16px}
+
+  /* TERM */
+  .term{border-bottom:1.5px dashed var(--yellow);cursor:help;position:relative}
+  .term::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:12px;line-height:1.4;padding:8px 12px;border-radius:6px;white-space:normal;width:max-content;max-width:240px;pointer-events:none;opacity:0;transition:opacity .15s;font-family:'DM Sans',sans-serif;font-style:normal;font-weight:400;z-index:10;text-align:center}
+  .term:hover::after,.term.active::after{opacity:1}
+
+  /* CTA */
+  .cta{background:var(--ink);color:#fff;border-radius:16px;padding:36px 40px;margin:8px 0 56px;display:grid;grid-template-columns:1.5fr auto;gap:32px;align-items:center}
+  .cta h3{font-family:'Lora',serif;color:#fff;font-size:24px;margin-bottom:8px;line-height:1.3}
+  .cta p{color:rgba(255,255,255,.78);font-size:15px;margin:0;line-height:1.6}
+  .cta-btn{background:var(--yellow);color:var(--ink);padding:14px 22px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;white-space:nowrap}
+
+  /* DEEPER */
+  .deeper{padding:40px 0 24px;border-top:1px solid var(--border)}
+
+  /* PRACTICE */
+  .practice{padding:56px 0 24px;border-top:1px solid var(--border)}
+  .practice .sub{color:var(--muted);margin-bottom:24px}
+  .practice-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;min-height:340px;display:flex;flex-direction:column}
+  .practice-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+  .progress-track{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-right:16px}
+  .progress-fill{height:100%;background:var(--green);border-radius:3px;width:0;transition:width .4s ease}
+  .q-counter{font-size:13px;color:var(--muted);font-weight:500;white-space:nowrap}
+  .practice-q{font-size:19px;font-weight:500;margin:18px 0;line-height:1.45}
+  .practice-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 8px}
+  .option-btn{background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:16px;font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;transition:all .15s;color:var(--ink);text-align:center}
+  .option-btn:hover:not(:disabled){border-color:var(--ink2)}
+  .option-btn:disabled{cursor:not-allowed}
+  .option-btn.correct{background:var(--green-light);border-color:var(--green);color:var(--green);transform:scale(1.03)}
+  .option-btn.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);animation:shake .35s ease}
+  .phint-btn{background:none;border:none;font-family:inherit;font-size:13px;color:var(--muted);cursor:pointer;text-decoration:underline;text-decoration-color:var(--border);padding:0;margin-top:4px}
+  .phint-btn:hover{color:var(--ink2)}
+  .phint-text{font-size:14px;color:var(--ink2);background:var(--bg);border-radius:8px;padding:12px 14px;margin-top:8px;display:none}
+  .phint-text.show{display:block;animation:fadeIn .3s ease}
+  .practice-fb{background:var(--bg);border-radius:10px;padding:14px 18px;margin-top:8px;font-size:14px;color:var(--ink2);line-height:1.55;display:none}
+  .practice-fb.show{display:block}
+  .practice-fb.correct{background:var(--green-light);color:var(--green)}
+  .practice-fb.wrong{background:var(--red-light);color:var(--red)}
+  .practice-footer{display:flex;justify-content:flex-end;margin-top:auto;padding-top:16px}
+  .next-btn{background:var(--ink);color:#fff;border:none;padding:12px 22px;border-radius:8px;font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;display:none}
+  .next-btn.show{display:inline-block}
+  .completion{text-align:center;padding:32px 16px;display:none}
+  .completion.show{display:block;animation:fadeIn .6s ease}
+  .completion .emoji{font-size:56px;margin-bottom:8px}
+  .completion .score{font-family:'Lora',serif;font-size:48px;font-weight:700;margin-bottom:8px}
+  .completion .msg{font-size:16px;color:var(--ink2);max-width:380px;margin:0 auto}
+
+  /* TAKEAWAYS */
+  .takeaways{padding:48px 0;border-top:1px solid var(--border)}
+  .takeaways h2{margin-bottom:20px}
+  .takeaways-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:8px 32px}
+  .tkrow{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:16px 0;border-bottom:1px solid var(--border);align-items:baseline}
+  .tkrow:last-child{border-bottom:none}
+  .tkterm{font-family:'Lora',Georgia,serif;font-weight:700;font-size:16px;color:var(--ink)}
+  .tkdef{font-size:15px;color:var(--ink2);line-height:1.65}
+  .tkdef em{font-style:italic;color:var(--ink)}
+
+  /* VIDEOS */
+  .videos{padding:48px 0;border-top:1px solid var(--border)}
+  .videos h2{margin-bottom:8px}
+  .videos .vsub{color:var(--muted);margin-bottom:20px}
+  .video-list{display:flex;flex-direction:column;gap:10px}
+  .video-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;text-decoration:none;color:var(--ink);transition:border-color .15s}
+  .video-card:hover{border-color:var(--ink2)}
+  .vthumb{width:60px;height:60px;background:var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .vthumb svg{width:26px;height:26px;fill:#fff}
+  .vtitle{font-family:'Lora',Georgia,serif;font-weight:600;font-size:16px;line-height:1.35;margin-bottom:4px}
+  .vdesc{font-size:13px;color:var(--muted)}
+  .varrow{font-size:18px;color:var(--muted)}
+
+  .related{padding:48px 0;border-top:1px solid var(--border)}
+  .related h2{margin-bottom:24px}
+  .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .related-col .col-label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:10px}
+  .related-col ul{list-style:none}
+  .related-col li{padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:6px;font-size:14px}
+
+  footer{border-top:1px solid var(--border);padding:28px 0 40px;background:var(--surface)}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  footer .links{display:flex;gap:22px}
+  footer .links a{color:var(--ink2);text-decoration:none;font-size:14px}
+  footer .copyright{font-size:13px;color:var(--muted)}
+
+  @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}60%{transform:translateX(6px)}}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+  @media(max-width:700px){
+    .wrap{padding:0 20px}
+    .hero-card{grid-template-columns:1fr;padding:28px;gap:24px}
+    .real-strip{grid-template-columns:1fr 1fr}
+    .diagram-row{grid-template-columns:1fr;gap:20px;padding:18px 0}
+    .cta{grid-template-columns:1fr;padding:28px}
+    .related-grid{grid-template-columns:1fr;gap:20px}
+    .practice-options{grid-template-columns:1fr}
+    .mini-options{grid-template-columns:1fr 1fr}
+    .tkrow{grid-template-columns:1fr;gap:4px}
+    .sieve-grid{gap:3px}
+    .sc{font-size:11px;border-radius:5px}
+    h1{font-size:28px} h2{font-size:22px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Cuemath</div>
+    <a class="nav-cta" href="https://www.cuemath.com/en-us/">Try a free class →</a>
+  </div>
+</nav>
+
+<div class="breadcrumb-bar">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="../video-library.html">Math Concepts</a>
+      <span class="sep">›</span>
+      <span>Prime Numbers</span>
+    </div>
+    <div>⏱ 8 min read</div>
+  </div>
+</div>
+
+<!-- HOOK -->
+<section class="hook">
+  <div class="wrap">
+    <div class="topic-tag">Number Theory · Grades 5–8</div>
+    <h1>Cicadas spend exactly 13 or 17 years underground before emerging. Both are prime. That's not a coincidence.</h1>
+    <div class="subtitle">Introduction · Grades 5–8</div>
+    <p class="lead">A <span class="term" data-tip="A whole number greater than 1 that has exactly two factors: 1 and itself">prime number</span> has exactly two factors: 1 and itself. Simple rule. But primes have fascinated mathematicians for over 2,000 years — and they turn up in the strangest places.</p>
+
+    <div class="hero-card">
+      <div class="prime-display">
+        <div class="prime-nums">
+          <span class="p">2</span> · <span class="p">3</span> · <span class="p">5</span> · <span class="p">7</span> · <span class="p">11</span><br>
+          <span class="p">13</span> · <span class="p">17</span> · <span class="p">19</span> · <span class="p">23</span>…
+        </div>
+        <div class="prime-caption">the first nine prime numbers — they go on forever</div>
+      </div>
+      <div class="factors-box">
+        <div class="factor-row"><span class="factor-num">7</span><span style="flex:1;font-size:14px;color:var(--muted)">factors: 1, 7</span><span class="factor-tag tag-prime">prime</span></div>
+        <div class="factor-row"><span class="factor-num">12</span><span style="flex:1;font-size:14px;color:var(--muted)">factors: 1,2,3,4,6,12</span><span class="factor-tag tag-comp">composite</span></div>
+        <div class="factor-row"><span class="factor-num">1</span><span style="flex:1;font-size:14px;color:var(--muted)">factor: 1 only</span><span class="factor-tag tag-comp">neither</span></div>
+      </div>
+    </div>
+
+    <div class="real-strip">
+      <div class="real-card">
+        <div class="icon">🦗</div>
+        <div class="ttl">Cicadas</div>
+        <div class="desc">Cicadas emerge every 13 or 17 years — both prime. Prime cycles are harder for predators to synchronise with.</div>
+      </div>
+      <div class="real-card">
+        <div class="icon">🔐</div>
+        <div class="ttl">Encryption</div>
+        <div class="desc">Every time you visit a secure website, your data is protected using very large prime numbers.</div>
+      </div>
+      <div class="real-card">
+        <div class="icon">📡</div>
+        <div class="ttl">Space signals</div>
+        <div class="desc">NASA encoded a message using prime numbers to signal intelligence to any civilisation that might receive it.</div>
+      </div>
+      <div class="real-card">
+        <div class="icon">♾️</div>
+        <div class="ttl">Infinite &amp; irregular</div>
+        <div class="desc">There are infinitely many primes — Euclid proved it around 300 BCE. But there's no formula to predict the next one.</div>
+      </div>
+    </div>
+
+    <div class="loop-box">
+      By the end of this page, you'll be able to <strong>find every prime number from 1 to 100</strong> using a 2,200-year-old technique — and understand exactly <strong>why</strong> primes are defined the way they are.
+    </div>
+  </div>
+</section>
+
+<!-- EXPLAINER -->
+<section class="explainer">
+  <div class="wrap">
+    <div class="eyebrow">The idea</div>
+    <h2>Exactly two factors — no more, no fewer</h2>
+
+    <div class="think-box">
+      <span class="think-label">Think about it</span>
+      <p>List all the numbers that divide evenly into 12: 1, 2, 3, 4, 6, 12 — six factors. Now do the same for 7: just 1 and 7. What's special about 7?</p>
+    </div>
+
+    <div class="diagram-row">
+      <div>
+        <svg viewBox="0 0 220 160" style="width:100%;max-width:220px;margin:0 auto;display:block;height:auto" aria-label="Factors of 13 vs factors of 12">
+          <rect x="10" y="10" width="90" height="65" rx="10" fill="#fde68a" stroke="#92400e" stroke-width="1.5"/>
+          <text x="55" y="38" text-anchor="middle" font-family="Lora, serif" font-size="20" font-weight="700" fill="#1c1917">13</text>
+          <text x="55" y="55" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12" fill="#78716c">factors:</text>
+          <text x="55" y="70" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12" font-weight="600" fill="#1c1917">1, 13</text>
+          <text x="55" y="90" text-anchor="middle" font-family="Lora, serif" font-size="12" font-weight="700" fill="#f59e0b">PRIME ✓</text>
+          <rect x="120" y="10" width="90" height="100" rx="10" fill="#f5f0e8" stroke="#e7e5e4" stroke-width="1.5"/>
+          <text x="165" y="38" text-anchor="middle" font-family="Lora, serif" font-size="20" font-weight="700" fill="#1c1917">12</text>
+          <text x="165" y="55" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12" fill="#78716c">factors:</text>
+          <text x="165" y="72" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" font-weight="600" fill="#1c1917">1, 2, 3, 4, 6, 12</text>
+          <text x="165" y="100" text-anchor="middle" font-family="Lora, serif" font-size="12" font-weight="700" fill="#78716c">COMPOSITE</text>
+          <text x="110" y="150" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="#78716c">2 factors → prime · more → composite</text>
+        </svg>
+      </div>
+      <div class="body">
+        <p>A <strong>prime number</strong> has exactly <em>two</em> factors: 1 and itself. That's the complete definition. If you find any other divisor, it's <span class="term" data-tip="A whole number greater than 1 that has more than two factors">composite</span>.</p>
+        <p>13 ÷ 1 = 13 ✓ and 13 ÷ 13 = 1 ✓. Nothing else divides it evenly. So 13 is prime.</p>
+        <p>12 ÷ 2 = 6, 12 ÷ 3 = 4 — extra divisors exist. So 12 is <em>not</em> prime.</p>
+      </div>
+    </div>
+
+    <div class="mini-check" data-correct="2">
+      <div class="mini-label">Quick check</div>
+      <div class="mini-q">Which of these is a prime number?</div>
+      <div class="mini-options">
+        <button class="mini-opt" data-i="0">1</button>
+        <button class="mini-opt" data-i="1">9</button>
+        <button class="mini-opt" data-i="2">11</button>
+        <button class="mini-opt" data-i="3">15</button>
+      </div>
+      <button class="hint-link">Need a hint?</button>
+      <div class="hint-text">Try dividing each number by small integers. Which one has no divisors other than 1 and itself?</div>
+      <div class="mini-fb"></div>
+    </div>
+
+    <div class="think-box">
+      <span class="think-label">Think about it</span>
+      <p>Is 1 a prime number? It's a whole number greater than 0. Its only factor is itself. Why do mathematicians exclude it from the primes?</p>
+    </div>
+
+    <div class="diagram-row">
+      <div>
+        <svg viewBox="0 0 200 120" style="width:100%;max-width:200px;margin:0 auto;display:block;height:auto">
+          <rect x="10" y="15" width="80" height="90" rx="10" fill="#f5f0e8" stroke="#e7e5e4" stroke-width="1.5"/>
+          <text x="50" y="50" text-anchor="middle" font-family="Lora, serif" font-size="28" font-weight="700" fill="#78716c">1</text>
+          <text x="50" y="72" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="#78716c">1 factor only</text>
+          <text x="50" y="90" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" font-weight="600" fill="#78716c">NEITHER</text>
+          <rect x="110" y="15" width="80" height="90" rx="10" fill="#fde68a" stroke="#92400e" stroke-width="1.5"/>
+          <text x="150" y="50" text-anchor="middle" font-family="Lora, serif" font-size="28" font-weight="700" fill="#1c1917">2</text>
+          <text x="150" y="72" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="#78716c">factors: 1, 2</text>
+          <text x="150" y="90" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="#f59e0b">PRIME ✓</text>
+        </svg>
+      </div>
+      <div class="body">
+        <p><strong>1 is not prime.</strong> Primes need exactly two distinct factors. 1 only has one factor — itself. So it fails the definition. The number 1 is classified as <em>neither prime nor composite</em>.</p>
+        <p><strong>2 is prime</strong> — and it's the only even prime. Every other even number has 2 as a factor, which means it automatically has at least three factors (1, 2, and itself), so it can't be prime.</p>
+      </div>
+    </div>
+
+    <div class="mini-check" data-correct="3">
+      <div class="mini-label">Quick check</div>
+      <div class="mini-q">Why is 1 not a prime number?</div>
+      <div class="mini-options">
+        <button class="mini-opt" data-i="0">It's too small</button>
+        <button class="mini-opt" data-i="1">It's odd</button>
+        <button class="mini-opt" data-i="2">It's not divisible by 2</button>
+        <button class="mini-opt" data-i="3">It has only one factor, not two</button>
+      </div>
+      <button class="hint-link">Need a hint?</button>
+      <div class="hint-text">The definition of prime requires exactly two factors. How many factors does 1 have?</div>
+      <div class="mini-fb"></div>
+    </div>
+
+    <div class="insight">
+      Prime numbers are the <strong>building blocks of all whole numbers</strong>. Every whole number greater than 1 is either prime itself, or can be broken down into a product of primes. This is called the <em>Fundamental Theorem of Arithmetic</em>. Example: 12 = 2 × 2 × 3.
+    </div>
+  </div>
+</section>
+
+<!-- SIEVE SIMULATION -->
+<section class="sim-section" id="sim-section">
+  <div class="wrap">
+    <div class="eyebrow">The ancient algorithm</div>
+    <h2>The Sieve of Eratosthenes</h2>
+    <p class="sub">A Greek mathematician named Eratosthenes invented this method around 240 BCE. Step through it — or run the whole thing at once.</p>
+
+    <div class="sieve-card">
+      <div class="sieve-step-msg" id="sieve-msg">Hit "Next step" to start, or "Run all" to see the complete sieve.</div>
+      <div class="sieve-grid" id="sieve-grid"></div>
+      <div class="sieve-btns">
+        <button class="sieve-btn" id="next-step-btn">Next step →</button>
+        <button class="sieve-btn sec" id="run-all-btn">Run all</button>
+        <button class="sieve-btn sec" id="reset-sieve-btn">Reset</button>
+      </div>
+      <div class="sieve-legend">
+        <div class="leg-item"><div class="leg-sq" style="background:var(--yellow);border-color:var(--yellow)"></div>Prime</div>
+        <div class="leg-item"><div class="leg-sq" style="background:var(--bg);border-color:var(--border);opacity:.45"></div>Composite (crossed out)</div>
+        <div class="leg-item"><div class="leg-sq" style="background:var(--ink);border-color:var(--ink)"></div>Current prime being checked</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA #1 -->
+<div class="wrap">
+  <div class="cta">
+    <div>
+      <h3>Like this approach to math?</h3>
+      <p>Cuemath teaches every concept with visuals and intuition first — no memorisation. One-on-one with a live tutor.</p>
+    </div>
+    <a class="cta-btn" href="https://www.cuemath.com/en-us/">Try a free class →</a>
+  </div>
+</div>
+
+<!-- DEEPER -->
+<section class="deeper">
+  <div class="wrap">
+    <div class="eyebrow">Going further</div>
+    <h2>Three things about primes that surprise people</h2>
+
+    <div class="think-box">
+      <span class="think-label">Think about it</span>
+      <p>There are 25 primes between 1 and 100. Between 901 and 1000, there are only 14. Why do primes get rarer as numbers get larger?</p>
+    </div>
+
+    <p><strong>1. Primes get rarer — but never stop.</strong> The further you go, the fewer primes per 100 numbers. But Euclid proved in 300 BCE that there are <em>infinitely many</em> primes. They thin out, but they never run out.</p>
+
+    <p style="margin-top:12px"><strong>2. Twin primes.</strong> Sometimes two consecutive odd numbers are both prime — like (11, 13), (17, 19), (29, 31). These are called <span class="term" data-tip="Two prime numbers that differ by exactly 2. Examples: (3,5), (11,13), (41,43)">twin primes</span>. Mathematicians believe there are infinitely many twin prime pairs, but no one has proved it yet.</p>
+
+    <p style="margin-top:12px"><strong>3. The largest known prime.</strong> As of 2024, the largest known prime has <em>more than 41 million digits</em>. Finding it took months of computer time.</p>
+
+    <div class="reveal-block">
+      <button class="reveal-btn" id="rev-btn">Is 97 a prime number? Think first, then reveal →</button>
+      <div class="reveal-content" id="rev-content">
+        <div class="reveal-inner"><strong>Yes — 97 is prime.</strong> To check, test divisibility by primes up to √97 ≈ 9.8. That means try 2, 3, 5, 7. 97 ÷ 2 = 48.5 (no). 97 ÷ 3 = 32.3 (no). 97 ÷ 5 = 19.4 (no). 97 ÷ 7 = 13.8 (no). No divisors found — 97 is prime. You only ever need to test up to √n.</div>
+      </div>
+    </div>
+
+    <div class="mini-check" data-correct="0" style="margin-top:28px">
+      <div class="mini-label">Quick check</div>
+      <div class="mini-q">To check if 113 is prime, which numbers do you need to test as divisors?</div>
+      <div class="mini-options">
+        <button class="mini-opt" data-i="0">2, 3, 5, 7 (up to √113 ≈ 10.6)</button>
+        <button class="mini-opt" data-i="1">All numbers from 2 to 112</button>
+        <button class="mini-opt" data-i="2">Only even numbers</button>
+        <button class="mini-opt" data-i="3">Only prime numbers up to 57</button>
+      </div>
+      <button class="hint-link">Need a hint?</button>
+      <div class="hint-text">You only need to test divisors up to √113. Calculate √113 and see which small primes fall below it.</div>
+      <div class="mini-fb"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE -->
+<section class="practice">
+  <div class="wrap">
+    <div class="eyebrow">Your turn</div>
+    <h2>Four questions — use the hint if you need it</h2>
+    <p class="sub">No memorisation needed — just the two-factor rule and the sieve logic.</p>
+    <div class="practice-card">
+      <div class="practice-header">
+        <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
+        <div class="q-counter" id="q-counter">Question 1 of 4</div>
+      </div>
+      <div id="prac-stage">
+        <div class="practice-q" id="prac-q"></div>
+        <div class="practice-options" id="prac-opts"></div>
+        <div style="margin:4px 0 8px">
+          <button class="phint-btn" id="phint-btn">Need a hint?</button>
+          <div class="phint-text" id="phint-text"></div>
+        </div>
+        <div class="practice-fb" id="prac-fb"></div>
+      </div>
+      <div class="completion" id="prac-done">
+        <div class="emoji" id="done-emoji">🎉</div>
+        <div class="score" id="done-score"></div>
+        <div class="msg" id="done-msg"></div>
+      </div>
+      <div class="practice-footer">
+        <button class="next-btn" id="next-btn">Next →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA #2 -->
+<div class="wrap">
+  <div class="cta">
+    <div>
+      <h3>Ready to go deeper?</h3>
+      <p>Prime factorisation, LCM, HCF, and cryptography all build on exactly what you just learned. A Cuemath tutor takes you there live.</p>
+    </div>
+    <a class="cta-btn" href="https://www.cuemath.com/en-us/">Book a free class →</a>
+  </div>
+</div>
+
+<!-- TAKEAWAYS -->
+<section class="takeaways">
+  <div class="wrap">
+    <div class="eyebrow">Quick reference</div>
+    <h2>Key takeaways</h2>
+    <div class="takeaways-box">
+      <div class="tkrow"><span class="tkterm">Prime number</span><span class="tkdef">A whole number greater than 1 with exactly two factors: 1 and itself. Examples: 2, 3, 5, 7, 11, 13…</span></div>
+      <div class="tkrow"><span class="tkterm">Composite number</span><span class="tkdef">A whole number greater than 1 with <em>more than two</em> factors. Examples: 4, 6, 8, 9, 10…</span></div>
+      <div class="tkrow"><span class="tkterm">The number 1</span><span class="tkdef">Neither prime nor composite. It has only one factor (itself), so it fails the two-factor requirement for primes.</span></div>
+      <div class="tkrow"><span class="tkterm">Only even prime</span><span class="tkdef">2 is the only even prime. Every other even number has 2 as an additional factor, giving it more than two factors.</span></div>
+      <div class="tkrow"><span class="tkterm">Primes 1–100</span><span class="tkdef">There are exactly 25: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97.</span></div>
+      <div class="tkrow"><span class="tkterm">Sieve of Eratosthenes</span><span class="tkdef">To find all primes up to n: cross out multiples of each prime starting from 2. Numbers that survive are prime.</span></div>
+      <div class="tkrow"><span class="tkterm">How to test primality</span><span class="tkdef">To check if n is prime, test divisibility by all primes up to √n. If none divide it, n is prime.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section class="videos">
+  <div class="wrap">
+    <div class="eyebrow">Watch it too</div>
+    <h2>Related Cuemath videos</h2>
+    <p class="vsub">Prime numbers in the real world — and in competition math.</p>
+    <div class="video-list">
+      <a class="video-card" href="https://www.youtube.com/watch?v=tJTwLxrjXQw" target="_blank" rel="noopener">
+        <div class="vthumb"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div><div class="vtitle">Can bugs do math?</div><div class="vdesc">Real World · Grades 6–8 · Why cicadas use prime number life cycles</div></div>
+        <div class="varrow">→</div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=X8stN-xBrZE" target="_blank" rel="noopener">
+        <div class="vthumb"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div><div class="vtitle">How prime numbers prevent mechanical breakdowns</div><div class="vdesc">Real World · Grades 6–8 · Engineering application of prime numbers</div></div>
+        <div class="varrow">→</div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=MhselvD1bnI" target="_blank" rel="noopener">
+        <div class="vthumb"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div><div class="vtitle">Prime or Composite? | 2023 AMC 8 Problem 4</div><div class="vdesc">Olympiad · Grades 6–8 · Competition problem using prime number reasoning</div></div>
+        <div class="varrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="related">
+  <div class="wrap">
+    <h2>Related concepts</h2>
+    <div class="related-grid">
+      <div class="related-col"><div class="col-label">Builds on</div><ul><li>Factors and multiples</li><li>Divisibility rules</li><li>Whole numbers</li></ul></div>
+      <div class="related-col"><div class="col-label">Operations</div><ul><li>Prime factorisation</li><li>HCF (highest common factor)</li><li>LCM (lowest common multiple)</li></ul></div>
+      <div class="related-col"><div class="col-label">Bridges to</div><ul><li>Number theory</li><li>Cryptography basics</li><li>Modular arithmetic</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links"><a href="../video-library.html">Math Concepts</a><a href="https://www.cuemath.com/about-us/">About</a><a href="https://www.cuemath.com/en-us/">Try a Free Class</a></div>
+    <div class="copyright">© 2026 Cuemath</div>
+  </div>
+</footer>
+
+<script>
+  // ===== SIEVE OF ERATOSTHENES =====
+  const state = new Array(101).fill('default'); // 'default' | 'prime' | 'composite' | 'current' | 'one'
+  state[1] = 'one';
+
+  const sieveSteps = [
+    { prime: null, action: 'start', msg: '1 is neither prime nor composite — it has only one factor. We mark it separately and move on.' },
+    { prime: 2, action: 'mark', msg: '2 is prime (factors: 1 and 2 only). Cross out every multiple of 2 — they all have 2 as an extra factor, so they\'re composite.' },
+    { prime: 3, action: 'mark', msg: '3 is prime. Cross out all remaining multiples of 3.' },
+    { prime: 5, action: 'mark', msg: '5 is prime. Cross out remaining multiples of 5.' },
+    { prime: 7, action: 'mark', msg: '7 is prime. Cross out remaining multiples of 7. Since 11² = 121 > 100, we\'re done — all remaining unmarked numbers are prime.' },
+    { prime: null, action: 'reveal', msg: 'Done! The 25 highlighted numbers are all the primes from 1 to 100. Every other number from 2–100 has been crossed out as composite.' }
+  ];
+  let stepIdx = 0;
+
+  function renderGrid() {
+    const grid = document.getElementById('sieve-grid');
+    grid.innerHTML = '';
+    for (let n = 1; n <= 100; n++) {
+      const cell = document.createElement('div');
+      cell.className = 'sc ' + (state[n] === 'default' ? '' : state[n]);
+      cell.textContent = n;
+      grid.appendChild(cell);
+    }
+  }
+
+  function runStep(s) {
+    document.getElementById('sieve-msg').textContent = s.msg;
+    if (s.action === 'start') {
+      state[1] = 'one';
+    } else if (s.action === 'mark') {
+      // Mark prime as current first
+      if (state[s.prime] === 'default') state[s.prime] = 'current';
+      // Cross out multiples
+      for (let m = s.prime * 2; m <= 100; m += s.prime) {
+        if (state[m] === 'default' || state[m] === 'current') state[m] = 'composite';
+      }
+    } else if (s.action === 'reveal') {
+      // Finalize: all 'current' → 'prime', all 'default' → 'prime'
+      for (let n = 2; n <= 100; n++) {
+        if (state[n] === 'default' || state[n] === 'current') state[n] = 'prime';
+      }
+    }
+    // After step, convert 'current' of previous primes to 'prime'
+    if (s.action === 'mark') {
+      sieveSteps.slice(1, stepIdx).forEach(prev => {
+        if (prev.prime && state[prev.prime] === 'current') state[prev.prime] = 'prime';
+      });
+    }
+    renderGrid();
+  }
+
+  document.getElementById('next-step-btn').addEventListener('click', () => {
+    if (stepIdx >= sieveSteps.length) return;
+    runStep(sieveSteps[stepIdx]);
+    stepIdx++;
+    if (stepIdx >= sieveSteps.length) {
+      document.getElementById('next-step-btn').disabled = true;
+      document.getElementById('run-all-btn').disabled = true;
+    }
+  });
+
+  document.getElementById('run-all-btn').addEventListener('click', () => {
+    const runRemaining = () => {
+      if (stepIdx >= sieveSteps.length) {
+        document.getElementById('next-step-btn').disabled = true;
+        document.getElementById('run-all-btn').disabled = true;
+        return;
+      }
+      runStep(sieveSteps[stepIdx]);
+      stepIdx++;
+      setTimeout(runRemaining, 600);
+    };
+    document.getElementById('next-step-btn').disabled = true;
+    document.getElementById('run-all-btn').disabled = true;
+    runRemaining();
+  });
+
+  document.getElementById('reset-sieve-btn').addEventListener('click', () => {
+    for (let n = 0; n <= 100; n++) state[n] = 'default';
+    state[1] = 'one';
+    stepIdx = 0;
+    document.getElementById('next-step-btn').disabled = false;
+    document.getElementById('run-all-btn').disabled = false;
+    document.getElementById('sieve-msg').textContent = 'Hit "Next step" to start, or "Run all" to see the complete sieve.';
+    renderGrid();
+  });
+
+  renderGrid();
+
+  // ===== MINI-CHECKS =====
+  const miniFbData = [
+    { wrong: '1 has only one factor (itself) — not prime. 9 = 3×3, 15 = 3×5 — both composite. 11 has only factors 1 and 11.', right: '✓ Right — 11 has exactly two factors: 1 and 11. Prime.' },
+    { wrong: 'Primes need exactly two factors. 1 only has one. The two-factor rule is the only rule that matters.', right: '✓ Right — 1 has only one factor (itself). Primes need two distinct factors.' },
+    { wrong: 'You only need to test primes up to √113 ≈ 10.6. That\'s 2, 3, 5, 7. No need to go further.', right: '✓ Right — test primes up to √113 ≈ 10.6: try 2, 3, 5, 7. None divide 113, so it\'s prime.' },
+  ];
+  document.querySelectorAll('.mini-check').forEach((mc, idx) => {
+    const correct = parseInt(mc.dataset.correct, 10);
+    const opts = mc.querySelectorAll('.mini-opt');
+    const fb = mc.querySelector('.mini-fb');
+    const hl = mc.querySelector('.hint-link');
+    const ht = mc.querySelector('.hint-text');
+    if (hl) hl.addEventListener('click', () => { ht.classList.toggle('show'); hl.textContent = ht.classList.contains('show') ? 'Hide hint' : 'Need a hint?'; });
+    opts.forEach(opt => {
+      opt.addEventListener('click', () => {
+        if (mc.dataset.answered) return;
+        mc.dataset.answered = '1';
+        const i = parseInt(opt.dataset.i, 10);
+        const right = i === correct;
+        opts[correct].classList.add('correct');
+        if (!right) opt.classList.add('wrong');
+        opts.forEach(o => o.disabled = true);
+        fb.classList.add('show', right ? 'correct' : 'wrong');
+        fb.textContent = right ? '✓ ' + miniFbData[idx].right : '✗ ' + miniFbData[idx].wrong;
+      });
+    });
+  });
+
+  // ===== TOOLTIPS =====
+  document.querySelectorAll('.term').forEach(t => {
+    t.addEventListener('click', e => {
+      e.stopPropagation();
+      document.querySelectorAll('.term.active').forEach(o => { if (o !== t) o.classList.remove('active'); });
+      t.classList.toggle('active');
+    });
+  });
+  document.addEventListener('click', () => document.querySelectorAll('.term.active').forEach(t => t.classList.remove('active')));
+
+  // ===== REVEAL =====
+  document.getElementById('rev-btn').addEventListener('click', () => {
+    document.getElementById('rev-content').classList.add('show');
+    document.getElementById('rev-btn').classList.add('opened');
+  });
+
+  // ===== PRACTICE =====
+  const questions = [
+    { q: 'How many prime numbers are there between 1 and 20?', options: ['6', '7', '8', '9'], correct: 2, hint: 'List them: 2, 3, 5, 7, 11, 13, 17, 19. Count carefully.', fb: { r: '✓ Right — 2, 3, 5, 7, 11, 13, 17, 19. That\'s 8 primes between 1 and 20.', w: '✗ List them: 2, 3, 5, 7, 11, 13, 17, 19. Count again — there are 8.' } },
+    { q: 'A cicada species has a 13-year life cycle. Is 13 prime?', options: ['No — it\'s divisible by 3', 'Yes — factors are only 1 and 13', 'No — it ends in 3 so it\'s composite', 'Yes — all odd numbers are prime'], correct: 1, hint: 'Try dividing 13 by 2, 3. Neither works. Check up to √13 ≈ 3.6.', fb: { r: '✓ Right — 13 ÷ 2 = 6.5, 13 ÷ 3 = 4.3. No other divisors. 13 is prime.', w: '✗ Test divisibility: 13 ÷ 2 = 6.5 (no), 13 ÷ 3 = 4.3 (no). 13 is prime.' } },
+    { q: 'Which of these is NOT prime?', options: ['41', '43', '49', '47'], correct: 2, hint: '49 = 7 × 7. That gives it three factors: 1, 7, and 49.', fb: { r: '✓ Right — 49 = 7 × 7. It has three factors (1, 7, 49) so it\'s composite.', w: '✗ 49 = 7 × 7. Three factors means composite. The others (41, 43, 47) are all prime.' } },
+    { q: 'What is the prime factorisation of 60?', options: ['2 × 30', '2² × 3 × 5', '4 × 15', '6 × 10'], correct: 1, hint: '60 = 2 × 30 = 2 × 2 × 15 = 2 × 2 × 3 × 5. Keep breaking until all factors are prime.', fb: { r: '✓ Right — 60 = 2 × 2 × 3 × 5 = 2² × 3 × 5. All factors are prime.', w: '✗ Keep factoring until all pieces are prime: 60 = 2 × 30 = 2 × 2 × 15 = 2² × 3 × 5.' } }
+  ];
+  let qi = 0, score = 0, answered = false;
+  const nextBtn = document.getElementById('next-btn');
+  const phintBtn = document.getElementById('phint-btn');
+  const phintText = document.getElementById('phint-text');
+  phintBtn.addEventListener('click', () => { phintText.classList.toggle('show'); phintBtn.textContent = phintText.classList.contains('show') ? 'Hide hint' : 'Need a hint?'; });
+  function renderQ() {
+    const q = questions[qi];
+    document.getElementById('q-counter').textContent = `Question ${qi+1} of ${questions.length}`;
+    document.getElementById('prog-fill').style.width = `${(qi/questions.length)*100}%`;
+    document.getElementById('prac-q').textContent = q.q;
+    const optsBox = document.getElementById('prac-opts');
+    optsBox.innerHTML = '';
+    q.options.forEach((label, i) => { const b = document.createElement('button'); b.className='option-btn'; b.textContent=label; b.addEventListener('click',()=>answer(i)); optsBox.appendChild(b); });
+    document.getElementById('prac-fb').className='practice-fb'; document.getElementById('prac-fb').textContent='';
+    phintText.textContent=q.hint; phintText.classList.remove('show'); phintBtn.textContent='Need a hint?'; phintBtn.style.display='block';
+    nextBtn.classList.remove('show'); answered=false;
+  }
+  function answer(i) {
+    if (answered) return; answered=true;
+    const q=questions[qi]; const opts=document.querySelectorAll('.option-btn'); const right=i===q.correct;
+    opts[q.correct].classList.add('correct'); if(!right) opts[i].classList.add('wrong');
+    opts.forEach(o=>o.disabled=true); phintBtn.style.display='none';
+    const fb=document.getElementById('prac-fb'); fb.classList.add('show',right?'correct':'wrong');
+    fb.textContent=right?q.fb.r:q.fb.w; if(right) score++;
+    nextBtn.textContent=qi===questions.length-1?'See your score →':'Next →'; nextBtn.classList.add('show');
+  }
+  nextBtn.addEventListener('click', () => {
+    qi++;
+    if (qi>=questions.length) {
+      document.getElementById('prac-stage').style.display='none'; nextBtn.style.display='none';
+      document.getElementById('prog-fill').style.width='100%';
+      document.getElementById('q-counter').textContent=`${score} of ${questions.length} correct`;
+      document.getElementById('prac-done').classList.add('show');
+      const pct=score/questions.length;
+      document.getElementById('done-emoji').textContent=pct===1?'🏆':pct>=0.75?'🎉':pct>=0.5?'👍':'💪';
+      document.getElementById('done-score').textContent=`${score} / ${questions.length}`;
+      document.getElementById('done-msg').textContent=pct===1?'Perfect. You can find primes, test primality, and factorise. That\'s the whole toolkit.'
+        :pct>=0.75?'Strong. One slip — check your answer against the sieve.'
+        :'Run the full sieve once, then come back and try again. The two-factor rule makes these click fast.';
+    } else renderQ();
+  });
+  renderQ();
+</script>
+</body>
+</html>
