@@ -270,9 +270,9 @@ main{min-width:0}
 .cta-band{
   background:var(--surface);border:1px solid var(--border);border-radius:12px;
   padding:24px;margin:40px 0;
-  display:grid;grid-template-columns:140px 1fr auto;gap:22px;align-items:center;
+  display:flex;flex-wrap:wrap;align-items:center;gap:22px;
 }
-.cta-band img{width:140px;height:140px;object-fit:cover;border-radius:10px}
+.cta-band img{max-width:220px;width:100%;height:auto;border-radius:10px;flex-shrink:0}
 .cta-band h3{margin:0 0 6px;font-size:22px}
 .cta-band p{margin:0;font-size:14.5px;color:var(--ink2)}
 
@@ -455,8 +455,8 @@ footer a:hover{color:var(--ink)}
   .mobile-toc{display:block}
   .rw-grid{grid-template-columns:repeat(2,1fr)}
   .sim-viz{grid-template-columns:1fr}
-  .cta-band{grid-template-columns:1fr;text-align:center}
-  .cta-band img{margin:0 auto}
+  .cta-band{text-align:center}
+  .cta-band img{max-width:100%;margin:0 auto}
   .rv-grid{grid-template-columns:1fr 1fr}
   .rc-grid{grid-template-columns:1fr}
   .ws-grid{grid-template-columns:1fr}

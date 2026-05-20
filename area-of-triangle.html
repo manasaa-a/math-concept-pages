@@ -125,13 +125,13 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .btn-primary{background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer}
 .btn-primary:hover{background:#1d4ed8}
 /* CTA band */
-.cta-band{background:linear-gradient(135deg,#1e3a8a 0%,#1d4ed8 100%);border-radius:16px;padding:40px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
-@media(max-width:600px){.cta-band{grid-template-columns:1fr;padding:28px}}
+.cta-band{background:linear-gradient(135deg,#1e3a8a 0%,#1d4ed8 100%);border-radius:16px;padding:40px;display:flex;flex-wrap:wrap;align-items:center;gap:24px}
+@media(max-width:600px){.cta-band{padding:24px}}
 .cta-band h3{color:#fff;margin-bottom:8px}
 .cta-band p{color:#bfdbfe;margin-bottom:20px;font-size:15px}
 .btn-white{background:#fff;color:#1e3a8a;border:none;padding:12px 24px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer}
-.cta-img{width:220px;height:170px;object-fit:cover;object-position:center top;border-radius:12px;flex-shrink:0;display:block}
-@media(max-width:600px){.cta-img{display:none}}
+.cta-img{max-width:260px;width:100%;height:auto;border-radius:12px;flex-shrink:0;display:block}
+@media(max-width:600px){.cta-img{max-width:100%}}
 /* Practice */
 .practice-progress{height:6px;background:var(--border);border-radius:3px;margin-bottom:24px;overflow:hidden}
 .practice-bar{height:100%;background:var(--green);border-radius:3px;transition:width .4s}
