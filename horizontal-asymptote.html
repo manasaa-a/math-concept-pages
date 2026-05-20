@@ -122,8 +122,8 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .cta-band h3{color:#fff;margin-bottom:8px}
 .cta-band p{color:#bfdbfe;margin-bottom:20px;font-size:15px}
 .btn-white{background:#fff;color:#1e3a8a;border:none;padding:12px 24px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer}
-.cta-band-svg{width:120px;height:120px;flex-shrink:0}
-@media(max-width:600px){.cta-band-svg{display:none}}
+.cta-img{width:220px;height:170px;object-fit:cover;object-position:center top;border-radius:12px;flex-shrink:0;display:block}
+@media(max-width:600px){.cta-img{display:none}}
 
 /* Practice */
 .practice-progress{height:6px;background:var(--border);border-radius:3px;margin-bottom:24px;overflow:hidden}
@@ -545,13 +545,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <p>A Cuemath tutor will walk through three problems with you live — one for each rule — and you'll never confuse them again.</p>
         <button class="btn-white" onclick="openModal()">Book a free class →</button>
       </div>
-      <svg class="cta-band-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="60" cy="60" r="56" fill="rgba(255,255,255,0.1)"/>
-        <text x="60" y="50" text-anchor="middle" font-size="16" fill="white" font-family="DM Sans" font-weight="bold">y = k</text>
-        <line x1="20" y1="68" x2="100" y2="68" stroke="#f59e0b" stroke-width="3" stroke-dasharray="6,4"/>
-        <path d="M 20,100 C 35,92 45,78 60,72 C 75,67 88,66.5 100,66" stroke="white" stroke-width="2" fill="none"/>
-        <text x="60" y="95" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.6)" font-family="DM Sans">x → ∞</text>
-      </svg>
+      <img class="cta-img" src="cta-leap.png" alt="Cuemath 1-on-1 online class">
     </div>
   </div>
 
@@ -666,10 +660,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <p>Our tutors personalise every session to exactly where you are. No wasted time, no generic lessons.</p>
         <button class="btn-white" onclick="openModal()">Start free →</button>
       </div>
-      <svg class="cta-band-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="60" cy="60" r="56" fill="rgba(255,255,255,0.1)"/>
-        <text x="60" y="70" text-anchor="middle" font-size="44" fill="white" font-family="DM Sans">∞</text>
-      </svg>
+      <img class="cta-img" src="cta-leap.png" alt="Cuemath 1-on-1 online class">
     </div>
   </div>
 
