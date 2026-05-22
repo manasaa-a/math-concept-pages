@@ -100,17 +100,21 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 @media(max-width:550px){.ex-row{grid-template-columns:1fr}}
 .ex-card{background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:14px}
 .ex-lbl{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--green);margin-bottom:4px}
-/* Rectangle step-through simulation */
-.rect-sim{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin:20px 0}
-.rs-stage{background:#f8fafc;border-radius:8px;padding:12px;display:flex;align-items:center;justify-content:center;min-height:160px}
-.rs-caption{text-align:center;font-size:15px;color:var(--ink2);margin:14px 0 10px;min-height:44px}
-.rs-controls{display:flex;align-items:center;justify-content:center;gap:16px}
-.rs-btn{background:var(--ink);color:#fff;border:none;padding:8px 18px;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;transition:background .15s}
-.rs-btn:hover:not(:disabled){background:#44403c}
-.rs-btn:disabled{background:var(--border);color:var(--muted);cursor:not-allowed}
-.rs-dots{display:flex;gap:8px;align-items:center}
-.rs-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:background .2s}
-.rs-dot.active{background:var(--ink)}
+/* Custom rectangle simulation */
+.rsc-wrap{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:16px 0;background:var(--surface)}
+.rsc-controls{background:var(--bg);padding:14px 18px;border-bottom:1px solid var(--border)}
+.rsc-slider-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.rsc-lbl{font-size:13px;color:var(--ink2);width:76px;flex-shrink:0}
+.rsc-slider-row input[type=range]{flex:1;accent-color:var(--blue);cursor:pointer}
+.rsc-val{font-size:13px;font-weight:600;color:var(--blue);min-width:28px;text-align:right}
+.rsc-unit{font-size:12px;color:var(--muted);width:32px}
+.rsc-slide-me{font-size:12px;color:var(--yellow);font-weight:500;margin:6px 0 0}
+.rsc-canvas{padding:10px 14px;background:#f8fafc}
+.rsc-stat-row{display:flex;align-items:center;gap:12px;padding:12px 18px;border-top:1px solid var(--border);flex-wrap:wrap}
+.rsc-stat{flex:1;min-width:120px}
+.rsc-stat-lbl{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:2px}
+.rsc-stat-val{font-size:14px;color:var(--ink)}
+.rsc-stat-sep{font-size:18px;color:var(--muted)}
 /* Simulation */
 .sim-container{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0}
 .sim-canvas-wrap{width:100%;border-radius:10px;overflow:hidden;background:#f8fafc;border:1px solid var(--border);cursor:crosshair;touch-action:none}
@@ -330,18 +334,44 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
     <p>The <strong>area of a triangle</strong> is the 2D space enclosed by its three sides, measured in square units (cm², m², in²).</p>
 
-    <!-- GeoGebra: rectangle → triangle -->
-    <p style="font-size:14px;color:var(--muted);margin-bottom:6px">Drag the diagonal or resize the rectangle to see how the triangle area changes.</p>
-    <div style="margin:8px 0 20px;border-radius:12px;overflow:hidden;border:1px solid var(--border)">
-      <iframe src="https://www.geogebra.org/material/iframe/id/yewk7uhx/width/780/height/400/border/ffffff/sfsb/false/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/true"
-        width="780" height="400"
-        style="border:0;display:block;width:100%;max-width:780px"
-        allowfullscreen loading="lazy"></iframe>
+    <p>A rectangle cut diagonally from corner to corner always produces two identical triangles — each exactly half the rectangle's area. So if a rectangle has area b × h, each triangle is ½ × b × h.</p>
+
+    <!-- Custom rectangle simulation -->
+    <div class="rsc-wrap">
+      <div class="rsc-controls">
+        <div class="rsc-slider-row">
+          <span class="rsc-lbl">Base (b)</span>
+          <input type="range" id="rsc-b" min="2" max="12" value="6" step="0.5" oninput="rscUpdate()">
+          <span class="rsc-val" id="rsc-b-val">6</span>
+          <span class="rsc-unit">units</span>
+        </div>
+        <div class="rsc-slider-row">
+          <span class="rsc-lbl">Height (h)</span>
+          <input type="range" id="rsc-h" min="2" max="10" value="4" step="0.5" oninput="rscUpdate()">
+          <span class="rsc-val" id="rsc-h-val">4</span>
+          <span class="rsc-unit">units</span>
+        </div>
+        <p class="rsc-slide-me">← Slide me</p>
+      </div>
+      <div class="rsc-canvas">
+        <svg id="rsc-svg" viewBox="0 0 380 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block"></svg>
+      </div>
+      <div class="rsc-stat-row">
+        <div class="rsc-stat">
+          <span class="rsc-stat-lbl">Rectangle area</span>
+          <span class="rsc-stat-val" id="rsc-rect-eq">6 × 4 = 24 sq units</span>
+        </div>
+        <div class="rsc-stat-sep">→</div>
+        <div class="rsc-stat">
+          <span class="rsc-stat-lbl">Triangle area (shaded)</span>
+          <span class="rsc-stat-val" id="rsc-tri-eq">½ × 24 = <strong>12 sq units</strong></span>
+        </div>
+      </div>
     </div>
 
     <div class="think-box" style="margin-top:28px">
-      <div class="think-label">But what about triangles that lean?</div>
-      <p>The rectangle cut works neatly when the apex sits directly above the base. But triangles can lean left or right. For any triangle — scalene, obtuse, acute — it is exactly <strong>half a parallelogram</strong> with the same base and height. Drag the simulation below to see this in action.</p>
+      <div class="think-label">What about triangles that aren't right-angled?</div>
+      <p>Cutting a rectangle diagonally always gives you two right-angled triangles — the right angle forms at the rectangle's corner. But most triangles don't have a right angle. A scalene or obtuse triangle leaning sideways doesn't fit inside a rectangle this way. For those, the connection is to a <strong>parallelogram</strong>: every triangle is exactly half a parallelogram that shares its base and height. The ½ stays — the shape you borrow from changes.</p>
     </div>
 
     <!-- GeoGebra: parallelogram → triangle -->
@@ -512,7 +542,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <button class="choice-btn" onclick="checkAns(this,'wrong','q1')">8 cm²</button>
         <button class="choice-btn" onclick="checkAns(this,'wrong','q1')">6 cm²</button>
       </div>
-      <button class="hint-toggle" onclick="toggleHint('h1')">💡 Show hint</button>
+      <button class="hint-toggle" onclick="toggleHint('h1')">Slide me</button>
       <div class="hint-text" id="h1">Use A = ½ × base × height. The green dashed line is the height.</div>
       <div class="q-feedback" id="fb1"></div>
       <div class="q-next" id="next1"><button class="btn-primary" onclick="nextQ(2)">Next →</button></div>
@@ -528,7 +558,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <button class="choice-btn" onclick="checkAns(this,'wrong','q2')">20 cm²</button>
         <button class="choice-btn" onclick="checkAns(this,'wrong','q2')">36 cm²</button>
       </div>
-      <button class="hint-toggle" onclick="toggleHint('h2')">💡 Show hint</button>
+      <button class="hint-toggle" onclick="toggleHint('h2')">Slide me</button>
       <div class="hint-text" id="h2">A = ½ × 10 × 8. Multiply first, then halve.</div>
       <div class="q-feedback" id="fb2"></div>
       <div class="q-next" id="next2"><button class="btn-primary" onclick="nextQ(3)">Next →</button></div>
@@ -544,7 +574,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <button class="choice-btn" onclick="checkAns(this,'wrong','q3')">4.4 m²</button>
         <button class="choice-btn" onclick="checkAns(this,'wrong','q3')">10.2 m²</button>
       </div>
-      <button class="hint-toggle" onclick="toggleHint('h3')">💡 Show hint</button>
+      <button class="hint-toggle" onclick="toggleHint('h3')">Slide me</button>
       <div class="hint-text" id="h3">A = ½ × 3.2 × 5.5. Work out 3.2 × 5.5 first.</div>
       <div class="q-feedback" id="fb3"></div>
       <div class="q-next" id="next3"><button class="btn-primary" onclick="nextQ(4)">Next →</button></div>
@@ -560,7 +590,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <button class="choice-btn" onclick="checkAns(this,'wrong','q4')">½ × 6 × 6</button>
         <button class="choice-btn" onclick="checkAns(this,'wrong','q4')">(√3 / 2) × 6</button>
       </div>
-      <button class="hint-toggle" onclick="toggleHint('h4')">💡 Show hint</button>
+      <button class="hint-toggle" onclick="toggleHint('h4')">Slide me</button>
       <div class="hint-text" id="h4">The formula is (√3/4) × a². Here a = 6, so a² = 36.</div>
       <div class="q-feedback" id="fb4"></div>
       <div class="q-next" id="next4"><button class="btn-primary" onclick="nextQ(5)">Next →</button></div>
@@ -576,7 +606,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <button class="choice-btn" onclick="checkAns(this,'correct','q5')">10 cm</button>
         <button class="choice-btn" onclick="checkAns(this,'wrong','q5')">18 cm</button>
       </div>
-      <button class="hint-toggle" onclick="toggleHint('h5')">💡 Show hint</button>
+      <button class="hint-toggle" onclick="toggleHint('h5')">Slide me</button>
       <div class="hint-text" id="h5">Rearrange A = ½bh: b = (2 × A) ÷ h. Substitute A = 30 and h = 6.</div>
       <div class="q-feedback" id="fb5"></div>
       <div class="q-next" id="next5"><button class="btn-primary" onclick="showCompletion()">See results →</button></div>
@@ -831,6 +861,39 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 </div>
 
 <script>
+/* ── RECTANGLE SIMULATION ── */
+function rscUpdate() {
+  var b = parseFloat(document.getElementById('rsc-b').value);
+  var h = parseFloat(document.getElementById('rsc-h').value);
+  document.getElementById('rsc-b-val').textContent = b;
+  document.getElementById('rsc-h-val').textContent = h;
+  var rectArea = +(b * h).toFixed(1);
+  var triArea  = +(rectArea / 2).toFixed(2);
+  document.getElementById('rsc-rect-eq').textContent = b + ' × ' + h + ' = ' + rectArea + ' sq units';
+  document.getElementById('rsc-tri-eq').innerHTML = '½ × ' + rectArea + ' = <strong>' + triArea + ' sq units</strong>';
+
+  var W_MAX = 278, H_MAX = 138, x0 = 44, PAD_TOP = 30;
+  var rw = (b / 12) * W_MAX;
+  var rh = (h / 10) * H_MAX;
+  var y0 = PAD_TOP + (H_MAX - rh) / 2;
+  var x1 = x0 + rw, y1 = y0 + rh;
+
+  var s = '';
+  s += '<polygon points="'+x0+','+y0+' '+x1+','+y0+' '+x0+','+y1+'" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>';
+  s += '<polygon points="'+x0+','+y1+' '+x1+','+y1+' '+x1+','+y0+'" fill="#2563eb" fill-opacity="0.22" stroke="#2563eb" stroke-width="1.8"/>';
+  s += '<rect x="'+x0+'" y="'+y0+'" width="'+rw+'" height="'+rh+'" fill="none" stroke="#93c5fd" stroke-width="1.2"/>';
+  s += '<line x1="'+x0+'" y1="'+y1+'" x2="'+x1+'" y2="'+y0+'" stroke="#f59e0b" stroke-width="2" stroke-dasharray="7,4"/>';
+  if (rw > 70 && rh > 40) {
+    s += '<text x="'+(x0+rw*0.68)+'" y="'+(y0+rh*0.62)+'" font-size="11" fill="#1e40af" font-family="DM Sans" font-weight="600" text-anchor="middle">A = ½×b×h</text>';
+  }
+  s += '<line x1="'+x0+'" y1="'+(y1+6)+'" x2="'+x1+'" y2="'+(y1+6)+'" stroke="#78716c" stroke-width="1"/>';
+  s += '<text x="'+(x0+rw/2)+'" y="'+(y1+18)+'" font-size="11" fill="#44403c" font-family="DM Sans" text-anchor="middle">b</text>';
+  s += '<line x1="'+(x1+5)+'" y1="'+y0+'" x2="'+(x1+5)+'" y2="'+y1+'" stroke="#78716c" stroke-width="1"/>';
+  s += '<text x="'+(x1+16)+'" y="'+(y0+rh/2+4)+'" font-size="11" fill="#44403c" font-family="DM Sans">h</text>';
+  document.getElementById('rsc-svg').innerHTML = s;
+}
+rscUpdate();
+
 /* ACCORDION */
 function toggleAcc(btn) {
   var body = btn.nextElementSibling;
