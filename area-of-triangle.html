@@ -545,7 +545,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <button class="choice-btn" onclick="checkAns(this,'wrong','q1')">8 cm²</button>
         <button class="choice-btn" onclick="checkAns(this,'wrong','q1')">6 cm²</button>
       </div>
-      <button class="hint-toggle" onclick="toggleHint('h1')">Slide me</button>
+      <button class="hint-toggle" onclick="toggleHint('h1')"><span>Slide me</span></button>
       <div class="hint-text" id="h1">Use A = ½ × base × height. The green dashed line is the height.</div>
       <div class="q-feedback" id="fb1"></div>
       <div class="q-next" id="next1"><button class="btn-primary" onclick="nextQ(2)">Next →</button></div>
@@ -561,7 +561,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <button class="choice-btn" onclick="checkAns(this,'wrong','q2')">20 cm²</button>
         <button class="choice-btn" onclick="checkAns(this,'wrong','q2')">36 cm²</button>
       </div>
-      <button class="hint-toggle" onclick="toggleHint('h2')">Slide me</button>
+      <button class="hint-toggle" onclick="toggleHint('h2')"><span>Slide me</span></button>
       <div class="hint-text" id="h2">A = ½ × 10 × 8. Multiply first, then halve.</div>
       <div class="q-feedback" id="fb2"></div>
       <div class="q-next" id="next2"><button class="btn-primary" onclick="nextQ(3)">Next →</button></div>
@@ -577,7 +577,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <button class="choice-btn" onclick="checkAns(this,'wrong','q3')">4.4 m²</button>
         <button class="choice-btn" onclick="checkAns(this,'wrong','q3')">10.2 m²</button>
       </div>
-      <button class="hint-toggle" onclick="toggleHint('h3')">Slide me</button>
+      <button class="hint-toggle" onclick="toggleHint('h3')"><span>Slide me</span></button>
       <div class="hint-text" id="h3">A = ½ × 3.2 × 5.5. Work out 3.2 × 5.5 first.</div>
       <div class="q-feedback" id="fb3"></div>
       <div class="q-next" id="next3"><button class="btn-primary" onclick="nextQ(4)">Next →</button></div>
@@ -593,7 +593,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <button class="choice-btn" onclick="checkAns(this,'wrong','q4')">½ × 6 × 6</button>
         <button class="choice-btn" onclick="checkAns(this,'wrong','q4')">(√3 / 2) × 6</button>
       </div>
-      <button class="hint-toggle" onclick="toggleHint('h4')">Slide me</button>
+      <button class="hint-toggle" onclick="toggleHint('h4')"><span>Slide me</span></button>
       <div class="hint-text" id="h4">The formula is (√3/4) × a². Here a = 6, so a² = 36.</div>
       <div class="q-feedback" id="fb4"></div>
       <div class="q-next" id="next4"><button class="btn-primary" onclick="nextQ(5)">Next →</button></div>
@@ -609,7 +609,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <button class="choice-btn" onclick="checkAns(this,'correct','q5')">10 cm</button>
         <button class="choice-btn" onclick="checkAns(this,'wrong','q5')">18 cm</button>
       </div>
-      <button class="hint-toggle" onclick="toggleHint('h5')">Slide me</button>
+      <button class="hint-toggle" onclick="toggleHint('h5')"><span>Slide me</span></button>
       <div class="hint-text" id="h5">Rearrange A = ½bh: b = (2 × A) ÷ h. Substitute A = 30 and h = 6.</div>
       <div class="q-feedback" id="fb5"></div>
       <div class="q-next" id="next5"><button class="btn-primary" onclick="showCompletion()">See results →</button></div>
@@ -882,9 +882,9 @@ function rscUpdate() {
   var x1 = x0 + rw, y1 = y0 + rh;
 
   var s = '';
-  s += '<polygon points="'+x0+','+y0+' '+x1+','+y0+' '+x0+','+y1+'" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>';
-  s += '<polygon points="'+x0+','+y1+' '+x1+','+y1+' '+x1+','+y0+'" fill="#2563eb" fill-opacity="0.22" stroke="#2563eb" stroke-width="1.8"/>';
-  s += '<rect x="'+x0+'" y="'+y0+'" width="'+rw+'" height="'+rh+'" fill="none" stroke="#93c5fd" stroke-width="1.2"/>';
+  s += '<polygon points="'+x0+','+y0+' '+x1+','+y0+' '+x0+','+y1+'" fill="#bfdbfe" stroke="#3b82f6" stroke-width="1.5"/>';
+  s += '<polygon points="'+x0+','+y1+' '+x1+','+y1+' '+x1+','+y0+'" fill="#bbf7d0" stroke="#16a34a" stroke-width="1.8"/>';
+  s += '<rect x="'+x0+'" y="'+y0+'" width="'+rw+'" height="'+rh+'" fill="none" stroke="#3b82f6" stroke-width="1.8"/>';
   s += '<line x1="'+x0+'" y1="'+y1+'" x2="'+x1+'" y2="'+y0+'" stroke="#f59e0b" stroke-width="2" stroke-dasharray="7,4"/>';
   if (rw > 70 && rh > 40) {
     s += '<text x="'+(x0+rw*0.68)+'" y="'+(y0+rh*0.62)+'" font-size="11" fill="#1e40af" font-family="DM Sans" font-weight="600" text-anchor="middle">A = ½×b×h</text>';
@@ -953,7 +953,8 @@ function toggleHint(id) {
   var btn = h.previousElementSibling;
   var open = h.classList.toggle('show');
   btn.classList.toggle('open', open);
-  btn.textContent = open ? 'Slide back' : 'Slide me';
+  var sp = btn.querySelector('span');
+  if (sp) sp.textContent = open ? 'Slide back' : 'Slide me';
 }
 function retryPractice() {
   correctCount = 0;
@@ -962,7 +963,7 @@ function retryPractice() {
   document.querySelectorAll('.q-feedback').forEach(f => { f.textContent=''; f.className='q-feedback'; });
   document.querySelectorAll('.q-next').forEach(n => n.classList.remove('show'));
   document.querySelectorAll('.hint-text').forEach(h => h.classList.remove('show'));
-  document.querySelectorAll('.hint-toggle').forEach(b => { b.classList.remove('open'); b.textContent = 'Slide me'; });
+  document.querySelectorAll('.hint-toggle').forEach(b => { b.classList.remove('open'); var s=b.querySelector('span'); if(s) s.textContent='Slide me'; });
   document.getElementById('completion').classList.remove('show');
   document.getElementById('q1').classList.add('active');
   document.getElementById('prog-bar').style.width = '0%';
