@@ -165,8 +165,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .hint-slider-wrap{display:flex;align-items:center;gap:10px;margin:8px 0 4px}
 .hint-slider-label{font-size:12px;color:var(--yellow);font-weight:500;width:88px;flex-shrink:0}
 .hint-slider{flex:1;accent-color:var(--yellow);cursor:pointer}
-.hint-text{font-size:14px;color:var(--ink2);background:var(--yellow-light);padding:10px 14px;border-radius:6px;margin-bottom:12px;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding-top:0;padding-bottom:0}
-.hint-text.show{max-height:120px;padding:10px 14px}
+.hint-text{font-size:14px;color:var(--ink2);background:var(--yellow-light);padding:10px 14px;border-radius:6px;margin-bottom:12px;display:block;clip-path:inset(0 100% 0 0)}
 .q-feedback{display:none;font-size:14px;padding:12px 16px;border-radius:8px;margin-top:12px}
 .q-feedback.correct{background:var(--green-light);color:#14532d}
 .q-feedback.wrong{background:var(--red-light);color:#7f1d1d}
@@ -553,7 +552,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <div class="hint-slider-wrap">
         <span class="hint-slider-label" id="hl1">← Slide me</span>
         <input type="range" class="hint-slider" min="0" max="100" value="0"
-               oninput="slideHint(this,'h1','hl1')" onchange="snapHint(this,'h1','hl1')">
+               oninput="slideHint(this,'h1','hl1')">
       </div>
       <div class="hint-text" id="h1">Use A = ½ × base × height. The green dashed line is the height.</div>
       <div class="q-feedback" id="fb1"></div>
@@ -573,7 +572,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <div class="hint-slider-wrap">
         <span class="hint-slider-label" id="hl2">← Slide me</span>
         <input type="range" class="hint-slider" min="0" max="100" value="0"
-               oninput="slideHint(this,'h2','hl2')" onchange="snapHint(this,'h2','hl2')">
+               oninput="slideHint(this,'h2','hl2')">
       </div>
       <div class="hint-text" id="h2">A = ½ × 10 × 8. Multiply first, then halve.</div>
       <div class="q-feedback" id="fb2"></div>
@@ -593,7 +592,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <div class="hint-slider-wrap">
         <span class="hint-slider-label" id="hl3">← Slide me</span>
         <input type="range" class="hint-slider" min="0" max="100" value="0"
-               oninput="slideHint(this,'h3','hl3')" onchange="snapHint(this,'h3','hl3')">
+               oninput="slideHint(this,'h3','hl3')">
       </div>
       <div class="hint-text" id="h3">A = ½ × 3.2 × 5.5. Work out 3.2 × 5.5 first.</div>
       <div class="q-feedback" id="fb3"></div>
@@ -613,7 +612,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <div class="hint-slider-wrap">
         <span class="hint-slider-label" id="hl4">← Slide me</span>
         <input type="range" class="hint-slider" min="0" max="100" value="0"
-               oninput="slideHint(this,'h4','hl4')" onchange="snapHint(this,'h4','hl4')">
+               oninput="slideHint(this,'h4','hl4')">
       </div>
       <div class="hint-text" id="h4">The formula is (√3/4) × a². Here a = 6, so a² = 36.</div>
       <div class="q-feedback" id="fb4"></div>
@@ -633,7 +632,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <div class="hint-slider-wrap">
         <span class="hint-slider-label" id="hl5">← Slide me</span>
         <input type="range" class="hint-slider" min="0" max="100" value="0"
-               oninput="slideHint(this,'h5','hl5')" onchange="snapHint(this,'h5','hl5')">
+               oninput="slideHint(this,'h5','hl5')">
       </div>
       <div class="hint-text" id="h5">Rearrange A = ½bh: b = (2 × A) ÷ h. Substitute A = 30 and h = 6.</div>
       <div class="q-feedback" id="fb5"></div>
@@ -984,19 +983,11 @@ function showCompletion() {
   document.getElementById('prog-bar').style.width = '100%';
 }
 function slideHint(slider, hintId, labelId) {
+  var val = parseInt(slider.value);
   var h = document.getElementById(hintId);
   var lbl = document.getElementById(labelId);
-  if (parseInt(slider.value) >= 70) {
-    h.classList.add('show');
-    lbl.textContent = 'Slide back →';
-  } else {
-    h.classList.remove('show');
-    lbl.textContent = '← Slide me';
-  }
-}
-function snapHint(slider, hintId, labelId) {
-  slider.value = parseInt(slider.value) >= 70 ? 100 : 0;
-  slideHint(slider, hintId, labelId);
+  h.style.clipPath = 'inset(0 ' + (100 - val) + '% 0 0)';
+  lbl.textContent = val > 5 ? 'Slide back →' : '← Slide me';
 }
 function retryPractice() {
   correctCount = 0;
@@ -1004,7 +995,7 @@ function retryPractice() {
   document.querySelectorAll('.choice-btn').forEach(b => { b.classList.remove('correct','wrong'); b.disabled = false; });
   document.querySelectorAll('.q-feedback').forEach(f => { f.textContent=''; f.className='q-feedback'; });
   document.querySelectorAll('.q-next').forEach(n => n.classList.remove('show'));
-  document.querySelectorAll('.hint-text').forEach(h => h.classList.remove('show'));
+  document.querySelectorAll('.hint-text').forEach(h => { h.style.clipPath = 'inset(0 100% 0 0)'; });
   document.querySelectorAll('.hint-slider').forEach(s => { s.value = 0; });
   document.querySelectorAll('.hint-slider-label').forEach(l => { l.textContent = '← Slide me'; });
   document.getElementById('completion').classList.remove('show');
