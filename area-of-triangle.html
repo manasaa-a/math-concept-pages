@@ -13,7 +13,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Area of a Triangle — Cuemath</title>
-<meta name="description" content="Find the area of any triangle using the base–height formula, Heron's formula, or the SAS formula. Step-by-step examples, an interactive simulation, and practice questions. Cuemath.">
+<meta name="description" content="Find the area of any triangle using the base–height formula, Heron's formula, and special cases for equilateral and isosceles triangles. Step-by-step examples, an interactive simulation, and practice questions. Cuemath.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -152,6 +152,8 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .q-feedback.wrong{background:var(--red-light);color:#7f1d1d}
 .q-next{margin-top:16px;display:none}
 .completion-screen{display:none;text-align:center;padding:32px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.btn-secondary{background:transparent;border:2px solid var(--border);color:var(--ink2);padding:12px 22px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;transition:border-color .15s}
+.btn-secondary:hover{border-color:var(--ink2)}
 .score-big{font-size:48px;font-weight:700;color:var(--green);font-family:'Lora',serif}
 /* Key Takeaways */
 .kt-table{width:100%;border-collapse:collapse;margin:16px 0}
@@ -260,8 +262,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <div class="toc-title">On this page</div>
     <ul id="toc-list">
       <li><a href="#what-is">What is it?</a></li>
-      <li><a href="#formulas">All Formulas</a></li>
-      <li><a href="#simulation">Interactive Triangle</a></li>
+      <li><a href="#what-is">Triangle Explorer</a></li>
       <li><a href="#how-to">How to Find Area</a></li>
       <li><a href="#practice">Practice</a></li>
       <li><a href="#takeaways">Key Takeaways</a></li>
@@ -279,8 +280,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <summary>Jump to a section</summary>
     <ul>
       <li><a href="#what-is">What is the Area of a Triangle?</a></li>
-      <li><a href="#formulas">All Formulas</a></li>
-      <li><a href="#simulation">Interactive Triangle</a></li>
+      <li><a href="#what-is">Triangle Explorer</a></li>
       <li><a href="#how-to">How to Find Area</a></li>
       <li><a href="#practice">Practice</a></li>
       <li><a href="#takeaways">Key Takeaways</a></li>
@@ -295,10 +295,10 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <h1>Area of a Triangle</h1>
 
     <div class="callout">
-      By the end of this page, you'll be able to find the area of any triangle — no matter what information you're given. Including the base–height formula, Heron's formula for three sides, the SAS formula with an angle, and special cases for equilateral and isosceles triangles.
+      By the end of this page, you'll know how to find the area of any triangle — from base and height to all three sides.
     </div>
 
-    <h2>You already know the area of a rectangle — cut it diagonally, and you've just discovered the triangle formula.</h2>
+    <h2>The area of a triangle is hiding inside every rectangle.</h2>
 
     <!-- VIDEO EMBED -->
     <div class="video-embed">
@@ -307,33 +307,10 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
     <!-- INLINE CTA -->
     <div class="cta-inline">
-      <p>Need help with geometry? A Cuemath tutor will work through real examples with you live.</p>
+      <p>Want to go deeper? Get personalised 1:1 math tutoring with a Cuemath expert.</p>
       <button class="btn-primary" onclick="openModal()">Get 1:1 help →</button>
     </div>
 
-    <!-- REAL-WORLD STRIP -->
-    <div class="rw-strip">
-      <div class="rw-card">
-        <div class="emoji">⛵</div>
-        <strong>Sailing</strong>
-        <p>A racing dinghy's mainsail is ~8.4 m² — the sailmaker uses ½ × base × height before cutting any cloth.</p>
-      </div>
-      <div class="rw-card">
-        <div class="emoji">🏠</div>
-        <strong>Roofing</strong>
-        <p>Every gable end of a house is a triangle. Builders calculate its area to order the right amount of cladding.</p>
-      </div>
-      <div class="rw-card">
-        <div class="emoji">🍕</div>
-        <strong>Pizza Slices</strong>
-        <p>Each slice of a 30 cm pizza cut into 8 is a triangle with roughly 88 cm² of cheesy area.</p>
-      </div>
-      <div class="rw-card">
-        <div class="emoji">🗺️</div>
-        <strong>Land Survey</strong>
-        <p>Ancient Egyptians used triangle areas to re-divide farmland after every Nile flood — the same formula, 4000 years ago.</p>
-      </div>
-    </div>
   </div>
 
   <!-- WHAT IS -->
@@ -369,81 +346,26 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <text x="420" y="110" font-size="13" fill="#15803d" font-weight="700" font-family="DM Sans" text-anchor="middle">A = ½bh</text>
     </svg>
 
+    <div class="think-box" style="margin-top:20px">
+      <div class="think-label">But what about non-right triangles?</div>
+      <p>That diagonal cut only works neatly for right triangles. For any other triangle — scalene, obtuse, acute — the same result holds because every triangle is exactly half a parallelogram that shares its base and height.</p>
+    </div>
+
+    <p>Slide the top vertex of the triangle below. Notice the area stays the same as long as the height doesn't change — whether the triangle leans left, right, or stands straight up. The rectangle and parallelogram connections both tell the same story.</p>
+
+    <!-- GeoGebra: rectangle/parallelogram → triangle -->
+    <div style="margin:20px 0;border-radius:12px;overflow:hidden;border:1px solid var(--border)">
+      <iframe src="https://www.geogebra.org/material/iframe/id/bdrjara5/width/780/height/420/border/ffffff/sfsb/false/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false"
+        width="780" height="420"
+        style="border:0;display:block;width:100%;max-width:780px"
+        allowfullscreen loading="lazy"></iframe>
+    </div>
+
     <p>Key rule: the <strong>height (h) must be perpendicular to the base</strong>. It doesn't matter where along the base the height lands — the formula is always the same.</p>
 
     <div class="think-box">
       <div class="think-label">Mini-check</div>
       <p>A rectangle is 8 cm wide and 5 cm tall. A diagonal cuts it into two triangles. What is the area of each triangle? You can work it out in your head before scrolling down.</p>
-    </div>
-  </div>
-
-  <!-- FORMULAS -->
-  <div class="section" id="formulas">
-    <h2>All Formulas at a Glance</h2>
-    <p>The right formula depends on what you know. Here are all six cases:</p>
-
-    <div class="formula-grid">
-      <div class="formula-card">
-        <div class="fc-tag">Base and Height (most common)</div>
-        <div class="fc-formula">A = ½ × b × h</div>
-        <div class="fc-note">b = base, h = perpendicular height</div>
-      </div>
-      <div class="formula-card">
-        <div class="fc-tag">Three Sides Known — Heron's Formula</div>
-        <div class="fc-formula">A = √[s(s−a)(s−b)(s−c)]</div>
-        <div class="fc-note">s = (a+b+c)/2 (semi-perimeter)</div>
-      </div>
-      <div class="formula-card">
-        <div class="fc-tag">Two Sides + Included Angle (SAS)</div>
-        <div class="fc-formula">A = ½ × b × c × sin(A)</div>
-        <div class="fc-note">b, c = two sides; A = angle between them</div>
-      </div>
-      <div class="formula-card">
-        <div class="fc-tag">Equilateral Triangle</div>
-        <div class="fc-formula">A = (√3 / 4) × a²</div>
-        <div class="fc-note">a = side length (all sides equal)</div>
-      </div>
-      <div class="formula-card">
-        <div class="fc-tag">Isosceles Triangle</div>
-        <div class="fc-formula">A = ¼b√(4a² − b²)</div>
-        <div class="fc-note">a = equal sides, b = base</div>
-      </div>
-      <div class="formula-card">
-        <div class="fc-tag">Right Triangle</div>
-        <div class="fc-formula">A = ½ × leg₁ × leg₂</div>
-        <div class="fc-note">The two legs are already perpendicular</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SIMULATION -->
-  <div class="section" id="simulation">
-    <h2>Interactive Triangle Explorer</h2>
-    <p>Drag any of the three corner dots to reshape the triangle. Watch how base, height, and area update live.</p>
-
-    <div class="sim-container">
-      <div class="sim-canvas-wrap" id="sim-wrap">
-        <canvas id="triCanvas" height="320"></canvas>
-      </div>
-      <div class="sim-stats">
-        <div class="sim-stat">
-          <div class="ss-label">Base</div>
-          <div class="ss-val" id="stat-base">—</div>
-          <div class="ss-unit">units</div>
-        </div>
-        <div class="sim-stat">
-          <div class="ss-label">Height</div>
-          <div class="ss-val" id="stat-height">—</div>
-          <div class="ss-unit">units</div>
-        </div>
-        <div class="sim-stat highlight-stat">
-          <div class="ss-label">Area = ½ × b × h</div>
-          <div class="ss-val" id="stat-area">—</div>
-          <div class="ss-unit">sq units</div>
-        </div>
-      </div>
-      <p class="sim-discover">💡 Try this: drag the top point <em>sideways</em> without changing its height — the area stays the same! Only the perpendicular height matters, not which way the triangle leans.</p>
-      <button class="sim-reset" onclick="resetTri()">↺ Reset triangle</button>
     </div>
   </div>
 
@@ -460,6 +382,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>A = ½ × base × height</div>
+          <svg viewBox="0 0 260 130" style="width:100%;max-width:260px;display:block;margin:10px 0;background:#f8fafc;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="40,110 220,110 130,20" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+            <line x1="130" y1="20" x2="130" y2="110" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="5,3"/>
+            <rect x="130" y="101" width="9" height="9" fill="none" stroke="#16a34a" stroke-width="1.5"/>
+            <text x="130" y="125" font-size="12" fill="#44403c" font-family="DM Sans" text-anchor="middle">base (b)</text>
+            <text x="148" y="68" font-size="12" fill="#16a34a" font-family="DM Sans">h</text>
+          </svg>
           <ul class="step-list">
             <li><p>Identify the base — any side can be the base.</p></li>
             <li><p>Find the perpendicular height: the distance from the opposite vertex to the base line, measured at a right angle.</p></li>
@@ -486,6 +415,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>s = (a+b+c)/2 &nbsp;|&nbsp; A = √[s(s−a)(s−b)(s−c)]</div>
+          <svg viewBox="0 0 260 130" style="width:100%;max-width:260px;display:block;margin:10px 0;background:#f8fafc;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="30,110 230,110 100,25" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+            <text x="125" y="123" font-size="12" fill="#78716c" font-family="DM Sans" text-anchor="middle">a</text>
+            <text x="58" y="72" font-size="12" fill="#78716c" font-family="DM Sans" text-anchor="middle">b</text>
+            <text x="178" y="72" font-size="12" fill="#78716c" font-family="DM Sans" text-anchor="middle">c</text>
+            <text x="125" y="68" font-size="11" fill="#92400e" font-family="DM Sans" text-anchor="middle">all 3 sides known</text>
+          </svg>
           <ul class="step-list">
             <li><p>Find the semi-perimeter: s = (a + b + c) ÷ 2.</p></li>
             <li><p>Calculate each factor: (s−a), (s−b), (s−c).</p></li>
@@ -501,25 +437,17 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Two sides and the angle between them (SAS)</span><span class="acc-chev">▼</span>
-        </button>
-        <div class="accordion-body">
-          <div class="fbox"><div class="flbl">Formula</div>A = ½ × b × c × sin(A)</div>
-          <p style="font-size:15px;color:var(--ink2)">Where b and c are the two known sides, and A is the angle between them.</p>
-          <div class="ex-card" style="max-width:380px">
-            <div class="ex-lbl">Example</div>
-            Sides b = 4, c = 6; included angle A = 30°<br>
-            A = ½ × 4 × 6 × sin(30°) = 12 × 0.5 = <strong>6 sq units</strong>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-btn" onclick="toggleAcc(this)">
           <span>Equilateral Triangle (all sides equal)</span><span class="acc-chev">▼</span>
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>A = (√3 / 4) × a²</div>
+          <svg viewBox="0 0 260 130" style="width:100%;max-width:260px;display:block;margin:10px 0;background:#f8fafc;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="130,15 30,115 230,115" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+            <line x1="130" y1="15" x2="130" y2="115" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="5,3"/>
+            <text x="125" y="125" font-size="12" fill="#44403c" font-family="DM Sans" text-anchor="middle">a</text>
+            <text x="62" y="72" font-size="12" fill="#44403c" font-family="DM Sans" text-anchor="middle">a</text>
+            <text x="196" y="72" font-size="12" fill="#44403c" font-family="DM Sans" text-anchor="middle">a</text>
+          </svg>
           <p style="font-size:15px;color:var(--ink2)">Derived from the base–height formula: the height of an equilateral triangle with side a is (√3/2)a.</p>
           <div class="ex-row">
             <div class="ex-card">
@@ -540,6 +468,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>A = ¼ × b × √(4a² − b²)</div>
+          <svg viewBox="0 0 260 130" style="width:100%;max-width:260px;display:block;margin:10px 0;background:#f8fafc;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="130,15 50,115 210,115" fill="#fce7f3" stroke="#db2777" stroke-width="2"/>
+            <line x1="130" y1="15" x2="130" y2="115" stroke="#db2777" stroke-width="1.5" stroke-dasharray="5,3"/>
+            <text x="125" y="125" font-size="12" fill="#44403c" font-family="DM Sans" text-anchor="middle">b (base)</text>
+            <text x="72" y="72" font-size="12" fill="#44403c" font-family="DM Sans" text-anchor="middle">a</text>
+            <text x="182" y="72" font-size="12" fill="#44403c" font-family="DM Sans" text-anchor="middle">a</text>
+          </svg>
           <p style="font-size:15px;color:var(--ink2)">Where a = the two equal sides, b = the base. The formula computes the height using Pythagoras first.</p>
           <div class="ex-card" style="max-width:380px">
             <div class="ex-lbl">Equal sides a = 5, Base b = 6</div>
@@ -659,7 +594,10 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <div class="completion-screen" id="completion">
       <div class="score-big" id="final-score">0/5</div>
       <p id="completion-msg" style="color:var(--ink2);font-size:16px;margin-top:8px"></p>
-      <button class="btn-primary" style="margin-top:20px" onclick="openModal()">Book a free class to go deeper →</button>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:20px">
+        <button class="btn-primary" onclick="openModal()">Book a free class →</button>
+        <button class="btn-secondary" onclick="retryPractice()">↺ Try again</button>
+      </div>
     </div>
   </div>
 
@@ -672,6 +610,30 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <button class="btn-white" onclick="openModal()">Start free →</button>
       </div>
       <img class="cta-img" src="cta-student.png" alt="Cuemath 1-on-1 online class">
+    </div>
+  </div>
+
+  <!-- REAL-WORLD STRIP -->
+  <div class="rw-strip">
+    <div class="rw-card">
+      <div class="emoji">🏗️</div>
+      <strong>Bridge Engineering</strong>
+      <p>Every triangular truss in a bridge has a calculated area — engineers verify load distribution using ½ × base × height for each member.</p>
+    </div>
+    <div class="rw-card">
+      <div class="emoji">⛵</div>
+      <strong>Sail Design</strong>
+      <p>A racing mainsail with a 4 m foot and 9 m luff has exactly 18 m² of area — the sailmaker computes this before cutting any cloth.</p>
+    </div>
+    <div class="rw-card">
+      <div class="emoji">📡</div>
+      <strong>GPS Triangulation</strong>
+      <p>Your phone calculates its position by forming triangles between signal towers — the area of those triangles shrinks as accuracy improves.</p>
+    </div>
+    <div class="rw-card">
+      <div class="emoji">🏔️</div>
+      <strong>Land Surveying</strong>
+      <p>Surveyors divide any plot of land into triangles, calculate each area, and sum them — the same formula used in ancient Egypt.</p>
     </div>
   </div>
 
@@ -892,168 +854,8 @@ function toggleFaq(btn) {
   btn.classList.toggle('open', !o); a.classList.toggle('open', !o);
 }
 
-/* ── TRIANGLE SIMULATION ── */
-var GRID = 20; /* pixels per unit */
-var pts; /* [x,y] canvas coords for A, B, C */
-var dragIdx = null;
+/* PRACTICE */
 
-function defaultPts(W, H) {
-  var cx = W / 2, cy = H / 2;
-  return [
-    [cx - 100, cy + 70],   /* A - base left */
-    [cx + 100, cy + 70],   /* B - base right */
-    [cx - 20,  cy - 70]    /* C - apex */
-  ];
-}
-
-function resetTri() {
-  var c = document.getElementById('triCanvas');
-  pts = defaultPts(c.width, c.height);
-  drawTri();
-}
-
-function drawTri() {
-  var canvas = document.getElementById('triCanvas');
-  canvas.width = document.getElementById('sim-wrap').offsetWidth || 600;
-  canvas.height = 320;
-  var ctx = canvas.getContext('2d');
-  var W = canvas.width, H = canvas.height;
-  var A = pts[0], B = pts[1], C = pts[2];
-
-  /* background + grid */
-  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
-  ctx.strokeStyle = '#e7e5e4'; ctx.lineWidth = 1;
-  for (var x = 0; x < W; x += GRID) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
-  for (var y = 0; y < H; y += GRID) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
-
-  /* filled triangle */
-  ctx.beginPath(); ctx.moveTo(A[0], A[1]); ctx.lineTo(B[0], B[1]); ctx.lineTo(C[0], C[1]); ctx.closePath();
-  ctx.fillStyle = 'rgba(37,99,235,0.1)'; ctx.fill();
-  ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 2.5; ctx.stroke();
-
-  /* perpendicular height from C to line AB */
-  var dx = B[0]-A[0], dy = B[1]-A[1];
-  var lenAB = Math.sqrt(dx*dx + dy*dy);
-  if (lenAB > 0.01) {
-    /* foot of perpendicular from C onto AB */
-    var t = ((C[0]-A[0])*dx + (C[1]-A[1])*dy) / (lenAB*lenAB);
-    var Fx = A[0] + t*dx, Fy = A[1] + t*dy;
-    /* height line */
-    ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1.8; ctx.setLineDash([5,4]);
-    ctx.beginPath(); ctx.moveTo(C[0], C[1]); ctx.lineTo(Fx, Fy); ctx.stroke();
-    ctx.setLineDash([]);
-    /* right-angle marker at foot — normal points toward C (inside the triangle) */
-    var nu = -dy/lenAB, nv = dx/lenAB;
-    var ndot = (C[0]-Fx)*nu + (C[1]-Fy)*nv;
-    if (ndot < 0) { nu = -nu; nv = -nv; }
-    var nx = nu*8, ny = nv*8;
-    var ux = dx/lenAB*8, uy = dy/lenAB*8;
-    ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1.5;
-    ctx.beginPath();
-    ctx.moveTo(Fx+nx, Fy+ny);
-    ctx.lineTo(Fx+nx+ux, Fy+ny+uy);
-    ctx.lineTo(Fx+ux, Fy+uy);
-    ctx.stroke();
-    /* height label — offset along base direction so it sits beside the height line */
-    var midHx = (C[0]+Fx)/2, midHy = (C[1]+Fy)/2;
-    ctx.fillStyle = '#16a34a'; ctx.font = 'bold 12px DM Sans,sans-serif'; ctx.textAlign = 'center';
-    ctx.fillText('h', midHx + (dx/lenAB)*18, midHy + (dy/lenAB)*18);
-    /* base label */
-    ctx.fillStyle = '#2563eb'; ctx.font = 'bold 12px DM Sans,sans-serif';
-    var midBx = (A[0]+B[0])/2, midBy = (A[1]+B[1])/2;
-    ctx.fillText('b', midBx + (dy/lenAB)*16, midBy + (dx/lenAB)*16);
-  }
-
-  /* vertex dots */
-  var labels = ['A','B','C'];
-  var offsets = [[-14, 14], [8, 14], [0, -10]];
-  pts.forEach(function(p, i) {
-    ctx.beginPath(); ctx.arc(p[0], p[1], 8, 0, Math.PI*2);
-    ctx.fillStyle = i === 2 ? '#f59e0b' : '#2563eb'; ctx.fill();
-    ctx.strokeStyle = '#fff'; ctx.lineWidth = 2.5; ctx.stroke();
-    ctx.fillStyle = i === 2 ? '#92400e' : '#1d4ed8';
-    ctx.font = 'bold 12px DM Sans,sans-serif'; ctx.textAlign = 'center';
-    ctx.fillText(labels[i], p[0] + offsets[i][0], p[1] + offsets[i][1]);
-  });
-
-  /* stats */
-  var base = lenAB / GRID;
-  var height = 0;
-  if (lenAB > 0.01) {
-    var t2 = ((C[0]-A[0])*dx + (C[1]-A[1])*dy) / (lenAB*lenAB);
-    var Fx2 = A[0]+t2*dx, Fy2 = A[1]+t2*dy;
-    var hpx = Math.sqrt((C[0]-Fx2)*(C[0]-Fx2)+(C[1]-Fy2)*(C[1]-Fy2));
-    height = hpx / GRID;
-  }
-  var area = 0.5 * base * height;
-  document.getElementById('stat-base').textContent = base.toFixed(1);
-  document.getElementById('stat-height').textContent = height.toFixed(1);
-  document.getElementById('stat-area').textContent = area.toFixed(1);
-}
-
-/* drag */
-(function() {
-  var canvas = document.getElementById('triCanvas');
-  function getXY(evt) {
-    var r = canvas.getBoundingClientRect();
-    var scaleX = canvas.width / r.width;
-    var scaleY = canvas.height / r.height;
-    var clientX = evt.touches ? evt.touches[0].clientX : evt.clientX;
-    var clientY = evt.touches ? evt.touches[0].clientY : evt.clientY;
-    return [(clientX - r.left) * scaleX, (clientY - r.top) * scaleY];
-  }
-  function nearest(xy) {
-    var best = -1, bestD = 20;
-    pts.forEach(function(p, i) {
-      var d = Math.sqrt((xy[0]-p[0])*(xy[0]-p[0])+(xy[1]-p[1])*(xy[1]-p[1]));
-      if (d < bestD) { bestD = d; best = i; }
-    });
-    return best;
-  }
-  function move(evt) {
-    if (dragIdx === null) return;
-    evt.preventDefault();
-    var xy = getXY(evt);
-    var W = canvas.width, H = canvas.height;
-    pts[dragIdx] = [
-      Math.max(12, Math.min(W-12, xy[0])),
-      Math.max(12, Math.min(H-12, xy[1]))
-    ];
-    drawTri();
-  }
-  canvas.addEventListener('mousedown', function(e) {
-    dragIdx = nearest(getXY(e));
-    if (dragIdx >= 0) canvas.style.cursor = 'grabbing';
-  });
-  canvas.addEventListener('mousemove', function(e) {
-    move(e);
-    if (dragIdx === null) canvas.style.cursor = nearest(getXY(e)) >= 0 ? 'grab' : 'crosshair';
-  });
-  canvas.addEventListener('mouseup', function() { dragIdx = null; canvas.style.cursor = 'crosshair'; });
-  canvas.addEventListener('mouseleave', function() { dragIdx = null; });
-  canvas.addEventListener('touchstart', function(e) { dragIdx = nearest(getXY(e)); e.preventDefault(); }, { passive: false });
-  canvas.addEventListener('touchmove', move, { passive: false });
-  canvas.addEventListener('touchend', function() { dragIdx = null; });
-})();
-
-window.addEventListener('resize', function() {
-  var c = document.getElementById('triCanvas');
-  var newW = document.getElementById('sim-wrap').offsetWidth || 600;
-  if (pts) {
-    var scaleX = newW / c.width;
-    pts = pts.map(function(p) { return [p[0] * scaleX, p[1]]; });
-  }
-  drawTri();
-});
-
-/* init */
-(function() {
-  var canvas = document.getElementById('triCanvas');
-  canvas.width = document.getElementById('sim-wrap').offsetWidth || 600;
-  canvas.height = 320;
-  pts = defaultPts(canvas.width, canvas.height);
-  drawTri();
-})();
 
 /* PRACTICE */
 var score = 0, answered = {};
@@ -1090,6 +892,17 @@ function showCompletion() {
   document.getElementById('prog-bar').style.width = '100%';
 }
 function toggleHint(id) { var h = document.getElementById(id); h.style.display = h.style.display === 'block' ? 'none' : 'block'; }
+function retryPractice() {
+  correctCount = 0;
+  document.querySelectorAll('.question-card').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.choice-btn').forEach(b => { b.classList.remove('correct','wrong'); b.disabled = false; });
+  document.querySelectorAll('.q-feedback').forEach(f => { f.textContent=''; f.className='q-feedback'; });
+  document.querySelectorAll('.q-next').forEach(n => n.classList.remove('show'));
+  document.querySelectorAll('.hint-text').forEach(h => h.classList.remove('show'));
+  document.getElementById('completion').classList.remove('show');
+  document.getElementById('q1').classList.add('active');
+  document.getElementById('prog-bar').style.width = '0%';
+}
 
 /* MODAL */
 function openModal() {
