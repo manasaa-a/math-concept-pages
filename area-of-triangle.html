@@ -330,17 +330,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
     <p>The <strong>area of a triangle</strong> is the 2D space enclosed by its three sides, measured in square units (cm², m², in²).</p>
 
-    <!-- Step-through simulation: rectangle → triangle -->
-    <div class="rect-sim" id="rect-sim">
-      <div class="rs-stage">
-        <svg id="rs-svg" viewBox="0 0 420 190" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;display:block;margin:0 auto"></svg>
-      </div>
-      <p class="rs-caption" id="rs-caption"></p>
-      <div class="rs-controls">
-        <button class="rs-btn" id="rs-back" onclick="rsMove(-1)" disabled>← Back</button>
-        <div class="rs-dots" id="rs-dots"></div>
-        <button class="rs-btn" id="rs-fwd" onclick="rsMove(1)">Next →</button>
-      </div>
+    <!-- GeoGebra: rectangle → triangle -->
+    <p style="font-size:14px;color:var(--muted);margin-bottom:6px">Drag the diagonal or resize the rectangle to see how the triangle area changes.</p>
+    <div style="margin:8px 0 20px;border-radius:12px;overflow:hidden;border:1px solid var(--border)">
+      <iframe src="https://www.geogebra.org/material/iframe/id/yewk7uhx/width/780/height/400/border/ffffff/sfsb/false/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/true"
+        width="780" height="400"
+        style="border:0;display:block;width:100%;max-width:780px"
+        allowfullscreen loading="lazy"></iframe>
     </div>
 
     <div class="think-box" style="margin-top:28px">
@@ -350,7 +346,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
     <!-- GeoGebra: parallelogram → triangle -->
     <div style="margin:16px 0;border-radius:12px;overflow:hidden;border:1px solid var(--border)">
-      <iframe src="https://www.geogebra.org/material/iframe/id/bdrjara5/width/780/height/400/border/ffffff/sfsb/false/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false"
+      <iframe src="https://www.geogebra.org/material/iframe/id/bdrjara5/width/780/height/400/border/ffffff/sfsb/false/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/true"
         width="780" height="400"
         style="border:0;display:block;width:100%;max-width:780px"
         allowfullscreen loading="lazy"></iframe>
@@ -836,47 +832,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
 <script>
 /* ACCORDION */
-/* ── RECTANGLE STEP-THROUGH SIMULATION ── */
-var rsCurrent = 0;
-var RS_STEPS = [
-  {
-    caption: 'A rectangle with base <em>b</em> and height <em>h</em>. Its area is b × h.',
-    svg: '<rect x="60" y="30" width="300" height="140" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="2"/>'
-       + '<line x1="60" y1="175" x2="360" y2="175" stroke="#44403c" stroke-width="1.5"/>'
-       + '<text x="210" y="187" font-size="14" fill="#44403c" font-family="DM Sans" text-anchor="middle">b</text>'
-       + '<line x1="42" y1="30" x2="42" y2="170" stroke="#44403c" stroke-width="1.5"/>'
-       + '<text x="26" y="106" font-size="14" fill="#44403c" font-family="DM Sans" text-anchor="middle">h</text>'
-       + '<text x="210" y="108" font-size="14" fill="#1d4ed8" font-family="DM Sans" text-anchor="middle" font-weight="600">Area = b × h</text>'
-  },
-  {
-    caption: 'Draw a diagonal from one corner to the opposite — this cuts the rectangle into two equal triangles.',
-    svg: '<rect x="60" y="30" width="300" height="140" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="2"/>'
-       + '<line x1="60" y1="170" x2="360" y2="30" stroke="#f59e0b" stroke-width="3" stroke-dasharray="10,5"/>'
-       + '<text x="210" y="187" font-size="14" fill="#44403c" font-family="DM Sans" text-anchor="middle">b</text>'
-       + '<text x="26" y="106" font-size="14" fill="#44403c" font-family="DM Sans" text-anchor="middle">h</text>'
-  },
-  {
-    caption: 'Each triangle is exactly <strong>half the rectangle</strong>. So the area of a triangle = ½ × b × h.',
-    svg: '<polygon points="60,170 360,170 360,30" fill="#2563eb" fill-opacity="0.3" stroke="#2563eb" stroke-width="2"/>'
-       + '<polygon points="60,170 360,30 60,30" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5"/>'
-       + '<line x1="60" y1="170" x2="360" y2="30" stroke="#f59e0b" stroke-width="3" stroke-dasharray="10,5"/>'
-       + '<text x="290" y="135" font-size="13" fill="#1e40af" font-family="DM Sans" text-anchor="middle" font-weight="700">A = ½ × b × h</text>'
-       + '<text x="110" y="80" font-size="12" fill="#78716c" font-family="DM Sans" text-anchor="middle">½ × b × h</text>'
-       + '<text x="210" y="187" font-size="14" fill="#44403c" font-family="DM Sans" text-anchor="middle">b</text>'
-       + '<text x="26" y="106" font-size="14" fill="#44403c" font-family="DM Sans" text-anchor="middle">h</text>'
-  }
-];
-function rsRender() {
-  document.getElementById('rs-svg').innerHTML = RS_STEPS[rsCurrent].svg;
-  document.getElementById('rs-caption').innerHTML = RS_STEPS[rsCurrent].caption;
-  document.getElementById('rs-back').disabled = rsCurrent === 0;
-  document.getElementById('rs-fwd').disabled = rsCurrent === RS_STEPS.length - 1;
-  var dots = document.getElementById('rs-dots');
-  dots.innerHTML = RS_STEPS.map(function(_,i){ return '<div class="rs-dot' + (i===rsCurrent?' active':'') + '"></div>'; }).join('');
-}
-function rsMove(dir) { rsCurrent = Math.max(0, Math.min(RS_STEPS.length - 1, rsCurrent + dir)); rsRender(); }
-rsRender();
-
 function toggleAcc(btn) {
   var body = btn.nextElementSibling;
   var open = btn.classList.contains('open');
