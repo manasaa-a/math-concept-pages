@@ -100,6 +100,17 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 @media(max-width:550px){.ex-row{grid-template-columns:1fr}}
 .ex-card{background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:14px}
 .ex-lbl{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--green);margin-bottom:4px}
+/* Rectangle step-through simulation */
+.rect-sim{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin:20px 0}
+.rs-stage{background:#f8fafc;border-radius:8px;padding:12px;display:flex;align-items:center;justify-content:center;min-height:160px}
+.rs-caption{text-align:center;font-size:15px;color:var(--ink2);margin:14px 0 10px;min-height:44px}
+.rs-controls{display:flex;align-items:center;justify-content:center;gap:16px}
+.rs-btn{background:var(--ink);color:#fff;border:none;padding:8px 18px;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;transition:background .15s}
+.rs-btn:hover:not(:disabled){background:#44403c}
+.rs-btn:disabled{background:var(--border);color:var(--muted);cursor:not-allowed}
+.rs-dots{display:flex;gap:8px;align-items:center}
+.rs-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:background .2s}
+.rs-dot.active{background:var(--ink)}
 /* Simulation */
 .sim-container{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0}
 .sim-canvas-wrap{width:100%;border-radius:10px;overflow:hidden;background:#f8fafc;border:1px solid var(--border);cursor:crosshair;touch-action:none}
@@ -317,55 +328,39 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   <div class="section" id="what-is">
     <h2>What is the Area of a Triangle?</h2>
 
-    <div class="think-box">
-      <div class="think-label">Think about it</div>
-      <p>Take any rectangle and cut it diagonally corner to corner. You get two triangles — each one exactly half the rectangle. That's the intuition behind the whole formula.</p>
+    <p>The <strong>area of a triangle</strong> is the 2D space enclosed by its three sides, measured in square units (cm², m², in²).</p>
+
+    <!-- Step-through simulation: rectangle → triangle -->
+    <div class="rect-sim" id="rect-sim">
+      <div class="rs-stage">
+        <svg id="rs-svg" viewBox="0 0 420 190" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;display:block;margin:0 auto"></svg>
+      </div>
+      <p class="rs-caption" id="rs-caption"></p>
+      <div class="rs-controls">
+        <button class="rs-btn" id="rs-back" onclick="rsMove(-1)" disabled>← Back</button>
+        <div class="rs-dots" id="rs-dots"></div>
+        <button class="rs-btn" id="rs-fwd" onclick="rsMove(1)">Next →</button>
+      </div>
     </div>
 
-    <p>The <strong>area of a triangle</strong> is the amount of 2D space enclosed within its three sides, measured in square units (cm², m², in²…).</p>
-    <p>A triangle is formed by three line segments. Its area always equals <strong>half the area of the parallelogram</strong> that shares its base and height — which is why every formula has that ½ in it.</p>
-
-    <!-- SVG: triangle = half rectangle -->
-    <svg viewBox="0 0 560 180" style="width:100%;max-width:560px;display:block;margin:20px auto;background:#f8fafc;border-radius:12px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
-      <!-- Rectangle left -->
-      <rect x="40" y="30" width="180" height="120" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5"/>
-      <!-- Triangle inside -->
-      <polygon points="40,150 220,150 220,30" fill="#2563eb" fill-opacity="0.25" stroke="#2563eb" stroke-width="2"/>
-      <line x1="40" y1="30" x2="220" y2="150" stroke="#2563eb" stroke-width="2" stroke-dasharray="6,4"/>
-      <text x="130" y="120" font-size="13" fill="#1d4ed8" font-weight="700" font-family="DM Sans" text-anchor="middle">½ rectangle</text>
-      <!-- Labels -->
-      <text x="130" y="168" font-size="12" fill="#6b7280" font-family="DM Sans" text-anchor="middle">Each triangle = ½ of rectangle</text>
-      <!-- Rectangle right with general triangle -->
-      <rect x="320" y="30" width="200" height="120" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
-      <polygon points="380,30 320,150 520,150" fill="#16a34a" fill-opacity="0.2" stroke="#16a34a" stroke-width="2"/>
-      <!-- height line -->
-      <line x1="380" y1="30" x2="380" y2="150" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="5,4"/>
-      <rect x="380" y="140" width="10" height="10" fill="none" stroke="#16a34a" stroke-width="1.5"/>
-      <text x="396" y="88" font-size="12" fill="#16a34a" font-family="DM Sans">h</text>
-      <text x="420" y="165" font-size="12" fill="#16a34a" font-family="DM Sans" text-anchor="middle">base (b)</text>
-      <text x="420" y="110" font-size="13" fill="#15803d" font-weight="700" font-family="DM Sans" text-anchor="middle">A = ½bh</text>
-    </svg>
-
-    <div class="think-box" style="margin-top:20px">
-      <div class="think-label">But what about non-right triangles?</div>
-      <p>That diagonal cut only works neatly for right triangles. For any other triangle — scalene, obtuse, acute — the same result holds because every triangle is exactly half a parallelogram that shares its base and height.</p>
+    <div class="think-box" style="margin-top:28px">
+      <div class="think-label">But what about triangles that lean?</div>
+      <p>The rectangle cut works neatly when the apex sits directly above the base. But triangles can lean left or right. For any triangle — scalene, obtuse, acute — it is exactly <strong>half a parallelogram</strong> with the same base and height. Drag the simulation below to see this in action.</p>
     </div>
 
-    <p>Slide the top vertex of the triangle below. Notice the area stays the same as long as the height doesn't change — whether the triangle leans left, right, or stands straight up. The rectangle and parallelogram connections both tell the same story.</p>
-
-    <!-- GeoGebra: rectangle/parallelogram → triangle -->
-    <div style="margin:20px 0;border-radius:12px;overflow:hidden;border:1px solid var(--border)">
-      <iframe src="https://www.geogebra.org/material/iframe/id/bdrjara5/width/780/height/420/border/ffffff/sfsb/false/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false"
-        width="780" height="420"
+    <!-- GeoGebra: parallelogram → triangle -->
+    <div style="margin:16px 0;border-radius:12px;overflow:hidden;border:1px solid var(--border)">
+      <iframe src="https://www.geogebra.org/material/iframe/id/bdrjara5/width/780/height/400/border/ffffff/sfsb/false/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false"
+        width="780" height="400"
         style="border:0;display:block;width:100%;max-width:780px"
         allowfullscreen loading="lazy"></iframe>
     </div>
 
-    <p>Key rule: the <strong>height (h) must be perpendicular to the base</strong>. It doesn't matter where along the base the height lands — the formula is always the same.</p>
+    <p>Key rule: the <strong>height must always be perpendicular to the base</strong>. It doesn't matter where the apex lands along the horizontal — only the perpendicular height counts.</p>
 
     <div class="think-box">
       <div class="think-label">Mini-check</div>
-      <p>A rectangle is 8 cm wide and 5 cm tall. A diagonal cuts it into two triangles. What is the area of each triangle? You can work it out in your head before scrolling down.</p>
+      <p>A rectangle is 8 cm wide and 5 cm tall. A diagonal cuts it into two triangles. What is the area of each triangle?</p>
     </div>
   </div>
 
@@ -841,6 +836,47 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
 <script>
 /* ACCORDION */
+/* ── RECTANGLE STEP-THROUGH SIMULATION ── */
+var rsCurrent = 0;
+var RS_STEPS = [
+  {
+    caption: 'A rectangle with base <em>b</em> and height <em>h</em>. Its area is b × h.',
+    svg: '<rect x="60" y="30" width="300" height="140" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="2"/>'
+       + '<line x1="60" y1="175" x2="360" y2="175" stroke="#44403c" stroke-width="1.5"/>'
+       + '<text x="210" y="187" font-size="14" fill="#44403c" font-family="DM Sans" text-anchor="middle">b</text>'
+       + '<line x1="42" y1="30" x2="42" y2="170" stroke="#44403c" stroke-width="1.5"/>'
+       + '<text x="26" y="106" font-size="14" fill="#44403c" font-family="DM Sans" text-anchor="middle">h</text>'
+       + '<text x="210" y="108" font-size="14" fill="#1d4ed8" font-family="DM Sans" text-anchor="middle" font-weight="600">Area = b × h</text>'
+  },
+  {
+    caption: 'Draw a diagonal from one corner to the opposite — this cuts the rectangle into two equal triangles.',
+    svg: '<rect x="60" y="30" width="300" height="140" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="2"/>'
+       + '<line x1="60" y1="170" x2="360" y2="30" stroke="#f59e0b" stroke-width="3" stroke-dasharray="10,5"/>'
+       + '<text x="210" y="187" font-size="14" fill="#44403c" font-family="DM Sans" text-anchor="middle">b</text>'
+       + '<text x="26" y="106" font-size="14" fill="#44403c" font-family="DM Sans" text-anchor="middle">h</text>'
+  },
+  {
+    caption: 'Each triangle is exactly <strong>half the rectangle</strong>. So the area of a triangle = ½ × b × h.',
+    svg: '<polygon points="60,170 360,170 360,30" fill="#2563eb" fill-opacity="0.3" stroke="#2563eb" stroke-width="2"/>'
+       + '<polygon points="60,170 360,30 60,30" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5"/>'
+       + '<line x1="60" y1="170" x2="360" y2="30" stroke="#f59e0b" stroke-width="3" stroke-dasharray="10,5"/>'
+       + '<text x="290" y="135" font-size="13" fill="#1e40af" font-family="DM Sans" text-anchor="middle" font-weight="700">A = ½ × b × h</text>'
+       + '<text x="110" y="80" font-size="12" fill="#78716c" font-family="DM Sans" text-anchor="middle">½ × b × h</text>'
+       + '<text x="210" y="187" font-size="14" fill="#44403c" font-family="DM Sans" text-anchor="middle">b</text>'
+       + '<text x="26" y="106" font-size="14" fill="#44403c" font-family="DM Sans" text-anchor="middle">h</text>'
+  }
+];
+function rsRender() {
+  document.getElementById('rs-svg').innerHTML = RS_STEPS[rsCurrent].svg;
+  document.getElementById('rs-caption').innerHTML = RS_STEPS[rsCurrent].caption;
+  document.getElementById('rs-back').disabled = rsCurrent === 0;
+  document.getElementById('rs-fwd').disabled = rsCurrent === RS_STEPS.length - 1;
+  var dots = document.getElementById('rs-dots');
+  dots.innerHTML = RS_STEPS.map(function(_,i){ return '<div class="rs-dot' + (i===rsCurrent?' active':'') + '"></div>'; }).join('');
+}
+function rsMove(dir) { rsCurrent = Math.max(0, Math.min(RS_STEPS.length - 1, rsCurrent + dir)); rsRender(); }
+rsRender();
+
 function toggleAcc(btn) {
   var body = btn.nextElementSibling;
   var open = btn.classList.contains('open');
