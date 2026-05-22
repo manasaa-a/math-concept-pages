@@ -357,7 +357,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         </div>
       </div>
       <div class="rsc-canvas">
-        <svg id="rsc-svg" viewBox="0 0 380 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;overflow:visible"></svg>
+        <svg id="rsc-svg" viewBox="0 0 380 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;overflow:visible"></svg>
       </div>
       <div class="rsc-slide-row">
         <span class="rsc-slide-lbl">← Slide me</span>
@@ -923,15 +923,27 @@ function rscDraw(b,h,t) {
   s+='<line x1="'+x0+'" y1="'+y1+'" x2="'+x1+'" y2="'+y0
     +'" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="8,5" opacity="'+p1+'"/>';
 
-  // b and h dimension labels (always visible)
-  s+='<line x1="'+x0+'" y1="'+(y1+6)+'" x2="'+x1+'" y2="'+(y1+6)+'" stroke="#78716c" stroke-width="1"/>';
-  s+='<text x="'+(x0+rw/2)+'" y="'+(y1+19)+'" font-size="11" fill="#44403c" font-family="DM Sans" text-anchor="middle">b</text>';
-  s+='<line x1="'+(x1+5)+'" y1="'+y0+'" x2="'+(x1+5)+'" y2="'+y1+'" stroke="#78716c" stroke-width="1"/>';
-  s+='<text x="'+(x1+18)+'" y="'+(y0+rh/2+4)+'" font-size="11" fill="#44403c" font-family="DM Sans">h</text>';
+  // Arrow markers
+  s+='<defs>'
+    +'<marker id="arrs" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">'
+    +'<polygon points="0,0 7,3.5 0,7" fill="#78716c"/></marker>'
+    +'<marker id="arre" markerWidth="7" markerHeight="7" refX="1" refY="3.5" orient="auto-start-reverse">'
+    +'<polygon points="0,0 7,3.5 0,7" fill="#78716c"/></marker>'
+    +'</defs>';
 
-  // Formula fades in when triangles are stacked
+  // b dimension line with double-headed arrow
+  s+='<line x1="'+(x0+2)+'" y1="'+(y1+8)+'" x2="'+(x1-2)+'" y2="'+(y1+8)+'"'
+    +' stroke="#78716c" stroke-width="1.2" marker-start="url(#arre)" marker-end="url(#arrs)"/>';
+  s+='<text x="'+(x0+rw/2)+'" y="'+(y1+22)+'" font-size="11" fill="#44403c" font-family="DM Sans" text-anchor="middle" font-weight="500">b</text>';
+
+  // h dimension line with double-headed arrow
+  s+='<line x1="'+(x1+7)+'" y1="'+(y0+2)+'" x2="'+(x1+7)+'" y2="'+(y1-2)+'"'
+    +' stroke="#78716c" stroke-width="1.2" marker-start="url(#arre)" marker-end="url(#arrs)"/>';
+  s+='<text x="'+(x1+20)+'" y="'+(y0+rh/2+4)+'" font-size="11" fill="#44403c" font-family="DM Sans" font-weight="500">h</text>';
+
+  // Formula below b label, fades in when triangles are stacked
   if(fmlA>0&&rw>60&&rh>35){
-    s+='<text x="'+(x0+rw*0.65)+'" y="'+(y0+rh*0.6)+'" font-size="12" fill="#15803d"'
+    s+='<text x="'+(x0+rw/2)+'" y="'+(y1+36)+'" font-size="12" fill="#15803d"'
       +' font-family="DM Sans" font-weight="600" text-anchor="middle" opacity="'+fmlA.toFixed(2)+'">A = ½ × b × h</text>';
   }
 
