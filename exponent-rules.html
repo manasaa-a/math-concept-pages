@@ -429,7 +429,7 @@
     <!-- CTA after video -->
     <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:28px">
       <p style="margin:0;font-size:15px;color:var(--ink2)">Want a tutor to walk you through this? <strong>First class is free.</strong></p>
-      <button class="cta-primary" onclick="document.getElementById('cta-primary-btn').click()" style="white-space:nowrap">Try Cuemath →</button>
+      <button class="cta-primary" onclick="openModal()" style="white-space:nowrap">Try Cuemath →</button>
     </div>
 
     <div class="real-strip">
@@ -1021,7 +1021,7 @@
   function openModal() { document.getElementById('cta-modal').classList.add('open'); showModalStep('mstep-1'); updateDots(1); }
   function closeModal() { document.getElementById('cta-modal').classList.remove('open'); }
 
-  document.getElementById('cta-primary-btn').addEventListener('click', openModal);
+  // openModal wired via onclick attributes
   document.getElementById('modal-close').addEventListener('click', closeModal);
   document.getElementById('cta-modal').addEventListener('click', e => { if(e.target===e.currentTarget) closeModal(); });
 
