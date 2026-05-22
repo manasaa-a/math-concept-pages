@@ -357,7 +357,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         </div>
       </div>
       <div class="rsc-canvas">
-        <svg id="rsc-svg" viewBox="0 0 380 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block"></svg>
+        <svg id="rsc-svg" viewBox="0 0 380 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;overflow:visible"></svg>
       </div>
       <div class="rsc-slide-row">
         <span class="rsc-slide-lbl">← Slide me</span>
@@ -890,27 +890,51 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 <script>
 /* ── RECTANGLE SIMULATION ── */
 function rscDraw(b,h,t) {
-  var W_MAX=278,H_MAX=138,x0=44,PAD_TOP=70;
+  // Phase 1 (t 0→0.5): diagonal cut appears, rectangle splits into two coloured triangles
+  // Phase 2 (t 0.5→1): upper-left triangle rotates 180° around rectangle centre and sits on lower-right triangle
+  var W_MAX=278,H_MAX=138,x0=44,PAD_TOP=65;
   var rw=(b/12)*W_MAX, rh=(h/10)*H_MAX;
   var y0=PAD_TOP+(H_MAX-rh)/2, x1=x0+rw, y1=y0+rh;
-  var offset=t*58;
-  var diagA=Math.min(1,t*3);
-  var fmlA=Math.max(0,(t-0.55)*2.2);
-  var rectA=Math.max(0.15,1-t*0.85);
+  var mx=(x0+x1)/2, my=(y0+y1)/2; // centre of rectangle (rotation pivot)
+
+  // Phase progress
+  var p1=Math.min(1,t*2);          // 0→1 during first half
+  var p2=Math.max(0,(t-0.5)*2);    // 0→1 during second half
+  var angle=p2*180;                 // 0°→180°
+  var fmlA=Math.max(0,(p2-0.85)*6.7); // formula fades in near the end
+
   var s='';
-  s+='<rect x="'+x0+'" y="'+y0+'" width="'+rw+'" height="'+rh+'" fill="none" stroke="#3b82f6" stroke-width="1.8" opacity="'+rectA+'"/>';
-  var uy0=y0-offset, uy1=y1-offset;
-  s+='<polygon points="'+x0+','+uy0+' '+x1+','+uy0+' '+x0+','+uy1+'" fill="#bfdbfe" stroke="#3b82f6" stroke-width="1.5"/>';
-  s+='<polygon points="'+x0+','+y1+' '+x1+','+y1+' '+x1+','+y0+'" fill="#bbf7d0" stroke="#16a34a" stroke-width="1.8"/>';
-  s+='<line x1="'+x0+'" y1="'+uy1+'" x2="'+x1+'" y2="'+uy0+'" stroke="#f59e0b" stroke-width="2" stroke-dasharray="7,4" opacity="'+diagA+'"/>';
-  s+='<line x1="'+x0+'" y1="'+y1+'" x2="'+x1+'" y2="'+y0+'" stroke="#f59e0b" stroke-width="2" stroke-dasharray="7,4" opacity="'+diagA+'"/>';
+  // Rectangle outline (fades as split appears)
+  s+='<rect x="'+x0+'" y="'+y0+'" width="'+rw+'" height="'+rh
+    +'" fill="none" stroke="#3b82f6" stroke-width="1.8" opacity="'+(1-p1)+'"/>';
+
+  // Lower-right triangle — stationary, green
+  s+='<polygon points="'+x0+','+y1+' '+x1+','+y1+' '+x1+','+y0
+    +'" fill="#bbf7d0" stroke="#16a34a" stroke-width="1.8"/>';
+
+  // Upper-left triangle — rotates 180° around centre in phase 2
+  // SVG transform="rotate(angle, cx, cy)"
+  s+='<polygon points="'+x0+','+y0+' '+x1+','+y0+' '+x0+','+y1
+    +'" fill="#bfdbfe" stroke="#3b82f6" stroke-width="1.5"'
+    +' transform="rotate('+angle.toFixed(2)+','+mx.toFixed(1)+','+my.toFixed(1)+')"'
+    +' opacity="'+(p2>0.95?'0.55':'1')+'"/>';
+
+  // Diagonal — appears in phase 1
+  s+='<line x1="'+x0+'" y1="'+y1+'" x2="'+x1+'" y2="'+y0
+    +'" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="8,5" opacity="'+p1+'"/>';
+
+  // b and h dimension labels (always visible)
   s+='<line x1="'+x0+'" y1="'+(y1+6)+'" x2="'+x1+'" y2="'+(y1+6)+'" stroke="#78716c" stroke-width="1"/>';
   s+='<text x="'+(x0+rw/2)+'" y="'+(y1+19)+'" font-size="11" fill="#44403c" font-family="DM Sans" text-anchor="middle">b</text>';
   s+='<line x1="'+(x1+5)+'" y1="'+y0+'" x2="'+(x1+5)+'" y2="'+y1+'" stroke="#78716c" stroke-width="1"/>';
-  s+='<text x="'+(x1+16)+'" y="'+(y0+rh/2+4)+'" font-size="11" fill="#44403c" font-family="DM Sans">h</text>';
+  s+='<text x="'+(x1+18)+'" y="'+(y0+rh/2+4)+'" font-size="11" fill="#44403c" font-family="DM Sans">h</text>';
+
+  // Formula fades in when triangles are stacked
   if(fmlA>0&&rw>60&&rh>35){
-    s+='<text x="'+(x0+rw*0.68)+'" y="'+(y0+rh*0.62)+'" font-size="12" fill="#15803d" font-family="DM Sans" font-weight="600" text-anchor="middle" opacity="'+fmlA+'">A = ½ × b × h</text>';
+    s+='<text x="'+(x0+rw*0.65)+'" y="'+(y0+rh*0.6)+'" font-size="12" fill="#15803d"'
+      +' font-family="DM Sans" font-weight="600" text-anchor="middle" opacity="'+fmlA.toFixed(2)+'">A = ½ × b × h</text>';
   }
+
   document.getElementById('rsc-svg').innerHTML=s;
 }
 function rscUpdate() {
