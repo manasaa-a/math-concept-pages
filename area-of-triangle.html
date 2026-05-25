@@ -824,7 +824,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 <script>
 /* ACCORDION */
 /* ── RIGHT-ANGLE TRIANGLE SIMULATION ── */
-var triB = {x:400}, triC = {y:110}, triDrag = null, triAnim = 0;
+var triB = {x:470}, triC = {y:110}, triDrag = null, triAnim = 0;
 var TRI = {ax:150, ay:340};
 
 function triGetPt(e, el) {
@@ -849,7 +849,7 @@ function triMove(e) {
 function triEnd() { triDrag = null; }
 function triAnimate() { triAnim = parseInt(document.getElementById('tri-anim').value); triDraw(); }
 function triReset() {
-  triB.x=400; triC.y=110; triAnim=0;
+  triB.x=470; triC.y=110; triAnim=0;
   document.getElementById('tri-anim').value=0;
   triDraw();
 }
