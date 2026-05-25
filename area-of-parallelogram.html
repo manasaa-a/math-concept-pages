@@ -387,7 +387,16 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>A = a × b × sin(θ)</div>
-          <svg viewBox="0 0 260 120" style="width:100%;max-width:260px;display:block;margin:10px 0;background:#f8fafc;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg"><polygon points="30,90 190,90 220,30 60,30" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/><path d="M55,90 A22,22 0 0,1 72,76" stroke="#f59e0b" stroke-width="1.5" fill="none"/><text x="110" y="108" font-size="12" fill="#44403c" font-family="DM Sans" text-anchor="middle">b</text><text x="36" y="60" font-size="12" fill="#44403c" font-family="DM Sans">a</text><text x="64" y="82" font-size="11" fill="#f59e0b" font-family="DM Sans">θ</text></svg>
+          <svg viewBox="0 0 260 120" style="width:100%;max-width:260px;display:block;margin:10px 0;background:#f8fafc;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="30,90 190,90 220,30 60,30" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+            <line x1="60" y1="30" x2="60" y2="90" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <rect x="60" y="82" width="8" height="8" fill="none" stroke="#16a34a" stroke-width="1.5"/>
+            <path d="M55,90 A22,22 0 0,1 72,76" stroke="#f59e0b" stroke-width="1.5" fill="none"/>
+            <text x="110" y="108" font-size="12" fill="#44403c" font-family="DM Sans" text-anchor="middle">b</text>
+            <text x="36" y="60" font-size="12" fill="#44403c" font-family="DM Sans">a</text>
+            <text x="64" y="82" font-size="11" fill="#f59e0b" font-family="DM Sans">θ</text>
+            <text x="72" y="65" font-size="11" fill="#16a34a" font-family="DM Sans">h = a·sin θ</text>
+          </svg>
           <p style="font-size:15px;color:var(--ink2)">Use this when you know two side lengths but not the perpendicular height. The angle θ is the one formed between the two sides.</p>
           <div class="ex-row">
             <div class="ex-card">
