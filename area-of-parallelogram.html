@@ -259,7 +259,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <div class="toc-title">On this page</div>
     <ul id="toc-list">
       <li><a href="#what-is">What is it?</a></li>
-      <li><a href="#formulas">All Formulas</a></li>
       <li><a href="#simulation">Interactive Shape</a></li>
       <li><a href="#how-to">How to Calculate</a></li>
       <li><a href="#practice">Practice</a></li>
@@ -277,7 +276,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <summary>Jump to a section</summary>
     <ul>
       <li><a href="#what-is">What is it?</a></li>
-      <li><a href="#formulas">All Formulas</a></li>
       <li><a href="#simulation">Interactive Shape</a></li>
       <li><a href="#how-to">How to Calculate</a></li>
       <li><a href="#practice">Practice</a></li>
@@ -352,73 +350,20 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     </div>
   </div>
 
-  <!-- FORMULAS -->
-  <div class="section" id="formulas">
-    <h2>All Formulas at a Glance</h2>
-    <p>Choose the formula based on what information you have:</p>
-    <div class="formula-grid">
-      <div class="formula-card">
-        <div class="fc-tag">Base and Height (most common)</div>
-        <div class="fc-formula">A = b × h</div>
-        <div class="fc-note">h must be perpendicular to b — not the slant side</div>
-      </div>
-      <div class="formula-card">
-        <div class="fc-tag">Two Adjacent Sides + Included Angle</div>
-        <div class="fc-formula">A = a × b × sin(θ)</div>
-        <div class="fc-note">a, b = adjacent sides; θ = angle between them</div>
-      </div>
-      <div class="formula-card">
-        <div class="fc-tag">Diagonals + Intersecting Angle</div>
-        <div class="fc-formula">A = ½ × d₁ × d₂ × sin(x)</div>
-        <div class="fc-note">d₁, d₂ = diagonal lengths; x = angle between diagonals</div>
-      </div>
-      <div class="formula-card">
-        <div class="fc-tag">Special case: Rectangle (θ = 90°)</div>
-        <div class="fc-formula">A = l × w</div>
-        <div class="fc-note">A rectangle is a parallelogram with all right angles</div>
-      </div>
-    <div class="think-box">
-      <div class="think-label">Mini-check</div>
-      <p>A parallelogram has a base of 10 cm, a slant side of 13 cm, and a perpendicular height of 5 cm. What is its area — and which of those three measurements is irrelevant?</p>
-    </div>
-
-    </div>
-  </div>
 
   <!-- SIMULATION -->
   <div class="section" id="simulation">
-    <h2>Interactive Parallelogram Explorer</h2>
-    <p>Drag any corner to reshape the parallelogram. The dotted rectangle shows the equivalent area. Try dragging vertex D sideways — and watch what happens to the area.</p>
-
-    <div class="sim-container">
-      <div class="sim-canvas-wrap" id="sim-wrap">
-        <canvas id="paraCanvas" height="300"></canvas>
-      </div>
-      <div class="sim-stats">
-        <div class="sim-stat">
-          <div class="ss-label">Base</div>
-          <div class="ss-val" id="stat-base">—</div>
-          <div class="ss-unit">units</div>
-        </div>
-        <div class="sim-stat">
-          <div class="ss-label">Height</div>
-          <div class="ss-val" id="stat-height">—</div>
-          <div class="ss-unit">units</div>
-        </div>
-        <div class="sim-stat hl-stat">
-          <div class="ss-label">Area = b × h</div>
-          <div class="ss-val" id="stat-area">—</div>
-          <div class="ss-unit">sq units</div>
-        </div>
-      </div>
-      <p class="sim-discover">💡 Drag vertex <strong>D</strong> (top-left) left or right — the shape leans further, but the area <em>never changes</em>. Only the base and perpendicular height determine area.</p>
-      <button class="sim-reset" onclick="resetPara()">↺ Reset shape</button>
+    <h2>See how a parallelogram becomes a rectangle</h2>
+    <p>Drag the slider to rearrange the parallelogram — watch the triangle cut from one end attach to the other, forming a rectangle with the same area.</p>
+    <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);margin-top:16px">
+      <iframe src="https://www.geogebra.org/material/iframe/id/gkww2v3Y/width/780/height/460/border/ffffff/sfsb/false/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/true"
+        width="780" height="460" style="border:0;display:block;width:100%;max-width:780px"
+        allowfullscreen loading="lazy"></iframe>
     </div>
   </div>
-
   <!-- HOW TO CALCULATE -->
   <div class="section" id="how-to">
-    <h2>How to Calculate the Area</h2>
+    <h2>Formulas and How to Find the Area</h2>
 
     <div class="accordion">
 
@@ -428,6 +373,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>A = base × height (h must be perpendicular to the base)</div>
+          <svg viewBox="0 0 260 120" style="width:100%;max-width:260px;display:block;margin:10px 0;background:#f8fafc;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg"><polygon points="30,90 190,90 220,30 60,30" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><line x1="60" y1="30" x2="60" y2="90" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4,3"/><rect x="60" y="82" width="8" height="8" fill="none" stroke="#16a34a" stroke-width="1.5"/><text x="110" y="108" font-size="12" fill="#44403c" font-family="DM Sans" text-anchor="middle">b</text><text x="72" y="65" font-size="12" fill="#16a34a" font-family="DM Sans">h</text></svg>
           <ul class="step-list">
             <li><p>Identify the base — any side can serve as the base.</p></li>
             <li><p>Find the <span class="term" data-tip="The distance between the base and the opposite parallel side, measured at a right angle. Never the slant side.">perpendicular height</span>: the distance between the base and the opposite parallel side, measured at a right angle. This is never the <span class="term" data-tip="The non-perpendicular side of the parallelogram. It is always longer than or equal to the perpendicular height.">slant side</span>.</p></li>
@@ -459,6 +405,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>A = a × b × sin(θ)</div>
+          <svg viewBox="0 0 260 120" style="width:100%;max-width:260px;display:block;margin:10px 0;background:#f8fafc;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg"><polygon points="30,90 190,90 220,30 60,30" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/><path d="M55,90 A22,22 0 0,1 72,76" stroke="#f59e0b" stroke-width="1.5" fill="none"/><text x="110" y="108" font-size="12" fill="#44403c" font-family="DM Sans" text-anchor="middle">b</text><text x="36" y="60" font-size="12" fill="#44403c" font-family="DM Sans">a</text><text x="64" y="82" font-size="11" fill="#f59e0b" font-family="DM Sans">θ</text></svg>
           <p style="font-size:15px;color:var(--ink2)">Use this when you know two side lengths but not the perpendicular height. The angle θ is the one formed between the two sides.</p>
           <div class="ex-row">
             <div class="ex-card">
@@ -503,6 +450,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>A = ½ × d₁ × d₂ × sin(x)</div>
+          <svg viewBox="0 0 260 120" style="width:100%;max-width:260px;display:block;margin:10px 0;background:#f8fafc;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg"><polygon points="30,90 190,90 220,30 60,30" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/><line x1="30" y1="90" x2="220" y2="30" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4,3"/><line x1="190" y1="90" x2="60" y2="30" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="4,3"/><text x="140" y="48" font-size="11" fill="#dc2626" font-family="DM Sans" text-anchor="middle">d₁</text><text x="148" y="82" font-size="11" fill="#7c3aed" font-family="DM Sans">d₂</text></svg>
           <p style="font-size:15px;color:var(--ink2)">Where d₁ and d₂ are the two diagonal lengths, and x is the angle at which they intersect. Most useful for rhombuses, where the diagonals are perpendicular (sin 90° = 1).</p>
           <div class="ex-card" style="max-width:360px">
             <div class="ex-lbl">Rhombus with perpendicular diagonals 8 and 6</div>
@@ -625,25 +573,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     </div>
   </div>
 
-  <!-- CTA 2 -->
-  <div class="section" style="padding:40px 0">
-    <div class="cta-band">
-      <div>
-        <h3>Build real confidence in maths.</h3>
-        <p>A Cuemath expert works with you 1:1, at your level, so every concept clicks — not just this one.</p>
-        <button class="btn-white" onclick="openModal()">Start free →</button>
-      </div>
-      <img class="cta-img" src="cta-student.png" alt="Cuemath 1-on-1 online class">
-    </div>
-  </div>
-
-
-  <!-- REAL-WORLD STRIP -->
-  <div class="section" style="padding:40px 0">
-    <div class="rw-strip">
-      <div class="rw-card">
-        <div class="emoji">📐</div>
-  </div>
 
   <!-- KEY TAKEAWAYS -->
   <div class="section" id="takeaways">
@@ -860,194 +789,6 @@ function toggleFaq(btn) {
   btn.classList.toggle('open', !o); a.classList.toggle('open', !o);
 }
 
-/* ── PARALLELOGRAM SIMULATION ── */
-var GRID = 20;
-var para; /* {A, B, C, D} — canvas pixel coords */
-/* ABCD: A=bottom-left, B=bottom-right, C=top-right, D=top-left */
-/* Constraint: C = B + (D - A), so the shape is always a valid parallelogram */
-var dragIdx = null; /* 0=A,1=B,2=D (C follows) */
-
-function defaultPara(W, H) {
-  var cx = W / 2, my = H / 2;
-  return [
-    [cx - 100, my + 55],  /* A */
-    [cx + 100, my + 55],  /* B */
-    [cx + 140, my - 55],  /* C = B + (D-A) */
-    [cx - 60,  my - 55]   /* D */
-  ];
-}
-
-function clampPt(p, W, H) {
-  return [Math.max(14, Math.min(W-14, p[0])), Math.max(14, Math.min(H-14, p[1]))];
-}
-
-function resetPara() {
-  var c = document.getElementById('paraCanvas');
-  para = defaultPara(c.width, c.height);
-  drawPara();
-}
-
-function drawPara() {
-  var canvas = document.getElementById('paraCanvas');
-  canvas.width = document.getElementById('sim-wrap').offsetWidth || 600;
-  canvas.height = 300;
-  var ctx = canvas.getContext('2d');
-  var W = canvas.width, H = canvas.height;
-  var A = para[0], B = para[1], C = para[2], D = para[3];
-
-  /* grid */
-  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
-  ctx.strokeStyle = '#e7e5e4'; ctx.lineWidth = 1;
-  for (var x = 0; x < W; x += GRID) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
-  for (var y = 0; y < H; y += GRID) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
-
-  /* compute base vector and height */
-  var bvx = B[0]-A[0], bvy = B[1]-A[1];
-  var baseLen = Math.sqrt(bvx*bvx + bvy*bvy);
-  /* height = perpendicular distance from D to line AB */
-  var height = 0, Fx = A[0], Fy = A[1];
-  if (baseLen > 0.01) {
-    var t = ((D[0]-A[0])*bvx + (D[1]-A[1])*bvy) / (baseLen*baseLen);
-    Fx = A[0] + t*bvx; Fy = A[1] + t*bvy;
-    var hpx = Math.sqrt((D[0]-Fx)*(D[0]-Fx)+(D[1]-Fy)*(D[1]-Fy));
-    height = hpx / GRID;
-  }
-  var base = baseLen / GRID;
-  var area = base * height;
-
-  /* dotted equivalent rectangle */
-  var nu = D[0]-Fx, nv = D[1]-Fy; /* vector from foot to D */
-  var rectA = A, rectB = B;
-  var rectD = [A[0]+nu, A[1]+nv];
-  var rectC = [B[0]+nu, B[1]+nv];
-  ctx.beginPath();
-  ctx.moveTo(rectA[0],rectA[1]); ctx.lineTo(rectB[0],rectB[1]);
-  ctx.lineTo(rectC[0],rectC[1]); ctx.lineTo(rectD[0],rectD[1]); ctx.closePath();
-  ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1.5; ctx.setLineDash([6,4]);
-  ctx.stroke(); ctx.setLineDash([]);
-
-  /* cut triangle shading (part that moves) */
-  var overlapX = D[0] - rectD[0], overlapY = D[1] - rectD[1]; /* = D - rectD */
-  /* left triangle: A, footA, D */
-  ctx.beginPath();
-  ctx.moveTo(A[0],A[1]); ctx.lineTo(Fx,Fy); ctx.lineTo(D[0],D[1]); ctx.closePath();
-  ctx.fillStyle = 'rgba(22,163,74,0.18)'; ctx.fill();
-
-  /* filled parallelogram */
-  ctx.beginPath();
-  ctx.moveTo(A[0],A[1]); ctx.lineTo(B[0],B[1]); ctx.lineTo(C[0],C[1]); ctx.lineTo(D[0],D[1]); ctx.closePath();
-  ctx.fillStyle = 'rgba(37,99,235,0.10)'; ctx.fill();
-  ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 2.5; ctx.setLineDash([]); ctx.stroke();
-
-  /* height dashed line */
-  ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1.8; ctx.setLineDash([5,4]);
-  ctx.beginPath(); ctx.moveTo(D[0],D[1]); ctx.lineTo(Fx,Fy); ctx.stroke();
-  ctx.setLineDash([]);
-  /* right-angle marker */
-  if (baseLen > 0.01) {
-    var bux = bvx/baseLen, buy = bvy/baseLen;
-    /* normal to base — ensure it points toward D (inside the shape) */
-    var nx0 = -bvy/baseLen, ny0 = bvx/baseLen;
-    var dot = (D[0]-Fx)*nx0 + (D[1]-Fy)*ny0;
-    var inx = dot >= 0 ? nx0 : -nx0;
-    var iny = dot >= 0 ? ny0 : -ny0;
-    var ms = 8;
-    ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1.5;
-    ctx.beginPath();
-    ctx.moveTo(Fx + inx*ms, Fy + iny*ms);
-    ctx.lineTo(Fx + inx*ms + bux*ms, Fy + iny*ms + buy*ms);
-    ctx.lineTo(Fx + bux*ms, Fy + buy*ms);
-    ctx.stroke();
-    /* height label — offset along base direction so it sits beside the height line */
-    ctx.fillStyle = '#16a34a'; ctx.font = 'bold 12px DM Sans,sans-serif'; ctx.textAlign = 'center';
-    ctx.fillText('h', (D[0]+Fx)/2 + bux*18, (D[1]+Fy)/2 + buy*18);
-    /* base label — offset outward from base (away from D) */
-    ctx.fillStyle = '#2563eb'; ctx.font = 'bold 12px DM Sans,sans-serif';
-    ctx.fillText('b', (A[0]+B[0])/2 - inx*18, (A[1]+B[1])/2 - iny*18);
-  }
-
-  /* vertex dots */
-  var labels = ['A','B','C','D'], cols = ['#2563eb','#2563eb','#2563eb','#f59e0b'];
-  var loffs = [[-14,14],[10,14],[10,-10],[-14,-10]];
-  para.forEach(function(p,i) {
-    ctx.beginPath(); ctx.arc(p[0],p[1],8,0,Math.PI*2);
-    ctx.fillStyle = cols[i]; ctx.fill();
-    ctx.strokeStyle = '#fff'; ctx.lineWidth = 2.5; ctx.stroke();
-    ctx.fillStyle = i===3 ? '#92400e' : '#1d4ed8';
-    ctx.font = 'bold 12px DM Sans,sans-serif'; ctx.textAlign = 'center';
-    ctx.fillText(labels[i], p[0]+loffs[i][0], p[1]+loffs[i][1]);
-  });
-
-  /* stats */
-  document.getElementById('stat-base').textContent = base.toFixed(1);
-  document.getElementById('stat-height').textContent = height.toFixed(1);
-  document.getElementById('stat-area').textContent = area.toFixed(1);
-}
-
-/* drag */
-(function() {
-  var canvas = document.getElementById('paraCanvas');
-  function getXY(evt) {
-    var r = canvas.getBoundingClientRect();
-    var sx = canvas.width/r.width, sy = canvas.height/r.height;
-    var cx = evt.touches ? evt.touches[0].clientX : evt.clientX;
-    var cy = evt.touches ? evt.touches[0].clientY : evt.clientY;
-    return [(cx-r.left)*sx, (cy-r.top)*sy];
-  }
-  /* only A(0), B(1), D(3) are draggable; C(2) follows */
-  var draggable = [0,1,3];
-  function nearest(xy) {
-    var best=-1, bestD=22;
-    draggable.forEach(function(i){
-      var p=para[i], d=Math.sqrt((xy[0]-p[0])*(xy[0]-p[0])+(xy[1]-p[1])*(xy[1]-p[1]));
-      if(d<bestD){bestD=d;best=i;}
-    });
-    return best;
-  }
-  canvas.addEventListener('mousedown', function(e){
-    dragIdx=nearest(getXY(e));
-    if(dragIdx>=0) canvas.classList.add('dragging');
-  });
-  canvas.addEventListener('mousemove', function(e){
-    if(dragIdx!==null && dragIdx>=0){
-      e.preventDefault();
-      var xy=getXY(e), W=canvas.width, H=canvas.height;
-      para[dragIdx]=clampPt(xy,W,H);
-      /* keep C following: C = B + (D - A) */
-      para[2]=[para[1][0]+para[3][0]-para[0][0], para[1][1]+para[3][1]-para[0][1]];
-      para[2]=clampPt(para[2],W,H);
-      drawPara();
-    } else {
-      canvas.style.cursor = nearest(getXY(e))>=0 ? 'grab' : 'crosshair';
-    }
-  });
-  canvas.addEventListener('mouseup', function(){ dragIdx=null; canvas.classList.remove('dragging'); });
-  canvas.addEventListener('mouseleave', function(){ dragIdx=null; canvas.classList.remove('dragging'); });
-  canvas.addEventListener('touchstart', function(e){ dragIdx=nearest(getXY(e)); e.preventDefault(); },{passive:false});
-  canvas.addEventListener('touchmove', function(e){
-    if(dragIdx===null||dragIdx<0)return; e.preventDefault();
-    var xy=getXY(e),W=canvas.width,H=canvas.height;
-    para[dragIdx]=clampPt(xy,W,H);
-    para[2]=[para[1][0]+para[3][0]-para[0][0], para[1][1]+para[3][1]-para[0][1]];
-    para[2]=clampPt(para[2],W,H);
-    drawPara();
-  },{passive:false});
-  canvas.addEventListener('touchend', function(){ dragIdx=null; });
-})();
-
-window.addEventListener('resize', function(){
-  var c=document.getElementById('paraCanvas'), newW=document.getElementById('sim-wrap').offsetWidth||600;
-  if(para){var sx=newW/c.width; para=para.map(function(p){return[p[0]*sx,p[1]];});}
-  drawPara();
-});
-
-(function(){
-  var c=document.getElementById('paraCanvas');
-  c.width=document.getElementById('sim-wrap').offsetWidth||600;
-  c.height=300;
-  para=defaultPara(c.width,c.height);
-  drawPara();
-})();
 
 /* PRACTICE */
 var score=0, answered={};
