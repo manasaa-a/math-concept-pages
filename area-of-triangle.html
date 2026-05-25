@@ -101,11 +101,12 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .ex-card{background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:14px}
 .ex-lbl{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--green);margin-bottom:4px}
 /* Right-angle triangle simulation */
-.tri-sim{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:16px 0;background:var(--surface)}
-.tri-sim svg{display:block;width:100%;touch-action:none;user-select:none;background:#f8fafc}
-.tri-slide-row{display:flex;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--border);background:var(--bg)}
-.tri-slide-lbl{font-size:13px;font-weight:500;color:var(--yellow);width:88px;flex-shrink:0}
-.tri-slide-row input[type=range]{flex:1;accent-color:var(--yellow);cursor:pointer}
+.tri-sim{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:16px 0}
+.tri-sim svg{display:block;width:100%;touch-action:none;user-select:none;background:#c8d8e8}
+.tri-slide-row{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#c8d8e8}
+.tri-slide-lbl{font-size:13px;font-weight:500;color:#1c1917;width:68px;flex-shrink:0}
+.tri-slide-row input[type=range]{flex:1;accent-color:#1c1917;cursor:pointer}
+.tri-reset-btn{background:#f0f0f0;border:1px solid #aaa;border-radius:4px;padding:4px 12px;font-size:13px;cursor:pointer;font-family:inherit}
 .tri-stat{padding:8px 14px;font-size:14px;color:var(--ink2);border-top:1px solid var(--border);text-align:center;font-weight:500}
 /* Simulation */
 .sim-container{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0}
@@ -331,12 +332,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
     <!-- Custom right-angle triangle → rectangle simulation -->
     <div class="tri-sim">
-      <svg id="tri-svg" viewBox="0 0 420 290" xmlns="http://www.w3.org/2000/svg"></svg>
+      <svg id="tri-svg" viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg"></svg>
       <div class="tri-slide-row">
-        <span class="tri-slide-lbl">← Slide me</span>
+        <span class="tri-slide-lbl">Slide Me!</span>
         <input type="range" id="tri-anim" min="0" max="100" value="0" oninput="triAnimate()">
+        <button class="tri-reset-btn" onclick="triReset()">Reset</button>
       </div>
-      <div class="tri-stat" id="tri-stat">Drag the blue dot to change the base, green dot to change the height</div>
+      <div class="tri-stat" id="tri-stat">Drag green dot ↔ (base) or blue dot ↕ (height)</div>
     </div>
 
     <div class="think-box" style="margin-top:28px">
@@ -822,69 +824,103 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 <script>
 /* ACCORDION */
 /* ── RIGHT-ANGLE TRIANGLE SIMULATION ── */
-var triB = {x:310}, triC = {y:80}, triDrag = null, triAnim = 0;
-var TRI = {ax:80, ay:230};
+var triB = {x:400}, triC = {y:110}, triDrag = null, triAnim = 0;
+var TRI = {ax:150, ay:340};
 
 function triGetPt(e, el) {
   var r = el.getBoundingClientRect();
   var cx = e.touches ? e.touches[0].clientX : e.clientX;
   var cy = e.touches ? e.touches[0].clientY : e.clientY;
-  return {x:((cx-r.left)/r.width)*420, y:((cy-r.top)/r.height)*290};
+  return {x:((cx-r.left)/r.width)*600, y:((cy-r.top)/r.height)*420};
 }
 function triStart(e) {
   e.preventDefault();
   var pt = triGetPt(e, document.getElementById('tri-svg'));
-  if (Math.hypot(pt.x-triB.x, pt.y-TRI.ay) < 22) { triDrag='B'; return; }
-  if (Math.hypot(pt.x-TRI.ax, pt.y-triC.y) < 22) { triDrag='C'; }
+  if (Math.hypot(pt.x-triB.x, pt.y-TRI.ay) < 24) { triDrag='B'; return; }
+  if (Math.hypot(pt.x-TRI.ax, pt.y-triC.y) < 24) { triDrag='C'; }
 }
 function triMove(e) {
   if (!triDrag) return; e.preventDefault();
   var pt = triGetPt(e, document.getElementById('tri-svg'));
-  if (triDrag==='B') triB.x = Math.min(370, Math.max(130, pt.x));
-  if (triDrag==='C') triC.y = Math.min(200, Math.max(40, pt.y));
+  if (triDrag==='B') triB.x = Math.min(530, Math.max(220, pt.x));
+  if (triDrag==='C') triC.y = Math.min(290, Math.max(50, pt.y));
   triDraw();
 }
 function triEnd() { triDrag = null; }
 function triAnimate() { triAnim = parseInt(document.getElementById('tri-anim').value); triDraw(); }
+function triReset() {
+  triB.x=400; triC.y=110; triAnim=0;
+  document.getElementById('tri-anim').value=0;
+  triDraw();
+}
 function triDraw() {
   var Ax=TRI.ax, Ay=TRI.ay, Bx=triB.x, Cy=triC.y;
   var t = triAnim/100;
   var b = Math.round(Bx-Ax), h = Math.round(Ay-Cy);
-  // Second triangle morphs: A→B (rightward), B→D=top-right (upward), C fixed
-  var P1x=Ax+t*(Bx-Ax), P1y=Ay;
-  var P2x=Bx, P2y=Ay-t*(Ay-Cy);
-  var alpha2=Math.min(1,t*4);
+  // Hypotenuse midpoint = rotation pivot for 180° rotation
+  var Mx=(Bx+Ax)/2, My=(Ay+Cy)/2;
+  var theta = t*180;
+
+  var pts = Ax+','+Ay+' '+Bx+','+Ay+' '+Ax+','+Cy; // triangle points
+
   var s='';
-  // Arrow markers
-  s+='<defs><marker id="ta1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#78716c"/></marker>'
-   +'<marker id="ta2" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse"><polygon points="0,0 6,3 0,6" fill="#78716c"/></marker></defs>';
-  // Second triangle (green, morphs to complete rectangle)
-  if(alpha2>0)
-    s+='<polygon points="'+P1x+','+P1y+' '+P2x+','+P2y+' '+Ax+','+Cy+'" fill="#bbf7d0" stroke="#16a34a" stroke-width="1.8" opacity="'+alpha2+'"/>';
-  // Rectangle outline
-  if(t>0.85){var ro=Math.min(1,(t-0.85)*6.7);
-    s+='<rect x="'+Ax+'" y="'+Cy+'" width="'+(Bx-Ax)+'" height="'+(Ay-Cy)+'" fill="none" stroke="#78716c" stroke-width="1" stroke-dasharray="5,4" opacity="'+ro+'"/>';}
-  // Original blue triangle
-  s+='<polygon points="'+Ax+','+Ay+' '+Bx+','+Ay+' '+Ax+','+Cy+'" fill="#bfdbfe" stroke="#2563eb" stroke-width="2"/>';
-  // Right angle mark
-  var rm=14;
-  s+='<path d="M '+(Ax+rm)+','+Ay+' L '+(Ax+rm)+','+(Ay-rm)+' L '+Ax+','+(Ay-rm)+'" fill="none" stroke="#2563eb" stroke-width="1.5"/>';
-  // Base arrow + label
-  s+='<line x1="'+Ax+'" y1="'+(Ay+14)+'" x2="'+Bx+'" y2="'+(Ay+14)+'" stroke="#44403c" stroke-width="1.2" marker-start="url(#ta2)" marker-end="url(#ta1)"/>';
-  s+='<text x="'+((Ax+Bx)/2)+'" y="'+(Ay+26)+'" font-size="12" fill="#1e40af" font-family="DM Sans" text-anchor="middle" font-weight="600">b = '+b+' units</text>';
-  // Height arrow + label
-  s+='<line x1="'+(Ax-14)+'" y1="'+Cy+'" x2="'+(Ax-14)+'" y2="'+Ay+'" stroke="#44403c" stroke-width="1.2" marker-start="url(#ta2)" marker-end="url(#ta1)"/>';
-  s+='<text x="'+(Ax-30)+'" y="'+((Cy+Ay)/2+4)+'" font-size="12" fill="#15803d" font-family="DM Sans" font-weight="600" transform="rotate(-90,'+(Ax-30)+','+(Cy+Ay)/2+')">h = '+h+'</text>';
-  // Formula
-  if(t>0.85){var fa=Math.min(1,(t-0.85)*6.7),area=Math.round(0.5*b*h);
-    s+='<text x="'+(Ax+(Bx-Ax)*0.35)+'" y="'+(Cy+(Ay-Cy)*0.55)+'" font-size="13" fill="#1e40af" font-family="DM Sans" font-weight="700" text-anchor="middle" opacity="'+fa+'">A = ½×'+b+'×'+h+' = '+area+'</text>';}
-  // Drag handles
-  s+='<circle cx="'+Bx+'" cy="'+Ay+'" r="9" fill="#2563eb" stroke="white" stroke-width="2.5" style="cursor:ew-resize" title="Drag to change base"/>';
-  s+='<circle cx="'+Ax+'" cy="'+Cy+'" r="9" fill="#16a34a" stroke="white" stroke-width="2.5" style="cursor:ns-resize" title="Drag to change height"/>';
-  s+='<circle cx="'+Ax+'" cy="'+Ay+'" r="5" fill="#1c1917"/>';
+  s+='<defs>'
+   +'<marker id="ta1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#1c1917"/></marker>'
+   +'<marker id="ta2" markerWidth="7" markerHeight="7" refX="1" refY="3.5" orient="auto-start-reverse"><polygon points="0,0 7,3.5 0,7" fill="#1c1917"/></marker>'
+   +'</defs>';
+
+  // Cream triangle — rotated 180° around hypotenuse midpoint
+  s+='<polygon points="'+pts+'" fill="#fffde7" stroke="#1c1917" stroke-width="2"'
+   +' transform="rotate('+theta.toFixed(1)+','+Mx.toFixed(1)+','+My.toFixed(1)+')"/>';
+
+  // Rectangle outline + tick marks (appear when t > 0.9)
+  if(t>0.9){
+    var ra=Math.min(1,(t-0.9)*10);
+    s+='<rect x="'+Ax+'" y="'+Cy+'" width="'+(Bx-Ax)+'" height="'+(Ay-Cy)+'" fill="none" stroke="#1c1917" stroke-width="2.5" opacity="'+ra+'"/>';
+    // Tick marks
+    var mxb=(Ax+Bx)/2, mxt=(Ax+Bx)/2, mxl=Ax, mxr=Bx;
+    var myb=Ay, myt=Cy, myl=(Ay+Cy)/2, myr=(Ay+Cy)/2;
+    // Double ticks: top & bottom (base)
+    [-6,6].forEach(function(d){
+      s+='<line x1="'+(mxb+d)+'" y1="'+(myb-7)+'" x2="'+(mxb+d)+'" y2="'+(myb+7)+'" stroke="#1c1917" stroke-width="2" opacity="'+ra+'"/>';
+      s+='<line x1="'+(mxt+d)+'" y1="'+(myt-7)+'" x2="'+(mxt+d)+'" y2="'+(myt+7)+'" stroke="#1c1917" stroke-width="2" opacity="'+ra+'"/>';
+    });
+    // Single ticks: left & right (height)
+    s+='<line x1="'+(mxl-7)+'" y1="'+myl+'" x2="'+(mxl+7)+'" y2="'+myl+'" stroke="#1c1917" stroke-width="2" opacity="'+ra+'"/>';
+    s+='<line x1="'+(mxr-7)+'" y1="'+myr+'" x2="'+(mxr+7)+'" y2="'+myr+'" stroke="#1c1917" stroke-width="2" opacity="'+ra+'"/>';
+  }
+
+  // Original pink triangle (always on top)
+  s+='<polygon points="'+pts+'" fill="#e879a8" stroke="#1c1917" stroke-width="2"/>';
+
+  // Dashed hypotenuse (diagonal)
+  s+='<line x1="'+Ax+'" y1="'+Cy+'" x2="'+Bx+'" y2="'+Ay+'"'
+   +' stroke="#1c1917" stroke-width="1.5" stroke-dasharray="8,5"/>';
+
+  // Right angle mark at A
+  var rm=18;
+  s+='<path d="M '+(Ax+rm)+','+Ay+' L '+(Ax+rm)+','+(Ay-rm)+' L '+Ax+','+(Ay-rm)+'" fill="none" stroke="#1c1917" stroke-width="2"/>';
+
+  // b dimension
+  s+='<line x1="'+Ax+'" y1="'+(Ay+20)+'" x2="'+Bx+'" y2="'+(Ay+20)+'" stroke="#1c1917" stroke-width="1.5" marker-start="url(#ta2)" marker-end="url(#ta1)"/>';
+  s+='<text x="'+((Ax+Bx)/2)+'" y="'+(Ay+36)+'" font-size="14" fill="#1c1917" font-family="DM Sans" text-anchor="middle" font-weight="700">b</text>';
+  // h dimension
+  s+='<line x1="'+(Ax-20)+'" y1="'+Cy+'" x2="'+(Ax-20)+'" y2="'+Ay+'" stroke="#1c1917" stroke-width="1.5" marker-start="url(#ta2)" marker-end="url(#ta1)"/>';
+  s+='<text x="'+(Ax-36)+'" y="'+((Cy+Ay)/2+5)+'" font-size="14" fill="#1c1917" font-family="DM Sans" text-anchor="middle" font-weight="700" transform="rotate(-90,'+(Ax-36)+','+(Cy+Ay)/2+')">h</text>';
+
+  // Formula (fades in when complete)
+  if(t>0.85){
+    var fa=Math.min(1,(t-0.85)*6.7), area=Math.round(0.5*b*h);
+    s+='<text x="'+((Ax+Bx)/2+40)+'" y="'+((Cy+Ay)/2)+'" font-size="16" fill="#1e40af" font-family="DM Sans" text-anchor="middle" font-weight="700" opacity="'+fa+'">A = ½bh = '+area+'</text>';
+  }
+
+  // Drag points (matching image colours)
+  s+='<circle cx="'+Ax+'" cy="'+Ay+'" r="11" fill="#1c1917" stroke="#f59e0b" stroke-width="3.5"/>'; // yellow = static
+  s+='<circle cx="'+Bx+'" cy="'+Ay+'" r="11" fill="#1c1917" stroke="#16a34a" stroke-width="3.5" style="cursor:ew-resize"/>'; // green = horizontal
+  s+='<circle cx="'+Ax+'" cy="'+Cy+'" r="11" fill="#1c1917" stroke="#2563eb" stroke-width="3.5" style="cursor:ns-resize"/>'; // blue = vertical
+
   document.getElementById('tri-svg').innerHTML=s;
-  var area=Math.round(0.5*b*h);
-  document.getElementById('tri-stat').textContent='Triangle area = ½ × '+b+' × '+h+' = '+area+' sq units';
+  document.getElementById('tri-stat').textContent='Area = ½ × b × h = ½ × '+b+' × '+h+' = '+Math.round(0.5*b*h)+' sq units';
 }
 (function(){
   var svg=document.getElementById('tri-svg');
