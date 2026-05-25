@@ -852,7 +852,7 @@
     var wy=function(t){return '<div class="step-line why">'+t+'</div>';};
     var mk=function(fs){return fs.map(function(f){
       var labs={a:'Base (a)',b:'Base (b)',m:'Exp (m)',n:'Exp (n)'};
-      return '<div class="input-group"><div class="input-label">'+labs[f]+'</div><div class="stepper"><button class="rs-btn" data-f="'+f+'" data-d="-1">−</button><input type="number" class="stepper-input" value="'+r[f]+'" style="width:42px;text-align:center;border:1px solid var(--border);border-radius:4px;padding:2px 4px"><button class="rs-btn" data-f="'+f+'" data-d="1">+</button></div></div>';
+      return '<div class="input-group"><div class="input-label">'+labs[f]+'</div><div class="stepper"><button class="rs-btn" data-f="'+f+'" data-d="-1">−</button><input type="number" class="stepper-input rs-inp" data-f="'+f+'" value="'+r[f]+'" style="width:42px;text-align:center;border:1px solid var(--border);border-radius:4px;padding:2px 4px"><button class="rs-btn" data-f="'+f+'" data-d="1">+</button></div></div>';
     }).join('');};
     var inputs='', steps='';
     if(rule==='product'){
@@ -883,14 +883,24 @@
       steps=st(a+sp(m+'/'+n))+st(sp(n)+'√('+a+sp(m)+')','denom → root index')+st(sp(n)+'√'+inner)+rs(isInt?result:result.toFixed(2))+wy('Denominator → root index, numerator → power');
     }
     box.innerHTML='<div class="demo-inputs" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px">'+inputs+'</div><div class="demo-steps">'+steps+'</div>';
+    var lim={a:[2,12],b:[2,12],m:[1,10],n:[1,8]};
     box.querySelectorAll('.rs-btn').forEach(function(btn){
       btn.addEventListener('click',function(){
         var f=btn.dataset.f, d=parseInt(btn.dataset.d);
-        var lim={a:[2,12],b:[2,12],m:[1,10],n:[1,8]};
         var lo=(lim[f]||[1,10])[0], hi=(lim[f]||[1,10])[1];
         box._s[f]=Math.min(hi,Math.max(lo,(box._s[f]||1)+d));
         renderSim(box);
       });
+    });
+    box.querySelectorAll('.rs-inp').forEach(function(inp){
+      inp.addEventListener('change',function(){
+        var f=inp.dataset.f;
+        var lo=(lim[f]||[1,10])[0], hi=(lim[f]||[1,10])[1];
+        var v=parseInt(inp.value)||lo;
+        box._s[f]=Math.min(hi,Math.max(lo,v));
+        renderSim(box);
+      });
+      inp.addEventListener('keydown',function(e){ if(e.key==='Enter') inp.blur(); });
     });
   }
 
