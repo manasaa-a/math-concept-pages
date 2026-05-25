@@ -312,7 +312,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <li style="margin-bottom:4px"><a href="#what-is" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">What are Integers?</a></li>
       <li style="margin-bottom:4px"><a href="#numberline" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">On a Number Line</a></li>
       <li style="margin-bottom:4px"><a href="#operations" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Operations</a></li>
-      <li style="margin-bottom:4px"><a href="#simulation" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Interactive Explorer</a></li>
       <li style="margin-bottom:4px"><a href="#properties" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Properties</a></li>
       <li style="margin-bottom:4px"><a href="#practice" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Practice</a></li>
       <li style="margin-bottom:4px"><a href="#takeaways" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Key Takeaways</a></li>
@@ -333,7 +332,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <li><a href="#what-is">What are Integers?</a></li>
       <li><a href="#numberline">On a Number Line</a></li>
       <li><a href="#operations">Operations</a></li>
-      <li><a href="#simulation">Interactive Explorer</a></li>
       <li><a href="#properties">Properties</a></li>
       <li><a href="#practice">Practice</a></li>
       <li><a href="#takeaways">Key Takeaways</a></li>
@@ -348,10 +346,10 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <h1>Integers</h1>
 
     <div class="callout">
-      By the end of this page, you'll understand exactly what makes a number an integer. Including how to add, subtract, multiply and divide them with confidence, why two negatives make a positive, and the seven properties that govern how integers behave.
+      By the end of this page, you'll understand integers — what they are, how all four operations work, and why the sign rules behave the way they do.
     </div>
 
-    <h2>An elevator rises 4 floors, then drops 7 — how do you know it ends up 3 floors below where it started?</h2>
+    <h2>Every bank balance, temperature reading, and elevator floor runs on the same kind of number.</h2>
 
     <!-- VIDEO PLACEHOLDER -->
     <div class="video-embed">
@@ -363,33 +361,10 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
     <!-- INLINE CTA -->
     <div class="cta-inline">
-      <p>Confused about negative numbers? A Cuemath tutor will make them click in one live session.</p>
+      <p>Want to go deeper? Get personalised 1:1 math tutoring with a Cuemath expert.</p>
       <button class="btn-primary" onclick="openModal()">Get 1:1 help →</button>
     </div>
 
-    <!-- REAL-WORLD STRIP -->
-    <div class="rw-strip">
-      <div class="rw-card">
-        <div class="emoji">🛗</div>
-        <strong>Elevators</strong>
-        <p>Floor +4 then −7 means you end at −3. Integers track exactly where you are.</p>
-      </div>
-      <div class="rw-card">
-        <div class="emoji">🏦</div>
-        <strong>Banking</strong>
-        <p>A $200 balance after a $350 payment gives you −$150 — your bank shows negative integers every day.</p>
-      </div>
-      <div class="rw-card">
-        <div class="emoji">🌡️</div>
-        <strong>Temperature</strong>
-        <p>Moscow in January averages −10°C. The gap to boiling point (100°C) is exactly 110 integer degrees.</p>
-      </div>
-      <div class="rw-card">
-        <div class="emoji">🏔️</div>
-        <strong>Elevation</strong>
-        <p>The Dead Sea sits at −430 m — the lowest point on Earth, expressed as a negative integer.</p>
-      </div>
-    </div>
   </div>
 
   <!-- SECTION: WHAT ARE INTEGERS -->
@@ -497,7 +472,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
               Same sign (both −)<br>Add: 9 + 5 = 14<br>Keep the sign → <strong>Result: −14</strong>
             </div>
           </div>
-          <button class="sim-link" onclick="setOp('+');document.getElementById('simulation').scrollIntoView({behavior:'smooth'})">Try on number line →</button>
+          <button class="sim-link" onclick="setOp('+')">Try on number line →</button>
         </div>
       </div>
 
@@ -522,7 +497,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
               = −4 + 6<br>Different signs, difference: 6 − 4 = 2<br>Larger (6) is positive → <strong>Result: +2</strong>
             </div>
           </div>
-          <button class="sim-link" onclick="setOp('-');document.getElementById('simulation').scrollIntoView({behavior:'smooth'})">Try on number line →</button>
+          <button class="sim-link" onclick="setOp('-')">Try on number line →</button>
         </div>
       </div>
 
@@ -543,7 +518,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
             </tbody>
           </table>
           <p style="font-size:14px;color:var(--muted)"><em>Why does negative × negative = positive?</em> Think of it as reversing direction twice — two reversals bring you back to the original direction.</p>
-          <button class="sim-link" onclick="setOp('×');document.getElementById('simulation').scrollIntoView({behavior:'smooth'})">Try in explorer →</button>
+          <button class="sim-link" onclick="setOp('×')">Try in explorer →</button>
         </div>
       </div>
 
@@ -572,86 +547,71 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <p>Without a calculator: what is (−3) × (−8)? Decide the sign first using the sign rule, then calculate the magnitude.</p>
     </div>
 
+    <!-- Integer Explorer (inline) -->
+    <div id="simulation" style="margin-top:24px">
+      <h3 style="margin-bottom:8px">Try it on the number line</h3>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:14px">Choose an operation, adjust the numbers and hit ▶ Play. For × and ÷, flip the sign tiles to see the rule.</p>
+      <div class="sim-container">
+        <div class="sim-op-tabs">
+          <button class="sim-tab active" id="tab-add" onclick="setOp('+')">+ Add</button>
+          <button class="sim-tab" id="tab-sub" onclick="setOp('-')">− Subtract</button>
+          <button class="sim-tab" id="tab-mul" onclick="setOp('×')">× Multiply</button>
+          <button class="sim-tab" id="tab-div" onclick="setOp('÷')">÷ Divide</button>
+        </div>
+        <div class="sim-inputs">
+          <div class="sim-num-wrap">
+            <span class="sim-num-label" id="label-a">Start (°C)</span>
+            <div class="sim-num-ctrl">
+              <button onclick="changeNum('a',-1)">−</button>
+              <input id="numA" type="text" value="-3" readonly>
+              <button onclick="changeNum('a',1)">+</button>
+            </div>
+          </div>
+          <span class="sim-op-symbol" id="op-symbol">+</span>
+          <div class="sim-num-wrap">
+            <span class="sim-num-label" id="label-b">Change (°C)</span>
+            <div class="sim-num-ctrl">
+              <button onclick="changeNum('b',-1)">−</button>
+              <input id="numB" type="text" value="5" readonly>
+              <button onclick="changeNum('b',1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div id="temp-scenario" style="background:var(--blue-light);border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:15px;color:var(--ink2)">
+          🌡️ <span id="temp-sentence">Temperature starts at −3°C, rises by 5°C → lands at <strong>2°C</strong></span>
+        </div>
+        <div id="sign-explorer" style="display:none">
+          <div class="sign-explorer-label">Click a tile to flip its sign and watch the result change:</div>
+          <div class="sign-board">
+            <div class="sign-tile clickable spos" id="tile-a" onclick="flipSign('a')">
+              <span class="st-sign" id="tile-a-sign">+</span><span class="st-val" id="tile-a-val">3</span>
+            </div>
+            <span class="sign-board-op" id="tile-op">×</span>
+            <div class="sign-tile clickable spos" id="tile-b" onclick="flipSign('b')">
+              <span class="st-sign" id="tile-b-sign">+</span><span class="st-val" id="tile-b-val">4</span>
+            </div>
+            <span class="sign-board-op">=</span>
+            <div class="sign-tile sres spos" id="tile-result">
+              <span class="st-sign" id="tile-r-sign">+</span><span class="st-val" id="tile-r-val">12</span>
+            </div>
+          </div>
+          <span class="sign-rule-note sim-rule-pos" id="sign-rule-note">Same signs → positive</span>
+        </div>
+        <div class="sim-result-box" id="sim-result-box">
+          <span class="sim-result-eq" id="sim-eq">(−3) + 5 = 2</span>
+          <span class="sim-rule-badge sim-rule-pos" id="sim-rule">Different signs → result is positive</span>
+        </div>
+        <div class="numberline-wrap">
+          <canvas id="nlCanvas" height="120"></canvas>
+        </div>
+        <div class="nl-drag-hint" id="nl-drag-hint">Drag either dot along the temperature scale</div>
+        <p class="sim-discover" id="sim-discover-txt">💡 Try this: drag the start dot below zero and the change dot further left — watch what happens when both are negative.</p>
+      </div>
+    </div>
+
     </div>
   </div>
 
-  <!-- SECTION: SIMULATION -->
-  <div class="section" id="simulation">
-    <h2>Interactive Integer Explorer</h2>
-    <p>Choose an operation and drag the dots on the number line, or use the steppers. For + and −, hit <strong>▶ Play</strong> to watch the steps animate. For × and ÷, flip the sign tiles to discover the rules.</p>
-
-    <div class="sim-container">
-      <!-- Operation tabs -->
-      <div class="sim-op-tabs">
-        <button class="sim-tab active" id="tab-add" onclick="setOp('+')">+ Add</button>
-        <button class="sim-tab" id="tab-sub" onclick="setOp('-')">− Subtract</button>
-        <button class="sim-tab" id="tab-mul" onclick="setOp('×')">× Multiply</button>
-        <button class="sim-tab" id="tab-div" onclick="setOp('÷')">÷ Divide</button>
-      </div>
-
-      <!-- Number controls -->
-      <div class="sim-inputs">
-        <div class="sim-num-wrap">
-          <span class="sim-num-label" id="label-a">Start (°C)</span>
-          <div class="sim-num-ctrl">
-            <button onclick="changeNum('a',-1)">−</button>
-            <input id="numA" type="text" value="-3" readonly>
-            <button onclick="changeNum('a',1)">+</button>
-          </div>
-        </div>
-        <span class="sim-op-symbol" id="op-symbol">+</span>
-        <div class="sim-num-wrap">
-          <span class="sim-num-label" id="label-b">Change (°C)</span>
-          <div class="sim-num-ctrl">
-            <button onclick="changeNum('b',-1)">−</button>
-            <input id="numB" type="text" value="5" readonly>
-            <button onclick="changeNum('b',1)">+</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Temperature scenario (+ and − only) -->
-      <div id="temp-scenario" style="background:var(--blue-light);border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:15px;color:var(--ink2)">
-        🌡️ <span id="temp-sentence">Temperature starts at −3°C, rises by 5°C → lands at <strong>2°C</strong></span>
-      </div>
-
-      <!-- Sign Explorer (× and ÷ only) -->
-      <div id="sign-explorer" style="display:none">
-        <div class="sign-explorer-label">Click a tile to flip its sign and watch the result change:</div>
-        <div class="sign-board">
-          <div class="sign-tile clickable spos" id="tile-a" onclick="flipSign('a')">
-            <span class="st-sign" id="tile-a-sign">+</span>
-            <span class="st-val" id="tile-a-val">3</span>
-          </div>
-          <span class="sign-board-op" id="tile-op">×</span>
-          <div class="sign-tile clickable spos" id="tile-b" onclick="flipSign('b')">
-            <span class="st-sign" id="tile-b-sign">+</span>
-            <span class="st-val" id="tile-b-val">4</span>
-          </div>
-          <span class="sign-board-op">=</span>
-          <div class="sign-tile sres spos" id="tile-result">
-            <span class="st-sign" id="tile-r-sign">+</span>
-            <span class="st-val" id="tile-r-val">12</span>
-          </div>
-        </div>
-        <span class="sign-rule-note sim-rule-pos" id="sign-rule-note">Same signs → positive</span>
-      </div>
-
-      <!-- Result equation -->
-      <div class="sim-result-box" id="sim-result-box">
-        <span class="sim-result-eq" id="sim-eq">(−3) + 5 = 2</span>
-        <span class="sim-rule-badge sim-rule-pos" id="sim-rule">Different signs → result is positive</span>
-      </div>
-
-      <!-- Number line canvas -->
-      <div class="numberline-wrap">
-        <canvas id="nlCanvas" height="120"></canvas>
-      </div>
-      <div class="nl-drag-hint" id="nl-drag-hint">Drag either dot along the temperature scale</div>
-
-      <p class="sim-discover" id="sim-discover-txt">💡 Try this: drag the start dot below zero and the change dot further left — watch what happens when both are negative.</p>
-    </div>
-  </div>
 
   <!-- SECTION: PROPERTIES -->
   <div class="section" id="properties">
@@ -740,8 +700,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   <div class="section" style="padding:40px 0">
     <div class="cta-band">
       <div>
-        <h3>Getting tangled in negative signs?</h3>
-        <p>Our tutors use visual number lines and real-world examples — just like this page — so the rules stick permanently.</p>
+        <h3>Want 1:1 guidance from an expert?</h3>
+        <p>Work through problems live with a Cuemath tutor — personalised to how you learn, at your own pace.</p>
         <button class="btn-white" onclick="openModal()">Book a free class →</button>
       </div>
       <img class="cta-img" src="cta-student.png" alt="Cuemath 1-on-1 online class">
@@ -865,17 +825,30 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     </div>
   </div>
 
-  <!-- CTA BAND 2 -->
-  <div class="section" style="padding:40px 0">
-    <div class="cta-band">
-      <div>
-        <h3>Ready to move on to algebra?</h3>
-        <p>Integers are the foundation of everything that follows — algebra, equations, coordinate geometry. Nail them now with a free class.</p>
-        <button class="btn-white" onclick="openModal()">Start free →</button>
+
+    <!-- REAL-WORLD STRIP -->
+    <div class="rw-strip">
+      <div class="rw-card">
+        <div class="emoji">🛗</div>
+        <strong>Elevators</strong>
+        <p>Floor +4 then −7 means you end at −3. Integers track exactly where you are.</p>
       </div>
-      <img class="cta-img" src="cta-student.png" alt="Cuemath 1-on-1 online class">
+      <div class="rw-card">
+        <div class="emoji">🏦</div>
+        <strong>Banking</strong>
+        <p>A $200 balance after a $350 payment gives you −$150 — your bank shows negative integers every day.</p>
+      </div>
+      <div class="rw-card">
+        <div class="emoji">🌡️</div>
+        <strong>Temperature</strong>
+        <p>Moscow in January averages −10°C. The gap to boiling point (100°C) is exactly 110 integer degrees.</p>
+      </div>
+      <div class="rw-card">
+        <div class="emoji">🏔️</div>
+        <strong>Elevation</strong>
+        <p>The Dead Sea sits at −430 m — the lowest point on Earth, expressed as a negative integer.</p>
+      </div>
     </div>
-  </div>
 
   <!-- KEY TAKEAWAYS -->
   <div class="section" id="takeaways">
@@ -1488,7 +1461,7 @@ function selGrade(btn) { document.querySelectorAll('#grade-btns .grade-chip').fo
 function selFeeling(btn) { btn.closest('.feeling-btns').querySelectorAll('.feeling-btn').forEach(function(b) { b.classList.remove('selected'); }); btn.classList.add('selected'); }
 
 /* TOC SCROLL SPY */
-var tocIds = ['what-is','numberline','operations','simulation','properties','practice','takeaways','faq','worksheets','videos'];
+var tocIds = ['what-is','numberline','operations','properties','practice','takeaways','faq','worksheets','videos'];
 var spy = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
     var link = document.querySelector('#toc-list a[href="#' + e.target.id + '"]');
