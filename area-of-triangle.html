@@ -628,17 +628,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     </div>
   </div>
 
-  <!-- CTA BAND 2 -->
-  <div class="section" style="padding:40px 0">
-    <div class="cta-band">
-      <div>
-        <h3>Build real confidence in maths.</h3>
-        <p>A Cuemath expert works with you 1:1, at your level, so every concept clicks — not just this one.</p>
-        <button class="btn-white" onclick="openModal()">Start free →</button>
-      </div>
-      <img class="cta-img" src="cta-student.png" alt="Cuemath 1-on-1 online class">
-    </div>
-  </div>
 
   <!-- REAL-WORLD STRIP -->
   <div class="rw-strip">
@@ -1004,14 +993,14 @@ function toggleHint(id, btn) {
   btn.textContent = open ? '💡 Hint' : '💡 Hide hint';
 }
 function retryPractice() {
-  correctCount = 0;
+  score = 0; answered = {};
   document.querySelectorAll('.question-card').forEach(c => c.classList.remove('active'));
   document.querySelectorAll('.choice-btn').forEach(b => { b.classList.remove('correct','wrong'); b.disabled = false; });
   document.querySelectorAll('.q-feedback').forEach(f => { f.textContent=''; f.className='q-feedback'; });
   document.querySelectorAll('.q-next').forEach(n => n.classList.remove('show'));
   document.querySelectorAll('.hint-text').forEach(h => { h.style.display = 'none'; });
   document.querySelectorAll('.hint-btn').forEach(b => { b.textContent = '💡 Hint'; });
-  document.getElementById('completion').classList.remove('show');
+  document.getElementById('completion').style.display = 'none';
   document.getElementById('q1').classList.add('active');
   document.getElementById('prog-bar').style.width = '0%';
 }
