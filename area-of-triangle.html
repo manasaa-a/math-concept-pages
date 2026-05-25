@@ -864,63 +864,50 @@ function triDraw() {
   var pts = Ax+','+Ay+' '+Bx+','+Ay+' '+Ax+','+Cy; // triangle points
 
   var s='';
-  s+='<defs>'
-   +'<marker id="ta1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#1c1917"/></marker>'
-   +'<marker id="ta2" markerWidth="7" markerHeight="7" refX="1" refY="3.5" orient="auto-start-reverse"><polygon points="0,0 7,3.5 0,7" fill="#1c1917"/></marker>'
-   +'</defs>';
 
   // Cream triangle — rotated 180° around hypotenuse midpoint
   s+='<polygon points="'+pts+'" fill="#fffde7" stroke="#1c1917" stroke-width="2"'
    +' transform="rotate('+theta.toFixed(1)+','+Mx.toFixed(1)+','+My.toFixed(1)+')"/>';
 
-  // Rectangle outline + tick marks (appear when t > 0.9)
-  if(t>0.9){
-    var ra=Math.min(1,(t-0.9)*10);
-    s+='<rect x="'+Ax+'" y="'+Cy+'" width="'+(Bx-Ax)+'" height="'+(Ay-Cy)+'" fill="none" stroke="#1c1917" stroke-width="2.5" opacity="'+ra+'"/>';
-    // Tick marks
-    var mxb=(Ax+Bx)/2, mxt=(Ax+Bx)/2, mxl=Ax, mxr=Bx;
-    var myb=Ay, myt=Cy, myl=(Ay+Cy)/2, myr=(Ay+Cy)/2;
-    // Double ticks: top & bottom (base)
-    [-6,6].forEach(function(d){
-      s+='<line x1="'+(mxb+d)+'" y1="'+(myb-7)+'" x2="'+(mxb+d)+'" y2="'+(myb+7)+'" stroke="#1c1917" stroke-width="2" opacity="'+ra+'"/>';
-      s+='<line x1="'+(mxt+d)+'" y1="'+(myt-7)+'" x2="'+(mxt+d)+'" y2="'+(myt+7)+'" stroke="#1c1917" stroke-width="2" opacity="'+ra+'"/>';
-    });
-    // Single ticks: left & right (height)
-    s+='<line x1="'+(mxl-7)+'" y1="'+myl+'" x2="'+(mxl+7)+'" y2="'+myl+'" stroke="#1c1917" stroke-width="2" opacity="'+ra+'"/>';
-    s+='<line x1="'+(mxr-7)+'" y1="'+myr+'" x2="'+(mxr+7)+'" y2="'+myr+'" stroke="#1c1917" stroke-width="2" opacity="'+ra+'"/>';
-  }
-
-  // Original pink triangle (always on top)
+  // Original pink triangle
   s+='<polygon points="'+pts+'" fill="#e879a8" stroke="#1c1917" stroke-width="2"/>';
 
-  // Dashed hypotenuse (diagonal)
+  // Dotted diagonal (hypotenuse)
   s+='<line x1="'+Ax+'" y1="'+Cy+'" x2="'+Bx+'" y2="'+Ay+'"'
-   +' stroke="#1c1917" stroke-width="1.5" stroke-dasharray="8,5"/>';
+   +' stroke="#1c1917" stroke-width="2" stroke-dasharray="3,5" stroke-linecap="round"/>';
 
   // Right angle mark at A
   var rm=18;
   s+='<path d="M '+(Ax+rm)+','+Ay+' L '+(Ax+rm)+','+(Ay-rm)+' L '+Ax+','+(Ay-rm)+'" fill="none" stroke="#1c1917" stroke-width="2"/>';
 
-  // b dimension
-  s+='<line x1="'+Ax+'" y1="'+(Ay+20)+'" x2="'+Bx+'" y2="'+(Ay+20)+'" stroke="#1c1917" stroke-width="1.5" marker-start="url(#ta2)" marker-end="url(#ta1)"/>';
-  s+='<text x="'+((Ax+Bx)/2)+'" y="'+(Ay+36)+'" font-size="14" fill="#1c1917" font-family="DM Sans" text-anchor="middle" font-weight="700">b</text>';
-  // h dimension
-  s+='<line x1="'+(Ax-20)+'" y1="'+Cy+'" x2="'+(Ax-20)+'" y2="'+Ay+'" stroke="#1c1917" stroke-width="1.5" marker-start="url(#ta2)" marker-end="url(#ta1)"/>';
-  s+='<text x="'+(Ax-36)+'" y="'+((Cy+Ay)/2+5)+'" font-size="14" fill="#1c1917" font-family="DM Sans" text-anchor="middle" font-weight="700" transform="rotate(-90,'+(Ax-36)+','+(Cy+Ay)/2+')">h</text>';
-
-  // Formula (fades in when complete)
-  if(t>0.85){
-    var fa=Math.min(1,(t-0.85)*6.7), area=Math.round(0.5*b*h);
-    s+='<text x="'+((Ax+Bx)/2+40)+'" y="'+((Cy+Ay)/2)+'" font-size="16" fill="#1e40af" font-family="DM Sans" text-anchor="middle" font-weight="700" opacity="'+fa+'">A = ½bh = '+area+'</text>';
+  // Rectangle outline (appears when t > 0.9)
+  if(t>0.9){
+    var ra=Math.min(1,(t-0.9)*10);
+    s+='<rect x="'+Ax+'" y="'+Cy+'" width="'+(Bx-Ax)+'" height="'+(Ay-Cy)+'" fill="none" stroke="#1c1917" stroke-width="2.5" opacity="'+ra+'"/>';
+    // Tick marks ON TOP — closer spacing (±3 instead of ±6)
+    var mxb=(Ax+Bx)/2, mxt=(Ax+Bx)/2;
+    var myb=Ay, myt=Cy, myl=(Ay+Cy)/2, myr=(Ay+Cy)/2;
+    [-3,3].forEach(function(d){
+      s+='<line x1="'+(mxb+d)+'" y1="'+(myb-8)+'" x2="'+(mxb+d)+'" y2="'+(myb+8)+'" stroke="#1c1917" stroke-width="2.5" opacity="'+ra+'"/>';
+      s+='<line x1="'+(mxt+d)+'" y1="'+(myt-8)+'" x2="'+(mxt+d)+'" y2="'+(myt+8)+'" stroke="#1c1917" stroke-width="2.5" opacity="'+ra+'"/>';
+    });
+    s+='<line x1="'+(Ax-8)+'" y1="'+myl+'" x2="'+(Ax+8)+'" y2="'+myl+'" stroke="#1c1917" stroke-width="2.5" opacity="'+ra+'"/>';
+    s+='<line x1="'+(Bx-8)+'" y1="'+myr+'" x2="'+(Bx+8)+'" y2="'+myr+'" stroke="#1c1917" stroke-width="2.5" opacity="'+ra+'"/>';
+    // Formula — no numbers, just A = ½bh
+    var fa=ra;
+    s+='<text x="'+((Ax+Bx)/2+50)+'" y="'+((Cy+Ay)/2)+'" font-size="16" fill="#1e40af" font-family="DM Sans" text-anchor="middle" font-weight="700" opacity="'+fa+'">A = ½ × b × h</text>';
   }
 
-  // Drag points (matching image colours)
-  s+='<circle cx="'+Ax+'" cy="'+Ay+'" r="11" fill="#1c1917" stroke="#f59e0b" stroke-width="3.5"/>'; // yellow = static
-  s+='<circle cx="'+Bx+'" cy="'+Ay+'" r="11" fill="#1c1917" stroke="#16a34a" stroke-width="3.5" style="cursor:ew-resize"/>'; // green = horizontal
-  s+='<circle cx="'+Ax+'" cy="'+Cy+'" r="11" fill="#1c1917" stroke="#2563eb" stroke-width="3.5" style="cursor:ns-resize"/>'; // blue = vertical
+  // Midpoint marker (rotation pivot)
+  s+='<circle cx="'+Mx.toFixed(1)+'" cy="'+My.toFixed(1)+'" r="5" fill="white" stroke="#1c1917" stroke-width="2"/>';
+
+  // Drag points — all black, smaller
+  s+='<circle cx="'+Ax+'" cy="'+Ay+'" r="7" fill="#1c1917"/>'; // fixed
+  s+='<circle cx="'+Bx+'" cy="'+Ay+'" r="7" fill="#1c1917" style="cursor:ew-resize"/>'; // horizontal
+  s+='<circle cx="'+Ax+'" cy="'+Cy+'" r="7" fill="#1c1917" style="cursor:ns-resize"/>'; // vertical
 
   document.getElementById('tri-svg').innerHTML=s;
-  document.getElementById('tri-stat').textContent='Area = ½ × b × h = ½ × '+b+' × '+h+' = '+Math.round(0.5*b*h)+' sq units';
+  document.getElementById('tri-stat').textContent='Drag the points to change the triangle, then slide to reveal the rectangle';
 }
 (function(){
   var svg=document.getElementById('tri-svg');
