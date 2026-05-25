@@ -846,7 +846,8 @@
     var r=box._s, rule=r.rule, a=r.a, b=r.b, m=r.m, n=r.n;
     var sp=function(x){return '<sup>'+x+'</sup>';};
     var pw=function(base,exp){try{return Math.pow(base,exp);}catch(e){return '?';}};
-    var rep=function(x,t){if(t<=5)return Array(Math.max(1,t)).fill(x).join(' × ');return x+' × '+x+' × … × '+x+' ('+t+' times)';};
+    var rep=function(x,t){return Array(Math.max(1,t)).fill(x).join(' × ');};
+    var repCancel=function(x,cancel,keep){return Array(cancel).fill('<s>'+x+'</s>').concat(Array(keep).fill(x)).join(' × ');};
     var st=function(e,note){return '<div class="step-line expansion"><span class="step-expr">'+e+'</span>'+(note?'<span class="step-note">'+note+'</span>':'')+'</div>';};
     var rs=function(e,note){return '<div class="step-line result"><span class="step-eq">=</span><span class="step-expr">'+e+'</span>'+(note?'<span class="step-note">'+note+'</span>':'')+'</div>';};
     var wy=function(t){return '<div class="step-line why">'+t+'</div>';};
@@ -861,7 +862,8 @@
     } else if(rule==='quotient'){
       var qm=Math.max(m,n+1);
       inputs=mk(['a','m','n']);
-      steps=st(a+sp(qm)+' ÷ '+a+sp(n))+st(rep(a,qm)+' ÷ '+rep(a,n),'expand')+st(rep(a,qm-n)||'1','cancel '+n+' pairs')+rs(a+sp(qm-n)+' = '+pw(a,qm-n))+wy('Subtract exponents: '+qm+'−'+n+'='+(qm-n));
+      var cancelled=repCancel(a,n,qm-n)||'1';
+      steps=st(a+sp(qm)+' ÷ '+a+sp(n))+st(rep(a,qm)+' ÷ '+rep(a,n),'expand')+st(cancelled,'cancel '+n+' matching pairs')+rs(a+sp(qm-n)+' = '+pw(a,qm-n))+wy('Subtract exponents: '+qm+'−'+n+'='+(qm-n));
     } else if(rule==='zero'){
       inputs=mk(['a']);
       steps=st(a+sp(2)+'='+pw(a,2))+st(a+sp(1)+'='+a,'÷'+a)+st(a+sp(0)+'=?','÷'+a)+rs('1','pattern forces this')+wy('a⁰ = aᵐ ÷ aᵐ = 1');
