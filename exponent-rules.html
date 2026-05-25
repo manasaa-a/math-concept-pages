@@ -108,6 +108,7 @@
   .rule-body.show{display:block;animation:fadeIn .25s ease}
   .rb-formula{font-family:'Lora',serif;font-size:20px;font-weight:700;margin-bottom:12px}
   .rb-example{font-size:14px;color:var(--ink2);background:var(--surface);border-radius:7px;padding:10px 13px;margin-bottom:8px;line-height:1.5}
+  .rb-desc{font-size:14px;color:var(--ink2);margin-bottom:10px;line-height:1.6;border-left:3px solid var(--yellow);padding-left:10px}
   .rb-why{font-size:13px;color:var(--muted);font-style:italic;line-height:1.6;margin-bottom:10px}
   .rb-try{background:none;border:1.5px solid var(--border);border-radius:7px;padding:8px 14px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;color:var(--ink2)}
   .rb-try:hover{border-color:var(--yellow);background:var(--yellow-light);color:var(--ink)}
@@ -385,7 +386,6 @@
     <ul class="toc-list" id="toc-list">
       <li><a href="#what-are-exponents">What are exponents?</a></li>
       <li><a href="#the-8-laws">The 8 exponent rules</a></li>
-      <li><a href="#real-world">In the real world</a></li>
       <div class="toc-divider"></div>
       <li><a href="#practice">Practice questions</a></li>
       <li><a href="#worksheet">Downloadable worksheet</a></li>
@@ -462,11 +462,11 @@
           <button class="rule-trigger"><div class="rt-left"><span class="rt-num">1</span><span class="rt-name">Product Rule</span><span class="rt-formula">aᵐ × aⁿ = aᵐ⁺ⁿ</span></div><span class="rt-icon">+</span></button>
           <div class="rule-body">
             <div class="rb-formula">a<sup>m</sup> × a<sup>n</sup> = a<sup>m+n</sup></div>
+            <p class="rb-desc">When multiplying expressions with the same base, add the exponents.</p>
             <div class="rb-example"><strong>Example:</strong> 2³ × 2⁵ = 2<sup>3+5</sup> = 2⁸ = 256</div>
             <div class="rb-example"><strong>Note:</strong> Only works when the bases are the same.</div>
             <div class="rb-why">Count the base factors — m from the first term, n from the second = m+n total.</div>
-            <button class="rb-try" onclick="showRuleSim('product', this, 'rsim-product')">Try it ▸</button>
-            <div id="rsim-product" class="rule-sim-box" style="display:none"></div>
+            <div id="rsim-product" class="rule-sim-box"></div>
           </div>
         </div>
 
@@ -474,11 +474,11 @@
           <button class="rule-trigger"><div class="rt-left"><span class="rt-num">2</span><span class="rt-name">Quotient Rule</span><span class="rt-formula">aᵐ ÷ aⁿ = aᵐ⁻ⁿ</span></div><span class="rt-icon">+</span></button>
           <div class="rule-body">
             <div class="rb-formula">a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m−n</sup></div>
+            <p class="rb-desc">When dividing expressions with the same base, subtract the exponents.</p>
             <div class="rb-example"><strong>Example:</strong> 3⁶ ÷ 3² = 3<sup>6−2</sup> = 3⁴ = 81</div>
             <div class="rb-example"><strong>Note:</strong> Same base required. If m &lt; n the result is a negative exponent.</div>
             <div class="rb-why">The n factors in the denominator cancel n from the numerator, leaving m−n.</div>
-            <button class="rb-try" onclick="showRuleSim('quotient', this, 'rsim-quotient')">Try it ▸</button>
-            <div id="rsim-quotient" class="rule-sim-box" style="display:none"></div>
+            <div id="rsim-quotient" class="rule-sim-box"></div>
           </div>
         </div>
 
@@ -486,11 +486,11 @@
           <button class="rule-trigger"><div class="rt-left"><span class="rt-num">3</span><span class="rt-name">Zero Exponent</span><span class="rt-formula">a⁰ = 1</span></div><span class="rt-icon">+</span></button>
           <div class="rule-body">
             <div class="rb-formula">a<sup>0</sup> = 1 &nbsp;(a ≠ 0)</div>
+            <p class="rb-desc">Any non-zero base raised to the power of zero equals 1.</p>
             <div class="rb-example"><strong>Example:</strong> 7⁰ = 1 &nbsp;·&nbsp; x⁰ = 1 &nbsp;·&nbsp; (−3)⁰ = 1</div>
             <div class="rb-example"><strong>Note:</strong> 0⁰ is undefined — this rule only applies when a ≠ 0.</div>
             <div class="rb-why">aᵐ ÷ aᵐ = a⁰. Anything divided by itself equals 1. So a⁰ = 1.</div>
-            <button class="rb-try" onclick="showRuleSim('zero', this, 'rsim-zero')">Try it ▸</button>
-            <div id="rsim-zero" class="rule-sim-box" style="display:none"></div>
+            <div id="rsim-zero" class="rule-sim-box"></div>
           </div>
         </div>
 
@@ -498,11 +498,11 @@
           <button class="rule-trigger"><div class="rt-left"><span class="rt-num">4</span><span class="rt-name">Negative Exponent</span><span class="rt-formula">a⁻ᵐ = 1/aᵐ</span></div><span class="rt-icon">+</span></button>
           <div class="rule-body">
             <div class="rb-formula">a<sup>−m</sup> = 1/a<sup>m</sup></div>
+            <p class="rb-desc">A negative exponent means take the reciprocal — not a negative result.</p>
             <div class="rb-example"><strong>Example:</strong> 2⁻³ = 1/2³ = 1/8 = 0.125</div>
             <div class="rb-example"><strong>Note:</strong> A negative exponent means reciprocal — not a negative result.</div>
             <div class="rb-why">a⁰ ÷ aᵐ = a⁻ᵐ. Since a⁰ = 1, we get a⁻ᵐ = 1/aᵐ.</div>
-            <button class="rb-try" onclick="showRuleSim('negative', this, 'rsim-negative')">Try it ▸</button>
-            <div id="rsim-negative" class="rule-sim-box" style="display:none"></div>
+            <div id="rsim-negative" class="rule-sim-box"></div>
           </div>
         </div>
 
@@ -510,11 +510,11 @@
           <button class="rule-trigger"><div class="rt-left"><span class="rt-num">5</span><span class="rt-name">Power of a Power</span><span class="rt-formula">(aᵐ)ⁿ = aᵐⁿ</span></div><span class="rt-icon">+</span></button>
           <div class="rule-body">
             <div class="rb-formula">(a<sup>m</sup>)<sup>n</sup> = a<sup>mn</sup></div>
+            <p class="rb-desc">When a base has two stacked exponents, multiply them together.</p>
             <div class="rb-example"><strong>Example:</strong> (2³)⁴ = 2<sup>3×4</sup> = 2¹² = 4096</div>
             <div class="rb-example"><strong>Common mistake:</strong> (2³)⁴ ≠ 2⁷ — multiply the exponents, don't add them.</div>
             <div class="rb-why">n copies of aᵐ each give m factors of a — m × n factors total.</div>
-            <button class="rb-try" onclick="showRuleSim('power', this, 'rsim-power')">Try it ▸</button>
-            <div id="rsim-power" class="rule-sim-box" style="display:none"></div>
+            <div id="rsim-power" class="rule-sim-box"></div>
           </div>
         </div>
 
@@ -522,11 +522,11 @@
           <button class="rule-trigger"><div class="rt-left"><span class="rt-num">6</span><span class="rt-name">Power of a Product</span><span class="rt-formula">(ab)ᵐ = aᵐbᵐ</span></div><span class="rt-icon">+</span></button>
           <div class="rule-body">
             <div class="rb-formula">(ab)<sup>m</sup> = a<sup>m</sup>b<sup>m</sup></div>
+            <p class="rb-desc">Distribute the exponent to every factor inside the brackets.</p>
             <div class="rb-example"><strong>Example:</strong> (2x)³ = 2³ × x³ = 8x³</div>
             <div class="rb-example"><strong>Example:</strong> (3xy)² = 3² × x² × y² = 9x²y²</div>
             <div class="rb-why">The exponent distributes to each factor inside the brackets.</div>
-            <button class="rb-try" onclick="showRuleSim('product-power', this, 'rsim-product-power')">Try it ▸</button>
-            <div id="rsim-product-power" class="rule-sim-box" style="display:none"></div>
+            <div id="rsim-product-power" class="rule-sim-box"></div>
           </div>
         </div>
 
@@ -534,11 +534,11 @@
           <button class="rule-trigger"><div class="rt-left"><span class="rt-num">7</span><span class="rt-name">Power of a Quotient</span><span class="rt-formula">(a/b)ᵐ = aᵐ/bᵐ</span></div><span class="rt-icon">+</span></button>
           <div class="rule-body">
             <div class="rb-formula">(a/b)<sup>m</sup> = a<sup>m</sup>/b<sup>m</sup></div>
+            <p class="rb-desc">Apply the exponent to both numerator and denominator separately.</p>
             <div class="rb-example"><strong>Example:</strong> (x/y)³ = x³/y³</div>
             <div class="rb-example"><strong>Example:</strong> (2/3)⁴ = 2⁴/3⁴ = 16/81</div>
             <div class="rb-why">Same as Power of a Product — numerators group together, denominators group together.</div>
-            <button class="rb-try" onclick="showRuleSim('quotient-power', this, 'rsim-quotient-power')">Try it ▸</button>
-            <div id="rsim-quotient-power" class="rule-sim-box" style="display:none"></div>
+            <div id="rsim-quotient-power" class="rule-sim-box"></div>
           </div>
         </div>
 
@@ -546,11 +546,11 @@
           <button class="rule-trigger"><div class="rt-left"><span class="rt-num">8</span><span class="rt-name">Fractional Exponent</span><span class="rt-formula">aᵐ/ⁿ = ⁿ√(aᵐ)</span></div><span class="rt-icon">+</span></button>
           <div class="rule-body">
             <div class="rb-formula">a<sup>m/n</sup> = <sup>n</sup>√(a<sup>m</sup>)</div>
+            <p class="rb-desc">A fractional exponent is another way to write a root — denominator becomes the root index.</p>
             <div class="rb-example"><strong>Example:</strong> 8<sup>2/3</sup> = ³√(8²) = ³√64 = 4</div>
             <div class="rb-example"><strong>Special case:</strong> a<sup>1/n</sup> = <sup>n</sup>√a &nbsp;·&nbsp; Example: 16<sup>1/2</sup> = √16 = 4</div>
             <div class="rb-why">Denominator → root index, numerator → power. Fractional exponents and radicals are two ways of writing the same thing.</div>
-            <button class="rb-try" onclick="showRuleSim('fractional', this, 'rsim-fractional')">Try it ▸</button>
-            <div id="rsim-fractional" class="rule-sim-box" style="display:none"></div>
+            <div id="rsim-fractional" class="rule-sim-box"></div>
           </div>
         </div>
 
@@ -578,7 +578,6 @@
           </div>
           <div class="cta-buttons">
             <button class="btn-white" onclick="openModal()">Book a free class →</button>
-            <a style="color:rgba(255,255,255,.7);font-size:14px;text-decoration:underline;text-underline-offset:3px" href="../video-library.html">Explore more concepts</a>
           </div>
         </div>
         <img class="cta-img" src="cta-student.png" alt="Live 1:1 lesson on Cuemath">
@@ -829,17 +828,14 @@
   /* ── INLINE RULE SIMULATION ── */
   function showRuleSim(rule, btn, boxId) {
     var box = document.getElementById(boxId);
-    if (box.style.display === 'block') {
-      box.style.display = 'none'; btn.textContent = 'Try it ▸'; return;
-    }
-    box.style.display = 'block'; btn.textContent = 'Hide ▾';
+    if (!box) return;
     var defs = {
       product:{a:2,b:3,m:3,n:2}, quotient:{a:3,b:3,m:5,n:2},
       zero:{a:5,b:3,m:3,n:2}, negative:{a:2,b:3,m:3,n:2},
       power:{a:2,b:3,m:3,n:2}, 'product-power':{a:2,b:3,m:3,n:2},
       'quotient-power':{a:4,b:2,m:3,n:2}, fractional:{a:8,b:3,m:2,n:3}
     };
-    box._s = Object.assign({rule:rule}, defs[rule]||{a:2,b:3,m:3,n:2});
+    if (!box._s) box._s = Object.assign({rule:rule}, defs[rule]||{a:2,b:3,m:3,n:2});
     renderSim(box);
   }
   function renderSim(box) {
@@ -926,7 +922,12 @@
         b.classList.remove('open');
         b.nextElementSibling.classList.remove('show');
       });
-      if (!isOpen) { btn.classList.add('open'); body.classList.add('show'); }
+      if (!isOpen) {
+        btn.classList.add('open'); body.classList.add('show');
+        var box = body.querySelector('.rule-sim-box');
+        if (box && !box._s) { var rule = box.id.replace('rsim-',''); showRuleSim(rule, null, box.id); }
+        else if (box && box._s) { renderSim(box); }
+      }
     });
   });
   // ===== TOC SCROLL SPY =====
