@@ -100,6 +100,13 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 @media(max-width:550px){.ex-row{grid-template-columns:1fr}}
 .ex-card{background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:14px}
 .ex-lbl{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--green);margin-bottom:4px}
+/* Right-angle triangle simulation */
+.tri-sim{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:16px 0;background:var(--surface)}
+.tri-sim svg{display:block;width:100%;touch-action:none;user-select:none;background:#f8fafc}
+.tri-slide-row{display:flex;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--border);background:var(--bg)}
+.tri-slide-lbl{font-size:13px;font-weight:500;color:var(--yellow);width:88px;flex-shrink:0}
+.tri-slide-row input[type=range]{flex:1;accent-color:var(--yellow);cursor:pointer}
+.tri-stat{padding:8px 14px;font-size:14px;color:var(--ink2);border-top:1px solid var(--border);text-align:center;font-weight:500}
 /* Simulation */
 .sim-container{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0}
 .sim-canvas-wrap{width:100%;border-radius:10px;overflow:hidden;background:#f8fafc;border:1px solid var(--border);cursor:crosshair;touch-action:none}
@@ -322,14 +329,14 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
     <p>A rectangle cut diagonally from corner to corner always produces two identical triangles — each exactly half the rectangle's area. So if a rectangle has area b × h, each triangle is ½ × b × h.</p>
 
-    <!-- GeoGebra: rectangle/parallelogram → triangle -->
-    <div style="border-radius:12px;overflow:hidden;background:var(--yellow-light);margin:16px 0">
-      <div style="position:relative;padding-bottom:66.67%;height:0">
-        <iframe src="https://www.geogebra.org/material/iframe/id/bdrjara5/width/780/height/520/border/fef3c7/sfsb/false/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/true"
-          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
-          allowfullscreen loading="lazy"></iframe>
+    <!-- Custom right-angle triangle → rectangle simulation -->
+    <div class="tri-sim">
+      <svg id="tri-svg" viewBox="0 0 420 290" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div class="tri-slide-row">
+        <span class="tri-slide-lbl">← Slide me</span>
+        <input type="range" id="tri-anim" min="0" max="100" value="0" oninput="triAnimate()">
       </div>
-      <div style="padding:8px 16px;font-size:13px;font-weight:500;color:var(--yellow);border-top:1px solid rgba(245,158,11,0.25)">← Slide me</div>
+      <div class="tri-stat" id="tri-stat">Drag the blue dot to change the base, green dot to change the height</div>
     </div>
 
     <div class="think-box" style="margin-top:28px">
@@ -814,6 +821,83 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
 <script>
 /* ACCORDION */
+/* ── RIGHT-ANGLE TRIANGLE SIMULATION ── */
+var triB = {x:310}, triC = {y:80}, triDrag = null, triAnim = 0;
+var TRI = {ax:80, ay:230};
+
+function triGetPt(e, el) {
+  var r = el.getBoundingClientRect();
+  var cx = e.touches ? e.touches[0].clientX : e.clientX;
+  var cy = e.touches ? e.touches[0].clientY : e.clientY;
+  return {x:((cx-r.left)/r.width)*420, y:((cy-r.top)/r.height)*290};
+}
+function triStart(e) {
+  e.preventDefault();
+  var pt = triGetPt(e, document.getElementById('tri-svg'));
+  if (Math.hypot(pt.x-triB.x, pt.y-TRI.ay) < 22) { triDrag='B'; return; }
+  if (Math.hypot(pt.x-TRI.ax, pt.y-triC.y) < 22) { triDrag='C'; }
+}
+function triMove(e) {
+  if (!triDrag) return; e.preventDefault();
+  var pt = triGetPt(e, document.getElementById('tri-svg'));
+  if (triDrag==='B') triB.x = Math.min(370, Math.max(130, pt.x));
+  if (triDrag==='C') triC.y = Math.min(200, Math.max(40, pt.y));
+  triDraw();
+}
+function triEnd() { triDrag = null; }
+function triAnimate() { triAnim = parseInt(document.getElementById('tri-anim').value); triDraw(); }
+function triDraw() {
+  var Ax=TRI.ax, Ay=TRI.ay, Bx=triB.x, Cy=triC.y;
+  var t = triAnim/100;
+  var b = Math.round(Bx-Ax), h = Math.round(Ay-Cy);
+  // Second triangle morphs: A→B (rightward), B→D=top-right (upward), C fixed
+  var P1x=Ax+t*(Bx-Ax), P1y=Ay;
+  var P2x=Bx, P2y=Ay-t*(Ay-Cy);
+  var alpha2=Math.min(1,t*4);
+  var s='';
+  // Arrow markers
+  s+='<defs><marker id="ta1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#78716c"/></marker>'
+   +'<marker id="ta2" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse"><polygon points="0,0 6,3 0,6" fill="#78716c"/></marker></defs>';
+  // Second triangle (green, morphs to complete rectangle)
+  if(alpha2>0)
+    s+='<polygon points="'+P1x+','+P1y+' '+P2x+','+P2y+' '+Ax+','+Cy+'" fill="#bbf7d0" stroke="#16a34a" stroke-width="1.8" opacity="'+alpha2+'"/>';
+  // Rectangle outline
+  if(t>0.85){var ro=Math.min(1,(t-0.85)*6.7);
+    s+='<rect x="'+Ax+'" y="'+Cy+'" width="'+(Bx-Ax)+'" height="'+(Ay-Cy)+'" fill="none" stroke="#78716c" stroke-width="1" stroke-dasharray="5,4" opacity="'+ro+'"/>';}
+  // Original blue triangle
+  s+='<polygon points="'+Ax+','+Ay+' '+Bx+','+Ay+' '+Ax+','+Cy+'" fill="#bfdbfe" stroke="#2563eb" stroke-width="2"/>';
+  // Right angle mark
+  var rm=14;
+  s+='<path d="M '+(Ax+rm)+','+Ay+' L '+(Ax+rm)+','+(Ay-rm)+' L '+Ax+','+(Ay-rm)+'" fill="none" stroke="#2563eb" stroke-width="1.5"/>';
+  // Base arrow + label
+  s+='<line x1="'+Ax+'" y1="'+(Ay+14)+'" x2="'+Bx+'" y2="'+(Ay+14)+'" stroke="#44403c" stroke-width="1.2" marker-start="url(#ta2)" marker-end="url(#ta1)"/>';
+  s+='<text x="'+((Ax+Bx)/2)+'" y="'+(Ay+26)+'" font-size="12" fill="#1e40af" font-family="DM Sans" text-anchor="middle" font-weight="600">b = '+b+' units</text>';
+  // Height arrow + label
+  s+='<line x1="'+(Ax-14)+'" y1="'+Cy+'" x2="'+(Ax-14)+'" y2="'+Ay+'" stroke="#44403c" stroke-width="1.2" marker-start="url(#ta2)" marker-end="url(#ta1)"/>';
+  s+='<text x="'+(Ax-30)+'" y="'+((Cy+Ay)/2+4)+'" font-size="12" fill="#15803d" font-family="DM Sans" font-weight="600" transform="rotate(-90,'+(Ax-30)+','+(Cy+Ay)/2+')">h = '+h+'</text>';
+  // Formula
+  if(t>0.85){var fa=Math.min(1,(t-0.85)*6.7),area=Math.round(0.5*b*h);
+    s+='<text x="'+(Ax+(Bx-Ax)*0.35)+'" y="'+(Cy+(Ay-Cy)*0.55)+'" font-size="13" fill="#1e40af" font-family="DM Sans" font-weight="700" text-anchor="middle" opacity="'+fa+'">A = ½×'+b+'×'+h+' = '+area+'</text>';}
+  // Drag handles
+  s+='<circle cx="'+Bx+'" cy="'+Ay+'" r="9" fill="#2563eb" stroke="white" stroke-width="2.5" style="cursor:ew-resize" title="Drag to change base"/>';
+  s+='<circle cx="'+Ax+'" cy="'+Cy+'" r="9" fill="#16a34a" stroke="white" stroke-width="2.5" style="cursor:ns-resize" title="Drag to change height"/>';
+  s+='<circle cx="'+Ax+'" cy="'+Ay+'" r="5" fill="#1c1917"/>';
+  document.getElementById('tri-svg').innerHTML=s;
+  var area=Math.round(0.5*b*h);
+  document.getElementById('tri-stat').textContent='Triangle area = ½ × '+b+' × '+h+' = '+area+' sq units';
+}
+(function(){
+  var svg=document.getElementById('tri-svg');
+  if(!svg)return;
+  svg.addEventListener('mousedown',triStart);
+  svg.addEventListener('touchstart',triStart,{passive:false});
+  document.addEventListener('mousemove',triMove);
+  document.addEventListener('touchmove',triMove,{passive:false});
+  document.addEventListener('mouseup',triEnd);
+  document.addEventListener('touchend',triEnd);
+  triDraw();
+})();
+
 function toggleAcc(btn) {
   var body = btn.nextElementSibling;
   var open = btn.classList.contains('open');
