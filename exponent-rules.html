@@ -111,6 +111,7 @@
   .rb-why{font-size:13px;color:var(--muted);font-style:italic;line-height:1.6;margin-bottom:10px}
   .rb-try{background:none;border:1.5px solid var(--border);border-radius:7px;padding:8px 14px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;color:var(--ink2)}
   .rb-try:hover{border-color:var(--yellow);background:var(--yellow-light);color:var(--ink)}
+  .rule-sim-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:12px}
   .rr-name{font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
   .rr-formula{font-family:'Lora',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:4px}
   .rr-example{font-size:13px;color:var(--muted)}
@@ -384,7 +385,6 @@
     <ul class="toc-list" id="toc-list">
       <li><a href="#what-are-exponents">What are exponents?</a></li>
       <li><a href="#the-8-laws">The 8 exponent rules</a></li>
-      <li><a href="#rule-explorer">Rule Explorer</a></li>
       <li><a href="#real-world">In the real world</a></li>
       <div class="toc-divider"></div>
       <li><a href="#practice">Practice questions</a></li>
@@ -404,7 +404,6 @@
       <div class="mobile-toc-body" id="mobile-toc-body">
         <a href="#what-are-exponents">What are exponents?</a>
         <a href="#the-8-laws">The 8 exponent rules</a>
-        <a href="#rule-explorer">Rule Explorer</a>
         <a href="#practice">Practice questions</a>
         <a href="#worksheet">Downloadable worksheet</a>
         <a href="#faq">FAQ</a>
@@ -414,7 +413,7 @@
     <!-- H1 + H2 (hook) -->
     <h1>Exponent Rules</h1>
     <div class="loop-box" style="margin:14px 0 20px">
-      By the end of this page, you'll have a working understanding of all 7 exponent rules — including <strong>why 2⁰ = 1</strong>, why negative exponents give fractions, and when each rule applies.
+      By the end of this page, you'll understand all 8 exponent rules — why 2⁰ = 1, what negative exponents really mean, and how to apply each rule.
     </div>
     <h2>Why does 2⁰ equal 1?</h2>
     <div class="featured-video">
@@ -428,15 +427,8 @@
 
     <!-- CTA after video -->
     <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:28px">
-      <p style="margin:0;font-size:15px;color:var(--ink2)">Want a tutor to walk you through this? <strong>First class is free.</strong></p>
+      <p style="margin:0;font-size:15px;color:var(--ink2)">Want to go deeper? Get personalised 1:1 math tutoring with a Cuemath expert.</p>
       <button class="cta-primary" onclick="openModal()" style="white-space:nowrap">Try Cuemath →</button>
-    </div>
-
-    <div class="real-strip">
-      <div class="real-card"><div class="icon">💻</div><div class="ttl">Computer storage</div><div class="desc">1 gigabyte = 2<sup>30</sup> bytes. Every storage size is a power of 2.</div></div>
-      <div class="real-card"><div class="icon">📱</div><div class="ttl">Screen colours</div><div class="desc">256<sup>3</sup> ≈ 16.7 million colour combinations on your screen — a power of product rule.</div></div>
-      <div class="real-card"><div class="icon">💰</div><div class="ttl">Compound interest</div><div class="desc">Money growing at rate r for t years = principal × (1+r)<sup>t</sup>.</div></div>
-      <div class="real-card"><div class="icon">🔬</div><div class="ttl">Scientific notation</div><div class="desc">Avogadro's number: 6.022 × 10<sup>23</sup>. Exponents handle extreme scale.</div></div>
     </div>
 
     <!-- SECTION 1: WHAT ARE EXPONENTS -->
@@ -473,7 +465,8 @@
             <div class="rb-example"><strong>Example:</strong> 2³ × 2⁵ = 2<sup>3+5</sup> = 2⁸ = 256</div>
             <div class="rb-example"><strong>Note:</strong> Only works when the bases are the same.</div>
             <div class="rb-why">Count the base factors — m from the first term, n from the second = m+n total.</div>
-            <button class="rb-try" data-jump="product">Try in Rule Explorer →</button>
+            <button class="rb-try" onclick="showRuleSim('product', this, 'rsim-product')">Try it ▸</button>
+            <div id="rsim-product" class="rule-sim-box" style="display:none"></div>
           </div>
         </div>
 
@@ -484,7 +477,8 @@
             <div class="rb-example"><strong>Example:</strong> 3⁶ ÷ 3² = 3<sup>6−2</sup> = 3⁴ = 81</div>
             <div class="rb-example"><strong>Note:</strong> Same base required. If m &lt; n the result is a negative exponent.</div>
             <div class="rb-why">The n factors in the denominator cancel n from the numerator, leaving m−n.</div>
-            <button class="rb-try" data-jump="quotient">Try in Rule Explorer →</button>
+            <button class="rb-try" onclick="showRuleSim('quotient', this, 'rsim-quotient')">Try it ▸</button>
+            <div id="rsim-quotient" class="rule-sim-box" style="display:none"></div>
           </div>
         </div>
 
@@ -495,7 +489,8 @@
             <div class="rb-example"><strong>Example:</strong> 7⁰ = 1 &nbsp;·&nbsp; x⁰ = 1 &nbsp;·&nbsp; (−3)⁰ = 1</div>
             <div class="rb-example"><strong>Note:</strong> 0⁰ is undefined — this rule only applies when a ≠ 0.</div>
             <div class="rb-why">aᵐ ÷ aᵐ = a⁰. Anything divided by itself equals 1. So a⁰ = 1.</div>
-            <button class="rb-try" data-jump="zero">Try in Rule Explorer →</button>
+            <button class="rb-try" onclick="showRuleSim('zero', this, 'rsim-zero')">Try it ▸</button>
+            <div id="rsim-zero" class="rule-sim-box" style="display:none"></div>
           </div>
         </div>
 
@@ -506,7 +501,8 @@
             <div class="rb-example"><strong>Example:</strong> 2⁻³ = 1/2³ = 1/8 = 0.125</div>
             <div class="rb-example"><strong>Note:</strong> A negative exponent means reciprocal — not a negative result.</div>
             <div class="rb-why">a⁰ ÷ aᵐ = a⁻ᵐ. Since a⁰ = 1, we get a⁻ᵐ = 1/aᵐ.</div>
-            <button class="rb-try" data-jump="negative">Try in Rule Explorer →</button>
+            <button class="rb-try" onclick="showRuleSim('negative', this, 'rsim-negative')">Try it ▸</button>
+            <div id="rsim-negative" class="rule-sim-box" style="display:none"></div>
           </div>
         </div>
 
@@ -517,7 +513,8 @@
             <div class="rb-example"><strong>Example:</strong> (2³)⁴ = 2<sup>3×4</sup> = 2¹² = 4096</div>
             <div class="rb-example"><strong>Common mistake:</strong> (2³)⁴ ≠ 2⁷ — multiply the exponents, don't add them.</div>
             <div class="rb-why">n copies of aᵐ each give m factors of a — m × n factors total.</div>
-            <button class="rb-try" data-jump="power">Try in Rule Explorer →</button>
+            <button class="rb-try" onclick="showRuleSim('power', this, 'rsim-power')">Try it ▸</button>
+            <div id="rsim-power" class="rule-sim-box" style="display:none"></div>
           </div>
         </div>
 
@@ -528,7 +525,8 @@
             <div class="rb-example"><strong>Example:</strong> (2x)³ = 2³ × x³ = 8x³</div>
             <div class="rb-example"><strong>Example:</strong> (3xy)² = 3² × x² × y² = 9x²y²</div>
             <div class="rb-why">The exponent distributes to each factor inside the brackets.</div>
-            <button class="rb-try" data-jump="product-power">Try in Rule Explorer →</button>
+            <button class="rb-try" onclick="showRuleSim('product-power', this, 'rsim-product-power')">Try it ▸</button>
+            <div id="rsim-product-power" class="rule-sim-box" style="display:none"></div>
           </div>
         </div>
 
@@ -539,18 +537,20 @@
             <div class="rb-example"><strong>Example:</strong> (x/y)³ = x³/y³</div>
             <div class="rb-example"><strong>Example:</strong> (2/3)⁴ = 2⁴/3⁴ = 16/81</div>
             <div class="rb-why">Same as Power of a Product — numerators group together, denominators group together.</div>
-            <button class="rb-try" data-jump="quotient-power">Try in Rule Explorer →</button>
+            <button class="rb-try" onclick="showRuleSim('quotient-power', this, 'rsim-quotient-power')">Try it ▸</button>
+            <div id="rsim-quotient-power" class="rule-sim-box" style="display:none"></div>
           </div>
         </div>
 
-        <div class="rule-item" style="border-top:2px dashed var(--border)">
-          <button class="rule-trigger"><div class="rt-left"><span class="rt-num" style="opacity:.4">+</span><span class="rt-name">Fractional Exponent</span><span class="rt-formula">aᵐ/ⁿ = ⁿ√(aᵐ)</span></div><span class="rt-icon">+</span></button>
+        <div class="rule-item">
+          <button class="rule-trigger"><div class="rt-left"><span class="rt-num">8</span><span class="rt-name">Fractional Exponent</span><span class="rt-formula">aᵐ/ⁿ = ⁿ√(aᵐ)</span></div><span class="rt-icon">+</span></button>
           <div class="rule-body">
             <div class="rb-formula">a<sup>m/n</sup> = <sup>n</sup>√(a<sup>m</sup>)</div>
             <div class="rb-example"><strong>Example:</strong> 8<sup>2/3</sup> = ³√(8²) = ³√64 = 4</div>
             <div class="rb-example"><strong>Special case:</strong> a<sup>1/n</sup> = <sup>n</sup>√a &nbsp;·&nbsp; Example: 16<sup>1/2</sup> = √16 = 4</div>
             <div class="rb-why">Denominator → root index, numerator → power. Fractional exponents and radicals are two ways of writing the same thing.</div>
-            <button class="rb-try" data-jump="fractional">Try in Rule Explorer →</button>
+            <button class="rb-try" onclick="showRuleSim('fractional', this, 'rsim-fractional')">Try it ▸</button>
+            <div id="rsim-fractional" class="rule-sim-box" style="display:none"></div>
           </div>
         </div>
 
@@ -568,34 +568,13 @@
 
     </section>
 
-    <!-- SECTION 3: RULE EXPLORER -->
-    <section class="content-section" id="rule-explorer">
-      <span class="eyebrow">Interactive</span>
-      <h2>Rule Explorer — click a rule, see why it works</h2>
-      <p style="color:var(--muted);margin-bottom:20px">Select any rule. Adjust the base and exponents. The step-by-step expansion shows the logic, not just the answer.</p>
-
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px">
-        <div class="rule-tabs" id="rule-tabs">
-          <button class="rule-tab active" data-rule="product"><span class="tab-formula">aᵐ·aⁿ</span><span class="tab-name">Product</span></button>
-          <button class="rule-tab" data-rule="quotient"><span class="tab-formula">aᵐ÷aⁿ</span><span class="tab-name">Quotient</span></button>
-          <button class="rule-tab" data-rule="zero"><span class="tab-formula">a⁰=1</span><span class="tab-name">Zero</span></button>
-          <button class="rule-tab" data-rule="fractional"><span class="tab-formula">aᵐ/ⁿ</span><span class="tab-name">Fractional</span></button>
-          <button class="rule-tab" data-rule="negative"><span class="tab-formula">a⁻ᵐ</span><span class="tab-name">Negative</span></button>
-          <button class="rule-tab" data-rule="power"><span class="tab-formula">(aᵐ)ⁿ</span><span class="tab-name">Power²</span></button>
-          <button class="rule-tab" data-rule="product-power"><span class="tab-formula">(ab)ᵐ</span><span class="tab-name">Prod^n</span></button>
-          <button class="rule-tab" data-rule="quotient-power"><span class="tab-formula">(a/b)ᵐ</span><span class="tab-name">Quot^n</span></button>
-        </div>
-        <div class="demo-area" id="demo-area"></div>
-      </div>
-    </section>
-
     <!-- CTA -->
     <section class="mode-section">
       <div class="cta-band">
         <div class="cta-inner">
           <div class="cta-text">
-            <h3>Want to master exponents?</h3>
-            <p>One-on-one with a Cuemath tutor who builds from intuition — not just rules.</p>
+            <h3>Want 1:1 guidance from an expert?</h3>
+            <p>Work through problems live with a Cuemath tutor — personalised to how you learn, at your own pace.</p>
           </div>
           <div class="cta-buttons">
             <button class="btn-white" onclick="openModal()">Book a free class →</button>
@@ -635,6 +614,13 @@
         </div>
       </div>
     </section>
+
+    <div class="real-strip">
+      <div class="real-card"><div class="icon">💻</div><div class="ttl">Computer storage</div><div class="desc">1 gigabyte = 2<sup>30</sup> bytes. Every storage size is a power of 2.</div></div>
+      <div class="real-card"><div class="icon">📱</div><div class="ttl">Screen colours</div><div class="desc">256<sup>3</sup> ≈ 16.7 million colour combinations on your screen — a power of product rule.</div></div>
+      <div class="real-card"><div class="icon">💰</div><div class="ttl">Compound interest</div><div class="desc">Money growing at rate r for t years = principal × (1+r)<sup>t</sup>.</div></div>
+      <div class="real-card"><div class="icon">🔬</div><div class="ttl">Scientific notation</div><div class="desc">Avogadro's number: 6.022 × 10<sup>23</sup>. Exponents handle extreme scale.</div></div>
+    </div>
 
     <!-- SECTION 6: WORKSHEET -->
     <section class="content-section" id="worksheet">
@@ -840,99 +826,73 @@
 </div>
 
 <script>
-  // ===== RULE EXPLORER =====
-  const sim = { rule: 'product', a: 2, b: 3, m: 3, n: 2 };
-  function sup(n) { return `<sup>${n}</sup>`; }
-  function pow(a, e) { try { return Math.pow(a, e); } catch(x) { return '?'; } }
-  function repeat(base, times) { return Array(Math.max(1,times)).fill(base).join(' × '); }
-
-  function renderDemo() {
-    const { rule, a, b, m, n } = sim;
-    let formula = '', stepsHTML = '', inputsHTML = '';
-    if (rule === 'product') {
-      formula = `a${sup('m')} × a${sup('n')} = a${sup('m+n')}`;
-      inputsHTML = mkInputs(['a','m','n']);
-      stepsHTML = step(`${a}${sup(m)} × ${a}${sup(n)}`) + step(`(${repeat(a,m)}) × (${repeat(a,n)})`, `← expand`) + step(`${repeat(a,m+n)}`, `← ${m}+${n} = ${m+n} total`) + res(`${a}${sup(m+n)} = ${pow(a,m+n)}`) + why(`Counting ${a}s: ${m} from the first, ${n} from the second — ${m+n} total.`);
-    } else if (rule === 'quotient') {
-      const qm = Math.max(m, n+1);
-      formula = `a${sup('m')} ÷ a${sup('n')} = a${sup('m−n')}`;
-      inputsHTML = mkInputs(['a','m','n']);
-      stepsHTML = step(`${a}${sup(qm)} ÷ ${a}${sup(n)}`) + step(`${repeat(a,qm)} ÷ ${repeat(a,n)}`,`← expand`) + step(`${repeat(a,qm-n)||'1'}`, `← cancel ${n} pairs`) + res(`${a}${sup(qm-n)} = ${pow(a,qm-n)}`) + why(`The ${n} factors in the denominator cancel ${n} from the numerator.`);
-    } else if (rule === 'zero') {
-      formula = `a${sup('0')} = 1 &nbsp;(a ≠ 0)`;
-      inputsHTML = mkInputs(['a']);
-      stepsHTML = step(`${a}${sup(3)} = ${pow(a,3)}`) + step(`${a}${sup(2)} = ${pow(a,2)}`,`÷ ${a}`) + step(`${a}${sup(1)} = ${a}`,`÷ ${a}`) + res(`${a}${sup(0)} = 1`,`÷ ${a} — pattern forces this`) + why(`a⁰ = aᵐ ÷ aᵐ = 1. Also: anything divided by itself = 1.`);
-    } else if (rule === 'identity') {
-      formula = `a${sup('1')} = a`;
-      inputsHTML = mkInputs(['a']);
-      stepsHTML = step(`${a}${sup(1)}`) + step(`${a}`,`← one copy of ${a}`) + res(`${a}`) + why(`a¹ means "multiply ${a} by itself once." One copy of anything is itself.`);
-    } else if (rule === 'negative') {
-      formula = `a${sup('−m')} = 1/a${sup('m')}`;
-      inputsHTML = mkInputs(['a','m']);
-      stepsHTML = step(`${a}${sup(0)} = 1`) + step(`${a}${sup(-1)} = 1/${a}`,`÷ ${a}`) + step(`${a}${sup(-2)} = 1/${pow(a,2)}`,`÷ ${a}`) + res(`${a}${sup(-m)} = 1/${a}${sup(m)} = 1/${pow(a,m)}`) + why(`a⁰ ÷ aᵐ = a⁻ᵐ. But a⁰ = 1, so a⁻ᵐ = 1/aᵐ.`);
-    } else if (rule === 'power') {
-      formula = `(a${sup('m')})${sup('n')} = a${sup('mn')}`;
-      inputsHTML = mkInputs(['a','m','n']);
-      const prod = m*n;
-      stepsHTML = step(`(${a}${sup(m)})${sup(n)}`) + step(`${a}${sup(m)} × ${a}${sup(m)} × … (${n} times)`) + step(`${a}${sup(m+'×'+n)}`) + res(`${a}${sup(prod)} = ${pow(a,prod)}`) + why(`${n} copies of ${a}${sup(m)}, each with ${m} factors — ${m}×${n} = ${prod} total.`);
-    } else if (rule === 'product-power') {
-      formula = `(a·b)${sup('m')} = a${sup('m')}·b${sup('m')}`;
-      inputsHTML = mkInputs(['a','b','m']);
-      stepsHTML = step(`(${a}×${b})${sup(m)} = ${a*b}${sup(m)}`) + step(`(${repeat(a,m)}) × (${repeat(b,m)})`,`← group like terms`) + res(`${a}${sup(m)} × ${b}${sup(m)} = ${pow(a,m)} × ${pow(b,m)} = ${pow(a*b,m)}`) + why(`Multiplication is commutative — regroup ${a}s together and ${b}s together.`);
-    } else if (rule === 'quotient-power') {
-      formula = `(a/b)${sup('m')} = a${sup('m')}/b${sup('m')}`;
-      inputsHTML = mkInputs(['a','b','m']);
-      stepsHTML = step(`(${a}/${b})${sup(m)}`) + step(`(${a}/${b}) × (${a}/${b}) … (${m} times)`) + step(`${repeat(a,m)} ÷ ${repeat(b,m)}`) + res(`${a}${sup(m)}/${b}${sup(m)} = ${pow(a,m)}/${pow(b,m)}`) + why(`Numerators group together; denominators group together.`);
-    } else if (rule === 'fractional') {
-      formula = `a${sup('m/n')} = <sup>n</sup>√(a${sup('m')})`;
-      inputsHTML = mkInputs(['a','m','n']);
-      const inner = pow(a, m);
-      const result = Math.pow(a, m/n);
-      const isInt = Number.isInteger(result);
-      stepsHTML = step(`${a}${sup(m+'/'+n)}`) + step(`<sup>${n}</sup>√(${a}${sup(m)})`, `← denominator (${n}) becomes the root`) + step(`<sup>${n}</sup>√${inner}`, `← ${a}${sup(m)} = ${inner}`) + res(`${isInt ? result : result.toFixed(2)}${!isInt?' (approx)':''}`) + why(`Denominator → root index, numerator → power. a^(1/n) = nth root of a.`);
+  /* ── INLINE RULE SIMULATION ── */
+  function showRuleSim(rule, btn, boxId) {
+    var box = document.getElementById(boxId);
+    if (box.style.display === 'block') {
+      box.style.display = 'none'; btn.textContent = 'Try it ▸'; return;
     }
-    document.getElementById('demo-area').innerHTML = `<div class="demo-formula">${formula}</div><div class="demo-inputs" id="demo-inputs">${inputsHTML}</div><div class="demo-steps">${stepsHTML}</div>`;
-    attachSteppers();
+    box.style.display = 'block'; btn.textContent = 'Hide ▾';
+    var defs = {
+      product:{a:2,b:3,m:3,n:2}, quotient:{a:3,b:3,m:5,n:2},
+      zero:{a:5,b:3,m:3,n:2}, negative:{a:2,b:3,m:3,n:2},
+      power:{a:2,b:3,m:3,n:2}, 'product-power':{a:2,b:3,m:3,n:2},
+      'quotient-power':{a:4,b:2,m:3,n:2}, fractional:{a:8,b:3,m:2,n:3}
+    };
+    box._s = Object.assign({rule:rule}, defs[rule]||{a:2,b:3,m:3,n:2});
+    renderSim(box);
   }
-
-  function step(expr, note='') { return `<div class="step-line expansion"><span class="step-expr">${expr}</span>${note?`<span class="step-note">${note}</span>`:''}</div>`; }
-  function res(expr, note='') { return `<div class="step-line result"><span class="step-eq">=</span><span class="step-expr">${expr}</span>${note?`<span class="step-note">${note}</span>`:''}</div>`; }
-  function why(text) { return `<div class="step-line why">${text}</div>`; }
-
-  function mkInputs(fields) {
-    const labels = { a:'Base (a)', b:'Base (b)', m:'Exp (m)', n:'Exp (n)' };
-    const mins = { a:2, b:2, m:1, n:1 }, maxs = { a:6, b:6, m:6, n:5 };
-    return fields.map(f => `<div class="input-group"><div class="input-label">${labels[f]}</div><div class="stepper"><button data-field="${f}" data-dir="-1">−</button><input type="number" class="stepper-input" id="val-${f}" value="${sim[f]}" min="${mins[f]||1}" max="${maxs[f]||6}"><button data-field="${f}" data-dir="1">+</button></div></div>`).join('');
-  }
-  function attachSteppers() {
-    const mins = {a:2,b:2,m:1,n:1}, maxs = {a:6,b:6,m:6,n:5};
-    document.querySelectorAll('#demo-inputs .stepper button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const f = btn.dataset.field, dir = parseInt(btn.dataset.dir);
-        sim[f] = Math.min(maxs[f], Math.max(mins[f], sim[f]+dir));
-        renderDemo();
+  function renderSim(box) {
+    var r=box._s, rule=r.rule, a=r.a, b=r.b, m=r.m, n=r.n;
+    var sp=function(x){return '<sup>'+x+'</sup>';};
+    var pw=function(base,exp){try{return Math.pow(base,exp);}catch(e){return '?';}};
+    var rep=function(x,t){return Array(Math.max(1,t)).fill(x).join(' × ');};
+    var st=function(e,note){return '<div class="step-line expansion"><span class="step-expr">'+e+'</span>'+(note?'<span class="step-note">'+note+'</span>':'')+'</div>';};
+    var rs=function(e,note){return '<div class="step-line result"><span class="step-eq">=</span><span class="step-expr">'+e+'</span>'+(note?'<span class="step-note">'+note+'</span>':'')+'</div>';};
+    var wy=function(t){return '<div class="step-line why">'+t+'</div>';};
+    var mk=function(fs){return fs.map(function(f){
+      var labs={a:'Base (a)',b:'Base (b)',m:'Exp (m)',n:'Exp (n)'};
+      return '<div class="input-group"><div class="input-label">'+labs[f]+'</div><div class="stepper"><button class="rs-btn" data-f="'+f+'" data-d="-1">−</button><input type="number" class="stepper-input" value="'+r[f]+'" style="width:42px;text-align:center;border:1px solid var(--border);border-radius:4px;padding:2px 4px"><button class="rs-btn" data-f="'+f+'" data-d="1">+</button></div></div>';
+    }).join('');};
+    var inputs='', steps='';
+    if(rule==='product'){
+      inputs=mk(['a','m','n']);
+      steps=st(a+sp(m)+' × '+a+sp(n))+st('('+rep(a,m)+') × ('+rep(a,n)+')',m+'+'+n+' factors')+rs(a+sp(m+n)+' = '+pw(a,m+n))+wy('Add exponents: '+m+'+'+n+'='+(m+n));
+    } else if(rule==='quotient'){
+      var qm=Math.max(m,n+1);
+      inputs=mk(['a','m','n']);
+      steps=st(a+sp(qm)+' ÷ '+a+sp(n))+st(rep(a,qm)+' ÷ '+rep(a,n),'expand')+st(rep(a,qm-n)||'1','cancel '+n+' pairs')+rs(a+sp(qm-n)+' = '+pw(a,qm-n))+wy('Subtract exponents: '+qm+'−'+n+'='+(qm-n));
+    } else if(rule==='zero'){
+      inputs=mk(['a']);
+      steps=st(a+sp(2)+'='+pw(a,2))+st(a+sp(1)+'='+a,'÷'+a)+st(a+sp(0)+'=?','÷'+a)+rs('1','pattern forces this')+wy('a⁰ = aᵐ ÷ aᵐ = 1');
+    } else if(rule==='negative'){
+      inputs=mk(['a','m']);
+      steps=st(a+sp(0)+'=1')+st(a+sp(-1)+'=1/'+a,'÷'+a)+rs(a+sp(-m)+' = 1/'+a+sp(m)+' = 1/'+pw(a,m))+wy('a⁻ᵐ = 1/aᵐ');
+    } else if(rule==='power'){
+      inputs=mk(['a','m','n']);
+      steps=st('('+a+sp(m)+')'+sp(n))+st(a+sp(m)+' × … ('+n+' times)')+rs(a+sp(m*n)+' = '+pw(a,m*n))+wy('Multiply exponents: '+m+'×'+n+'='+(m*n));
+    } else if(rule==='product-power'){
+      inputs=mk(['a','b','m']);
+      steps=st('('+a+'×'+b+')'+sp(m))+st(rep(a,m)+' × '+rep(b,m),'group like terms')+rs(a+sp(m)+'×'+b+sp(m)+' = '+pw(a,m)+'×'+pw(b,m)+' = '+pw(a*b,m))+wy('Exponent distributes to each factor');
+    } else if(rule==='quotient-power'){
+      inputs=mk(['a','b','m']);
+      steps=st('('+a+'/'+b+')'+sp(m))+st(rep(a,m)+' ÷ '+rep(b,m))+rs(a+sp(m)+'/'+b+sp(m)+' = '+pw(a,m)+'/'+pw(b,m))+wy('Numerators and denominators group separately');
+    } else if(rule==='fractional'){
+      inputs=mk(['a','m','n']);
+      var inner=pw(a,m), result=Math.pow(a,m/n), isInt=Number.isInteger(result);
+      steps=st(a+sp(m+'/'+n))+st(sp(n)+'√('+a+sp(m)+')','denom → root index')+st(sp(n)+'√'+inner)+rs(isInt?result:result.toFixed(2))+wy('Denominator → root index, numerator → power');
+    }
+    box.innerHTML='<div class="demo-inputs" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px">'+inputs+'</div><div class="demo-steps">'+steps+'</div>';
+    box.querySelectorAll('.rs-btn').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var f=btn.dataset.f, d=parseInt(btn.dataset.d);
+        var lim={a:[2,6],b:[2,6],m:[1,6],n:[1,5]};
+        var lo=(lim[f]||[1,6])[0], hi=(lim[f]||[1,6])[1];
+        box._s[f]=Math.min(hi,Math.max(lo,(box._s[f]||1)+d));
+        renderSim(box);
       });
     });
-    document.querySelectorAll('#demo-inputs .stepper-input').forEach(inp => {
-      inp.addEventListener('change', () => {
-        const f = inp.id.replace('val-', '');
-        sim[f] = Math.min(maxs[f]||6, Math.max(mins[f]||1, parseInt(inp.value)||1));
-        renderDemo();
-      });
-      inp.addEventListener('keydown', e => { if(e.key==='Enter') inp.blur(); });
-    });
   }
-  document.querySelectorAll('.rule-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.rule-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active'); sim.rule = tab.dataset.rule;
-      if (sim.rule === 'quotient') { sim.m=5; sim.n=2; }
-      else if (sim.rule === 'fractional') { sim.a=8; sim.m=2; sim.n=3; }
-      else { sim.m=3; sim.n=2; }
-      renderDemo();
-    });
-  });
-  renderDemo();
 
   // ===== MOBILE TOC =====
   const mtocBtn = document.getElementById('mobile-toc-btn');
@@ -959,23 +919,6 @@
       if (!isOpen) { btn.classList.add('open'); body.classList.add('show'); }
     });
   });
-  document.querySelectorAll('.rb-try').forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.stopPropagation();
-      const ruleId = btn.dataset.jump;
-      document.querySelectorAll('.rule-tab').forEach(t => t.classList.remove('active'));
-      const tab = document.querySelector(`.rule-tab[data-rule="${ruleId}"]`);
-      if (tab) {
-        tab.classList.add('active'); sim.rule = ruleId;
-        if (ruleId === 'fractional') { sim.a=8; sim.m=2; sim.n=3; }
-        else if (ruleId === 'quotient') { sim.m=5; sim.n=2; }
-        else { sim.m=3; sim.n=2; }
-        renderDemo();
-      }
-      document.getElementById('rule-explorer').scrollIntoView({ behavior:'smooth' });
-    });
-  });
-
   // ===== TOC SCROLL SPY =====
   const tocLinks = document.querySelectorAll('.toc-list a');
   const sections = Array.from(tocLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
@@ -1090,8 +1033,8 @@
       document.getElementById('done-emoji').textContent=pct===1?'🏆':pct>=0.8?'🎉':'👍';
       document.getElementById('done-score').textContent=`${score} / ${questions.length}`;
       document.getElementById('done-msg').textContent=pct===1?'Perfect. All 8 rules are yours.'
-        :pct>=0.8?'Strong. Open the Rule Explorer for the one you missed.'
-        :'Go back to the Rule Explorer and trace through each expansion once more.';
+        :pct>=0.8?'Strong — expand the rule you missed above and try it interactively.'
+        :'Go back to the rules above, expand each one, and use Try it to see the logic.';
     } else renderQ();
   });
   renderQ();
