@@ -846,7 +846,7 @@
     var r=box._s, rule=r.rule, a=r.a, b=r.b, m=r.m, n=r.n;
     var sp=function(x){return '<sup>'+x+'</sup>';};
     var pw=function(base,exp){try{return Math.pow(base,exp);}catch(e){return '?';}};
-    var rep=function(x,t){return Array(Math.max(1,t)).fill(x).join(' × ');};
+    var rep=function(x,t){if(t<=5)return Array(Math.max(1,t)).fill(x).join(' × ');return x+' × '+x+' × … × '+x+' ('+t+' times)';};
     var st=function(e,note){return '<div class="step-line expansion"><span class="step-expr">'+e+'</span>'+(note?'<span class="step-note">'+note+'</span>':'')+'</div>';};
     var rs=function(e,note){return '<div class="step-line result"><span class="step-eq">=</span><span class="step-expr">'+e+'</span>'+(note?'<span class="step-note">'+note+'</span>':'')+'</div>';};
     var wy=function(t){return '<div class="step-line why">'+t+'</div>';};
@@ -886,8 +886,8 @@
     box.querySelectorAll('.rs-btn').forEach(function(btn){
       btn.addEventListener('click',function(){
         var f=btn.dataset.f, d=parseInt(btn.dataset.d);
-        var lim={a:[2,6],b:[2,6],m:[1,6],n:[1,5]};
-        var lo=(lim[f]||[1,6])[0], hi=(lim[f]||[1,6])[1];
+        var lim={a:[2,12],b:[2,12],m:[1,10],n:[1,8]};
+        var lo=(lim[f]||[1,10])[0], hi=(lim[f]||[1,10])[1];
         box._s[f]=Math.min(hi,Math.max(lo,(box._s[f]||1)+d));
         renderSim(box);
       });
