@@ -431,7 +431,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <!-- ADDITION -->
       <div class="accordion-item">
-        <button class="accordion-btn" onclick="toggleAcc(this)">
+        <button class="accordion-btn" data-op="+" onclick="toggleAcc(this)">
           <span>Addition of Integers</span><span class="chevron">▼</span>
         </button>
         <div class="accordion-body">
@@ -456,13 +456,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
               Same sign (both −)<br>Add: 9 + 5 = 14<br>Keep the sign → <strong>Result: −14</strong>
             </div>
           </div>
-          <button class="sim-link" onclick="setOp('+')">Try on number line →</button>
+          <div class="sim-slot"></div>
         </div>
       </div>
 
       <!-- SUBTRACTION -->
       <div class="accordion-item">
-        <button class="accordion-btn" onclick="toggleAcc(this)">
+        <button class="accordion-btn" data-op="-" onclick="toggleAcc(this)">
           <span>Subtraction of Integers</span><span class="chevron">▼</span>
         </button>
         <div class="accordion-body">
@@ -481,13 +481,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
               = −4 + 6<br>Different signs, difference: 6 − 4 = 2<br>Larger (6) is positive → <strong>Result: +2</strong>
             </div>
           </div>
-          <button class="sim-link" onclick="setOp('-')">Try on number line →</button>
+          <div class="sim-slot"></div>
         </div>
       </div>
 
       <!-- MULTIPLICATION -->
       <div class="accordion-item">
-        <button class="accordion-btn" onclick="toggleAcc(this)">
+        <button class="accordion-btn" data-op="×" onclick="toggleAcc(this)">
           <span>Multiplication of Integers</span><span class="chevron">▼</span>
         </button>
         <div class="accordion-body">
@@ -502,13 +502,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
             </tbody>
           </table>
           <p style="font-size:14px;color:var(--muted)"><em>Why does negative × negative = positive?</em> Think of it as reversing direction twice — two reversals bring you back to the original direction.</p>
-          <button class="sim-link" onclick="setOp('×')">Try in explorer →</button>
+          <div class="sim-slot"></div>
         </div>
       </div>
 
       <!-- DIVISION -->
       <div class="accordion-item">
-        <button class="accordion-btn" onclick="toggleAcc(this)">
+        <button class="accordion-btn" data-op="÷" onclick="toggleAcc(this)">
           <span>Division of Integers</span><span class="chevron">▼</span>
         </button>
         <div class="accordion-body">
@@ -522,6 +522,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
               <tr><td>(−) ÷ (−)</td><td class="pos-result">Positive</td><td>(−12) ÷ (−3) = 4</td></tr>
             </tbody>
           </table>
+          <div class="sim-slot"></div>
           <p style="font-size:14px;color:var(--muted)">Note: dividing integers does not always produce an integer (e.g., 5 ÷ 2 = 2.5). Division is only closed over integers when the result is exact.</p>
         </div>
       </div>
@@ -531,8 +532,9 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <p>Without a calculator: what is (−3) × (−8)? Decide the sign first using the sign rule, then calculate the magnitude.</p>
     </div>
 
+    <div id="sim-home" style="margin-top:24px">
     <!-- Integer Explorer (inline) -->
-    <div id="simulation" style="margin-top:24px">
+    <div id="simulation">
       <h3 style="margin-bottom:8px">Try it on the number line</h3>
       <p style="font-size:14px;color:var(--muted);margin-bottom:14px">Choose an operation, adjust the numbers and hit ▶ Play. For × and ÷, flip the sign tiles to see the rule.</p>
       <div class="sim-container">
@@ -593,6 +595,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       </div>
     </div>
 
+    </div>
     </div>
   </div>
 
@@ -1069,10 +1072,21 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 function toggleAcc(btn) {
   var body = btn.nextElementSibling;
   var isOpen = btn.classList.contains('open');
+  var sim = document.getElementById('simulation');
+  var simHome = document.getElementById('sim-home');
+  // Close all, return sim to home
   btn.closest('.accordion').querySelectorAll('.accordion-btn').forEach(function(b) {
     b.classList.remove('open'); b.nextElementSibling.classList.remove('open');
   });
-  if (!isOpen) { btn.classList.add('open'); body.classList.add('open'); }
+  if (simHome && sim && sim.parentNode !== simHome) simHome.appendChild(sim);
+  if (!isOpen) {
+    btn.classList.add('open'); body.classList.add('open');
+    var op = btn.dataset.op;
+    if (op && sim) {
+      var slot = body.querySelector('.sim-slot');
+      if (slot) { slot.appendChild(sim); setOp(op); }
+    }
+  }
 }
 function toggleFaq(btn) {
   var a = btn.nextElementSibling, o = btn.classList.contains('open');
