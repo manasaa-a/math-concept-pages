@@ -858,7 +858,7 @@
 
       // Sprinkles for small slice counts
       if (r > 30 && total <= 16) {
-        const colors = ['#dc2626', '#16a34a', '#2563eb', '#ec4899'];
+        const colors = ['#dc2626', '#16a34a', '#CE7E12', '#ec4899'];
         const sprinkles = total <= 8 ? 3 : 1;
         for (let s = 0; s < sprinkles; s++) {
           const t = (s + 1) / (sprinkles + 1);
@@ -1016,7 +1016,7 @@
     `;
     svg.appendChild(brackets);
 
-    const colors = ['#dc2626', '#16a34a', '#2563eb', '#ec4899'];
+    const colors = ['#dc2626', '#16a34a', '#CE7E12', '#ec4899'];
 
     for (let i = 0; i < n; i++) {
       const g = document.createElementNS(NS, 'g');

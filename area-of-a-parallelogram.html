@@ -460,13 +460,13 @@
     const line = document.createElementNS(NS, 'line');
     line.setAttribute('x1', hx); line.setAttribute('y1', pts[3][1]);
     line.setAttribute('x2', hx); line.setAttribute('y2', pts[0][1]);
-    line.setAttribute('stroke', '#2563eb'); line.setAttribute('stroke-width', 1.5);
+    line.setAttribute('stroke', '#CE7E12'); line.setAttribute('stroke-width', 1.5);
     line.setAttribute('stroke-dasharray', '4 3');
     simSvg.appendChild(line);
     // Right angle
     const ra = document.createElementNS(NS, 'path');
     ra.setAttribute('d', `M ${hx} ${pts[0][1] - 10} L ${hx + 10} ${pts[0][1] - 10} L ${hx + 10} ${pts[0][1]}`);
-    ra.setAttribute('fill', 'none'); ra.setAttribute('stroke', '#2563eb'); ra.setAttribute('stroke-width', 1.2);
+    ra.setAttribute('fill', 'none'); ra.setAttribute('stroke', '#CE7E12'); ra.setAttribute('stroke-width', 1.2);
     simSvg.appendChild(ra);
 
     // Labels
@@ -482,7 +482,7 @@
     // Base label
     lbl((pts[0][0] + pts[1][0]) / 2, pts[0][1] + 18, `${base} cm`, '#92400e', 13);
     // Height label
-    lbl(hx - 22, (pts[3][1] + pts[0][1]) / 2 + 4, `${height} cm`, '#2563eb', 13);
+    lbl(hx - 22, (pts[3][1] + pts[0][1]) / 2 + 4, `${height} cm`, '#CE7E12', 13);
     // Slant side label if slanted
     if (sPx > 10) {
       const mx = (pts[1][0] + pts[2][0]) / 2 + 10;
@@ -516,7 +516,7 @@
       t.textContent = text; simSvg.appendChild(t);
     }
     lbl(padX + bPx / 2, H - padY + 18, `${base} cm`, '#92400e');
-    lbl(padX - 22, H - padY - hPx / 2 + 4, `${height} cm`, '#2563eb');
+    lbl(padX - 22, H - padY - hPx / 2 + 4, `${height} cm`, '#CE7E12');
 
     // "= Rectangle!" label
     const note = document.createElementNS(NS, 'text');
