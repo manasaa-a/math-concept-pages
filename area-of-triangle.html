@@ -14,9 +14,70 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Area of Triangle - Formula, How to Find Area of Triangle</title>
 <link rel="stylesheet" href="cuedesign.css">
-<meta name="description" content="How to find the area of a triangle? The area of a triangle is the total space occupied by the three sides of a triangle in a 2-dimensional plane. Explore more about the area of triangle formula with solved examples and practice questions the Cuemath way!">
+<meta name="description" content="How to find the area of a triangle? The area of a triangle is the total space occupied by the three sides of a triangle in a 2-dimensional plane.">
 <meta name="keywords" content="area of triangle, area of triangle formula">
 <link rel="canonical" href="https://www.cuemath.com/measurement/area-of-triangle/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Area of Triangle - Formula, How to Find Area of Triangle",
+  "description": "How to find the area of a triangle? The area of a triangle is the total space occupied by the three sides of a triangle in a 2-dimensional plane.",
+  "url": "https://www.cuemath.com/measurement/area-of-triangle/",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.cuemath.com/measurement/area-of-triangle/" },
+  "author": { "@type": "Organization", "name": "Cuemath", "url": "https://www.cuemath.com" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cuemath",
+    "url": "https://www.cuemath.com",
+    "logo": { "@type": "ImageObject", "url": "https://www.cuemath.com/wp-content/uploads/2020/01/Cuemath-Logo.png" }
+  },
+  "educationalLevel": "Grade 6-8",
+  "about": { "@type": "Thing", "name": "Area of Triangle", "description": "The area of a triangle is half the product of its base and perpendicular height: A = ½ × b × h." },
+  "keywords": "area of triangle, area of triangle formula, how to find area of triangle, Heron's formula"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the area of a triangle?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The area of a triangle is the total 2D space enclosed within its three sides, measured in square units. It equals half the product of its base and perpendicular height: A = ½ × b × h." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is the area of a triangle half the area of a parallelogram?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Any triangle can be doubled by placing an identical copy alongside it to form a parallelogram with the same base and height. Since the parallelogram's area is base × height, each triangle is exactly half that." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you find the area of a triangle when you only know three sides?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Use Heron's formula: find the semi-perimeter s = (a + b + c) ÷ 2, then calculate A = √[s(s−a)(s−b)(s−c)]." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the area of an equilateral triangle with side a?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A = (√3/4) × a². For example, for a side of 6 cm: A = (√3/4) × 36 = 9√3 ≈ 15.59 cm²." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the area of a triangle be negative?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Area is always a positive quantity. In coordinate geometry the signed area formula can give a negative number to indicate vertex orientation, but the actual area is the absolute value." }
+    },
+    {
+      "@type": "Question",
+      "name": "What units is area measured in?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Area is measured in square units. If the base and height are in cm, the area is in cm². If in metres, it is m². Always square the unit label when writing the answer." }
+    }
+  ]
+}
+</script>
+
 <style>
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -163,7 +224,10 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .kt-table td:last-child{font-size:15px;color:var(--ink2);line-height:1.65}
 /* FAQ */
 .faq-item{border-bottom:1px solid var(--border)}
-.faq-btn{width:100%;background:none;border:none;padding:18px 0;text-align:left;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:16px;font-weight:500;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+
+  .section-label{font-size:clamp(20px,2.5vw,26px);font-family:'Athletics',Georgia,serif;font-weight:700;color:var(--ink);margin-bottom:16px;display:block}
+  .cta-head{font-family:'Athletics',Georgia,serif;font-size:22px;font-weight:700;color:#292827;margin-bottom:6px}
+  .faq-btn{width:100%;background:none;border:none;padding:18px 0;text-align:left;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:16px;font-weight:500;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
 .faq-ch{font-size:14px;color:var(--muted);flex-shrink:0;transition:transform .2s;display:inline-block}
 .faq-btn.open .faq-ch{transform:rotate(180deg)}
 .faq-answer{display:none;padding-bottom:16px;font-size:15px;color:var(--ink2)}
@@ -482,7 +546,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   <div class="section" style="padding:40px 0">
     <div class="cta-band">
       <div>
-        <h3>Want 1:1 guidance from an expert?</h3>
+        <p class="cta-head">Want 1:1 guidance from an expert?</p>
         <p>Work through problems live with a Cuemath tutor — personalised to how you learn, at your own pace.</p>
         <button class="btn-white" onclick="openModal()">Book a free class →</button>
       </div>
@@ -492,7 +556,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
   <!-- PRACTICE -->
   <div class="section" id="practice">
-    <h2>Practice</h2>
+    <p class="section-label">Practice</p>
     <div class="practice-progress"><div class="practice-bar" id="prog-bar" style="width:0%"></div></div>
 
     <!-- Q1 -->
@@ -619,7 +683,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
   <!-- KEY TAKEAWAYS -->
   <div class="section" id="takeaways">
-    <h2>Key Takeaways</h2>
+    <p class="section-label">Key Takeaways</p>
     <table class="kt-table">
       <thead><tr><th>Term / Formula</th><th>What it means</th></tr></thead>
       <tbody>
@@ -635,7 +699,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
   <!-- WORKSHEET -->
   <div class="section" id="worksheet">
-    <h2>Downloadable Worksheet</h2>
+    <p class="section-label">Downloadable Worksheet</p>
     <p>Practise finding the area of triangles across different cases — base–height, equilateral, and mixed problems.</p>
     <div class="ws-card">
       <div class="ws-icon">📄</div>
@@ -652,35 +716,35 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <h2>Frequently Asked Questions</h2>
     <div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">What is the area of a triangle?<span class="faq-ch">▼</span></button>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">What is the area of a triangle?<span class="faq-ch">▼</span></h3>
         <div class="faq-answer">The area of a triangle is the total 2D space enclosed within its three sides, measured in square units. It equals half the product of its base and perpendicular height: A = ½ × b × h.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">Why is the area of a triangle half the area of a parallelogram?<span class="faq-ch">▼</span></button>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">Why is the area of a triangle half the area of a parallelogram?<span class="faq-ch">▼</span></h3>
         <div class="faq-answer">Any triangle can be doubled by placing an identical copy alongside it — the result is always a parallelogram with the same base and height. Since the parallelogram's area is base × height, each triangle is exactly half that. This is true for every triangle, no matter its shape.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">Does the position of the height change the area?<span class="faq-ch">▼</span></button>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">Does the position of the height change the area?<span class="faq-ch">▼</span></h3>
         <div class="faq-answer">No. Only the length of the perpendicular height matters — not where it falls along the base. You can slide the apex horizontally as far as you like: as long as the height stays the same, the area stays the same. This is a key geometric fact worth remembering.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">How do you find the area when you only know three sides?<span class="faq-ch">▼</span></button>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">How do you find the area when you only know three sides?<span class="faq-ch">▼</span></h3>
         <div class="faq-answer">Use Heron's formula. First find the semi-perimeter s = (a + b + c) ÷ 2, then calculate A = √[s(s−a)(s−b)(s−c)]. This works for any triangle as long as the three side lengths form a valid triangle (the sum of any two sides must exceed the third).</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">What is the area of an equilateral triangle with side a?<span class="faq-ch">▼</span></button>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">What is the area of an equilateral triangle with side a?<span class="faq-ch">▼</span></h3>
         <div class="faq-answer">A = (√3/4) × a². For a side of 6 cm: A = (√3/4) × 36 = 9√3 ≈ 15.59 cm². The formula is derived by finding the height using Pythagoras: h = (√3/2)a, then applying A = ½ × a × h.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">How do you find the base if the area and height are known?<span class="faq-ch">▼</span></button>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">How do you find the base if the area and height are known?<span class="faq-ch">▼</span></h3>
         <div class="faq-answer">Rearrange A = ½bh to get b = (2 × A) ÷ h. For example, if A = 30 cm² and h = 6 cm, then b = 60 ÷ 6 = 10 cm.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">Can the area of a triangle be negative?<span class="faq-ch">▼</span></button>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">Can the area of a triangle be negative?<span class="faq-ch">▼</span></h3>
         <div class="faq-answer">No. Area is always a positive quantity (or zero for a degenerate triangle where all points are collinear). In coordinate geometry, the signed area formula can give a negative number to indicate vertex orientation, but we always take the absolute value for the actual area.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">What units is area measured in?<span class="faq-ch">▼</span></button>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">What units is area measured in?<span class="faq-ch">▼</span></h3>
         <div class="faq-answer">Area is measured in square units. If the base and height are in cm, the area is in cm². If in metres, it's m². Always square the unit label when writing the answer: 25 cm², not 25 cm.</div>
       </div>
     </div>
@@ -688,7 +752,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
   <!-- RELATED VIDEOS -->
   <div class="section" id="videos">
-    <h2>Related Videos</h2>
+    <p class="section-label">Related Videos</p>
     <div class="video-grid">
       <a class="video-card" href="https://www.youtube.com/watch?v=pfamBrBf8BQ" target="_blank" rel="noopener">
         <div class="video-thumb">
@@ -725,7 +789,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
   <!-- RELATED CONCEPTS -->
   <div class="section" id="related" style="padding-bottom:40px">
-    <h2>Related Concepts</h2>
+    <p class="section-label">Related Concepts</p>
     <div class="concepts-grid">
       <a class="concept-chip" href="exponent-rules.html">Exponent Rules</a>
       <a class="concept-chip" href="integers.html">Integers</a>
