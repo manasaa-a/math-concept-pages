@@ -217,7 +217,12 @@
   /* FAQ */
   .faq-item{border-bottom:1px solid var(--border)}
   .faq-item:last-child{border-bottom:none}
-  .faq-q{width:100%;background:none;border:none;text-align:left;padding:16px 4px;font-family:'Athletics',Georgia,serif;font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
+  .faq-q{width:100%;background:none;border:none;text-align:left;padding:16px 4px;font-family:'Athletics',Georgia,serif;font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4;margin:0}
+  .tips-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin:16px 0}
+  .tips-list li{padding:14px 18px;background:var(--yellow-light);border-left:3px solid var(--yellow);border-radius:0 8px 8px 0;font-size:15px;color:var(--ink2);line-height:1.6}
+  .video-section-label{font-size:clamp(18px,2vw,22px);font-family:'Athletics',Georgia,serif;font-weight:700;color:var(--ink);margin-bottom:12px;display:block}
+  .eyebrow-title{font-size:clamp(18px,2vw,24px);font-family:'Athletics',Georgia,serif;font-weight:700;color:var(--ink);margin-bottom:16px;display:block}
+  .cta-head{font-family:'Athletics',Georgia,serif;font-size:22px;font-weight:700;color:#292827;margin-bottom:6px}
   .faq-q .icon{font-size:18px;color:var(--muted);flex-shrink:0;transition:transform .2s}
   .faq-q.open .icon{transform:rotate(45deg)}
   .faq-a{font-size:15px;color:var(--ink2);padding:0 4px 16px;display:none;line-height:1.7}
@@ -501,12 +506,13 @@
   <aside class="toc">
     <div class="toc-title">On this page</div>
     <ul class="toc-list" id="toc-list">
-      <li><a href="#what-are-exponents">What are exponents?</a></li>
+      <li><a href="#what-are-exponent-rules">What are exponent rules?</a></li>
       <li><a href="#the-8-laws">The 8 exponent rules</a></li>
       <div class="toc-divider"></div>
       <li><a href="#practice">Practice questions</a></li>
       <li><a href="#worksheet">Downloadable worksheet</a></li>
-      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#faq">FAQs on Exponent Rules</a></li>
+      <li><a href="#tips">Tips on Exponent Rules</a></li>
     </ul>
   </aside>
 
@@ -519,11 +525,12 @@
         <span>On this page</span><span id="mtoc-icon">↓</span>
       </button>
       <div class="mobile-toc-body" id="mobile-toc-body">
-        <a href="#what-are-exponents">What are exponents?</a>
+        <a href="#what-are-exponent-rules">What are exponent rules?</a>
         <a href="#the-8-laws">The 8 exponent rules</a>
         <a href="#practice">Practice questions</a>
         <a href="#worksheet">Downloadable worksheet</a>
-        <a href="#faq">FAQ</a>
+        <a href="#faq">FAQs on Exponent Rules</a>
+        <a href="#tips">Tips on Exponent Rules</a>
       </div>
     </div>
 
@@ -532,7 +539,7 @@
     <div class="loop-box" style="margin:14px 0 20px">
       By the end of this page, you'll understand all 8 exponent rules — why 2⁰ = 1, what negative exponents really mean, and how to apply each rule.
     </div>
-    <h2>Why does 2⁰ equal 1?</h2>
+    <span class="video-section-label">Why does 2⁰ equal 1?</span>
     <div class="featured-video">
       <div class="fv-embed">
         <iframe src="https://www.youtube.com/embed/9Fx6H-Qua1c"
@@ -549,9 +556,9 @@
     </div>
 
     <!-- SECTION 1: WHAT ARE EXPONENTS -->
-    <section class="content-section" id="what-are-exponents">
+    <section class="content-section" id="what-are-exponent-rules">
       <span class="eyebrow">The foundation</span>
-      <h2>What are exponents?</h2>
+      <h2>What are exponent rules?</h2>
       <p>An <span class="term" data-tip="The small raised number showing how many times to multiply the base by itself">exponent</span> (also called a <em>power</em> or <em>index</em>) tells you how many times the <span class="term" data-tip="The number being multiplied by itself. In 2³, the base is 2">base</span> is multiplied by itself.</p>
 
       <div class="expand-box">
@@ -690,7 +697,7 @@
       <div class="cta-band">
         <div class="cta-inner">
           <div class="cta-text">
-            <h3>Want 1:1 guidance from an expert?</h3>
+            <p class="cta-head">Want 1:1 guidance from an expert?</p>
             <p>Work through problems live with a Cuemath tutor — personalised to how you learn, at your own pace.</p>
           </div>
           <div class="cta-buttons">
@@ -704,7 +711,7 @@
     <!-- SECTION 5: PRACTICE -->
     <section class="content-section" id="practice">
       <span class="eyebrow">Practice</span>
-      <h2>Five questions — apply the right rule</h2>
+      <h2>Practice Exponent Rules</h2>
       <p style="color:var(--muted);margin-bottom:20px">Each question uses a different exponent rule. Use the hint if you need to identify which one.</p>
       <div class="practice-card">
         <div class="practice-header">
@@ -741,7 +748,7 @@
     <!-- SECTION 6: WORKSHEET -->
     <section class="content-section" id="worksheet">
       <span class="eyebrow">Free resource</span>
-      <h2>Downloadable worksheet</h2>
+      <span class="eyebrow-title">Downloadable worksheet</span>
       <p style="color:var(--muted);margin-bottom:20px">Printable practice problems covering all 8 exponent rules — ideal for homework or classroom use.</p>
       <div class="worksheet-card">
         <div class="ws-icon">📄</div>
@@ -756,53 +763,66 @@
     <!-- SECTION 7: FAQ -->
     <section class="content-section" id="faq">
       <span class="eyebrow">FAQ</span>
-      <h2>Frequently asked questions</h2>
+      <h2>FAQs on Exponent Rules</h2>
 
       <div class="faq-item">
-        <button class="faq-q">What are the 8 laws of exponents?<span class="icon">+</span></button>
+        <h3 class="faq-q" tabindex="0" role="button">What are the 8 laws of exponents?<span class="icon">+</span></h3>
         <div class="faq-a">The 8 laws are: (1) Product — aᵐ × aⁿ = aᵐ⁺ⁿ, (2) Quotient — aᵐ ÷ aⁿ = aᵐ⁻ⁿ, (3) Zero — a⁰ = 1, (4) Identity — a¹ = a, (5) Negative — a⁻ᵐ = 1/aᵐ, (6) Power of a power — (aᵐ)ⁿ = aᵐⁿ, (7) Power of a product — (ab)ᵐ = aᵐbᵐ, (8) Power of a quotient — (a/b)ᵐ = aᵐ/bᵐ.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">Why does any number to the power 0 equal 1?<span class="icon">+</span></button>
+        <h3 class="faq-q" tabindex="0" role="button">Why does any number to the power 0 equal 1?<span class="icon">+</span></h3>
         <div class="faq-a">Follow the pattern: 2³ = 8, 2² = 4, 2¹ = 2. Each step divides by 2. Continuing: 2⁰ = 2 ÷ 2 = 1. Also: aᵐ ÷ aᵐ = aᵐ⁻ᵐ = a⁰. But anything divided by itself = 1, so a⁰ = 1. Note: 0⁰ is undefined — this rule only applies when a ≠ 0.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">What is the fractional exponent rule?<span class="icon">+</span></button>
+        <h3 class="faq-q" tabindex="0" role="button">What is the fractional exponent rule?<span class="icon">+</span></h3>
         <div class="faq-a">a<sup>m/n</sup> = <sup>n</sup>√(a<sup>m</sup>). The denominator of the fraction becomes the root index; the numerator becomes the power. Example: 8<sup>2/3</sup> = ³√(8²) = ³√64 = 4. When the numerator is 1: a<sup>1/n</sup> = <sup>n</sup>√a. Example: 16<sup>1/2</sup> = √16 = 4. Fractional exponents and radicals are two ways of writing the same thing.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">What does a negative exponent mean?<span class="icon">+</span></button>
+        <h3 class="faq-q" tabindex="0" role="button">What does a negative exponent mean?<span class="icon">+</span></h3>
         <div class="faq-a">A negative exponent means take the reciprocal: a⁻ᵐ = 1/aᵐ. Example: 2⁻³ = 1/2³ = 1/8. The negative exponent does not mean the result is negative — it means "divide by" instead of "multiply by". So 2⁻² = 0.25, which is positive.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">Can the product rule be applied when bases are different?<span class="icon">+</span></button>
+        <h3 class="faq-q" tabindex="0" role="button">Can the product rule be applied when bases are different?<span class="icon">+</span></h3>
         <div class="faq-a">No. The product rule (aᵐ × aⁿ = aᵐ⁺ⁿ) only works when the bases are the same. 2³ × 3⁴ cannot be simplified by adding exponents — these must be calculated separately: 8 × 81 = 648.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">What is the difference between (aᵐ)ⁿ and aᵐ × aⁿ?<span class="icon">+</span></button>
+        <h3 class="faq-q" tabindex="0" role="button">What is the difference between (aᵐ)ⁿ and aᵐ × aⁿ?<span class="icon">+</span></h3>
         <div class="faq-a">(aᵐ)ⁿ is the power of a power — you multiply the exponents: (a²)³ = a⁶. aᵐ × aⁿ is the product rule — you add the exponents: a² × a³ = a⁵. A common mistake is confusing which operation applies. If the exponent is outside brackets, multiply; if it's a multiplication, add.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">Can the exponent be a fraction?<span class="icon">+</span></button>
+        <h3 class="faq-q" tabindex="0" role="button">Can the exponent be a fraction?<span class="icon">+</span></h3>
         <div class="faq-a">Yes. A fractional exponent aᵐ/ⁿ = ⁿ√(aᵐ) — the denominator of the fraction becomes the root. Example: 8^(1/3) = ³√8 = 2. And 8^(2/3) = ³√(8²) = ³√64 = 4. This is called the fractional exponent rule, sometimes listed as a 9th law.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">How do I know which exponent rule to apply?<span class="icon">+</span></button>
+        <h3 class="faq-q" tabindex="0" role="button">How do I know which exponent rule to apply?<span class="icon">+</span></h3>
         <div class="faq-a">Ask these questions in order: (1) Are the bases the same? → Product or Quotient rule. (2) Is there a power outside brackets? → Power of Power, Product, or Quotient. (3) Is the exponent 0? → Zero rule. (4) Is the exponent 1? → Identity rule. (5) Is the exponent negative? → Negative rule. Most complex expressions need two or more rules applied in sequence.</div>
       </div>
+    </section>
+
+    <!-- TIPS ON EXPONENT RULES -->
+    <section class="content-section" id="tips">
+      <span class="eyebrow">Quick reference</span>
+      <h2>Tips on Exponent Rules</h2>
+      <p>These shortcuts help you apply exponent rules correctly and quickly:</p>
+      <ul class="tips-list">
+        <li><strong>Negative exponent with a fraction:</strong> To apply exponent rules to (a/b)⁻ᵐ, flip the fraction first — (a/b)⁻ᵐ = (b/a)ᵐ. Always convert to a positive exponent before simplifying.</li>
+        <li><strong>Radical to exponent:</strong> Use the exponent rule a<sup>1/n</sup> = ⁿ√a to switch between radicals and fractional exponents freely. This exponent rule is essential when simplifying roots.</li>
+        <li><strong>Work inside brackets first:</strong> When multiple exponent rules apply in one expression, simplify inside brackets before applying the outer exponent rule.</li>
+        <li><strong>Same base is the key:</strong> The product and quotient exponent rules only work when the bases match. Always check the base before deciding which exponent rule to use.</li>
+      </ul>
     </section>
 
     <!-- RELATED -->
     <section class="content-section">
       <span class="eyebrow">Related videos</span>
-      <h2>Watch it in action</h2>
+      <p class="eyebrow-title">Watch it in action</p>
       <div class="video-list">
         <a class="video-card" href="https://www.youtube.com/watch?v=9Fx6H-Qua1c" target="_blank" rel="noopener">
           <div class="vthumb"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
@@ -822,7 +842,7 @@
       </div>
 
       <div style="margin-top:40px">
-        <h2>Related Concepts</h2>
+        <p class="eyebrow-title">Related Concepts</p>
         <div class="concepts-grid">
           <a class="concept-chip" href="integers.html">Integers</a>
           <a class="concept-chip" href="area-of-triangle.html">Area of a Triangle</a>
