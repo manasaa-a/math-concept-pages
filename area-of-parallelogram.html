@@ -294,6 +294,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       By the end of this page, you'll know how to find the area of any parallelogram — and why the slant never matters.
     </div>
 
+    <h2>Every parallelogram hides a rectangle — and that rectangle reveals its area.</h2>
 
     <!-- VIDEO EMBED -->
     <div class="video-embed">
@@ -318,7 +319,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <p>The <strong>area of a parallelogram</strong> is the space enclosed within its four sides, measured in square units. A parallelogram has two pairs of <span class="term" data-tip="Lines that run in the same direction and never meet, no matter how far they extend">parallel sides</span> — opposite sides are equal in length.</p>
 
     <!-- GeoGebra simulation: parallelogram → rectangle -->
-    <!-- GeoGebra via deployggb.js so we can rename Animate → Slide Me! -->
     <div id="ggb-para" style="border-radius:12px;overflow:hidden;margin:16px 0;background:#c8d8e8"></div>
     <script>
     (function() {
@@ -326,7 +326,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         var container = document.getElementById('ggb-para');
         if (!container || !window.GGBApplet) return;
         var W = Math.min(container.offsetWidth || 700, 800);
-        var H = Math.round(W * 0.58);
+        var H = Math.round(W * 0.6);
         container.style.height = H + 'px';
         var app = new GGBApplet({
           id: 'ggbPara',
@@ -340,6 +340,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           borderColor: '#c8d8e8',
           appletOnLoad: function(api) {
             try {
+              // Rename every boolean/slider to "Slide Me!" using both API methods
               var n = api.getObjectNumber();
               for (var i = 0; i < n; i++) {
                 var name = api.getObjectName(i);
@@ -348,8 +349,20 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
                   api.setCaption(name, 'Slide Me!');
                   api.setLabelStyle(name, 3);
                   api.setLabelVisible(name, true);
+                  // Also via GeoGebra script command as fallback
+                  api.evalCommand('SetCaption(' + name + ', "Slide Me!")');
                 }
               }
+              // Also try common names used in parallelogram applets
+              ['t','a','b','s','n','animate'].forEach(function(nm) {
+                try {
+                  api.setCaption(nm, 'Slide Me!');
+                  api.setLabelStyle(nm, 3);
+                  api.setLabelVisible(nm, true);
+                } catch(e) {}
+              });
+              // Centre the parallelogram in the view
+              try { api.setCoordSystem(-1, 11, -1.5, 6.5); } catch(e) {}
             } catch(e) {}
           }
         }, true);
