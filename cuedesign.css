@@ -1,0 +1,131 @@
+/* ═══════════════════════════════════════════════════════
+   Cuemath Design System — Math Concept Explanations
+   Fonts: Athletics (headings) · Untitled Sans (body)
+   Tokens: Cuemath-Hive colour + type system
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Font Faces ── */
+@font-face {
+  font-family: 'Athletics';
+  src: url('fonts/Athletics-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Athletics';
+  src: url('fonts/Athletics-Medium.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Athletics';
+  src: url('fonts/Athletics-Bold.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Athletics';
+  src: url('fonts/Athletics-Light.woff2') format('woff2');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Untitled Sans';
+  src: url('fonts/UntitledSans-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Untitled Sans';
+  src: url('fonts/UntitledSans-Medium.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+
+/* ── Primitive Colour Ramps ── */
+:root {
+  --neutral-100:  #FAF8F5; --neutral-200:  #F3F0EB; --neutral-300:  #E8E4DD;
+  --neutral-400:  #C6C0B8; --neutral-500:  #97938C; --neutral-600:  #84807B;
+  --neutral-700:  #5B5854; --neutral-800:  #43413E; --neutral-900:  #33312F;
+  --neutral-1000: #292827;
+
+  --gold-100:  #FAF1E6; --gold-200:  #FAE6D0; --gold-300:  #FAD6AC;
+  --gold-400:  #F6BE7C; --gold-500:  #F4AB52; --gold-600:  #EC9A32;
+  --gold-700:  #CE7E12; --gold-800:  #A45F00; --gold-900:  #7E4800;
+
+  --error-100: #FFEEEE; --error-300: #FFC6C5; --error-500: #FA858A;
+  --error-700: #D0505C; --error-800: #AE424C;
+
+  --success-100: #ECF9EF; --success-300: #BCEAC8; --success-500: #6AC88A;
+  --success-700: #28995A; --success-800: #1C7C48;
+
+  --info-100: #EEF6FF; --info-300: #C1DCFF; --info-500: #74ACFC;
+  --info-600: #5492F1; --info-700: #407BD6; --info-800: #3464B1;
+
+  --warning-100: #FFF1E8; --warning-300: #FFD0B4; --warning-500: #FFA278;
+  --warning-700: #EF7C59;
+
+  --purple-100: #FAEFFF; --purple-300: #F0CAFF; --purple-500: #D994F8;
+  --purple-700: #A65EC4;
+}
+
+/* ── Semantic Tokens (Light) ── */
+:root, [data-theme="light"] {
+  /* Backgrounds */
+  --bg-primary:    var(--neutral-100);
+  --bg-secondary:  var(--neutral-200);
+  --bg-tertiary:   var(--neutral-300);
+  --bg-inverse:    var(--neutral-1000);
+
+  /* Text */
+  --text-primary:   var(--neutral-1000);
+  --text-secondary: color-mix(in srgb, var(--text-primary) 70%, transparent);
+  --text-tertiary:  color-mix(in srgb, var(--text-primary) 45%, transparent);
+  --text-on-inverse: var(--neutral-100);
+  --text-brand:     var(--gold-700);
+  --text-error:     var(--error-700);
+  --text-success:   var(--success-700);
+  --text-info:      var(--info-700);
+
+  /* Borders */
+  --border-primary:   var(--neutral-600);
+  --border-secondary: var(--neutral-400);
+  --border-tertiary:  var(--neutral-300);
+  --border-brand:     var(--gold-300);
+  --border-error:     var(--error-300);
+  --border-success:   var(--success-300);
+  --border-info:      var(--info-300);
+
+  /* Functional */
+  --bg-brand:        var(--gold-500);
+  --bg-brand-hover:  var(--gold-600);
+  --bg-brand-1:      var(--gold-100);
+  --bg-brand-2:      var(--gold-200);
+  --bg-brand-3:      var(--gold-300);
+  --bg-error:        var(--error-500);
+  --bg-error-1:      var(--error-100);
+  --bg-success:      var(--success-500);
+  --bg-success-1:    var(--success-100);
+  --bg-info:         var(--info-500);
+  --bg-info-1:       var(--info-100);
+  --bg-warning:      var(--warning-500);
+  --bg-warning-1:    var(--warning-100);
+  --bg-purple:       var(--purple-500);
+  --bg-purple-1:     var(--purple-100);
+}
+
+/* ── Page-level aliases used by MCE pages ── */
+:root {
+  --ink:          var(--neutral-1000);
+  --ink2:         var(--neutral-800);
+  --muted:        var(--neutral-500);
+  --border:       var(--neutral-300);
+  --bg:           var(--neutral-100);
+  --surface:      var(--neutral-200);
+  --yellow:       var(--gold-500);
+  --yellow-light: var(--gold-100);
+  --green:        var(--success-700);
+  --green-light:  var(--success-100);
+  --red:          var(--error-700);
+  --red-light:    var(--error-100);
+  --blue:         var(--info-600);
+  --blue-light:   var(--info-100);
+  --purple:       var(--purple-700);
+  --purple-light: var(--purple-100);
+  --orange:       var(--warning-700);
+  --orange-light: var(--warning-100);
+}

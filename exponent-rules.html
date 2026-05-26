@@ -21,22 +21,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Exponent Rules | Laws of Exponents | Exponent Rules Chart</title>
+<link rel="stylesheet" href="cuedesign.css">
 <meta name="description" content="Exponent rules are those laws that are used for simplifying expressions with exponents. Learn about exponent rules, the zero rule of exponent, the negative rule of exponent, the product rule of exponent, and the quotient rule of exponent with the solved examples, and practice questions.">
 <meta name="keywords" content="exponent rules, laws of exponents">
 <link rel="canonical" href="https://www.cuemath.com/algebra/exponent-rules/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{--ink:#1c1917;--ink2:#44403c;--muted:#78716c;--border:#e7e5e4;--bg:#fafaf9;--surface:#fff;--yellow:#f59e0b;--yellow-light:#fef3c7;--green:#16a34a;--green-light:#dcfce7;--red:#dc2626;--red-light:#fee2e2;--blue:#2563eb;--blue-light:#dbeafe;--nav-h:64px}
+  
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:300;line-height:1.7;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+  body{font-family:'Untitled Sans',system-ui,sans-serif;font-size:17px;font-weight:300;line-height:1.7;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
 
   /* NAV */
   .nav{position:sticky;top:0;z-index:200;background:rgba(250,250,249,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);height:var(--nav-h);display:flex;align-items:center}
   .nav-inner{max-width:1120px;margin:0 auto;padding:0 32px;width:100%;display:flex;align-items:center;justify-content:space-between}
-  .nav-logo{font-family:'Lora',serif;font-weight:700;font-size:22px}
+  .nav-logo{font-family:'Athletics',Georgia,serif;font-weight:700;font-size:22px}
   .nav-cta{background:var(--ink);color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:500}
 
   /* BREADCRUMB */
@@ -58,9 +56,9 @@
   .toc-divider{height:1px;background:var(--border);margin:8px 12px}
 
   /* CONTENT */
-  h1{font-family:'Lora',Georgia,serif;font-size:clamp(30px,4vw,44px);font-weight:700;letter-spacing:-0.5px;line-height:1.15;margin-bottom:10px}
-  h2{font-family:'Lora',Georgia,serif;font-size:clamp(20px,3vw,28px);font-weight:700;letter-spacing:-0.3px;line-height:1.25;margin-bottom:16px;padding-top:8px}
-  h3{font-family:'Lora',Georgia,serif;font-size:19px;font-weight:700;line-height:1.35;margin-bottom:10px}
+  h1{font-family:'Athletics',Georgia,serif;font-size:clamp(30px,4vw,44px);font-weight:700;letter-spacing:-0.5px;line-height:1.15;margin-bottom:10px}
+  h2{font-family:'Athletics',Georgia,serif;font-size:clamp(20px,3vw,28px);font-weight:700;letter-spacing:-0.3px;line-height:1.25;margin-bottom:16px;padding-top:8px}
+  h3{font-family:'Athletics',Georgia,serif;font-size:19px;font-weight:700;line-height:1.35;margin-bottom:10px}
   p{margin-bottom:16px;line-height:1.75} p:last-child{margin-bottom:0}
   em{font-style:italic} strong{font-weight:600}
   a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow);text-underline-offset:3px}
@@ -70,13 +68,13 @@
   sup{font-size:.65em;vertical-align:super;line-height:0}
 
   .term{border-bottom:1.5px dashed var(--yellow);cursor:help;position:relative}
-  .term::after{content:attr(data-tip);position:absolute;bottom:calc(100%+6px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:12px;line-height:1.4;padding:8px 12px;border-radius:6px;white-space:normal;width:max-content;max-width:240px;pointer-events:none;opacity:0;transition:opacity .15s;font-family:'DM Sans',sans-serif;font-style:normal;font-weight:400;z-index:10;text-align:center}
+  .term::after{content:attr(data-tip);position:absolute;bottom:calc(100%+6px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:12px;line-height:1.4;padding:8px 12px;border-radius:6px;white-space:normal;width:max-content;max-width:240px;pointer-events:none;opacity:0;transition:opacity .15s;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-style:normal;font-weight:400;z-index:10;text-align:center}
   .term:hover::after,.term.active::after{opacity:1}
 
   /* HERO */
   .hero-lead{font-size:18px;color:var(--ink2);margin:12px 0 28px;max-width:100%}
   .rule-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
-  .rule-pill{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;font-family:'Lora',serif;font-weight:700}
+  .rule-pill{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;font-family:'Athletics',Georgia,serif;font-weight:700}
 
   /* THINK BOX */
   .think-box{background:var(--surface);border:1.5px solid var(--border);border-left:4px solid var(--ink2);border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0}
@@ -89,8 +87,8 @@
   .expand-box{background:var(--bg);border-radius:12px;padding:20px 24px;margin:16px 0}
   .expand-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px dashed var(--border);font-size:15px;flex-wrap:wrap}
   .expand-row:last-child{border-bottom:none}
-  .exp-expr{font-family:'Lora',serif;font-weight:700}
-  .exp-result{font-family:'Lora',serif;font-weight:700;color:var(--yellow)}
+  .exp-expr{font-family:'Athletics',Georgia,serif;font-weight:700}
+  .exp-result{font-family:'Athletics',Georgia,serif;font-weight:700;color:var(--yellow)}
 
   /* 8 RULES GRID */
   /* rules accordion */
@@ -102,13 +100,13 @@
   .rule-trigger.open{background:var(--yellow-light)}
   .rt-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
   .rt-num{font-size:12px;font-weight:700;color:var(--muted);width:18px;flex-shrink:0}
-  .rt-name{font-family:'Lora',serif;font-size:15px;font-weight:700;color:var(--ink);flex-shrink:0}
-  .rt-formula{font-family:'Lora',serif;font-size:13px;color:var(--ink2);background:var(--bg);padding:3px 9px;border-radius:5px;white-space:nowrap}
+  .rt-name{font-family:'Athletics',Georgia,serif;font-size:15px;font-weight:700;color:var(--ink);flex-shrink:0}
+  .rt-formula{font-family:'Athletics',Georgia,serif;font-size:13px;color:var(--ink2);background:var(--bg);padding:3px 9px;border-radius:5px;white-space:nowrap}
   .rt-icon{font-size:16px;color:var(--muted);transition:transform .2s;flex-shrink:0}
   .rule-trigger.open .rt-icon{transform:rotate(45deg)}
   .rule-body{display:none;padding:18px 20px 18px 50px;background:var(--bg);border-top:1px solid var(--border)}
   .rule-body.show{display:block;animation:fadeIn .25s ease}
-  .rb-formula{font-family:'Lora',serif;font-size:20px;font-weight:700;margin-bottom:12px}
+  .rb-formula{font-family:'Athletics',Georgia,serif;font-size:20px;font-weight:700;margin-bottom:12px}
   .rb-example{font-size:14px;color:var(--ink2);background:var(--surface);border-radius:7px;padding:10px 13px;margin-bottom:8px;line-height:1.5}
   .rb-desc{font-size:14px;color:var(--ink2);margin-bottom:10px;line-height:1.6;border-left:3px solid var(--yellow);padding-left:10px}
   .rb-why{font-size:13px;color:var(--muted);font-style:italic;line-height:1.6;margin-bottom:10px}
@@ -116,7 +114,7 @@
   .rb-try:hover{border-color:var(--yellow);background:var(--yellow-light);color:var(--ink)}
   .rule-sim-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:12px}
   .rr-name{font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-  .rr-formula{font-family:'Lora',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:4px}
+  .rr-formula{font-family:'Athletics',Georgia,serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:4px}
   .rr-example{font-size:13px;color:var(--muted)}
 
   /* RULE EXPLORER */
@@ -124,10 +122,10 @@
   .rule-tab{background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;color:var(--ink2);line-height:1.2;text-align:center}
   .rule-tab:hover{border-color:var(--ink2)}
   .rule-tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
-  .rule-tab .tab-formula{display:block;font-family:'Lora',serif;font-size:14px;font-weight:700;margin-bottom:2px}
+  .rule-tab .tab-formula{display:block;font-family:'Athletics',Georgia,serif;font-size:14px;font-weight:700;margin-bottom:2px}
   .rule-tab .tab-name{display:block;font-size:10px;font-weight:500;opacity:.8}
   .demo-area{background:var(--bg);border-radius:14px;padding:24px}
-  .demo-formula{font-family:'Lora',serif;font-size:24px;font-weight:700;color:var(--ink);text-align:center;margin-bottom:18px;padding:14px;background:var(--surface);border-radius:10px;border:1px solid var(--border)}
+  .demo-formula{font-family:'Athletics',Georgia,serif;font-size:24px;font-weight:700;color:var(--ink);text-align:center;margin-bottom:18px;padding:14px;background:var(--surface);border-radius:10px;border:1px solid var(--border)}
   .demo-inputs{display:flex;gap:12px;align-items:center;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
   .input-group{display:flex;flex-direction:column;align-items:center;gap:5px}
   .input-label{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
@@ -136,24 +134,24 @@
   .stepper button:first-child{border-radius:6px 0 0 6px}
   .stepper button:last-child{border-radius:0 6px 6px 0}
   .stepper button:hover{background:var(--border)}
-  .stepper .val{width:42px;height:34px;text-align:center;border:1.5px solid var(--border);border-left:none;border-right:none;font-family:'Lora',serif;font-size:15px;font-weight:700;background:var(--surface);color:var(--ink)}
+  .stepper .val{width:42px;height:34px;text-align:center;border:1.5px solid var(--border);border-left:none;border-right:none;font-family:'Athletics',Georgia,serif;font-size:15px;font-weight:700;background:var(--surface);color:var(--ink)}
   .demo-steps{display:flex;flex-direction:column;gap:6px}
   .step-line{display:flex;align-items:baseline;gap:8px;padding:9px 12px;border-radius:8px;animation:fadeIn .3s ease}
   .step-line.expansion{background:var(--surface);border:1px solid var(--border)}
   .step-line.result{background:var(--yellow-light);border:1px solid #fcd34d}
   .step-line.why{background:var(--bg);font-style:italic;color:var(--ink2);font-size:13px}
   .step-eq{color:var(--muted);font-size:14px;min-width:18px}
-  .step-expr{font-family:'Lora',serif;font-size:16px;font-weight:700}
+  .step-expr{font-family:'Athletics',Georgia,serif;font-size:16px;font-weight:700}
   .step-note{font-size:13px;color:var(--muted);margin-left:6px}
 
   /* WORKED EXAMPLES */
   .example-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 26px;margin-bottom:14px}
   .example-card .ex-label{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-  .example-card .ex-q{font-family:'Lora',serif;font-size:18px;font-weight:700;margin-bottom:14px}
+  .example-card .ex-q{font-family:'Athletics',Georgia,serif;font-size:18px;font-weight:700;margin-bottom:14px}
   .example-card .ex-steps{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--ink2)}
   .example-card .ex-step{display:flex;gap:10px;padding:7px 10px;border-radius:6px;background:var(--bg)}
   .example-card .ex-step .num{font-weight:700;color:var(--muted);min-width:16px}
-  .example-card .ex-answer{margin-top:10px;font-family:'Lora',serif;font-size:18px;font-weight:700;color:var(--green);padding:10px 14px;background:var(--green-light);border-radius:8px;display:inline-block}
+  .example-card .ex-answer{margin-top:10px;font-family:'Athletics',Georgia,serif;font-size:18px;font-weight:700;color:var(--green);padding:10px 14px;background:var(--green-light);border-radius:8px;display:inline-block}
 
   /* CTA SECTION */
   .mode-section{padding:48px 0 24px;border-top:1px solid var(--border)}
@@ -169,7 +167,7 @@
   /* CTA BAND */
   .cta-band{background:linear-gradient(135deg,#1e3a8a 0%,#1d4ed8 100%);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:42% 58%;min-height:200px}
   .cta-inner{grid-column:2;grid-row:1;padding:32px 36px 32px 52px;display:flex;flex-direction:column;justify-content:center;gap:16px;background:linear-gradient(135deg,#1e3a8a 0%,#1d4ed8 100%);border-radius:24px 0 0 24px;margin-left:-24px;position:relative;z-index:1}
-  .cta-text h3{font-family:'Lora',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:6px}
+  .cta-text h3{font-family:'Athletics',Georgia,serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:6px}
   .cta-text p{font-size:15px;color:#bfdbfe;margin:0;max-width:380px}
   .cta-img{grid-column:1;grid-row:1;width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
   .cta-buttons{display:flex;gap:10px;flex-wrap:wrap}
@@ -178,7 +176,7 @@
   .cta-secondary{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.25);padding:14px 22px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;white-space:nowrap;transition:background .15s}
   .cta-secondary:hover{background:rgba(255,255,255,.18)}
 
-  .btn-white{background:#fff;color:#1e3a8a;border:none;padding:12px 24px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer}
+  .btn-white{background:#fff;color:#1e3a8a;border:none;padding:12px 24px;border-radius:8px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;font-weight:500;cursor:pointer}
 
   /* PRACTICE */
   .practice-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;min-height:320px;display:flex;flex-direction:column}
@@ -205,13 +203,13 @@
   .next-btn.show{display:inline-block}
   .completion{text-align:center;padding:28px 16px;display:none}
   .completion.show{display:block;animation:fadeIn .6s ease}
-  .completion .score{font-family:'Lora',serif;font-size:44px;font-weight:700;margin-bottom:8px}
+  .completion .score{font-family:'Athletics',Georgia,serif;font-size:44px;font-weight:700;margin-bottom:8px}
   .completion .msg{font-size:15px;color:var(--ink2);max-width:340px;margin:0 auto}
 
   /* WORKSHEET */
   .worksheet-card{background:var(--blue-light);border:1px solid #93c5fd;border-radius:14px;padding:28px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
   .ws-icon{font-size:40px;flex-shrink:0}
-  .ws-text h3{font-family:'Lora',serif;font-size:18px;font-weight:700;margin-bottom:4px}
+  .ws-text h3{font-family:'Athletics',Georgia,serif;font-size:18px;font-weight:700;margin-bottom:4px}
   .ws-text p{font-size:14px;color:var(--ink2);margin:0}
   .ws-btn{margin-left:auto;background:var(--blue);color:#fff;padding:13px 20px;border-radius:10px;text-decoration:none;font-weight:700;font-size:14px;white-space:nowrap;flex-shrink:0}
   .ws-btn:hover{background:#1d4ed8}
@@ -219,7 +217,7 @@
   /* FAQ */
   .faq-item{border-bottom:1px solid var(--border)}
   .faq-item:last-child{border-bottom:none}
-  .faq-q{width:100%;background:none;border:none;text-align:left;padding:16px 4px;font-family:'Lora',serif;font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
+  .faq-q{width:100%;background:none;border:none;text-align:left;padding:16px 4px;font-family:'Athletics',Georgia,serif;font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
   .faq-q .icon{font-size:18px;color:var(--muted);flex-shrink:0;transition:transform .2s}
   .faq-q.open .icon{transform:rotate(45deg)}
   .faq-a{font-size:15px;color:var(--ink2);padding:0 4px 16px;display:none;line-height:1.7}
@@ -231,7 +229,7 @@
   .modal-box{background:var(--surface);border-radius:20px;padding:36px;max-width:480px;width:100%;position:relative;max-height:90vh;overflow-y:auto}
   .modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:22px;color:var(--muted);cursor:pointer;line-height:1}
   .modal-close:hover{color:var(--ink)}
-  .modal-title{font-family:'Lora',serif;font-size:22px;font-weight:700;margin-bottom:6px}
+  .modal-title{font-family:'Athletics',Georgia,serif;font-size:22px;font-weight:700;margin-bottom:6px}
   .modal-sub{font-size:14px;color:var(--muted);margin-bottom:24px}
   .modal-options{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
   .mo-btn{background:var(--bg);border:2px solid var(--border);border-radius:12px;padding:16px 18px;text-align:left;cursor:pointer;font-family:inherit;transition:all .15s}
@@ -270,7 +268,7 @@
   .video-card:hover{border-color:var(--ink2)}
   .vthumb{width:52px;height:52px;background:var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
   .vthumb svg{width:22px;height:22px;fill:#fff}
-  .vtitle{font-family:'Lora',Georgia,serif;font-weight:600;font-size:15px;line-height:1.35;margin-bottom:3px}
+  .vtitle{font-family:'Athletics',Georgia,serif;font-weight:600;font-size:15px;line-height:1.35;margin-bottom:3px}
   .vdesc{font-size:12px;color:var(--muted)}
 
   footer{border-top:1px solid var(--border);padding:24px 0 36px;background:var(--surface);margin-top:60px}
@@ -280,35 +278,35 @@
   footer .copyright{font-size:13px;color:var(--muted)}
 
   /* stepper editable input */
-  .stepper-input{width:44px;height:34px;text-align:center;border:1.5px solid var(--border);border-left:none;border-right:none;font-family:'Lora',serif;font-size:15px;font-weight:700;background:var(--surface);color:var(--ink);-moz-appearance:textfield}
+  .stepper-input{width:44px;height:34px;text-align:center;border:1.5px solid var(--border);border-left:none;border-right:none;font-family:'Athletics',Georgia,serif;font-size:15px;font-weight:700;background:var(--surface);color:var(--ink);-moz-appearance:textfield}
   .stepper-input::-webkit-outer-spin-button,.stepper-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
   .stepper-input:focus{outline:none;background:var(--yellow-light)}
 
   /* worked example: chain */
   .ex-chain{display:flex;flex-direction:column;gap:0}
-  .ex-chain-expr{font-family:'Lora',serif;font-size:18px;font-weight:700;padding:10px 14px;background:var(--bg);border-radius:8px;display:inline-block}
+  .ex-chain-expr{font-family:'Athletics',Georgia,serif;font-size:18px;font-weight:700;padding:10px 14px;background:var(--bg);border-radius:8px;display:inline-block}
   .ex-chain-rule{font-size:12px;color:var(--muted);padding:4px 20px;display:flex;align-items:center;gap:6px}
   .ex-chain-rule::before{content:'↓';color:var(--muted)}
   .ex-chain-final{background:var(--yellow-light);border:1px solid #fcd34d}
 
   /* worked example: distribution */
   .ex-dist-row{display:flex;align-items:baseline;gap:6px;padding:6px 0;flex-wrap:wrap}
-  .ex-dist-main{font-family:'Lora',serif;font-size:18px;font-weight:700}
-  .ex-dist-factor{font-family:'Lora',serif;font-size:16px;font-weight:700;background:var(--bg);padding:4px 8px;border-radius:6px}
+  .ex-dist-main{font-family:'Athletics',Georgia,serif;font-size:18px;font-weight:700}
+  .ex-dist-factor{font-family:'Athletics',Georgia,serif;font-size:16px;font-weight:700;background:var(--bg);padding:4px 8px;border-radius:6px}
   .ex-dist-op{font-size:16px;color:var(--muted)}
-  .ex-dist-result{font-family:'Lora',serif;font-size:20px;font-weight:700;padding:10px 0 0;border-top:1.5px solid var(--border);margin-top:8px}
+  .ex-dist-result{font-family:'Athletics',Georgia,serif;font-size:20px;font-weight:700;padding:10px 0 0;border-top:1.5px solid var(--border);margin-top:8px}
 
   /* worked example: step table */
   .ex-table{width:100%;border-collapse:collapse}
   .ex-table td{padding:10px 12px;border-bottom:1px dashed var(--border);vertical-align:top}
-  .ex-table td:first-child{font-family:'Lora',serif;font-size:17px;font-weight:700;white-space:nowrap;min-width:130px}
+  .ex-table td:first-child{font-family:'Athletics',Georgia,serif;font-size:17px;font-weight:700;white-space:nowrap;min-width:130px}
   .ex-table td:last-child{font-size:13px;color:var(--muted);line-height:1.5}
   .ex-table tr:last-child td{border-bottom:none;background:var(--yellow-light)}
 
   /* worked example: equivalence display */
   .ex-equiv{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;padding:8px 0}
   .ex-equiv-node{text-align:center;padding:12px 16px}
-  .ex-equiv-node .node-expr{font-family:'Lora',serif;font-size:22px;font-weight:700;display:block;margin-bottom:6px}
+  .ex-equiv-node .node-expr{font-family:'Athletics',Georgia,serif;font-size:22px;font-weight:700;display:block;margin-bottom:6px}
   .ex-equiv-node .node-label{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
   .ex-equiv-arrow{font-size:18px;color:var(--muted);padding:0 4px;margin-top:-16px}
 
@@ -326,7 +324,7 @@
   .fv-embed iframe{width:100%;height:100%;border:none;display:block}
   .fv-placeholder{aspect-ratio:16/9;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:default}
   .fv-play{width:64px;height:64px;background:rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;color:rgba(255,255,255,.7)}
-  .fv-title{font-family:'Lora',serif;font-size:18px;font-weight:700;color:#fff;text-align:center;padding:0 24px}
+  .fv-title{font-family:'Athletics',Georgia,serif;font-size:18px;font-weight:700;color:#fff;text-align:center;padding:0 24px}
   .fv-tag{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4)}
 
   /* mobile TOC */

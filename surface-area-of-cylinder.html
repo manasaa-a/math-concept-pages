@@ -13,35 +13,20 @@ TODOs (deferred — to be locked once page structure is finalised):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Surface Area of a Cylinder - Formula, TSA and CSA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="cuedesign.css">
 <style>
-:root{
-  --ink:#1c1917;
-  --ink2:#44403c;
-  --muted:#78716c;
-  --border:#e7e5e4;
-  --bg:#fafaf9;
-  --surface:#fff;
-  --yellow:#f59e0b;
-  --yellow-light:#fef3c7;
-  --green:#16a34a;
-  --green-light:#dcfce7;
-  --red:#dc2626;
-  --red-light:#fee2e2;
-}
+
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family:'DM Sans',sans-serif;
+  font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;
   font-weight:300;
   font-size:17px;
   line-height:1.7;
   color:var(--ink);
   background:var(--bg);
 }
-h1,h2,h3,h4{font-family:'Lora',serif;font-weight:700;color:var(--ink);line-height:1.25}
+h1,h2,h3,h4{font-family:'Athletics',Georgia,serif;font-weight:700;color:var(--ink);line-height:1.25}
 h1{font-size:42px;margin-bottom:18px}
 h2{font-size:30px;margin:48px 0 18px}
 h3{font-size:22px;margin:24px 0 12px}
@@ -57,11 +42,11 @@ a:hover{text-decoration-color:var(--ink)}
   padding:14px 24px;
   display:flex;align-items:center;justify-content:space-between;
 }
-.logo{font-family:'Lora',serif;font-weight:700;font-size:22px;color:var(--ink);text-decoration:none}
+.logo{font-family:'Athletics',Georgia,serif;font-weight:700;font-size:22px;color:var(--ink);text-decoration:none}
 .nav-cta{
   background:var(--ink);color:var(--surface);
   border:none;border-radius:6px;
-  padding:9px 18px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:14px;
+  padding:9px 18px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-weight:500;font-size:14px;
   cursor:pointer;text-decoration:none;display:inline-block;
 }
 .nav-cta:hover{background:var(--ink2);text-decoration:none}
@@ -94,7 +79,7 @@ aside.toc{
   font-size:13px;
 }
 aside.toc h5{
-  font-family:'DM Sans',sans-serif;font-weight:500;
+  font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-weight:500;
   font-size:11px;text-transform:uppercase;letter-spacing:0.08em;
   color:var(--muted);margin-bottom:14px;
 }
@@ -119,7 +104,7 @@ main{min-width:0}
 
 /* H2 HOOK */
 .hook{
-  font-family:'Lora',serif;font-weight:700;font-size:26px;line-height:1.35;
+  font-family:'Athletics',Georgia,serif;font-weight:700;font-size:26px;line-height:1.35;
   color:var(--ink);margin:32px 0 24px;
 }
 
@@ -141,7 +126,7 @@ main{min-width:0}
 .btn-primary{
   background:var(--ink);color:var(--surface);
   border:none;border-radius:6px;padding:11px 22px;
-  font-family:'DM Sans',sans-serif;font-weight:500;font-size:15px;
+  font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-weight:500;font-size:15px;
   cursor:pointer;text-decoration:none;display:inline-block;white-space:nowrap;
 }
 .btn-primary:hover{background:var(--ink2);text-decoration:none}
@@ -155,7 +140,7 @@ main{min-width:0}
   padding:18px;font-size:14px;line-height:1.55;
 }
 .rw-card .emoji{font-size:26px;display:block;margin-bottom:10px}
-.rw-card .label{font-family:'Lora',serif;font-weight:700;font-size:15px;color:var(--ink);display:block;margin-bottom:6px}
+.rw-card .label{font-family:'Athletics',Georgia,serif;font-weight:700;font-size:15px;color:var(--ink);display:block;margin-bottom:6px}
 .rw-card .desc{color:var(--ink2);font-size:13.5px}
 
 /* THINK BOX */
@@ -165,7 +150,7 @@ main{min-width:0}
   margin:18px 0;border-radius:0 8px 8px 0;
 }
 .think .label{
-  font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;
+  font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-weight:500;font-size:12px;
   text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);
   margin-bottom:6px;
 }
@@ -185,14 +170,14 @@ main{min-width:0}
   padding:18px 22px;margin:18px 0;
 }
 .minicheck .label{
-  font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;
+  font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-weight:500;font-size:12px;
   text-transform:uppercase;letter-spacing:0.08em;color:var(--yellow);
   margin-bottom:6px;
 }
 .minicheck p{margin-bottom:10px;color:var(--ink)}
 .hint-btn{
   background:none;border:1px solid var(--border);border-radius:5px;
-  padding:6px 12px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink2);
+  padding:6px 12px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:13px;color:var(--ink2);
   cursor:pointer;
 }
 .hint-btn:hover{background:var(--bg)}
@@ -217,19 +202,19 @@ main{min-width:0}
 }
 .acc summary{
   list-style:none;padding:16px 20px;cursor:pointer;
-  font-family:'Lora',serif;font-weight:700;font-size:17px;color:var(--ink);
+  font-family:'Athletics',Georgia,serif;font-weight:700;font-size:17px;color:var(--ink);
   display:flex;justify-content:space-between;align-items:center;
 }
 .acc summary::-webkit-details-marker{display:none}
 .acc summary::after{
   content:'+';font-size:22px;color:var(--muted);transition:transform 0.2s;
-  font-family:'DM Sans',sans-serif;font-weight:300;
+  font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-weight:300;
 }
 .acc[open] summary::after{transform:rotate(45deg)}
 .acc .body{padding:0 20px 18px;font-size:15.5px;color:var(--ink2)}
 .acc .body .formula{margin:12px 0}
 .acc .worked{margin-top:14px;padding:14px 16px;background:var(--bg);border-radius:8px;font-size:14.5px}
-.acc .worked h5{font-family:'DM Sans',sans-serif;font-weight:500;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px}
+.acc .worked h5{font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-weight:500;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px}
 .acc .worked p{margin-bottom:6px}
 .acc .try-link{display:inline-block;margin-top:10px;font-size:14px;font-weight:500;color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow)}
 
@@ -251,7 +236,7 @@ main{min-width:0}
   border-top:1px solid var(--border);padding-top:20px;
 }
 .sim-viz > div{text-align:center}
-.sim-viz h4{font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:10px}
+.sim-viz h4{font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:10px}
 .sim-readouts{
   display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px;
 }
@@ -273,7 +258,7 @@ main{min-width:0}
 .cta-band h3{margin:0 0 6px;font-size:22px;color:#fff}
 .cta-band p{margin:0;font-size:14.5px;color:#bfdbfe}
 
-.btn-white{background:#fff;color:#1e3a8a;border:none;padding:12px 24px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer}
+.btn-white{background:#fff;color:#1e3a8a;border:none;padding:12px 24px;border-radius:8px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;font-weight:500;cursor:pointer}
 
 /* PRACTICE */
 .practice{
@@ -294,7 +279,7 @@ main{min-width:0}
 .opt{
   background:var(--bg);border:1px solid var(--border);border-radius:8px;
   padding:12px 14px;cursor:pointer;text-align:left;font-size:14.5px;color:var(--ink);
-  font-family:'DM Sans',sans-serif;transition:all 0.15s;
+  font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;transition:all 0.15s;
 }
 .opt:hover:not(:disabled){border-color:var(--ink);background:var(--surface)}
 .opt.selected{border-color:var(--ink);background:var(--surface);font-weight:500}
@@ -305,7 +290,7 @@ main{min-width:0}
 .q-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .btn-ghost{
   background:none;border:1px solid var(--border);border-radius:6px;
-  padding:9px 16px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink2);
+  padding:9px 16px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:14px;color:var(--ink2);
   cursor:pointer;
 }
 .btn-ghost:hover{background:var(--bg)}
@@ -322,7 +307,7 @@ main{min-width:0}
 .q-feedback.wrong{background:var(--red-light);border:1px solid var(--red);color:var(--ink)}
 .q-feedback .head{font-weight:500;margin-bottom:6px;display:block}
 .completion{text-align:center;padding:30px 12px}
-.completion .score{font-family:'Lora',serif;font-size:48px;font-weight:700;color:var(--ink);margin:10px 0}
+.completion .score{font-family:'Athletics',Georgia,serif;font-size:48px;font-weight:700;color:var(--ink);margin:10px 0}
 .completion .msg{font-size:16px;color:var(--ink2);margin-bottom:20px}
 
 /* TAKEAWAYS */
@@ -335,7 +320,7 @@ main{min-width:0}
   padding:14px 20px;border-bottom:1px solid var(--border);
 }
 .kt-row:last-child{border-bottom:none}
-.kt-row .term{font-family:'Lora',serif;font-weight:700;font-size:15px;color:var(--ink)}
+.kt-row .term{font-family:'Athletics',Georgia,serif;font-weight:700;font-size:15px;color:var(--ink)}
 .kt-row .def{font-size:14.5px;color:var(--ink2)}
 
 /* FAQ */
@@ -377,7 +362,7 @@ main{min-width:0}
   display:inline-block;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;
   color:var(--muted);background:var(--bg);padding:3px 8px;border-radius:4px;margin-bottom:8px;
 }
-.rv-title{font-family:'Lora',serif;font-weight:700;font-size:15px;line-height:1.35;color:var(--ink)}
+.rv-title{font-family:'Athletics',Georgia,serif;font-weight:700;font-size:15px;line-height:1.35;color:var(--ink)}
 
 /* RELATED CONCEPTS */
 .rc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
@@ -418,7 +403,7 @@ footer a:hover{color:var(--ink)}
 .modal .choice-grid{display:grid;gap:10px}
 .modal .choice{
   background:var(--surface);border:1px solid var(--border);border-radius:8px;
-  padding:16px 18px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:15px;
+  padding:16px 18px;cursor:pointer;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;
   color:var(--ink);text-align:left;
 }
 .modal .choice:hover{border-color:var(--ink);background:var(--bg)}
@@ -427,19 +412,19 @@ footer a:hover{color:var(--ink)}
 .modal .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:5px;font-weight:500}
 .modal .field input,.modal .field select{
   width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:6px;
-  font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);background:var(--surface);
+  font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:14px;color:var(--ink);background:var(--surface);
 }
 .modal .emoji-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .modal .emoji-btn{
   background:var(--surface);border:1px solid var(--border);border-radius:8px;
-  padding:12px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);
+  padding:12px;cursor:pointer;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:13px;color:var(--ink);
 }
 .modal .emoji-btn .e{font-size:22px;display:block;margin-bottom:4px}
 .modal .emoji-btn.selected{border-color:var(--ink);background:var(--bg)}
 .modal .submit{
   width:100%;background:var(--ink);color:var(--surface);
   border:none;border-radius:6px;padding:13px;
-  font-family:'DM Sans',sans-serif;font-weight:500;font-size:15px;cursor:pointer;
+  font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-weight:500;font-size:15px;cursor:pointer;
 }
 .modal .submit:hover{background:var(--ink2)}
 .modal .back{
@@ -713,7 +698,7 @@ footer a:hover{color:var(--ink)}
         </div>
         <!-- Simulation inline under TSA -->
         <div style="border-radius:12px;overflow:hidden;margin:20px 0;background:#c8d8e8">
-          <div style="padding:8px 16px 4px;font-size:14px;font-weight:500;color:#1c1917;font-family:'DM Sans',sans-serif">Slide Me!</div>
+          <div style="padding:8px 16px 4px;font-size:14px;font-weight:500;color:var(--ink);font-family:'Untitled Sans',-apple-system,system-ui,sans-serif">Slide Me!</div>
           <div style="position:relative;padding-bottom:62%;height:0;background:#c8d8e8">
             <iframe src="https://www.geogebra.org/material/iframe/id/rCxXxFhE/width/800/height/496/border/c8d8e8/sdz/false/ctl/false/smb/false/stb/false"
               style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
@@ -1018,16 +1003,16 @@ const QUESTIONS = [
   {
     text: 'What is the Curved Surface Area of this cylinder? Use π = 22/7.',
     svg: `<svg viewBox="0 0 280 200" width="240" height="180">
-      <ellipse cx="140" cy="45" rx="70" ry="18" fill="#fafaf9" stroke="#1c1917" stroke-width="2"/>
-      <path d="M 70 45 L 70 155 A 70 18 0 0 0 210 155 L 210 45" fill="#fef3c7" stroke="#1c1917" stroke-width="2"/>
-      <path d="M 70 155 A 70 18 0 0 0 210 155" fill="none" stroke="#1c1917" stroke-width="2"/>
-      <line x1="140" y1="45" x2="210" y2="45" stroke="#dc2626" stroke-width="1.5"/>
-      <circle cx="140" cy="45" r="2.5" fill="#dc2626"/>
-      <text x="170" y="40" font-family="DM Sans" font-size="13" fill="#dc2626" font-weight="500">r = 7 cm</text>
-      <line x1="230" y1="45" x2="230" y2="155" stroke="#16a34a" stroke-width="1.5"/>
-      <line x1="225" y1="45" x2="235" y2="45" stroke="#16a34a" stroke-width="1.5"/>
-      <line x1="225" y1="155" x2="235" y2="155" stroke="#16a34a" stroke-width="1.5"/>
-      <text x="240" y="105" font-family="DM Sans" font-size="13" fill="#16a34a" font-weight="500">h = 10 cm</text>
+      <ellipse cx="140" cy="45" rx="70" ry="18" fill="var(--bg)" stroke="var(--ink)" stroke-width="2"/>
+      <path d="M 70 45 L 70 155 A 70 18 0 0 0 210 155 L 210 45" fill="var(--yellow-light)" stroke="var(--ink)" stroke-width="2"/>
+      <path d="M 70 155 A 70 18 0 0 0 210 155" fill="none" stroke="var(--ink)" stroke-width="2"/>
+      <line x1="140" y1="45" x2="210" y2="45" stroke="var(--red)" stroke-width="1.5"/>
+      <circle cx="140" cy="45" r="2.5" fill="var(--red)"/>
+      <text x="170" y="40" font-family="Untitled Sans" font-size="13" fill="var(--red)" font-weight="500">r = 7 cm</text>
+      <line x1="230" y1="45" x2="230" y2="155" stroke="var(--green)" stroke-width="1.5"/>
+      <line x1="225" y1="45" x2="235" y2="45" stroke="var(--green)" stroke-width="1.5"/>
+      <line x1="225" y1="155" x2="235" y2="155" stroke="var(--green)" stroke-width="1.5"/>
+      <text x="240" y="105" font-family="Untitled Sans" font-size="13" fill="var(--green)" font-weight="500">h = 10 cm</text>
     </svg>`,
     options: ['440 cm²', '616 cm²', '440π cm²', '308 cm²'],
     answer: 0,
