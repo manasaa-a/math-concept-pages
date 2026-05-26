@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Parallelogram Area</title>
+  <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #c8d8e8;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+    }
+    h2 { color: #1a1a2e; margin-bottom: 6px; font-size: 22px; }
+    p.subtitle { color: #555; font-size: 14px; margin-bottom: 18px; }
+    #ggb-container {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+    }
+  </style>
+</head>
+<body>
+  <div id="ggb-container"></div>
+
+  <script>
+    var params = {
+      appName: "classic",
+      material_id: "m8EdKBj5",
+      width: 820,
+      height: 520,
+      showToolBar: false,
+      showAlgebraInput: false,
+      showMenuBar: false,
+      enableLabelDrags: true,
+      enableShiftDragZoom: false,
+      appletOnLoad: function(api) {
+        setTimeout(function() {
+          // --- 1. Rename point K label to "Slide Me!" ---
+          try {
+            api.setCaption('K', 'Slide Me!');
+            api.setLabelStyle('K', 3);   // 3 = show caption
+            api.setLabelVisible('K', true);
+          } catch(e) {}
+
+          // --- 2. Fix area text: find any text whose displayed value contains "bh" ---
+          var allNames = api.getAllObjectNames();
+          for (var i = 0; i < allNames.length; i++) {
+            var name = allNames[i];
+            if (api.getObjectType(name) !== 'text') continue;
+
+            var val = api.getValueString(name);   // what is actually displayed
+            var def = api.getDefinitionString(name); // the formula/definition
+
+            var hasBH = (val && val.indexOf('bh') !== -1) ||
+                        (def && def.indexOf('bh') !== -1);
+
+            if (!hasBH) continue;
+
+            // Get position so we can recreate at the same spot
+            var tx = api.getXcoord(name);
+            var ty = api.getYcoord(name);
+
+            // Build the replacement text from the displayed value
+            var source = (val && val.indexOf('bh') !== -1) ? val : def;
+            var newText = source.replace(/bh/g, 'b × h');  // × symbol
+
+            // Hide the original and drop in a replacement
+            api.setVisible(name, false);
+            api.evalCommand('areaLabel = Text("' + newText + '", (' + tx + ', ' + ty + '))');
+            api.setLabelVisible('areaLabel', false);
+            api.setFixed('areaLabel', true, false);
+          }
+        }, 700);
+      }
+    };
+
+    var applet = new GGBApplet(params, true);
+    window.addEventListener("load", function() {
+      applet.inject("ggb-container");
+    });
+  </script>
+</body>
+</html>
