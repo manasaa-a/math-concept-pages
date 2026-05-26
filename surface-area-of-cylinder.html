@@ -559,7 +559,7 @@ footer a:hover{color:var(--ink)}
     <div class="minicheck">
       <div class="label">Mini check</div>
       <p>A cylinder has r = 5 cm and h = 12 cm. Which surface area — TSA or CSA — would a label manufacturer care about?</p>
-      <button class="hint-btn" onclick="document.getElementById('hint1').classList.toggle('show')">Show hint</button>
+      <button class="hint-btn" onclick="document.getElementById('hint1').classList.toggle('show')">Answer</button>
       <div id="hint1" class="hint-text">The label wraps around the side only, not the tops. So it's the curved surface area (CSA).</div>
     </div>
 
@@ -696,16 +696,28 @@ footer a:hover{color:var(--ink)}
     <p style="font-size:15px;color:var(--ink2);margin-bottom:14px">JEE-prep level Mensuration practice — print and solve.</p>
     <div class="ws-grid">
       <div class="ws-card">
-        <div class="icon">📄</div>
-        <h4>Mensuration — Level 1</h4>
+        <div class="icon">📋</div>
+        <h4>Question Set 1</h4>
         <p>Foundational Mensuration problems covering CSA, TSA, and volume of cylinders, cones, and spheres.</p>
-        <a href="b00729f5-1236-4d23-86eb-2254166458c9.pdf" download="Cuemath-Mensuration-Worksheet-Level1.pdf">Download Level 1 Worksheet (PDF) ↓</a>
+        <a href="b00729f5-1236-4d23-86eb-2254166458c9.pdf" download="Cuemath-Mensuration-Questions-Level1.pdf">Download (PDF) ↓</a>
       </div>
       <div class="ws-card">
-        <div class="icon">📄</div>
-        <h4>Mensuration — Level 2</h4>
+        <div class="icon">✅</div>
+        <h4>Answer Set 1</h4>
+        <p>Full worked solutions for Question Set 1.</p>
+        <a href="c3ec6c60-7d91-484e-9870-8db0f43101fc.pdf" download="Cuemath-Mensuration-Answers-Level1.pdf">Download (PDF) ↓</a>
+      </div>
+      <div class="ws-card">
+        <div class="icon">📋</div>
+        <h4>Question Set 2</h4>
         <p>JEE-style Mensuration problems including melted-and-reformed solids, ratio problems, and frustums.</p>
-        <a href="76fd58e8-feb9-4f1f-92e5-2cc742861800.pdf" download="Cuemath-Mensuration-Worksheet-Level2.pdf">Download Level 2 Worksheet (PDF) ↓</a>
+        <a href="76fd58e8-feb9-4f1f-92e5-2cc742861800.pdf" download="Cuemath-Mensuration-Questions-Level2.pdf">Download (PDF) ↓</a>
+      </div>
+      <div class="ws-card">
+        <div class="icon">✅</div>
+        <h4>Answer Set 2</h4>
+        <p>Full worked solutions for Question Set 2.</p>
+        <a href="3e067fb5-1bf6-4e2b-8197-cc2b47913a29.pdf" download="Cuemath-Mensuration-Answers-Level2.pdf">Download (PDF) ↓</a>
       </div>
     </div>
 
@@ -974,7 +986,7 @@ function renderQuestion(){
         ${q.options.map((o,i)=>`<button class="opt" data-i="${i}">${String.fromCharCode(65+i)}) ${o}</button>`).join('')}
       </div>
       <div class="q-actions">
-        <button class="btn-ghost" id="hint-toggle">Show hint</button>
+        <button class="btn-ghost" id="hint-toggle">Answer</button>
         <button class="btn-primary" id="submit-btn" disabled style="opacity:0.5">Submit</button>
       </div>
       <div class="q-hint" id="q-hint">${q.hint}</div>
