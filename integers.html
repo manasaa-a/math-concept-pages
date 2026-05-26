@@ -1294,7 +1294,7 @@ function drawNL() {
       drawTempDot(ctx, toX(result), midY, 'var(--purple)', '=' + result, 8, false);
     }
     if (result !== null && (!Number.isInteger(result) || Math.abs(result) > range)) {
-      ctx.fillStyle = '#84807B'; ctx.font = '12px DM Sans,sans-serif'; ctx.textAlign = 'center';
+      ctx.fillStyle = '#84807B'; ctx.font = '12px Untitled Sans,system-ui,sans-serif'; ctx.textAlign = 'center';
       ctx.fillText('Result = ' + (Number.isInteger(result) ? result : result.toFixed(2)) + (Math.abs(result) > range ? '  (off scale)' : ''), W / 2, 20);
     }
   }
@@ -1312,7 +1312,7 @@ function drawTempDot(ctx, x, y, color, label, r, draggable) {
   ctx.fillStyle = color; ctx.fill();
   ctx.strokeStyle = '#fff'; ctx.lineWidth = 2.5; ctx.stroke();
   /* label */
-  ctx.fillStyle = color; ctx.font = 'bold 11px DM Sans,sans-serif'; ctx.textAlign = 'center';
+  ctx.fillStyle = color; ctx.font = 'bold 11px Untitled Sans,system-ui,sans-serif'; ctx.textAlign = 'center';
   ctx.fillText(label, x, y - r - 7);
 }
 
@@ -1326,7 +1326,7 @@ function drawArc(ctx, x1, y1, x2, y2, color, lift, label) {
   ctx.save(); ctx.translate(x2, y2); ctx.rotate(ang);
   ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(-10, -4); ctx.lineTo(-10, 4); ctx.closePath(); ctx.fill();
   ctx.restore();
-  ctx.fillStyle = color; ctx.font = 'bold 11px DM Sans,sans-serif'; ctx.textAlign = 'center';
+  ctx.fillStyle = color; ctx.font = 'bold 11px Untitled Sans,system-ui,sans-serif'; ctx.textAlign = 'center';
   ctx.fillText(label, cx, cy - 6);
 }
 
@@ -1382,7 +1382,7 @@ runSim();
 
 function markDot(ctx, x, y, color, label) {
   ctx.beginPath(); ctx.arc(x, y, 5, 0, Math.PI*2); ctx.fillStyle = color; ctx.fill();
-  ctx.fillStyle = color; ctx.font = 'bold 11px DM Sans,sans-serif'; ctx.textAlign = 'center';
+  ctx.fillStyle = color; ctx.font = 'bold 11px Untitled Sans,system-ui,sans-serif'; ctx.textAlign = 'center';
   ctx.fillText(label, x, y - 12);
 }
 
