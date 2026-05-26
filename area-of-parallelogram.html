@@ -70,7 +70,6 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 /* RW strip */
 .rw-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:24px 0}
 @media(max-width:600px){.rw-strip{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.para-sim-ratio{padding-bottom:0!important;height:180px!important}}
 .rw-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
 .rw-card .emoji{font-size:28px;margin-bottom:8px}
 .rw-card strong{display:block;font-size:14px;font-weight:500;margin-bottom:4px}
@@ -319,15 +318,50 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <p>The <strong>area of a parallelogram</strong> is the space enclosed within its four sides, measured in square units. A parallelogram has two pairs of <span class="term" data-tip="Lines that run in the same direction and never meet, no matter how far they extend">parallel sides</span> — opposite sides are equal in length.</p>
 
     <!-- GeoGebra simulation: parallelogram → rectangle -->
-    <div style="border-radius:12px;overflow:hidden;margin:16px 0;position:relative">
-      <div class="para-sim-ratio" style="position:relative;padding-bottom:60%;height:0;background:#c8d8e8;overflow:hidden">
-        <iframe src="https://www.geogebra.org/material/iframe/id/gkww2v3Y/width/800/height/480/border/c8d8e8/sdz/false/ctl/false/smb/false/stb/false"
-          style="position:absolute;top:-10%;left:0;width:100%;height:120%;border:0"
-          allowfullscreen loading="lazy"></iframe>
-        <!-- Slide Me! overlay covering GeoGebra Animate label -->
-        <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.92);border:1px solid #ccc;border-radius:20px;padding:4px 18px;font-size:14px;font-weight:600;color:#1c1917;font-family:'DM Sans',sans-serif;pointer-events:none;white-space:nowrap">Slide Me!</div>
-      </div>
-    </div>
+    <!-- GeoGebra via deployggb.js so we can rename Animate → Slide Me! -->
+    <div id="ggb-para" style="border-radius:12px;overflow:hidden;margin:16px 0;background:#c8d8e8"></div>
+    <script>
+    (function() {
+      function loadGGB() {
+        var container = document.getElementById('ggb-para');
+        if (!container || !window.GGBApplet) return;
+        var W = Math.min(container.offsetWidth || 700, 800);
+        var H = Math.round(W * 0.58);
+        container.style.height = H + 'px';
+        var app = new GGBApplet({
+          id: 'ggbPara',
+          material_id: 'gkww2v3Y',
+          width: W,
+          height: H,
+          showToolBar: false,
+          showAlgebraInput: false,
+          showMenuBar: false,
+          enableShiftDragZoom: false,
+          borderColor: '#c8d8e8',
+          appletOnLoad: function(api) {
+            try {
+              var n = api.getObjectNumber();
+              for (var i = 0; i < n; i++) {
+                var name = api.getObjectName(i);
+                var type = api.getObjectType(name);
+                if (type === 'boolean' || type === 'slider') {
+                  api.setCaption(name, 'Slide Me!');
+                  api.setLabelStyle(name, 3);
+                  api.setLabelVisible(name, true);
+                }
+              }
+            } catch(e) {}
+          }
+        }, true);
+        app.inject('ggb-para');
+      }
+      if (window.GGBApplet) { loadGGB(); return; }
+      var s = document.createElement('script');
+      s.src = 'https://cdn.geogebra.org/apps/deployggb.js';
+      s.onload = loadGGB;
+      document.head.appendChild(s);
+    })();
+    </script>
 
     <p>The key insight: slice the triangle off one slanted end and move it to the other side — you get a perfect rectangle with the same <span class="term" data-tip="Any one of the two parallel sides chosen as the reference for area calculations">base</span> and <span class="term" data-tip="The perpendicular distance between the base and the opposite parallel side — always measured at a right angle, never along the slant side">height</span>. That's why <strong>A = base × height</strong>, every time.</p>
 
