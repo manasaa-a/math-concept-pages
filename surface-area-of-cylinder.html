@@ -522,10 +522,10 @@ footer a:hover{color:var(--ink)}
     <h1>Surface Area of Cylinder</h1>
 
     <div class="callout">
-      By the end of this page, you'll know exactly how much material it takes to build any cylinder. Including the total surface area formula, the curved surface area derivation, and how to apply them to real problems.
+      By the end of this page, you'll know the surface area formulas for a cylinder — TSA, CSA, and open cylinder — and how to apply them.
     </div>
 
-    <p class="hook">When you peel the label off a soup can, you're holding the curved surface area in your hands.</p>
+    <p class="hook">A cylinder has two circular bases and one curved surface — together, they give us the total surface area.</p>
 
     <div class="video-wrap">
       <iframe src="https://www.youtube-nocookie.com/embed/-YRruTT1RhQ" title="Surface Area of Cylinder video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -534,29 +534,6 @@ footer a:hover{color:var(--ink)}
     <div class="inline-cta">
       <p>Want to go deeper? Get personalised 1:1 math tutoring with a Cuemath expert.</p>
       <button class="btn-white" onclick="openModal()">Book a free class →</button>
-    </div>
-
-    <div class="rw-grid">
-      <div class="rw-card">
-        <span class="emoji">🏭</span>
-        <span class="label">Paint Can Manufacturing</span>
-        <span class="desc">A tin manufacturer needs exactly 2πr(r+h) cm² of sheet metal to stamp one paint tin — getting this wrong wastes thousands of units.</span>
-      </div>
-      <div class="rw-card">
-        <span class="emoji">🛢️</span>
-        <span class="label">Oil Storage Tanks</span>
-        <span class="desc">A cylindrical fuel tank of radius 4m and height 10m needs 351 m² of steel plating — engineers compute TSA to spec every weld.</span>
-      </div>
-      <div class="rw-card">
-        <span class="emoji">🔧</span>
-        <span class="label">Pipe Insulation</span>
-        <span class="desc">Lagging a 3m pipe of radius 8cm takes exactly 2π(0.08)(3) ≈ 1.51 m² of insulation foam — the CSA formula, applied directly.</span>
-      </div>
-      <div class="rw-card">
-        <span class="emoji">💊</span>
-        <span class="label">Pharmaceutical Packaging</span>
-        <span class="desc">A tablet bottle's label area is its CSA — brand designers use 2πrh to know exactly how large to print a design.</span>
-      </div>
     </div>
 
     <h2 id="what-is">What is the Surface Area of a Cylinder?</h2>
@@ -594,24 +571,7 @@ footer a:hover{color:var(--ink)}
       <div class="body">
         <div class="formula">CSA = 2πrh</div>
         <p><strong style="font-weight:500;color:var(--ink)">Derivation.</strong> Imagine cutting the cylinder vertically along its height and unrolling it. The curved face becomes a rectangle. Its height is just h, and its width equals the circumference of the base — that is, 2πr. So the area of that rectangle is 2πr × h.</p>
-        <div class="diagram" style="background:var(--bg);padding:16px;margin:14px 0">
-          <svg viewBox="0 0 380 160" width="340" height="140" aria-label="Cylinder unrolling to rectangle">
-            <!-- cylinder -->
-            <ellipse cx="60" cy="35" rx="32" ry="10" fill="#fafaf9" stroke="#1c1917" stroke-width="1.5"/>
-            <path d="M 28 35 L 28 110 A 32 10 0 0 0 92 110 L 92 35" fill="#fef3c7" stroke="#1c1917" stroke-width="1.5"/>
-            <path d="M 28 110 A 32 10 0 0 0 92 110" fill="none" stroke="#1c1917" stroke-width="1.5"/>
-            <!-- arrow -->
-            <line x1="115" y1="75" x2="175" y2="75" stroke="#78716c" stroke-width="1.5"/>
-            <polygon points="175,75 168,71 168,79" fill="#78716c"/>
-            <text x="125" y="68" font-family="DM Sans" font-size="11" fill="#78716c">unroll</text>
-            <!-- rectangle -->
-            <rect x="195" y="35" width="160" height="75" fill="#fef3c7" stroke="#1c1917" stroke-width="1.5"/>
-            <text x="265" y="28" font-family="DM Sans" font-size="12" fill="#dc2626" font-weight="500" text-anchor="middle">width = 2πr</text>
-            <text x="370" y="76" font-family="DM Sans" font-size="12" fill="#16a34a" font-weight="500">h</text>
-            <line x1="362" y1="35" x2="362" y2="110" stroke="#16a34a" stroke-width="1.2"/>
-          </svg>
-          <div class="caption">Unrolling the curved face gives a rectangle of width 2πr and height h</div>
-        </div>
+
         <div class="worked">
           <h5>Worked example</h5>
           <p>r = 7 cm, h = 14 cm. Using π = 22/7:</p>
@@ -625,6 +585,7 @@ footer a:hover{color:var(--ink)}
       <summary>Total Surface Area of Cylinder (TSA)</summary>
       <div class="body">
         <div class="formula">TSA = 2πr² + 2πrh = 2πr(r + h)</div>
+        <img src="cylinder-tsa.png" alt="Surface area of cylinder diagram showing two circles and one rectangle" style="max-width:420px;width:100%;display:block;margin:14px auto;border-radius:8px">
         <p>The total surface is two circular bases (area πr² each, so 2πr² together) plus the curved face (2πrh). Factor out 2πr and you get the compact form 2πr(r + h).</p>
         <div class="worked">
           <h5>Worked example</h5>
@@ -679,12 +640,26 @@ footer a:hover{color:var(--ink)}
       <div id="q-container"></div>
     </div>
 
-    <div class="cta-band">
-      <img src="cta-student.png" alt="Cuemath 1-on-1 class">
-      <div class="cta-content">
-        <h3>Want feedback on your problem-solving?</h3>
-        <p>A Cuemath tutor will look at your reasoning, not just your answer — and show you smarter ways to approach JEE mensuration problems.</p>
-        <button class="btn-white" onclick="openModal()">Book a free class →</button>
+    <div class="rw-grid">
+      <div class="rw-card">
+        <span class="emoji">🏭</span>
+        <span class="label">Paint Can Manufacturing</span>
+        <span class="desc">A tin manufacturer needs exactly 2πr(r+h) cm² of sheet metal to stamp one paint tin — getting this wrong wastes thousands of units.</span>
+      </div>
+      <div class="rw-card">
+        <span class="emoji">🛢️</span>
+        <span class="label">Oil Storage Tanks</span>
+        <span class="desc">A cylindrical fuel tank of radius 4m and height 10m needs 351 m² of steel plating — engineers compute TSA to spec every weld.</span>
+      </div>
+      <div class="rw-card">
+        <span class="emoji">🔧</span>
+        <span class="label">Pipe Insulation</span>
+        <span class="desc">Lagging a 3m pipe of radius 8cm takes exactly 2π(0.08)(3) ≈ 1.51 m² of insulation foam — the CSA formula, applied directly.</span>
+      </div>
+      <div class="rw-card">
+        <span class="emoji">💊</span>
+        <span class="label">Pharmaceutical Packaging</span>
+        <span class="desc">A tablet bottle's label area is its CSA — brand designers use 2πrh to know exactly how large to print a design.</span>
       </div>
     </div>
 
