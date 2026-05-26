@@ -532,7 +532,7 @@ footer a:hover{color:var(--ink)}
     </div>
 
     <div class="inline-cta">
-      <p>Want a tutor to walk you through cylinder surface area, one problem at a time?</p>
+      <p>Want to go deeper? Get personalised 1:1 math tutoring with a Cuemath expert.</p>
       <button class="btn-white" onclick="openModal()">Book a free class →</button>
     </div>
 
@@ -559,7 +559,7 @@ footer a:hover{color:var(--ink)}
       </div>
     </div>
 
-    <h2 id="what-is">What is Surface Area of a Cylinder?</h2>
+    <h2 id="what-is">What is the Surface Area of a Cylinder?</h2>
 
     <div class="think">
       <div class="label">Think about it</div>
@@ -567,25 +567,7 @@ footer a:hover{color:var(--ink)}
     </div>
 
     <div class="diagram">
-      <svg viewBox="0 0 360 240" width="320" height="220" aria-label="Cylinder with radius r and height h">
-        <!-- top ellipse -->
-        <ellipse cx="180" cy="50" rx="80" ry="22" fill="#fafaf9" stroke="#1c1917" stroke-width="2"/>
-        <!-- body -->
-        <path d="M 100 50 L 100 180 A 80 22 0 0 0 260 180 L 260 50" fill="#fef3c7" stroke="#1c1917" stroke-width="2"/>
-        <!-- bottom ellipse (visible front arc only) -->
-        <path d="M 100 180 A 80 22 0 0 0 260 180" fill="none" stroke="#1c1917" stroke-width="2"/>
-        <path d="M 100 180 A 80 22 0 0 1 260 180" fill="none" stroke="#1c1917" stroke-width="1" stroke-dasharray="4 3"/>
-        <!-- radius -->
-        <line x1="180" y1="50" x2="260" y2="50" stroke="#dc2626" stroke-width="1.5"/>
-        <circle cx="180" cy="50" r="2.5" fill="#dc2626"/>
-        <text x="215" y="44" font-family="DM Sans" font-size="14" fill="#dc2626" font-weight="500">r</text>
-        <!-- height -->
-        <line x1="285" y1="50" x2="285" y2="180" stroke="#16a34a" stroke-width="1.5"/>
-        <line x1="280" y1="50" x2="290" y2="50" stroke="#16a34a" stroke-width="1.5"/>
-        <line x1="280" y1="180" x2="290" y2="180" stroke="#16a34a" stroke-width="1.5"/>
-        <text x="295" y="120" font-family="DM Sans" font-size="14" fill="#16a34a" font-weight="500">h</text>
-      </svg>
-      <div class="caption">A right circular cylinder with radius r and height h</div>
+      <img src="cylinder-parts.png" alt="Parts of a Cylinder — showing Base, Curved Surface, radius and Height" style="max-width:340px;width:100%;display:block;margin:0 auto;border-radius:8px">
     </div>
 
     <p>The surface area of a cylinder refers to the total area that the cylinder's curved surface and circular bases cover. In other words: it is the total area covered by its two circular bases and its curved lateral surface.</p>
@@ -604,11 +586,11 @@ footer a:hover{color:var(--ink)}
       <div id="hint1" class="hint-text">The label wraps around the side only, not the tops. So it's the curved surface area (CSA).</div>
     </div>
 
-    <h2 id="formulas">Formulas</h2>
+    <h2 id="formulas">Surface Area of a Cylinder Formula</h2>
     <p>There are three formulas to know for cylinders — pick the one that matches what you're measuring.</p>
 
     <details class="acc" open>
-      <summary>Curved Surface Area (CSA)</summary>
+      <summary>Curved Surface Area of Cylinder (CSA)</summary>
       <div class="body">
         <div class="formula">CSA = 2πrh</div>
         <p><strong style="font-weight:500;color:var(--ink)">Derivation.</strong> Imagine cutting the cylinder vertically along its height and unrolling it. The curved face becomes a rectangle. Its height is just h, and its width equals the circumference of the base — that is, 2πr. So the area of that rectangle is 2πr × h.</p>
@@ -640,7 +622,7 @@ footer a:hover{color:var(--ink)}
     </details>
 
     <details class="acc">
-      <summary>Total Surface Area (TSA)</summary>
+      <summary>Total Surface Area of Cylinder (TSA)</summary>
       <div class="body">
         <div class="formula">TSA = 2πr² + 2πrh = 2πr(r + h)</div>
         <p>The total surface is two circular bases (area πr² each, so 2πr² together) plus the curved face (2πrh). Factor out 2πr and you get the compact form 2πr(r + h).</p>
@@ -654,7 +636,7 @@ footer a:hover{color:var(--ink)}
     </details>
 
     <details class="acc">
-      <summary>Open Cylinder (no top)</summary>
+      <summary>Open Cylinder Formula</summary>
       <div class="body">
         <div class="formula">TSA<sub>open</sub> = πr² + 2πrh = πr(r + 2h)</div>
         <p>Some cylinders have only one base — think open tanks, bowls, or buckets. The formula keeps the curved face (2πrh) but counts the base only once (πr²).</p>
@@ -667,55 +649,22 @@ footer a:hover{color:var(--ink)}
       </div>
     </details>
 
-    <h2 id="simulation">Interactive Simulation</h2>
-    <p style="font-size:15px;color:var(--ink2);margin-bottom:14px">Drag the sliders — watch the cylinder unroll into its net and see the surface areas update live.</p>
-
-    <div class="sim">
-      <div class="sim-controls">
-        <div class="sim-row">
-          <label for="sim-r">Radius (r)</label>
-          <input type="range" id="sim-r" min="1" max="15" step="0.5" value="7">
-          <span class="val" id="val-r">7 cm</span>
-        </div>
-        <div class="sim-row">
-          <label for="sim-h">Height (h)</label>
-          <input type="range" id="sim-h" min="1" max="20" step="0.5" value="14">
-          <span class="val" id="val-h">14 cm</span>
-        </div>
-      </div>
-
-      <div class="sim-viz">
-        <div>
-          <h4>Cylinder</h4>
-          <svg id="sim-cyl" viewBox="0 0 220 240" width="200" height="220" aria-label="Cylinder schematic"></svg>
-        </div>
-        <div>
-          <h4>Unrolled net</h4>
-          <svg id="sim-net" viewBox="0 0 320 240" width="300" height="220" aria-label="Cylinder net"></svg>
-        </div>
-      </div>
-
-      <div class="sim-readouts">
-        <div class="read">
-          <div class="k">CSA = 2πrh</div>
-          <div class="v" id="csa-val">615.8 cm²</div>
-        </div>
-        <div class="read">
-          <div class="k">TSA = 2πr(r+h)</div>
-          <div class="v" id="tsa-val">923.6 cm²</div>
-        </div>
-      </div>
-
-      <div class="sim-try">
-        <strong>Try this:</strong> Set r = 7 and h = 14 — why does CSA come out to exactly 616 cm²? (Hint: 2 × 22/7 × 7 × 14)
+    <h2 id="simulation">Surface Area of a Cylinder Examples</h2>
+    <p style="font-size:15px;color:var(--ink2);margin-bottom:14px">Adjust the radius and height — watch how the cylinder's surface areas change live.</p>
+    <div style="border-radius:12px;overflow:hidden;margin:16px 0;background:#c8d8e8">
+      <div style="padding:8px 16px 4px;font-size:14px;font-weight:500;color:#1c1917;font-family:'DM Sans',sans-serif">Slide Me!</div>
+      <div style="position:relative;padding-bottom:62%;height:0;background:#c8d8e8">
+        <iframe src="https://www.geogebra.org/material/iframe/id/rCxXxFhE/width/800/height/496/border/c8d8e8/sdz/false/ctl/false/smb/false/stb/false"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
+          allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
 
     <div class="cta-band">
       <img src="cta-student.png" alt="Cuemath 1-on-1 class">
       <div class="cta-content">
-        <h3>Struggling with 3D shapes?</h3>
-        <p>Get a Cuemath tutor to walk you through cylinders, cones, and spheres — one problem at a time.</p>
+        <h3>Want 1:1 guidance from an expert?</h3>
+        <p>Work through problems live with a Cuemath tutor — personalised to how you learn, at your own pace.</p>
         <button class="btn-white" onclick="openModal()">Book a free class →</button>
       </div>
     </div>
@@ -981,87 +930,6 @@ function submitForm(){ goStep('done'); }
 document.getElementById('modal').addEventListener('click', function(e){
   if(e.target === this) closeModal();
 });
-
-// ============ SIMULATION ============
-(function(){
-  const rIn = document.getElementById('sim-r');
-  const hIn = document.getElementById('sim-h');
-  const rVal = document.getElementById('val-r');
-  const hVal = document.getElementById('val-h');
-  const csaOut = document.getElementById('csa-val');
-  const tsaOut = document.getElementById('tsa-val');
-  const cyl = document.getElementById('sim-cyl');
-  const net = document.getElementById('sim-net');
-
-  function draw(){
-    const r = parseFloat(rIn.value);
-    const h = parseFloat(hIn.value);
-    rVal.textContent = r + ' cm';
-    hVal.textContent = h + ' cm';
-
-    const PI = Math.PI;
-    const csa = 2 * PI * r * h;
-    const tsa = 2 * PI * r * (r + h);
-    csaOut.textContent = csa.toFixed(1) + ' cm²';
-    tsaOut.textContent = tsa.toFixed(1) + ' cm²';
-
-    // Cylinder schematic (left)
-    // viewBox 220 x 240. Scale r and h to fit.
-    const cylMaxR = 60;
-    const cylMaxH = 160;
-    const scaleR = (r / 15) * cylMaxR;
-    const scaleH = (h / 20) * cylMaxH;
-    const cx = 110;
-    const topY = 30 + (cylMaxH - scaleH) / 2;
-    const botY = topY + scaleH;
-    const ery = Math.max(6, scaleR * 0.25);
-
-    cyl.innerHTML = `
-      <ellipse cx="${cx}" cy="${topY}" rx="${scaleR}" ry="${ery}" fill="#fafaf9" stroke="#1c1917" stroke-width="2"/>
-      <path d="M ${cx-scaleR} ${topY} L ${cx-scaleR} ${botY} A ${scaleR} ${ery} 0 0 0 ${cx+scaleR} ${botY} L ${cx+scaleR} ${topY}" fill="#fef3c7" stroke="#1c1917" stroke-width="2"/>
-      <path d="M ${cx-scaleR} ${botY} A ${scaleR} ${ery} 0 0 0 ${cx+scaleR} ${botY}" fill="none" stroke="#1c1917" stroke-width="2"/>
-      <path d="M ${cx-scaleR} ${botY} A ${scaleR} ${ery} 0 0 1 ${cx+scaleR} ${botY}" fill="none" stroke="#1c1917" stroke-width="1" stroke-dasharray="4 3"/>
-      <line x1="${cx}" y1="${topY}" x2="${cx+scaleR}" y2="${topY}" stroke="#dc2626" stroke-width="1.5"/>
-      <circle cx="${cx}" cy="${topY}" r="2.5" fill="#dc2626"/>
-      <text x="${cx + scaleR/2}" y="${topY - 6}" font-family="DM Sans" font-size="13" fill="#dc2626" font-weight="500" text-anchor="middle">r</text>
-      <line x1="${cx+scaleR+18}" y1="${topY}" x2="${cx+scaleR+18}" y2="${botY}" stroke="#16a34a" stroke-width="1.5"/>
-      <line x1="${cx+scaleR+13}" y1="${topY}" x2="${cx+scaleR+23}" y2="${topY}" stroke="#16a34a" stroke-width="1.5"/>
-      <line x1="${cx+scaleR+13}" y1="${botY}" x2="${cx+scaleR+23}" y2="${botY}" stroke="#16a34a" stroke-width="1.5"/>
-      <text x="${cx+scaleR+28}" y="${(topY+botY)/2+5}" font-family="DM Sans" font-size="13" fill="#16a34a" font-weight="500">h</text>
-    `;
-
-    // Net schematic (right) - rect of width proportional to 2πr, height to h, with circles top/bottom
-    // viewBox 320 x 240
-    const circleMaxR = 26;
-    const circleR = (r / 15) * circleMaxR;
-    const rectMaxW = 280;
-    const rectMaxH = 90;
-    const rectW = Math.min(rectMaxW, (2 * PI * r / (2 * PI * 15)) * rectMaxW);
-    const rectH = (h / 20) * rectMaxH;
-    const totalH = circleR * 2 + rectH + circleR * 2 + 16;
-    let yOffset = (240 - totalH) / 2;
-    const rectX = (320 - rectW) / 2;
-    const rectY = yOffset + circleR * 2 + 8;
-    const circleTopCy = yOffset + circleR;
-    const circleBotCy = rectY + rectH + 8 + circleR;
-    const circleCx = 160;
-
-    net.innerHTML = `
-      <circle cx="${circleCx}" cy="${circleTopCy}" r="${circleR}" fill="#fef3c7" stroke="#1c1917" stroke-width="1.5"/>
-      <text x="${circleCx}" y="${circleTopCy + 3}" font-family="DM Sans" font-size="10" fill="#1c1917" text-anchor="middle">πr²</text>
-      <rect x="${rectX}" y="${rectY}" width="${rectW}" height="${rectH}" fill="#fef3c7" stroke="#1c1917" stroke-width="1.5"/>
-      <text x="${rectX + rectW/2}" y="${rectY + rectH/2 + 4}" font-family="DM Sans" font-size="12" fill="#1c1917" text-anchor="middle" font-weight="500">CSA</text>
-      <text x="${rectX + rectW/2}" y="${rectY - 4}" font-family="DM Sans" font-size="10" fill="#dc2626" text-anchor="middle">2πr</text>
-      <text x="${rectX + rectW + 8}" y="${rectY + rectH/2 + 4}" font-family="DM Sans" font-size="10" fill="#16a34a">h</text>
-      <circle cx="${circleCx}" cy="${circleBotCy}" r="${circleR}" fill="#fef3c7" stroke="#1c1917" stroke-width="1.5"/>
-      <text x="${circleCx}" y="${circleBotCy + 3}" font-family="DM Sans" font-size="10" fill="#1c1917" text-anchor="middle">πr²</text>
-    `;
-  }
-
-  rIn.addEventListener('input', draw);
-  hIn.addEventListener('input', draw);
-  draw();
-})();
 
 // ============ PRACTICE ============
 const QUESTIONS = [
