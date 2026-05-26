@@ -319,13 +319,14 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <p>The <strong>area of a parallelogram</strong> is the space enclosed within its four sides, measured in square units. A parallelogram has two pairs of <span class="term" data-tip="Lines that run in the same direction and never meet, no matter how far they extend">parallel sides</span> — opposite sides are equal in length.</p>
 
     <!-- GeoGebra simulation: parallelogram → rectangle -->
-    <div style="border-radius:12px;overflow:hidden;margin:16px 0">
-      <div class="para-sim-ratio" style="position:relative;padding-bottom:56%;height:0;background:#c8d8e8">
-        <iframe src="https://www.geogebra.org/material/iframe/id/gkww2v3Y/width/800/height/448/border/c8d8e8/sdz/false/ctl/false/smb/false/stb/false"
-          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
+    <div style="border-radius:12px;overflow:hidden;margin:16px 0;position:relative">
+      <div class="para-sim-ratio" style="position:relative;padding-bottom:60%;height:0;background:#c8d8e8;overflow:hidden">
+        <iframe src="https://www.geogebra.org/material/iframe/id/gkww2v3Y/width/800/height/480/border/c8d8e8/sdz/false/ctl/false/smb/false/stb/false"
+          style="position:absolute;top:-10%;left:0;width:100%;height:120%;border:0"
           allowfullscreen loading="lazy"></iframe>
+        <!-- Slide Me! overlay covering GeoGebra Animate label -->
+        <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.92);border:1px solid #ccc;border-radius:20px;padding:4px 18px;font-size:14px;font-weight:600;color:#1c1917;font-family:'DM Sans',sans-serif;pointer-events:none;white-space:nowrap">Slide Me!</div>
       </div>
-      <div style="padding:8px 14px;font-size:14px;color:var(--ink2);text-align:center;font-weight:500;background:var(--surface);font-family:'DM Sans',sans-serif">Slide Me — drag the slider inside to rearrange the parallelogram into a rectangle</div>
     </div>
 
     <p>The key insight: slice the triangle off one slanted end and move it to the other side — you get a perfect rectangle with the same <span class="term" data-tip="Any one of the two parallel sides chosen as the reference for area calculations">base</span> and <span class="term" data-tip="The perpendicular distance between the base and the opposite parallel side — always measured at a right angle, never along the slant side">height</span>. That's why <strong>A = base × height</strong>, every time.</p>
