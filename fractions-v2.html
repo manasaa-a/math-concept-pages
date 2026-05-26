@@ -27,7 +27,7 @@
     --ink2: #44403c;
     --muted: #78716c;
     --border: #e7e5e4;
-    --bg: #fafaf9;
+    --bg: #FAF8F5;
     --surface: #ffffff;
     --yellow: #f59e0b;
     --yellow-light: #fef3c7;
@@ -35,7 +35,7 @@
     --green-light: #dcfce7;
     --red: #dc2626;
     --red-light: #fee2e2;
-    --crust: #92400e;
+    --crust: #7E4800;
     --crust-empty: #e2c98a;
   }
 
@@ -236,7 +236,7 @@
   /* ---------- INSIGHT BOX (loop closer) ---------- */
   .insight {
     background: var(--yellow-light);
-    border: 1px solid #fcd34d;
+    border: 1px solid #F6BE7C;
     border-radius: 12px;
     padding: 24px 28px;
     margin: 32px 0 8px;
@@ -868,9 +868,9 @@
     const defs = document.createElementNS(ns, 'defs');
     defs.innerHTML = `
       <radialGradient id="${defId}-sauce" cx="50%" cy="50%" r="65%">
-        <stop offset="0%" stop-color="#fde68a"/>
+        <stop offset="0%" stop-color="#FAD6AC"/>
         <stop offset="55%" stop-color="#f59e0b"/>
-        <stop offset="100%" stop-color="#d97706"/>
+        <stop offset="100%" stop-color="#CE7E12"/>
       </radialGradient>
     `;
     svgEl.appendChild(defs);
@@ -902,8 +902,8 @@
          L ${iA1x} ${iA1y}
          A ${rimInner} ${rimInner} 0 ${largeArc} 0 ${iA0x} ${iA0y}
          Z`);
-      crust.setAttribute('fill', isFilled ? '#d97706' : '#e2c98a');
-      crust.setAttribute('stroke', '#92400e');
+      crust.setAttribute('fill', isFilled ? '#CE7E12' : '#e2c98a');
+      crust.setAttribute('stroke', '#7E4800');
       crust.setAttribute('stroke-width', sw * 0.5);
       svgEl.appendChild(crust);
 
@@ -943,7 +943,7 @@
         div.setAttribute('y1', cy);
         div.setAttribute('x2', oA0x);
         div.setAttribute('y2', oA0y);
-        div.setAttribute('stroke', '#92400e');
+        div.setAttribute('stroke', '#7E4800');
         div.setAttribute('stroke-width', sw * 0.4);
         svgEl.appendChild(div);
       }
@@ -969,7 +969,7 @@
     border.setAttribute('cy', cy);
     border.setAttribute('r', rimOuter);
     border.setAttribute('fill', 'none');
-    border.setAttribute('stroke', '#92400e');
+    border.setAttribute('stroke', '#7E4800');
     border.setAttribute('stroke-width', sw * 0.6);
     svgEl.appendChild(border);
   }

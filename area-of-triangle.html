@@ -93,15 +93,15 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .ex-lbl{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--green);margin-bottom:4px}
 /* Right-angle triangle simulation */
 .tri-sim{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:16px 0}
-.tri-sim svg{display:block;width:100%;touch-action:none;user-select:none;background:#c8d8e8}
-.tri-slide-row{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#c8d8e8}
+.tri-sim svg{display:block;width:100%;touch-action:none;user-select:none;background:#C1DCFF}
+.tri-slide-row{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#C1DCFF}
 .tri-slide-lbl{font-size:13px;font-weight:500;color:var(--ink);width:68px;flex-shrink:0}
 .tri-slide-row input[type=range]{flex:1;max-width:220px;accent-color:var(--ink);cursor:pointer}
-.tri-reset-btn{background:#f0f0f0;border:1px solid #aaa;border-radius:4px;padding:4px 12px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;letter-spacing:0;line-height:1.5}
+.tri-reset-btn{background:#FAF8F5;border:1px solid #aaa;border-radius:4px;padding:4px 12px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;letter-spacing:0;line-height:1.5}
 .tri-stat{padding:8px 14px;font-size:14px;color:var(--ink2);border-top:1px solid var(--border);text-align:center;font-weight:500}
 /* Simulation */
 .sim-container{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0}
-.sim-canvas-wrap{width:100%;border-radius:10px;overflow:hidden;background:#f8fafc;border:1px solid var(--border);cursor:crosshair;touch-action:none}
+.sim-canvas-wrap{width:100%;border-radius:10px;overflow:hidden;background:#FAF8F5;border:1px solid var(--border);cursor:crosshair;touch-action:none}
 .sim-canvas-wrap canvas{display:block;width:100%}
 .sim-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
 @media(max-width:480px){.sim-stats{grid-template-columns:1fr 1fr}}
@@ -148,8 +148,8 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .hint-btn:hover{text-decoration:underline}
 .hint-text{font-size:14px;color:var(--ink2);background:var(--yellow-light);padding:10px 14px;border-radius:6px;margin-bottom:12px;display:none}
 .q-feedback{display:none;font-size:14px;padding:12px 16px;border-radius:8px;margin-top:12px}
-.q-feedback.correct{background:var(--green-light);color:#14532d}
-.q-feedback.wrong{background:var(--red-light);color:#7f1d1d}
+.q-feedback.correct{background:var(--green-light);color:#1C7C48}
+.q-feedback.wrong{background:var(--red-light);color:#842D34}
 .q-next{margin-top:16px;display:none}
 .completion-screen{display:none;text-align:center;padding:32px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
 .btn-secondary{background:transparent;border:2px solid var(--border);color:var(--ink2);padding:12px 22px;border-radius:8px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;font-weight:500;cursor:pointer;transition:border-color .15s}
@@ -169,7 +169,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .faq-answer{display:none;padding-bottom:16px;font-size:15px;color:var(--ink2)}
 .faq-answer.open{display:block}
 /* Worksheet */
-.ws-card{background:linear-gradient(135deg,var(--yellow-light),#fde68a);border-radius:12px;padding:24px;display:flex;align-items:center;gap:20px;margin:16px 0}
+.ws-card{background:linear-gradient(135deg,var(--yellow-light),#FAD6AC);border-radius:12px;padding:24px;display:flex;align-items:center;gap:20px;margin:16px 0}
 .ws-icon{font-size:40px;flex-shrink:0}
 .ws-btn{display:inline-block;background:var(--ink);color:#fff;padding:10px 20px;border-radius:6px;font-size:14px;font-weight:500;margin-top:10px;text-decoration:none}
 .ws-btn:hover{background:var(--ink2);text-decoration:none}
@@ -186,7 +186,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .video-tag{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px}
 .video-title{font-size:14px;font-weight:500;color:var(--ink);line-height:1.4}
 .tag-concept{background:var(--blue-light);color:var(--blue);padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
-.tag-puzzle{background:var(--yellow-light);color:#92400e;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-puzzle{background:var(--yellow-light);color:#7E4800;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
 .tag-olympiad{background:var(--purple-light);color:var(--purple);padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
 /* Related concepts */
 .concepts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
@@ -194,7 +194,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .concept-chip{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink2);text-decoration:none;text-align:center;display:block}
 .concept-chip:hover{border-color:var(--blue);color:var(--blue);text-decoration:none}
 /* Video embed */
-.video-embed{position:relative;width:100%;padding-bottom:56.25%;background:#0f172a;border-radius:12px;overflow:hidden;margin:20px 0}
+.video-embed{position:relative;width:100%;padding-bottom:56.25%;background:#292827;border-radius:12px;overflow:hidden;margin:20px 0}
 .video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
 /* Modal */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;align-items:center;justify-content:center;padding:20px}
@@ -337,7 +337,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
     <!-- GeoGebra: parallelogram → triangle -->
     <div style="border-radius:12px;overflow:hidden;margin:16px 0">
-      <div style="position:relative;padding-bottom:66.67%;height:0;background:#c8d8e8">
+      <div style="position:relative;padding-bottom:66.67%;height:0;background:#C1DCFF">
         <iframe src="https://www.geogebra.org/material/iframe/id/bdrjara5/width/780/height/520/border/c8d8e8/sfsb/false/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/true"
           style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
           allowfullscreen loading="lazy"></iframe>
@@ -366,7 +366,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>A = ½ × base × height</div>
-          <svg viewBox="0 0 260 130" style="width:100%;max-width:260px;display:block;margin:10px 0;background:#f8fafc;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 260 130" style="width:100%;max-width:260px;display:block;margin:10px 0;background:#FAF8F5;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
             <polygon points="40,110 220,110 130,20" fill="var(--blue-light)" stroke="var(--blue)" stroke-width="2"/>
             <line x1="130" y1="20" x2="130" y2="110" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="5,3"/>
             <rect x="130" y="101" width="9" height="9" fill="none" stroke="var(--green)" stroke-width="1.5"/>
@@ -399,12 +399,12 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>s = (a+b+c)/2 &nbsp;|&nbsp; A = √[s(s−a)(s−b)(s−c)]</div>
-          <svg viewBox="0 0 260 130" style="width:100%;max-width:260px;display:block;margin:10px 0;background:#f8fafc;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="30,110 230,110 100,25" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+          <svg viewBox="0 0 260 130" style="width:100%;max-width:260px;display:block;margin:10px 0;background:#FAF8F5;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="30,110 230,110 100,25" fill="#FAF1E6" stroke="#CE7E12" stroke-width="2"/>
             <text x="125" y="123" font-size="12" fill="var(--muted)" font-family="Untitled Sans" text-anchor="middle">a</text>
             <text x="58" y="72" font-size="12" fill="var(--muted)" font-family="Untitled Sans" text-anchor="middle">b</text>
             <text x="178" y="72" font-size="12" fill="var(--muted)" font-family="Untitled Sans" text-anchor="middle">c</text>
-            <text x="125" y="68" font-size="11" fill="#92400e" font-family="Untitled Sans" text-anchor="middle">all 3 sides known</text>
+            <text x="125" y="68" font-size="11" fill="#7E4800" font-family="Untitled Sans" text-anchor="middle">all 3 sides known</text>
           </svg>
           <ul class="step-list">
             <li><p>Find the semi-perimeter: s = (a + b + c) ÷ 2.</p></li>
@@ -425,7 +425,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>A = (√3 / 4) × a²</div>
-          <svg viewBox="0 0 260 130" style="width:100%;max-width:260px;display:block;margin:10px 0;background:#f8fafc;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 260 130" style="width:100%;max-width:260px;display:block;margin:10px 0;background:#FAF8F5;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
             <polygon points="130,15 30,115 230,115" fill="var(--green-light)" stroke="var(--green)" stroke-width="2"/>
             <line x1="130" y1="15" x2="130" y2="115" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="5,3"/>
             <!-- equal tick marks on all 3 sides -->
@@ -456,12 +456,12 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>A = ¼ × b × √(4a² − b²)</div>
-          <svg viewBox="0 0 260 130" style="width:100%;max-width:260px;display:block;margin:10px 0;background:#f8fafc;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="130,15 50,115 210,115" fill="#fce7f3" stroke="#db2777" stroke-width="2"/>
-            <line x1="130" y1="15" x2="130" y2="115" stroke="#db2777" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <svg viewBox="0 0 260 130" style="width:100%;max-width:260px;display:block;margin:10px 0;background:#FAF8F5;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="130,15 50,115 210,115" fill="#FAEDFF" stroke="#C26FE2" stroke-width="2"/>
+            <line x1="130" y1="15" x2="130" y2="115" stroke="#C26FE2" stroke-width="1.5" stroke-dasharray="5,3"/>
             <!-- equal tick marks on the two equal sides only -->
-            <line x1="95" y1="69" x2="85" y2="61" stroke="#db2777" stroke-width="2"/>
-            <line x1="175" y1="61" x2="165" y2="69" stroke="#db2777" stroke-width="2"/>
+            <line x1="95" y1="69" x2="85" y2="61" stroke="#C26FE2" stroke-width="2"/>
+            <line x1="175" y1="61" x2="165" y2="69" stroke="#C26FE2" stroke-width="2"/>
             <text x="125" y="125" font-size="12" fill="var(--ink2)" font-family="Untitled Sans" text-anchor="middle">b (base)</text>
             <text x="72" y="72" font-size="12" fill="var(--ink2)" font-family="Untitled Sans" text-anchor="middle">a</text>
             <text x="182" y="72" font-size="12" fill="var(--ink2)" font-family="Untitled Sans" text-anchor="middle">a</text>
@@ -499,7 +499,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <div class="question-card active" id="q1">
       <div class="q-number">Question 1 of 5</div>
       <div class="q-text">What is the area of this triangle?</div>
-      <svg viewBox="0 0 280 160" style="width:100%;max-width:280px;display:block;margin:0 0 16px;background:#f8fafc;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 280 160" style="width:100%;max-width:280px;display:block;margin:0 0 16px;background:#FAF8F5;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
         <polygon points="50,130 230,130 140,40" fill="var(--blue-light)" stroke="var(--blue)" stroke-width="2"/>
         <line x1="140" y1="40" x2="140" y2="130" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="5,3"/>
         <rect x="140" y="121" width="9" height="9" fill="none" stroke="var(--green)" stroke-width="1.5"/>
@@ -862,11 +862,11 @@ function triDraw() {
   var s='';
 
   // Cream triangle — rotated 180° around hypotenuse midpoint
-  s+='<polygon points="'+pts+'" fill="#fffde7" stroke="var(--ink)" stroke-width="2"'
+  s+='<polygon points="'+pts+'" fill="#FAF1E6" stroke="var(--ink)" stroke-width="2"'
    +' transform="rotate('+theta.toFixed(1)+','+Mx.toFixed(1)+','+My.toFixed(1)+')"/>';
 
   // Original pink triangle
-  s+='<polygon points="'+pts+'" fill="#e879a8" stroke="var(--ink)" stroke-width="2"/>';
+  s+='<polygon points="'+pts+'" fill="#D386F7" stroke="var(--ink)" stroke-width="2"/>';
 
   // Dotted diagonal (hypotenuse)
   s+='<line x1="'+Ax+'" y1="'+Cy+'" x2="'+Bx+'" y2="'+Ay+'"'

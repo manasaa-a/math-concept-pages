@@ -122,8 +122,8 @@
   --green-light:  var(--success-100);
   --red:          var(--error-700);
   --red-light:    var(--error-100);
-  --blue:         var(--info-600);
-  --blue-light:   var(--info-100);
+  --blue:         var(--gold-700);
+  --blue-light:   var(--gold-100);
   --purple:       var(--purple-700);
   --purple-light: var(--purple-100);
   --orange:       var(--warning-700);

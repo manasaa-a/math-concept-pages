@@ -25,11 +25,11 @@
 <style>
   :root {
     --ink: #1c1917; --ink2: #44403c; --muted: #78716c;
-    --border: #e7e5e4; --bg: #fafaf9; --surface: #ffffff;
+    --border: #e7e5e4; --bg: #FAF8F5; --surface: #ffffff;
     --yellow: #f59e0b; --yellow-light: #fef3c7;
     --green: #16a34a; --green-light: #dcfce7;
     --red: #dc2626; --red-light: #fee2e2;
-    --crust: #92400e; --crust-empty: #e2c98a;
+    --crust: #7E4800; --crust-empty: #e2c98a;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -112,7 +112,7 @@
   .reveal-content { display: none; margin-top: 14px; }
   .reveal-content.show { display: block; animation: fadeIn .4s ease; }
   .reveal-content .reveal-inner {
-    background: var(--yellow-light); border: 1px solid #fcd34d;
+    background: var(--yellow-light); border: 1px solid #F6BE7C;
     border-radius: 10px; padding: 18px 22px; font-size: 16px;
   }
 
@@ -163,7 +163,7 @@
   .mini-hint.show { display: block; animation: fadeIn .3s ease; }
 
   /* INSIGHT */
-  .insight { background: var(--yellow-light); border: 1px solid #fcd34d; border-radius: 12px; padding: 24px 28px; margin: 32px 0 8px; font-size: 16px; }
+  .insight { background: var(--yellow-light); border: 1px solid #F6BE7C; border-radius: 12px; padding: 24px 28px; margin: 32px 0 8px; font-size: 16px; }
 
   /* SIMULATION */
   .sim-section { padding: 64px 0; border-top: 1px solid var(--border); }
@@ -720,9 +720,9 @@
     const defId = 'pd-' + Math.random().toString(36).slice(2, 7);
     const defs = document.createElementNS(NS, 'defs');
     defs.innerHTML = `<radialGradient id="${defId}-sauce" cx="50%" cy="50%" r="65%">
-      <stop offset="0%" stop-color="#fde68a"/>
+      <stop offset="0%" stop-color="#FAD6AC"/>
       <stop offset="55%" stop-color="#f59e0b"/>
-      <stop offset="100%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#CE7E12"/>
     </radialGradient>`;
     svgEl.appendChild(defs);
     const rimOuter = r, rimInner = r * 0.82;
@@ -736,8 +736,8 @@
       const la = (a1 - a0) > Math.PI ? 1 : 0;
       const crust = document.createElementNS(NS, 'path');
       crust.setAttribute('d', `M ${oA0x} ${oA0y} A ${rimOuter} ${rimOuter} 0 ${la} 1 ${oA1x} ${oA1y} L ${iA1x} ${iA1y} A ${rimInner} ${rimInner} 0 ${la} 0 ${iA0x} ${iA0y} Z`);
-      crust.setAttribute('fill', isFilled ? '#d97706' : '#e2c98a');
-      crust.setAttribute('stroke', '#92400e'); crust.setAttribute('stroke-width', sw * 0.5);
+      crust.setAttribute('fill', isFilled ? '#CE7E12' : '#e2c98a');
+      crust.setAttribute('stroke', '#7E4800'); crust.setAttribute('stroke-width', sw * 0.5);
       svgEl.appendChild(crust);
       const inner = document.createElementNS(NS, 'path');
       inner.setAttribute('d', `M ${cx} ${cy} L ${iA0x} ${iA0y} A ${rimInner} ${rimInner} 0 ${la} 1 ${iA1x} ${iA1y} Z`);
@@ -756,7 +756,7 @@
         const div = document.createElementNS(NS, 'line');
         div.setAttribute('x1', cx); div.setAttribute('y1', cy);
         div.setAttribute('x2', oA0x); div.setAttribute('y2', oA0y);
-        div.setAttribute('stroke', '#92400e'); div.setAttribute('stroke-width', sw * 0.4);
+        div.setAttribute('stroke', '#7E4800'); div.setAttribute('stroke-width', sw * 0.4);
         svgEl.appendChild(div);
       }
       if (onClick) {
@@ -769,7 +769,7 @@
     }
     const border = document.createElementNS(NS, 'circle');
     border.setAttribute('cx', cx); border.setAttribute('cy', cy); border.setAttribute('r', rimOuter);
-    border.setAttribute('fill', 'none'); border.setAttribute('stroke', '#92400e'); border.setAttribute('stroke-width', sw * 0.6);
+    border.setAttribute('fill', 'none'); border.setAttribute('stroke', '#7E4800'); border.setAttribute('stroke-width', sw * 0.6);
     svgEl.appendChild(border);
   }
 

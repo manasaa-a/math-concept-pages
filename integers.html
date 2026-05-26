@@ -78,8 +78,8 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .sign-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
 @media(max-width:500px){.sign-grid{grid-template-columns:1fr}}
 .sign-card{border-radius:10px;padding:16px 18px;text-align:center}
-.sign-card.pos{background:var(--green-light);border:1px solid #86efac}
-.sign-card.neg{background:var(--red-light);border:1px solid #fca5a5}
+.sign-card.pos{background:var(--green-light);border:1px solid #BCEAC8}
+.sign-card.neg{background:var(--red-light);border:1px solid #FFB8B7}
 .sign-card .rule{font-size:15px;font-weight:500;margin-bottom:4px}
 .sign-card .example{font-size:13px;color:var(--muted)}
 
@@ -127,8 +127,8 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .sim-rule-badge{font-size:13px;padding:4px 12px;border-radius:12px;font-weight:500}
 .sim-rule-pos{background:var(--green-light);color:var(--green)}
 .sim-rule-neg{background:var(--red-light);color:var(--red)}
-.sim-rule-zero{background:var(--yellow-light);color:#92400e}
-.numberline-wrap{width:100%;overflow:hidden;border-radius:8px;background:#f8fafc;border:1px solid var(--border)}
+.sim-rule-zero{background:var(--yellow-light);color:#7E4800}
+.numberline-wrap{width:100%;overflow:hidden;border-radius:8px;background:#FAF8F5;border:1px solid var(--border)}
 .numberline-wrap canvas{display:block;width:100%;cursor:grab;touch-action:none}
 .numberline-wrap canvas.dragging{cursor:grabbing}
 .nl-drag-hint{text-align:center;font-size:12px;color:var(--muted);padding:4px 0 8px;letter-spacing:.01em}
@@ -183,8 +183,8 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .hint-toggle{font-size:13px;color:var(--blue);cursor:pointer;margin-bottom:8px;background:none;border:none;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;padding:0}
 .hint-text{display:none;font-size:14px;color:var(--muted);background:var(--yellow-light);padding:10px 14px;border-radius:6px;margin-bottom:12px}
 .q-feedback{display:none;font-size:14px;padding:12px 16px;border-radius:8px;margin-top:12px}
-.q-feedback.correct{background:var(--green-light);color:#14532d}
-.q-feedback.wrong{background:var(--red-light);color:#7f1d1d}
+.q-feedback.correct{background:var(--green-light);color:#1C7C48}
+.q-feedback.wrong{background:var(--red-light);color:#842D34}
 .q-next{margin-top:16px;display:none}
 .completion-screen{display:none;text-align:center;padding:32px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
 .score-big{font-size:48px;font-weight:700;color:var(--green);font-family:'Athletics',Georgia,serif}
@@ -207,7 +207,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 /* Worksheets */
 .ws-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
 @media(max-width:500px){.ws-grid{grid-template-columns:1fr}}
-.ws-card{background:linear-gradient(135deg,var(--yellow-light),#fde68a);border-radius:10px;padding:18px 20px;display:flex;align-items:center;gap:14px}
+.ws-card{background:linear-gradient(135deg,var(--yellow-light),#FAD6AC);border-radius:10px;padding:18px 20px;display:flex;align-items:center;gap:14px}
 .ws-icon{font-size:28px;flex-shrink:0}
 .ws-card strong{display:block;font-size:14px;margin-bottom:2px}
 .ws-card span{font-size:12px;color:var(--muted)}
@@ -226,7 +226,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .video-info{padding:14px}
 .video-tag{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px}
 .video-title{font-size:14px;font-weight:500;color:var(--ink);line-height:1.4}
-.tag-puzzle{background:var(--yellow-light);color:#92400e;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-puzzle{background:var(--yellow-light);color:#7E4800;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
 .tag-rw{background:var(--green-light);color:var(--green);padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
 
 /* Related concepts */
@@ -236,7 +236,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .concept-chip:hover{border-color:var(--blue);color:var(--blue);text-decoration:none}
 
 /* Video embed */
-.video-embed{position:relative;width:100%;padding-bottom:56.25%;background:#0f172a;border-radius:12px;overflow:hidden;margin:20px 0}
+.video-embed{position:relative;width:100%;padding-bottom:56.25%;background:#292827;border-radius:12px;overflow:hidden;margin:20px 0}
 .video-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
 .big-play{width:64px;height:64px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px}
 .video-placeholder p{color:rgba(255,255,255,.6);font-size:14px}
@@ -353,7 +353,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <p>The set of integers is written as <strong>ℤ = {…, −4, −3, −2, −1, 0, 1, 2, 3, 4, …}</strong> — it extends infinitely in both directions. The letter Z comes from the German word <em>Zahlen</em>, meaning "numbers."</p>
 
     <!-- SVG: integer families diagram -->
-    <svg viewBox="0 0 580 200" style="width:100%;max-width:580px;display:block;margin:20px auto;background:#f8fafc;border-radius:12px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 580 200" style="width:100%;max-width:580px;display:block;margin:20px auto;background:#FAF8F5;border-radius:12px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
       <!-- Integers outer bubble -->
       <ellipse cx="290" cy="100" rx="270" ry="85" fill="var(--blue-light)" stroke="#F6BE7C" stroke-width="1.5"/>
       <text x="60" y="30" font-size="13" fill="#CE7E12" font-weight="700" font-family="Untitled Sans">Integers ℤ</text>
@@ -362,13 +362,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <text x="48" y="116" font-size="12" fill="var(--red)" font-family="Untitled Sans">…−3, −2, −1</text>
       <!-- Zero circle -->
       <circle cx="290" cy="100" r="30" fill="var(--yellow-light)" stroke="var(--yellow)" stroke-width="1.5"/>
-      <text x="290" y="97" font-size="13" fill="#92400e" font-weight="700" font-family="Untitled Sans" text-anchor="middle">0</text>
-      <text x="290" y="112" font-size="10" fill="#92400e" font-family="Untitled Sans" text-anchor="middle">neither</text>
+      <text x="290" y="97" font-size="13" fill="#7E4800" font-weight="700" font-family="Untitled Sans" text-anchor="middle">0</text>
+      <text x="290" y="112" font-size="10" fill="#7E4800" font-family="Untitled Sans" text-anchor="middle">neither</text>
       <!-- Positive integers label -->
       <text x="390" y="100" font-size="13" fill="var(--green)" font-weight="600" font-family="Untitled Sans">Positive</text>
       <text x="396" y="116" font-size="12" fill="var(--green)" font-family="Untitled Sans">1, 2, 3, …</text>
       <!-- Not integers label -->
-      <text x="100" y="178" font-size="12" fill="#6b7280" font-family="Untitled Sans">Not integers: ½, −2.5, π, √3</text>
+      <text x="100" y="178" font-size="12" fill="#84807B" font-family="Untitled Sans">Not integers: ½, −2.5, π, √3</text>
     </svg>
 
     <p>Three things to remember: positive integers (1, 2, 3, …) sit to the right of zero; negative integers (−1, −2, −3, …) sit to the left; and <strong>zero is an integer</strong> — the only one that is neither positive nor negative.</p>
@@ -385,22 +385,22 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <p>Every integer has a fixed address on the number line. Numbers increase as you move right and decrease as you move left — making it a perfect tool for addition and subtraction.</p>
 
     <!-- SVG number line -->
-    <svg viewBox="0 0 580 80" style="width:100%;max-width:580px;display:block;margin:20px auto;background:#f8fafc;border-radius:10px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
-      <line x1="20" y1="40" x2="560" y2="40" stroke="#94a3b8" stroke-width="2"/>
-      <polygon points="558,35 568,40 558,45" fill="#94a3b8"/>
-      <polygon points="22,35 12,40 22,45" fill="#94a3b8"/>
+    <svg viewBox="0 0 580 80" style="width:100%;max-width:580px;display:block;margin:20px auto;background:#FAF8F5;border-radius:10px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+      <line x1="20" y1="40" x2="560" y2="40" stroke="#84807B" stroke-width="2"/>
+      <polygon points="558,35 568,40 558,45" fill="#84807B"/>
+      <polygon points="22,35 12,40 22,45" fill="#84807B"/>
       <!-- Ticks and labels -->
       <g font-size="12" font-family="Untitled Sans" text-anchor="middle" fill="var(--ink2)">
-        <line x1="52" y1="34" x2="52" y2="46" stroke="#94a3b8" stroke-width="1.5"/>  <text x="52" y="62">−5</text>
-        <line x1="104" y1="34" x2="104" y2="46" stroke="#94a3b8" stroke-width="1.5"/> <text x="104" y="62">−4</text>
-        <line x1="156" y1="34" x2="156" y2="46" stroke="#94a3b8" stroke-width="1.5"/> <text x="156" y="62">−3</text>
-        <line x1="208" y1="34" x2="208" y2="46" stroke="#94a3b8" stroke-width="1.5"/> <text x="208" y="62">−2</text>
-        <line x1="260" y1="34" x2="260" y2="46" stroke="#94a3b8" stroke-width="1.5"/> <text x="260" y="62">−1</text>
+        <line x1="52" y1="34" x2="52" y2="46" stroke="#84807B" stroke-width="1.5"/>  <text x="52" y="62">−5</text>
+        <line x1="104" y1="34" x2="104" y2="46" stroke="#84807B" stroke-width="1.5"/> <text x="104" y="62">−4</text>
+        <line x1="156" y1="34" x2="156" y2="46" stroke="#84807B" stroke-width="1.5"/> <text x="156" y="62">−3</text>
+        <line x1="208" y1="34" x2="208" y2="46" stroke="#84807B" stroke-width="1.5"/> <text x="208" y="62">−2</text>
+        <line x1="260" y1="34" x2="260" y2="46" stroke="#84807B" stroke-width="1.5"/> <text x="260" y="62">−1</text>
         <line x1="312" y1="30" x2="312" y2="50" stroke="#CE7E12" stroke-width="2"/>    <text x="312" y="65" fill="#CE7E12" font-weight="700">0</text>
-        <line x1="364" y1="34" x2="364" y2="46" stroke="#94a3b8" stroke-width="1.5"/> <text x="364" y="62">1</text>
-        <line x1="416" y1="34" x2="416" y2="46" stroke="#94a3b8" stroke-width="1.5"/> <text x="416" y="62">2</text>
-        <line x1="468" y1="34" x2="468" y2="46" stroke="#94a3b8" stroke-width="1.5"/> <text x="468" y="62">3</text>
-        <line x1="520" y1="34" x2="520" y2="46" stroke="#94a3b8" stroke-width="1.5"/> <text x="520" y="62">4</text>
+        <line x1="364" y1="34" x2="364" y2="46" stroke="#84807B" stroke-width="1.5"/> <text x="364" y="62">1</text>
+        <line x1="416" y1="34" x2="416" y2="46" stroke="#84807B" stroke-width="1.5"/> <text x="416" y="62">2</text>
+        <line x1="468" y1="34" x2="468" y2="46" stroke="#84807B" stroke-width="1.5"/> <text x="468" y="62">3</text>
+        <line x1="520" y1="34" x2="520" y2="46" stroke="#84807B" stroke-width="1.5"/> <text x="520" y="62">4</text>
       </g>
       <!-- Arrows showing direction -->
       <text x="120" y="22" font-size="11" fill="var(--red)" font-family="Untitled Sans">← decreasing (more negative)</text>
@@ -693,18 +693,18 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <div class="question-card active" id="q1">
       <div class="q-number">Question 1 of 5</div>
       <div class="q-text">An elevator starts at floor 0. It rises 4 floors, then drops 7. What floor does it end on?</div>
-      <svg viewBox="0 0 320 90" style="width:100%;max-width:320px;display:block;margin:0 0 16px;background:#f8fafc;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
-        <line x1="20" y1="45" x2="300" y2="45" stroke="#94a3b8" stroke-width="1.5"/>
+      <svg viewBox="0 0 320 90" style="width:100%;max-width:320px;display:block;margin:0 0 16px;background:#FAF8F5;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+        <line x1="20" y1="45" x2="300" y2="45" stroke="#84807B" stroke-width="1.5"/>
         <g font-size="11" font-family="Untitled Sans" text-anchor="middle" fill="var(--ink2)">
-          <line x1="40" y1="39" x2="40" y2="51" stroke="#94a3b8" stroke-width="1.5"/>  <text x="40" y="65">−4</text>
-          <line x1="70" y1="39" x2="70" y2="51" stroke="#94a3b8" stroke-width="1.5"/>  <text x="70" y="65">−3</text>
-          <line x1="100" y1="39" x2="100" y2="51" stroke="#94a3b8" stroke-width="1.5"/> <text x="100" y="65">−2</text>
-          <line x1="130" y1="39" x2="130" y2="51" stroke="#94a3b8" stroke-width="1.5"/> <text x="130" y="65">−1</text>
+          <line x1="40" y1="39" x2="40" y2="51" stroke="#84807B" stroke-width="1.5"/>  <text x="40" y="65">−4</text>
+          <line x1="70" y1="39" x2="70" y2="51" stroke="#84807B" stroke-width="1.5"/>  <text x="70" y="65">−3</text>
+          <line x1="100" y1="39" x2="100" y2="51" stroke="#84807B" stroke-width="1.5"/> <text x="100" y="65">−2</text>
+          <line x1="130" y1="39" x2="130" y2="51" stroke="#84807B" stroke-width="1.5"/> <text x="130" y="65">−1</text>
           <line x1="160" y1="37" x2="160" y2="53" stroke="#CE7E12" stroke-width="2"/>   <text x="160" y="68" fill="#CE7E12" font-weight="700">0</text>
-          <line x1="190" y1="39" x2="190" y2="51" stroke="#94a3b8" stroke-width="1.5"/> <text x="190" y="65">1</text>
-          <line x1="220" y1="39" x2="220" y2="51" stroke="#94a3b8" stroke-width="1.5"/> <text x="220" y="65">2</text>
-          <line x1="250" y1="39" x2="250" y2="51" stroke="#94a3b8" stroke-width="1.5"/> <text x="250" y="65">3</text>
-          <line x1="280" y1="39" x2="280" y2="51" stroke="#94a3b8" stroke-width="1.5"/> <text x="280" y="65">4</text>
+          <line x1="190" y1="39" x2="190" y2="51" stroke="#84807B" stroke-width="1.5"/> <text x="190" y="65">1</text>
+          <line x1="220" y1="39" x2="220" y2="51" stroke="#84807B" stroke-width="1.5"/> <text x="220" y="65">2</text>
+          <line x1="250" y1="39" x2="250" y2="51" stroke="#84807B" stroke-width="1.5"/> <text x="250" y="65">3</text>
+          <line x1="280" y1="39" x2="280" y2="51" stroke="#84807B" stroke-width="1.5"/> <text x="280" y="65">4</text>
         </g>
         <!-- Arrow: +4 right -->
         <path d="M 160,30 L 280,30" stroke="var(--green)" stroke-width="2" marker-end="url(#arr-g)"/>
@@ -855,7 +855,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           <a class="ws-btn" href="integers-ws-1.pdf" download="Cuemath-Integers-Grade10-Questions-Set1.pdf">Download PDF ↓</a>
         </div>
       </div>
-      <div class="ws-card" style="background:linear-gradient(135deg,var(--green-light),#bbf7d0)">
+      <div class="ws-card" style="background:linear-gradient(135deg,var(--green-light),#DAF3E0)">
         <div class="ws-icon">✅</div>
         <div>
           <strong>Answers Set 1</strong>
@@ -871,7 +871,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           <a class="ws-btn" href="integers-ws-3.pdf" download="Cuemath-Integers-Grade10-Questions-Set2.pdf">Download PDF ↓</a>
         </div>
       </div>
-      <div class="ws-card" style="background:linear-gradient(135deg,var(--green-light),#bbf7d0)">
+      <div class="ws-card" style="background:linear-gradient(135deg,var(--green-light),#DAF3E0)">
         <div class="ws-icon">✅</div>
         <div>
           <strong>Answers Set 2</strong>
@@ -1228,17 +1228,17 @@ function drawNL() {
   var toX = function(n) { return W / 2 + n * (W - 64) / (range * 2); };
 
   /* background */
-  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#FAF8F5'; ctx.fillRect(0, 0, W, H);
 
   /* temperature gradient band */
   var bandH = 14, bandY = midY - bandH / 2;
   var grad = ctx.createLinearGradient(toX(-range), 0, toX(range), 0);
   grad.addColorStop(0,    '#CE7E12');
   grad.addColorStop(0.25, '#F4AB52');
-  grad.addColorStop(0.48, '#bae6fd');
-  grad.addColorStop(0.5,  '#f0fdf4');
-  grad.addColorStop(0.62, '#fef9c3');
-  grad.addColorStop(0.82, '#fb923c');
+  grad.addColorStop(0.48, '#C1DCFF');
+  grad.addColorStop(0.5,  '#ECF9EF');
+  grad.addColorStop(0.62, '#FAF1E6');
+  grad.addColorStop(0.82, '#F68D50');
   grad.addColorStop(1,    'var(--red)');
   /* rounded band */
   var bx = toX(-range), bw = toX(range) - toX(-range);
@@ -1253,12 +1253,12 @@ function drawNL() {
     var tx = toX(i);
     var isMajor = (i % 4 === 0);
     var isZero = (i === 0);
-    ctx.strokeStyle = isZero ? '#374151' : (isMajor ? '#9ca3af' : '#d1d5db');
+    ctx.strokeStyle = isZero ? '#43413E' : (isMajor ? '#97938C' : '#C6C0B8');
     ctx.lineWidth = isZero ? 2 : 1;
     var tickLen = isZero ? 10 : (isMajor ? 7 : 4);
     ctx.beginPath(); ctx.moveTo(tx, midY - tickLen); ctx.lineTo(tx, midY + tickLen); ctx.stroke();
     if (isMajor || isZero) {
-      ctx.fillStyle = isZero ? '#CE7E12' : '#6b7280';
+      ctx.fillStyle = isZero ? '#CE7E12' : '#84807B';
       ctx.font = (isZero ? 'bold ' : '') + '10px DM Sans,sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText(i + (op === '+' || op === '-' ? '°' : ''), tx, midY + 22);
@@ -1269,7 +1269,7 @@ function drawNL() {
   ctx.strokeStyle = 'rgba(0,0,0,0.15)'; ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(toX(-range) - 4, midY); ctx.lineTo(toX(range) + 4, midY); ctx.stroke();
   /* arrow tips */
-  ctx.fillStyle = '#9ca3af';
+  ctx.fillStyle = '#97938C';
   ctx.beginPath(); ctx.moveTo(toX(range)+8, midY-4); ctx.lineTo(toX(range)+16, midY); ctx.lineTo(toX(range)+8, midY+4); ctx.fill();
   ctx.beginPath(); ctx.moveTo(toX(-range)-8, midY-4); ctx.lineTo(toX(-range)-16, midY); ctx.lineTo(toX(-range)-8, midY+4); ctx.fill();
 
@@ -1294,7 +1294,7 @@ function drawNL() {
       drawTempDot(ctx, toX(result), midY, 'var(--purple)', '=' + result, 8, false);
     }
     if (result !== null && (!Number.isInteger(result) || Math.abs(result) > range)) {
-      ctx.fillStyle = '#6b7280'; ctx.font = '12px DM Sans,sans-serif'; ctx.textAlign = 'center';
+      ctx.fillStyle = '#84807B'; ctx.font = '12px DM Sans,sans-serif'; ctx.textAlign = 'center';
       ctx.fillText('Result = ' + (Number.isInteger(result) ? result : result.toFixed(2)) + (Math.abs(result) > range ? '  (off scale)' : ''), W / 2, 20);
     }
   }

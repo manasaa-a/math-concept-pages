@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{--ink:#1c1917;--ink2:#44403c;--muted:#78716c;--border:#e7e5e4;--bg:#fafaf9;--surface:#fff;--yellow:#f59e0b;--yellow-light:#fef3c7;--green:#16a34a;--green-light:#dcfce7;--red:#dc2626;--red-light:#fee2e2}
+  :root{--ink:#1c1917;--ink2:#44403c;--muted:#78716c;--border:#e7e5e4;--bg:#FAF8F5;--surface:#fff;--yellow:#F4AB52;--yellow-light:#FAF1E6;--green:#6AC88A;--green-light:#ECF9EF;--red:#F97279;--red-light:#FFE9E9}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:300;line-height:1.7;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
@@ -71,7 +71,7 @@
   .sim-svg-wrap{background:var(--bg);border-radius:10px;padding:16px}
   .sim-svg-wrap svg{width:100%;height:auto;display:block}
   .sim-controls{display:flex;flex-direction:column;gap:18px}
-  .area-display{text-align:center;background:var(--yellow-light);border:1px solid #fcd34d;border-radius:10px;padding:16px}
+  .area-display{text-align:center;background:var(--yellow-light);border:1px solid #F6BE7C;border-radius:10px;padding:16px}
   .area-val{font-family:'Lora',serif;font-size:40px;font-weight:700;color:var(--ink);line-height:1}
   .area-label{font-size:13px;color:var(--muted);margin-top:4px}
   .slider-group{display:flex;flex-direction:column;gap:8px}
@@ -86,7 +86,7 @@
   .sim-btn:hover{background:var(--ink2)}
   .sim-btn.secondary{background:var(--bg);color:var(--ink);border:1.5px solid var(--border)}
   .sim-btn.secondary:hover{border-color:var(--ink2)}
-  .insight-strip{background:var(--yellow-light);border:1px solid #fcd34d;border-radius:10px;padding:16px 20px;margin-top:16px;font-size:15px;color:var(--ink2)}
+  .insight-strip{background:var(--yellow-light);border:1px solid #F6BE7C;border-radius:10px;padding:16px 20px;margin-top:16px;font-size:15px;color:var(--ink2)}
   .insight-strip strong{color:var(--ink)}
 
   /* TOOLTIP */
@@ -107,7 +107,7 @@
   .reveal-btn.opened{display:none}
   .reveal-content{display:none;margin-top:12px}
   .reveal-content.show{display:block;animation:fadeIn .4s ease}
-  .reveal-inner{background:var(--yellow-light);border:1px solid #fcd34d;border-radius:10px;padding:16px 20px;font-size:15px}
+  .reveal-inner{background:var(--yellow-light);border:1px solid #F6BE7C;border-radius:10px;padding:16px 20px;font-size:15px}
 
   /* PRACTICE */
   .practice{padding:48px 0 24px;border-top:1px solid var(--border)}
@@ -449,8 +449,8 @@
     // Fill
     const poly = document.createElementNS(NS, 'polygon');
     poly.setAttribute('points', pts.map(p => p.join(',')).join(' '));
-    poly.setAttribute('fill', '#fde68a');
-    poly.setAttribute('stroke', '#92400e');
+    poly.setAttribute('fill', '#FAD6AC');
+    poly.setAttribute('stroke', '#7E4800');
     poly.setAttribute('stroke-width', 2);
     poly.setAttribute('stroke-linejoin', 'round');
     simSvg.appendChild(poly);
@@ -480,7 +480,7 @@
       simSvg.appendChild(t);
     }
     // Base label
-    lbl((pts[0][0] + pts[1][0]) / 2, pts[0][1] + 18, `${base} cm`, '#92400e', 13);
+    lbl((pts[0][0] + pts[1][0]) / 2, pts[0][1] + 18, `${base} cm`, '#7E4800', 13);
     // Height label
     lbl(hx - 22, (pts[3][1] + pts[0][1]) / 2 + 4, `${height} cm`, '#CE7E12', 13);
     // Slant side label if slanted
@@ -503,7 +503,7 @@
     const rect = document.createElementNS(NS, 'rect');
     rect.setAttribute('x', padX); rect.setAttribute('y', H - padY - hPx);
     rect.setAttribute('width', bPx); rect.setAttribute('height', hPx);
-    rect.setAttribute('fill', '#fde68a'); rect.setAttribute('stroke', '#92400e');
+    rect.setAttribute('fill', '#FAD6AC'); rect.setAttribute('stroke', '#7E4800');
     rect.setAttribute('stroke-width', 2);
     simSvg.appendChild(rect);
 
@@ -515,14 +515,14 @@
       t.setAttribute('font-size', 13); t.setAttribute('fill', color);
       t.textContent = text; simSvg.appendChild(t);
     }
-    lbl(padX + bPx / 2, H - padY + 18, `${base} cm`, '#92400e');
+    lbl(padX + bPx / 2, H - padY + 18, `${base} cm`, '#7E4800');
     lbl(padX - 22, H - padY - hPx / 2 + 4, `${height} cm`, '#CE7E12');
 
     // "= Rectangle!" label
     const note = document.createElementNS(NS, 'text');
     note.setAttribute('x', W / 2); note.setAttribute('y', 20);
     note.setAttribute('text-anchor', 'middle'); note.setAttribute('font-family', 'Lora, serif');
-    note.setAttribute('font-size', 14); note.setAttribute('font-weight', 700); note.setAttribute('fill', '#16a34a');
+    note.setAttribute('font-size', 14); note.setAttribute('font-weight', 700); note.setAttribute('fill', '#6AC88A');
     note.textContent = '= Rectangle! Area = base × height';
     simSvg.appendChild(note);
   }
