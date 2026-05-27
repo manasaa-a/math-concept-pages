@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Parallelogram to Triangle</title>
+  <style>
+  :root {
+    --bg-primary:#FAF8F5; --bg-1:#FFFFFF;
+    --border-secondary:#C6C0B8; --border-tertiary:#EBE7E0;
+    --shadow-sm:0 1px 4px rgba(0,0,0,0.08);
+    --text-primary:#292827; --text-secondary:rgba(41,40,39,0.7); --text-tertiary:rgba(41,40,39,0.5);
+    --font-heading:'Athletics',Georgia,serif; --font-body:'Untitled Sans',system-ui,sans-serif;
+    --font-label:'Untitled Sans',system-ui,sans-serif;
+    --space-4:4px; --space-8:8px; --space-12:12px; --space-16:16px;
+    --space-20:20px; --space-24:24px; --space-32:32px; --space-48:48px;
+    --gold-500:#F4AB52; --gold-600:#EC9A32; --gold-700:#CE7E12; --gold-100:#FAF1E6;
+    --success-500:#6AC88A; --success-700:#28995A;
+    --info-500:#74ACFC; --info-700:#407BD6;
+    --error-500:#F97279;
+    --neutral-400:#C6C0B8; --neutral-600:#84807B; --neutral-700:#5B5854;
+    --neutral-900:#33312F; --neutral-1000:#292827;
+  }
+</style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-primary);
+      font-family: var(--font-body);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--space-32) var(--space-20) var(--space-48);
+    }
+    p.subtitle {
+      color: var(--text-secondary);
+      margin-bottom: var(--space-20);
+      text-align: center;
+      max-width: 560px;
+    }
+    #canvas-wrap {
+      position: relative;
+      border: 1px solid var(--border-secondary);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .slider-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      background: rgba(250,248,245,0.92);
+      border-bottom: 1px solid var(--border-secondary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-12);
+      padding: var(--space-8) var(--space-20);
+      z-index: 10;
+    }
+    .sl-label {
+      font-family: var(--font-label);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-tertiary);
+      white-space: nowrap;
+    }
+    input[type=range] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 200px;
+      height: 4px;
+      background: var(--border-secondary);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--bg-brand);
+      cursor: pointer;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+    }
+    input[type=range]::-moz-range-thumb {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--bg-brand);
+      border: none; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div id="canvas-wrap">
+  <div class="slider-overlay">
+    <span class="sl-label">Slide Me!</span>
+    <input type="range" id="sl-t" min="0" max="100" step="1" value="0">
+  </div>
+</div>
+
+<script>
+// ─── Cuemath brand palette ────────────────────────────────────────────────────
+const CM = {
+  brand:   '#F4AB52',  // gold-500  — lower triangle
+  brandDk: '#CE7E12',  // gold-700
+  brandLt: '#FAF1E6',  // gold-100
+  info:    '#74ACFC',  // info-500  — upper triangle (rotating)
+  infoDk:  '#3464B1',  // info-800
+  success: '#6AC88A',  // success-500 — final state
+  successDk:'#1C7C48', // success-800
+  error:   '#F97279',
+  warning: '#F68D50',
+  purple:  '#D386F7',
+  ink:     '#292827',  // neutral-1000
+  ink2:    '#43413E',  // neutral-800
+  muted:   '#84807B',  // neutral-600
+  border:  '#C6C0B8',  // neutral-400
+  bg:      '#FAF8F5',
+  surface: '#FFFFFF',
+};
+
+// ─── Canvas config ────────────────────────────────────────────────────────────
+const W = 640, H = 400;
+
+// Parallelogram geometry (centred)
+const cx = W / 2 - 10, cy = H / 2 - 38;
+const BASE = 280, HEIGHT = 160, SLANT = 70;
+
+// Vertices: A=bottom-left, B=bottom-right, C=top-right, D=top-left
+const A = { x: cx - BASE/2,          y: cy + HEIGHT/2 };
+const B = { x: cx + BASE/2,          y: cy + HEIGHT/2 };
+const C = { x: cx + BASE/2 + SLANT,  y: cy - HEIGHT/2 };
+const D = { x: cx - BASE/2 + SLANT,  y: cy - HEIGHT/2 };
+
+// Rotation pivot = midpoint of diagonal BD
+const Px = (B.x + D.x) / 2;
+const Py = (B.y + D.y) / 2;
+
+function rot(point, angle) {
+  const cos = Math.cos(angle), sin = Math.sin(angle);
+  const dx = point.x - Px, dy = point.y - Py;
+  return { x: Px + dx*cos - dy*sin, y: Py + dx*sin + dy*cos };
+}
+
+function hex2rgb(hex, a) {
+  const r = parseInt(hex.slice(1,3),16);
+  const g = parseInt(hex.slice(3,5),16);
+  const b = parseInt(hex.slice(5,7),16);
+  return [r, g, b, a];
+}
+
+// ─── p5 sketch ────────────────────────────────────────────────────────────────
+let sketch;
+let t = 0; // 0 → 1
+
+new p5(function(p) {
+  sketch = p;
+
+  p.setup = function() {
+    p.createCanvas(W, H).parent('canvas-wrap');
+    p.textFont('Untitled Sans, system-ui, sans-serif');
+    p.noLoop();
+  };
+
+  p.draw = function() {
+    p.background(CM.surface);
+
+    const angle = t * Math.PI;  // 0 → 180°
+    const done  = t > 0.97;
+
+    // Rotated vertices of upper triangle BCD
+    const Br = rot(B, angle);
+    const Cr = rot(C, angle);
+    const Dr = rot(D, angle);
+
+    // ── Fills (no stroke) ─────────────────────────────────────────────────
+    p.noStroke();
+
+    // Lower triangle ABD — gold
+    p.fill(...hex2rgb(CM.brand, 150));
+    p.triangle(A.x, A.y, B.x, B.y, D.x, D.y);
+
+    // Rotating triangle BCD — info→success
+    const triCol = done ? CM.success : CM.info;
+    p.fill(...hex2rgb(triCol, done ? 160 : 140));
+    p.triangle(Br.x, Br.y, Cr.x, Cr.y, Dr.x, Dr.y);
+
+    // ── Outlines ───────────────────────────────────────────────────────────
+    p.noFill(); p.strokeWeight(2.5);
+
+    if (!done) {
+      // Draw only the outer 4 edges of the parallelogram (no diagonal yet)
+      // Then add dashed diagonal separately — avoids double-stroke at B and D
+      p.stroke(CM.brandDk);
+      p.line(A.x, A.y, B.x, B.y); // bottom
+      p.line(A.x, A.y, D.x, D.y); // left (gold side)
+      p.stroke(CM.infoDk);
+      p.line(D.x, D.y, C.x, C.y); // top
+      p.line(B.x, B.y, C.x, C.y); // right (blue side)
+      // Diagonal once — dashed
+      p.stroke(CM.ink2); p.strokeWeight(1.8);
+      p.drawingContext.setLineDash([6, 4]);
+      p.line(B.x, B.y, D.x, D.y);
+      p.drawingContext.setLineDash([]);
+    } else {
+      // Final state — outline just the overlapping triangle
+      p.stroke(CM.successDk);
+      p.triangle(A.x, A.y, B.x, B.y, D.x, D.y);
+    }
+
+    // Diagonal BD (appears as animation starts)
+    if (t > 0.02 && t < 0.98) {
+      p.stroke(CM.ink2); p.strokeWeight(1.5);
+      p.strokeDash && p.strokeDash([6, 4]);
+      p.drawingContext.setLineDash([6, 4]);
+      p.line(B.x, B.y, D.x, D.y);
+      p.drawingContext.setLineDash([]);
+    }
+
+    // Pivot dot
+    if (t > 0.02 && t < 0.98) {
+      p.noStroke(); p.fill(CM.ink);
+      p.circle(Px, Py, 8);
+    }
+
+    // ── Parallel side markers — simple | and || ───────────────────────────
+    if (t < 0.5) {
+      const opAlpha = t < 0.3 ? 1 : p.map(t, 0.3, 0.5, 1, 0);
+      const tickCol = [67, 65, 62, opAlpha * 255]; // neutral-800
+
+      function perpTick(p1, p2, count) {
+        const mx = (p1.x+p2.x)/2, my = (p1.y+p2.y)/2;
+        const dx = p2.x-p1.x, dy = p2.y-p1.y;
+        const len = Math.sqrt(dx*dx+dy*dy);
+        const nx = -dy/len, ny = dx/len; // perpendicular unit
+        const sz = 7, gap = 5;
+        for (let k = 0; k < count; k++) {
+          const off = (k - (count-1)/2) * gap;
+          const ox = (dx/len)*off, oy = (dy/len)*off;
+          p.stroke(tickCol[0], tickCol[1], tickCol[2], tickCol[3]);
+          p.strokeWeight(2);
+          p.line(mx+ox+nx*sz, my+oy+ny*sz, mx+ox-nx*sz, my+oy-ny*sz);
+        }
+      }
+
+      perpTick(A, B, 1); perpTick(D, C, 1); // bottom & top — |
+      perpTick(A, D, 2); perpTick(B, C, 2); // left & right — ||
+    }
+
+    // ── Dimension labels: b and h ─────────────────────────────────────────
+    if (t < 0.5) {
+      p.textStyle(p.BOLD);
+
+      // b: horizontal double-arrow below AB
+      const bY = A.y + 20;
+      p.stroke(CM.infoDk); p.fill(CM.infoDk); p.strokeWeight(1.8);
+      p.line(A.x+8, bY, B.x-8, bY);
+      p.triangle(A.x, bY, A.x+11, bY-4, A.x+11, bY+4);
+      p.triangle(B.x, bY, B.x-11, bY-4, B.x-11, bY+4);
+      p.noStroke(); p.fill(CM.brandDk);
+      p.textAlign(p.CENTER, p.TOP); p.textSize(18);
+      p.text('b', (A.x+B.x)/2, bY+3);
+
+      // h: vertical double-arrow inside shape at foot of perpendicular from D
+      const footX = D.x, topY = D.y, botY = A.y;
+      const sz = 11;
+      // right-angle mark at foot
+      p.stroke(CM.infoDk); p.strokeWeight(1.5); p.noFill();
+      p.line(footX, botY-sz, footX+sz, botY-sz);
+      p.line(footX+sz, botY, footX+sz, botY-sz);
+      // h line — goes all the way from base to top, no arrowheads
+      p.stroke(CM.infoDk); p.strokeWeight(1.8); p.noFill();
+      p.line(footX, botY, footX, topY);
+      // h label to the right of line
+      p.noStroke(); p.fill(CM.brandDk);
+      p.textAlign(p.LEFT, p.CENTER); p.textSize(18);
+      p.text('h', footX+9, (topY+botY)/2);
+
+      p.textStyle(p.NORMAL);
+    }
+
+    // ── b and h labels for done (triangle) state ─────────────────────────
+    if (done) {
+      p.textStyle(p.BOLD);
+      // b below base
+      const bY2 = A.y + 20;
+      p.stroke(CM.infoDk); p.fill(CM.infoDk); p.strokeWeight(1.8);
+      p.line(A.x+8, bY2, B.x-8, bY2);
+      p.triangle(A.x, bY2, A.x+11, bY2-4, A.x+11, bY2+4);
+      p.triangle(B.x, bY2, B.x-11, bY2-4, B.x-11, bY2+4);
+      p.noStroke(); p.fill(CM.brandDk); p.textAlign(p.CENTER, p.TOP); p.textSize(18);
+      p.text('b', (A.x+B.x)/2, bY2+3);
+      // h line inside triangle (no arrowheads)
+      const fX = D.x, tY = D.y, bY3 = A.y, sz2 = 11;
+      p.stroke(CM.infoDk); p.strokeWeight(1.5); p.noFill();
+      p.line(fX, bY3-sz2, fX+sz2, bY3-sz2); p.line(fX+sz2, bY3, fX+sz2, bY3-sz2);
+      p.stroke(CM.infoDk); p.strokeWeight(1.8);
+      p.line(fX, bY3, fX, tY);
+      p.noStroke(); p.fill(CM.brandDk); p.textAlign(p.LEFT, p.CENTER); p.textSize(18);
+      p.text('h', fX+9, (tY+bY3)/2);
+      p.textStyle(p.NORMAL);
+    }
+
+    // ── Labels below shape ────────────────────────────────────────────────
+    p.noStroke();
+    const labelY = A.y + 46;
+    p.textAlign(p.CENTER, p.TOP);
+
+    if (t < 0.08) {
+      p.fill(CM.ink); p.textSize(14);
+      p.text('Parallelogram', cx + SLANT/2, labelY);
+      p.fill(CM.muted); p.textSize(15);
+      p.text('Area = base × height', cx + SLANT/2, labelY + 20);
+    }
+
+    if (done) {
+      p.fill(CM.ink); p.textSize(14);
+      p.text('Triangle', cx + SLANT/2, labelY);
+      p.fill(CM.successDk); p.textSize(15);
+      p.text('Area = ½ × base × height', cx + SLANT/2, labelY + 20);
+    }
+
+    // ── Caption ───────────────────────────────────────────────────────────
+    p.textSize(12); p.fill(CM.muted);
+    p.textAlign(p.CENTER, p.BOTTOM);
+    let caption = 'Slide to rotate the top triangle onto the bottom';
+    if (t > 0.05 && t < 0.97) caption = 'Rotating 180° around the midpoint of the diagonal…';
+    if (done)                  caption = 'Both triangles are identical — Triangle = ½ × Parallelogram';
+    p.text(caption, W/2, H - 8);
+  };
+});
+
+document.getElementById('sl-t').addEventListener('input', function() {
+  t = this.value / 100;
+  sketch.redraw();
+});
+</script>
+</body>
+</html>
