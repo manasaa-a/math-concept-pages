@@ -16,7 +16,6 @@
 <meta name="description" content="Learn what a horizontal asymptote is and how to find one for rational, exponential, and polynomial functions — with interactive examples, worked problems, and practice questions. Cuemath.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --ink:#1c1917; --ink2:#44403c; --muted:#78716c;
@@ -29,11 +28,11 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;line-height:1.7;color:var(--ink);background:var(--bg)}
+body{font-family:'Untitled Sans',system-ui,sans-serif;font-weight:300;font-size:17px;line-height:1.7;color:var(--ink);background:var(--bg)}
 h1,h2,h3,h4{font-family:'Lora',serif;font-weight:700;color:var(--ink);line-height:1.25}
-h1{font-size:clamp(28px,4vw,42px);margin-bottom:20px}
-h2{font-size:clamp(22px,3vw,30px);margin-bottom:16px}
-h3{font-size:clamp(18px,2vw,22px);margin-bottom:12px}
+h1{font-family:'Athletics',Georgia,serif;font-size:clamp(30px,4vw,44px);font-weight:700;letter-spacing:-0.5px;line-height:1.15;margin-bottom:10px}
+h2{font-family:'Athletics',Georgia,serif;font-size:clamp(20px,3vw,28px);font-weight:700;letter-spacing:-0.3px;line-height:1.25;margin-bottom:16px;padding-top:8px}
+h3{font-family:'Athletics',Georgia,serif;font-size:19px;font-weight:700;line-height:1.35;margin-bottom:10px}
 p{margin-bottom:14px;color:var(--ink2)}
 a{color:var(--blue);text-decoration:none}
 a:hover{text-decoration:underline}
@@ -50,7 +49,7 @@ strong{font-weight:500;color:var(--ink)}
 nav{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{font-family:'Lora',serif;font-weight:700;font-size:20px;color:var(--ink);text-decoration:none}
-.nav-cta{background:var(--yellow);color:var(--ink);font-weight:500;font-size:14px;padding:8px 18px;border-radius:0;text-decoration:none;white-space:nowrap}
+.nav-cta{background:var(--yellow);color:var(--ink);font-weight:600;font-size:14px;padding:10px 18px;border-radius:0;text-decoration:none;white-space:nowrap}
 .nav-cta:hover{background:#CE7E12;text-decoration:none}
 
 /* Breadcrumb */
@@ -70,8 +69,8 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .callout{background:var(--yellow-light);border-left:4px solid var(--yellow);border-radius:0;padding:16px 20px;margin:24px 0;font-size:15px;color:var(--ink2)}
 
 /* Think box */
-.think-box{background:var(--purple-light);border-left:4px solid var(--purple);border-radius:8px;padding:18px 20px;margin:24px 0}
-.think-label{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--purple);margin-bottom:8px}
+.think-box{background:var(--surface);border:1.5px solid var(--border);border-left:4px solid var(--ink2);border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0}
+.think-label{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
 .think-box p{color:var(--ink2);margin-bottom:0}
 
 /* Real-world strip */
@@ -86,34 +85,34 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .accordion{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:16px 0}
 .accordion-item{border-bottom:1px solid var(--border)}
 .accordion-item:last-child{border-bottom:none}
-.accordion-btn{width:100%;background:var(--surface);border:none;padding:16px 20px;text-align:left;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.accordion-btn{width:100%;background:var(--surface);border:none;padding:16px 20px;text-align:left;font-family:'Untitled Sans',system-ui,sans-serif;font-size:16px;font-weight:500;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
 .accordion-btn:hover{background:var(--bg)}
 .accordion-btn .chevron{transition:transform .2s;font-size:12px;color:var(--muted)}
 .accordion-btn.open .chevron{transform:rotate(180deg)}
 .accordion-body{display:none;padding:0 20px 20px;background:var(--surface)}
 .accordion-body.open{display:block}
 .formula-box{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px 18px;margin:12px 0;font-family:monospace;font-size:15px;color:var(--ink)}
-.formula-box .label{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
+.formula-box .label{font-family:'Untitled Sans',system-ui,sans-serif;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
 .example-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
 @media(max-width:600px){.example-row{grid-template-columns:1fr}}
 .example-card{background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:14px}
 .ex-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--green);margin-bottom:4px}
-.sim-link{display:inline-block;margin-top:10px;font-size:13px;color:var(--blue);font-weight:500;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:0}
+.sim-link{display:inline-block;margin-top:10px;font-size:13px;color:var(--blue);font-weight:500;background:none;border:none;cursor:pointer;font-family:'Untitled Sans',system-ui,sans-serif;padding:0}
 
 /* Simulation */
 .sim-container{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0}
 .sim-controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
-.sim-btn{padding:8px 16px;border-radius:0;border:1px solid var(--border);background:var(--bg);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;color:var(--ink2)}
+.sim-btn{padding:8px 16px;border-radius:0;border:1px solid var(--border);background:var(--bg);font-family:'Untitled Sans',system-ui,sans-serif;font-size:13px;font-weight:500;cursor:pointer;color:var(--ink2)}
 .sim-btn.active{background:var(--blue);color:#fff;border-color:var(--blue)}
 .sim-canvas-wrap{position:relative;width:100%;background:#FAF8F5;border-radius:8px;overflow:hidden}
 .sim-canvas-wrap canvas{display:block;width:100%}
 .sim-info{margin-top:14px;background:var(--yellow-light);border-radius:8px;padding:12px 16px;font-size:14px;color:var(--ink2)}
-.sim-discover{margin-top:12px;font-size:13px;color:var(--purple);font-weight:500}
+.sim-discover{margin-top:12px;font-size:13px;color:var(--muted);font-weight:500}
 
 /* CTA inline */
 .cta-inline{background:var(--yellow-light);border:1px solid var(--yellow);border-radius:8px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:24px 0}
 .cta-inline p{margin-bottom:0;font-size:15px;color:var(--ink2)}
-.btn-primary{background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:0;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer}
+.btn-primary{background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:0;font-family:'Untitled Sans',system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer}
 .btn-primary:hover{background:#CE7E12}
 
 /* CTA band */
@@ -121,7 +120,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 
 .cta-band h3{color:#292827;margin-bottom:8px}
 .cta-band p{color:#43413E;margin-bottom:20px;font-size:15px}
-.btn-white{background:#fff;color:#292827;border:none;padding:12px 24px;border-radius:0;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer}
+.btn-white{background:#fff;color:#292827;border:none;padding:12px 24px;border-radius:0;font-family:'Untitled Sans',system-ui,sans-serif;font-size:15px;font-weight:500;cursor:pointer}
 .cta-img{grid-column:1;grid-row:1;width:100%;height:100%;object-fit:cover;object-position:center top;display:block}.cta-band>div{grid-column:2;grid-row:1;padding:32px 36px;display:flex;flex-direction:column;justify-content:center;gap:10px;background:linear-gradient(135deg,#EC9A32 0%,#F6BE7C 100%);border-radius:24px 0 0 24px;margin-left:-24px;position:relative;z-index:1}
 @media(max-width:820px){.cta-band{grid-template-columns:1fr;min-height:auto}.cta-img{display:none}.cta-band>div{grid-column:1;padding:24px;border-radius:0;margin-left:0}}
 
@@ -134,11 +133,11 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .q-text{font-size:17px;font-weight:500;color:var(--ink);margin-bottom:20px}
 .choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
 @media(max-width:500px){.choices{grid-template-columns:1fr}}
-.choice-btn{padding:12px 16px;border:1px solid var(--border);border-radius:0;background:var(--bg);font-family:'DM Sans',sans-serif;font-size:15px;cursor:pointer;text-align:left;color:var(--ink);transition:border-color .15s,background .15s}
+.choice-btn{padding:12px 16px;border:1px solid var(--border);border-radius:0;background:var(--bg);font-family:'Untitled Sans',system-ui,sans-serif;font-size:15px;cursor:pointer;text-align:left;color:var(--ink);transition:border-color .15s,background .15s}
 .choice-btn:hover:not(:disabled){border-color:var(--blue);background:var(--blue-light)}
 .choice-btn.correct{background:var(--green-light);border-color:var(--green)}
 .choice-btn.wrong{background:var(--red-light);border-color:var(--red)}
-.hint-toggle{font-size:13px;color:var(--blue);cursor:pointer;margin-bottom:8px;background:none;border:none;font-family:'DM Sans',sans-serif;padding:0}
+.hint-toggle{font-size:13px;color:var(--blue);cursor:pointer;margin-bottom:8px;background:none;border:none;font-family:'Untitled Sans',system-ui,sans-serif;padding:0}
 .hint-text{display:none;font-size:14px;color:var(--muted);background:var(--yellow-light);padding:10px 14px;border-radius:6px;margin-bottom:12px}
 .q-feedback{display:none;font-size:14px;padding:12px 16px;border-radius:8px;margin-top:12px}
 .q-feedback.correct{background:var(--green-light);color:#1C7C48}
@@ -156,7 +155,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 
 /* FAQ */
 .faq-item{border-bottom:1px solid var(--border)}
-.faq-btn{width:100%;background:none;border:none;padding:18px 0;text-align:left;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-btn{width:100%;background:none;border:none;padding:18px 0;text-align:left;font-family:'Untitled Sans',system-ui,sans-serif;font-size:16px;font-weight:500;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
 .faq-chevron{font-size:14px;color:var(--muted);flex-shrink:0;transition:transform .2s;display:inline-block}
 .faq-btn.open .faq-chevron{transform:rotate(180deg)}
 .faq-answer{display:none;padding-bottom:16px;font-size:15px;color:var(--ink2)}
@@ -212,18 +211,18 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .modal-step.active{display:block}
 .modal-title{font-family:'Lora',serif;font-size:22px;font-weight:700;margin-bottom:8px}
 .modal-sub{font-size:15px;color:var(--muted);margin-bottom:24px}
-.modal-option{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:12px;text-align:left;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:15px;display:flex;align-items:center;gap:12px}
+.modal-option{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:12px;text-align:left;cursor:pointer;font-family:'Untitled Sans',system-ui,sans-serif;font-size:15px;display:flex;align-items:center;gap:12px}
 .modal-option:hover{border-color:var(--blue);background:var(--blue-light)}
 .opt-icon{font-size:22px}
 .form-field{margin-bottom:16px}
 .form-field label{display:block;font-size:13px;font-weight:500;color:var(--ink2);margin-bottom:6px}
-.form-field input,.form-field select{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);background:var(--bg)}
+.form-field input,.form-field select{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-family:'Untitled Sans',system-ui,sans-serif;font-size:15px;color:var(--ink);background:var(--bg)}
 .feeling-btns{display:flex;gap:10px;margin-top:4px}
 .feeling-btn{flex:1;padding:10px;border:1px solid var(--border);border-radius:0;8px;background:var(--bg);font-size:20px;cursor:pointer;text-align:center}
 .feeling-btn.selected{border-color:var(--blue);background:var(--blue-light)}
-.modal-submit{width:100%;background:var(--blue);color:#fff;border:none;padding:14px;border-radius:0;8px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;cursor:pointer;margin-top:8px}
+.modal-submit{width:100%;background:var(--blue);color:#fff;border:none;padding:14px;border-radius:0;8px;font-family:'Untitled Sans',system-ui,sans-serif;font-size:16px;font-weight:500;cursor:pointer;margin-top:8px}
 .grade-select{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:4px}
-.grade-chip{padding:8px;border:1px solid var(--border);border-radius:0;6px;background:var(--bg);font-size:13px;cursor:pointer;text-align:center;font-family:'DM Sans',sans-serif}
+.grade-chip{padding:8px;border:1px solid var(--border);border-radius:0;6px;background:var(--bg);font-size:13px;cursor:pointer;text-align:center;font-family:'Untitled Sans',system-ui,sans-serif}
 .grade-chip.selected{background:var(--blue);color:#fff;border-color:var(--blue)}
 
 /* Footer */
@@ -384,15 +383,15 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <line x1="50" y1="30" x2="50" y2="255" stroke="#84807B" stroke-width="1.5"/>
       <polygon points="550,235 560,240 550,245" fill="#84807B"/>
       <polygon points="45,30 50,20 55,30" fill="#84807B"/>
-      <text x="562" y="244" font-size="13" fill="#84807B" font-family="DM Sans">x</text>
-      <text x="38" y="18" font-size="13" fill="#84807B" font-family="DM Sans">y</text>
+      <text x="562" y="244" font-size="13" fill="#84807B" font-family="Untitled Sans, system-ui, sans-serif">x</text>
+      <text x="38" y="18" font-size="13" fill="#84807B" font-family="Untitled Sans, system-ui, sans-serif">y</text>
       <!-- y-axis labels -->
-      <text x="36" y="244" font-size="11" fill="#84807B" font-family="DM Sans" text-anchor="end">0</text>
-      <text x="36" y="144" font-size="11" fill="#84807B" font-family="DM Sans" text-anchor="end">1</text>
+      <text x="36" y="244" font-size="11" fill="#84807B" font-family="Untitled Sans, system-ui, sans-serif" text-anchor="end">0</text>
+      <text x="36" y="144" font-size="11" fill="#84807B" font-family="Untitled Sans, system-ui, sans-serif" text-anchor="end">1</text>
       <!-- HA at y=1 (SVG y=140) -->
       <line x1="50" y1="140" x2="545" y2="140" stroke="#F4AB52" stroke-width="2.5" stroke-dasharray="9,5"/>
-      <text x="520" y="132" font-size="13" fill="#F4AB52" font-weight="700" font-family="DM Sans">y = 1</text>
-      <text x="55" y="132" font-size="11" fill="#F4AB52" font-family="DM Sans">Horizontal Asymptote</text>
+      <text x="520" y="132" font-size="13" fill="#F4AB52" font-weight="700" font-family="Untitled Sans, system-ui, sans-serif">y = 1</text>
+      <text x="55" y="132" font-size="11" fill="#F4AB52" font-family="Untitled Sans, system-ui, sans-serif">Horizontal Asymptote</text>
       <!-- Right branch of (x-1)/(x+1): approaches 1 from below -->
       <!-- x from 0 to 500: f(x)=(x-1)/(x+1), SVG x=50+x, SVG y=240-100*f(x) -->
       <path d="M 50,240 C 80,220 110,185 150,162 C 190,145 230,141 280,140.5 C 330,140.2 400,140.1 545,140"
@@ -401,8 +400,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <path d="M 50,30 C 52,35 55,50 65,75 C 80,105 100,125 120,134 C 135,139 145,141 160,142"
         stroke="#CE7E12" stroke-width="2.5" fill="none" stroke-linecap="round"/>
       <!-- Label -->
-      <text x="200" y="115" font-size="13" fill="#CE7E12" font-weight="700" font-family="DM Sans">f(x) = (x − 1) / (x + 1)</text>
-      <text x="200" y="130" font-size="12" fill="#84807B" font-family="DM Sans">approaches y = 1 as x → ±∞</text>
+      <text x="200" y="115" font-size="13" fill="#CE7E12" font-weight="700" font-family="Untitled Sans, system-ui, sans-serif">f(x) = (x − 1) / (x + 1)</text>
+      <text x="200" y="130" font-size="12" fill="#84807B" font-family="Untitled Sans, system-ui, sans-serif">approaches y = 1 as x → ±∞</text>
     </svg>
 
     <p>A function can have <strong>at most 2</strong> horizontal asymptotes — one as x → +∞ and a different one as x → −∞. And crucially: unlike vertical asymptotes, <strong>a curve can cross its own horizontal asymptote</strong>.</p>
@@ -576,10 +575,10 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <line x1="20" y1="10" x2="20" y2="155" stroke="#cbd5e1" stroke-width="1"/>
         <line x1="20" y1="80" x2="280" y2="80" stroke="#F4AB52" stroke-width="2" stroke-dasharray="6,4"/>
         <path d="M 25,152 C 60,140 90,115 120,97 C 150,84 180,81 220,80.3 C 255,80.1 270,80 278,80" stroke="#CE7E12" stroke-width="2" fill="none"/>
-        <text x="282" y="83" font-size="10" fill="#F4AB52" font-weight="bold" font-family="DM Sans">?</text>
-        <text x="14" y="83" font-size="10" fill="#84807B" font-family="DM Sans" text-anchor="end">3</text>
+        <text x="282" y="83" font-size="10" fill="#F4AB52" font-weight="bold" font-family="Untitled Sans, system-ui, sans-serif">?</text>
+        <text x="14" y="83" font-size="10" fill="#84807B" font-family="Untitled Sans, system-ui, sans-serif" text-anchor="end">3</text>
         <line x1="18" y1="80" x2="22" y2="80" stroke="#84807B" stroke-width="1"/>
-        <text x="14" y="153" font-size="10" fill="#84807B" font-family="DM Sans" text-anchor="end">0</text>
+        <text x="14" y="153" font-size="10" fill="#84807B" font-family="Untitled Sans, system-ui, sans-serif" text-anchor="end">0</text>
       </svg>
       <div class="choices">
         <button class="choice-btn" onclick="checkAnswer(this,'wrong','q1')">y = 0</button>
@@ -1006,7 +1005,7 @@ function drawSim() {
     ctx.beginPath(); ctx.moveTo(0, toY(d.ha)); ctx.lineTo(W, toY(d.ha)); ctx.stroke();
     ctx.setLineDash([]);
     ctx.fillStyle = '#F4AB52';
-    ctx.font = 'bold 13px DM Sans, sans-serif';
+    ctx.font = 'Untitled Sans, system-ui, sans-serif';
     ctx.fillText(d.haLabel, W - 50, toY(d.ha) - 8);
   }
 
@@ -1024,7 +1023,7 @@ function drawSim() {
   ctx.stroke();
 
   /* axis labels */
-  ctx.fillStyle = '#84807B'; ctx.font = '12px DM Sans, sans-serif';
+  ctx.fillStyle = '#84807B'; ctx.font = 'Untitled Sans, system-ui, sans-serif';
   ctx.fillText('x', W - 14, toY(0) - 6);
   ctx.fillText('y', toX(0) + 6, 14);
 }
