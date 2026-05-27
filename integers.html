@@ -127,7 +127,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .breadcrumb span{margin:0 6px}
 
 /* Mobile TOC */
-.mobile-toc{display:none;background:var(--blue-light);border:1px solid #FAF1E6;border-radius:10px;padding:16px;margin-bottom:32px}
+.mobile-toc{display:none;background:var(--blue-light);border:1px solid #FAF1E6;border-radius:0;padding:16px;margin-bottom:32px}
 @media(max-width:820px){.mobile-toc{display:block}}
 .mobile-toc summary{font-weight:500;font-size:15px;cursor:pointer;color:var(--blue)}
 .mobile-toc ul{margin-top:12px;padding-left:16px;list-style:disc}
@@ -135,7 +135,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .mobile-toc a{font-size:14px;color:var(--ink2)}
 
 /* Callout */
-.callout{background:var(--yellow-light);border-left:4px solid var(--yellow);border-radius:8px;padding:16px 20px;margin:24px 0;font-size:15px;color:var(--ink2)}
+.callout{background:var(--yellow-light);border-left:4px solid var(--yellow);border-radius:0;padding:16px 20px;margin:24px 0;font-size:15px;color:var(--ink2)}
 
 /* Think box */
 .think-box{background:var(--purple-light);border-left:4px solid var(--purple);border-radius:8px;padding:18px 20px;margin:24px 0}
@@ -146,7 +146,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
   /* Real-world strip */
 .rw-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:24px 0}
 @media(max-width:600px){.rw-strip{grid-template-columns:1fr 1fr}}
-.rw-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.rw-card{background:var(--surface);border:1px solid var(--border);border-radius:0;padding:16px;text-align:center}
 .rw-card .emoji{font-size:28px;margin-bottom:8px}
 .rw-card strong{display:block;font-size:14px;font-weight:500;margin-bottom:4px}
 .rw-card p{font-size:13px;color:var(--muted);margin-bottom:0}
@@ -229,7 +229,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 @keyframes sfpulse{0%{transform:scale(1)}45%{transform:scale(1.18)}100%{transform:scale(1)}}
 
 /* CTA inline */
-.cta-inline{background:var(--blue-light);border-radius:8px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:24px 0}
+.cta-inline{background:var(--yellow-light);border:1px solid var(--yellow);border-radius:8px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:24px 0}
 .cta-inline p{margin-bottom:0;font-size:15px;color:var(--ink2)}
 .btn-primary{background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:0;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer}
 .btn-primary:hover{background:var(--gold-600)}
@@ -252,7 +252,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .q-text{font-size:17px;font-weight:500;color:var(--ink);margin-bottom:20px}
 .choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
 @media(max-width:500px){.choices{grid-template-columns:1fr}}
-.choice-btn{padding:12px 16px;border:1px solid var(--border);border-radius:8px;background:var(--bg);font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;cursor:pointer;text-align:left;color:var(--ink);transition:border-color .15s,background .15s}
+.choice-btn{padding:12px 16px;border:1px solid var(--border);border-radius:0;background:var(--bg);font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;cursor:pointer;text-align:left;color:var(--ink);transition:border-color .15s,background .15s}
 .choice-btn:hover:not(:disabled){border-color:var(--blue);background:var(--blue-light)}
 .choice-btn.correct{background:var(--green-light);border-color:var(--green)}
 .choice-btn.wrong{background:var(--red-light);border-color:var(--red)}
@@ -262,8 +262,16 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .q-feedback.correct{background:var(--green-light);color:#1C7C48}
 .q-feedback.wrong{background:var(--red-light);color:#842D34}
 .q-next{margin-top:16px;display:none}
-.completion-screen{display:none;text-align:center;padding:32px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
-.score-big{font-size:48px;font-weight:700;color:var(--green);font-family:'Athletics',Georgia,serif}
+.completion-screen{display:none;text-align:center;padding:28px 16px}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .completion-screen.show{display:block;animation:fadeIn .5s ease}
+  .done-emoji{font-size:52px;margin-bottom:8px}
+  .done-msg{font-size:15px;color:var(--ink2);max-width:340px;margin:0 auto 16px}
+  .btn-retry{background:var(--yellow);color:var(--ink);border:none;padding:10px 22px;border-radius:0;font-family:inherit;font-weight:600;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background .15s;margin-top:12px}
+  .btn-retry:hover{background:var(--gold-600)}
+  .completion-cta{margin-top:16px}
+  .completion-cta p{font-size:14px;color:var(--ink2);margin-bottom:10px}
+.score-big{font-family:'Athletics',Georgia,serif;font-size:44px;font-weight:700;color:var(--green);margin-bottom:8px}
 
 /* Key Takeaways */
 .kt-table{width:100%;border-collapse:collapse;margin:16px 0}
@@ -334,11 +342,11 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .form-field label{display:block;font-size:13px;font-weight:500;color:var(--ink2);margin-bottom:6px}
 .form-field input,.form-field select{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;color:var(--ink);background:var(--bg)}
 .feeling-btns{display:flex;gap:10px;margin-top:4px}
-.feeling-btn{flex:1;padding:10px;border:1px solid var(--border);border-radius:8px;background:var(--bg);font-size:20px;cursor:pointer;text-align:center}
+.feeling-btn{flex:1;padding:10px;border:1px solid var(--border);border-radius:0;8px;background:var(--bg);font-size:20px;cursor:pointer;text-align:center}
 .feeling-btn.selected{border-color:var(--blue);background:var(--blue-light)}
-.modal-submit{width:100%;background:var(--blue);color:#fff;border:none;padding:14px;border-radius:8px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:16px;font-weight:500;cursor:pointer;margin-top:8px}
+.modal-submit{width:100%;background:var(--blue);color:#fff;border:none;padding:14px;border-radius:0;8px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:16px;font-weight:500;cursor:pointer;margin-top:8px}
 .grade-select{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:4px}
-.grade-chip{padding:8px;border:1px solid var(--border);border-radius:6px;background:var(--bg);font-size:13px;cursor:pointer;text-align:center;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif}
+.grade-chip{padding:8px;border:1px solid var(--border);border-radius:0;6px;background:var(--bg);font-size:13px;cursor:pointer;text-align:center;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif}
 .grade-chip.selected{background:var(--blue);color:#fff;border-color:var(--blue)}
 
 /* Footer */
@@ -850,7 +858,15 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
     <!-- Completion -->
     <div class="completion-screen" id="completion">
+      <div class="done-emoji" id="done-emoji">🎉</div>
       <div class="score-big" id="final-score">0/5</div>
+      <p class="done-msg" id="completion-msg"></p>
+      <button class="btn-retry" id="btn-retry" onclick="retryPractice()">Try again <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="completion-cta" id="cta-deeper" style="display:none">
+        <p>Ready to go deeper? Work 1-on-1 with a Cuemath tutor.</p>
+        <button class="btn-primary" onclick="openModal()">Book a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
       <p id="completion-msg" style="color:var(--ink2);font-size:16px;margin-top:8px"></p>
       <div id="completion-actions"></div>
     </div>
@@ -1099,7 +1115,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       </div>
       <div class="form-field"><label>Your first name</label><input type="text" placeholder="e.g. Priya"></div>
       <div class="form-field"><label>Parent's phone number</label><input type="tel" placeholder="+91 98765 43210"></div>
-      <button class="modal-submit" onclick="goStep('done')">Book my free class →</button>
+      <button class="modal-submit" onclick="goStep('done')">Book my free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
     <div class="modal-step" id="step3b">
       <div class="modal-title">Book a free trial for your child</div>
@@ -1111,7 +1127,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       </div>
       <div class="form-field"><label>Your phone number</label><input type="tel" placeholder="+91 98765 43210"></div>
       <div class="form-field"><label>Your email</label><input type="email" placeholder="you@example.com"></div>
-      <button class="modal-submit" onclick="goStep('done')">Book free class →</button>
+      <button class="modal-submit" onclick="goStep('done')">Book free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
     <div class="modal-step" id="step3c">
       <div class="modal-title">You're in the right place</div>
@@ -1523,7 +1539,7 @@ function nextQ(n) {
 
 function showCompletion() {
   document.querySelectorAll('.question-card').forEach(function(c) { c.classList.remove('active'); });
-  document.getElementById('completion').style.display = 'block';
+  document.getElementById('completion').classList.add('show');
   document.getElementById('final-score').textContent = score + '/5';
   var msgs = ['Let\'s revisit the sections above together.','Keep going — re-read the sign rules.','Good effort. Review the operations accordion.','Good work — one to tighten up.','Great work! One small slip.','Perfect score! Integers mastered.'];
   document.getElementById('completion-msg').textContent = msgs[score];
