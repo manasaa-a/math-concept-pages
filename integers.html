@@ -506,7 +506,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
               Same sign (both −)<br>Add: 9 + 5 = 14<br>Keep the sign → <strong>Result: −14</strong>
             </div>
           </div>
-          <div class="sim-slot"></div>
         </div>
       </div>
 
@@ -531,7 +530,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
               = −4 + 6<br>Different signs, difference: 6 − 4 = 2<br>Larger (6) is positive → <strong>Result: +2</strong>
             </div>
           </div>
-          <div class="sim-slot"></div>
         </div>
       </div>
 
@@ -552,7 +550,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
             </tbody>
           </table>
           <p style="font-size:14px;color:var(--muted)"><em>Why does negative × negative = positive?</em> Think of it as reversing direction twice — two reversals bring you back to the original direction.</p>
-          <div class="sim-slot"></div>
         </div>
       </div>
 
@@ -572,7 +569,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
               <tr><td>(−) ÷ (−)</td><td class="pos-result">Positive</td><td>(−12) ÷ (−3) = 4</td></tr>
             </tbody>
           </table>
-          <div class="sim-slot"></div>
           <p style="font-size:14px;color:var(--muted)">Note: dividing integers does not always produce an integer (e.g., 5 ÷ 2 = 2.5). Division is only closed over integers when the result is exact.</p>
         </div>
       </div>
@@ -1080,19 +1076,21 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 function toggleAcc(btn) {
   var body = btn.nextElementSibling;
   var isOpen = btn.classList.contains('open');
-  var sim = document.getElementById('simulation');
-  var simHome = document.getElementById('sim-home'); if (!simHome) simHome = { style: {} };
-  // Close all, return sim to home
   btn.closest('.accordion').querySelectorAll('.accordion-btn').forEach(function(b) {
     b.classList.remove('open'); b.nextElementSibling.classList.remove('open');
   });
-  if (simHome && sim && sim.parentNode !== simHome) simHome.appendChild(sim);
   if (!isOpen) {
     btn.classList.add('open'); body.classList.add('open');
     var op = btn.dataset.op;
-    if (op && sim) {
-      var slot = body.querySelector('.sim-slot');
-      if (slot) { slot.appendChild(sim); setOp(op); }
+    if (op) {
+      var modeMap = {'+':'add','-':'sub','×':'mul','÷':'div'};
+      var sim = document.querySelector('iframe[src="integer-operations-sim.html"]');
+      if (sim) {
+        sim.contentWindow.postMessage({ tab: modeMap[op] }, '*');
+        setTimeout(function() {
+          sim.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 200);
+      }
     }
   }
 }
@@ -1127,7 +1125,7 @@ function setOp(op) {
     '×': '💡 Click the sign tiles to try all four sign combinations.',
     '÷': '💡 Click the sign tiles — division follows the same sign rules as multiplication.'
   };
-  document.getElementById('sim-discover-txt').textContent = tips[op];
+  var sdt = document.getElementById('sim-discover-txt'); if(sdt) sdt.textContent = tips[op];
   runSim();
 }
 
