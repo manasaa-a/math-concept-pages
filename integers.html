@@ -360,7 +360,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   #int-ops-sim .eq-eq { color:var(--muted); }
   #int-ops-sim .eq-r { color:var(--green); }
   #int-ops-sim .eq-err { color:var(--red); font-size:16px; }
-  #int-ops-sim canvas { display:block; width:100%; border:1px solid var(--border); background:#fff; }
+  #int-ops-sim canvas { display:block; width:100%; height:auto; border:1px solid var(--border); background:#fff; }
   #int-ops-sim .sim-controls { display:flex; gap:32px; justify-content:center; flex-wrap:wrap; margin-top:12px; }
   #int-ops-sim .sim-slider-group { display:flex; flex-direction:column; align-items:center; gap:4px; }
   #int-ops-sim .sim-slider-label { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); }
@@ -1631,8 +1631,8 @@ tocIds.forEach(function(id) { var el = document.getElementById(id); if (el) spy.
 
   function simRender() {
     var canvas = document.getElementById('sim-canvas'); if (!canvas) return;
-    canvas.width = canvas.offsetWidth || 640;
-    var W=canvas.width, H=220, LY=140, PX=48;
+    var W=640, H=220, LY=140, PX=48;
+    if(canvas.width!==W||canvas.height!==H){canvas.width=W;canvas.height=H;}
     var ctx = canvas.getContext('2d');
     ctx.clearRect(0,0,W,H);
     ctx.fillStyle=C.bg; ctx.fillRect(0,0,W,H);
