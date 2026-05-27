@@ -35,7 +35,7 @@
   .nav{position:sticky;top:0;z-index:200;background:rgba(250,250,249,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);height:var(--nav-h);display:flex;align-items:center}
   .nav-inner{max-width:1120px;margin:0 auto;padding:0 32px;width:100%;display:flex;align-items:center;justify-content:space-between}
   .nav-logo{font-family:'Athletics',Georgia,serif;font-weight:700;font-size:22px}
-  .nav-cta{background:var(--ink);color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:500}
+  .nav-cta{background:var(--yellow);color:var(--ink);padding:10px 18px;border-radius:0;text-decoration:none;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:4px}
 
   /* BREADCRUMB */
   .breadcrumb-bar{border-bottom:1px solid var(--border);padding:12px 0;font-size:13px;color:var(--muted);background:var(--surface)}
@@ -171,12 +171,12 @@
   .cta-text p{font-size:15px;color:#292827;margin:0;max-width:380px}
   .cta-img{grid-column:1;grid-row:1;width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
   .cta-buttons{display:flex;gap:10px;flex-wrap:wrap}
-  .cta-primary{background:var(--yellow);color:var(--ink);border:none;padding:14px 22px;border-radius:10px;font-family:inherit;font-weight:700;font-size:15px;cursor:pointer;white-space:nowrap;transition:background .15s}
+  .cta-primary{background:var(--yellow);color:var(--ink);border:none;padding:14px 22px;border-radius:0;font-family:inherit;font-weight:700;font-size:15px;cursor:pointer;transition:background .15s;display:inline-flex;align-items:center;gap:6px}
   .cta-primary:hover{background:#F4AB52}
   .cta-secondary{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.25);padding:14px 22px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;white-space:nowrap;transition:background .15s}
   .cta-secondary:hover{background:rgba(255,255,255,.18)}
 
-  .btn-white{background:#fff;color:var(--neutral-1000);border:none;padding:12px 24px;border-radius:8px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;font-weight:500;cursor:pointer}
+  .btn-white{background:#fff;color:var(--neutral-1000);border:none;padding:12px 24px;border-radius:0;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
 
   /* PRACTICE */
   .practice-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;min-height:320px;display:flex;flex-direction:column}
@@ -218,13 +218,26 @@
   .faq-item{border-bottom:1px solid var(--border)}
   .faq-item:last-child{border-bottom:none}
   .faq-q{width:100%;background:none;border:none;text-align:left;padding:16px 4px;font-family:'Athletics',Georgia,serif;font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4;margin:0}
+
+
+  .rc-box{border:1px solid var(--border);padding:24px;margin-top:16px}
+  .rc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-top:14px}
+  .rc-card{display:block;border:1px solid var(--border);padding:14px 16px;text-decoration:none;color:var(--ink);font-size:14px;font-weight:500;font-family:'Untitled Sans',-apple-system,sans-serif;transition:border-color .15s,background .15s}
+  .rc-card:hover{border-color:var(--yellow);background:var(--yellow-light);text-decoration:none}
+  .kt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin:16px 0}
+  .kt-card{background:var(--yellow-light);border:1px solid var(--yellow);padding:14px 16px;cursor:default;position:relative;transition:background .15s}
+  .kt-card:hover{background:var(--yellow)}
+  .kt-front{font-family:'Athletics',Georgia,serif;font-size:14px;font-weight:700;color:var(--ink)}
+  .kt-formula{font-size:13px;font-weight:600;color:var(--ink2);margin-top:4px}
+  .kt-back{font-size:12px;color:var(--ink2);margin-top:6px;line-height:1.5;display:none}
+  .kt-card:hover .kt-back{display:block}
   .tips-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin:16px 0}
   .tips-list li{padding:14px 18px;background:var(--yellow-light);border-left:3px solid var(--yellow);border-radius:0 8px 8px 0;font-size:15px;color:var(--ink2);line-height:1.6}
   .video-section-label{font-size:clamp(18px,2vw,22px);font-family:'Athletics',Georgia,serif;font-weight:700;color:var(--ink);margin-bottom:12px;display:block}
   .eyebrow-title{font-size:clamp(18px,2vw,24px);font-family:'Athletics',Georgia,serif;font-weight:700;color:var(--ink);margin-bottom:16px;display:block}
   .cta-head{font-family:'Athletics',Georgia,serif;font-size:22px;font-weight:700;color:#292827;margin-bottom:6px}
   .faq-q .icon{font-size:18px;color:var(--muted);flex-shrink:0;transition:transform .2s}
-  .faq-q.open .icon{transform:rotate(45deg)}
+  .faq-q.open .icon{transform:rotate(45deg)}.faq-q.open .faq-chev{transform:rotate(180deg)}
   .faq-a{font-size:15px;color:var(--ink2);padding:0 4px 16px;display:none;line-height:1.7}
   .faq-a.show{display:block;animation:fadeIn .3s ease}
 
@@ -486,7 +499,7 @@
 <nav class="nav">
   <div class="nav-inner">
     <div class="nav-logo">Cuemath</div>
-    <a class="nav-cta" href="https://www.cuemath.com/en-us/">Try a free class →</a>
+    <a class="nav-cta" href="https://www.cuemath.com/en-us/">Try a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
   </div>
 </nav>
 
@@ -547,12 +560,11 @@
           allowfullscreen></iframe>
       </div>
     </div>
-    <p style="font-size:13px;color:var(--muted);margin-top:-16px;margin-bottom:12px;font-weight:600;letter-spacing:.3px">Exponent Rules: All 8 explained with examples</p>
 
     <!-- CTA after video -->
     <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:28px">
       <p style="margin:0;font-size:15px;color:var(--ink2)">Want to go deeper? Get personalised 1:1 math tutoring with a Cuemath expert.</p>
-      <button class="cta-primary" onclick="openModal()" style="white-space:nowrap">Try Cuemath →</button>
+      <button class="cta-primary" onclick="openModal()">Try Cuemath <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
 
     <!-- SECTION 1: WHAT ARE EXPONENTS -->
@@ -568,6 +580,7 @@
         <div class="expand-row"><span class="exp-expr">7<sup>0</sup></span><span style="color:var(--muted)"> = </span><span style="color:var(--muted);font-style:italic">follow the pattern: 7², 7¹, 7⁰…</span><span style="color:var(--muted)"> = </span><span class="exp-result">1</span></div>
       </div>
 
+      <p style="margin-top:16px">Exponent rules, which are also known as the ‘laws of exponents’ or the ‘properties of exponents’, make the process of simplifying expressions involving exponents easier. These rules are helpful to simplify the expressions that have decimals, fractions, irrational numbers, and negative integers as their exponents.</p>
       <div class="think-box">
         <span class="think-label">Think about it</span>
         <p>Look at: 2⁴ = 16, 2³ = 8, 2² = 4, 2¹ = 2. Each step divides by 2. What does the pattern force 2⁰ to be?</p>
@@ -701,7 +714,7 @@
             <p>Work through problems live with a Cuemath tutor — personalised to how you learn, at your own pace.</p>
           </div>
           <div class="cta-buttons">
-            <button class="btn-white" onclick="openModal()">Book a free class →</button>
+            <button class="btn-white" onclick="openModal()">Book a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           </div>
         </div>
         <img class="cta-img" src="cta-student.png" alt="Live 1:1 lesson on Cuemath">
@@ -733,7 +746,7 @@
           <div class="msg" id="done-msg"></div>
         </div>
         <div class="practice-footer">
-          <button class="next-btn" id="next-btn">Next →</button>
+          <button class="next-btn" id="next-btn">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
     </section>
@@ -766,46 +779,63 @@
       <h2>FAQs on Exponent Rules</h2>
 
       <div class="faq-item">
-        <h3 class="faq-q" tabindex="0" role="button">What are the 8 laws of exponents?<span class="icon">+</span></h3>
+        <h3 class="faq-q" tabindex="0" role="button">What are the 8 laws of exponents?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="faq-chev" style="vertical-align:middle;flex-shrink:0;transition:transform .2s;margin-left:auto"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-a">The 8 laws are: (1) Product — aᵐ × aⁿ = aᵐ⁺ⁿ, (2) Quotient — aᵐ ÷ aⁿ = aᵐ⁻ⁿ, (3) Zero — a⁰ = 1, (4) Identity — a¹ = a, (5) Negative — a⁻ᵐ = 1/aᵐ, (6) Power of a power — (aᵐ)ⁿ = aᵐⁿ, (7) Power of a product — (ab)ᵐ = aᵐbᵐ, (8) Power of a quotient — (a/b)ᵐ = aᵐ/bᵐ.</div>
       </div>
 
       <div class="faq-item">
-        <h3 class="faq-q" tabindex="0" role="button">Why does any number to the power 0 equal 1?<span class="icon">+</span></h3>
+        <h3 class="faq-q" tabindex="0" role="button">Why does any number to the power 0 equal 1?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="faq-chev" style="vertical-align:middle;flex-shrink:0;transition:transform .2s;margin-left:auto"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-a">Follow the pattern: 2³ = 8, 2² = 4, 2¹ = 2. Each step divides by 2. Continuing: 2⁰ = 2 ÷ 2 = 1. Also: aᵐ ÷ aᵐ = aᵐ⁻ᵐ = a⁰. But anything divided by itself = 1, so a⁰ = 1. Note: 0⁰ is undefined — this rule only applies when a ≠ 0.</div>
       </div>
 
       <div class="faq-item">
-        <h3 class="faq-q" tabindex="0" role="button">What is the fractional exponent rule?<span class="icon">+</span></h3>
+        <h3 class="faq-q" tabindex="0" role="button">What is the fractional exponent rule?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="faq-chev" style="vertical-align:middle;flex-shrink:0;transition:transform .2s;margin-left:auto"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-a">a<sup>m/n</sup> = <sup>n</sup>√(a<sup>m</sup>). The denominator of the fraction becomes the root index; the numerator becomes the power. Example: 8<sup>2/3</sup> = ³√(8²) = ³√64 = 4. When the numerator is 1: a<sup>1/n</sup> = <sup>n</sup>√a. Example: 16<sup>1/2</sup> = √16 = 4. Fractional exponents and radicals are two ways of writing the same thing.</div>
       </div>
 
       <div class="faq-item">
-        <h3 class="faq-q" tabindex="0" role="button">What does a negative exponent mean?<span class="icon">+</span></h3>
+        <h3 class="faq-q" tabindex="0" role="button">What does a negative exponent mean?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="faq-chev" style="vertical-align:middle;flex-shrink:0;transition:transform .2s;margin-left:auto"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-a">A negative exponent means take the reciprocal: a⁻ᵐ = 1/aᵐ. Example: 2⁻³ = 1/2³ = 1/8. The negative exponent does not mean the result is negative — it means "divide by" instead of "multiply by". So 2⁻² = 0.25, which is positive.</div>
       </div>
 
       <div class="faq-item">
-        <h3 class="faq-q" tabindex="0" role="button">Can the product rule be applied when bases are different?<span class="icon">+</span></h3>
+        <h3 class="faq-q" tabindex="0" role="button">Can the product rule be applied when bases are different?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="faq-chev" style="vertical-align:middle;flex-shrink:0;transition:transform .2s;margin-left:auto"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-a">No. The product rule (aᵐ × aⁿ = aᵐ⁺ⁿ) only works when the bases are the same. 2³ × 3⁴ cannot be simplified by adding exponents — these must be calculated separately: 8 × 81 = 648.</div>
       </div>
 
       <div class="faq-item">
-        <h3 class="faq-q" tabindex="0" role="button">What is the difference between (aᵐ)ⁿ and aᵐ × aⁿ?<span class="icon">+</span></h3>
+        <h3 class="faq-q" tabindex="0" role="button">What is the difference between (aᵐ)ⁿ and aᵐ × aⁿ?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="faq-chev" style="vertical-align:middle;flex-shrink:0;transition:transform .2s;margin-left:auto"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-a">(aᵐ)ⁿ is the power of a power — you multiply the exponents: (a²)³ = a⁶. aᵐ × aⁿ is the product rule — you add the exponents: a² × a³ = a⁵. A common mistake is confusing which operation applies. If the exponent is outside brackets, multiply; if it's a multiplication, add.</div>
       </div>
 
       <div class="faq-item">
-        <h3 class="faq-q" tabindex="0" role="button">Can the exponent be a fraction?<span class="icon">+</span></h3>
+        <h3 class="faq-q" tabindex="0" role="button">Can the exponent be a fraction?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="faq-chev" style="vertical-align:middle;flex-shrink:0;transition:transform .2s;margin-left:auto"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-a">Yes. A fractional exponent aᵐ/ⁿ = ⁿ√(aᵐ) — the denominator of the fraction becomes the root. Example: 8^(1/3) = ³√8 = 2. And 8^(2/3) = ³√(8²) = ³√64 = 4. This is called the fractional exponent rule, sometimes listed as a 9th law.</div>
       </div>
 
       <div class="faq-item">
-        <h3 class="faq-q" tabindex="0" role="button">How do I know which exponent rule to apply?<span class="icon">+</span></h3>
+        <h3 class="faq-q" tabindex="0" role="button">How do I know which exponent rule to apply?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="faq-chev" style="vertical-align:middle;flex-shrink:0;transition:transform .2s;margin-left:auto"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-a">Ask these questions in order: (1) Are the bases the same? → Product or Quotient rule. (2) Is there a power outside brackets? → Power of Power, Product, or Quotient. (3) Is the exponent 0? → Zero rule. (4) Is the exponent 1? → Identity rule. (5) Is the exponent negative? → Negative rule. Most complex expressions need two or more rules applied in sequence.</div>
       </div>
     </section>
 
+
+    <!-- KEY TAKEAWAYS -->
+    <section class="content-section" id="key-takeaways">
+      <span class="eyebrow">Quick reference</span>
+      <h2 style="font-size:20px;margin-bottom:4px">Key Takeaways</h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Hover over each card to see when to use it.</p>
+      <div class="kt-grid">
+        <div class="kt-card"><div class="kt-front">Product Rule</div><div class="kt-formula">aᵐ × aⁿ = aᵐ⁺ⁿ</div><div class="kt-back">Same base, multiplying — add the exponents.</div></div>
+        <div class="kt-card"><div class="kt-front">Quotient Rule</div><div class="kt-formula">aᵐ ÷ aⁿ = aᵐ⁻ⁿ</div><div class="kt-back">Same base, dividing — subtract the exponents.</div></div>
+        <div class="kt-card"><div class="kt-front">Zero Exponent</div><div class="kt-formula">a⁰ = 1</div><div class="kt-back">Any non-zero base raised to 0 equals 1.</div></div>
+        <div class="kt-card"><div class="kt-front">Negative Exponent</div><div class="kt-formula">a⁻ᵐ = 1/aᵐ</div><div class="kt-back">Flip to denominator to make the exponent positive.</div></div>
+        <div class="kt-card"><div class="kt-front">Power of a Power</div><div class="kt-formula">(aᵐ)ⁿ = aᵐⁿ</div><div class="kt-back">Exponent outside brackets — multiply the exponents.</div></div>
+        <div class="kt-card"><div class="kt-front">Power of a Product</div><div class="kt-formula">(ab)ᵐ = aᵐbᵐ</div><div class="kt-back">Distribute the exponent to each factor.</div></div>
+        <div class="kt-card"><div class="kt-front">Power of a Quotient</div><div class="kt-formula">(a/b)ᵐ = aᵐ/bᵐ</div><div class="kt-back">Distribute the exponent to numerator and denominator.</div></div>
+        <div class="kt-card"><div class="kt-front">Fractional Exponent</div><div class="kt-formula">a^(m/n) = ⁿ√(aᵐ)</div><div class="kt-back">Denominator → root index, numerator → power.</div></div>
+      </div>
+    </section>
     <!-- TIPS ON EXPONENT RULES -->
     <section class="content-section" id="tips">
       <span class="eyebrow">Quick reference</span>
@@ -841,13 +871,13 @@
         </a>
       </div>
 
-      <div style="margin-top:40px">
-        <p class="eyebrow-title">Related Concepts</p>
-        <div class="concepts-grid">
-          <a class="concept-chip" href="integers.html">Integers</a>
-          <a class="concept-chip" href="area-of-triangle.html">Area of a Triangle</a>
-          <a class="concept-chip" href="area-of-parallelogram.html">Area of Parallelogram</a>
-          <a class="concept-chip" href="surface-area-of-cylinder.html">Surface Area of Cylinder</a>
+      <div class="rc-box" style="margin-top:40px">
+        <p class="eyebrow-title" style="margin-bottom:0">Related Concepts</p>
+        <div class="rc-grid">
+          <a class="rc-card" href="integers.html">Integers</a>
+          <a class="rc-card" href="area-of-triangle.html">Area of a Triangle</a>
+          <a class="rc-card" href="area-of-parallelogram.html">Area of Parallelogram</a>
+          <a class="rc-card" href="surface-area-of-cylinder.html">Surface Area of Cylinder</a>
         </div>
       </div>
     </section>
