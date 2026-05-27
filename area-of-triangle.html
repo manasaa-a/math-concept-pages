@@ -95,12 +95,20 @@ strong{font-weight:500;color:var(--ink)}
 .page-wrap{display:grid;grid-template-columns:220px 1fr;gap:48px;max-width:1120px;margin:0 auto;padding:0 24px}
 .content{min-width:0}
 /* mobile TOC */
-  .mobile-toc{display:none;background:var(--surface);border:1px solid var(--border);border-radius:0;margin-top:0;margin-bottom:28px;overflow:hidden}
-  .mobile-toc-btn{width:100%;background:none;border:none;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;color:var(--ink)}
-  .mobile-toc-body{display:none;border-top:1px solid var(--border);padding:6px 0}
-  .mobile-toc-body.open{display:block}
+  .mobile-toc{display:none;border:1px solid var(--border);margin-bottom:28px;overflow:hidden;border-radius:0}
+  .mobile-toc summary{list-style:none;cursor:pointer;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;font-family:inherit;font-size:15px;font-weight:600;color:var(--ink);background:var(--surface)}
+  .mobile-toc summary::-webkit-details-marker{display:none}
+  .mobile-toc summary::marker{display:none}
+  .mobile-toc[open] .mtoc-chev{transform:rotate(180deg)}
+  .mobile-toc-body{padding:6px 0;border-top:1px solid var(--border)}
   .mobile-toc-body a{display:block;padding:9px 16px;font-size:14px;color:var(--ink2);text-decoration:none;border-left:3px solid transparent;transition:all .15s}
-  .mobile-toc-body a:hover,.mobile-toc-body a.active{background:var(--bg);border-left-color:var(--yellow);color:var(--ink)}
+  .mobile-toc-body a:hover{background:var(--bg);border-left-color:var(--yellow);color:var(--ink)}
+  
+  
+  
+  
+  
+  
 
   @media(max-width:820px){.mobile-toc{display:block;margin-top:24px}.page-wrap{grid-template-columns:1fr}.toc-sidebar{display:none}}
 .section{padding:52px 0;border-bottom:1px solid var(--border)}
@@ -356,18 +364,20 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 <main class="content">
 
   <!-- MOBILE TOC -->
-  <div class="mobile-toc">
-      <button class="mobile-toc-btn" id="mobile-toc-btn" onclick="var b=document.getElementById('mobile-toc-body');b.classList.toggle('open');this.querySelector('#mtoc-icon').textContent=b.classList.contains('open')?'↑':'↓'">
-        <span>On this page</span><span id="mtoc-icon">↓</span>
-      </button>
-      <div class="mobile-toc-body" id="mobile-toc-body">
-        <a href="#what-is">What is the Area?</a>
-        <a href="#how-to">How to Find Area</a>
-        <a href="#practice">Practice</a>
-        <a href="#faq">FAQ</a>
+  <details class="mobile-toc">
+      <summary>
+        <span>On this page</span>
+        <svg class="mtoc-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="mobile-toc-body">
+        <a href="#what-is">What is the Area of a Triangle?</a>
+        <a href="#how-to">How to Find the Area</a>
+        <a href="#practice">Practice questions</a>
         <a href="#takeaways">Key Takeaways</a>
-        <a href="#worksheet">Worksheets</a>
+        <a href="#worksheet">Downloadable worksheet</a>
+        <a href="#faq">FAQ</a>
       </div>
+    </details>
     </div>
 
   <!-- INTRO -->
@@ -989,8 +999,6 @@ var spy = new IntersectionObserver(function(entries) {
   });
 }, { rootMargin: '-20% 0px -60% 0px' });
 tocIds.forEach(function(id) { var el = document.getElementById(id); if (el) spy.observe(el); });
-
-  /* Mobile TOC toggle */
   const mtocBtn = document.getElementById('mobile-toc-btn');
   const mtocBody = document.getElementById('mobile-toc-body');
   if (mtocBtn && mtocBody) {
