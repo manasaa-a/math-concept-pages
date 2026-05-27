@@ -165,7 +165,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .accordion-item:last-child{border-bottom:none}
 .accordion-btn{width:100%;background:var(--surface);border:none;padding:16px 20px;text-align:left;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:16px;font-weight:500;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
 .accordion-btn:hover{background:var(--bg)}
-.chevron{transition:transform .2s;font-size:12px;color:var(--muted)}
+.chevron{transition:transform .2s;color:var(--muted);display:inline-block}
 .accordion-btn.open .chevron{transform:rotate(180deg)}
 .accordion-body{display:none;padding:0 20px 20px;background:var(--surface)}
 .accordion-body.open{display:block}
@@ -276,7 +276,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .faq-item{border-bottom:1px solid var(--border)}
   .section-label{font-size:clamp(20px,2.5vw,26px);font-family:'Athletics',Georgia,serif;font-weight:700;color:var(--ink);margin-bottom:16px;display:block}
 .faq-btn{width:100%;background:none;border:none;padding:18px 0;text-align:left;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:16px;font-weight:500;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
-.faq-ch{font-size:14px;color:var(--muted);flex-shrink:0;transition:transform .2s;display:inline-block}
+.faq-ch{color:var(--muted);flex-shrink:0;transition:transform .2s;display:inline-block}
 .faq-btn.open .faq-ch{transform:rotate(180deg)}
 .faq-answer{display:none;padding-bottom:16px;font-size:15px;color:var(--ink2)}
 .faq-answer.open{display:block}
@@ -355,7 +355,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 <nav>
   <div class="nav-inner">
     <a class="nav-logo" href="/">Cuemath</a>
-    <a class="nav-cta" href="#" onclick="openModal();return false">Try a free class →</a>
+    <a class="nav-cta" href="#" onclick="openModal();return false">Try a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
   </div>
 </nav>
 
@@ -482,7 +482,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <!-- ADDITION -->
       <div class="accordion-item">
         <button class="accordion-btn" data-op="+" onclick="toggleAcc(this)">
-          <span>Addition of Integers</span><span class="chevron">▼</span>
+          <span>Addition of Integers</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="accordion-body">
           <p style="font-size:15px;color:var(--ink2)">Two rules cover every case:</p>
@@ -513,7 +513,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <!-- SUBTRACTION -->
       <div class="accordion-item">
         <button class="accordion-btn" data-op="-" onclick="toggleAcc(this)">
-          <span>Subtraction of Integers</span><span class="chevron">▼</span>
+          <span>Subtraction of Integers</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="accordion-body">
           <div class="formula-box">
@@ -538,7 +538,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <!-- MULTIPLICATION -->
       <div class="accordion-item">
         <button class="accordion-btn" data-op="×" onclick="toggleAcc(this)">
-          <span>Multiplication of Integers</span><span class="chevron">▼</span>
+          <span>Multiplication of Integers</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="accordion-body">
           <p style="font-size:15px;color:var(--ink2)">The sign of the product depends only on the signs of the factors:</p>
@@ -559,7 +559,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <!-- DIVISION -->
       <div class="accordion-item">
         <button class="accordion-btn" data-op="÷" onclick="toggleAcc(this)">
-          <span>Division of Integers</span><span class="chevron">▼</span>
+          <span>Division of Integers</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="accordion-body">
           <p style="font-size:15px;color:var(--ink2)">Division follows the exact same sign rules as multiplication:</p>
@@ -582,13 +582,73 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <p>Without a calculator: what is (−3) × (−8)? Decide the sign first using the sign rule, then calculate the magnitude.</p>
     </div>
 
-    <!-- Integer Operations Simulation -->
     <div id="sim-home" style="margin-top:24px">
-      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border)">
-        <iframe src="integer-operations.html"
-          style="width:100%;height:580px;border:0;display:block"
-          loading="lazy"></iframe>
+    <!-- Integer Explorer (inline) -->
+    <div id="simulation">
+      <p style="font-size:16px;font-family:'Athletics',Georgia,serif;font-weight:700;color:var(--ink);margin-bottom:8px">Try it on the number line</p>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:14px">Choose an operation, adjust the numbers and hit ▶ Play. For × and ÷, flip the sign tiles to see the rule.</p>
+      <div class="sim-container">
+        <div class="sim-op-tabs">
+          <button class="sim-tab active" id="tab-add" onclick="setOp('+')">+ Add</button>
+          <button class="sim-tab" id="tab-sub" onclick="setOp('-')">− Subtract</button>
+          <button class="sim-tab" id="tab-mul" onclick="setOp('×')">× Multiply</button>
+          <button class="sim-tab" id="tab-div" onclick="setOp('÷')">÷ Divide</button>
+        </div>
+        <div class="sim-inputs">
+          <div class="sim-num-wrap">
+            <span class="sim-num-label" id="label-a">Start (°C)</span>
+            <div class="sim-num-ctrl">
+              <button onclick="changeNum('a',-1)">−</button>
+              <input id="numA" type="text" value="-3" readonly>
+              <button onclick="changeNum('a',1)">+</button>
+            </div>
+          </div>
+          <span class="sim-op-symbol" id="op-symbol">+</span>
+          <div class="sim-num-wrap">
+            <span class="sim-num-label" id="label-b">Change (°C)</span>
+            <div class="sim-num-ctrl">
+              <button onclick="changeNum('b',-1)">−</button>
+              <input id="numB" type="text" value="5" readonly>
+              <button onclick="changeNum('b',1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div id="temp-scenario" style="background:var(--blue-light);border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:15px;color:var(--ink2)">
+          🌡️ <span id="temp-sentence">Temperature starts at −3°C, rises by 5°C → lands at <strong>2°C</strong></span>
+        </div>
+        <div id="sign-explorer" style="display:none">
+          <div class="sign-explorer-label">Click a tile to flip its sign and watch the result change:</div>
+          <div class="sign-board">
+            <div class="sign-tile clickable spos" id="tile-a" onclick="flipSign('a')">
+              <span class="st-sign" id="tile-a-sign">+</span><span class="st-val" id="tile-a-val">3</span>
+            </div>
+            <span class="sign-board-op" id="tile-op">×</span>
+            <div class="sign-tile clickable spos" id="tile-b" onclick="flipSign('b')">
+              <span class="st-sign" id="tile-b-sign">+</span><span class="st-val" id="tile-b-val">4</span>
+            </div>
+            <span class="sign-board-op">=</span>
+            <div class="sign-tile sres spos" id="tile-result">
+              <span class="st-sign" id="tile-r-sign">+</span><span class="st-val" id="tile-r-val">12</span>
+            </div>
+          </div>
+          <span class="sign-rule-note sim-rule-pos" id="sign-rule-note">Same signs → positive</span>
+        </div>
+        <div class="sim-result-box" id="sim-result-box">
+          <span class="sim-result-eq" id="sim-eq">(−3) + 5 = 2</span>
+          <span class="sim-rule-badge sim-rule-pos" id="sim-rule">Different signs → result is positive</span>
+        </div>
+        <div class="numberline-wrap">
+          <canvas id="nlCanvas" height="120"></canvas>
+        </div>
+        <div class="nl-drag-hint" id="nl-drag-hint">Drag either dot along the temperature scale</div>
+        <div id="sim-sign-rule-box" style="margin-top:10px;padding:10px 14px;border-radius:8px;font-size:14px;font-weight:500;text-align:center;display:none"></div>
+        <p class="sim-discover" id="sim-discover-txt">💡 Try this: drag the start dot below zero and the change dot further left — watch what happens when both are negative.</p>
       </div>
+    </div>
+
+    </div>
+    </div>
+  </div>
 
 
   <!-- SECTION: PROPERTIES -->
@@ -600,7 +660,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Closure Property</span><span class="chevron">▼</span>
+          <span>Closure Property</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="accordion-body">
           <div class="formula-box"><div class="flabel">Rule</div>If a ∈ ℤ and b ∈ ℤ, then a + b, a − b, and a × b are all ∈ ℤ</div>
@@ -614,7 +674,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Commutative Property</span><span class="chevron">▼</span>
+          <span>Commutative Property</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="accordion-body">
           <div class="formula-box"><div class="flabel">Rule</div>a + b = b + a &nbsp;&nbsp; and &nbsp;&nbsp; a × b = b × a</div>
@@ -628,7 +688,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Associative Property</span><span class="chevron">▼</span>
+          <span>Associative Property</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="accordion-body">
           <div class="formula-box"><div class="flabel">Rule</div>(a + b) + c = a + (b + c) &nbsp;&nbsp; and &nbsp;&nbsp; (a × b) × c = a × (b × c)</div>
@@ -638,7 +698,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Distributive Property</span><span class="chevron">▼</span>
+          <span>Distributive Property</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="accordion-body">
           <div class="formula-box"><div class="flabel">Rule</div>a × (b + c) = (a × b) + (a × c)</div>
@@ -649,7 +709,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Identity Properties</span><span class="chevron">▼</span>
+          <span>Identity Properties</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="accordion-body">
           <div class="formula-box"><div class="flabel">Rules</div>Additive identity: a + 0 = a &nbsp;&nbsp;|&nbsp;&nbsp; Multiplicative identity: a × 1 = a</div>
@@ -659,7 +719,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Additive Inverse Property</span><span class="chevron">▼</span>
+          <span>Additive Inverse Property</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="accordion-body">
           <div class="formula-box"><div class="flabel">Rule</div>a + (−a) = 0 &nbsp;&nbsp; (every integer has an opposite that cancels it)</div>
@@ -680,7 +740,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <div>
         <p class="cta-head" style="font-family:'Athletics',Georgia,serif;font-size:22px;font-weight:700;color:#292827;margin-bottom:6px">Want 1:1 guidance from an expert?</p>
         <p>Work through problems live with a Cuemath tutor — personalised to how you learn, at your own pace.</p>
-        <button class="btn-white" onclick="openModal()">Book a free class →</button>
+        <button class="btn-white" onclick="openModal()">Book a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
       <img class="cta-img" src="cta-student.png" alt="Cuemath 1-on-1 online class">
     </div>
@@ -728,7 +788,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <button class="hint-toggle" onclick="toggleHint('h1')">💡 Show hint</button>
       <div class="hint-text" id="h1">Start at 0. Move right 4 steps (to +4). Then move left 7 steps. Where do you land?</div>
       <div class="q-feedback" id="fb1"></div>
-      <div class="q-next" id="next1"><button class="btn-primary" onclick="nextQ(2)">Next →</button></div>
+      <div class="q-next" id="next1"><button class="btn-primary" onclick="nextQ(2)">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
     </div>
 
     <!-- Q2 -->
@@ -744,7 +804,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <button class="hint-toggle" onclick="toggleHint('h2')">💡 Show hint</button>
       <div class="hint-text" id="h2">Check the sign rule: negative × negative = ?</div>
       <div class="q-feedback" id="fb2"></div>
-      <div class="q-next" id="next2"><button class="btn-primary" onclick="nextQ(3)">Next →</button></div>
+      <div class="q-next" id="next2"><button class="btn-primary" onclick="nextQ(3)">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
     </div>
 
     <!-- Q3 -->
@@ -760,7 +820,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <button class="hint-toggle" onclick="toggleHint('h3')">💡 Show hint</button>
       <div class="hint-text" id="h3">Start at −12, add +30, then add −5. Do it in two steps.</div>
       <div class="q-feedback" id="fb3"></div>
-      <div class="q-next" id="next3"><button class="btn-primary" onclick="nextQ(4)">Next →</button></div>
+      <div class="q-next" id="next3"><button class="btn-primary" onclick="nextQ(4)">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
     </div>
 
     <!-- Q4 -->
@@ -776,7 +836,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <button class="hint-toggle" onclick="toggleHint('h4')">💡 Show hint</button>
       <div class="hint-text" id="h4">One number is being "spread" (distributed) across the sum inside the brackets.</div>
       <div class="q-feedback" id="fb4"></div>
-      <div class="q-next" id="next4"><button class="btn-primary" onclick="nextQ(5)">Next →</button></div>
+      <div class="q-next" id="next4"><button class="btn-primary" onclick="nextQ(5)">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
     </div>
 
     <!-- Q5 -->
@@ -792,14 +852,14 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <button class="hint-toggle" onclick="toggleHint('h5')">💡 Show hint</button>
       <div class="hint-text" id="h5">The product is positive (+24), so both integers must have the same sign. The sum is −10, so both must be negative. Find two negatives that multiply to 24 and add to −10.</div>
       <div class="q-feedback" id="fb5"></div>
-      <div class="q-next" id="next5"><button class="btn-primary" onclick="showCompletion()">See results →</button></div>
+      <div class="q-next" id="next5"><button class="btn-primary" onclick="showCompletion()">See results <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
     </div>
 
     <!-- Completion -->
     <div class="completion-screen" id="completion">
       <div class="score-big" id="final-score">0/5</div>
       <p id="completion-msg" style="color:var(--ink2);font-size:16px;margin-top:8px"></p>
-      <button class="btn-primary" style="margin-top:20px" onclick="openModal()">Book a free class to go deeper →</button>
+      <div id="completion-actions"></div>
     </div>
   </div>
 
@@ -839,7 +899,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <div>
           <strong>Grade 10 | Questions Set 1</strong>
           <span>Integers · Practice problems</span><br>
-          <a class="ws-btn" href="integers-ws-1.pdf" download="Cuemath-Integers-Grade10-Questions-Set1.pdf">Download PDF ↓</a>
+          <a class="ws-btn" href="integers-ws-1.pdf" download="Cuemath-Integers-Grade10-Questions-Set1.pdf">Download PDF <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:4px"><path d="M12 5v14M5 13l7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
       <div class="ws-card">
@@ -847,7 +907,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <div>
           <strong>Answers Set 1</strong>
           <span>Integers · Answer key</span><br>
-          <a class="ws-btn" href="integers-ws-2.pdf" download="Cuemath-Integers-Answers-Set1.pdf">Download PDF ↓</a>
+          <a class="ws-btn" href="integers-ws-2.pdf" download="Cuemath-Integers-Answers-Set1.pdf">Download PDF <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:4px"><path d="M12 5v14M5 13l7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
       <div class="ws-card">
@@ -855,7 +915,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <div>
           <strong>Grade 10 | Questions Set 2</strong>
           <span>Integers · Practice problems</span><br>
-          <a class="ws-btn" href="integers-ws-3.pdf" download="Cuemath-Integers-Grade10-Questions-Set2.pdf">Download PDF ↓</a>
+          <a class="ws-btn" href="integers-ws-3.pdf" download="Cuemath-Integers-Grade10-Questions-Set2.pdf">Download PDF <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:4px"><path d="M12 5v14M5 13l7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
       <div class="ws-card">
@@ -863,7 +923,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <div>
           <strong>Answers Set 2</strong>
           <span>Integers · Answer key</span><br>
-          <a class="ws-btn" href="integers-ws-4.pdf" download="Cuemath-Integers-Answers-Set2.pdf">Download PDF ↓</a>
+          <a class="ws-btn" href="integers-ws-4.pdf" download="Cuemath-Integers-Answers-Set2.pdf">Download PDF <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:4px"><path d="M12 5v14M5 13l7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
     </div>
@@ -890,55 +950,55 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <h2>Frequently Asked Questions</h2>
     <div>
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">What are integers in maths?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">What are integers in maths?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-answer">Integers are all whole numbers — positive, negative, and zero — with no fractional or decimal part. The set is written ℤ = {…, −3, −2, −1, 0, 1, 2, 3, …}. The name comes from the Latin <em>integer</em>, meaning "whole."</div>
       </div>
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">What is the difference between integers and whole numbers?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">What is the difference between integers and whole numbers?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-answer">Whole numbers are {0, 1, 2, 3, …} — zero and positive integers only. Integers include all of those <em>plus</em> all negative integers (−1, −2, −3, …). Every whole number is an integer, but not every integer is a whole number.</div>
       </div>
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">How do you add integers with different signs?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">How do you add integers with different signs?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-answer">Subtract the smaller absolute value from the larger. Then apply the sign of the number with the larger absolute value. For example: 3 + (−8) → |8| − |3| = 5, and since 8 > 3 and 8 is negative, the answer is −5.</div>
       </div>
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">Why does negative × negative = positive?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">Why does negative × negative = positive?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-answer">Think of a negative sign as "the opposite direction." Multiplying by a negative flips the direction once. Multiplying by two negatives flips it twice — which brings you back to the original (positive) direction. Formally, it follows from the distributive property and the requirement that arithmetic stays consistent.</div>
       </div>
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">Is 0 an integer?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">Is 0 an integer?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-answer">Yes. Zero is an integer — it has no decimal or fractional part. It is the only integer that is neither positive nor negative. It is also both a whole number and a natural number (depending on the convention used).</div>
       </div>
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">What are the properties of integers?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">What are the properties of integers?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-answer">The seven key properties are: Closure (addition, subtraction, multiplication stay within ℤ), Commutative (order doesn't affect + and ×), Associative (grouping doesn't affect + and ×), Distributive (× distributes over +), Additive Identity (a + 0 = a), Multiplicative Identity (a × 1 = a), and Additive Inverse (a + (−a) = 0).</div>
       </div>
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">Why is the set of integers called ℤ?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">Why is the set of integers called ℤ?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-answer">ℤ comes from the German word <em>Zahlen</em>, meaning "numbers." German mathematicians were among the first to formalise the theory of integers in the 19th century, and the notation stuck in international mathematical writing.</div>
       </div>
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">Can integers be fractions or decimals?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">Can integers be fractions or decimals?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-answer">No. The defining feature of an integer is that it has no fractional or decimal component. Numbers like 2.5, ½, −3.7, and √2 are not integers. However, every integer can be written as a fraction (e.g., 5 = 5/1), which means all integers are rational numbers.</div>
       </div>
 
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">What are the different types of integers?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">What are the different types of integers?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-answer">Integers are classified into three types: <strong>Positive integers</strong> (1, 2, 3, …) — greater than zero; <strong>Negative integers</strong> (−1, −2, −3, …) — less than zero; and <strong>Zero</strong> (0) — neither positive nor negative. Together these three types make up the complete set of integers ℤ.</div>
       </div>
 
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">Can a negative number be an integer?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">Can a negative number be an integer?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-answer">Yes. Negative integers such as −1, −2, −3, −100 are all integers. A number only fails to be an integer if it has a fractional or decimal part. The sign (positive or negative) has nothing to do with whether a number is an integer.</div>
       </div>
 
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">What are consecutive integers?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">What are consecutive integers?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-answer">Consecutive integers are integers that follow each other in order with a difference of 1. For example: 4, 5, 6 or −3, −2, −1, 0. In algebra they are often written as n, n+1, n+2. Consecutive even or odd integers have a difference of 2 (e.g. 2, 4, 6 or 1, 3, 5).</div>
       </div>
 
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">What are the applications of integers?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">What are the applications of integers?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <div class="faq-answer">Integers appear wherever quantities can go below zero: temperature (−5°C), floors in a building (basement = −1), bank balances (overdraft = negative), altitude above and below sea level, and gains/losses in sport scores. In computing, integers are the primary data type for counting and indexing.</div>
       </div>
     </div>
@@ -1102,7 +1162,403 @@ function toggleFaq(btn) {
   var a = btn.nextElementSibling, o = btn.classList.contains('open');
   btn.classList.toggle('open', !o); a.classList.toggle('open', !o);
 }
-lFeeling(btn) { btn.closest('.feeling-btns').querySelectorAll('.feeling-btn').forEach(function(b) { b.classList.remove('selected'); }); btn.classList.add('selected'); }
+
+/* SIMULATION */
+var simOp = '+';
+var numA = -3, numB = 5;
+var dragTarget = null;
+var NL_RANGE = 12;
+
+function setOp(op) {
+  simOp = op;
+  document.getElementById('op-symbol').textContent = op;
+  document.querySelectorAll('.sim-tab').forEach(function(t) { t.classList.remove('active'); });
+  var map = {'+':'tab-add','-':'tab-sub','×':'tab-mul','÷':'tab-div'};
+  document.getElementById(map[op]).classList.add('active');
+  var isAddSub = (op === '+' || op === '-');
+  document.getElementById('sign-explorer').style.display = isAddSub ? 'none' : '';
+  document.getElementById('temp-scenario').style.display = isAddSub ? '' : 'none';
+  document.getElementById('nl-drag-hint').style.display = isAddSub ? '' : 'none';
+  document.getElementById('tile-op').textContent = op;
+  /* relabel inputs */
+  document.getElementById('label-a').textContent = isAddSub ? 'Start (°C)' : 'First number';
+  document.getElementById('label-b').textContent = isAddSub ? 'Change (°C)' : 'Second number';
+  var tips = {
+    '+': '💡 Drag either dot — try pulling both into negatives and watch the temperature drop.',
+    '-': '💡 Drag the dots — notice that subtracting is the same as adding the opposite.',
+    '×': '💡 Click the sign tiles to try all four sign combinations.',
+    '÷': '💡 Click the sign tiles — division follows the same sign rules as multiplication.'
+  };
+  document.getElementById('sim-discover-txt').textContent = tips[op];
+  runSim();
+}
+
+function changeNum(which, delta) {
+  if (which === 'a') { numA = Math.max(-NL_RANGE, Math.min(NL_RANGE, numA + delta)); document.getElementById('numA').value = numA; }
+  else { numB = Math.max(-NL_RANGE, Math.min(NL_RANGE, numB + delta)); document.getElementById('numB').value = numB; }
+  runSim();
+}
+
+function calcResult() {
+  var a = numA, b = numB, op = simOp, result, rule, ruleClass;
+  if (op === '+') {
+    result = a + b;
+    if (a === 0 || b === 0) { rule = 'Adding 0 leaves the number unchanged'; ruleClass = 'sim-rule-zero'; }
+    else if ((a > 0 && b > 0) || (a < 0 && b < 0)) { rule = 'Same signs → add, keep the sign'; ruleClass = result >= 0 ? 'sim-rule-pos' : 'sim-rule-neg'; }
+    else { rule = 'Different signs → subtract, take sign of the larger'; ruleClass = result > 0 ? 'sim-rule-pos' : (result < 0 ? 'sim-rule-neg' : 'sim-rule-zero'); }
+  } else if (op === '-') {
+    result = a - b;
+    rule = (a < 0 ? '(' + a + ')' : a) + ' − ' + (b < 0 ? '(' + b + ')' : b) + ' = ' + (a < 0 ? '(' + a + ')' : a) + ' + (' + (-b) + ')';
+    ruleClass = result > 0 ? 'sim-rule-pos' : (result < 0 ? 'sim-rule-neg' : 'sim-rule-zero');
+  } else if (op === '×') {
+    result = a * b;
+    if (a === 0 || b === 0) { rule = 'Any integer × 0 = 0'; ruleClass = 'sim-rule-zero'; }
+    else if ((a > 0 && b > 0) || (a < 0 && b < 0)) { rule = 'Same signs → positive'; ruleClass = 'sim-rule-pos'; }
+    else { rule = 'Different signs → negative'; ruleClass = 'sim-rule-neg'; }
+  } else {
+    if (b === 0) { result = null; rule = 'Division by zero is undefined'; ruleClass = 'sim-rule-zero'; }
+    else {
+      result = a / b;
+      if (a === 0) { rule = '0 ÷ anything = 0'; ruleClass = 'sim-rule-zero'; }
+      else if ((a > 0 && b > 0) || (a < 0 && b < 0)) { rule = 'Same signs → positive'; ruleClass = 'sim-rule-pos'; }
+      else { rule = 'Different signs → negative'; ruleClass = 'sim-rule-neg'; }
+    }
+  }
+  return { result: result, rule: rule, ruleClass: ruleClass };
+}
+
+/* temperature color for a value in [-12, 12] */
+function tempColor(n) {
+  /* interpolate hue: 220 (blue) at -12 → 0 (red) at +12 */
+  var t = (n + NL_RANGE) / (NL_RANGE * 2); /* 0..1 */
+  var h = Math.round(220 - t * 220);
+  var s = 75, l = n === 0 ? 55 : (n < 0 ? 48 : 52);
+  return 'hsl(' + h + ',' + s + '%,' + l + '%)';
+}
+
+function runSim() {
+  var a = numA, b = numB, op = simOp;
+  var c = calcResult();
+  var result = c.result, rule = c.rule, ruleClass = c.ruleClass;
+
+  var aStr = a < 0 ? '(' + a + ')' : String(a);
+  var bStr = b < 0 ? '(' + b + ')' : String(b);
+  var resStr = result === null ? 'undefined' : (Number.isInteger(result) ? String(result) : result.toFixed(2));
+
+  document.getElementById('sim-eq').textContent = aStr + ' ' + op + ' ' + bStr + ' = ' + resStr;
+  var rb = document.getElementById('sim-rule');
+  rb.textContent = rule; rb.className = 'sim-rule-badge ' + ruleClass;
+  var srb = document.getElementById('sim-sign-rule-box');
+  if (srb) {
+    var ruleColors = {'sim-rule-pos':'background:#ECF9EF;color:#1C7C48;border:1px solid #BCEAC8',
+                     'sim-rule-neg':'background:#FFEEEE;color:#AE424C;border:1px solid #FFC6C5',
+                     'sim-rule-zero':'background:#FAF1E6;color:#7E4800;border:1px solid #FAD6AC'};
+    srb.setAttribute('style', 'margin-top:10px;padding:10px 14px;border-radius:8px;font-size:14px;font-weight:500;text-align:center;display:block;' + (ruleColors[ruleClass]||''));
+    srb.textContent = '→ ' + rule;
+  }
+
+  /* Temperature scenario sentence */
+  if (op === '+' || op === '-') {
+    var dir = (op === '+') ? (b >= 0 ? 'rises' : 'drops') : (b <= 0 ? 'rises' : 'drops');
+    var change = op === '+' ? Math.abs(b) : Math.abs(b);
+    var resultLabel = result === null ? '?' : result + '°C';
+    var sentence;
+    if (op === '+') {
+      sentence = 'Temperature starts at ' + a + '°C, ' + (b === 0 ? 'no change' : (b > 0 ? 'rises by ' + b + '°C' : 'drops by ' + Math.abs(b) + '°C')) + ' → ';
+    } else {
+      sentence = 'Temperature at ' + a + '°C, subtract ' + b + '°C (same as adding ' + (-b) + '°C) → ';
+    }
+    document.getElementById('temp-sentence').innerHTML = sentence + '<strong>' + resultLabel + '</strong>';
+  }
+
+  /* Sign explorer */
+  if (op === '×' || op === '÷') { updateSignExplorer(a, b, op, result, ruleClass); }
+
+  drawNL();
+}
+
+function updateSignExplorer(a, b, op, result, ruleClass) {
+  var signOf = function(n) { return n >= 0 ? '+' : '−'; };
+  var classOf = function(n) { return n >= 0 ? 'spos' : 'sneg'; };
+  var resSign = result === null ? '?' : (result > 0 ? '+' : (result < 0 ? '−' : '0'));
+  document.getElementById('tile-a-sign').textContent = signOf(a);
+  document.getElementById('tile-a-val').textContent = Math.abs(a);
+  document.getElementById('tile-a').className = 'sign-tile clickable ' + classOf(a);
+  document.getElementById('tile-b-sign').textContent = signOf(b);
+  document.getElementById('tile-b-val').textContent = Math.abs(b);
+  document.getElementById('tile-b').className = 'sign-tile clickable ' + classOf(b);
+  document.getElementById('tile-r-sign').textContent = resSign;
+  document.getElementById('tile-r-val').textContent = result === null ? 'undef' : Math.abs(Number.isInteger(result) ? result : result.toFixed(1));
+  document.getElementById('tile-result').className = 'sign-tile sres ' + (result === null ? 'sneg' : (result >= 0 ? 'spos' : 'sneg'));
+  var note = document.getElementById('sign-rule-note');
+  note.textContent = document.getElementById('sim-rule').textContent;
+  note.className = 'sign-rule-note ' + ruleClass;
+}
+
+function flipSign(which) {
+  if (which === 'a') { numA = -numA; document.getElementById('numA').value = numA; }
+  else { numB = -numB; document.getElementById('numB').value = numB; }
+  var rt = document.getElementById('tile-result');
+  rt.classList.remove('sign-flash');
+  void rt.offsetWidth;
+  rt.classList.add('sign-flash');
+  runSim();
+}
+
+/* ── NUMBER LINE DRAWING ── */
+function drawNL() {
+  var canvas = document.getElementById('nlCanvas');
+  canvas.width = canvas.parentElement.offsetWidth || 560;
+  canvas.height = 130;
+  var ctx = canvas.getContext('2d');
+  var W = canvas.width, H = canvas.height;
+  var a = numA, b = numB, op = simOp;
+  var c = calcResult(); var result = c.result;
+  var range = NL_RANGE;
+  var midY = 80;
+  var toX = function(n) { return W / 2 + n * (W - 64) / (range * 2); };
+
+  /* background */
+  ctx.fillStyle = '#FAF8F5'; ctx.fillRect(0, 0, W, H);
+
+  /* temperature gradient band */
+  var bandH = 14, bandY = midY - bandH / 2;
+  var grad = ctx.createLinearGradient(toX(-range), 0, toX(range), 0);
+  grad.addColorStop(0,    '#CE7E12');
+  grad.addColorStop(0.25, '#F4AB52');
+  grad.addColorStop(0.48, '#C1DCFF');
+  grad.addColorStop(0.5,  '#ECF9EF');
+  grad.addColorStop(0.62, '#FAF1E6');
+  grad.addColorStop(0.82, '#F68D50');
+  grad.addColorStop(1,    '#F97279');
+  /* rounded band */
+  var bx = toX(-range), bw = toX(range) - toX(-range);
+  ctx.save();
+  ctx.beginPath();
+  ctx.roundRect ? ctx.roundRect(bx, bandY, bw, bandH, 7) : ctx.rect(bx, bandY, bw, bandH);
+  ctx.fillStyle = grad; ctx.fill();
+  ctx.restore();
+
+  /* tick marks and labels */
+  for (var i = -range; i <= range; i++) {
+    var tx = toX(i);
+    var isMajor = (i % 4 === 0);
+    var isZero = (i === 0);
+    ctx.strokeStyle = isZero ? '#43413E' : (isMajor ? '#97938C' : '#C6C0B8');
+    ctx.lineWidth = isZero ? 2 : 1;
+    var tickLen = isZero ? 10 : (isMajor ? 7 : 4);
+    ctx.beginPath(); ctx.moveTo(tx, midY - tickLen); ctx.lineTo(tx, midY + tickLen); ctx.stroke();
+    var isA   = (i === a);
+    var isRes = (result !== null && Number.isInteger(result) && i === result);
+    var isBval = ((op === '×' || op === '÷') && i === b);
+    var showLabel = isMajor || isZero || isA || isRes || isBval;
+    if (showLabel) {
+      if (isA)        { ctx.fillStyle = tempColor(a); ctx.font = 'bold 12px Untitled Sans,system-ui,sans-serif'; }
+      else if (isRes) { ctx.fillStyle = '#A65EC4';    ctx.font = 'bold 12px Untitled Sans,system-ui,sans-serif'; }
+      else if (isBval){ ctx.fillStyle = tempColor(b); ctx.font = 'bold 12px Untitled Sans,system-ui,sans-serif'; }
+      else if (isZero){ ctx.fillStyle = '#CE7E12';    ctx.font = 'bold 10px Untitled Sans,system-ui,sans-serif'; }
+      else            { ctx.fillStyle = '#84807B';    ctx.font = '10px Untitled Sans,system-ui,sans-serif'; }
+      ctx.textAlign = 'center';
+      ctx.fillText(i + (op === '+' || op === '-' ? '°' : ''), tx, midY + 28);
+    }
+  }
+
+  /* axis line (thin, over the band) */
+  ctx.strokeStyle = 'rgba(0,0,0,0.15)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(toX(-range) - 4, midY); ctx.lineTo(toX(range) + 4, midY); ctx.stroke();
+  /* arrow tips */
+  ctx.fillStyle = '#97938C';
+  ctx.beginPath(); ctx.moveTo(toX(range)+8, midY-4); ctx.lineTo(toX(range)+16, midY); ctx.lineTo(toX(range)+8, midY+4); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(toX(-range)-8, midY-4); ctx.lineTo(toX(-range)-16, midY); ctx.lineTo(toX(-range)-8, midY+4); ctx.fill();
+
+  if (op === '+' || op === '-') {
+    var delta = (op === '+') ? b : -b;
+    var end = a + delta;
+    /* arc arrow A→result */
+    if (delta !== 0 && Math.abs(a) <= range && Math.abs(end) <= range) {
+      drawArc(ctx, toX(a), midY, toX(end), midY, delta > 0 ? '#6AC88A' : '#F97279', 36, (delta > 0 ? '+' : '') + delta + (op === '+' || op === '-' ? '°' : ''));
+    }
+    /* start dot (A) */
+    drawTempDot(ctx, toX(a), midY, tempColor(a), a + '°', 10, true);
+    /* result dot */
+    if (result !== null && Math.abs(result) <= range) {
+      drawTempDot(ctx, toX(result), midY, '#D386F7', '= ' + result + '°', 9, false);
+    }
+  } else {
+    /* × ÷: show A, B, result dots */
+    if (Math.abs(a) <= range) drawTempDot(ctx, toX(a), midY, tempColor(a), 'A=' + a, 9, true);
+    if (Math.abs(b) <= range) drawTempDot(ctx, toX(b), midY, tempColor(b), 'B=' + b, 9, true);
+    if (result !== null && Number.isInteger(result) && Math.abs(result) <= range) {
+      drawTempDot(ctx, toX(result), midY, '#D386F7', '=' + result, 8, false);
+    }
+    if (result !== null && (!Number.isInteger(result) || Math.abs(result) > range)) {
+      ctx.fillStyle = '#84807B'; ctx.font = '12px Untitled Sans,system-ui,sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('Result = ' + (Number.isInteger(result) ? result : result.toFixed(2)) + (Math.abs(result) > range ? '  (off scale)' : ''), W / 2, 20);
+    }
+  }
+}
+
+function drawTempDot(ctx, x, y, color, label, r, draggable) {
+  /* outer glow */
+  var grd = ctx.createRadialGradient(x, y, r * 0.3, x, y, r * 2.2);
+  grd.addColorStop(0, color.replace('hsl', 'hsla').replace(')', ', 0.25)'));
+  grd.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.beginPath(); ctx.arc(x, y, r * 2.2, 0, Math.PI * 2);
+  ctx.fillStyle = grd; ctx.fill();
+  /* dot */
+  ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
+  ctx.fillStyle = color; ctx.fill();
+  ctx.strokeStyle = '#fff'; ctx.lineWidth = 2.5; ctx.stroke();
+}
+
+function drawArc(ctx, x1, y1, x2, y2, color, lift, label) {
+  if (Math.abs(x2 - x1) < 3) return;
+  var cx = (x1 + x2) / 2, cy = y1 - lift;
+  ctx.strokeStyle = color; ctx.lineWidth = 2.5; ctx.setLineDash([]);
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.quadraticCurveTo(cx, cy, x2, y2); ctx.stroke();
+  var ang = Math.atan2(y2 - cy, x2 - cx);
+  ctx.fillStyle = color;
+  ctx.save(); ctx.translate(x2, y2); ctx.rotate(ang);
+  ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(-10, -4); ctx.lineTo(-10, 4); ctx.closePath(); ctx.fill();
+  ctx.restore();
+  ctx.fillStyle = color; ctx.font = 'bold 11px Untitled Sans,system-ui,sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(label, cx, cy - 6);
+}
+
+/* ── DRAG ── */
+(function() {
+  var canvas = document.getElementById('nlCanvas');
+  function px(evt) {
+    var r = canvas.getBoundingClientRect();
+    return (evt.touches ? evt.touches[0].clientX : evt.clientX) - r.left;
+  }
+  function toNum(p) {
+    var n = Math.round((p - canvas.width / 2) / ((canvas.width - 64) / (NL_RANGE * 2)));
+    return Math.max(-NL_RANGE, Math.min(NL_RANGE, n));
+  }
+  function dotX(n) { return canvas.width / 2 + n * (canvas.width - 64) / (NL_RANGE * 2); }
+  function hit(p) {
+    var T = 20, aX = dotX(numA), bX = dotX(numB);
+    if (simOp !== '+' && simOp !== '-') return null;
+    if (Math.abs(p - aX) < T) return 'a';
+    if (Math.abs(p - bX) < T) return 'b';
+    return null;
+  }
+  canvas.addEventListener('mousedown', function(e) {
+    dragTarget = hit(px(e));
+    if (dragTarget) { canvas.classList.add('dragging'); e.preventDefault(); }
+  });
+  canvas.addEventListener('mousemove', function(e) {
+    if (dragTarget) {
+      e.preventDefault();
+      var n = toNum(px(e));
+      if (dragTarget === 'a') { numA = n; document.getElementById('numA').value = n; }
+      else { numB = n; document.getElementById('numB').value = n; }
+      runSim();
+    } else {
+      canvas.style.cursor = hit(px(e)) ? 'grab' : 'default';
+    }
+  });
+  canvas.addEventListener('mouseup', function() { dragTarget = null; canvas.classList.remove('dragging'); });
+  canvas.addEventListener('mouseleave', function() { dragTarget = null; canvas.classList.remove('dragging'); });
+  canvas.addEventListener('touchstart', function(e) { dragTarget = hit(px(e)); if (dragTarget) e.preventDefault(); }, { passive: false });
+  canvas.addEventListener('touchmove', function(e) {
+    if (!dragTarget) return; e.preventDefault();
+    var n = toNum(px(e));
+    if (dragTarget === 'a') { numA = n; document.getElementById('numA').value = n; }
+    else { numB = n; document.getElementById('numB').value = n; }
+    runSim();
+  }, { passive: false });
+  canvas.addEventListener('touchend', function() { dragTarget = null; });
+})();
+
+window.addEventListener('resize', function() { if (!dragTarget) runSim(); });
+runSim();
+
+function markDot(ctx, x, y, color, label) {
+  ctx.beginPath(); ctx.arc(x, y, 5, 0, Math.PI*2); ctx.fillStyle = color; ctx.fill();
+  ctx.fillStyle = color; ctx.font = 'bold 11px Untitled Sans,system-ui,sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(label, x, y - 12);
+}
+
+window.addEventListener('resize', runSim);
+runSim();
+
+/* PRACTICE */
+var score = 0, answered = {}, retryCount = 0;
+var fbs = {
+  q1: { correct:'Correct! 0 + 4 = 4, then 4 − 7 = −3. The elevator ends 3 floors below the ground level.',
+        wrong:'Not quite. Start at 0, move +4 to floor 4, then move −7. 4 − 7 = −3.' },
+  q2: { correct:'Correct! Negative × Negative = Positive. (−8) × (−4) = +32.',
+        wrong:'Not quite. Both signs are negative — and negative × negative = positive. So the answer is +32.' },
+  q3: { correct:'Correct! −12 + 30 = 18, then 18 − 5 = 13. Final balance: $13.',
+        wrong:'Not quite. Step 1: −12 + 30 = 18. Step 2: 18 − 5 = 13.' },
+  q4: { correct:'Correct! Multiplying a number across a sum inside brackets is the Distributive Property.',
+        wrong:'Not quite. When one factor is "distributed" across the terms inside the brackets, that\'s the Distributive Property.' },
+  q5: { correct:'Correct! (−4) × (−6) = 24 and (−4) + (−6) = −10. Both conditions satisfied.',
+        wrong:'Not quite. You need two negatives (so their product is +24) that add to −10. Check which pair: (−4) + (−6) = −10 and (−4) × (−6) = +24.' }
+};
+
+function checkAns(btn, result, qid) {
+  if (answered[qid]) return;
+  answered[qid] = true;
+  document.getElementById(qid).querySelectorAll('.choice-btn').forEach(function(b) { b.disabled = true; });
+  btn.classList.add(result === 'correct' ? 'correct' : 'wrong');
+  if (result === 'correct') score++;
+  var fb = document.getElementById('fb' + qid.slice(1));
+  fb.className = 'q-feedback ' + (result === 'correct' ? 'correct' : 'wrong');
+  fb.textContent = fbs[qid][result === 'correct' ? 'correct' : 'wrong'];
+  fb.style.display = 'block';
+  document.getElementById('next' + qid.slice(1)).style.display = 'block';
+  document.getElementById('prog-bar').style.width = (Object.keys(answered).length / 5 * 100) + '%';
+}
+
+function nextQ(n) {
+  document.querySelectorAll('.question-card').forEach(function(c) { c.classList.remove('active'); });
+  var el = document.getElementById('q' + n); if (el) el.classList.add('active');
+}
+
+function showCompletion() {
+  document.querySelectorAll('.question-card').forEach(function(c) { c.classList.remove('active'); });
+  document.getElementById('completion').style.display = 'block';
+  document.getElementById('final-score').textContent = score + '/5';
+  var msgs = ['Let\'s revisit the sections above together.','Keep going — re-read the sign rules.','Good effort. Review the operations accordion.','Good work — one to tighten up.','Great work! One small slip.','Perfect score! Integers mastered.'];
+  document.getElementById('completion-msg').textContent = msgs[score];
+  document.getElementById('prog-bar').style.width = '100%';
+  var actEl = document.getElementById('completion-actions');
+  if (retryCount < 2) {
+    actEl.innerHTML = '<button class="btn-retry" onclick="retryPractice()">Try again <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
+  } else {
+    actEl.innerHTML = '<div class="completion-cta"><p style="color:var(--ink2);font-size:14px;margin-bottom:10px">Ready to go deeper? Work through this with a Cuemath tutor.</p><button class="btn-primary" onclick="openModal()">Book a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>';
+  }
+}
+
+function retryPractice() {
+  retryCount++;
+  score = 0;
+  answered = {};
+  document.querySelectorAll('.choice-btn').forEach(function(b) { b.disabled = false; b.classList.remove('correct','wrong'); });
+  document.querySelectorAll('.q-feedback').forEach(function(f) { f.style.display = 'none'; });
+  document.querySelectorAll('.q-next').forEach(function(n) { n.style.display = 'none'; });
+  document.querySelectorAll('.hint-text').forEach(function(h) { h.style.display = 'none'; });
+  document.getElementById('completion').style.display = 'none';
+  document.querySelectorAll('.question-card').forEach(function(c) { c.classList.remove('active'); });
+  document.getElementById('q1').classList.add('active');
+  document.getElementById('prog-bar').style.width = '0%';
+}
+
+function toggleHint(id) { var h = document.getElementById(id); h.style.display = h.style.display === 'block' ? 'none' : 'block'; }
+
+/* MODAL */
+function openModal() {
+  document.getElementById('modal').classList.add('open');
+  document.querySelectorAll('.modal-step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step1').classList.add('active');
+}
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+function goStep(id) { document.querySelectorAll('.modal-step').forEach(function(s) { s.classList.remove('active'); }); document.getElementById('step' + id).classList.add('active'); }
+function selGrade(btn) { document.querySelectorAll('#grade-btns .grade-chip').forEach(function(b) { b.classList.remove('selected'); }); btn.classList.add('selected'); }
+function selFeeling(btn) { btn.closest('.feeling-btns').querySelectorAll('.feeling-btn').forEach(function(b) { b.classList.remove('selected'); }); btn.classList.add('selected'); }
 
 /* TOC SCROLL SPY */
 var tocIds = ['what-is','numberline','operations','properties','practice','worksheets','takeaways','faq','videos'];
