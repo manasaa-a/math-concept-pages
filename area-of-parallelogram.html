@@ -222,6 +222,18 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 .term{border-bottom:1.5px dashed var(--yellow);cursor:help;position:relative}
 .term::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:12px;line-height:1.4;padding:8px 12px;border-radius:6px;white-space:normal;width:max-content;max-width:240px;pointer-events:none;opacity:0;transition:opacity .15s;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-style:normal;font-weight:400;z-index:10;text-align:center}
 .term:hover::after,.term.active::after{opacity:1}
+
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .completion-screen{display:none;text-align:center;padding:28px 16px}
+  .completion-screen.show{display:block;animation:fadeIn .5s ease}
+  .done-emoji{font-size:52px;margin-bottom:8px}
+  .score-big{font-family:'Athletics',Georgia,serif;font-size:44px;font-weight:700;color:var(--green);margin-bottom:8px}
+  .done-msg{font-size:15px;color:var(--ink2);max-width:340px;margin:0 auto 16px}
+  .btn-retry{background:var(--yellow);color:var(--ink);border:none;padding:10px 22px;border-radius:0;font-family:inherit;font-weight:600;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background .15s;margin-top:12px}
+  .btn-retry:hover{background:var(--gold-600)}
+  .completion-cta{margin-top:16px}
+  .completion-cta p{font-size:14px;color:var(--ink2);margin-bottom:10px}
+  .eyebrow{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;display:block}
 </style>
 <script type="application/ld+json">
 {
@@ -657,9 +669,14 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     </div>
 
     <div class="completion-screen" id="completion">
+      <div class="done-emoji" id="done-emoji">🎉</div>
       <div class="score-big" id="final-score">0/5</div>
-      <p id="completion-msg" style="color:var(--ink2);font-size:16px;margin-top:8px"></p>
-      <button class="btn-primary" style="margin-top:20px" onclick="openModal()">Book a free class to go deeper →</button>
+      <p class="done-msg" id="completion-msg"></p>
+      <button class="btn-retry" id="btn-retry" onclick="retryPractice()">Try again <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="completion-cta" id="cta-deeper" style="display:none">
+        <p>Ready to go deeper? Work 1-on-1 with a Cuemath tutor.</p>
+        <button class="btn-primary" onclick="openModal()">Book a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
     </div>
   </div>
 
@@ -903,13 +920,36 @@ function nextQ(n){
   document.querySelectorAll('.question-card').forEach(function(c){c.classList.remove('active');});
   var el=document.getElementById('q'+n); if(el)el.classList.add('active');
 }
-function showCompletion(){
-  document.querySelectorAll('.question-card').forEach(function(c){c.classList.remove('active');});
-  document.getElementById('completion').style.display='block';
-  document.getElementById('final-score').textContent=score+'/5';
-  var msgs=['Let\'s revisit the sections above.','Keep going — re-read the base×height method.','Good effort. Check the accordion for the case you missed.','Good work — one to tighten up.','Great work! One small slip.','Perfect score! All formulas mastered.'];
-  document.getElementById('completion-msg').textContent=msgs[score];
-  document.getElementById('prog-bar').style.width='100%';
+function showCompletion() {
+  document.querySelectorAll('.question-card').forEach(function(c) { c.classList.remove('active'); });
+  document.getElementById('completion').classList.add('show');
+  document.getElementById('final-score').textContent = score + '/5';
+  var pct = score / 5;
+  document.getElementById('done-emoji').textContent = pct === 1 ? '🏆' : pct >= 0.8 ? '🎉' : '👍';
+  var msgs = ['Let's revisit the formulas above.','Keep going — check the formula accordion.','Good effort — nearly there.','Good work — one to tighten up.','Great work! One slip.','Perfect score! Area of parallelogram mastered.'];
+  document.getElementById('completion-msg').textContent = msgs[score];
+  document.getElementById('prog-bar').style.width = '100%';
+  if (retryCount < 1) {
+    document.getElementById('btn-retry').style.display = 'inline-flex';
+    document.getElementById('cta-deeper').style.display = 'none';
+  } else {
+    document.getElementById('btn-retry').style.display = 'none';
+    document.getElementById('cta-deeper').style.display = 'block';
+  }
+}
+
+function retryPractice() {
+  retryCount++;
+  score = 0;
+  answered = {};
+  document.querySelectorAll('.choice-btn').forEach(function(b) { b.disabled = false; b.classList.remove('correct','wrong'); });
+  document.querySelectorAll('.q-feedback').forEach(function(f) { f.style.display = 'none'; });
+  document.querySelectorAll('.q-next').forEach(function(n) { n.style.display = 'none'; });
+  document.querySelectorAll('.hint-text').forEach(function(h) { h.style.display = 'none'; });
+  var compEl = document.getElementById('completion'); compEl.classList.remove('show');
+  document.querySelectorAll('.question-card').forEach(function(c) { c.classList.remove('active'); });
+  document.getElementById('q1').classList.add('active');
+  document.getElementById('prog-bar').style.width = '0%';
 }
 function toggleHint(id){var h=document.getElementById(id);h.style.display=h.style.display==='block'?'none':'block';}
 
