@@ -1348,9 +1348,16 @@ function drawNL() {
     ctx.lineWidth = isZero ? 2 : 1;
     var tickLen = isZero ? 10 : (isMajor ? 7 : 4);
     ctx.beginPath(); ctx.moveTo(tx, midY - tickLen); ctx.lineTo(tx, midY + tickLen); ctx.stroke();
-    if (isMajor || isZero) {
-      ctx.fillStyle = isZero ? '#CE7E12' : '#84807B';
-      ctx.font = (isZero ? 'bold ' : '') + '10px Untitled Sans,system-ui,sans-serif';
+    var isA   = (i === a);
+    var isRes = (result !== null && Number.isInteger(result) && i === result);
+    var isBval = ((op === '×' || op === '÷') && i === b);
+    var showLabel = isMajor || isZero || isA || isRes || isBval;
+    if (showLabel) {
+      if (isA)        { ctx.fillStyle = tempColor(a); ctx.font = 'bold 12px Untitled Sans,system-ui,sans-serif'; }
+      else if (isRes) { ctx.fillStyle = '#A65EC4';    ctx.font = 'bold 12px Untitled Sans,system-ui,sans-serif'; }
+      else if (isBval){ ctx.fillStyle = tempColor(b); ctx.font = 'bold 12px Untitled Sans,system-ui,sans-serif'; }
+      else if (isZero){ ctx.fillStyle = '#CE7E12';    ctx.font = 'bold 10px Untitled Sans,system-ui,sans-serif'; }
+      else            { ctx.fillStyle = '#84807B';    ctx.font = '10px Untitled Sans,system-ui,sans-serif'; }
       ctx.textAlign = 'center';
       ctx.fillText(i + (op === '+' || op === '-' ? '°' : ''), tx, midY + 28);
     }
@@ -1402,9 +1409,6 @@ function drawTempDot(ctx, x, y, color, label, r, draggable) {
   ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
   ctx.fillStyle = color; ctx.fill();
   ctx.strokeStyle = '#fff'; ctx.lineWidth = 2.5; ctx.stroke();
-  /* label */
-  ctx.fillStyle = color; ctx.font = 'bold 11px Untitled Sans,system-ui,sans-serif'; ctx.textAlign = 'center';
-  ctx.fillText(label, x, y - r - 7);
 }
 
 function drawArc(ctx, x1, y1, x2, y2, color, lift, label) {
