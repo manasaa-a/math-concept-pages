@@ -262,8 +262,13 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .q-feedback.correct{background:var(--green-light);color:#1C7C48}
 .q-feedback.wrong{background:var(--red-light);color:#842D34}
 .q-next{margin-top:16px;display:none}
-.completion-screen{display:none;text-align:center;padding:32px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
-.score-big{font-size:48px;font-weight:700;color:var(--green);font-family:'Athletics',Georgia,serif}
+.completion-screen{display:none;text-align:center;padding:28px 16px}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .completion-screen.show{display:block;animation:fadeIn .5s ease}
+  .done-emoji{font-size:52px;margin-bottom:8px}
+  .done-msg{font-size:15px;color:var(--ink2);max-width:340px;margin:0 auto 16px}
+  .completion-cta p{font-size:14px;color:var(--ink2);margin-bottom:10px}
+.score-big{font-size:44px;font-weight:700;color:var(--green);font-family:'Athletics',Georgia,serif;margin-bottom:8px}
 
 /* Key Takeaways */
 .kt-table{width:100%;border-collapse:collapse;margin:16px 0}
@@ -857,9 +862,14 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
     <!-- Completion -->
     <div class="completion-screen" id="completion">
+      <div class="done-emoji" id="done-emoji">🎉</div>
       <div class="score-big" id="final-score">0/5</div>
-      <p id="completion-msg" style="color:var(--ink2);font-size:16px;margin-top:8px"></p>
-      <div id="completion-actions"></div>
+      <p class="done-msg" id="completion-msg"></p>
+      <button class="btn-retry" id="btn-retry" onclick="retryPractice()">Try again <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="completion-cta" id="cta-deeper" style="display:none">
+        <p>Ready to go deeper? Work 1-on-1 with a Cuemath tutor.</p>
+        <button class="btn-primary" onclick="openModal()">Book a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
     </div>
   </div>
 
@@ -1520,16 +1530,19 @@ function nextQ(n) {
 
 function showCompletion() {
   document.querySelectorAll('.question-card').forEach(function(c) { c.classList.remove('active'); });
-  document.getElementById('completion').style.display = 'block';
+  document.getElementById('completion').classList.add('show');
   document.getElementById('final-score').textContent = score + '/5';
-  var msgs = ['Let\'s revisit the sections above together.','Keep going — re-read the sign rules.','Good effort. Review the operations accordion.','Good work — one to tighten up.','Great work! One small slip.','Perfect score! Integers mastered.'];
+  var pct = score / 5;
+  document.getElementById('done-emoji').textContent = pct === 1 ? '🏆' : pct >= 0.8 ? '🎉' : '👍';
+  var msgs = ['Let\'s revisit the sections above — read each rule carefully.','Keep going — review the sign rules and try again.','Good effort — check the operations section above.','Good work — almost there.','Great work! One small slip.','Perfect score! Integers mastered.'];
   document.getElementById('completion-msg').textContent = msgs[score];
   document.getElementById('prog-bar').style.width = '100%';
-  var actEl = document.getElementById('completion-actions');
   if (retryCount < 2) {
-    actEl.innerHTML = '<button class="btn-retry" onclick="retryPractice()">Try again <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
+    document.getElementById('btn-retry').style.display = 'inline-flex';
+    document.getElementById('cta-deeper').style.display = 'none';
   } else {
-    actEl.innerHTML = '<div class="completion-cta"><p style="color:var(--ink2);font-size:14px;margin-bottom:10px">Ready to go deeper? Work through this with a Cuemath tutor.</p><button class="btn-primary" onclick="openModal()">Book a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>';
+    document.getElementById('btn-retry').style.display = 'none';
+    document.getElementById('cta-deeper').style.display = 'block';
   }
 }
 
@@ -1541,7 +1554,7 @@ function retryPractice() {
   document.querySelectorAll('.q-feedback').forEach(function(f) { f.style.display = 'none'; });
   document.querySelectorAll('.q-next').forEach(function(n) { n.style.display = 'none'; });
   document.querySelectorAll('.hint-text').forEach(function(h) { h.style.display = 'none'; });
-  document.getElementById('completion').style.display = 'none';
+  var compEl = document.getElementById('completion'); compEl.classList.remove('show');
   document.querySelectorAll('.question-card').forEach(function(c) { c.classList.remove('active'); });
   document.getElementById('q1').classList.add('active');
   document.getElementById('prog-bar').style.width = '0%';
