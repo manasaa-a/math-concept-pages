@@ -884,11 +884,14 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 </div>
 
 <script>
-/* ACCORDION */
-/* ── RIGHT-ANGLE TRIANGLE SIMULATION ── */
-var triB = {x:470}, triC = {y:110}, triDrag = null, triAnim = 0;
-var TRI = {ax:150, ay:340};
-
+function toggleAcc(btn) {
+  var body = btn.nextElementSibling;
+  var open = btn.classList.contains('open');
+  btn.closest('.accordion').querySelectorAll('.accordion-btn').forEach(function(b) {
+    b.classList.remove('open'); b.nextElementSibling.classList.remove('open');
+  });
+  if (!open) { btn.classList.add('open'); body.classList.add('open'); }
+}
 function toggleFaq(btn) {
   var a = btn.nextElementSibling, o = btn.classList.contains('open');
   btn.classList.toggle('open', !o); a.classList.toggle('open', !o);
@@ -929,7 +932,7 @@ function showCompletion() {
   document.getElementById('final-score').textContent = score + '/5';
   var pct = score / 5;
   document.getElementById('done-emoji').textContent = pct === 1 ? '🏆' : pct >= 0.8 ? '🎉' : '👍';
-  var msgs = ['Let's revisit the formulas above.','Keep going — re-read the base-height concept.','Good effort — almost there.','Good work — one to tighten up.','Great work! One small slip.','Perfect score! Area of triangle mastered.'];
+  var msgs = ["Let's revisit the formulas above.","Keep going — re-read the base-height concept.","Good effort — almost there.","Good work — one to tighten up.","Great work! One small slip.","Perfect score! Area of triangle mastered."];
   document.getElementById('completion-msg').textContent = msgs[score];
   document.getElementById('prog-bar').style.width = '100%';
   if (retryCount < 1) {
