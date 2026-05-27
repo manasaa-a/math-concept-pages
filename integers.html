@@ -348,6 +348,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 .footer-links a{font-size:14px;color:var(--muted);text-decoration:none}
 .footer-copy{font-size:13px;color:var(--muted)}
 </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
 </head>
 <body>
 
@@ -475,7 +476,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
   <!-- SECTION: OPERATIONS -->
   <div class="section" id="operations">
-    <h2>Integer Operations</h2>
 
     <div class="accordion">
 
@@ -506,6 +506,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
               Same sign (both −)<br>Add: 9 + 5 = 14<br>Keep the sign → <strong>Result: −14</strong>
             </div>
           </div>
+        
+          <div class="sim-slot" data-sim-op="+"></div>
         </div>
       </div>
 
@@ -530,6 +532,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
               = −4 + 6<br>Different signs, difference: 6 − 4 = 2<br>Larger (6) is positive → <strong>Result: +2</strong>
             </div>
           </div>
+        
+          <div class="sim-slot" data-sim-op="-"></div>
         </div>
       </div>
 
@@ -550,6 +554,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
             </tbody>
           </table>
           <p style="font-size:14px;color:var(--muted)"><em>Why does negative × negative = positive?</em> Think of it as reversing direction twice — two reversals bring you back to the original direction.</p>
+        
+          <div class="sim-slot" data-sim-op="×"></div>
         </div>
       </div>
 
@@ -570,6 +576,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
             </tbody>
           </table>
           <p style="font-size:14px;color:var(--muted)">Note: dividing integers does not always produce an integer (e.g., 5 ÷ 2 = 2.5). Division is only closed over integers when the result is exact.</p>
+        
+          <div class="sim-slot" data-sim-op="÷"></div>
         </div>
       </div>
 
@@ -579,9 +587,336 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     </div>
 
 
-    <div style="border:1px solid var(--border);margin:24px 0 0;overflow:hidden">
-      <iframe src="integer-operations-sim.html" style="width:100%;height:520px;border:0;display:block" loading="lazy" title="Integer Operations — Number Line"></iframe>
+
+  <div id="int-ops-sim" style="background:#fff;border-top:1px solid var(--border);padding:20px 0 0">
+<h1 class="type-heading-lg">Integer Operations</h1>
+
+<div class="tabs">
+  <div class="tab-list tab-list-full" role="tablist" id="tablist">
+    <button class="tab is-active" role="tab" aria-selected="true"  onclick="setMode('add')">Addition</button>
+    <button class="tab"           role="tab" aria-selected="false" onclick="setMode('sub')">Subtraction</button>
+    <button class="tab"           role="tab" aria-selected="false" onclick="setMode('mul')">Multiplication</button>
+    <button class="tab"           role="tab" aria-selected="false" onclick="setMode('div')">Division</button>
+  </div>
+</div>
+
+<div class="eq-bar" id="eq"></div>
+
+<div id="canvas-wrap"></div>
+
+<div class="controls" id="controls"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// DESIGN SYSTEM COLORS — extracted from CSS variables
+// ═══════════════════════════════════════════════════════
+function cssVar(v) {
+  return getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+}
+
+// Resolved at runtime so they respect any theme switch
+const C = {
+  brand:   '#F4AB52',  // gold-500
+  info:    '#74ACFC',  // info-500
+  success: '#6AC88A',  // success-500
+  error:   '#F97279',  // error-500
+  warning: '#F68D50',  // warning-500
+  purple:  '#D386F7',  // purple-500
+  // For the operand dots
+  dotA:    '#EC9A32',  // gold-600
+  dotB:    '#C26FE2',  // purple-600
+  // Axis
+  axis:    '#5B5854',  // neutral-700
+  tick:    '#C6C0B8',  // neutral-400
+  tickLbl: '#84807B',  // neutral-600
+  zero:    '#33312F',  // neutral-900
+  canvasBg:'#FFFFFF',
+};
+
+// Jump colors cycle through the design system categorical palette
+const JCOLORS = [C.brand, C.info, C.success, C.warning, C.error, C.purple];
+
+// ═══════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════
+let mode = 'add';
+let valA = 3, valB = 4;
+
+const CFG = {
+  add: { sym:'＋', aLbl:'First number', bLbl:'Second number', aMin:-10,aMax:10, bMin:-10,bMax:10, a0:3,  b0:4  },
+  sub: { sym:'－', aLbl:'Start value',  bLbl:'Subtract',      aMin:-10,aMax:10, bMin:-10,bMax:10, a0:8,  b0:3  },
+  mul: { sym:'×',  aLbl:'Groups (a)',   bLbl:'Size each (b)', aMin:-5, aMax:5,  bMin:-5, bMax:5,  a0:3,  b0:4  },
+  div: { sym:'÷',  aLbl:'Dividend (a)', bLbl:'Divisor (b)',   aMin:-24,aMax:24, bMin:-6, bMax:6,  a0:12, b0:3  }
+};
+
+function getResult() {
+  if (mode==='add') return valA + valB;
+  if (mode==='sub') return valA - valB;
+  if (mode==='mul') return valA * valB;
+  if (mode==='div') return valB !== 0 ? valA / valB : null;
+}
+function isInt(v) { return v !== null && Number.isInteger(v); }
+
+// ═══════════════════════════════════════════════════════
+// UI
+// ═══════════════════════════════════════════════════════
+function setMode(m) {
+  mode = m;
+  const c = CFG[m];
+  valA = c.a0; valB = c.b0;
+  document.querySelectorAll('#tablist .tab').forEach((btn, i) => {
+    const active = ['add','sub','mul','div'][i] === m;
+    btn.classList.toggle('is-active', active);
+    btn.setAttribute('aria-selected', active ? 'true' : 'false');
+  });
+  buildControls();
+  renderEq();
+}
+
+function buildControls() {
+  const c = CFG[mode];
+  document.getElementById('controls').innerHTML = `
+    <div class="slider-group">
+      <div class="sl-label">${c.aLbl}</div>
+      <div class="sl-val val-a" id="dA">${valA}</div>
+      <input type="range" class="range-a" id="sA" min="${c.aMin}" max="${c.aMax}" step="1" value="${valA}">
     </div>
+    <div class="slider-group">
+      <div class="sl-label">${c.bLbl}</div>
+      <div class="sl-val val-b" id="dB">${valB}</div>
+      <input type="range" class="range-b" id="sB" min="${c.bMin}" max="${c.bMax}" step="1" value="${valB}">
+    </div>
+  `;
+  document.getElementById('sA').oninput = e => {
+    valA = +e.target.value;
+    document.getElementById('dA').textContent = valA;
+    renderEq();
+  };
+  document.getElementById('sB').oninput = e => {
+    let v = +e.target.value;
+    if (mode === 'div' && v === 0) { v = (e.target.value > 0 ? 1 : -1); e.target.value = v; }
+    valB = v;
+    document.getElementById('dB').textContent = valB;
+    renderEq();
+  };
+}
+
+function renderEq() {
+  const c = CFG[mode];
+  const r = getResult();
+  let rHtml;
+  if (r === null)     rHtml = `<span class="eq-err">undefined</span>`;
+  else if (!isInt(r)) rHtml = `<span class="eq-err">${r.toFixed(2)}&thinsp;(not a whole number)</span>`;
+  else                rHtml = `<span class="eq-r">${r}</span>`;
+  document.getElementById('eq').innerHTML =
+    `<span class="eq-a">${valA}</span>` +
+    `<span class="eq-op">${c.sym}</span>` +
+    `<span class="eq-b">${valB}</span>` +
+    `<span class="eq-eq">=</span>${rHtml}`;
+}
+
+// ═══════════════════════════════════════════════════════
+// p5 SKETCH
+// ═══════════════════════════════════════════════════════
+const CW = 640, CH = 220;
+const LY = 132;         // number line y
+const PX = 56;          // horizontal padding
+const MAX_ARCS = 8;
+
+new p5(function(p) {
+
+  function getRange() {
+    const r = getResult();
+    const pts = [0, valA];
+    if (r !== null) pts.push(r);
+    if (mode === 'mul' && valA !== 0 && valB !== 0) {
+      const eff = Math.sign(valA) * valB;
+      for (let i = 1; i <= Math.min(Math.abs(valA), MAX_ARCS+1); i++) pts.push(i * eff);
+    }
+    if (mode === 'div' && r !== null && isInt(r) && r !== 0) {
+      const eff = Math.sign(r) * valB;
+      for (let i = 1; i <= Math.min(Math.abs(r), MAX_ARCS+1); i++) pts.push(i * eff);
+    }
+    let mn = Math.min(...pts), mx = Math.max(...pts);
+    const span = mx - mn;
+    const pad = Math.max(Math.ceil(span * 0.18), 3);
+    mn = Math.floor(mn - pad); mx = Math.ceil(mx + pad);
+    if (mx - mn < 12) { const mid=(mn+mx)/2; mn=Math.floor(mid-6); mx=Math.ceil(mid+6); }
+    return [mn, mx];
+  }
+
+  function toX(v, mn, mx) { return p.map(v, mn, mx, PX, CW - PX); }
+
+  function drawAxis(mn, mx) {
+    const x1 = PX - 12, x2 = CW - PX + 12;
+    p.stroke(C.axis); p.strokeWeight(2);
+    p.line(x1, LY, x2, LY);
+    p.fill(C.axis); p.noStroke();
+    p.triangle(x2, LY, x2-8, LY-4, x2-8, LY+4);
+    p.triangle(x1, LY, x1+8, LY-4, x1+8, LY+4);
+
+    const range = mx - mn;
+    const step = range <= 24 ? 1 : range <= 50 ? 2 : 5;
+    const r = getResult();
+    const isZ0 = (v) => v === 0;
+    const isA  = (v) => v === valA;
+    const isR  = (v) => r !== null && Number.isInteger(r) && v === r;
+
+    for (let v = Math.ceil(mn); v <= Math.floor(mx); v++) {
+      const x  = toX(v, mn, mx);
+      const zz = isZ0(v), av = isA(v), rv = isR(v);
+      // Tick stroke
+      p.stroke(zz ? C.zero : C.tick);
+      p.strokeWeight(zz ? 2 : (av || rv) ? 2 : 1);
+      p.line(x, LY - (zz||av||rv ? 10 : 5), x, LY + (zz||av||rv ? 10 : 5));
+      // Label — show for step multiples + special values
+      if (v % step === 0 || av || rv) {
+        p.noStroke();
+        if (av)      { p.fill(C.dotA);    p.textSize(13); p.textStyle(p.BOLD); }
+        else if (rv) { p.fill(C.success); p.textSize(13); p.textStyle(p.BOLD); }
+        else         { p.fill(zz ? C.zero : C.tickLbl); p.textSize(zz ? 13 : 11); p.textStyle(zz ? p.BOLD : p.NORMAL); }
+        p.textAlign(p.CENTER, p.TOP);
+        p.text(v, x, LY + 14);
+      }
+    }
+  }
+
+  // Bezier arc, curving above the line
+  function arc(x1, x2, col, h, lbl) {
+    if (Math.abs(x2 - x1) < 1) return;
+    p.noFill(); p.stroke(col); p.strokeWeight(2.5);
+    p.bezier(x1, LY, x1, LY - h, x2, LY - h, x2, LY);
+    // Arrowhead pointing down
+    p.fill(col); p.noStroke();
+    p.triangle(x2, LY + 1, x2 - 5, LY - 9, x2 + 5, LY - 9);
+    // Label at peak
+    if (lbl != null) {
+      p.fill(col); p.textSize(12); p.textStyle(p.BOLD);
+      p.textAlign(p.CENTER, p.BOTTOM);
+      p.text(lbl, (x1 + x2) / 2, LY - h - 5);
+    }
+  }
+
+  function dot(x, col, r, lbl, above) {
+    p.noStroke(); p.fill(col); p.circle(x, LY, r);
+    if (lbl != null) {
+      p.fill(col); p.textStyle(p.BOLD); p.textSize(13);
+      p.textAlign(p.CENTER, above ? p.BOTTOM : p.TOP);
+      p.text(lbl, x, above ? LY - r/2 - 5 : LY + r/2 + 4);
+    }
+  }
+
+  function note(txt, col) {
+    p.noStroke(); p.fill(col || C.tickLbl);
+    p.textSize(11); p.textStyle(p.NORMAL);
+    p.textAlign(p.LEFT, p.TOP);
+    p.text(txt, PX, 12);
+  }
+
+  p.setup = function() {
+    p.createCanvas(CW, CH).parent('canvas-wrap');
+    p.textFont('sans-serif');
+    buildControls();
+    renderEq();
+  };
+
+  p.draw = function() {
+    p.background(C.canvasBg);
+    const [mn, mx] = getRange();
+    drawAxis(mn, mx);
+
+    const r  = getResult();
+    const x0 = toX(0,    mn, mx);
+    const xA = toX(valA, mn, mx);
+    const xR = r !== null ? toX(r, mn, mx) : null;
+
+    // ─── Addition / Subtraction ───────────────────────
+    if (mode === 'add' || mode === 'sub') {
+      const move = mode === 'add' ? valB : -valB;
+      const col  = move >= 0 ? C.info : C.error;
+      const h    = p.map(Math.abs(move), 0, 20, 18, 80);
+      const lbl  = mode === 'add'
+        ? (valB >= 0 ? '+' : '') + valB
+        : (valB >= 0 ? '−' : '+') + Math.abs(valB);
+      if (move !== 0 && xR !== null) arc(xA, xR, col, h, lbl);
+      dot(xA, C.dotA, 14, null, false);
+      if (r !== null) dot(xR, C.success, 14, null, true);
+      note((mode === 'add' ? 'Move ' : 'Subtract ') + (mode==='add'?(valB>=0?'+':'')+valB:valB) + ' from ' + valA, col);
+    }
+
+    // ─── Multiplication ───────────────────────────────
+    else if (mode === 'mul') {
+      if (valA === 0 || valB === 0) {
+        dot(x0, C.success, 14, null, true);
+        note('Any number × 0 = 0', C.tickLbl);
+      } else {
+        const nJ  = Math.abs(valA);
+        const eff = Math.sign(valA) * valB;
+        const h   = p.map(Math.abs(eff), 0, 10, 22, 78);
+        const drawN = Math.min(nJ, MAX_ARCS);
+        for (let i = 0; i < drawN; i++) {
+          const xF = toX(i * eff, mn, mx);
+          const xT = toX((i+1) * eff, mn, mx);
+          arc(xF, xT, JCOLORS[i % JCOLORS.length], h, i === 0 ? String(valB) : null);
+          if (i > 0) dot(xF, JCOLORS[i % JCOLORS.length], 7, null, false);
+        }
+        if (nJ > MAX_ARCS) {
+          p.noStroke(); p.fill(C.tick); p.textSize(18); p.textStyle(p.BOLD);
+          p.textAlign(p.LEFT, p.CENTER);
+          p.text('…', toX(drawN * eff, mn, mx) + 6, LY - h / 2);
+        }
+        dot(x0, C.tick, 9, null, false);
+        if (r !== null) dot(xR, C.success, 14, null, true);
+        note(Math.abs(valA) + ' jump' + (Math.abs(valA)!==1?'s':'') + ' of ' + valB + (valA < 0 ? ' (reversed)' : ''), C.tickLbl);
+      }
+    }
+
+    // ─── Division ─────────────────────────────────────
+    else if (mode === 'div') {
+      if (valB === 0) {
+        p.noStroke(); p.fill(C.error); p.textSize(13);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.text('Division by zero is undefined', CW/2, LY - 48);
+      } else if (!isInt(r)) {
+        dot(xA, C.error, 13, null, false);
+        p.noStroke(); p.fill(C.error); p.textSize(13);
+        p.textAlign(p.CENTER, p.BOTTOM);
+        p.text(valA + ' ÷ ' + valB + ' = ' + r.toFixed(2) + ' — not a whole number', CW/2, LY - 26);
+      } else if (r === 0) {
+        dot(x0, C.success, 14, 0, true);
+      } else {
+        const nJ  = Math.abs(r);
+        const eff = Math.sign(r) * valB;
+        const h   = p.map(Math.abs(valB), 0, 6, 20, 65);
+        const drawN = Math.min(nJ, MAX_ARCS);
+        for (let i = 0; i < drawN; i++) {
+          const xF = toX(i * eff, mn, mx);
+          const xT = toX((i+1) * eff, mn, mx);
+          arc(xF, xT, JCOLORS[i % JCOLORS.length], h, i === 0 ? String(valB) : null);
+          if (i > 0) dot(xF, JCOLORS[i % JCOLORS.length], 7, null, false);
+        }
+        if (nJ > MAX_ARCS) {
+          p.noStroke(); p.fill(C.tick); p.textSize(18); p.textStyle(p.BOLD);
+          p.textAlign(p.LEFT, p.CENTER);
+          p.text('…', toX(drawN * eff, mn, mx) + 6, LY - h / 2);
+        }
+        dot(x0, C.tick, 9, null, false);
+        dot(xA, C.success, 14, null, true);
+        note(nJ + ' equal jump' + (nJ!==1?'s':'') + ' of ' + valB + ' reaches ' + valA, C.tickLbl);
+      }
+    }
+  };
+
+});
+// Listen for tab-switch messages from parent page (integers.html accordion)
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.tab && typeof setMode === 'function') {
+    setMode(e.data.tab);
+  }
+});
+
+</script>
+</div>
   </div>
 
 
@@ -1076,20 +1411,24 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 function toggleAcc(btn) {
   var body = btn.nextElementSibling;
   var isOpen = btn.classList.contains('open');
+  var simEl = document.getElementById('int-ops-sim');
   btn.closest('.accordion').querySelectorAll('.accordion-btn').forEach(function(b) {
     b.classList.remove('open'); b.nextElementSibling.classList.remove('open');
   });
+  if (simEl) simEl.style.display = 'none';
   if (!isOpen) {
     btn.classList.add('open'); body.classList.add('open');
     var op = btn.dataset.op;
-    if (op) {
-      var modeMap = {'+':'add','-':'sub','×':'mul','÷':'div'};
-      var sim = document.querySelector('iframe[src="integer-operations-sim.html"]');
-      if (sim) {
-        sim.contentWindow.postMessage({ tab: modeMap[op] }, '*');
+    if (op && simEl) {
+      var slot = body.querySelector('.sim-slot');
+      if (slot) {
+        slot.appendChild(simEl);
+        simEl.style.display = 'block';
+        var modeMap = {'+':'add','-':'sub','×':'mul','÷':'div'};
+        if (typeof setMode === 'function') setMode(modeMap[op]);
         setTimeout(function() {
-          sim.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 200);
+          simEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
       }
     }
   }
@@ -1125,7 +1464,7 @@ function setOp(op) {
     '×': '💡 Click the sign tiles to try all four sign combinations.',
     '÷': '💡 Click the sign tiles — division follows the same sign rules as multiplication.'
   };
-  var sdt = document.getElementById('sim-discover-txt'); if(sdt) sdt.textContent = tips[op];
+  document.getElementById('sim-discover-txt').textContent = tips[op];
   runSim();
 }
 
@@ -1508,6 +1847,318 @@ var spy = new IntersectionObserver(function(entries) {
   });
 }, { rootMargin: '-20% 0px -60% 0px' });
 tocIds.forEach(function(id) { var el = document.getElementById(id); if (el) spy.observe(el); });
+
+
+/* ── INTEGER OPERATIONS SIMULATION ── */
+// ═══════════════════════════════════════════════════════
+// DESIGN SYSTEM COLORS — extracted from CSS variables
+// ═══════════════════════════════════════════════════════
+function cssVar(v) {
+  return getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+}
+
+// Resolved at runtime so they respect any theme switch
+const C = {
+  brand:   '#F4AB52',  // gold-500
+  info:    '#74ACFC',  // info-500
+  success: '#6AC88A',  // success-500
+  error:   '#F97279',  // error-500
+  warning: '#F68D50',  // warning-500
+  purple:  '#D386F7',  // purple-500
+  // For the operand dots
+  dotA:    '#EC9A32',  // gold-600
+  dotB:    '#C26FE2',  // purple-600
+  // Axis
+  axis:    '#5B5854',  // neutral-700
+  tick:    '#C6C0B8',  // neutral-400
+  tickLbl: '#84807B',  // neutral-600
+  zero:    '#33312F',  // neutral-900
+  canvasBg:'#FFFFFF',
+};
+
+// Jump colors cycle through the design system categorical palette
+const JCOLORS = [C.brand, C.info, C.success, C.warning, C.error, C.purple];
+
+// ═══════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════
+let mode = 'add';
+let valA = 3, valB = 4;
+
+const CFG = {
+  add: { sym:'＋', aLbl:'First number', bLbl:'Second number', aMin:-10,aMax:10, bMin:-10,bMax:10, a0:3,  b0:4  },
+  sub: { sym:'－', aLbl:'Start value',  bLbl:'Subtract',      aMin:-10,aMax:10, bMin:-10,bMax:10, a0:8,  b0:3  },
+  mul: { sym:'×',  aLbl:'Groups (a)',   bLbl:'Size each (b)', aMin:-5, aMax:5,  bMin:-5, bMax:5,  a0:3,  b0:4  },
+  div: { sym:'÷',  aLbl:'Dividend (a)', bLbl:'Divisor (b)',   aMin:-24,aMax:24, bMin:-6, bMax:6,  a0:12, b0:3  }
+};
+
+function getResult() {
+  if (mode==='add') return valA + valB;
+  if (mode==='sub') return valA - valB;
+  if (mode==='mul') return valA * valB;
+  if (mode==='div') return valB !== 0 ? valA / valB : null;
+}
+function isInt(v) { return v !== null && Number.isInteger(v); }
+
+// ═══════════════════════════════════════════════════════
+// UI
+// ═══════════════════════════════════════════════════════
+function setMode(m) {
+  mode = m;
+  const c = CFG[m];
+  valA = c.a0; valB = c.b0;
+  document.querySelectorAll('#tablist .tab').forEach((btn, i) => {
+    const active = ['add','sub','mul','div'][i] === m;
+    btn.classList.toggle('is-active', active);
+    btn.setAttribute('aria-selected', active ? 'true' : 'false');
+  });
+  buildControls();
+  renderEq();
+}
+
+function buildControls() {
+  const c = CFG[mode];
+  document.getElementById('controls').innerHTML = `
+    <div class="slider-group">
+      <div class="sl-label">${c.aLbl}</div>
+      <div class="sl-val val-a" id="dA">${valA}</div>
+      <input type="range" class="range-a" id="sA" min="${c.aMin}" max="${c.aMax}" step="1" value="${valA}">
+    </div>
+    <div class="slider-group">
+      <div class="sl-label">${c.bLbl}</div>
+      <div class="sl-val val-b" id="dB">${valB}</div>
+      <input type="range" class="range-b" id="sB" min="${c.bMin}" max="${c.bMax}" step="1" value="${valB}">
+    </div>
+  `;
+  document.getElementById('sA').oninput = e => {
+    valA = +e.target.value;
+    document.getElementById('dA').textContent = valA;
+    renderEq();
+  };
+  document.getElementById('sB').oninput = e => {
+    let v = +e.target.value;
+    if (mode === 'div' && v === 0) { v = (e.target.value > 0 ? 1 : -1); e.target.value = v; }
+    valB = v;
+    document.getElementById('dB').textContent = valB;
+    renderEq();
+  };
+}
+
+function renderEq() {
+  const c = CFG[mode];
+  const r = getResult();
+  let rHtml;
+  if (r === null)     rHtml = `<span class="eq-err">undefined</span>`;
+  else if (!isInt(r)) rHtml = `<span class="eq-err">${r.toFixed(2)}&thinsp;(not a whole number)</span>`;
+  else                rHtml = `<span class="eq-r">${r}</span>`;
+  document.getElementById('eq').innerHTML =
+    `<span class="eq-a">${valA}</span>` +
+    `<span class="eq-op">${c.sym}</span>` +
+    `<span class="eq-b">${valB}</span>` +
+    `<span class="eq-eq">=</span>${rHtml}`;
+}
+
+// ═══════════════════════════════════════════════════════
+// p5 SKETCH
+// ═══════════════════════════════════════════════════════
+const CW = 640, CH = 220;
+const LY = 132;         // number line y
+const PX = 56;          // horizontal padding
+const MAX_ARCS = 8;
+
+new p5(function(p) {
+
+  function getRange() {
+    const r = getResult();
+    const pts = [0, valA];
+    if (r !== null) pts.push(r);
+    if (mode === 'mul' && valA !== 0 && valB !== 0) {
+      const eff = Math.sign(valA) * valB;
+      for (let i = 1; i <= Math.min(Math.abs(valA), MAX_ARCS+1); i++) pts.push(i * eff);
+    }
+    if (mode === 'div' && r !== null && isInt(r) && r !== 0) {
+      const eff = Math.sign(r) * valB;
+      for (let i = 1; i <= Math.min(Math.abs(r), MAX_ARCS+1); i++) pts.push(i * eff);
+    }
+    let mn = Math.min(...pts), mx = Math.max(...pts);
+    const span = mx - mn;
+    const pad = Math.max(Math.ceil(span * 0.18), 3);
+    mn = Math.floor(mn - pad); mx = Math.ceil(mx + pad);
+    if (mx - mn < 12) { const mid=(mn+mx)/2; mn=Math.floor(mid-6); mx=Math.ceil(mid+6); }
+    return [mn, mx];
+  }
+
+  function toX(v, mn, mx) { return p.map(v, mn, mx, PX, CW - PX); }
+
+  function drawAxis(mn, mx) {
+    const x1 = PX - 12, x2 = CW - PX + 12;
+    p.stroke(C.axis); p.strokeWeight(2);
+    p.line(x1, LY, x2, LY);
+    p.fill(C.axis); p.noStroke();
+    p.triangle(x2, LY, x2-8, LY-4, x2-8, LY+4);
+    p.triangle(x1, LY, x1+8, LY-4, x1+8, LY+4);
+
+    const range = mx - mn;
+    const step = range <= 24 ? 1 : range <= 50 ? 2 : 5;
+    const r = getResult();
+    const isZ0 = (v) => v === 0;
+    const isA  = (v) => v === valA;
+    const isR  = (v) => r !== null && Number.isInteger(r) && v === r;
+
+    for (let v = Math.ceil(mn); v <= Math.floor(mx); v++) {
+      const x  = toX(v, mn, mx);
+      const zz = isZ0(v), av = isA(v), rv = isR(v);
+      // Tick stroke
+      p.stroke(zz ? C.zero : C.tick);
+      p.strokeWeight(zz ? 2 : (av || rv) ? 2 : 1);
+      p.line(x, LY - (zz||av||rv ? 10 : 5), x, LY + (zz||av||rv ? 10 : 5));
+      // Label — show for step multiples + special values
+      if (v % step === 0 || av || rv) {
+        p.noStroke();
+        if (av)      { p.fill(C.dotA);    p.textSize(13); p.textStyle(p.BOLD); }
+        else if (rv) { p.fill(C.success); p.textSize(13); p.textStyle(p.BOLD); }
+        else         { p.fill(zz ? C.zero : C.tickLbl); p.textSize(zz ? 13 : 11); p.textStyle(zz ? p.BOLD : p.NORMAL); }
+        p.textAlign(p.CENTER, p.TOP);
+        p.text(v, x, LY + 14);
+      }
+    }
+  }
+
+  // Bezier arc, curving above the line
+  function arc(x1, x2, col, h, lbl) {
+    if (Math.abs(x2 - x1) < 1) return;
+    p.noFill(); p.stroke(col); p.strokeWeight(2.5);
+    p.bezier(x1, LY, x1, LY - h, x2, LY - h, x2, LY);
+    // Arrowhead pointing down
+    p.fill(col); p.noStroke();
+    p.triangle(x2, LY + 1, x2 - 5, LY - 9, x2 + 5, LY - 9);
+    // Label at peak
+    if (lbl != null) {
+      p.fill(col); p.textSize(12); p.textStyle(p.BOLD);
+      p.textAlign(p.CENTER, p.BOTTOM);
+      p.text(lbl, (x1 + x2) / 2, LY - h - 5);
+    }
+  }
+
+  function dot(x, col, r, lbl, above) {
+    p.noStroke(); p.fill(col); p.circle(x, LY, r);
+    if (lbl != null) {
+      p.fill(col); p.textStyle(p.BOLD); p.textSize(13);
+      p.textAlign(p.CENTER, above ? p.BOTTOM : p.TOP);
+      p.text(lbl, x, above ? LY - r/2 - 5 : LY + r/2 + 4);
+    }
+  }
+
+  function note(txt, col) {
+    p.noStroke(); p.fill(col || C.tickLbl);
+    p.textSize(11); p.textStyle(p.NORMAL);
+    p.textAlign(p.LEFT, p.TOP);
+    p.text(txt, PX, 12);
+  }
+
+  p.setup = function() {
+    p.createCanvas(CW, CH).parent('canvas-wrap');
+    p.textFont('sans-serif');
+    buildControls();
+    renderEq();
+  };
+
+  p.draw = function() {
+    p.background(C.canvasBg);
+    const [mn, mx] = getRange();
+    drawAxis(mn, mx);
+
+    const r  = getResult();
+    const x0 = toX(0,    mn, mx);
+    const xA = toX(valA, mn, mx);
+    const xR = r !== null ? toX(r, mn, mx) : null;
+
+    // ─── Addition / Subtraction ───────────────────────
+    if (mode === 'add' || mode === 'sub') {
+      const move = mode === 'add' ? valB : -valB;
+      const col  = move >= 0 ? C.info : C.error;
+      const h    = p.map(Math.abs(move), 0, 20, 18, 80);
+      const lbl  = mode === 'add'
+        ? (valB >= 0 ? '+' : '') + valB
+        : (valB >= 0 ? '−' : '+') + Math.abs(valB);
+      if (move !== 0 && xR !== null) arc(xA, xR, col, h, lbl);
+      dot(xA, C.dotA, 14, null, false);
+      if (r !== null) dot(xR, C.success, 14, null, true);
+      note((mode === 'add' ? 'Move ' : 'Subtract ') + (mode==='add'?(valB>=0?'+':'')+valB:valB) + ' from ' + valA, col);
+    }
+
+    // ─── Multiplication ───────────────────────────────
+    else if (mode === 'mul') {
+      if (valA === 0 || valB === 0) {
+        dot(x0, C.success, 14, null, true);
+        note('Any number × 0 = 0', C.tickLbl);
+      } else {
+        const nJ  = Math.abs(valA);
+        const eff = Math.sign(valA) * valB;
+        const h   = p.map(Math.abs(eff), 0, 10, 22, 78);
+        const drawN = Math.min(nJ, MAX_ARCS);
+        for (let i = 0; i < drawN; i++) {
+          const xF = toX(i * eff, mn, mx);
+          const xT = toX((i+1) * eff, mn, mx);
+          arc(xF, xT, JCOLORS[i % JCOLORS.length], h, i === 0 ? String(valB) : null);
+          if (i > 0) dot(xF, JCOLORS[i % JCOLORS.length], 7, null, false);
+        }
+        if (nJ > MAX_ARCS) {
+          p.noStroke(); p.fill(C.tick); p.textSize(18); p.textStyle(p.BOLD);
+          p.textAlign(p.LEFT, p.CENTER);
+          p.text('…', toX(drawN * eff, mn, mx) + 6, LY - h / 2);
+        }
+        dot(x0, C.tick, 9, null, false);
+        if (r !== null) dot(xR, C.success, 14, null, true);
+        note(Math.abs(valA) + ' jump' + (Math.abs(valA)!==1?'s':'') + ' of ' + valB + (valA < 0 ? ' (reversed)' : ''), C.tickLbl);
+      }
+    }
+
+    // ─── Division ─────────────────────────────────────
+    else if (mode === 'div') {
+      if (valB === 0) {
+        p.noStroke(); p.fill(C.error); p.textSize(13);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.text('Division by zero is undefined', CW/2, LY - 48);
+      } else if (!isInt(r)) {
+        dot(xA, C.error, 13, null, false);
+        p.noStroke(); p.fill(C.error); p.textSize(13);
+        p.textAlign(p.CENTER, p.BOTTOM);
+        p.text(valA + ' ÷ ' + valB + ' = ' + r.toFixed(2) + ' — not a whole number', CW/2, LY - 26);
+      } else if (r === 0) {
+        dot(x0, C.success, 14, 0, true);
+      } else {
+        const nJ  = Math.abs(r);
+        const eff = Math.sign(r) * valB;
+        const h   = p.map(Math.abs(valB), 0, 6, 20, 65);
+        const drawN = Math.min(nJ, MAX_ARCS);
+        for (let i = 0; i < drawN; i++) {
+          const xF = toX(i * eff, mn, mx);
+          const xT = toX((i+1) * eff, mn, mx);
+          arc(xF, xT, JCOLORS[i % JCOLORS.length], h, i === 0 ? String(valB) : null);
+          if (i > 0) dot(xF, JCOLORS[i % JCOLORS.length], 7, null, false);
+        }
+        if (nJ > MAX_ARCS) {
+          p.noStroke(); p.fill(C.tick); p.textSize(18); p.textStyle(p.BOLD);
+          p.textAlign(p.LEFT, p.CENTER);
+          p.text('…', toX(drawN * eff, mn, mx) + 6, LY - h / 2);
+        }
+        dot(x0, C.tick, 9, null, false);
+        dot(xA, C.success, 14, null, true);
+        note(nJ + ' equal jump' + (nJ!==1?'s':'') + ' of ' + valB + ' reaches ' + valA, C.tickLbl);
+      }
+    }
+  };
+
+});
+// Listen for tab-switch messages from parent page (integers.html accordion)
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.tab && typeof setMode === 'function') {
+    setMode(e.data.tab);
+  }
+});
+
+
 </script>
 </body>
 </html>
