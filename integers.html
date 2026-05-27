@@ -189,7 +189,6 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .sim-container{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0}
 .sim-op-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
 .sim-tab{padding:8px 18px;border-radius:6px;border:1px solid var(--border);background:var(--bg);font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer;color:var(--ink2)}
-.sim-tab.active{background:var(--blue);color:#fff;border-color:var(--blue)}
 .sim-inputs{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
 .sim-num-wrap{display:flex;flex-direction:column;align-items:center;gap:6px}
 .sim-num-label{font-size:12px;color:var(--muted);font-weight:500}
@@ -477,10 +476,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   <!-- SECTION: OPERATIONS -->
   <div class="section" id="operations">
     <h2>Integer Operations</h2>
-    <p>Use the sliders to explore how integers behave under each operation. Watch the number line update in real time.</p>
-    <div style="border:1px solid var(--border);margin:16px 0;overflow:hidden">
-      <iframe src="integer-operations-sim.html" style="width:100%;height:520px;border:0;display:block" loading="lazy" title="Integer Operations Number Line"></iframe>
-    </div>
 
     <div class="accordion">
 
@@ -587,71 +582,9 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <p>Without a calculator: what is (−3) × (−8)? Decide the sign first using the sign rule, then calculate the magnitude.</p>
     </div>
 
-    <div id="sim-home" style="margin-top:24px">
-    <!-- Integer Explorer (inline) -->
-    <div id="simulation">
-      <p style="font-size:16px;font-family:'Athletics',Georgia,serif;font-weight:700;color:var(--ink);margin-bottom:8px">Try it on the number line</p>
-      <p style="font-size:14px;color:var(--muted);margin-bottom:14px">Choose an operation, adjust the numbers and hit ▶ Play. For × and ÷, flip the sign tiles to see the rule.</p>
-      <div class="sim-container">
-        <div class="sim-op-tabs">
-          <button class="sim-tab active" id="tab-add" onclick="setOp('+')">+ Add</button>
-          <button class="sim-tab" id="tab-sub" onclick="setOp('-')">− Subtract</button>
-          <button class="sim-tab" id="tab-mul" onclick="setOp('×')">× Multiply</button>
-          <button class="sim-tab" id="tab-div" onclick="setOp('÷')">÷ Divide</button>
-        </div>
-        <div class="sim-inputs">
-          <div class="sim-num-wrap">
-            <span class="sim-num-label" id="label-a">Start (°C)</span>
-            <div class="sim-num-ctrl">
-              <button onclick="changeNum('a',-1)">−</button>
-              <input id="numA" type="text" value="-3" readonly>
-              <button onclick="changeNum('a',1)">+</button>
-            </div>
-          </div>
-          <span class="sim-op-symbol" id="op-symbol">+</span>
-          <div class="sim-num-wrap">
-            <span class="sim-num-label" id="label-b">Change (°C)</span>
-            <div class="sim-num-ctrl">
-              <button onclick="changeNum('b',-1)">−</button>
-              <input id="numB" type="text" value="5" readonly>
-              <button onclick="changeNum('b',1)">+</button>
-            </div>
-          </div>
-        </div>
-        <div id="temp-scenario" style="background:var(--blue-light);border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:15px;color:var(--ink2)">
-          🌡️ <span id="temp-sentence">Temperature starts at −3°C, rises by 5°C → lands at <strong>2°C</strong></span>
-        </div>
-        <div id="sign-explorer" style="display:none">
-          <div class="sign-explorer-label">Click a tile to flip its sign and watch the result change:</div>
-          <div class="sign-board">
-            <div class="sign-tile clickable spos" id="tile-a" onclick="flipSign('a')">
-              <span class="st-sign" id="tile-a-sign">+</span><span class="st-val" id="tile-a-val">3</span>
-            </div>
-            <span class="sign-board-op" id="tile-op">×</span>
-            <div class="sign-tile clickable spos" id="tile-b" onclick="flipSign('b')">
-              <span class="st-sign" id="tile-b-sign">+</span><span class="st-val" id="tile-b-val">4</span>
-            </div>
-            <span class="sign-board-op">=</span>
-            <div class="sign-tile sres spos" id="tile-result">
-              <span class="st-sign" id="tile-r-sign">+</span><span class="st-val" id="tile-r-val">12</span>
-            </div>
-          </div>
-          <span class="sign-rule-note sim-rule-pos" id="sign-rule-note">Same signs → positive</span>
-        </div>
-        <div class="sim-result-box" id="sim-result-box">
-          <span class="sim-result-eq" id="sim-eq">(−3) + 5 = 2</span>
-          <span class="sim-rule-badge sim-rule-pos" id="sim-rule">Different signs → result is positive</span>
-        </div>
-        <div class="numberline-wrap">
-          <canvas id="nlCanvas" height="120"></canvas>
-        </div>
-        <div class="nl-drag-hint" id="nl-drag-hint">Drag either dot along the temperature scale</div>
-        <div id="sim-sign-rule-box" style="margin-top:10px;padding:10px 14px;border-radius:8px;font-size:14px;font-weight:500;text-align:center;display:none"></div>
-        <p class="sim-discover" id="sim-discover-txt">💡 Try this: drag the start dot below zero and the change dot further left — watch what happens when both are negative.</p>
-      </div>
-    </div>
 
-    </div>
+    <div style="border:1px solid var(--border);margin:24px 0 0;overflow:hidden">
+      <iframe src="integer-operations-sim.html" style="width:100%;height:520px;border:0;display:block" loading="lazy" title="Integer Operations — Number Line"></iframe>
     </div>
   </div>
 
@@ -1148,7 +1081,7 @@ function toggleAcc(btn) {
   var body = btn.nextElementSibling;
   var isOpen = btn.classList.contains('open');
   var sim = document.getElementById('simulation');
-  var simHome = document.getElementById('sim-home');
+  var simHome = document.getElementById('sim-home'); if (!simHome) simHome = { style: {} };
   // Close all, return sim to home
   btn.closest('.accordion').querySelectorAll('.accordion-btn').forEach(function(b) {
     b.classList.remove('open'); b.nextElementSibling.classList.remove('open');
@@ -1312,7 +1245,7 @@ function flipSign(which) {
 
 /* ── NUMBER LINE DRAWING ── */
 function drawNL() {
-  var canvas = document.getElementById('nlCanvas');
+  var canvas = document.getElementById('nlCanvas'); if (!canvas) return;
   canvas.width = canvas.parentElement.offsetWidth || 560;
   canvas.height = 130;
   var ctx = canvas.getContext('2d');
@@ -1432,7 +1365,7 @@ function drawArc(ctx, x1, y1, x2, y2, color, lift, label) {
 
 /* ── DRAG ── */
 (function() {
-  var canvas = document.getElementById('nlCanvas');
+  var canvas = document.getElementById('nlCanvas'); if (!canvas) return;
   function px(evt) {
     var r = canvas.getBoundingClientRect();
     return (evt.touches ? evt.touches[0].clientX : evt.clientX) - r.left;
