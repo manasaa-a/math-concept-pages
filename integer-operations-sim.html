@@ -471,6 +471,13 @@ new p5(function(p) {
   };
 
 });
+// Listen for tab-switch messages from parent page (integers.html accordion)
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.tab && typeof setMode === 'function') {
+    setMode(e.data.tab);
+  }
+});
+
 </script>
 </body>
 </html>
