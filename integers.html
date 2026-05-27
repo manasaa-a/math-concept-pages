@@ -657,6 +657,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           <canvas id="nlCanvas" height="120"></canvas>
         </div>
         <div class="nl-drag-hint" id="nl-drag-hint">Drag either dot along the temperature scale</div>
+        <div id="sim-sign-rule-box" style="margin-top:10px;padding:10px 14px;border-radius:8px;font-size:14px;font-weight:500;text-align:center;display:none"></div>
         <p class="sim-discover" id="sim-discover-txt">💡 Try this: drag the start dot below zero and the change dot further left — watch what happens when both are negative.</p>
       </div>
     </div>
@@ -1262,6 +1263,14 @@ function runSim() {
   document.getElementById('sim-eq').textContent = aStr + ' ' + op + ' ' + bStr + ' = ' + resStr;
   var rb = document.getElementById('sim-rule');
   rb.textContent = rule; rb.className = 'sim-rule-badge ' + ruleClass;
+  var srb = document.getElementById('sim-sign-rule-box');
+  if (srb) {
+    var ruleColors = {'sim-rule-pos':'background:#ECF9EF;color:#1C7C48;border:1px solid #BCEAC8',
+                     'sim-rule-neg':'background:#FFEEEE;color:#AE424C;border:1px solid #FFC6C5',
+                     'sim-rule-zero':'background:#FAF1E6;color:#7E4800;border:1px solid #FAD6AC'};
+    srb.setAttribute('style', 'margin-top:10px;padding:10px 14px;border-radius:8px;font-size:14px;font-weight:500;text-align:center;display:block;' + (ruleColors[ruleClass]||''));
+    srb.textContent = '→ ' + rule;
+  }
 
   /* Temperature scenario sentence */
   if (op === '+' || op === '-') {
@@ -1356,9 +1365,9 @@ function drawNL() {
     ctx.beginPath(); ctx.moveTo(tx, midY - tickLen); ctx.lineTo(tx, midY + tickLen); ctx.stroke();
     if (isMajor || isZero) {
       ctx.fillStyle = isZero ? '#CE7E12' : '#84807B';
-      ctx.font = (isZero ? 'bold ' : '') + '10px DM Sans,sans-serif';
+      ctx.font = (isZero ? 'bold ' : '') + '10px Untitled Sans,system-ui,sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText(i + (op === '+' || op === '-' ? '°' : ''), tx, midY + 22);
+      ctx.fillText(i + (op === '+' || op === '-' ? '°' : ''), tx, midY + 28);
     }
   }
 
