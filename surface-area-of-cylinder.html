@@ -35,9 +35,9 @@ body{
   background:var(--bg);
 }
 h1,h2,h3,h4{font-family:'Athletics',Georgia,serif;font-weight:700;color:var(--ink);line-height:1.25}
-h1{font-size:42px;margin-bottom:18px}
-h2{font-size:30px;margin:48px 0 18px}
-h3{font-size:22px;margin:24px 0 12px}
+h1{font-family:'Athletics',Georgia,serif;font-size:clamp(30px,4vw,44px);font-weight:700;letter-spacing:-0.5px;line-height:1.15;margin-bottom:10px}
+h2{font-family:'Athletics',Georgia,serif;font-size:clamp(20px,3vw,28px);font-weight:700;letter-spacing:-0.3px;line-height:1.25;margin-bottom:16px;padding-top:8px}
+h3{font-family:'Athletics',Georgia,serif;font-size:19px;font-weight:700;line-height:1.35;margin-bottom:10px}
 h4{font-size:18px;margin:18px 0 10px}
 p{margin-bottom:16px;color:var(--ink2)}
 a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow);text-underline-offset:3px}
@@ -54,7 +54,7 @@ a:hover{text-decoration-color:var(--ink)}
 .nav-cta{
   background:var(--yellow);color:var(--ink);
   border:none;border-radius:0;
-  padding:9px 18px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-weight:600;font-size:14px;
+  padding:10px 18px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-weight:600;font-size:14px;
   cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px;
 }
 .nav-cta:hover{background:var(--gold-600);text-decoration:none}
@@ -717,7 +717,6 @@ footer a:hover{color:var(--ink)}
         </div>
         <!-- Simulation inline under TSA -->
         <div style="border-radius:12px;overflow:hidden;margin:20px 0;background:#C1DCFF">
-          <div style="padding:8px 16px 4px;font-size:14px;font-weight:500;color:var(--ink);font-family:'Untitled Sans',-apple-system,system-ui,sans-serif">Slide Me!</div>
           <div style="position:relative;padding-bottom:62%;height:0;background:#C1DCFF">
             <iframe src="https://www.geogebra.org/material/iframe/id/rCxXxFhE/width/800/height/496/border/c8d8e8/sdz/false/ctl/false/smb/false/stb/false"
               style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
