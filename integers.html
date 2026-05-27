@@ -348,35 +348,30 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 .footer-links a{font-size:14px;color:var(--muted);text-decoration:none}
 .footer-copy{font-size:13px;color:var(--muted)}
 
-  /* ── Integer Operations Simulation ── */
-  #int-ops-sim { display:block; margin-top:16px; padding:16px 0 8px; }
-  #int-ops-sim .tabs { width:100%; margin-bottom:12px; }
-  #int-ops-sim .eq-bar {
-    width:100%; text-align:center; margin-bottom:16px; min-height:44px;
-    display:flex; align-items:center; justify-content:center;
-    gap:8px; font-family:'Athletics',Georgia,serif;
-    font-size:28px; font-weight:700; letter-spacing:-0.5px; line-height:1;
-  }
+  /* ── Integer Operations Sim ── */
+  #int-ops-sim { margin-top:16px; }
+  #int-ops-sim .sim-tabs { display:flex; background:#EBE7E0; padding:3px; gap:2px; margin-bottom:12px; }
+  #int-ops-sim .sim-tab { flex:1; padding:8px 10px; border:none; background:transparent; color:#84807B; font-size:13px; font-weight:600; cursor:pointer; font-family:'Untitled Sans',-apple-system,sans-serif; transition:all .15s; }
+  #int-ops-sim .sim-tab.active { background:#fff; color:#292827; box-shadow:0 1px 3px rgba(0,0,0,.12); }
+  #int-ops-sim .eq-bar { text-align:center; margin-bottom:12px; font-family:'Athletics',Georgia,serif; font-size:26px; font-weight:700; letter-spacing:-0.3px; min-height:36px; }
   #int-ops-sim .eq-a { color:#EC9A32; }
-  #int-ops-sim .eq-op{ color:#407BD6; }
+  #int-ops-sim .eq-op { color:#407BD6; }
   #int-ops-sim .eq-b { color:#A055BE; }
-  #int-ops-sim .eq-eq{ color:var(--muted); }
+  #int-ops-sim .eq-eq { color:var(--muted); }
   #int-ops-sim .eq-r { color:var(--green); }
-  #int-ops-sim .eq-err{ color:var(--red); font-size:18px; }
-  #ops-canvas-wrap { border:1px solid var(--border); overflow:hidden; margin-bottom:16px; }
-  #int-ops-sim .controls { display:flex; gap:32px; align-items:flex-start; justify-content:center; flex-wrap:wrap; padding-bottom:8px; }
-  #int-ops-sim .slider-group { display:flex; flex-direction:column; align-items:center; gap:6px; }
-  #int-ops-sim .sl-label { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); }
-  #int-ops-sim .sl-val { font-family:'Athletics',Georgia,serif; font-size:28px; font-weight:700; min-width:50px; text-align:center; line-height:1; }
-  #int-ops-sim .sl-val.val-a{ color:#EC9A32; }
-  #int-ops-sim .sl-val.val-b{ color:#A055BE; }
-  #int-ops-sim input[type=range] { -webkit-appearance:none; appearance:none; width:180px; height:4px; background:var(--border); outline:none; cursor:pointer; border-radius:2px; }
-  #int-ops-sim input[type=range].range-a::-webkit-slider-thumb { -webkit-appearance:none; width:18px; height:18px; border-radius:50%; background:#F4AB52; cursor:pointer; }
-  #int-ops-sim input[type=range].range-b::-webkit-slider-thumb { -webkit-appearance:none; width:18px; height:18px; border-radius:50%; background:#D386F7; cursor:pointer; }
-  #int-ops-sim input[type=range].range-a::-moz-range-thumb { width:18px; height:18px; border-radius:50%; background:#F4AB52; border:none; cursor:pointer; }
-  #int-ops-sim input[type=range].range-b::-moz-range-thumb { width:18px; height:18px; border-radius:50%; background:#D386F7; border:none; cursor:pointer; }
+  #int-ops-sim .eq-err { color:var(--red); font-size:16px; }
+  #int-ops-sim canvas { display:block; width:100%; border:1px solid var(--border); background:#fff; }
+  #int-ops-sim .sim-controls { display:flex; gap:32px; justify-content:center; flex-wrap:wrap; margin-top:12px; }
+  #int-ops-sim .sim-slider-group { display:flex; flex-direction:column; align-items:center; gap:4px; }
+  #int-ops-sim .sim-slider-label { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); }
+  #int-ops-sim .sim-slider-val { font-family:'Athletics',Georgia,serif; font-size:26px; font-weight:700; line-height:1; }
+  #int-ops-sim .sim-slider-val.va { color:#EC9A32; }
+  #int-ops-sim .sim-slider-val.vb { color:#A055BE; }
+  #int-ops-sim input.sia { -webkit-appearance:none; appearance:none; width:180px; height:4px; background:var(--border); outline:none; cursor:pointer; border-radius:2px; }
+  #int-ops-sim input.sib { -webkit-appearance:none; appearance:none; width:180px; height:4px; background:var(--border); outline:none; cursor:pointer; border-radius:2px; }
+  #int-ops-sim input.sia::-webkit-slider-thumb { -webkit-appearance:none; width:18px; height:18px; border-radius:50%; background:#F4AB52; cursor:pointer; }
+  #int-ops-sim input.sib::-webkit-slider-thumb { -webkit-appearance:none; width:18px; height:18px; border-radius:50%; background:#D386F7; cursor:pointer; }
 </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
 </head>
 <body>
 
@@ -535,7 +530,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
             </div>
           </div>
         
-          <div class="sim-slot" data-op="+"></div>
+        
+          <div class="sim-slot"></div>
         </div>
       </div>
 
@@ -561,7 +557,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
             </div>
           </div>
         
-          <div class="sim-slot" data-op="-"></div>
+        
+          <div class="sim-slot"></div>
         </div>
       </div>
 
@@ -583,7 +580,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           </table>
           <p style="font-size:14px;color:var(--muted)"><em>Why does negative × negative = positive?</em> Think of it as reversing direction twice — two reversals bring you back to the original direction.</p>
         
-          <div class="sim-slot" data-op="×"></div>
+        
+          <div class="sim-slot"></div>
         </div>
       </div>
 
@@ -605,7 +603,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           </table>
           <p style="font-size:14px;color:var(--muted)">Note: dividing integers does not always produce an integer (e.g., 5 ÷ 2 = 2.5). Division is only closed over integers when the result is exact.</p>
         
-          <div class="sim-slot" data-op="÷"></div>
+        
+          <div class="sim-slot"></div>
         </div>
       </div>
 
@@ -617,20 +616,31 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
   </div>
 
+</div>
+
 <div id="int-ops-home">
-<div id="int-ops-sim">
-  <div class="tabs">
-    <div class="tab-list tab-list-full" role="tablist" id="ops-tablist">
-      <button class="tab is-active" role="tab" aria-selected="true"  onclick="opsSetMode('add')">Addition</button>
-      <button class="tab"           role="tab" aria-selected="false" onclick="opsSetMode('sub')">Subtraction</button>
-      <button class="tab"           role="tab" aria-selected="false" onclick="opsSetMode('mul')">Multiplication</button>
-      <button class="tab"           role="tab" aria-selected="false" onclick="opsSetMode('div')">Division</button>
+  <div id="int-ops-sim">
+    <div class="sim-tabs">
+      <button class="sim-tab active" onclick="simSetMode('add')">Addition</button>
+      <button class="sim-tab"        onclick="simSetMode('sub')">Subtraction</button>
+      <button class="sim-tab"        onclick="simSetMode('mul')">Multiplication</button>
+      <button class="sim-tab"        onclick="simSetMode('div')">Division</button>
+    </div>
+    <div class="eq-bar" id="sim-eq"></div>
+    <canvas id="sim-canvas" height="220"></canvas>
+    <div class="sim-controls">
+      <div class="sim-slider-group">
+        <div class="sim-slider-label" id="sim-lbl-a">First number</div>
+        <div class="sim-slider-val va" id="sim-val-a">3</div>
+        <input class="sia" type="range" id="sim-sA" min="-10" max="10" step="1" value="3" oninput="simOnA(this.value)">
+      </div>
+      <div class="sim-slider-group">
+        <div class="sim-slider-label" id="sim-lbl-b">Second number</div>
+        <div class="sim-slider-val vb" id="sim-val-b">4</div>
+        <input class="sib" type="range" id="sim-sB" min="-10" max="10" step="1" value="4" oninput="simOnB(this.value)">
+      </div>
     </div>
   </div>
-  <div class="eq-bar" id="ops-eq"></div>
-  <div id="ops-canvas-wrap"></div>
-  <div class="controls" id="ops-controls"></div>
-</div>
 </div>
 
 
@@ -1124,15 +1134,14 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 /* ACCORDION */
 function toggleAcc(btn) {
   var body = btn.nextElementSibling;
-  var isOpen = btn.classList.contains('open');
+  var open = btn.classList.contains('open');
   var simEl = document.getElementById('int-ops-sim');
   var simHome = document.getElementById('int-ops-home');
-  // Close all — return sim to home
   btn.closest('.accordion').querySelectorAll('.accordion-btn').forEach(function(b) {
     b.classList.remove('open'); b.nextElementSibling.classList.remove('open');
   });
-  if (simEl && simHome && simEl.parentNode !== simHome) simHome.appendChild(simEl);
-  if (!isOpen) {
+  if (simEl && simHome) simHome.appendChild(simEl);  // return to home
+  if (!open) {
     btn.classList.add('open'); body.classList.add('open');
     var op = btn.dataset.op;
     if (op && simEl) {
@@ -1140,8 +1149,8 @@ function toggleAcc(btn) {
       if (slot) {
         slot.appendChild(simEl);
         var modeMap = {'+':'add','-':'sub','×':'mul','÷':'div'};
-        if (typeof opsSetMode === 'function') opsSetMode(modeMap[op]);
-        setTimeout(function() { simEl.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 100);
+        if (typeof simSetMode === 'function') simSetMode(modeMap[op]);
+        setTimeout(function(){ simEl.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 80);
       }
     }
   }
@@ -1561,184 +1570,167 @@ var spy = new IntersectionObserver(function(entries) {
 }, { rootMargin: '-20% 0px -60% 0px' });
 tocIds.forEach(function(id) { var el = document.getElementById(id); if (el) spy.observe(el); });
 
-/* ── INTEGER OPERATIONS SIMULATION (inline) ── */
+
+
+/* ════ INTEGER OPERATIONS SIMULATION ════ */
 (function() {
-  const C = {
+  var C = {
     brand:'#F4AB52', info:'#74ACFC', success:'#6AC88A',
     error:'#F97279', warning:'#F68D50', purple:'#D386F7',
     dotA:'#EC9A32', dotB:'#C26FE2',
     axis:'#5B5854', tick:'#C6C0B8', tickLbl:'#84807B',
-    zero:'#33312F', canvasBg:'#FFFFFF',
+    zero:'#33312F', bg:'#FFFFFF'
   };
-  const JCOLORS = [C.brand, C.info, C.success, C.warning, C.error, C.purple];
-  const CW = 640, CH = 220, LY = 132, PX = 56, MAX_ARCS = 8;
+  var JCOLORS = [C.brand, C.info, C.success, C.warning, C.error, C.purple];
+  var MAX_ARCS = 8;
 
-  let opsMode = 'add', opsA = 3, opsB = 4;
-  const CFG = {
-    add:{ sym:'＋', aLbl:'First number', bLbl:'Second number', aMin:-10,aMax:10, bMin:-10,bMax:10, a0:3, b0:4 },
-    sub:{ sym:'－', aLbl:'Start value',  bLbl:'Subtract',      aMin:-10,aMax:10, bMin:-10,bMax:10, a0:8, b0:3 },
-    mul:{ sym:'×',  aLbl:'Groups (a)',   bLbl:'Size each (b)', aMin:-5, aMax:5,  bMin:-5, bMax:5,  a0:3, b0:4 },
-    div:{ sym:'÷',  aLbl:'Dividend (a)', bLbl:'Divisor (b)',   aMin:-24,aMax:24, bMin:-6, bMax:6,  a0:12,b0:3 }
+  var simMode = 'add', simA = 3, simB = 4;
+  var CFG = {
+    add:{ sym:'+', aLbl:'First number',  bLbl:'Second number', aMin:-10,aMax:10, bMin:-10,bMax:10, a0:3,  b0:4  },
+    sub:{ sym:'−', aLbl:'Start value',   bLbl:'Subtract',      aMin:-10,aMax:10, bMin:-10,bMax:10, a0:8,  b0:3  },
+    mul:{ sym:'×', aLbl:'Groups (a)',    bLbl:'Size each (b)', aMin:-5, aMax:5,  bMin:-5, bMax:5,  a0:3,  b0:4  },
+    div:{ sym:'÷', aLbl:'Dividend (a)',  bLbl:'Divisor (b)',   aMin:-24,aMax:24, bMin:-6, bMax:6,  a0:12, b0:3  }
   };
 
-  function opsResult() {
-    if (opsMode==='add') return opsA + opsB;
-    if (opsMode==='sub') return opsA - opsB;
-    if (opsMode==='mul') return opsA * opsB;
-    if (opsMode==='div') return opsB !== 0 ? opsA / opsB : null;
+  function simResult() {
+    if (simMode==='add') return simA+simB;
+    if (simMode==='sub') return simA-simB;
+    if (simMode==='mul') return simA*simB;
+    if (simMode==='div') return simB!==0 ? simA/simB : null;
   }
-  function opsIsInt(v) { return v !== null && Number.isInteger(v); }
+  function isInt(v){ return v!==null && Number.isInteger(v); }
 
-  window.opsSetMode = function(m) {
-    opsMode = m; const c = CFG[m]; opsA = c.a0; opsB = c.b0;
-    document.querySelectorAll('#ops-tablist .tab').forEach((btn, i) => {
-      const active = ['add','sub','mul','div'][i] === m;
-      btn.classList.toggle('is-active', active);
-      btn.setAttribute('aria-selected', active ? 'true' : 'false');
+  window.simSetMode = function(m) {
+    simMode = m;
+    var c = CFG[m]; simA = c.a0; simB = c.b0;
+    document.querySelectorAll('#int-ops-sim .sim-tab').forEach(function(b,i){
+      b.classList.toggle('active', ['add','sub','mul','div'][i]===m);
     });
-    opsBuildControls(); opsRenderEq();
+    document.getElementById('sim-lbl-a').textContent = c.aLbl;
+    document.getElementById('sim-lbl-b').textContent = c.bLbl;
+    var sA = document.getElementById('sim-sA'), sB = document.getElementById('sim-sB');
+    sA.min=c.aMin; sA.max=c.aMax; sA.value=simA;
+    sB.min=c.bMin; sB.max=c.bMax; sB.value=simB;
+    if (m==='div' && simB===0) { simB=1; sB.value=1; }
+    document.getElementById('sim-val-a').textContent = simA;
+    document.getElementById('sim-val-b').textContent = simB;
+    simRender();
+  };
+  window.simOnA = function(v){ simA=+v; document.getElementById('sim-val-a').textContent=v; simRender(); };
+  window.simOnB = function(v){
+    var n=+v;
+    if (simMode==='div' && n===0){ n=v>0?1:-1; document.getElementById('sim-sB').value=n; }
+    simB=n; document.getElementById('sim-val-b').textContent=n; simRender();
   };
 
-  function opsBuildControls() {
-    const c = CFG[opsMode];
-    document.getElementById('ops-controls').innerHTML = `
-      <div class="slider-group">
-        <div class="sl-label">${c.aLbl}</div>
-        <div class="sl-val val-a" id="ops-dA">${opsA}</div>
-        <input type="range" class="range-a" id="ops-sA" min="${c.aMin}" max="${c.aMax}" step="1" value="${opsA}">
-      </div>
-      <div class="slider-group">
-        <div class="sl-label">${c.bLbl}</div>
-        <div class="sl-val val-b" id="ops-dB">${opsB}</div>
-        <input type="range" class="range-b" id="ops-sB" min="${c.bMin}" max="${c.bMax}" step="1" value="${opsB}">
-      </div>`;
-    document.getElementById('ops-sA').oninput = e => {
-      opsA = +e.target.value;
-      document.getElementById('ops-dA').textContent = opsA;
-      opsRenderEq();
-    };
-    document.getElementById('ops-sB').oninput = e => {
-      let v = +e.target.value;
-      if (opsMode === 'div' && v === 0) { v = e.target.value > 0 ? 1 : -1; e.target.value = v; }
-      opsB = v;
-      document.getElementById('ops-dB').textContent = opsB;
-      opsRenderEq();
-    };
-  }
+  function simRender() {
+    var canvas = document.getElementById('sim-canvas'); if (!canvas) return;
+    canvas.width = canvas.offsetWidth || 640;
+    var W=canvas.width, H=220, LY=140, PX=48;
+    var ctx = canvas.getContext('2d');
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle=C.bg; ctx.fillRect(0,0,W,H);
 
-  function opsRenderEq() {
-    const c = CFG[opsMode], r = opsResult();
-    let rHtml;
-    if (r === null)       rHtml = `<span class="eq-err">undefined</span>`;
-    else if (!opsIsInt(r))rHtml = `<span class="eq-err">${r.toFixed(2)} (not whole)</span>`;
-    else                  rHtml = `<span class="eq-r">${r}</span>`;
-    document.getElementById('ops-eq').innerHTML =
-      `<span class="eq-a">${opsA}</span><span class="eq-op">${c.sym}</span>` +
-      `<span class="eq-b">${opsB}</span><span class="eq-eq">=</span>${rHtml}`;
-  }
+    var r=simResult();
+    // Compute range
+    var pts=[0,simA]; if(r!==null) pts.push(r);
+    if(simMode==='mul'&&simA!==0&&simB!==0){var ef=Math.sign(simA)*simB;for(var i=1;i<=Math.min(Math.abs(simA),MAX_ARCS+1);i++)pts.push(i*ef);}
+    if(simMode==='div'&&r!==null&&isInt(r)&&r!==0){var ef2=Math.sign(r)*simB;for(var i=1;i<=Math.min(Math.abs(r),MAX_ARCS+1);i++)pts.push(i*ef2);}
+    var mn=Math.min.apply(null,pts), mx=Math.max.apply(null,pts);
+    var span=mx-mn, pad=Math.max(Math.ceil(span*.18),3);
+    mn=Math.floor(mn-pad); mx=Math.ceil(mx+pad);
+    if(mx-mn<12){var mid=(mn+mx)/2;mn=Math.floor(mid-6);mx=Math.ceil(mid+6);}
 
-  new p5(function(p) {
-    function getRange() {
-      const r = opsResult(), pts = [0, opsA];
-      if (r !== null) pts.push(r);
-      if (opsMode==='mul' && opsA!==0 && opsB!==0) {
-        const eff = Math.sign(opsA)*opsB;
-        for (let i=1;i<=Math.min(Math.abs(opsA),MAX_ARCS+1);i++) pts.push(i*eff);
-      }
-      if (opsMode==='div' && r!==null && opsIsInt(r) && r!==0) {
-        const eff = Math.sign(r)*opsB;
-        for (let i=1;i<=Math.min(Math.abs(r),MAX_ARCS+1);i++) pts.push(i*eff);
-      }
-      let mn=Math.min(...pts), mx=Math.max(...pts);
-      const span=mx-mn, pad=Math.max(Math.ceil(span*.18),3);
-      mn=Math.floor(mn-pad); mx=Math.ceil(mx+pad);
-      if (mx-mn<12){const mid=(mn+mx)/2;mn=Math.floor(mid-6);mx=Math.ceil(mid+6);}
-      return [mn,mx];
-    }
-    function toX(v,mn,mx){return p.map(v,mn,mx,PX,CW-PX);}
-    function drawAxis(mn,mx){
-      const x1=PX-12,x2=CW-PX+12;
-      p.stroke(C.axis);p.strokeWeight(2);p.line(x1,LY,x2,LY);
-      p.fill(C.axis);p.noStroke();
-      p.triangle(x2,LY,x2-8,LY-4,x2-8,LY+4);
-      p.triangle(x1,LY,x1+8,LY-4,x1+8,LY+4);
-      const range=mx-mn, step=range<=24?1:range<=50?2:5;
-      const r=opsResult();
-      for(let v=Math.ceil(mn);v<=Math.floor(mx);v++){
-        const x=toX(v,mn,mx),zz=v===0,av=v===opsA,rv=r!==null&&opsIsInt(r)&&v===r;
-        p.stroke(zz?C.zero:C.tick);p.strokeWeight(zz?2:(av||rv)?2:1);
-        p.line(x,LY-(zz||av||rv?10:5),x,LY+(zz||av||rv?10:5));
-        if(v%step===0||av||rv){
-          p.noStroke();
-          if(av){p.fill(C.dotA);p.textSize(13);p.textStyle(p.BOLD);}
-          else if(rv){p.fill(C.success);p.textSize(13);p.textStyle(p.BOLD);}
-          else{p.fill(zz?C.zero:C.tickLbl);p.textSize(zz?13:11);p.textStyle(zz?p.BOLD:p.NORMAL);}
-          p.textAlign(p.CENTER,p.TOP);p.text(v,x,LY+14);
-        }
+    function toX(v){return PX+(v-mn)/(mx-mn)*(W-PX*2);}
+
+    // Axis
+    ctx.strokeStyle=C.axis; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(PX-10,LY); ctx.lineTo(W-PX+10,LY); ctx.stroke();
+    ctx.fillStyle=C.axis;
+    // Arrowheads
+    ctx.beginPath(); ctx.moveTo(W-PX+10,LY); ctx.lineTo(W-PX+2,LY-4); ctx.lineTo(W-PX+2,LY+4); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(PX-10,LY); ctx.lineTo(PX-2,LY-4); ctx.lineTo(PX-2,LY+4); ctx.fill();
+
+    // Ticks and labels
+    var range=mx-mn, step=range<=24?1:range<=50?2:5;
+    for(var v=Math.ceil(mn);v<=Math.floor(mx);v++){
+      var x=toX(v), zz=v===0, isA=v===simA, isR=r!==null&&isInt(r)&&v===r;
+      ctx.strokeStyle=zz?C.zero:C.tick; ctx.lineWidth=zz?2:1;
+      var th=zz||isA||isR?10:5;
+      ctx.beginPath(); ctx.moveTo(x,LY-th); ctx.lineTo(x,LY+th); ctx.stroke();
+      if(v%step===0||isA||isR){
+        ctx.textAlign='center'; ctx.textBaseline='top';
+        if(isA){ctx.fillStyle=C.dotA;ctx.font='bold 12px sans-serif';}
+        else if(isR){ctx.fillStyle=C.success;ctx.font='bold 12px sans-serif';}
+        else{ctx.fillStyle=zz?C.zero:C.tickLbl;ctx.font=(zz?'bold ':'')+'11px sans-serif';}
+        ctx.fillText(v,x,LY+14);
       }
     }
-    function arcArrow(x1,x2,col,h,lbl){
+
+    // Bezier arc helper
+    function drawArc(x1,x2,col,h,lbl){
       if(Math.abs(x2-x1)<1)return;
-      p.noFill();p.stroke(col);p.strokeWeight(2.5);
-      p.bezier(x1,LY,x1,LY-h,x2,LY-h,x2,LY);
-      p.fill(col);p.noStroke();p.triangle(x2,LY+1,x2-5,LY-9,x2+5,LY-9);
-      if(lbl!=null){p.fill(col);p.textSize(12);p.textStyle(p.BOLD);p.textAlign(p.CENTER,p.BOTTOM);p.text(lbl,(x1+x2)/2,LY-h-5);}
+      ctx.strokeStyle=col; ctx.lineWidth=2.5; ctx.fillStyle=col;
+      ctx.beginPath(); ctx.moveTo(x1,LY);
+      ctx.bezierCurveTo(x1,LY-h,x2,LY-h,x2,LY); ctx.stroke();
+      // Arrowhead
+      ctx.beginPath(); ctx.moveTo(x2,LY+1); ctx.lineTo(x2-5,LY-9); ctx.lineTo(x2+5,LY-9); ctx.fill();
+      if(lbl){ctx.font='bold 11px sans-serif';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(lbl,(x1+x2)/2,LY-h-4);}
     }
-    function dot(x,col,r,lbl,above){
-      p.noStroke();p.fill(col);p.circle(x,LY,r);
-      if(lbl!=null){p.fill(col);p.textStyle(p.BOLD);p.textSize(13);p.textAlign(p.CENTER,above?p.BOTTOM:p.TOP);p.text(lbl,x,above?LY-r/2-5:LY+r/2+4);}
+    // Dot helper
+    function drawDot(x,col,sz){
+      ctx.fillStyle=col; ctx.beginPath(); ctx.arc(x,LY,sz,0,Math.PI*2); ctx.fill();
     }
-    function note(txt,col){
-      p.noStroke();p.fill(col||C.tickLbl);p.textSize(11);p.textStyle(p.NORMAL);p.textAlign(p.LEFT,p.TOP);p.text(txt,PX,12);
+    // Note helper
+    function drawNote(txt,col){
+      ctx.fillStyle=col||C.tickLbl; ctx.font='11px sans-serif';
+      ctx.textAlign='left'; ctx.textBaseline='top'; ctx.fillText(txt,PX,10);
     }
-    p.setup = function(){
-      p.createCanvas(CW,CH).parent('ops-canvas-wrap');
-      p.textFont('Untitled Sans,-apple-system,system-ui,sans-serif');
-      opsBuildControls(); opsRenderEq();
-    };
-    p.draw = function(){
-      p.background(C.canvasBg);
-      const [mn,mx]=getRange(), r=opsResult();
-      const x0=toX(0,mn,mx), xA=toX(opsA,mn,mx), xR=r!==null?toX(r,mn,mx):null;
-      drawAxis(mn,mx);
-      if(opsMode==='add'||opsMode==='sub'){
-        const move=opsMode==='add'?opsB:-opsB,col=move>=0?C.info:C.error;
-        const h=p.map(Math.abs(move),0,20,18,80);
-        const lbl=opsMode==='add'?(opsB>=0?'+':'')+opsB:(opsB>=0?'−':'+')+Math.abs(opsB);
-        if(move!==0&&xR!==null)arcArrow(xA,xR,col,h,lbl);
-        dot(xA,C.dotA,14,null,false);
-        if(r!==null)dot(xR,C.success,14,null,true);
-        note((opsMode==='add'?'Move ':'Subtract ')+(opsMode==='add'?(opsB>=0?'+':'')+opsB:opsB)+' from '+opsA,col);
-      } else if(opsMode==='mul'){
-        if(opsA===0||opsB===0){dot(x0,C.success,14,null,true);note('Any number × 0 = 0',C.tickLbl);}
-        else{
-          const nJ=Math.abs(opsA),eff=Math.sign(opsA)*opsB,h=p.map(Math.abs(eff),0,10,22,78),drawN=Math.min(nJ,MAX_ARCS);
-          for(let i=0;i<drawN;i++){
-            const xF=toX(i*eff,mn,mx),xT=toX((i+1)*eff,mn,mx);
-            arcArrow(xF,xT,JCOLORS[i%JCOLORS.length],h,i===0?String(opsB):null);
-            if(i>0)dot(xF,JCOLORS[i%JCOLORS.length],7,null,false);
-          }
-          dot(x0,C.tick,9,null,false);
-          if(r!==null)dot(xR,C.success,14,null,true);
-          note(Math.abs(opsA)+' jump'+(Math.abs(opsA)!==1?'s':'')+' of '+opsB+(opsA<0?' (reversed)':''),C.tickLbl);
-        }
-      } else if(opsMode==='div'){
-        if(opsB===0){p.noStroke();p.fill(C.error);p.textSize(13);p.textAlign(p.CENTER,p.CENTER);p.text('Division by zero is undefined',CW/2,LY-48);}
-        else if(!opsIsInt(r)){dot(xA,C.error,13,null,false);p.noStroke();p.fill(C.error);p.textSize(13);p.textAlign(p.CENTER,p.BOTTOM);p.text(opsA+' ÷ '+opsB+' = '+r.toFixed(2)+' — not whole',CW/2,LY-26);}
-        else if(r===0){dot(x0,C.success,14,0,true);}
-        else{
-          const nJ=Math.abs(r),eff=Math.sign(r)*opsB,h=p.map(Math.abs(opsB),0,6,20,65),drawN=Math.min(nJ,MAX_ARCS);
-          for(let i=0;i<drawN;i++){
-            const xF=toX(i*eff,mn,mx),xT=toX((i+1)*eff,mn,mx);
-            arcArrow(xF,xT,JCOLORS[i%JCOLORS.length],h,i===0?String(opsB):null);
-            if(i>0)dot(xF,JCOLORS[i%JCOLORS.length],7,null,false);
-          }
-          dot(x0,C.tick,9,null,false);dot(xA,C.success,14,null,true);
-          note(nJ+' equal jump'+(nJ!==1?'s':'')+' of '+opsB+' reaches '+opsA,C.tickLbl);
-        }
+
+    if(simMode==='add'||simMode==='sub'){
+      var move=simMode==='add'?simB:-simB;
+      var col=move>=0?C.info:C.error;
+      var h=18+Math.min(Math.abs(move),20)/20*62;
+      var lbl=simMode==='add'?(simB>=0?'+':'')+simB:(simB>=0?'−':'+')+Math.abs(simB);
+      if(move!==0&&r!==null) drawArc(toX(simA),toX(r),col,h,lbl);
+      drawDot(toX(simA),C.dotA,7);
+      if(r!==null) drawDot(toX(r),C.success,8);
+      drawNote((simMode==='add'?'Move ':'Subtract ')+(simMode==='add'?(simB>=0?'+':'')+simB:simB)+' from '+simA,col);
+    } else if(simMode==='mul'){
+      if(simA===0||simB===0){drawDot(toX(0),C.success,8);drawNote('Any number × 0 = 0',C.tickLbl);}
+      else{
+        var nJ=Math.abs(simA), eff=Math.sign(simA)*simB, h2=22+Math.min(Math.abs(eff),10)/10*56, drawN=Math.min(nJ,MAX_ARCS);
+        for(var i=0;i<drawN;i++){drawArc(toX(i*eff),toX((i+1)*eff),JCOLORS[i%JCOLORS.length],h2,i===0?String(simB):null);if(i>0)drawDot(toX(i*eff),JCOLORS[i%JCOLORS.length],5);}
+        drawDot(toX(0),C.tick,5);
+        if(r!==null)drawDot(toX(r),C.success,8);
+        drawNote(Math.abs(simA)+' jump'+(Math.abs(simA)!==1?'s':'')+' of '+simB+(simA<0?' (reversed)':''),C.tickLbl);
       }
-    };
-  });
+    } else if(simMode==='div'){
+      if(simB===0){ctx.fillStyle=C.error;ctx.font='13px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('Division by zero is undefined',W/2,LY-40);}
+      else if(!isInt(r)){drawDot(toX(simA),C.error,7);ctx.fillStyle=C.error;ctx.font='12px sans-serif';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(simA+' ÷ '+simB+' = '+r.toFixed(2)+' — not a whole number',W/2,LY-20);}
+      else if(r===0){drawDot(toX(0),C.success,8);}
+      else{
+        var nJ2=Math.abs(r), eff2=Math.sign(r)*simB, h3=20+Math.min(Math.abs(simB),6)/6*45, drawN2=Math.min(nJ2,MAX_ARCS);
+        for(var i=0;i<drawN2;i++){drawArc(toX(i*eff2),toX((i+1)*eff2),JCOLORS[i%JCOLORS.length],h3,i===0?String(simB):null);if(i>0)drawDot(toX(i*eff2),JCOLORS[i%JCOLORS.length],5);}
+        drawDot(toX(0),C.tick,5);drawDot(toX(simA),C.success,8);
+        drawNote(nJ2+' equal jump'+(nJ2!==1?'s':'')+' of '+simB+' reaches '+simA,C.tickLbl);
+      }
+    }
+
+    // Equation
+    var c=CFG[simMode], res=simResult();
+    var rHtml;
+    if(res===null) rHtml='<span class="eq-err">undefined</span>';
+    else if(!isInt(res)) rHtml='<span class="eq-err">'+res.toFixed(2)+' (not whole)</span>';
+    else rHtml='<span class="eq-r">'+res+'</span>';
+    document.getElementById('sim-eq').innerHTML=
+      '<span class="eq-a">'+simA+'</span> <span class="eq-op">'+c.sym+'</span> '+
+      '<span class="eq-b">'+simB+'</span> <span class="eq-eq">=</span> '+rHtml;
+  }
+
+  // Initial render on load
+  document.addEventListener('DOMContentLoaded', function(){ simRender(); });
+  window.addEventListener('resize', simRender);
 })();
 
 </script>
