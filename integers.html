@@ -1140,7 +1140,10 @@ function toggleAcc(btn) {
   btn.closest('.accordion').querySelectorAll('.accordion-btn').forEach(function(b) {
     b.classList.remove('open'); b.nextElementSibling.classList.remove('open');
   });
-  if (simEl && simHome) simHome.appendChild(simEl);  // return to home
+  if (simEl && simHome) {
+    simHome.appendChild(simEl);          // return sim to home
+    setTimeout(function(){ if (typeof simRender==='function') simRender(); }, 50);
+  }
   if (!open) {
     btn.classList.add('open'); body.classList.add('open');
     var op = btn.dataset.op;
@@ -1149,8 +1152,11 @@ function toggleAcc(btn) {
       if (slot) {
         slot.appendChild(simEl);
         var modeMap = {'+':'add','-':'sub','×':'mul','÷':'div'};
-        if (typeof simSetMode === 'function') simSetMode(modeMap[op]);
-        setTimeout(function(){ simEl.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 80);
+        // Timeout so offsetWidth reflects new container before canvas resize
+        setTimeout(function(){
+          if (typeof simSetMode === 'function') simSetMode(modeMap[op]);
+          simEl.scrollIntoView({behavior:'smooth',block:'nearest'});
+        }, 60);
       }
     }
   }
@@ -1729,7 +1735,8 @@ tocIds.forEach(function(id) { var el = document.getElementById(id); if (el) spy.
   }
 
   // Initial render on load
-  document.addEventListener('DOMContentLoaded', function(){ simRender(); });
+  // Render immediately (script is at end of body) AND on resize
+  setTimeout(simRender, 0);
   window.addEventListener('resize', simRender);
 })();
 
