@@ -53,7 +53,7 @@ a:hover{text-decoration-color:var(--ink)}
 .logo{font-family:'Athletics',Georgia,serif;font-weight:700;font-size:22px;color:var(--ink);text-decoration:none}
 .nav-cta{
   background:var(--ink);color:var(--surface);
-  border:none;border-radius:6px;
+  border:none;border-radius:0;
   padding:9px 18px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-weight:500;font-size:14px;
   cursor:pointer;text-decoration:none;display:inline-block;
 }
@@ -126,14 +126,14 @@ main{min-width:0}
 
 /* INLINE CTA */
 .inline-cta{
-  background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  background:var(--yellow-light);border:1px solid var(--yellow);border-radius:0;
   padding:18px 22px;display:flex;align-items:center;justify-content:space-between;
   gap:18px;margin:24px 0 40px;flex-wrap:wrap;
 }
 .inline-cta p{margin:0;font-size:15px;color:var(--ink2)}
 .btn-primary{
   background:var(--ink);color:var(--surface);
-  border:none;border-radius:6px;padding:11px 22px;
+  border:none;border-radius:0;padding:11px 22px;
   font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-weight:500;font-size:15px;
   cursor:pointer;text-decoration:none;display:inline-block;white-space:nowrap;
 }
@@ -144,7 +144,7 @@ main{min-width:0}
   display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0 8px;
 }
 .rw-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  background:var(--surface);border:1px solid var(--border);border-radius:0;
   padding:18px;font-size:14px;line-height:1.55;
 }
 .rw-card .emoji{font-size:26px;display:block;margin-bottom:10px}
@@ -153,13 +153,13 @@ main{min-width:0}
 
 /* THINK BOX */
 .think{
-  border-left:4px solid var(--ink2);
-  background:var(--surface);padding:16px 20px;
-  margin:18px 0;border-radius:0 8px 8px 0;
+  border-left:4px solid var(--purple);
+  background:var(--purple-light);padding:16px 20px;
+  margin:18px 0;
 }
 .think .label{
   font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-weight:500;font-size:12px;
-  text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);
+  text-transform:uppercase;letter-spacing:0.08em;color:var(--purple);
   margin-bottom:6px;
 }
 .think p{margin:0;color:var(--ink);font-size:15.5px}
@@ -284,7 +284,7 @@ main{min-width:0}
 .q-text{font-size:16.5px;color:var(--ink);margin-bottom:16px;font-weight:500}
 .q-svg{margin-bottom:14px;text-align:center}
 .opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-.opt{
+.opt{border-radius:0!important;
   background:var(--bg);border:1px solid var(--border);border-radius:8px;
   padding:12px 14px;cursor:pointer;text-align:left;font-size:14.5px;color:var(--ink);
   font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;transition:all 0.15s;
@@ -297,7 +297,7 @@ main{min-width:0}
 .opt.correct:disabled,.opt.wrong:disabled{opacity:1}
 .q-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .btn-ghost{
-  background:none;border:1px solid var(--border);border-radius:6px;
+  background:none;border:1px solid var(--border);border-radius:0;
   padding:9px 16px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:14px;color:var(--ink2);
   cursor:pointer;
 }
@@ -320,7 +320,7 @@ main{min-width:0}
 
 /* TAKEAWAYS */
 .kt-table{
-  background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  background:var(--surface);border:1px solid var(--border);border-radius:0;
   overflow:hidden;margin:18px 0;
 }
 .kt-row{
@@ -337,7 +337,7 @@ main{min-width:0}
 /* WORKSHEETS */
 .ws-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
 .ws-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  background:var(--yellow-light);border:1px solid var(--border);border-radius:0;
   padding:20px;text-align:center;
 }
 .ws-card .icon{font-size:32px;margin-bottom:8px}
@@ -345,7 +345,7 @@ main{min-width:0}
 .ws-card p{font-size:13.5px;color:var(--muted);margin-bottom:14px}
 .ws-card a{
   display:inline-block;background:var(--ink);color:var(--surface);
-  padding:10px 18px;border-radius:6px;text-decoration:none;font-size:14px;font-weight:500;
+  padding:10px 18px;border-radius:0;text-decoration:none;font-size:14px;font-weight:500;
 }
 .ws-card a:hover{background:var(--ink2)}
 
@@ -375,7 +375,7 @@ main{min-width:0}
 /* RELATED CONCEPTS */
 .rc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
 .rc-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  background:var(--surface);border:1px solid var(--border);border-radius:0;
   padding:18px;text-decoration:none;color:var(--ink);display:block;
   transition:border-color 0.15s;
 }
@@ -737,6 +737,7 @@ footer a:hover{color:var(--ink)}
       <div id="q-container"></div>
     </div>
 
+    <span class="eyebrow" style="margin-top:32px;margin-bottom:8px">Real world examples</span>
     <div class="rw-grid">
       <div class="rw-card">
         <span class="emoji">🏭</span>
@@ -760,7 +761,7 @@ footer a:hover{color:var(--ink)}
       </div>
     </div>
 
-    <p class="section-label" id="key-takeaways">Key Takeaways</p>
+    <p class="section-label" style="margin-top:40px" id="key-takeaways">Key Takeaways</p>
     <div class="kt-table">
       <div class="kt-row"><div class="term">Cylinder</div><div class="def">A 3D solid with two congruent circular bases connected by a curved lateral surface.</div></div>
       <div class="kt-row"><div class="term">Radius (r)</div><div class="def">The distance from the centre of a circular base to its edge.</div></div>
@@ -771,7 +772,7 @@ footer a:hover{color:var(--ink)}
       <div class="kt-row"><div class="term">π (Pi)</div><div class="def">The ratio of a circle's circumference to its diameter. Approximately 22/7 or 3.14159.</div></div>
     </div>
 
-    <p class="section-label" id="worksheets">Downloadable Worksheets</p>
+    <p class="section-label" style="margin-top:40px" id="worksheets">Downloadable Worksheets</p>
     <p style="font-size:15px;color:var(--ink2);margin-bottom:14px">JEE-prep level Mensuration practice — print and solve.</p>
     <div class="ws-grid">
       <div class="ws-card">
@@ -1089,51 +1090,45 @@ function renderQuestion(){
         ${q.options.map((o,i)=>`<button class="opt" data-i="${i}">${String.fromCharCode(65+i)}) ${o}</button>`).join('')}
       </div>
       <div class="q-actions">
-        <button class="btn-ghost" id="hint-toggle">Answer</button>
-        <button class="btn-primary" id="submit-btn" disabled style="opacity:0.5">Submit</button>
+        <button class="btn-ghost" id="hint-toggle">💡 Show hint</button>
       </div>
       <div class="q-hint" id="q-hint">${q.hint}</div>
       <div class="q-feedback" id="q-feedback"></div>
+      <div id="next-wrap" style="display:none;margin-top:12px"></div>
     </div>
   `;
 
-  let selected = -1;
   const opts = qContainer.querySelectorAll('.opt');
-  const submitBtn = document.getElementById('submit-btn');
   opts.forEach(o => {
     o.addEventListener('click', () => {
-      opts.forEach(x => x.classList.remove('selected'));
-      o.classList.add('selected');
-      selected = parseInt(o.dataset.i);
-      submitBtn.disabled = false;
-      submitBtn.style.opacity = '1';
+      if(o.disabled) return;
+      const selected = parseInt(o.dataset.i);
+      const isCorrect = selected === q.answer;
+      opts.forEach((x, i) => {
+        x.disabled = true;
+        if(i === q.answer) x.classList.add('correct');
+        else if(i === selected) x.classList.add('wrong');
+      });
+      const fb = document.getElementById('q-feedback');
+      fb.classList.add('show');
+      if(isCorrect){
+        score++;
+        fb.classList.add('correct');
+        fb.innerHTML = '<span class="head">✓ Correct</span>' + q.feedback;
+      } else {
+        fb.classList.add('wrong');
+        fb.innerHTML = '<span class="head">✗ Not quite</span>The correct answer is ' + String.fromCharCode(65+q.answer) + ') ' + q.options[q.answer] + '. ' + q.feedback;
+      }
+      const nextWrap = document.getElementById('next-wrap');
+      nextWrap.style.display = 'block';
+      const nextLabel = qIdx === QUESTIONS.length - 1 ? 'See results' : 'Next question';
+      nextWrap.innerHTML = '<button class="btn-primary" style="border-radius:0">' + nextLabel + ' <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:4px"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
+      nextWrap.querySelector('button').addEventListener('click', () => { qIdx++; renderQuestion(); });
     });
   });
 
   document.getElementById('hint-toggle').addEventListener('click', () => {
     document.getElementById('q-hint').classList.toggle('show');
-  });
-
-  submitBtn.addEventListener('click', () => {
-    if(selected < 0) return;
-    const isCorrect = selected === q.answer;
-    opts.forEach((o, i) => {
-      o.disabled = true;
-      if(i === q.answer) o.classList.add('correct');
-      else if(i === selected) o.classList.add('wrong');
-    });
-    const fb = document.getElementById('q-feedback');
-    fb.classList.add('show');
-    if(isCorrect){
-      score++;
-      fb.classList.add('correct');
-      fb.innerHTML = `<span class="head">✓ Correct</span>${q.feedback}`;
-    } else {
-      fb.classList.add('wrong');
-      fb.innerHTML = `<span class="head">✗ Not quite</span>The correct answer is ${String.fromCharCode(65+q.answer)}) ${q.options[q.answer]}. ${q.feedback}`;
-    }
-    submitBtn.textContent = qIdx === QUESTIONS.length - 1 ? 'See results →' : 'Next question →';
-    submitBtn.onclick = () => { qIdx++; renderQuestion(); };
   });
 }
 
