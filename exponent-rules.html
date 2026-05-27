@@ -176,6 +176,9 @@
   .cta-secondary{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.25);padding:14px 22px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;white-space:nowrap;transition:background .15s}
   .cta-secondary:hover{background:rgba(255,255,255,.18)}
 
+
+  .btn-retry{background:var(--yellow);color:var(--ink);border:none;padding:10px 22px;border-radius:0;font-family:inherit;font-weight:600;font-size:14px;cursor:pointer;margin-top:12px;display:inline-flex;align-items:center;gap:6px;transition:background .15s}
+  .btn-retry:hover{background:var(--yellow-light)}
   .btn-white{background:#fff;color:var(--neutral-1000);border:none;padding:12px 24px;border-radius:0;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
 
   /* PRACTICE */
@@ -522,10 +525,11 @@
       <li><a href="#what-are-exponent-rules">What are exponent rules?</a></li>
       <li><a href="#the-8-laws">The 8 exponent rules</a></li>
       <div class="toc-divider"></div>
+      <li><a href="#tips">Tips on Exponent Rules</a></li>
       <li><a href="#practice">Practice questions</a></li>
       <li><a href="#worksheet">Downloadable worksheet</a></li>
+      <li><a href="#key-takeaways">Key Takeaways</a></li>
       <li><a href="#faq">FAQs on Exponent Rules</a></li>
-      <li><a href="#tips">Tips on Exponent Rules</a></li>
     </ul>
   </aside>
 
@@ -540,10 +544,11 @@
       <div class="mobile-toc-body" id="mobile-toc-body">
         <a href="#what-are-exponent-rules">What are exponent rules?</a>
         <a href="#the-8-laws">The 8 exponent rules</a>
+        <a href="#tips">Tips on Exponent Rules</a>
         <a href="#practice">Practice questions</a>
         <a href="#worksheet">Downloadable worksheet</a>
+        <a href="#key-takeaways">Key Takeaways</a>
         <a href="#faq">FAQs on Exponent Rules</a>
-        <a href="#tips">Tips on Exponent Rules</a>
       </div>
     </div>
 
@@ -721,6 +726,18 @@
       </div>
     </section>
 
+    <!-- TIPS ON EXPONENT RULES -->
+    <section class="content-section" id="tips">
+      <h2>Tips on Exponent Rules</h2>
+      <p>These shortcuts help you apply exponent rules correctly and quickly:</p>
+      <ul class="tips-list">
+        <li><strong>Negative exponent with a fraction:</strong> To apply exponent rules to (a/b)⁻ᵐ, flip the fraction first — (a/b)⁻ᵐ = (b/a)ᵐ. Always convert to a positive exponent before simplifying.</li>
+        <li><strong>Radical to exponent:</strong> Use the exponent rule a<sup>1/n</sup> = ⁿ√a to switch between radicals and fractional exponents freely. This exponent rule is essential when simplifying roots.</li>
+        <li><strong>Work inside brackets first:</strong> When multiple exponent rules apply in one expression, simplify inside brackets before applying the outer exponent rule.</li>
+        <li><strong>Same base is the key:</strong> The product and quotient exponent rules only work when the bases match. Always check the base before deciding which exponent rule to use.</li>
+      </ul>
+    </section>
+
     <!-- SECTION 5: PRACTICE -->
     <section class="content-section" id="practice">
       <span class="eyebrow">Practice</span>
@@ -744,6 +761,7 @@
           <div style="font-size:52px;margin-bottom:8px" id="done-emoji">🎉</div>
           <div class="score" id="done-score"></div>
           <div class="msg" id="done-msg"></div>
+          <button class="btn-retry" onclick="retryQuiz()">Try again</button>
         </div>
         <div class="practice-footer">
           <button class="next-btn" id="next-btn">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -773,6 +791,21 @@
       </div>
     </section>
 
+    <!-- KEY TAKEAWAYS -->
+    <section class="content-section" id="key-takeaways">
+      <h2 style="font-size:20px;margin-bottom:4px">Key Takeaways</h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Hover over each card to see when to use it.</p>
+      <div class="kt-grid">
+        <div class="kt-card"><div class="kt-front">Product Rule</div><div class="kt-formula">aᵐ × aⁿ = aᵐ⁺ⁿ</div><div class="kt-back">Same base, multiplying — add the exponents.</div></div>
+        <div class="kt-card"><div class="kt-front">Quotient Rule</div><div class="kt-formula">aᵐ ÷ aⁿ = aᵐ⁻ⁿ</div><div class="kt-back">Same base, dividing — subtract the exponents.</div></div>
+        <div class="kt-card"><div class="kt-front">Zero Exponent</div><div class="kt-formula">a⁰ = 1</div><div class="kt-back">Any non-zero base raised to 0 equals 1.</div></div>
+        <div class="kt-card"><div class="kt-front">Negative Exponent</div><div class="kt-formula">a⁻ᵐ = 1/aᵐ</div><div class="kt-back">Flip to denominator to make the exponent positive.</div></div>
+        <div class="kt-card"><div class="kt-front">Power of a Power</div><div class="kt-formula">(aᵐ)ⁿ = aᵐⁿ</div><div class="kt-back">Exponent outside brackets — multiply the exponents.</div></div>
+        <div class="kt-card"><div class="kt-front">Power of a Product</div><div class="kt-formula">(ab)ᵐ = aᵐbᵐ</div><div class="kt-back">Distribute the exponent to each factor.</div></div>
+        <div class="kt-card"><div class="kt-front">Power of a Quotient</div><div class="kt-formula">(a/b)ᵐ = aᵐ/bᵐ</div><div class="kt-back">Distribute the exponent to numerator and denominator.</div></div>
+        <div class="kt-card"><div class="kt-front">Fractional Exponent</div><div class="kt-formula">a^(m/n) = ⁿ√(aᵐ)</div><div class="kt-back">Denominator → root index, numerator → power.</div></div>
+      </div>
+    </section>
     <!-- SECTION 7: FAQ -->
     <section class="content-section" id="faq">
       <span class="eyebrow">FAQ</span>
@@ -820,45 +853,11 @@
     </section>
 
 
-    <!-- KEY TAKEAWAYS -->
-    <section class="content-section" id="key-takeaways">
-      <span class="eyebrow">Quick reference</span>
-      <h2 style="font-size:20px;margin-bottom:4px">Key Takeaways</h2>
-      <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Hover over each card to see when to use it.</p>
-      <div class="kt-grid">
-        <div class="kt-card"><div class="kt-front">Product Rule</div><div class="kt-formula">aᵐ × aⁿ = aᵐ⁺ⁿ</div><div class="kt-back">Same base, multiplying — add the exponents.</div></div>
-        <div class="kt-card"><div class="kt-front">Quotient Rule</div><div class="kt-formula">aᵐ ÷ aⁿ = aᵐ⁻ⁿ</div><div class="kt-back">Same base, dividing — subtract the exponents.</div></div>
-        <div class="kt-card"><div class="kt-front">Zero Exponent</div><div class="kt-formula">a⁰ = 1</div><div class="kt-back">Any non-zero base raised to 0 equals 1.</div></div>
-        <div class="kt-card"><div class="kt-front">Negative Exponent</div><div class="kt-formula">a⁻ᵐ = 1/aᵐ</div><div class="kt-back">Flip to denominator to make the exponent positive.</div></div>
-        <div class="kt-card"><div class="kt-front">Power of a Power</div><div class="kt-formula">(aᵐ)ⁿ = aᵐⁿ</div><div class="kt-back">Exponent outside brackets — multiply the exponents.</div></div>
-        <div class="kt-card"><div class="kt-front">Power of a Product</div><div class="kt-formula">(ab)ᵐ = aᵐbᵐ</div><div class="kt-back">Distribute the exponent to each factor.</div></div>
-        <div class="kt-card"><div class="kt-front">Power of a Quotient</div><div class="kt-formula">(a/b)ᵐ = aᵐ/bᵐ</div><div class="kt-back">Distribute the exponent to numerator and denominator.</div></div>
-        <div class="kt-card"><div class="kt-front">Fractional Exponent</div><div class="kt-formula">a^(m/n) = ⁿ√(aᵐ)</div><div class="kt-back">Denominator → root index, numerator → power.</div></div>
-      </div>
-    </section>
-    <!-- TIPS ON EXPONENT RULES -->
-    <section class="content-section" id="tips">
-      <span class="eyebrow">Quick reference</span>
-      <h2>Tips on Exponent Rules</h2>
-      <p>These shortcuts help you apply exponent rules correctly and quickly:</p>
-      <ul class="tips-list">
-        <li><strong>Negative exponent with a fraction:</strong> To apply exponent rules to (a/b)⁻ᵐ, flip the fraction first — (a/b)⁻ᵐ = (b/a)ᵐ. Always convert to a positive exponent before simplifying.</li>
-        <li><strong>Radical to exponent:</strong> Use the exponent rule a<sup>1/n</sup> = ⁿ√a to switch between radicals and fractional exponents freely. This exponent rule is essential when simplifying roots.</li>
-        <li><strong>Work inside brackets first:</strong> When multiple exponent rules apply in one expression, simplify inside brackets before applying the outer exponent rule.</li>
-        <li><strong>Same base is the key:</strong> The product and quotient exponent rules only work when the bases match. Always check the base before deciding which exponent rule to use.</li>
-      </ul>
-    </section>
-
     <!-- RELATED -->
     <section class="content-section">
       <span class="eyebrow">Related videos</span>
       <p class="eyebrow-title">Watch it in action</p>
       <div class="video-list">
-        <a class="video-card" href="https://www.youtube.com/watch?v=9Fx6H-Qua1c" target="_blank" rel="noopener">
-          <div class="vthumb"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div><div class="vtitle">a⁰ = 1 … But why? Let's find out!</div><div class="vdesc">Concept · Grades 6–8 · The pattern proof for the zero exponent rule</div></div>
-          <span style="font-size:16px;color:var(--muted)">→</span>
-        </a>
         <a class="video-card" href="https://www.youtube.com/watch?v=HXsQX9S7FiU" target="_blank" rel="noopener">
           <div class="vthumb"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           <div><div class="vtitle">Amazing Exponent Manipulation!</div><div class="vdesc">Concept · Grades 6–8 · Combining multiple rules elegantly</div></div>
@@ -1213,9 +1212,19 @@
       document.getElementById('done-score').textContent=`${score} / ${questions.length}`;
       document.getElementById('done-msg').textContent=pct===1?'Perfect. All 8 rules are yours.'
         :pct>=0.8?'Strong — expand the rule you missed above and try it interactively.'
-        :'Go back to the rules above, expand each one, and use Try it to see the logic.';
+        :'Keep practising — try again to beat your score.';
     } else renderQ();
   });
+
+  function retryQuiz() {
+    qi = 0; score = 0;
+    document.getElementById('prac-done').classList.remove('show');
+    document.getElementById('prac-stage').style.display = '';
+    document.getElementById('next-btn').style.display = 'none';
+    document.getElementById('prog-fill').style.width = '0%';
+    document.getElementById('q-counter').textContent = 'Question 1 of ' + questions.length;
+    renderQ();
+  }
   renderQ();
 </script>
 </body>
