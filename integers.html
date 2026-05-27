@@ -110,7 +110,15 @@ strong{font-weight:500;color:var(--ink)}
 /* Layout */
 .page-wrap{display:grid;grid-template-columns:220px 1fr;gap:48px;max-width:1120px;margin:0 auto;padding:0 24px}
 .content{min-width:0}
-@media(max-width:820px){.page-wrap{grid-template-columns:1fr}.toc-sidebar{display:none}}
+/* mobile TOC */
+  .mobile-toc{display:none;background:var(--surface);border:1px solid var(--border);border-radius:0;margin-bottom:28px;overflow:hidden}
+  .mobile-toc-btn{width:100%;background:none;border:none;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;color:var(--ink)}
+  .mobile-toc-body{display:none;border-top:1px solid var(--border);padding:6px 0}
+  .mobile-toc-body.open{display:block}
+  .mobile-toc-body a{display:block;padding:9px 16px;font-size:14px;color:var(--ink2);text-decoration:none;border-left:3px solid transparent;transition:all .15s}
+  .mobile-toc-body a:hover,.mobile-toc-body a.active{background:var(--bg);border-left-color:var(--yellow);color:var(--ink)}
+
+  @media(max-width:820px){.page-wrap{grid-template-columns:1fr}.toc-sidebar{display:none}}
 .section{padding:52px 0;border-bottom:1px solid var(--border)}
 .section:last-child{border-bottom:none}
 
@@ -127,12 +135,12 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .breadcrumb span{margin:0 6px}
 
 /* Mobile TOC */
-.mobile-toc{display:none;background:var(--blue-light);border:1px solid #FAF1E6;border-radius:0;padding:16px;margin-bottom:32px}
-@media(max-width:820px){.mobile-toc{display:block}}
-.mobile-toc summary{font-weight:500;font-size:15px;cursor:pointer;color:var(--blue)}
-.mobile-toc ul{margin-top:12px;padding-left:16px;list-style:disc}
-.mobile-toc li{margin-bottom:6px}
-.mobile-toc a{font-size:14px;color:var(--ink2)}
+
+@media(max-width:820px){}
+
+
+
+
 
 /* Callout */
 .callout{background:var(--yellow-light);border-left:4px solid var(--yellow);border-radius:0;padding:16px 20px;margin:24px 0;font-size:15px;color:var(--ink2)}
@@ -424,20 +432,21 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 <main class="content">
 
   <!-- MOBILE TOC -->
-  <details class="mobile-toc">
-    <summary>Jump to a section</summary>
-    <ul>
-      <li><a href="#what-is">What are Integers?</a></li>
-      <li><a href="#numberline">On a Number Line</a></li>
-      <li><a href="#operations">Operations</a></li>
-      <li><a href="#properties">Properties</a></li>
-      <li><a href="#practice">Practice</a></li>
-
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#worksheets">Worksheets</a></li>
-      <li><a href="#videos">Related Videos</a></li>
-    </ul>
-  </details>
+  <div class="mobile-toc">
+      <button class="mobile-toc-btn" id="mobile-toc-btn">
+        <span>On this page</span><span id="mtoc-icon">↓</span>
+      </button>
+      <div class="mobile-toc-body" id="mobile-toc-body">
+        <a href="#what-is">What are Integers?</a>
+        <a href="#numberline">On a Number Line</a>
+        <a href="#operations">Operations</a>
+        <a href="#properties">Properties</a>
+        <a href="#practice">Practice</a>
+        <a href="#worksheets">Worksheets</a>
+        <a href="#takeaways">Key Takeaways</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
 
   <!-- INTRO -->
   <div class="section" id="intro" style="border-bottom:none;padding-bottom:0">
@@ -1756,6 +1765,19 @@ tocIds.forEach(function(id) { var el = document.getElementById(id); if (el) spy.
   window.addEventListener('resize', simRender);
 })();
 
+
+  /* Mobile TOC toggle */
+  const mtocBtn = document.getElementById('mobile-toc-btn');
+  const mtocBody = document.getElementById('mobile-toc-body');
+  if (mtocBtn && mtocBody) {
+    mtocBtn.addEventListener('click', () => {
+      const open = mtocBody.classList.toggle('open');
+      document.getElementById('mtoc-icon').textContent = open ? '↑' : '↓';
+    });
+    mtocBody.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => { mtocBody.classList.remove('open'); document.getElementById('mtoc-icon').textContent = '↓'; });
+    });
+  }
 </script>
 </body>
 </html>
