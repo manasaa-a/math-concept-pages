@@ -1,180 +1,16 @@
 <!DOCTYPE html>
-<!--
-  TODOs (deferred — to be locked once page structure is finalised):
-  - Replace nav/footer with cuemath.com homepage versions
-  - Wire Mixpanel events
-  - JSON-LD schema (Article + VideoObject)
-  - SEO meta: title, description, OG, Twitter, hreflang, canonical
-  - URL structure: assumes flat /math-concept-explanations/integers/
-  - A/B experiment: competing with https://www.cuemath.com/numbers/integers/
--->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Integers - Definition | Meaning | Examples | What are Integers?</title>
+<title>Integer Explorer</title>
 <link rel="stylesheet" href="cuedesign.css">
-<meta name="description" content="Integers include all whole numbers and negative numbers. 'Integer' is a Latin word which means 'whole' or 'intact'. This means integers do not include fractions or decimals.">
-<meta name="keywords" content="integers, what are integers">
-<link rel="canonical" href="https://www.cuemath.com/numbers/integers/">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Integers - Definition | Meaning | Examples | What are Integers?",
-  "description": "Integers include all whole numbers and negative numbers. 'Integer' is a Latin word which means 'whole' or 'intact'. This means integers do not include fractions or decimals.",
-  "url": "https://www.cuemath.com/numbers/integers/",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.cuemath.com/numbers/integers/" },
-  "author": { "@type": "Organization", "name": "Cuemath", "url": "https://www.cuemath.com" },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Cuemath",
-    "url": "https://www.cuemath.com",
-    "logo": { "@type": "ImageObject", "url": "https://www.cuemath.com/wp-content/uploads/2020/01/Cuemath-Logo.png" }
-  },
-  "educationalLevel": "Grade 6-8",
-  "about": { "@type": "Thing", "name": "Integers", "description": "Integers are the set of whole numbers and their negatives, denoted ℤ." },
-  "keywords": "integers, what are integers, integer operations, properties of integers, negative integers, positive integers"
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What are integers in maths?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Integers are all whole numbers — positive, negative, and zero — with no fractional or decimal part. The set is written ℤ = {…, −3, −2, −1, 0, 1, 2, 3, …}. The name comes from the Latin integer, meaning 'whole'." }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the difference between integers and whole numbers?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Whole numbers are {0, 1, 2, 3, …} — zero and positive integers only. Integers include all of those plus all negative integers (−1, −2, −3, …). Every whole number is an integer, but not every integer is a whole number." }
-    },
-    {
-      "@type": "Question",
-      "name": "Is 0 an integer?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Zero is an integer — it has no decimal or fractional part. It is the only integer that is neither positive nor negative." }
-    },
-    {
-      "@type": "Question",
-      "name": "What are the different types of integers?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Integers are classified into three types: Positive integers (1, 2, 3, …), Negative integers (−1, −2, −3, …), and Zero (0). Together these make up the complete set ℤ." }
-    },
-    {
-      "@type": "Question",
-      "name": "Can a negative number be an integer?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Negative integers such as −1, −2, −3, −100 are all integers. A number only fails to be an integer if it has a fractional or decimal part." }
-    },
-    {
-      "@type": "Question",
-      "name": "What are consecutive integers?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Consecutive integers are integers that follow each other in order with a difference of 1. For example: 4, 5, 6 or −3, −2, −1, 0. In algebra they are written as n, n+1, n+2." }
-    },
-    {
-      "@type": "Question",
-      "name": "Why does negative × negative = positive?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Multiplying by a negative flips the direction once. Multiplying by two negatives flips it twice — returning to the original positive direction. It follows from the distributive property to keep arithmetic consistent." }
-    },
-    {
-      "@type": "Question",
-      "name": "Can integers be fractions or decimals?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. Integers have no fractional or decimal component. Numbers like 2.5, ½, and −3.7 are not integers. However, every integer can be written as a fraction (e.g. 5 = 5/1), so all integers are rational numbers." }
-    },
-    {
-      "@type": "Question",
-      "name": "What are the applications of integers?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Integers appear wherever quantities go below zero: temperature (−5°C), floors in a building, bank balances, altitude above and below sea level, and gains/losses in scores. In computing, integers are the primary data type for counting and indexing." }
-    }
-  ]
-}
-</script>
-
 <style>
-
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-weight:300;font-size:17px;line-height:1.7;color:var(--ink);background:var(--bg)}
-h1,h2,h3{font-family:'Athletics',Georgia,serif;font-weight:700;color:var(--ink);line-height:1.25}
-h1{font-size:clamp(28px,4vw,42px);margin-bottom:20px}
-h2{font-size:clamp(22px,3vw,30px);margin-bottom:16px}
-h3{font-size:clamp(18px,2vw,22px);margin-bottom:12px}
-p{margin-bottom:14px;color:var(--ink2)}
-a{color:var(--blue);text-decoration:none}
-a:hover{text-decoration:underline}
-strong{font-weight:500;color:var(--ink)}
-
-/* Layout */
-.page-wrap{display:grid;grid-template-columns:220px 1fr;gap:48px;max-width:1120px;margin:0 auto;padding:0 24px}
-.content{min-width:0}
-@media(max-width:820px){.page-wrap{grid-template-columns:1fr}.toc-sidebar{display:none}}
-.section{padding:52px 0;border-bottom:1px solid var(--border)}
-.section:last-child{border-bottom:none}
-
-/* Nav */
-nav{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
-.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:'Athletics',Georgia,serif;font-weight:700;font-size:20px;color:var(--ink);text-decoration:none}
-.nav-cta{background:var(--yellow);color:var(--ink);font-weight:600;font-size:14px;padding:8px 18px;border-radius:0;text-decoration:none;white-space:nowrap}
-.nav-cta:hover{background:var(--gold-600);text-decoration:none}
-
-/* Breadcrumb */
-.breadcrumb{background:var(--surface);border-bottom:1px solid var(--border);padding:10px 24px;font-size:13px;color:var(--muted);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
-.breadcrumb a{color:var(--muted)}
-.breadcrumb span{margin:0 6px}
-
-/* Mobile TOC */
-.mobile-toc{display:none;background:var(--blue-light);border:1px solid #FAF1E6;border-radius:10px;padding:16px;margin-bottom:32px}
-@media(max-width:820px){.mobile-toc{display:block}}
-.mobile-toc summary{font-weight:500;font-size:15px;cursor:pointer;color:var(--blue)}
-.mobile-toc ul{margin-top:12px;padding-left:16px;list-style:disc}
-.mobile-toc li{margin-bottom:6px}
-.mobile-toc a{font-size:14px;color:var(--ink2)}
-
-/* Callout */
-.callout{background:var(--yellow-light);border-left:4px solid var(--yellow);border-radius:8px;padding:16px 20px;margin:24px 0;font-size:15px;color:var(--ink2)}
-
-/* Think box */
-.think-box{background:var(--purple-light);border-left:4px solid var(--purple);border-radius:8px;padding:18px 20px;margin:24px 0}
-.think-label{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--purple);margin-bottom:8px}
-.think-box p{color:var(--ink2);margin-bottom:0}
-
-/* Real-world strip */
-.rw-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:24px 0}
-@media(max-width:600px){.rw-strip{grid-template-columns:1fr 1fr}}
-.rw-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
-.rw-card .emoji{font-size:28px;margin-bottom:8px}
-.rw-card strong{display:block;font-size:14px;font-weight:500;margin-bottom:4px}
-.rw-card p{font-size:13px;color:var(--muted);margin-bottom:0}
-
-/* Sign rules grid */
-.sign-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
-@media(max-width:500px){.sign-grid{grid-template-columns:1fr}}
-.sign-card{border-radius:10px;padding:16px 18px;text-align:center}
-.sign-card.pos{background:var(--green-light);border:1px solid #BCEAC8}
-.sign-card.neg{background:var(--red-light);border:1px solid #FFB8B7}
-.sign-card .rule{font-size:15px;font-weight:500;margin-bottom:4px}
-.sign-card .example{font-size:13px;color:var(--muted)}
-
-/* Accordion */
-.accordion{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:16px 0}
-.accordion-item{border-bottom:1px solid var(--border)}
-.accordion-item:last-child{border-bottom:none}
-.accordion-btn{width:100%;background:var(--surface);border:none;padding:16px 20px;text-align:left;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:16px;font-weight:500;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
-.accordion-btn:hover{background:var(--bg)}
-.chevron{transition:transform .2s;font-size:12px;color:var(--muted)}
-.accordion-btn.open .chevron{transform:rotate(180deg)}
-.accordion-body{display:none;padding:0 20px 20px;background:var(--surface)}
-.accordion-body.open{display:block}
-.formula-box{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px 18px;margin:12px 0;font-family:monospace;font-size:15px;color:var(--ink)}
-.flabel{font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
-.example-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
-@media(max-width:550px){.example-row{grid-template-columns:1fr}}
-.ex-card{background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:14px}
-.ex-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--green);margin-bottom:4px}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; background: var(--bg); font-family: 'Untitled Sans', -apple-system, system-ui, sans-serif; font-size: 16px; color: var(--ink); }
+body { padding: 16px; }
+h3 { font-family: 'Athletics', Georgia, serif; font-weight: 700; font-size: 18px; color: var(--ink); margin-bottom: 6px; }
+p.sub { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
 .sim-link{display:inline-block;margin-top:10px;font-size:13px;color:var(--blue);font-weight:500;background:none;border:none;cursor:pointer;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;padding:0}
 
 /* Operations table */
@@ -582,13 +418,73 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <p>Without a calculator: what is (−3) × (−8)? Decide the sign first using the sign rule, then calculate the magnitude.</p>
     </div>
 
-    <!-- Integer Operations Simulation -->
     <div id="sim-home" style="margin-top:24px">
-      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border)">
-        <iframe src="integer-operations.html"
-          style="width:100%;height:580px;border:0;display:block"
-          loading="lazy"></iframe>
+    <!-- Integer Explorer (inline) -->
+    <div id="simulation">
+      <p style="font-size:16px;font-family:'Athletics',Georgia,serif;font-weight:700;color:var(--ink);margin-bottom:8px">Try it on the number line</p>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:14px">Choose an operation, adjust the numbers and hit ▶ Play. For × and ÷, flip the sign tiles to see the rule.</p>
+      <div class="sim-container">
+        <div class="sim-op-tabs">
+          <button class="sim-tab active" id="tab-add" onclick="setOp('+')">+ Add</button>
+          <button class="sim-tab" id="tab-sub" onclick="setOp('-')">− Subtract</button>
+          <button class="sim-tab" id="tab-mul" onclick="setOp('×')">× Multiply</button>
+          <button class="sim-tab" id="tab-div" onclick="setOp('÷')">÷ Divide</button>
+        </div>
+        <div class="sim-inputs">
+          <div class="sim-num-wrap">
+            <span class="sim-num-label" id="label-a">Start (°C)</span>
+            <div class="sim-num-ctrl">
+              <button onclick="changeNum('a',-1)">−</button>
+              <input id="numA" type="text" value="-3" readonly>
+              <button onclick="changeNum('a',1)">+</button>
+            </div>
+          </div>
+          <span class="sim-op-symbol" id="op-symbol">+</span>
+          <div class="sim-num-wrap">
+            <span class="sim-num-label" id="label-b">Change (°C)</span>
+            <div class="sim-num-ctrl">
+              <button onclick="changeNum('b',-1)">−</button>
+              <input id="numB" type="text" value="5" readonly>
+              <button onclick="changeNum('b',1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div id="temp-scenario" style="background:var(--blue-light);border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:15px;color:var(--ink2)">
+          🌡️ <span id="temp-sentence">Temperature starts at −3°C, rises by 5°C → lands at <strong>2°C</strong></span>
+        </div>
+        <div id="sign-explorer" style="display:none">
+          <div class="sign-explorer-label">Click a tile to flip its sign and watch the result change:</div>
+          <div class="sign-board">
+            <div class="sign-tile clickable spos" id="tile-a" onclick="flipSign('a')">
+              <span class="st-sign" id="tile-a-sign">+</span><span class="st-val" id="tile-a-val">3</span>
+            </div>
+            <span class="sign-board-op" id="tile-op">×</span>
+            <div class="sign-tile clickable spos" id="tile-b" onclick="flipSign('b')">
+              <span class="st-sign" id="tile-b-sign">+</span><span class="st-val" id="tile-b-val">4</span>
+            </div>
+            <span class="sign-board-op">=</span>
+            <div class="sign-tile sres spos" id="tile-result">
+              <span class="st-sign" id="tile-r-sign">+</span><span class="st-val" id="tile-r-val">12</span>
+            </div>
+          </div>
+          <span class="sign-rule-note sim-rule-pos" id="sign-rule-note">Same signs → positive</span>
+        </div>
+        <div class="sim-result-box" id="sim-result-box">
+          <span class="sim-result-eq" id="sim-eq">(−3) + 5 = 2</span>
+          <span class="sim-rule-badge sim-rule-pos" id="sim-rule">Different signs → result is positive</span>
+        </div>
+        <div class="numberline-wrap">
+          <canvas id="nlCanvas" height="120"></canvas>
+        </div>
+        <div class="nl-drag-hint" id="nl-drag-hint">Drag either dot along the temperature scale</div>
+        <div id="sim-sign-rule-box" style="margin-top:10px;padding:10px 14px;border-radius:8px;font-size:14px;font-weight:500;text-align:center;display:none"></div>
+        <p class="sim-discover" id="sim-discover-txt">💡 Try this: drag the start dot below zero and the change dot further left — watch what happens when both are negative.</p>
       </div>
+    </div>
+
+    </div>
+    </div>
+  </div>
 
 
   <!-- SECTION: PROPERTIES -->
@@ -1098,24 +994,395 @@ function toggleAcc(btn) {
     }
   }
 }
-function toggleFaq(btn) {
-  var a = btn.nextElementSibling, o = btn.classList.contains('open');
-  btn.classList.toggle('open', !o); a.classList.toggle('open', !o);
-}
-lFeeling(btn) { btn.closest('.feeling-btns').querySelectorAll('.feeling-btn').forEach(function(b) { b.classList.remove('selected'); }); btn.classList.add('selected'); }
+@keyframes sfpulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.12)} }
+</style>
+</head>
+<body>
+  <h3>Try it on the number line</h3>
+  <p class="sub">Choose an operation, adjust the numbers. For × and ÷, flip the sign tiles.</p>
+<div id="simulation">
+      <p style="font-size:16px;font-family:'Athletics',Georgia,serif;font-weight:700;color:var(--ink);margin-bottom:8px">Try it on the number line</p>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:14px">Choose an operation, adjust the numbers and hit ▶ Play. For × and ÷, flip the sign tiles to see the rule.</p>
+      <div class="sim-container">
+        <div class="sim-op-tabs">
+          <button class="sim-tab active" id="tab-add" onclick="setOp('+')">+ Add</button>
+          <button class="sim-tab" id="tab-sub" onclick="setOp('-')">− Subtract</button>
+          <button class="sim-tab" id="tab-mul" onclick="setOp('×')">× Multiply</button>
+          <button class="sim-tab" id="tab-div" onclick="setOp('÷')">÷ Divide</button>
+        </div>
+        <div class="sim-inputs">
+          <div class="sim-num-wrap">
+            <span class="sim-num-label" id="label-a">Start (°C)</span>
+            <div class="sim-num-ctrl">
+              <button onclick="changeNum('a',-1)">−</button>
+              <input id="numA" type="text" value="-3" readonly>
+              <button onclick="changeNum('a',1)">+</button>
+            </div>
+          </div>
+          <span class="sim-op-symbol" id="op-symbol">+</span>
+          <div class="sim-num-wrap">
+            <span class="sim-num-label" id="label-b">Change (°C)</span>
+            <div class="sim-num-ctrl">
+              <button onclick="changeNum('b',-1)">−</button>
+              <input id="numB" type="text" value="5" readonly>
+              <button onclick="changeNum('b',1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div id="temp-scenario" style="background:var(--blue-light);border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:15px;color:var(--ink2)">
+          🌡️ <span id="temp-sentence">Temperature starts at −3°C, rises by 5°C → lands at <strong>2°C</strong></span>
+        </div>
+        <div id="sign-explorer" style="display:none">
+          <div class="sign-explorer-label">Click a tile to flip its sign and watch the result change:</div>
+          <div class="sign-board">
+            <div class="sign-tile clickable spos" id="tile-a" onclick="flipSign('a')">
+              <span class="st-sign" id="tile-a-sign">+</span><span class="st-val" id="tile-a-val">3</span>
+            </div>
+            <span class="sign-board-op" id="tile-op">×</span>
+            <div class="sign-tile clickable spos" id="tile-b" onclick="flipSign('b')">
+              <span class="st-sign" id="tile-b-sign">+</span><span class="st-val" id="tile-b-val">4</span>
+            </div>
+            <span class="sign-board-op">=</span>
+            <div class="sign-tile sres spos" id="tile-result">
+              <span class="st-sign" id="tile-r-sign">+</span><span class="st-val" id="tile-r-val">12</span>
+            </div>
+          </div>
+          <span class="sign-rule-note sim-rule-pos" id="sign-rule-note">Same signs → positive</span>
+        </div>
+        <div class="sim-result-box" id="sim-result-box">
+          <span class="sim-result-eq" id="sim-eq">(−3) + 5 = 2</span>
+          <span class="sim-rule-badge sim-rule-pos" id="sim-rule">Different signs → result is positive</span>
+        </div>
+        <div class="numberline-wrap">
+          <canvas id="nlCanvas" height="120"></canvas>
+        </div>
+        <div class="nl-drag-hint" id="nl-drag-hint">Drag either dot along the temperature scale</div>
+        <div id="sim-sign-rule-box" style="margin-top:10px;padding:10px 14px;border-radius:8px;font-size:14px;font-weight:500;text-align:center;display:none"></div>
+        <p class="sim-discover" id="sim-discover-txt">💡 Try this: drag the start dot below zero and the change dot further left — watch what happens when both are negative.</p>
+      </div>
+    </div>
 
-/* TOC SCROLL SPY */
-var tocIds = ['what-is','numberline','operations','properties','practice','worksheets','takeaways','faq','videos'];
-var spy = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    var link = document.querySelector('#toc-list a[href="#' + e.target.id + '"]');
-    if (e.isIntersecting && link) {
-      document.querySelectorAll('#toc-list a').forEach(function(l) { l.style.color = 'var(--muted)'; l.style.background = 'none'; l.style.fontWeight = '300'; });
-      link.style.color = 'var(--blue)'; link.style.background = 'var(--blue-light)'; link.style.fontWeight = '500';
+<script>
+/* SIMULATION */
+var simOp = '+';
+var numA = -3, numB = 5;
+var dragTarget = null;
+var NL_RANGE = 12;
+
+function setOp(op) {
+  simOp = op;
+  document.getElementById('op-symbol').textContent = op;
+  document.querySelectorAll('.sim-tab').forEach(function(t) { t.classList.remove('active'); });
+  var map = {'+':'tab-add','-':'tab-sub','×':'tab-mul','÷':'tab-div'};
+  document.getElementById(map[op]).classList.add('active');
+  var isAddSub = (op === '+' || op === '-');
+  document.getElementById('sign-explorer').style.display = isAddSub ? 'none' : '';
+  document.getElementById('temp-scenario').style.display = isAddSub ? '' : 'none';
+  document.getElementById('nl-drag-hint').style.display = isAddSub ? '' : 'none';
+  document.getElementById('tile-op').textContent = op;
+  /* relabel inputs */
+  document.getElementById('label-a').textContent = isAddSub ? 'Start (°C)' : 'First number';
+  document.getElementById('label-b').textContent = isAddSub ? 'Change (°C)' : 'Second number';
+  var tips = {
+    '+': '💡 Drag either dot — try pulling both into negatives and watch the temperature drop.',
+    '-': '💡 Drag the dots — notice that subtracting is the same as adding the opposite.',
+    '×': '💡 Click the sign tiles to try all four sign combinations.',
+    '÷': '💡 Click the sign tiles — division follows the same sign rules as multiplication.'
+  };
+  document.getElementById('sim-discover-txt').textContent = tips[op];
+  runSim();
+}
+
+function changeNum(which, delta) {
+  if (which === 'a') { numA = Math.max(-NL_RANGE, Math.min(NL_RANGE, numA + delta)); document.getElementById('numA').value = numA; }
+  else { numB = Math.max(-NL_RANGE, Math.min(NL_RANGE, numB + delta)); document.getElementById('numB').value = numB; }
+  runSim();
+}
+
+function calcResult() {
+  var a = numA, b = numB, op = simOp, result, rule, ruleClass;
+  if (op === '+') {
+    result = a + b;
+    if (a === 0 || b === 0) { rule = 'Adding 0 leaves the number unchanged'; ruleClass = 'sim-rule-zero'; }
+    else if ((a > 0 && b > 0) || (a < 0 && b < 0)) { rule = 'Same signs → add, keep the sign'; ruleClass = result >= 0 ? 'sim-rule-pos' : 'sim-rule-neg'; }
+    else { rule = 'Different signs → subtract, take sign of the larger'; ruleClass = result > 0 ? 'sim-rule-pos' : (result < 0 ? 'sim-rule-neg' : 'sim-rule-zero'); }
+  } else if (op === '-') {
+    result = a - b;
+    rule = (a < 0 ? '(' + a + ')' : a) + ' − ' + (b < 0 ? '(' + b + ')' : b) + ' = ' + (a < 0 ? '(' + a + ')' : a) + ' + (' + (-b) + ')';
+    ruleClass = result > 0 ? 'sim-rule-pos' : (result < 0 ? 'sim-rule-neg' : 'sim-rule-zero');
+  } else if (op === '×') {
+    result = a * b;
+    if (a === 0 || b === 0) { rule = 'Any integer × 0 = 0'; ruleClass = 'sim-rule-zero'; }
+    else if ((a > 0 && b > 0) || (a < 0 && b < 0)) { rule = 'Same signs → positive'; ruleClass = 'sim-rule-pos'; }
+    else { rule = 'Different signs → negative'; ruleClass = 'sim-rule-neg'; }
+  } else {
+    if (b === 0) { result = null; rule = 'Division by zero is undefined'; ruleClass = 'sim-rule-zero'; }
+    else {
+      result = a / b;
+      if (a === 0) { rule = '0 ÷ anything = 0'; ruleClass = 'sim-rule-zero'; }
+      else if ((a > 0 && b > 0) || (a < 0 && b < 0)) { rule = 'Same signs → positive'; ruleClass = 'sim-rule-pos'; }
+      else { rule = 'Different signs → negative'; ruleClass = 'sim-rule-neg'; }
+    }
+  }
+  return { result: result, rule: rule, ruleClass: ruleClass };
+}
+
+/* temperature color for a value in [-12, 12] */
+function tempColor(n) {
+  /* interpolate hue: 220 (blue) at -12 → 0 (red) at +12 */
+  var t = (n + NL_RANGE) / (NL_RANGE * 2); /* 0..1 */
+  var h = Math.round(220 - t * 220);
+  var s = 75, l = n === 0 ? 55 : (n < 0 ? 48 : 52);
+  return 'hsl(' + h + ',' + s + '%,' + l + '%)';
+}
+
+function runSim() {
+  var a = numA, b = numB, op = simOp;
+  var c = calcResult();
+  var result = c.result, rule = c.rule, ruleClass = c.ruleClass;
+
+  var aStr = a < 0 ? '(' + a + ')' : String(a);
+  var bStr = b < 0 ? '(' + b + ')' : String(b);
+  var resStr = result === null ? 'undefined' : (Number.isInteger(result) ? String(result) : result.toFixed(2));
+
+  document.getElementById('sim-eq').textContent = aStr + ' ' + op + ' ' + bStr + ' = ' + resStr;
+  var rb = document.getElementById('sim-rule');
+  rb.textContent = rule; rb.className = 'sim-rule-badge ' + ruleClass;
+  var srb = document.getElementById('sim-sign-rule-box');
+  if (srb) {
+    var ruleColors = {'sim-rule-pos':'background:#ECF9EF;color:#1C7C48;border:1px solid #BCEAC8',
+                     'sim-rule-neg':'background:#FFEEEE;color:#AE424C;border:1px solid #FFC6C5',
+                     'sim-rule-zero':'background:#FAF1E6;color:#7E4800;border:1px solid #FAD6AC'};
+    srb.setAttribute('style', 'margin-top:10px;padding:10px 14px;border-radius:8px;font-size:14px;font-weight:500;text-align:center;display:block;' + (ruleColors[ruleClass]||''));
+    srb.textContent = '→ ' + rule;
+  }
+
+  /* Temperature scenario sentence */
+  if (op === '+' || op === '-') {
+    var dir = (op === '+') ? (b >= 0 ? 'rises' : 'drops') : (b <= 0 ? 'rises' : 'drops');
+    var change = op === '+' ? Math.abs(b) : Math.abs(b);
+    var resultLabel = result === null ? '?' : result + '°C';
+    var sentence;
+    if (op === '+') {
+      sentence = 'Temperature starts at ' + a + '°C, ' + (b === 0 ? 'no change' : (b > 0 ? 'rises by ' + b + '°C' : 'drops by ' + Math.abs(b) + '°C')) + ' → ';
+    } else {
+      sentence = 'Temperature at ' + a + '°C, subtract ' + b + '°C (same as adding ' + (-b) + '°C) → ';
+    }
+    document.getElementById('temp-sentence').innerHTML = sentence + '<strong>' + resultLabel + '</strong>';
+  }
+
+  /* Sign explorer */
+  if (op === '×' || op === '÷') { updateSignExplorer(a, b, op, result, ruleClass); }
+
+  drawNL();
+}
+
+function updateSignExplorer(a, b, op, result, ruleClass) {
+  var signOf = function(n) { return n >= 0 ? '+' : '−'; };
+  var classOf = function(n) { return n >= 0 ? 'spos' : 'sneg'; };
+  var resSign = result === null ? '?' : (result > 0 ? '+' : (result < 0 ? '−' : '0'));
+  document.getElementById('tile-a-sign').textContent = signOf(a);
+  document.getElementById('tile-a-val').textContent = Math.abs(a);
+  document.getElementById('tile-a').className = 'sign-tile clickable ' + classOf(a);
+  document.getElementById('tile-b-sign').textContent = signOf(b);
+  document.getElementById('tile-b-val').textContent = Math.abs(b);
+  document.getElementById('tile-b').className = 'sign-tile clickable ' + classOf(b);
+  document.getElementById('tile-r-sign').textContent = resSign;
+  document.getElementById('tile-r-val').textContent = result === null ? 'undef' : Math.abs(Number.isInteger(result) ? result : result.toFixed(1));
+  document.getElementById('tile-result').className = 'sign-tile sres ' + (result === null ? 'sneg' : (result >= 0 ? 'spos' : 'sneg'));
+  var note = document.getElementById('sign-rule-note');
+  note.textContent = document.getElementById('sim-rule').textContent;
+  note.className = 'sign-rule-note ' + ruleClass;
+}
+
+function flipSign(which) {
+  if (which === 'a') { numA = -numA; document.getElementById('numA').value = numA; }
+  else { numB = -numB; document.getElementById('numB').value = numB; }
+  var rt = document.getElementById('tile-result');
+  rt.classList.remove('sign-flash');
+  void rt.offsetWidth;
+  rt.classList.add('sign-flash');
+  runSim();
+}
+
+/* ── NUMBER LINE DRAWING ── */
+function drawNL() {
+  var canvas = document.getElementById('nlCanvas');
+  canvas.width = canvas.parentElement.offsetWidth || 560;
+  canvas.height = 130;
+  var ctx = canvas.getContext('2d');
+  var W = canvas.width, H = canvas.height;
+  var a = numA, b = numB, op = simOp;
+  var c = calcResult(); var result = c.result;
+  var range = NL_RANGE;
+  var midY = 80;
+  var toX = function(n) { return W / 2 + n * (W - 64) / (range * 2); };
+
+  /* background */
+  ctx.fillStyle = '#FAF8F5'; ctx.fillRect(0, 0, W, H);
+
+  /* temperature gradient band */
+  var bandH = 14, bandY = midY - bandH / 2;
+  var grad = ctx.createLinearGradient(toX(-range), 0, toX(range), 0);
+  grad.addColorStop(0,    '#CE7E12');
+  grad.addColorStop(0.25, '#F4AB52');
+  grad.addColorStop(0.48, '#C1DCFF');
+  grad.addColorStop(0.5,  '#ECF9EF');
+  grad.addColorStop(0.62, '#FAF1E6');
+  grad.addColorStop(0.82, '#F68D50');
+  grad.addColorStop(1,    '#F97279');
+  /* rounded band */
+  var bx = toX(-range), bw = toX(range) - toX(-range);
+  ctx.save();
+  ctx.beginPath();
+  ctx.roundRect ? ctx.roundRect(bx, bandY, bw, bandH, 7) : ctx.rect(bx, bandY, bw, bandH);
+  ctx.fillStyle = grad; ctx.fill();
+  ctx.restore();
+
+  /* tick marks and labels */
+  for (var i = -range; i <= range; i++) {
+    var tx = toX(i);
+    var isMajor = (i % 4 === 0);
+    var isZero = (i === 0);
+    ctx.strokeStyle = isZero ? '#43413E' : (isMajor ? '#97938C' : '#C6C0B8');
+    ctx.lineWidth = isZero ? 2 : 1;
+    var tickLen = isZero ? 10 : (isMajor ? 7 : 4);
+    ctx.beginPath(); ctx.moveTo(tx, midY - tickLen); ctx.lineTo(tx, midY + tickLen); ctx.stroke();
+    var isA   = (i === a);
+    var isRes = (result !== null && Number.isInteger(result) && i === result);
+    var isBval = ((op === '×' || op === '÷') && i === b);
+    var showLabel = isMajor || isZero || isA || isRes || isBval;
+    if (showLabel) {
+      if (isA)        { ctx.fillStyle = tempColor(a); ctx.font = 'bold 12px Untitled Sans,system-ui,sans-serif'; }
+      else if (isRes) { ctx.fillStyle = '#A65EC4';    ctx.font = 'bold 12px Untitled Sans,system-ui,sans-serif'; }
+      else if (isBval){ ctx.fillStyle = tempColor(b); ctx.font = 'bold 12px Untitled Sans,system-ui,sans-serif'; }
+      else if (isZero){ ctx.fillStyle = '#CE7E12';    ctx.font = 'bold 10px Untitled Sans,system-ui,sans-serif'; }
+      else            { ctx.fillStyle = '#84807B';    ctx.font = '10px Untitled Sans,system-ui,sans-serif'; }
+      ctx.textAlign = 'center';
+      ctx.fillText(i + (op === '+' || op === '-' ? '°' : ''), tx, midY + 28);
+    }
+  }
+
+  /* axis line (thin, over the band) */
+  ctx.strokeStyle = 'rgba(0,0,0,0.15)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(toX(-range) - 4, midY); ctx.lineTo(toX(range) + 4, midY); ctx.stroke();
+  /* arrow tips */
+  ctx.fillStyle = '#97938C';
+  ctx.beginPath(); ctx.moveTo(toX(range)+8, midY-4); ctx.lineTo(toX(range)+16, midY); ctx.lineTo(toX(range)+8, midY+4); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(toX(-range)-8, midY-4); ctx.lineTo(toX(-range)-16, midY); ctx.lineTo(toX(-range)-8, midY+4); ctx.fill();
+
+  if (op === '+' || op === '-') {
+    var delta = (op === '+') ? b : -b;
+    var end = a + delta;
+    /* arc arrow A→result */
+    if (delta !== 0 && Math.abs(a) <= range && Math.abs(end) <= range) {
+      drawArc(ctx, toX(a), midY, toX(end), midY, delta > 0 ? '#6AC88A' : '#F97279', 36, (delta > 0 ? '+' : '') + delta + (op === '+' || op === '-' ? '°' : ''));
+    }
+    /* start dot (A) */
+    drawTempDot(ctx, toX(a), midY, tempColor(a), a + '°', 10, true);
+    /* result dot */
+    if (result !== null && Math.abs(result) <= range) {
+      drawTempDot(ctx, toX(result), midY, '#D386F7', '= ' + result + '°', 9, false);
+    }
+  } else {
+    /* × ÷: show A, B, result dots */
+    if (Math.abs(a) <= range) drawTempDot(ctx, toX(a), midY, tempColor(a), 'A=' + a, 9, true);
+    if (Math.abs(b) <= range) drawTempDot(ctx, toX(b), midY, tempColor(b), 'B=' + b, 9, true);
+    if (result !== null && Number.isInteger(result) && Math.abs(result) <= range) {
+      drawTempDot(ctx, toX(result), midY, '#D386F7', '=' + result, 8, false);
+    }
+    if (result !== null && (!Number.isInteger(result) || Math.abs(result) > range)) {
+      ctx.fillStyle = '#84807B'; ctx.font = '12px Untitled Sans,system-ui,sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('Result = ' + (Number.isInteger(result) ? result : result.toFixed(2)) + (Math.abs(result) > range ? '  (off scale)' : ''), W / 2, 20);
+    }
+  }
+}
+
+function drawTempDot(ctx, x, y, color, label, r, draggable) {
+  /* outer glow */
+  var grd = ctx.createRadialGradient(x, y, r * 0.3, x, y, r * 2.2);
+  grd.addColorStop(0, color.replace('hsl', 'hsla').replace(')', ', 0.25)'));
+  grd.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.beginPath(); ctx.arc(x, y, r * 2.2, 0, Math.PI * 2);
+  ctx.fillStyle = grd; ctx.fill();
+  /* dot */
+  ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
+  ctx.fillStyle = color; ctx.fill();
+  ctx.strokeStyle = '#fff'; ctx.lineWidth = 2.5; ctx.stroke();
+}
+
+function drawArc(ctx, x1, y1, x2, y2, color, lift, label) {
+  if (Math.abs(x2 - x1) < 3) return;
+  var cx = (x1 + x2) / 2, cy = y1 - lift;
+  ctx.strokeStyle = color; ctx.lineWidth = 2.5; ctx.setLineDash([]);
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.quadraticCurveTo(cx, cy, x2, y2); ctx.stroke();
+  var ang = Math.atan2(y2 - cy, x2 - cx);
+  ctx.fillStyle = color;
+  ctx.save(); ctx.translate(x2, y2); ctx.rotate(ang);
+  ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(-10, -4); ctx.lineTo(-10, 4); ctx.closePath(); ctx.fill();
+  ctx.restore();
+  ctx.fillStyle = color; ctx.font = 'bold 11px Untitled Sans,system-ui,sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(label, cx, cy - 6);
+}
+
+/* ── DRAG ── */
+(function() {
+  var canvas = document.getElementById('nlCanvas');
+  function px(evt) {
+    var r = canvas.getBoundingClientRect();
+    return (evt.touches ? evt.touches[0].clientX : evt.clientX) - r.left;
+  }
+  function toNum(p) {
+    var n = Math.round((p - canvas.width / 2) / ((canvas.width - 64) / (NL_RANGE * 2)));
+    return Math.max(-NL_RANGE, Math.min(NL_RANGE, n));
+  }
+  function dotX(n) { return canvas.width / 2 + n * (canvas.width - 64) / (NL_RANGE * 2); }
+  function hit(p) {
+    var T = 20, aX = dotX(numA), bX = dotX(numB);
+    if (simOp !== '+' && simOp !== '-') return null;
+    if (Math.abs(p - aX) < T) return 'a';
+    if (Math.abs(p - bX) < T) return 'b';
+    return null;
+  }
+  canvas.addEventListener('mousedown', function(e) {
+    dragTarget = hit(px(e));
+    if (dragTarget) { canvas.classList.add('dragging'); e.preventDefault(); }
+  });
+  canvas.addEventListener('mousemove', function(e) {
+    if (dragTarget) {
+      e.preventDefault();
+      var n = toNum(px(e));
+      if (dragTarget === 'a') { numA = n; document.getElementById('numA').value = n; }
+      else { numB = n; document.getElementById('numB').value = n; }
+      runSim();
+    } else {
+      canvas.style.cursor = hit(px(e)) ? 'grab' : 'default';
     }
   });
-}, { rootMargin: '-20% 0px -60% 0px' });
-tocIds.forEach(function(id) { var el = document.getElementById(id); if (el) spy.observe(el); });
+  canvas.addEventListener('mouseup', function() { dragTarget = null; canvas.classList.remove('dragging'); });
+  canvas.addEventListener('mouseleave', function() { dragTarget = null; canvas.classList.remove('dragging'); });
+  canvas.addEventListener('touchstart', function(e) { dragTarget = hit(px(e)); if (dragTarget) e.preventDefault(); }, { passive: false });
+  canvas.addEventListener('touchmove', function(e) {
+    if (!dragTarget) return; e.preventDefault();
+    var n = toNum(px(e));
+    if (dragTarget === 'a') { numA = n; document.getElementById('numA').value = n; }
+    else { numB = n; document.getElementById('numB').value = n; }
+    runSim();
+  }, { passive: false });
+  canvas.addEventListener('touchend', function() { dragTarget = null; });
+})();
+
+window.addEventListener('resize', function() { if (!dragTarget) runSim(); });
+runSim();
+
+function markDot(ctx, x, y, color, label) {
+  ctx.beginPath(); ctx.arc(x, y, 5, 0, Math.PI*2); ctx.fillStyle = color; ctx.fill();
+  ctx.fillStyle = color; ctx.font = 'bold 11px Untitled Sans,system-ui,sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(label, x, y - 12);
+}
+
+window.addEventListener('resize', runSim);
+runSim();
 </script>
 </body>
 </html>
