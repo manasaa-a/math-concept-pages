@@ -297,6 +297,18 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 .toc-inner a{font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px;line-height:1.4}
 .toc-inner a:hover{color:var(--ink);background:var(--bg)}
 .toc-inner a.active{color:var(--blue);background:var(--blue-light);font-weight:500}
+
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .completion-screen{display:none;text-align:center;padding:28px 16px}
+  .completion-screen.show{display:block;animation:fadeIn .5s ease}
+  .done-emoji{font-size:52px;margin-bottom:8px}
+  .score-big{font-family:'Athletics',Georgia,serif;font-size:44px;font-weight:700;color:var(--green);margin-bottom:8px}
+  .done-msg{font-size:15px;color:var(--ink2);max-width:340px;margin:0 auto 16px}
+  .btn-retry{background:var(--yellow);color:var(--ink);border:none;padding:10px 22px;border-radius:0;font-family:inherit;font-weight:600;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background .15s;margin-top:12px}
+  .btn-retry:hover{background:var(--gold-600)}
+  .completion-cta{margin-top:16px}
+  .completion-cta p{font-size:14px;color:var(--ink2);margin-bottom:10px}
+  .eyebrow{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;display:block}
 </style>
 </head>
 <body>
@@ -646,18 +658,27 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <div class="q-next" id="next5"><button class="btn-primary" onclick="showCompletion()">See results →</button></div>
     </div>
 
-    <div class="completion-screen" id="completion">
+        <div class="completion-screen" id="completion">
+      <div class="done-emoji" id="done-emoji">🎉</div>
       <div class="score-big" id="final-score">0/5</div>
+      <p class="done-msg" id="completion-msg"></p>
+      <button class="btn-retry" id="btn-retry" onclick="retryPractice()">Try again <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="completion-cta" id="cta-deeper" style="display:none">
+        <p>Ready to go deeper? Work 1-on-1 with a Cuemath tutor.</p>
+        <button class="btn-primary" onclick="openModal()">Book a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
       <p id="completion-msg" style="color:var(--ink2);font-size:16px;margin-top:8px"></p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:20px">
-        <button class="btn-primary" onclick="openModal()">Book a free class →</button>
-        <button class="btn-secondary" onclick="retryPractice()">↺ Try again</button>
+        <button class="btn-primary" onclick="openModal()">Book a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="btn-retry" id="btn-retry" onclick="retryPractice()">Try again <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
   </div>
 
 
   <!-- REAL-WORLD STRIP -->
+  <span class="eyebrow" style="margin-top:28px">Real world examples</span>
   <div class="rw-strip">
     <div class="rw-card">
       <div class="emoji">🏗️</div>
@@ -995,7 +1016,7 @@ function toggleFaq(btn) {
 
 
 /* PRACTICE */
-var score = 0, answered = {};
+var score = 0, answered = {}, retryCount = 0;
 var fbs = {
   q1:{ correct:'Correct! A = ½ × 6 × 4 = 12 cm².', wrong:'Not quite. Use A = ½ × base × height = ½ × 6 × 4 = 12 cm².' },
   q2:{ correct:'Correct! A = ½ × 10 × 8 = 40 cm².', wrong:'Not quite. A = ½ × 10 × 8 = 40 cm². Don\'t forget to halve the product.' },
@@ -1022,27 +1043,32 @@ function nextQ(n) {
 }
 function showCompletion() {
   document.querySelectorAll('.question-card').forEach(function(c) { c.classList.remove('active'); });
-  document.getElementById('completion').style.display = 'block';
+  document.getElementById('completion').classList.add('show');
   document.getElementById('final-score').textContent = score + '/5';
-  var msgs = ['Let\'s revisit the formulas section above.','Keep going — re-read the base–height method.','Good effort. Check the accordion for the cases you missed.','Good work — one to tighten up.','Great work! One small slip.','Perfect score! Every formula mastered.'];
+  var pct = score / 5;
+  document.getElementById('done-emoji').textContent = pct === 1 ? '🏆' : pct >= 0.8 ? '🎉' : '👍';
+  var msgs = ['Let's revisit the formulas above.','Keep going — re-read the base-height concept.','Good effort — almost there.','Good work — one to tighten up.','Great work! One small slip.','Perfect score! Area of triangle mastered.'];
   document.getElementById('completion-msg').textContent = msgs[score];
   document.getElementById('prog-bar').style.width = '100%';
+  if (retryCount < 1) {
+    document.getElementById('btn-retry').style.display = 'inline-flex';
+    document.getElementById('cta-deeper').style.display = 'none';
+  } else {
+    document.getElementById('btn-retry').style.display = 'none';
+    document.getElementById('cta-deeper').style.display = 'block';
+  }
 }
-function toggleHint(id, btn) {
-  var h = document.getElementById(id);
-  var open = h.style.display === 'block';
-  h.style.display = open ? 'none' : 'block';
-  btn.textContent = open ? '💡 Hint' : '💡 Hide hint';
-}
+
 function retryPractice() {
-  score = 0; answered = {};
-  document.querySelectorAll('.question-card').forEach(c => c.classList.remove('active'));
-  document.querySelectorAll('.choice-btn').forEach(b => { b.classList.remove('correct','wrong'); b.disabled = false; });
-  document.querySelectorAll('.q-feedback').forEach(f => { f.textContent=''; f.className='q-feedback'; });
-  document.querySelectorAll('.q-next').forEach(n => n.classList.remove('show'));
-  document.querySelectorAll('.hint-text').forEach(h => { h.style.display = 'none'; });
-  document.querySelectorAll('.hint-btn').forEach(b => { b.textContent = '💡 Hint'; });
-  document.getElementById('completion').style.display = 'none';
+  retryCount++;
+  score = 0;
+  answered = {};
+  document.querySelectorAll('.choice-btn').forEach(function(b) { b.disabled = false; b.classList.remove('correct','wrong'); });
+  document.querySelectorAll('.q-feedback').forEach(function(f) { f.style.display = 'none'; });
+  document.querySelectorAll('.q-next').forEach(function(n) { n.style.display = 'none'; });
+  document.querySelectorAll('.hint-text').forEach(function(h) { h.style.display = 'none'; });
+  var compEl = document.getElementById('completion'); compEl.classList.remove('show');
+  document.querySelectorAll('.question-card').forEach(function(c) { c.classList.remove('active'); });
   document.getElementById('q1').classList.add('active');
   document.getElementById('prog-bar').style.width = '0%';
 }
