@@ -349,7 +349,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 .footer-copy{font-size:13px;color:var(--muted)}
 
   /* ── Integer Operations Simulation ── */
-  #int-ops-sim { display:none; margin-top:16px; padding:16px 0 8px; }
+  #int-ops-sim { display:block; margin-top:16px; padding:16px 0 8px; }
   #int-ops-sim .tabs { width:100%; margin-bottom:12px; }
   #int-ops-sim .eq-bar {
     width:100%; text-align:center; margin-bottom:16px; min-height:44px;
@@ -617,6 +617,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
   </div>
 
+<div id="int-ops-home">
 <div id="int-ops-sim">
   <div class="tabs">
     <div class="tab-list tab-list-full" role="tablist" id="ops-tablist">
@@ -629,6 +630,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   <div class="eq-bar" id="ops-eq"></div>
   <div id="ops-canvas-wrap"></div>
   <div class="controls" id="ops-controls"></div>
+</div>
 </div>
 
 
@@ -1124,10 +1126,12 @@ function toggleAcc(btn) {
   var body = btn.nextElementSibling;
   var isOpen = btn.classList.contains('open');
   var simEl = document.getElementById('int-ops-sim');
+  var simHome = document.getElementById('int-ops-home');
+  // Close all — return sim to home
   btn.closest('.accordion').querySelectorAll('.accordion-btn').forEach(function(b) {
     b.classList.remove('open'); b.nextElementSibling.classList.remove('open');
   });
-  if (simEl) simEl.style.display = 'none';
+  if (simEl && simHome && simEl.parentNode !== simHome) simHome.appendChild(simEl);
   if (!isOpen) {
     btn.classList.add('open'); body.classList.add('open');
     var op = btn.dataset.op;
@@ -1135,7 +1139,6 @@ function toggleAcc(btn) {
       var slot = body.querySelector('.sim-slot');
       if (slot) {
         slot.appendChild(simEl);
-        simEl.style.display = 'block';
         var modeMap = {'+':'add','-':'sub','×':'mul','÷':'div'};
         if (typeof opsSetMode === 'function') opsSetMode(modeMap[op]);
         setTimeout(function() { simEl.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 100);
