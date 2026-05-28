@@ -370,7 +370,7 @@ strong{font-weight:500;color:var(--ink)}
   .toc{position:sticky;top:calc(var(--nav-h) + 20px);max-height:calc(100vh - var(--nav-h) - 40px);overflow-y:auto;padding-bottom:20px}
   .toc-title{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
   .toc-list{list-style:none;display:flex;flex-direction:column;gap:2px}
-  .toc-list a{display:block;padding:8px 12px;border-radius:8px;font-size:14px;color:var(--ink2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.4}
+  .toc-list a{display:block;padding:8px 12px;border-radius:0;font-size:14px;color:var(--ink2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.4}
   .toc-list a:hover{background:var(--border);color:var(--ink);text-decoration:none}
   .toc-list a.active{background:var(--yellow-light);color:var(--ink);border-left-color:var(--yellow);font-weight:500}
   .toc-divider{height:1px;background:var(--border);margin:8px 12px}
@@ -407,7 +407,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 /* Callout */
 .callout{background:var(--yellow-light);border-left:4px solid var(--yellow);border-radius:0;padding:16px 20px;margin:24px 0;font-size:15px;color:var(--ink2)}
 /* Think box */
-.think-box{background:var(--surface);border:1.5px solid var(--border);border-left:4px solid var(--ink2);border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0}
+.think-box{background:var(--surface);border:1.5px solid var(--border);border-left:4px solid var(--ink2);border-radius:0;padding:16px 20px;margin:24px 0}
 .think-label{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
 .think-box p{color:var(--ink2);margin-bottom:0}
 /* Real-world strip */
@@ -420,14 +420,14 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 /* Formula cards */
 .formula-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px 0}
 @media(max-width:560px){.formula-grid{grid-template-columns:1fr}}
-.formula-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px 18px}
+.formula-card{background:var(--bg);border:1px solid var(--border);border-radius:0;padding:16px 18px}
 .formula-card .fc-tag{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
 .formula-card .fc-formula{font-family:monospace;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:6px}
 .formula-card .fc-note{font-size:13px;color:var(--muted)}
 .formula-card.highlight{background:var(--blue-light);border-color:#F6BE7C}
 .formula-card.highlight .fc-formula{color:var(--blue)}
 /* Accordion */
-.accordion{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:16px 0}
+.accordion{border:1px solid var(--border);border-radius:0;overflow:hidden;margin:16px 0}
 .accordion-item{border-bottom:1px solid var(--border)}
 .accordion-item:last-child{border-bottom:none}
 .accordion-btn{width:100%;background:var(--surface);border:none;padding:16px 20px;text-align:left;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:16px;font-weight:500;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
@@ -436,25 +436,25 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .accordion-btn.open .acc-chev{transform:rotate(180deg)}
 .accordion-body{display:none;padding:0 20px 20px;background:var(--surface)}
 .accordion-body.open{display:block}
-.fbox{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px 18px;margin:12px 0;font-family:monospace;font-size:15px;color:var(--ink)}
+.fbox{background:var(--bg);border:1px solid var(--border);border-radius:0;padding:14px 18px;margin:12px 0;font-family:monospace;font-size:15px;color:var(--ink)}
 .flbl{font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
 .ex-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
 @media(max-width:550px){.ex-row{grid-template-columns:1fr}}
-.ex-card{background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:14px}
+.ex-card{background:var(--green-light);border-radius:0;padding:12px 14px;font-size:14px}
 .ex-lbl{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--green);margin-bottom:4px}
 /* Right-angle triangle simulation */
 .tri-slide-row{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#C1DCFF}
 .tri-slide-lbl{font-size:13px;font-weight:500;color:var(--ink);width:68px;flex-shrink:0}
 .tri-slide-row input[type=range]{flex:1;max-width:220px;accent-color:var(--ink);cursor:pointer}
-.tri-reset-btn{background:#FAF8F5;border:1px solid #aaa;border-radius:4px;padding:4px 12px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;letter-spacing:0;line-height:1.5}
+.tri-reset-btn{background:#FAF8F5;border:1px solid #aaa;border-radius:0;padding:4px 12px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;letter-spacing:0;line-height:1.5}
 .tri-stat{padding:8px 14px;font-size:14px;color:var(--ink2);border-top:1px solid var(--border);text-align:center;font-weight:500}
 /* Simulation */
-.sim-container{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0}
-.sim-canvas-wrap{width:100%;border-radius:10px;overflow:hidden;background:#FAF8F5;border:1px solid var(--border);cursor:crosshair;touch-action:none}
+.sim-container{background:var(--surface);border:1px solid var(--border);border-radius:0;padding:24px;margin:16px 0}
+.sim-canvas-wrap{width:100%;border-radius:0;overflow:hidden;background:#FAF8F5;border:1px solid var(--border);cursor:crosshair;touch-action:none}
 .sim-canvas-wrap canvas{display:block;width:100%}
 .sim-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
 @media(max-width:480px){.sim-stats{grid-template-columns:1fr 1fr}}
-.sim-stat{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;text-align:center}
+.sim-stat{background:var(--bg);border:1px solid var(--border);border-radius:0;padding:10px 14px;text-align:center}
 .sim-stat .ss-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:2px}
 .sim-stat .ss-val{font-size:20px;font-weight:700;font-family:'Athletics',Georgia,serif;color:var(--ink)}
 .sim-stat .ss-unit{font-size:12px;color:var(--muted)}
@@ -468,9 +468,9 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .step-list li::before{content:counter(step);min-width:28px;height:28px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:2px}
 .step-list li p{margin-bottom:0;font-size:15px}
 /* CTA inline */
-.cta-inline{background:var(--yellow-light);border:1px solid var(--yellow);border-radius:8px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:24px 0}
+.cta-inline{background:var(--yellow-light);border:1px solid var(--yellow);border-radius:0;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:24px 0}
 .cta-inline p{margin-bottom:0;font-size:15px;color:var(--ink2)}
-.btn-primary{background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:0;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer}
+.btn-primary{background:var(--yellow);color:var(--ink);border:none;padding:10px 20px;border-radius:0;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer}
 .btn-primary:hover{background:var(--gold-600)}
 /* CTA band */
 .cta-band{background:linear-gradient(135deg,#EC9A32 0%,#F6BE7C 100%);border-radius:0;overflow:hidden;display:grid;grid-template-columns:42% 58%;min-height:200px}
@@ -483,7 +483,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 /* Practice */
 .practice-progress{height:6px;background:var(--border);border-radius:3px;margin-bottom:24px;overflow:hidden}
 .practice-bar{height:100%;background:var(--green);border-radius:3px;transition:width .4s}
-.question-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px;margin-bottom:16px;display:none}
+.question-card{background:var(--surface);border:1px solid var(--border);border-radius:0;padding:28px;margin-bottom:16px;display:none}
 .question-card.active{display:block}
 .q-number{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
 .q-text{font-size:17px;font-weight:500;color:var(--ink);margin-bottom:20px}
@@ -495,12 +495,12 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .choice-btn.wrong{background:var(--red-light);border-color:var(--red)}
 .hint-btn{background:none;border:none;font-size:13px;color:var(--blue);cursor:pointer;padding:0;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;margin:8px 0 4px;display:inline-block}
 .hint-btn:hover{text-decoration:underline}
-.hint-text{font-size:14px;color:var(--ink2);background:var(--yellow-light);padding:10px 14px;border-radius:6px;margin-bottom:12px;display:none}
-.q-feedback{display:none;font-size:14px;padding:12px 16px;border-radius:8px;margin-top:12px}
+.hint-text{font-size:14px;color:var(--ink2);background:var(--yellow-light);padding:10px 14px;border-radius:0;margin-bottom:12px;display:none}
+.q-feedback{display:none;font-size:14px;padding:12px 16px;border-radius:0;margin-top:12px}
 .q-feedback.correct{background:var(--green-light);color:#1C7C48}
 .q-feedback.wrong{background:var(--red-light);color:#842D34}
 .q-next{margin-top:16px;display:none}
-.completion-screen{display:none;text-align:center;padding:32px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.completion-screen{display:none;text-align:center;padding:32px;background:var(--surface);border:1px solid var(--border);border-radius:0}
 .btn-secondary{background:transparent;border:2px solid var(--border);color:var(--ink2);padding:12px 22px;border-radius:0;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;font-weight:500;cursor:pointer;transition:border-color .15s}
 .btn-secondary:hover{border-color:var(--ink2)}
 .score-big{font-size:48px;font-weight:700;color:var(--green);font-family:'Athletics',Georgia,serif}
@@ -546,8 +546,8 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .concept-chip{background:var(--surface);border:1px solid var(--border);border-radius:0;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink2);text-decoration:none;text-align:center;display:block}
 .concept-chip:hover{border-color:var(--yellow);background:var(--yellow-light);color:var(--ink);text-decoration:none}
 /* Video embed */
-.video-embed{position:relative;width:100%;padding-bottom:56.25%;background:#292827;border-radius:12px;overflow:hidden;margin:20px 0}
-.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.video-embed{position:relative;width:100%;aspect-ratio:16/9;background:#292827;border-radius:0;overflow:hidden;margin:20px 0}
+.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}.yt-facade{position:absolute;top:0;left:0;width:100%;height:100%;cursor:pointer;background:#000}
 /* Modal */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;align-items:center;justify-content:center;padding:20px}
 .modal-overlay.open{display:flex}
@@ -599,7 +599,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   .eyebrow{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;display:block}
 
   /* YouTube facade */
-  .yt-facade{position:relative;cursor:pointer;background:#000}
+  .yt-facade{position:absolute;top:0;left:0;width:100%;height:100%;cursor:pointer;background:#000}
   .yt-facade img{width:100%;height:100%;object-fit:cover;display:block;opacity:.85}
   .yt-facade .yt-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:none;border:none;padding:0;cursor:pointer;transition:transform .1s}
   .yt-facade:hover .yt-play{transform:translate(-50%,-50%) scale(1.08)}
@@ -670,7 +670,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <div class="yt-facade" data-ytid="iRWR6jEi6cQ">
         <img src="https://i.ytimg.com/vi/iRWR6jEi6cQ/hqdefault.jpg" width="480" height="270" loading="lazy" decoding="async" alt="Video thumbnail" style="width:100%;height:100%;object-fit:cover">
         <button class="yt-play" onclick="(function(el){var id=el.closest('[data-ytid]').dataset.ytid;var w=el.closest('.video-wrap,.video-embed,.fv-embed');w.innerHTML='<iframe src=\"https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0\" style=\"position:absolute;top:0;left:0;width:100%;height:100%;border:0\" allow=\"autoplay;encrypted-media\" allowfullscreen loading="lazy"></iframe>'})(this)" aria-label="Play video"><svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.5 7.7C65.6 4.8 63.4 2.5 60.6 1.7 55.8 0 34 0 34 0S12.2 0 7.3 1.7C4.6 2.5 2.4 4.8 1.5 7.7 0 12.6 0 24 0 24s0 11.4 1.5 16.3c.9 2.9 3.1 5.2 5.8 6C12.2 48 34 48 34 48s21.8 0 26.7-1.7c2.7-.8 4.9-3.1 5.8-6C68 35.4 68 24 68 24s0-11.4-1.5-16.3z" fill="red"/><path d="M45 24L27 14v20z" fill="#fff"/></svg></button>
-      </div></iframe>
+      </div>
     </div>
 
     <!-- INLINE CTA -->
@@ -721,7 +721,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Base and Height are known</span><span class="acc-chev">▼</span>
+          <span>Base and Height are known</span><svg class="acc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>A = ½ × base × height</div>
@@ -754,7 +754,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>All three sides known — Heron's Formula</span><span class="acc-chev">▼</span>
+          <span>All three sides known — Heron's Formula</span><svg class="acc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>s = (a+b+c)/2 &nbsp;|&nbsp; A = √[s(s−a)(s−b)(s−c)]</div>
@@ -780,7 +780,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Equilateral Triangle (all sides equal)</span><span class="acc-chev">▼</span>
+          <span>Equilateral Triangle (all sides equal)</span><svg class="acc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>A = (√3 / 4) × a²</div>
@@ -811,7 +811,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Isosceles Triangle</span><span class="acc-chev">▼</span>
+          <span>Isosceles Triangle</span><svg class="acc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>A = ¼ × b × √(4a² − b²)</div>
@@ -1010,38 +1010,38 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
   <!-- FAQ -->
   <div class="section" id="faq">
-    <h2>Frequently Asked Questions</h2>
+    <h2>FAQs on Area of Triangle</h2>
     <div>
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">What is the area of a triangle?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">What is the area of a triangle?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></h3>
         <div class="faq-answer">The area of a triangle is the total 2D space enclosed within its three sides, measured in square units. It equals half the product of its base and perpendicular height: A = ½ × b × h.</div>
       </div>
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">Why is the area of a triangle half the area of a parallelogram?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">Why is the area of a triangle half the area of a parallelogram?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></h3>
         <div class="faq-answer">Any triangle can be doubled by placing an identical copy alongside it — the result is always a parallelogram with the same base and height. Since the parallelogram's area is base × height, each triangle is exactly half that. This is true for every triangle, no matter its shape.</div>
       </div>
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">Does the position of the height change the area?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">Does the position of the height change the area?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></h3>
         <div class="faq-answer">No. Only the length of the perpendicular height matters — not where it falls along the base. You can slide the apex horizontally as far as you like: as long as the height stays the same, the area stays the same. This is a key geometric fact worth remembering.</div>
       </div>
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">How do you find the area when you only know three sides?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">How do you find the area when you only know three sides?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></h3>
         <div class="faq-answer">Use Heron's formula. First find the semi-perimeter s = (a + b + c) ÷ 2, then calculate A = √[s(s−a)(s−b)(s−c)]. This works for any triangle as long as the three side lengths form a valid triangle (the sum of any two sides must exceed the third).</div>
       </div>
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">What is the area of an equilateral triangle with side a?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">What is the area of an equilateral triangle with side a?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></h3>
         <div class="faq-answer">A = (√3/4) × a². For a side of 6 cm: A = (√3/4) × 36 = 9√3 ≈ 15.59 cm². The formula is derived by finding the height using Pythagoras: h = (√3/2)a, then applying A = ½ × a × h.</div>
       </div>
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">How do you find the base if the area and height are known?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">How do you find the base if the area and height are known?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></h3>
         <div class="faq-answer">Rearrange A = ½bh to get b = (2 × A) ÷ h. For example, if A = 30 cm² and h = 6 cm, then b = 60 ÷ 6 = 10 cm.</div>
       </div>
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">Can the area of a triangle be negative?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">Can the area of a triangle be negative?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></h3>
         <div class="faq-answer">No. Area is always a positive quantity (or zero for a degenerate triangle where all points are collinear). In coordinate geometry, the signed area formula can give a negative number to indicate vertex orientation, but we always take the absolute value for the actual area.</div>
       </div>
       <div class="faq-item">
-        <h3 class="faq-btn" onclick="toggleFaq(this)">What units is area measured in?<span class="faq-ch">▼</span></h3>
+        <h3 class="faq-btn" onclick="toggleFaq(this)">What units is area measured in?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></h3>
         <div class="faq-answer">Area is measured in square units. If the base and height are in cm, the area is in cm². If in metres, it's m². Always square the unit label when writing the answer: 25 cm², not 25 cm.</div>
       </div>
     </div>
