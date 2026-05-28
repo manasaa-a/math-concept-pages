@@ -357,7 +357,7 @@ strong{font-weight:500;color:var(--ink)}
 .toc{position:sticky;top:80px;align-self:start;max-height:calc(100vh - 100px);overflow-y:auto;padding-bottom:20px}
 .toc-title{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 .toc-list{list-style:none;display:flex;flex-direction:column;gap:2px}
-.toc-list a{display:block;padding:8px 12px;border-radius:8px;font-size:14px;color:var(--ink2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.4}
+.toc-list a{display:block;padding:8px 12px;border-radius:0;font-size:14px;color:var(--ink2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.4}
 .toc-list a:hover{background:var(--border);color:var(--ink)}
 .toc-list a.active{background:var(--yellow-light);color:var(--ink);border-left-color:var(--yellow);font-weight:500}
 .toc-divider{height:1px;background:var(--border);margin:8px 12px}
@@ -399,7 +399,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .callout{background:var(--yellow-light);border-left:4px solid var(--yellow);border-radius:0;padding:16px 20px;margin:24px 0;font-size:15px;color:var(--ink2)}
 
 /* Think box */
-.think-box{background:var(--surface);border:1.5px solid var(--border);border-left:4px solid var(--ink2);border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0}
+.think-box{background:var(--surface);border:1.5px solid var(--border);border-left:4px solid var(--ink2);border-radius:0;padding:16px 20px;margin:24px 0}
 .think-label{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
 .think-box p{color:var(--ink2);margin-bottom:0}
 
@@ -415,14 +415,14 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 /* Sign rules grid */
 .sign-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
 @media(max-width:500px){.sign-grid{grid-template-columns:1fr}}
-.sign-card{border-radius:10px;padding:16px 18px;text-align:center}
+.sign-card{border-radius:0;padding:16px 18px;text-align:center}
 .sign-card.pos{background:var(--green-light);border:1px solid #BCEAC8}
 .sign-card.neg{background:var(--red-light);border:1px solid #FFB8B7}
 .sign-card .rule{font-size:15px;font-weight:500;margin-bottom:4px}
 .sign-card .example{font-size:13px;color:var(--muted)}
 
 /* Accordion */
-.accordion{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:16px 0}
+.accordion{border:1px solid var(--border);border-radius:0;overflow:hidden;margin:16px 0}
 .accordion-item{border-bottom:1px solid var(--border)}
 .accordion-item:last-child{border-bottom:none}
 .accordion-btn{width:100%;background:var(--surface);border:none;padding:16px 20px;text-align:left;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:16px;font-weight:500;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
@@ -435,7 +435,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .flabel{font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
 .example-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
 @media(max-width:550px){.example-row{grid-template-columns:1fr}}
-.ex-card{background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:14px}
+.ex-card{background:var(--green-light);border-radius:0;padding:12px 14px;font-size:14px}
 .ex-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--green);margin-bottom:4px}
 .sim-link{display:inline-block;margin-top:10px;font-size:13px;color:var(--blue);font-weight:500;background:none;border:none;cursor:pointer;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;padding:0}
 
@@ -447,34 +447,34 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .ops-table td.neg-result{color:var(--red);font-weight:500}
 
 /* Simulation */
-.sim-container{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0}
+.sim-container{background:var(--surface);border:1px solid var(--border);border-radius:0;padding:24px;margin:16px 0}
 .sim-op-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
-.sim-tab{padding:8px 18px;border-radius:6px;border:1px solid var(--border);background:var(--bg);font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer;color:var(--ink2)}
+.sim-tab{padding:8px 18px;border-radius:0;border:1px solid var(--border);background:var(--bg);font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer;color:var(--ink2)}
 .sim-inputs{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
 .sim-num-wrap{display:flex;flex-direction:column;align-items:center;gap:6px}
 .sim-num-label{font-size:12px;color:var(--muted);font-weight:500}
 .sim-num-ctrl{display:flex;align-items:center;gap:0}
 .sim-num-ctrl button{width:32px;height:40px;border:1px solid var(--border);background:var(--bg);font-size:18px;cursor:pointer;color:var(--ink);font-family:'Untitled Sans',-apple-system,system-ui,sans-serif}
-.sim-num-ctrl button:first-child{border-radius:6px 0 0 6px}
-.sim-num-ctrl button:last-child{border-radius:0 6px 6px 0}
+.sim-num-ctrl button:first-child{border-radius:0}
+.sim-num-ctrl button:last-child{border-radius:0}
 .sim-num-ctrl input{width:52px;height:40px;border:1px solid var(--border);border-left:none;border-right:none;text-align:center;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:16px;font-weight:500;color:var(--ink);background:var(--surface)}
 .sim-op-symbol{font-size:22px;font-weight:700;color:var(--blue);padding:0 4px}
-.sim-result-box{background:var(--bg);border-radius:8px;padding:14px 18px;margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.sim-result-box{background:var(--bg);border-radius:0;padding:14px 18px;margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .sim-result-eq{font-size:18px;font-weight:500;color:var(--ink)}
-.sim-rule-badge{font-size:13px;padding:4px 12px;border-radius:12px;font-weight:500}
+.sim-rule-badge{font-size:13px;padding:4px 12px;border-radius:0;font-weight:500}
 .sim-rule-pos{background:var(--green-light);color:var(--green)}
 .sim-rule-neg{background:var(--red-light);color:var(--red)}
 .sim-rule-zero{background:var(--yellow-light);color:#7E4800}
-.numberline-wrap{width:100%;overflow:hidden;border-radius:8px;background:#FAF8F5;border:1px solid var(--border)}
+.numberline-wrap{width:100%;overflow:hidden;border-radius:0;background:#FAF8F5;border:1px solid var(--border)}
 .numberline-wrap canvas{display:block;width:100%;cursor:grab;touch-action:none}
 .numberline-wrap canvas.dragging{cursor:grabbing}
 .nl-drag-hint{text-align:center;font-size:12px;color:var(--muted);padding:4px 0 8px;letter-spacing:.01em}
 .sim-discover{margin-top:12px;font-size:13px;color:var(--muted);font-weight:500}
 /* Sign Explorer (× and ÷) */
-.sign-explorer{background:var(--bg);border-radius:10px;padding:18px 20px;margin-bottom:16px}
+.sign-explorer{background:var(--bg);border-radius:0;padding:18px 20px;margin-bottom:16px}
 .sign-explorer-label{font-size:13px;color:var(--muted);margin-bottom:14px}
 .sign-board{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
-.sign-tile{width:80px;height:80px;border-radius:12px;border:2px solid;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;user-select:none;transition:transform .15s,box-shadow .15s}
+.sign-tile{width:80px;height:80px;border-radius:0;border:2px solid;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;user-select:none;transition:transform .15s,box-shadow .15s}
 .sign-tile.clickable{cursor:pointer}
 .sign-tile.clickable:hover{transform:scale(1.07);box-shadow:0 4px 14px rgba(0,0,0,.12)}
 .sign-tile.spos{background:var(--green-light);border-color:var(--green)}
@@ -485,12 +485,12 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .sign-tile.sneg .st-sign{color:var(--red)}
 .sign-tile .st-val{font-size:13px;font-weight:500;color:var(--ink2)}
 .sign-board-op{font-size:24px;font-weight:700;color:var(--ink2)}
-.sign-rule-note{display:block;text-align:center;font-size:14px;font-weight:500;margin-top:14px;padding:6px 16px;border-radius:16px}
+.sign-rule-note{display:block;text-align:center;font-size:14px;font-weight:500;margin-top:14px;padding:6px 16px;border-radius:0}
 .sign-flash{animation:sfpulse .35s ease}
 @keyframes sfpulse{0%{transform:scale(1)}45%{transform:scale(1.18)}100%{transform:scale(1)}}
 
 /* CTA inline */
-.cta-inline{background:var(--yellow-light);border:1px solid var(--yellow);border-radius:8px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:24px 0}
+.cta-inline{background:var(--yellow-light);border:1px solid var(--yellow);border-radius:0;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:24px 0}
 .cta-inline p{margin-bottom:0;font-size:15px;color:var(--ink2)}
 .btn-primary{background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:0;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer}
 .btn-primary:hover{background:var(--gold-600)}
@@ -507,7 +507,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 /* Practice */
 .practice-progress{height:6px;background:var(--border);border-radius:3px;margin-bottom:24px;overflow:hidden}
 .practice-bar{height:100%;background:var(--green);border-radius:3px;transition:width .4s}
-.question-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px;margin-bottom:16px;display:none}
+.question-card{background:var(--surface);border:1px solid var(--border);border-radius:0;padding:28px;margin-bottom:16px;display:none}
 .question-card.active{display:block}
 .q-number{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
 .q-text{font-size:17px;font-weight:500;color:var(--ink);margin-bottom:20px}
@@ -515,11 +515,11 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 @media(max-width:500px){.choices{grid-template-columns:1fr}}
 .choice-btn{padding:12px 16px;border:1px solid var(--border);border-radius:0;background:var(--bg);font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;cursor:pointer;text-align:left;color:var(--ink);transition:border-color .15s,background .15s}
 .choice-btn:hover:not(:disabled){border-color:var(--blue);background:var(--blue-light)}
-.choice-btn.correct{background:var(--green-light);border-color:var(--green)}
+.choice-btn.correct{background:var(--green-light);border-color:var(--green)}.choice-btn:disabled.correct{background:var(--green-light);border-color:var(--green);opacity:1}.choice-btn:disabled.wrong{background:var(--red-light);border-color:var(--red);opacity:1}
 .choice-btn.wrong{background:var(--red-light);border-color:var(--red)}
 .hint-toggle{font-size:13px;color:var(--blue);cursor:pointer;margin-bottom:8px;background:none;border:none;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;padding:0}
-.hint-text{display:none;font-size:14px;color:var(--muted);background:var(--yellow-light);padding:10px 14px;border-radius:6px;margin-bottom:12px}
-.q-feedback{display:none;font-size:14px;padding:12px 16px;border-radius:8px;margin-top:12px}
+.hint-text{display:none;font-size:14px;color:var(--muted);background:var(--yellow-light);padding:10px 14px;border-radius:0;margin-bottom:12px}
+.q-feedback{display:none;font-size:14px;padding:12px 16px;border-radius:0;margin-top:12px}
 .q-feedback.correct{background:var(--green-light);color:#1C7C48}
 .q-feedback.wrong{background:var(--red-light);color:#842D34}
 .q-next{margin-top:16px;display:none}
@@ -572,8 +572,8 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .video-info{padding:14px}
 .video-tag{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px}
 .video-title{font-size:14px;font-weight:500;color:var(--ink);line-height:1.4}
-.tag-puzzle{background:var(--yellow-light);color:#7E4800;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
-.tag-rw{background:var(--green-light);color:var(--green);padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-puzzle{background:var(--yellow-light);color:#7E4800;padding:2px 8px;border-radius:0;font-size:11px;font-weight:500}
+.tag-rw{background:var(--green-light);color:var(--green);padding:2px 8px;border-radius:0;font-size:11px;font-weight:500}
 
 /* Related concepts */
 .concepts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
@@ -582,7 +582,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .concept-chip:hover{border-color:var(--yellow);background:var(--yellow-light);color:var(--ink);text-decoration:none}
 
 /* Video embed */
-.video-embed{position:relative;width:100%;padding-bottom:56.25%;background:#292827;border-radius:12px;overflow:hidden;margin:20px 0}
+.video-embed{position:relative;width:100%;padding-bottom:56.25%;background:#292827;border-radius:0;overflow:hidden;margin:20px 0}
 .video-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
 .big-play{width:64px;height:64px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px}
 .video-placeholder p{color:rgba(255,255,255,.6);font-size:14px}
@@ -596,12 +596,12 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .modal-step.active{display:block}
 .modal-title{font-family:'Athletics',Georgia,serif;font-size:22px;font-weight:700;margin-bottom:8px}
 .modal-sub{font-size:15px;color:var(--muted);margin-bottom:24px}
-.modal-option{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:12px;text-align:left;cursor:pointer;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;display:flex;align-items:center;gap:12px}
+.modal-option{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:0;padding:16px 20px;margin-bottom:12px;text-align:left;cursor:pointer;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;display:flex;align-items:center;gap:12px}
 .modal-option:hover{border-color:var(--blue);background:var(--blue-light)}
 .opt-icon{font-size:22px}
 .form-field{margin-bottom:16px}
 .form-field label{display:block;font-size:13px;font-weight:500;color:var(--ink2);margin-bottom:6px}
-.form-field input,.form-field select{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;color:var(--ink);background:var(--bg)}
+.form-field input,.form-field select{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:0;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;color:var(--ink);background:var(--bg)}
 .feeling-btns{display:flex;gap:10px;margin-top:4px}
 .feeling-btn{flex:1;padding:10px;border:1px solid var(--border);border-radius:0;8px;background:var(--bg);font-size:20px;cursor:pointer;text-align:center}
 .feeling-btn.selected{border-color:var(--blue);background:var(--blue-light)}
@@ -701,7 +701,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <p>The set of integers is written as <strong>ℤ = {…, −4, −3, −2, −1, 0, 1, 2, 3, 4, …}</strong> — it extends infinitely in both directions. The letter Z comes from the German word <em>Zahlen</em>, meaning "numbers."</p>
 
     <!-- Integer classification diagram -->
-    <img src="integers-classification.png" alt="Classification of integers: negative numbers, zero, and whole numbers including natural numbers" style="width:100%;max-width:500px;display:block;margin:20px auto;border-radius:8px" loading="lazy">
+    <img src="integers-classification.png" alt="Classification of integers: negative numbers, zero, and whole numbers including natural numbers" style="width:100%;max-width:500px;display:block;margin:20px auto;border-radius:0" loading="lazy">
 
     <p>Three things to remember: positive integers (1, 2, 3, …) sit to the right of zero; negative integers (−1, −2, −3, …) sit to the left; and <strong>zero is an integer</strong> — the only one that is neither positive nor negative.</p>
 
@@ -717,7 +717,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <p>Every integer has a fixed address on the number line. Numbers increase as you move right and decrease as you move left — making it a perfect tool for addition and subtraction.</p>
 
     <!-- SVG number line -->
-    <svg viewBox="0 0 580 80" style="width:100%;max-width:580px;display:block;margin:20px auto;background:#FAF8F5;border-radius:10px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 580 80" style="width:100%;max-width:580px;display:block;margin:20px auto;background:#FAF8F5;border-radius:0;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
       <line x1="20" y1="40" x2="560" y2="40" stroke="#84807B" stroke-width="2"/>
       <polygon points="558,35 568,40 558,45" fill="#84807B"/>
       <polygon points="22,35 12,40 22,45" fill="#84807B"/>
@@ -752,7 +752,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <!-- ADDITION -->
       <div class="accordion-item">
         <button class="accordion-btn" data-op="+" onclick="toggleAcc(this)">
-          <span>Addition of Integers</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Addition of Integers</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
         <div class="accordion-body">
           <p style="font-size:15px;color:var(--ink2)">Two rules cover every case:</p>
@@ -788,7 +788,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <!-- SUBTRACTION -->
       <div class="accordion-item">
         <button class="accordion-btn" data-op="-" onclick="toggleAcc(this)">
-          <span>Subtraction of Integers</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Subtraction of Integers</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
         <div class="accordion-body">
           <div class="formula-box">
@@ -818,7 +818,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <!-- MULTIPLICATION -->
       <div class="accordion-item">
         <button class="accordion-btn" data-op="×" onclick="toggleAcc(this)">
-          <span>Multiplication of Integers</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Multiplication of Integers</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
         <div class="accordion-body">
           <p style="font-size:15px;color:var(--ink2)">The sign of the product depends only on the signs of the factors:</p>
@@ -844,7 +844,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <!-- DIVISION -->
       <div class="accordion-item">
         <button class="accordion-btn" data-op="÷" onclick="toggleAcc(this)">
-          <span>Division of Integers</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Division of Integers</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
         <div class="accordion-body">
           <p style="font-size:15px;color:var(--ink2)">Division follows the exact same sign rules as multiplication:</p>
@@ -874,7 +874,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
   </div>
 
-</div>
+
 
   <!-- SECTION: PROPERTIES -->
   <div class="section" id="properties">
@@ -885,7 +885,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Closure Property</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Closure Property</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
         <div class="accordion-body">
           <div class="formula-box"><div class="flabel">Rule</div>If a ∈ ℤ and b ∈ ℤ, then a + b, a − b, and a × b are all ∈ ℤ</div>
@@ -899,7 +899,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Commutative Property</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Commutative Property</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
         <div class="accordion-body">
           <div class="formula-box"><div class="flabel">Rule</div>a + b = b + a &nbsp;&nbsp; and &nbsp;&nbsp; a × b = b × a</div>
@@ -913,7 +913,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Associative Property</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Associative Property</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
         <div class="accordion-body">
           <div class="formula-box"><div class="flabel">Rule</div>(a + b) + c = a + (b + c) &nbsp;&nbsp; and &nbsp;&nbsp; (a × b) × c = a × (b × c)</div>
@@ -923,7 +923,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Distributive Property</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Distributive Property</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
         <div class="accordion-body">
           <div class="formula-box"><div class="flabel">Rule</div>a × (b + c) = (a × b) + (a × c)</div>
@@ -934,7 +934,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Identity Properties</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Identity Properties</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
         <div class="accordion-body">
           <div class="formula-box"><div class="flabel">Rules</div>Additive identity: a + 0 = a &nbsp;&nbsp;|&nbsp;&nbsp; Multiplicative identity: a × 1 = a</div>
@@ -944,7 +944,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Additive Inverse Property</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Additive Inverse Property</span><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
         <div class="accordion-body">
           <div class="formula-box"><div class="flabel">Rule</div>a + (−a) = 0 &nbsp;&nbsp; (every integer has an opposite that cancels it)</div>
@@ -980,7 +980,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <div class="question-card active" id="q1">
       <div class="q-number">Question 1 of 5</div>
       <div class="q-text">An elevator starts at floor 0. It rises 4 floors, then drops 7. What floor does it end on?</div>
-      <svg viewBox="0 0 320 90" style="width:100%;max-width:320px;display:block;margin:0 0 16px;background:#FAF8F5;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 320 90" style="width:100%;max-width:320px;display:block;margin:0 0 16px;background:#FAF8F5;border-radius:0;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
         <line x1="20" y1="45" x2="300" y2="45" stroke="#84807B" stroke-width="1.5"/>
         <g font-size="11" font-family="Untitled Sans" text-anchor="middle" fill="var(--ink2)">
           <line x1="40" y1="39" x2="40" y2="51" stroke="#84807B" stroke-width="1.5"/>  <text x="40" y="65">−4</text>
@@ -1239,7 +1239,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   <!-- RELATED VIDEOS -->
   <div class="section" id="videos">
     <p class="section-label">Related Videos</p>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:4px">⚠ Content gap: no dedicated Integers concept video exists in the library yet.</p>
+    
     <div class="video-grid">
       <a class="video-card" href="https://www.youtube.com/watch?v=8uJ6R1X_-dk" target="_blank" rel="noopener">
         <div class="video-thumb">
