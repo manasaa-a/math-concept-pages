@@ -1213,12 +1213,12 @@
     opts.forEach(o=>o.disabled=true); phintBtn.style.display='none';
     const fb=document.getElementById('prac-fb'); fb.classList.add('show',right?'correct':'wrong');
     fb.textContent=right?q.fb.r:q.fb.w; if(right) score++;
-    nextBtn.innerHTML=(qi===questions.length-1?'See score ':'Next ')+'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:4px"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg>'; nextBtn.classList.add('show');
+    nextBtn.innerHTML=(qi===questions.length-1?'See score ':'Next ')+'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:4px"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg>'; nextBtn.style.display=''; nextBtn.classList.add('show');
   }
   nextBtn.addEventListener('click', () => {
     qi++;
     if(qi>=questions.length){
-      document.getElementById('prac-stage').style.display='none'; nextBtn.style.display='none';
+      document.getElementById('prac-stage').style.display='none'; nextBtn.classList.remove('show');
       document.getElementById('prog-fill').style.width='100%';
       document.getElementById('q-counter').textContent=`${score} of ${questions.length} correct`;
       document.getElementById('prac-done').classList.add('show');
@@ -1243,7 +1243,7 @@
     qi = 0; score = 0;
     document.getElementById('prac-done').classList.remove('show');
     document.getElementById('prac-stage').style.display = '';
-    document.getElementById('next-btn').style.display = 'none';
+    document.getElementById('next-btn').classList.remove('show');
     document.getElementById('prog-fill').style.width = '0%';
     document.getElementById('q-counter').textContent = 'Question 1 of ' + questions.length;
     renderQ();
