@@ -352,9 +352,9 @@ a:hover{text-decoration:underline}
 strong{font-weight:500;color:var(--ink)}
 
 /* Layout */
-.page-wrap{display:grid;grid-template-columns:220px 1fr;gap:52px;align-items:start;max-width:1120px;margin:0 auto;padding:40px 32px 80px}
+.page-grid{max-width:1120px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:220px 1fr;gap:52px;align-items:start;padding-top:40px;padding-bottom:80px}
 .content{min-width:0}
-.toc-sidebar{position:sticky;top:80px;align-self:start;max-height:calc(100vh - 100px);overflow-y:auto}
+.toc{position:sticky;top:80px;align-self:start;max-height:calc(100vh - 100px);overflow-y:auto;padding-bottom:20px}
 /* mobile TOC */
   .mobile-toc{display:none;border:1px solid var(--border);margin-bottom:28px;overflow:hidden;border-radius:0}
   .mobile-toc summary{list-style:none;cursor:pointer;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;font-family:inherit;font-size:15px;font-weight:600;color:var(--ink);background:var(--surface)}
@@ -372,7 +372,7 @@ strong{font-weight:500;color:var(--ink)}
   
 
   @media(max-width:820px){main.content{padding-left:20px;padding-right:20px}.mobile-toc{display:block;margin-top:24px}
-    .page-wrap{grid-template-columns:1fr;padding:24px 20px 40px}.toc-sidebar{display:none}}
+    .page-grid{grid-template-columns:1fr;gap:0;padding-top:24px}.toc{display:none}}
 .section{padding:52px 0;border-bottom:1px solid var(--border)}
 .section:last-child{border-bottom:none}
 
@@ -634,24 +634,22 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   <span style="font-size:12px;color:var(--muted)">⏱ 9 min read</span>
 </div>
 
-<div class="page-wrap">
+<div class="page-grid">
 
 <!-- TOC SIDEBAR -->
-<aside class="toc-sidebar">
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;position:sticky;top:72px">
-    <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px">On this page</div>
-    <ul id="toc-list" style="list-style:none;padding:0">
-      <li style="margin-bottom:4px"><a href="#what-is" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">What are Integers?</a></li>
-      <li style="margin-bottom:4px"><a href="#numberline" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">On a Number Line</a></li>
-      <li style="margin-bottom:4px"><a href="#operations" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Operations</a></li>
-      <li style="margin-bottom:4px"><a href="#properties" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Properties</a></li>
-      <li style="margin-bottom:4px"><a href="#practice" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Practice</a></li>
-
-      <li style="margin-bottom:4px"><a href="#faq" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">FAQ</a></li>
-      <li style="margin-bottom:4px"><a href="#worksheets" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Worksheets</a></li>
-      <li style="margin-bottom:4px"><a href="#videos" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Related Videos</a></li>
-    </ul>
-  </div>
+<aside class="toc">
+  <div class="toc-title">On this page</div>
+  <ul class="toc-list" id="toc-list">
+      <li><a href="#what-is" class="">What are Integers?</a></li>
+      <li><a href="#numberline" class="">Integers on a Number Line</a></li>
+      <li><a href="#operations" class="">Integer Operations</a></li>
+      <li><a href="#properties" class="">Properties of Integers</a></li>
+      <li><a href="#practice" class="">Practice questions</a></li>
+      <li><a href="#worksheets" class="">Downloadable worksheet</a></li>
+      <li><a href="#takeaways" class="">Key Takeaways</a></li>
+      <li><a href="#faq" class="">FAQ</a></li>
+      <li><a href="#videos" class="">Related Videos</a></li>
+  </ul>
 </aside>
 
 <!-- MAIN CONTENT -->
