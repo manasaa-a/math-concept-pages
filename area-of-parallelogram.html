@@ -152,12 +152,12 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .cta-inline p{margin-bottom:0;font-size:15px;color:var(--ink2)}
 .btn-primary{background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:0;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer}
 .btn-primary:hover{background:var(--gold-600)}
-.cta-band{background:linear-gradient(135deg,#EC9A32 0%,#F6BE7C 100%);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:42% 58%;min-height:200px}
+.cta-band{background:linear-gradient(135deg,#EC9A32 0%,#F6BE7C 100%);border-radius:0;overflow:hidden;display:grid;grid-template-columns:42% 58%;min-height:200px}
 
 .cta-band h3{color:var(--neutral-1000);margin-bottom:8px}
 .cta-band p{color:var(--neutral-800);margin-bottom:20px;font-size:15px}
 .btn-white{background:#fff;color:var(--neutral-1000);border:none;padding:12px 24px;border-radius:0;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;font-weight:500;cursor:pointer}
-.cta-img{grid-column:1;grid-row:1;width:100%;height:100%;object-fit:cover;object-position:center top;display:block}.cta-band>div{grid-column:2;grid-row:1;padding:32px 36px;display:flex;flex-direction:column;justify-content:center;gap:10px;background:linear-gradient(135deg,#EC9A32 0%,#F6BE7C 100%);border-radius:24px 0 0 24px;margin-left:-24px;position:relative;z-index:1}
+.cta-img{grid-column:1;grid-row:1;width:100%;height:100%;object-fit:cover;object-position:center top;display:block}.cta-band>div{grid-column:2;grid-row:1;padding:32px 36px;display:flex;flex-direction:column;justify-content:center;gap:10px;background:linear-gradient(135deg,#EC9A32 0%,#F6BE7C 100%);border-radius:0;margin-left:-24px;position:relative;z-index:1}
 @media(max-width:820px){.cta-band{grid-template-columns:1fr;min-height:auto}.cta-img{display:none}.cta-band>div{grid-column:1;padding:24px;border-radius:0;margin-left:0}}
 /* Practice */
 .practice-progress{height:6px;background:var(--border);border-radius:3px;margin-bottom:24px;overflow:hidden}
@@ -233,7 +233,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 /* Modal */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;align-items:center;justify-content:center;padding:20px}
 .modal-overlay.open{display:flex}
-.modal-box{background:var(--surface);border-radius:16px;max-width:480px;width:100%;padding:32px;position:relative;max-height:90vh;overflow-y:auto}
+.modal-box{background:var(--surface);border-radius:0;max-width:480px;width:100%;padding:32px;position:relative;max-height:90vh;overflow-y:auto}
 .modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--muted)}
 .modal-step{display:none}.modal-step.active{display:block}
 .modal-title{font-family:'Athletics',Georgia,serif;font-size:22px;font-weight:700;margin-bottom:8px}
@@ -403,7 +403,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 <nav>
   <div class="nav-inner">
     <a class="nav-logo" href="/">Cuemath</a>
-    <a class="nav-cta" href="#" onclick="openModal();return false">Try a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a class="nav-cta" href="#" onclick="openModal();return false">Try a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></a>
   </div>
 </nav>
 
@@ -434,7 +434,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   <!-- MOBILE TOC -->
   <div class="mobile-toc">
       <button class="mobile-toc-btn" id="mobile-toc-btn">
-        <span>On this page</span><span id="mtoc-icon">↓</span>
+        <span>On this page</span><span id="mtoc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></span>
       </button>
       <div class="mobile-toc-body" id="mobile-toc-body">
         <a href="#what-is">What is the Area of a Parallelogram?</a>
@@ -468,7 +468,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <!-- INLINE CTA -->
     <div class="cta-inline">
       <p>Want to go deeper? Get personalised 1:1 math tutoring with a Cuemath expert.</p>
-      <button class="btn-primary" onclick="openModal()">Get 1:1 help <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="btn-primary" onclick="openModal()">Get 1:1 help <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></button>
     </div>
 
   <!-- WHAT IS -->
@@ -611,7 +611,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <div>
         <h3>Want 1:1 guidance from an expert?</h3>
         <p>Work through problems live with a Cuemath tutor — personalised to how you learn, at your own pace.</p>
-        <button class="btn-white" onclick="openModal()">Book a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="btn-white" onclick="openModal()">Book a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></button>
       </div>
       <img class="cta-img" src="cta-student.png" alt="Cuemath 1-on-1 online class" loading="lazy">
     </div>
@@ -642,7 +642,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <button class="hint-toggle" onclick="toggleHint('h1')">💡 Show hint</button>
       <div class="hint-text" id="h1">Use A = base × height. The green dashed line is the perpendicular height — not the slant side.</div>
       <div class="q-feedback" id="fb1"></div>
-      <div class="q-next" id="next1"><button class="btn-primary" onclick="nextQ(2)">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="q-next" id="next1"><button class="btn-primary" onclick="nextQ(2)">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></button></div>
     </div>
 
     <!-- Q2 -->
@@ -658,7 +658,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <button class="hint-toggle" onclick="toggleHint('h2')">💡 Show hint</button>
       <div class="hint-text" id="h2">A = base × height = 12 × 7.</div>
       <div class="q-feedback" id="fb2"></div>
-      <div class="q-next" id="next2"><button class="btn-primary" onclick="nextQ(3)">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="q-next" id="next2"><button class="btn-primary" onclick="nextQ(3)">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></button></div>
     </div>
 
     <!-- Q3 -->
@@ -674,7 +674,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <button class="hint-toggle" onclick="toggleHint('h3')">💡 Show hint</button>
       <div class="hint-text" id="h3">Rearrange A = b × h: h = A ÷ b = 96 ÷ 12.</div>
       <div class="q-feedback" id="fb3"></div>
-      <div class="q-next" id="next3"><button class="btn-primary" onclick="nextQ(4)">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="q-next" id="next3"><button class="btn-primary" onclick="nextQ(4)">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></button></div>
     </div>
 
     <!-- Q4 -->
@@ -690,7 +690,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <button class="hint-toggle" onclick="toggleHint('h4')">💡 Show hint</button>
       <div class="hint-text" id="h4">First find the area in m²: 400 × 250. Then divide by 10,000 to convert to hectares.</div>
       <div class="q-feedback" id="fb4"></div>
-      <div class="q-next" id="next4"><button class="btn-primary" onclick="nextQ(5)">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="q-next" id="next4"><button class="btn-primary" onclick="nextQ(5)">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></button></div>
     </div>
 
     <!-- Q5 -->
@@ -706,17 +706,17 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <button class="hint-toggle" onclick="toggleHint('h5')">💡 Show hint</button>
       <div class="hint-text" id="h5">Let base = b, so height = 2b. Then A = b × 2b = 2b² = 72. Solve for b.</div>
       <div class="q-feedback" id="fb5"></div>
-      <div class="q-next" id="next5"><button class="btn-primary" onclick="showCompletion()">See results <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="q-next" id="next5"><button class="btn-primary" onclick="showCompletion()">See results <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></button></div>
     </div>
 
     <div class="completion-screen" id="completion">
       <div class="done-emoji" id="done-emoji">🎉</div>
       <div class="score-big" id="final-score">0/5</div>
       <p class="done-msg" id="completion-msg"></p>
-      <button class="btn-retry" id="btn-retry" onclick="retryPractice()">Try again <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="btn-retry" id="btn-retry" onclick="retryPractice()">Try again <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.5643 19.4917C13.3074 18.1914 12.045 17.3455 10.7446 17.6025L10.512 16.4252C11.8124 16.1683 12.6582 14.9059 12.4013 13.6055L13.5785 13.3729C13.7557 14.2696 13.5833 15.1543 13.1557 15.886C15.3545 15.4032 17 13.4438 17 11.1C17 8.39381 14.8062 6.2 12.1 6.2C9.39381 6.2 7.2 8.39381 7.2 11.1C7.2 12.0814 7.48789 12.9937 7.98364 13.7593L6.97637 14.4116C6.35863 13.4576 6 12.3197 6 11.1C6 7.73106 8.73106 5 12.1 5C15.4689 5 18.2 7.73106 18.2 11.1C18.2 14.0369 16.1245 16.4891 13.3602 17.0697C14.0515 17.5842 14.5614 18.3471 14.7416 19.2591L13.5643 19.4917Z" fill="currentColor"/></svg></button>
       <div class="completion-cta" id="cta-deeper" style="display:none">
         <p>Ready to go deeper? Work 1-on-1 with a Cuemath tutor.</p>
-        <button class="btn-primary" onclick="openModal()">Book a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="btn-primary" onclick="openModal()">Book a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></button>
       </div>
     </div>
   </div>
@@ -731,7 +731,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <div>
         <strong style="font-size:16px;display:block;margin-bottom:4px">Grade 7 | Area Worksheet</strong>
         <span style="font-size:14px;color:var(--muted)">PDF · Area of parallelogram problems</span><br>
-        <a class="ws-btn" href="area-of-parallelogram-worksheet.pdf" download="Cuemath-Area-of-Parallelogram-Worksheet-Grade7.pdf">Download PDF <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:4px"><path d="M12 5v14M5 13l7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="ws-btn" href="area-of-parallelogram-worksheet.pdf" download="Cuemath-Area-of-Parallelogram-Worksheet-Grade7.pdf">Download PDF <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:4px"><path fill-rule="evenodd" clip-rule="evenodd" d="M16.3198 13.1203C14.2857 13.1203 12.5998 14.8366 12.5998 17H11.3998C11.3998 14.8366 9.71398 13.1203 7.67982 13.1203L7.67982 11.9203C9.17301 11.9203 10.501 12.6031 11.3998 13.6756V5H12.5998V13.6756C13.4986 12.6031 14.8266 11.9203 16.3198 11.9203V13.1203ZM6 18.9981L18 18.9981V17.7981L6 17.7981V18.9981Z" fill="currentColor"/></svg></a>
       </div>
     </div>
 <div class="section" id="takeaways">
@@ -890,7 +890,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       </div>
       <div class="form-field"><label>Your first name</label><input type="text" placeholder="e.g. Arjun"></div>
       <div class="form-field"><label>Parent's phone number</label><input type="tel" placeholder="+91 98765 43210"></div>
-      <button class="modal-submit" onclick="goStep('done')">Book my free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="modal-submit" onclick="goStep('done')">Book my free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></button>
     </div>
     <div class="modal-step" id="step3b">
       <div class="modal-title">Book a free trial for your child</div>
@@ -902,7 +902,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       </div>
       <div class="form-field"><label>Your phone number</label><input type="tel" placeholder="+91 98765 43210"></div>
       <div class="form-field"><label>Your email</label><input type="email" placeholder="you@example.com"></div>
-      <button class="modal-submit" onclick="goStep('done')">Book free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="modal-submit" onclick="goStep('done')">Book free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></button>
     </div>
     <div class="modal-step" id="step3c">
       <div class="modal-title">You're in the right place</div>
@@ -1019,10 +1019,10 @@ tocIds.forEach(function(id){var el=document.getElementById(id);if(el)spy.observe
   if (mtocBtn && mtocBody) {
     mtocBtn.addEventListener('click', () => {
       const open = mtocBody.classList.toggle('open');
-      document.getElementById('mtoc-icon').textContent = open ? '↑' : '↓';
+      document.getElementById('mtoc-icon').innerHTML = open ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.5998 7.33333C12.5998 10.6839 15.316 13.4 18.6665 13.4L18.6665 14.6C15.6826 14.6 13.1187 12.8015 11.9998 10.2293C10.8809 12.8015 8.3171 14.6 5.33317 14.6L5.33317 13.4C8.6837 13.4 11.3998 10.6839 11.3998 7.33333L12.5998 7.33333Z" fill="currentColor"/></svg>' : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>';
     });
     mtocBody.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => { mtocBody.classList.remove('open'); document.getElementById('mtoc-icon').textContent = '↓'; });
+      a.addEventListener('click', () => { mtocBody.classList.remove('open'); document.getElementById('mtoc-icon').innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>'; });
     });
   }
 </script>
