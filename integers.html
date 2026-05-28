@@ -537,6 +537,10 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           </div>
         
         
+        
+          <div class="ops-sim-wrap" data-mode="add" style="margin-top:20px;border:1px solid var(--border);overflow:hidden">
+            <div class="ops-sim-placeholder" style="background:#FAF8F5;height:480px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:var(--font-body);font-size:14px;color:var(--muted)" onclick="loadOpsSim(this.parentNode,'add')">▶ Load simulation</div>
+          </div>
         </div>
       </div>
 
@@ -563,6 +567,10 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           </div>
         
         
+        
+          <div class="ops-sim-wrap" data-mode="sub" style="margin-top:20px;border:1px solid var(--border);overflow:hidden">
+            <div class="ops-sim-placeholder" style="background:#FAF8F5;height:480px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:var(--font-body);font-size:14px;color:var(--muted)" onclick="loadOpsSim(this.parentNode,'sub')">▶ Load simulation</div>
+          </div>
         </div>
       </div>
 
@@ -585,6 +593,10 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           <p style="font-size:14px;color:var(--muted)"><em>Why does negative × negative = positive?</em> Think of it as reversing direction twice — two reversals bring you back to the original direction.</p>
         
         
+        
+          <div class="ops-sim-wrap" data-mode="mul" style="margin-top:20px;border:1px solid var(--border);overflow:hidden">
+            <div class="ops-sim-placeholder" style="background:#FAF8F5;height:480px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:var(--font-body);font-size:14px;color:var(--muted)" onclick="loadOpsSim(this.parentNode,'mul')">▶ Load simulation</div>
+          </div>
         </div>
       </div>
 
@@ -607,6 +619,10 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           <p style="font-size:14px;color:var(--muted)">Note: dividing integers does not always produce an integer (e.g., 5 ÷ 2 = 2.5). Division is only closed over integers when the result is exact.</p>
         
         
+        
+          <div class="ops-sim-wrap" data-mode="div" style="margin-top:20px;border:1px solid var(--border);overflow:hidden">
+            <div class="ops-sim-placeholder" style="background:#FAF8F5;height:480px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:var(--font-body);font-size:14px;color:var(--muted)" onclick="loadOpsSim(this.parentNode,'div')">▶ Load simulation</div>
+          </div>
         </div>
       </div>
 
@@ -620,10 +636,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
 </div>
 
-  <!-- INTEGER OPERATIONS SIMULATION -->
-  <div style="border:1px solid var(--border);overflow:hidden;margin:24px 0">
-    <iframe id="int-ops-iframe" src="integer-ops-iframe.html" style="width:100%;height:480px;border:0;display:block" loading="lazy" title="Integer Operations"></iframe>
-  </div>
 
 
 
@@ -1133,14 +1145,16 @@ function toggleAcc(btn) {
     btn.classList.add('open'); body.classList.add('open');
     var op = btn.dataset.op;
     if (op) {
-      var sim = document.getElementById('int-ops-iframe');
       var modeMap = {'+':'add','-':'sub','×':'mul','÷':'div'};
-      if (sim) sim.contentWindow.postMessage({tab: modeMap[op]}, '*');
-      setTimeout(function(){
-        if (sim) sim.scrollIntoView({behavior:'smooth', block:'nearest'});
-      }, 150);
+      var wrap = body.querySelector('.ops-sim-wrap');
+      if (wrap) loadOpsSim(wrap, modeMap[op]);
     }
   }
+}
+
+function loadOpsSim(wrap, mode) {
+  if (wrap.querySelector('iframe')) return; // already loaded
+  wrap.innerHTML = '<iframe src="integer-ops-iframe.html?mode='+mode+'" style="width:100%;height:480px;border:0;display:block" title="Integer Operations — '+mode+'" allowtransparency="true"></iframe>';
 }
 function toggleFaq(btn) {
   var a = btn.nextElementSibling, o = btn.classList.contains('open');
