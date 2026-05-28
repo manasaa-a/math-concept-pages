@@ -10,13 +10,18 @@ TODOs (deferred — to be locked once page structure is finalised):
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="preconnect" href="https://i.ytimg.com" crossorigin>
+<link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
+<link rel="preconnect" href="https://www.geogebra.org" crossorigin>
+<link rel="dns-prefetch" href="https://www.geogebra.org">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Surface Area of a Cylinder - Formula, TSA and CSA</title>
 <meta name="description" content="The surface area of a cylinder of radius 'r' and height 'h' is 2πr(r+h) whereas the curved surface area is 2πrh. Learn how these formulas are derived.">
 <meta name="keywords" content="surface area of cylinder, TSA of cylinder, CSA of cylinder formula">
 <link rel="canonical" href="https://www.cuemath.com/measurement/surface-area-of-cylinder/">
-<link rel="stylesheet" href="cuedesign.css">
+<link rel="preload" href="cuedesign.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="cuedesign.css"></noscript>
 <style>
   .section-label{font-size:clamp(20px,2.5vw,26px);font-family:'Athletics',Georgia,serif;font-weight:700;color:var(--ink);margin-bottom:16px;display:block}
   .cta-head{font-family:'Athletics',Georgia,serif;font-size:22px;font-weight:700;color:#292827;margin-bottom:6px}
@@ -495,6 +500,10 @@ footer a:hover{color:var(--ink)}
   .btn-retry:hover{background:var(--gold-600)}
   .completion-cta{margin-top:16px}
   .completion-cta p{font-size:14px;color:var(--ink2);margin-bottom:10px}
+  .yt-facade{position:relative;cursor:pointer;background:#000}
+  .yt-facade img{width:100%;height:100%;object-fit:cover;display:block;opacity:.85}
+  .yt-facade .yt-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:none;border:none;padding:0;cursor:pointer;transition:transform .1s}
+  .yt-facade:hover .yt-play{transform:translate(-50%,-50%) scale(1.08)}
 </style>
 <script type="application/ld+json">
 {
@@ -661,16 +670,13 @@ footer a:hover{color:var(--ink)}
   </aside>
 
   <main>
-    <h1>Surface Area of Cylinder</h1>
-
-    <div class="callout">
-      By the end of this page, you'll know the surface area of cylinder formulas — TSA, CSA, and open cylinder — and how to apply each one.
-    </div>
-
-    <p class="hook">A cylinder has two circular bases and one curved surface — together, they give us the total surface area of a cylinder.</p>
+    <h1>Sur<div class="yt-facade" data-ytid="-YRruTT1RhQ" style="position:absolute;top:0;left:0;width:100%;height:100%">
+        <img src="https://i.ytimg.com/vi/-YRruTT1RhQ/hqdefault.jpg" width="480" height="270" loading="lazy" decoding="async" alt="Surface Area of Cylinder video" style="width:100%;height:100%;object-fit:cover">
+        <button class="yt-play" onclick="(function(el){var id=el.closest('[data-ytid]').dataset.ytid;var w=el.closest('.video-wrap,.video-wrap-sa,.fv-embed,.inline-cta');if(!w){w=el.closest('div')};w.innerHTML='<iframe src=\"https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0\" style=\"position:absolute;top:0;left:0;width:100%;height:100%;border:0\" allow=\"autoplay;encrypted-media\" allowfullscreen loading="lazy"></iframe>'})(this)" aria-label="Play video"><svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.5 7.7C65.6 4.8 63.4 2.5 60.6 1.7 55.8 0 34 0 34 0S12.2 0 7.3 1.7C4.6 2.5 2.4 4.8 1.5 7.7 0 12.6 0 24 0 24s0 11.4 1.5 16.3c.9 2.9 3.1 5.2 5.8 6C12.2 48 34 48 34 48s21.8 0 26.7-1.7c2.7-.8 4.9-3.1 5.8-6C68 35.4 68 24 68 24s0-11.4-1.5-16.3z" fill="red"/><path d="M45 24L27 14v20z" fill="#fff"/></svg></button>
+      </div>s="hook">A cylinder has two circular bases and one curved surface — together, they give us the total surface area of a cylinder.</p>
 
     <div class="video-wrap">
-      <iframe src="https://www.youtube-nocookie.com/embed/-YRruTT1RhQ" title="Surface Area of Cylinder video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe src="https://www.youtube-nocookie.com/embed/-YRruTT1RhQ" title="Surface Area of Cylinder video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
     </div>
 
     <div class="inline-cta">
@@ -686,7 +692,7 @@ footer a:hover{color:var(--ink)}
     </div>
 
     <div class="diagram">
-      <img src="cylinder-parts.png" alt="Parts of a Cylinder — showing Base, Curved Surface, radius and Height" style="max-width:340px;width:100%;display:block;margin:0 auto;border-radius:8px">
+      <img src="cylinder-parts.png" alt="Parts of a Cylinder — showing Base, Curved Surface, radius and Height" style="max-width:340px;width:100%;display:block;margin:0 auto;border-radius:8px" loading="lazy">
     </div>
 
     <p>The <strong>surface area of a cylinder</strong> refers to the total area that the cylinder's curved surface and circular bases cover. In other words: it is the total area covered by its two circular bases and its curved lateral surface.</p>
@@ -728,7 +734,7 @@ footer a:hover{color:var(--ink)}
       <div class="body">
         <p>The total surface area of the cylinder (TSA of cylinder) is obtained by adding the area of the two bases and the area of the curved surface. Consider a cylinder whose base has a radius <strong>'r'</strong> and height of the cylinder is <strong>'h'</strong>.</p>
         <div class="formula">TSA = 2πr(r + h)</div>
-        <img src="cylinder-tsa.png" alt="Surface area of cylinder diagram showing two circles and one rectangle" style="max-width:420px;width:100%;display:block;margin:14px auto;border-radius:8px">
+        <img src="cylinder-tsa.png" alt="Surface area of cylinder diagram showing two circles and one rectangle" style="max-width:420px;width:100%;display:block;margin:14px auto;border-radius:8px" loading="lazy">
         <p>The total surface is two circular bases (each with area πr²) plus the curved face (2πrh). Adding them: 2πr² + 2πrh = 2πr(r + h).</p>
         <div class="worked">
           <p class="worked-label"><strong>Worked example</strong></p>
@@ -749,7 +755,7 @@ footer a:hover{color:var(--ink)}
 
 
     <div class="cta-band">
-      <img src="cta-student.png" alt="Cuemath 1-on-1 class">
+      <img src="cta-student.png" alt="Cuemath 1-on-1 class" loading="lazy">
       <div class="cta-content">
         <p class="cta-head">Want 1:1 guidance from an expert?</p>
         <p>Work through problems live with a Cuemath tutor — personalised to how you learn, at your own pace.</p>
