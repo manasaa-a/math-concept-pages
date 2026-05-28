@@ -10,10 +10,6 @@ TODOs (deferred — to be locked once page structure is finalised):
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-<link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
-<link rel="preconnect" href="https://www.geogebra.org" crossorigin>
-<link rel="dns-prefetch" href="https://www.geogebra.org">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Surface Area of a Cylinder - Formula, TSA and CSA</title>
@@ -499,7 +495,6 @@ footer a:hover{color:var(--ink)}
   .btn-retry:hover{background:var(--gold-600)}
   .completion-cta{margin-top:16px}
   .completion-cta p{font-size:14px;color:var(--ink2);margin-bottom:10px}
-
 </style>
 <script type="application/ld+json">
 {
@@ -666,7 +661,49 @@ footer a:hover{color:var(--ink)}
   </aside>
 
   <main>
-    <h1>Sur<iframe src="https://www.youtube-nocookie.com/embed/-YRruTT1RhQ" title="Surface Area of Cylinder video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    <h1>Surface Area of Cylinder</h1>
+
+    <div class="callout">
+      By the end of this page, you'll know the surface area of cylinder formulas — TSA, CSA, and open cylinder — and how to apply each one.
+    </div>
+
+    <p class="hook">A cylinder has two circular bases and one curved surface — together, they give us the total surface area of a cylinder.</p>
+
+    <div class="video-wrap">
+      <iframe src="https://www.youtube-nocookie.com/embed/-YRruTT1RhQ" title="Surface Area of Cylinder video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <div class="inline-cta">
+      <p>Want to go deeper? Get personalised 1:1 math tutoring with a Cuemath expert.</p>
+      <button class="btn-primary" onclick="openModal()">Book a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+
+    <h2 id="what-is">What is the Surface Area of a Cylinder?</h2>
+
+    <div class="think">
+      <div class="label">Think about it</div>
+      <p>Imagine cutting along the height of a soup can and flattening it out. What shape do you get? What are its dimensions?</p>
+    </div>
+
+    <div class="diagram">
+      <img src="cylinder-parts.png" alt="Parts of a Cylinder — showing Base, Curved Surface, radius and Height" style="max-width:340px;width:100%;display:block;margin:0 auto;border-radius:8px">
+    </div>
+
+    <p>The <strong>surface area of a cylinder</strong> refers to the total area that the cylinder's curved surface and circular bases cover. In other words: it is the total area covered by its two circular bases and its curved lateral surface.</p>
+
+    <p>The surface area of cylinder splits naturally into two pieces:</p>
+
+    <ul style="margin:14px 0 18px 24px;color:var(--ink2)">
+      <li style="margin-bottom:6px"><strong style="font-weight:500;color:var(--ink)">Total Surface Area (TSA)</strong> — both circular bases plus the curved face. This is what you'd need if you were sealing every face of the cylinder.</li>
+      <li><strong style="font-weight:500;color:var(--ink)">Curved Surface Area (CSA)</strong> — only the curved lateral surface. This is the area of the "label" wrapped around the side.</li>
+    </ul>
+
+    <div class="minicheck">
+      <div class="label">Mini check</div>
+      <p>A cylinder has r = 5 cm and h = 12 cm. When calculating the surface area of cylinder, which part — TSA or CSA — would a label manufacturer care about?</p>
+      <button class="hint-btn" onclick="document.getElementById('hint1').classList.toggle('show')">Answer</button>
+      <div id="hint1" class="hint-text">The label wraps around the side only, not the tops. So it's the curved surface area (CSA).</div>
+    </div>
 
     <h2 id="formulas">Surface Area of a Cylinder Formula</h2>
     <p>There are two surface area of cylinder formulas to know — choose based on whether you need the full surface or just the curved side.</p>
@@ -691,7 +728,7 @@ footer a:hover{color:var(--ink)}
       <div class="body">
         <p>The total surface area of the cylinder (TSA of cylinder) is obtained by adding the area of the two bases and the area of the curved surface. Consider a cylinder whose base has a radius <strong>'r'</strong> and height of the cylinder is <strong>'h'</strong>.</p>
         <div class="formula">TSA = 2πr(r + h)</div>
-        <img src="cylinder-tsa.png" alt="Surface area of cylinder diagram showing two circles and one rectangle" style="max-width:420px;width:100%;display:block;margin:14px auto;border-radius:8px" loading="lazy">
+        <img src="cylinder-tsa.png" alt="Surface area of cylinder diagram showing two circles and one rectangle" style="max-width:420px;width:100%;display:block;margin:14px auto;border-radius:8px">
         <p>The total surface is two circular bases (each with area πr²) plus the curved face (2πrh). Adding them: 2πr² + 2πrh = 2πr(r + h).</p>
         <div class="worked">
           <p class="worked-label"><strong>Worked example</strong></p>
@@ -712,7 +749,7 @@ footer a:hover{color:var(--ink)}
 
 
     <div class="cta-band">
-      <img src="cta-student.png" alt="Cuemath 1-on-1 class" loading="lazy">
+      <img src="cta-student.png" alt="Cuemath 1-on-1 class">
       <div class="cta-content">
         <p class="cta-head">Want 1:1 guidance from an expert?</p>
         <p>Work through problems live with a Cuemath tutor — personalised to how you learn, at your own pace.</p>
