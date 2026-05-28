@@ -898,10 +898,10 @@ footer a:hover{color:var(--ink)}
 
     <p class="section-label">Related Concepts</p>
     <div class="rv-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:16px 0">
-      <a href="exponent-rules.html" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink2);text-decoration:none;text-align:center;display:block">Exponent Rules</a>
-      <a href="integers.html" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink2);text-decoration:none;text-align:center;display:block">Integers</a>
-      <a href="area-of-triangle.html" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink2);text-decoration:none;text-align:center;display:block">Area of a Triangle</a>
-      <a href="area-of-parallelogram.html" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink2);text-decoration:none;text-align:center;display:block">Area of Parallelogram</a>
+      <a href="exponent-rules.html" style="background:var(--surface);border:1px solid var(--border);border-radius:0;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink2);text-decoration:none;text-align:center;display:block">Exponent Rules</a>
+      <a href="integers.html" style="background:var(--surface);border:1px solid var(--border);border-radius:0;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink2);text-decoration:none;text-align:center;display:block">Integers</a>
+      <a href="area-of-triangle.html" style="background:var(--surface);border:1px solid var(--border);border-radius:0;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink2);text-decoration:none;text-align:center;display:block">Area of a Triangle</a>
+      <a href="area-of-parallelogram.html" style="background:var(--surface);border:1px solid var(--border);border-radius:0;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink2);text-decoration:none;text-align:center;display:block">Area of Parallelogram</a>
     </div>
 
   </main>
@@ -1180,7 +1180,7 @@ function renderQuestion(){
       const nextWrap = document.getElementById('next-wrap');
       nextWrap.style.display = 'block';
       const nextLabel = qIdx === QUESTIONS.length - 1 ? 'See results' : 'Next question';
-      nextWrap.innerHTML = '<button class="btn-primary" style="border-radius:0">' + nextLabel + ' <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-left:4px"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
+      nextWrap.innerHTML = '<button class="btn-primary" style="border-radius:0">' + nextLabel + ' <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:4px"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></button>';
       nextWrap.querySelector('button').addEventListener('click', () => { qIdx++; renderQuestion(); });
     });
   });
