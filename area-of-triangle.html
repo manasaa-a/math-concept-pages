@@ -357,7 +357,7 @@ a{color:var(--blue);text-decoration:none}
 a:hover{text-decoration:underline}
 strong{font-weight:500;color:var(--ink)}
 /* Layout */
-.page-wrap{display:grid;grid-template-columns:220px 1fr;gap:52px;align-items:start;max-width:1120px;margin:0 auto;padding:40px 32px 80px}
+.page-grid{max-width:1120px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:220px 1fr;gap:52px;align-items:start;padding-top:40px;padding-bottom:80px}
 .content{min-width:0}
 /* mobile TOC */
   .mobile-toc{display:none;border:1px solid var(--border);margin-bottom:28px;overflow:hidden;border-radius:0}
@@ -375,7 +375,7 @@ strong{font-weight:500;color:var(--ink)}
   
   
 
-  @media(max-width:820px){.mobile-toc{display:block;margin-top:24px}.page-wrap{grid-template-columns:1fr}.toc-sidebar{display:none}}
+  @media(max-width:820px){.mobile-toc{display:block;margin-top:24px}.page-grid{grid-template-columns:1fr;gap:0;padding-top:24px}.toc{position:sticky;top:80px;align-self:start;max-height:calc(100vh - 100px);overflow-y:auto;padding-bottom:20px}}
 .section{padding:52px 0;border-bottom:1px solid var(--border)}
 .section:last-child{border-bottom:none}
 /* Nav */
@@ -610,23 +610,20 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   <span style="font-size:12px;color:var(--muted)">⏱ 9 min read</span>
 </div>
 
-<div class="page-wrap">
+<div class="page-grid">
 
 <!-- TOC -->
-<aside class="toc-sidebar">
-  <div class="toc-inner">
-    <div class="toc-title">On this page</div>
-    <ul id="toc-list">
-      <li><a href="#what-is">What is it?</a></li>
-      <li><a href="#what-is">Triangle Explorer</a></li>
-      <li><a href="#how-to">How to Find Area</a></li>
-      <li><a href="#practice">Practice</a></li>
-      <li><a href="#takeaways">Key Takeaways</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#worksheet">Worksheet</a></li>
-      <li><a href="#videos">Related Videos</a></li>
-    </ul>
-  </div>
+<aside class="toc">
+  <div class="toc-title">On this page</div>
+  <ul class="toc-list" id="toc-list">
+      <li><a href="#what-is" class="">What is the Area of a Triangle?</a></li>
+      <li><a href="#formulas" class="">How to Find the Area</a></li>
+      <li><a href="#how-to" class="">Area of a Triangle Formula</a></li>
+      <li><a href="#practice" class="">Practice questions</a></li>
+      <li><a href="#worksheet" class="">Downloadable worksheet</a></li>
+      <li><a href="#takeaways" class="">Key Takeaways</a></li>
+      <li><a href="#faq" class="">FAQ</a></li>
+  </ul>
 </aside>
 
 <main class="content">
