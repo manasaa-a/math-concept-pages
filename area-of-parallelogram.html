@@ -468,6 +468,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <!-- INLINE CTA -->
     <div class="cta-inline">
       <p>Want to go deeper? Get personalised 1:1 math tutoring with a Cuemath expert.</p>
+      <button class="yt-play" onclick="loadYT(this)" aria-label="Play video"><svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.5 7.7C65.6 4.8 63.4 2.5 60.6 1.7 55.8 0 34 0 34 0S12.2 0 7.3 1.7C4.6 2.5 2.4 4.8 1.5 7.7 0 12.6 0 24 0 24s0 11.4 1.5 16.3c.9 2.9 3.1 5.2 5.8 6C12.2 48 34 48 34 48s21.8 0 26.7-1.7c2.7-.8 4.9-3.1 5.8-6C68 35.4 68 24 68 24s0-11.4-1.5-16.3z" fill="red"/><path d="M45 24L27 14v20z" fill="#fff"/></svg></button>
+      </div>
+    </div>
+
+    <!-- INLINE CTA -->
+    <div class="cta-inline">
+      <p>Want to go deeper? Get personalised 1:1 math tutoring with a Cuemath expert.</p>
       <button class="btn-primary" onclick="openModal()">Get 1:1 help <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></button>
     </div>
 
@@ -1025,6 +1032,18 @@ tocIds.forEach(function(id){var el=document.getElementById(id);if(el)spy.observe
       a.addEventListener('click', () => { mtocBody.classList.remove('open'); document.getElementById('mtoc-icon').innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>'; });
     });
   }
+
+function loadYT(btn) {
+  var id = btn.closest('[data-ytid]').dataset.ytid;
+  var wrap = btn.closest('.video-embed,.video-wrap,.fv-embed');
+  var iframe = document.createElement('iframe');
+  iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+  iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0';
+  iframe.setAttribute('allow', 'autoplay;encrypted-media');
+  iframe.setAttribute('allowfullscreen', '');
+  wrap.innerHTML = ''; wrap.appendChild(iframe);
+}
+
 </script>
 </body>
 </html>
