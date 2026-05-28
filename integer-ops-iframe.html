@@ -456,6 +456,14 @@ window.addEventListener('message', function(e){
 });
 
 
+// Read ?mode= from URL and set initial tab
+(function(){
+  var m = new URLSearchParams(window.location.search).get('mode');
+  if(m && ['add','sub','mul','div'].indexOf(m) !== -1){
+    window.addEventListener('DOMContentLoaded', function(){ if(typeof setMode==='function') setMode(m); });
+  }
+})();
+
 window.addEventListener("message",function(e){if(e.data&&e.data.tab&&typeof setMode==="function")setMode(e.data.tab);});
 </script>
 </body>
