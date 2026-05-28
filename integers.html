@@ -492,7 +492,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 /* CTA inline */
 .cta-inline{background:var(--yellow-light);border:1px solid var(--yellow);border-radius:0;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:24px 0}
 .cta-inline p{margin-bottom:0;font-size:15px;color:var(--ink2)}
-.btn-primary{background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:0;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer}
+.btn-primary{background:var(--yellow);color:var(--ink);border:none;padding:10px 20px;border-radius:0;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer}
 .btn-primary:hover{background:var(--gold-600)}
 
 /* CTA band */
@@ -1090,9 +1090,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <p>Ready to go deeper? Work 1-on-1 with a Cuemath tutor.</p>
         <button class="btn-primary" onclick="openModal()">Book a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></button>
       </div>
-    </div>
-      <p id="completion-msg" style="color:var(--ink2);font-size:16px;margin-top:8px"></p>
-      <div id="completion-actions"></div>
     </div>
   </div>
 
@@ -1755,16 +1752,17 @@ function nextQ(n) {
 
 function showCompletion() {
   document.querySelectorAll('.question-card').forEach(function(c) { c.classList.remove('active'); });
-  document.getElementById('completion').classList.add('show');
+  var _cs=document.getElementById('completion'); _cs.style.display=''; _cs.classList.add('show');
   document.getElementById('final-score').textContent = score + '/5';
   var msgs = ['Let\'s revisit the sections above together.','Keep going — re-read the sign rules.','Good effort. Review the operations accordion.','Good work — one to tighten up.','Great work! One small slip.','Perfect score! Integers mastered.'];
   document.getElementById('completion-msg').textContent = msgs[score];
   document.getElementById('prog-bar').style.width = '100%';
-  var actEl = document.getElementById('completion-actions');
   if (retryCount < 1) {
-    actEl.innerHTML = '<button class="btn-retry" onclick="retryPractice()">Try again <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.5643 19.4917C13.3074 18.1914 12.045 17.3455 10.7446 17.6025L10.512 16.4252C11.8124 16.1683 12.6582 14.9059 12.4013 13.6055L13.5785 13.3729C13.7557 14.2696 13.5833 15.1543 13.1557 15.886C15.3545 15.4032 17 13.4438 17 11.1C17 8.39381 14.8062 6.2 12.1 6.2C9.39381 6.2 7.2 8.39381 7.2 11.1C7.2 12.0814 7.48789 12.9937 7.98364 13.7593L6.97637 14.4116C6.35863 13.4576 6 12.3197 6 11.1C6 7.73106 8.73106 5 12.1 5C15.4689 5 18.2 7.73106 18.2 11.1C18.2 14.0369 16.1245 16.4891 13.3602 17.0697C14.0515 17.5842 14.5614 18.3471 14.7416 19.2591L13.5643 19.4917Z" fill="currentColor"/></svg></button>';
+    document.getElementById('btn-retry').style.display = '';
+    document.getElementById('cta-deeper').style.display = 'none';
   } else {
-    actEl.innerHTML = '<div class="completion-cta"><p style="color:var(--ink2);font-size:14px;margin-bottom:10px">Ready to go deeper? Work through this with a Cuemath tutor.</p><button class="btn-primary" onclick="openModal()">Book a free class <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></button></div>';
+    document.getElementById('btn-retry').style.display = 'none';
+    document.getElementById('cta-deeper').style.display = 'block';
   }
 }
 
@@ -1776,7 +1774,7 @@ function retryPractice() {
   document.querySelectorAll('.q-feedback').forEach(function(f) { f.style.display = 'none'; });
   document.querySelectorAll('.q-next').forEach(function(n) { n.style.display = 'none'; });
   document.querySelectorAll('.hint-text').forEach(function(h) { h.style.display = 'none'; });
-  document.getElementById('completion').style.display = 'none';
+  var _c=document.getElementById('completion'); _c.style.display=''; _c.classList.remove('show');
   document.querySelectorAll('.question-card').forEach(function(c) { c.classList.remove('active'); });
   document.getElementById('q1').classList.add('active');
   document.getElementById('prog-bar').style.width = '0%';
