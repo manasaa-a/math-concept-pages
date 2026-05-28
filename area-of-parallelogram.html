@@ -44,7 +44,7 @@ body{font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-weight:
   .toc-title{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
   .toc-list{list-style:none;display:flex;flex-direction:column;gap:2px}
   .toc-list a{display:block;padding:8px 12px;border-radius:8px;font-size:14px;color:var(--ink2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.4}
-  .toc-list a:hover{background:var(--border);color:var(--ink)}
+  .toc-list a:hover{background:var(--border);color:var(--ink);text-decoration:none}
   .toc-list a.active{background:var(--yellow-light);color:var(--ink);border-left-color:var(--yellow);font-weight:500}
   .toc-divider{height:1px;background:var(--border);margin:8px 12px}
   @media(max-width:820px){.page-grid{grid-template-columns:1fr;gap:0;padding-top:24px}.toc{display:none}.mobile-toc{display:block}}
@@ -430,6 +430,22 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 </aside>
 
 <main>
+
+  <!-- MOBILE TOC -->
+  <div class="mobile-toc">
+      <button class="mobile-toc-btn" id="mobile-toc-btn">
+        <span>On this page</span><span id="mtoc-icon">↓</span>
+      </button>
+      <div class="mobile-toc-body" id="mobile-toc-body">
+        <a href="#what-is">What is the Area of a Parallelogram?</a>
+        <a href="#how-to">Area of Parallelogram Formula</a>
+        <a href="#practice">Practice questions</a>
+        <a href="#worksheet">Downloadable worksheet</a>
+        <a href="#takeaways">Key Takeaways</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+
 
   <!-- INTRO -->
   <div class="section" id="intro" style="border-bottom:none;padding-bottom:0">
