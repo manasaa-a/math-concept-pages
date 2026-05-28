@@ -664,7 +664,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   <details class="mobile-toc">
       <summary>
         <span>On this page</span>
-        <svg class="mtoc-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="mtoc-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
       </summary>
       <div class="mobile-toc-body">
         <a href="#what-is">What are Integers?</a>
@@ -1471,6 +1471,7 @@ function tempColor(n) {
 }
 
 function runSim() {
+  if (!document.getElementById('sim-eq')) return;
   var a = numA, b = numB, op = simOp;
   var c = calcResult();
   var result = c.result, rule = c.rule, ruleClass = c.ruleClass;
