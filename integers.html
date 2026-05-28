@@ -374,28 +374,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 .footer-copy{font-size:13px;color:var(--muted)}
 
   /* ── Integer Operations Sim ── */
-  #int-ops-sim { margin-top:16px; }
-  #int-ops-sim .sim-tabs { display:flex; background:#EBE7E0; padding:3px; gap:2px; margin-bottom:12px; }
-  #int-ops-sim .sim-tab { flex:1; padding:8px 10px; border:none; background:transparent; color:#84807B; font-size:13px; font-weight:600; cursor:pointer; font-family:'Untitled Sans',-apple-system,sans-serif; transition:all .15s; }
-  #int-ops-sim .sim-tab.active { background:#fff; color:#292827; box-shadow:0 1px 3px rgba(0,0,0,.12); }
-  #int-ops-sim .eq-bar { text-align:center; margin-bottom:12px; font-family:'Athletics',Georgia,serif; font-size:26px; font-weight:700; letter-spacing:-0.3px; min-height:36px; }
-  #int-ops-sim .eq-a { color:#EC9A32; }
-  #int-ops-sim .eq-op { color:#407BD6; }
-  #int-ops-sim .eq-b { color:#A055BE; }
-  #int-ops-sim .eq-eq { color:var(--muted); }
-  #int-ops-sim .eq-r { color:var(--green); }
-  #int-ops-sim .eq-err { color:var(--red); font-size:16px; }
-  #int-ops-sim canvas { display:block; width:100%; height:auto; border:1px solid var(--border); background:#fff; }
-  #int-ops-sim .sim-controls { display:flex; gap:32px; justify-content:center; flex-wrap:wrap; margin-top:12px; }
-  #int-ops-sim .sim-slider-group { display:flex; flex-direction:column; align-items:center; gap:4px; }
-  #int-ops-sim .sim-slider-label { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); }
-  #int-ops-sim .sim-slider-val { font-family:'Athletics',Georgia,serif; font-size:26px; font-weight:700; line-height:1; }
-  #int-ops-sim .sim-slider-val.va { color:#EC9A32; }
-  #int-ops-sim .sim-slider-val.vb { color:#A055BE; }
-  #int-ops-sim input.sia { -webkit-appearance:none; appearance:none; width:180px; height:4px; background:var(--border); outline:none; cursor:pointer; border-radius:2px; }
-  #int-ops-sim input.sib { -webkit-appearance:none; appearance:none; width:180px; height:4px; background:var(--border); outline:none; cursor:pointer; border-radius:2px; }
-  #int-ops-sim input.sia::-webkit-slider-thumb { -webkit-appearance:none; width:18px; height:18px; border-radius:50%; background:#F4AB52; cursor:pointer; }
-  #int-ops-sim input.sib::-webkit-slider-thumb { -webkit-appearance:none; width:18px; height:18px; border-radius:50%; background:#D386F7; cursor:pointer; }
 </style>
 </head>
 <body>
@@ -559,7 +537,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           </div>
         
         
-          <div class="sim-slot"></div>
         </div>
       </div>
 
@@ -586,7 +563,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           </div>
         
         
-          <div class="sim-slot"></div>
         </div>
       </div>
 
@@ -609,7 +585,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           <p style="font-size:14px;color:var(--muted)"><em>Why does negative × negative = positive?</em> Think of it as reversing direction twice — two reversals bring you back to the original direction.</p>
         
         
-          <div class="sim-slot"></div>
         </div>
       </div>
 
@@ -632,7 +607,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           <p style="font-size:14px;color:var(--muted)">Note: dividing integers does not always produce an integer (e.g., 5 ÷ 2 = 2.5). Division is only closed over integers when the result is exact.</p>
         
         
-          <div class="sim-slot"></div>
         </div>
       </div>
 
@@ -646,30 +620,11 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
 </div>
 
-<div id="int-ops-home">
-  <div id="int-ops-sim">
-    <div class="sim-tabs">
-      <button class="sim-tab active" onclick="simSetMode('add')">Addition</button>
-      <button class="sim-tab"        onclick="simSetMode('sub')">Subtraction</button>
-      <button class="sim-tab"        onclick="simSetMode('mul')">Multiplication</button>
-      <button class="sim-tab"        onclick="simSetMode('div')">Division</button>
-    </div>
-    <div class="eq-bar" id="sim-eq"></div>
-    <canvas id="sim-canvas" height="220"></canvas>
-    <div class="sim-controls">
-      <div class="sim-slider-group">
-        <div class="sim-slider-label" id="sim-lbl-a">First number</div>
-        <div class="sim-slider-val va" id="sim-val-a">3</div>
-        <input class="sia" type="range" id="sim-sA" min="-10" max="10" step="1" value="3" oninput="simOnA(this.value)">
-      </div>
-      <div class="sim-slider-group">
-        <div class="sim-slider-label" id="sim-lbl-b">Second number</div>
-        <div class="sim-slider-val vb" id="sim-val-b">4</div>
-        <input class="sib" type="range" id="sim-sB" min="-10" max="10" step="1" value="4" oninput="simOnB(this.value)">
-      </div>
-    </div>
+  <!-- INTEGER OPERATIONS SIMULATION -->
+  <div style="border:1px solid var(--border);overflow:hidden;margin:24px 0">
+    <iframe id="int-ops-iframe" src="integer-ops-iframe.html" style="width:100%;height:480px;border:0;display:block" loading="lazy" title="Integer Operations"></iframe>
   </div>
-</div>
+
 
 
   <!-- SECTION: PROPERTIES -->
@@ -1171,29 +1126,19 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 function toggleAcc(btn) {
   var body = btn.nextElementSibling;
   var open = btn.classList.contains('open');
-  var simEl = document.getElementById('int-ops-sim');
-  var simHome = document.getElementById('int-ops-home');
   btn.closest('.accordion').querySelectorAll('.accordion-btn').forEach(function(b) {
     b.classList.remove('open'); b.nextElementSibling.classList.remove('open');
   });
-  if (simEl && simHome) {
-    simHome.appendChild(simEl);          // return sim to home
-    setTimeout(function(){ if (typeof simRender==='function') simRender(); }, 50);
-  }
   if (!open) {
     btn.classList.add('open'); body.classList.add('open');
     var op = btn.dataset.op;
-    if (op && simEl) {
-      var slot = body.querySelector('.sim-slot');
-      if (slot) {
-        slot.appendChild(simEl);
-        var modeMap = {'+':'add','-':'sub','×':'mul','÷':'div'};
-        // Timeout so offsetWidth reflects new container before canvas resize
-        setTimeout(function(){
-          if (typeof simSetMode === 'function') simSetMode(modeMap[op]);
-          simEl.scrollIntoView({behavior:'smooth',block:'nearest'});
-        }, 60);
-      }
+    if (op) {
+      var sim = document.getElementById('int-ops-iframe');
+      var modeMap = {'+':'add','-':'sub','×':'mul','÷':'div'};
+      if (sim) sim.contentWindow.postMessage({tab: modeMap[op]}, '*');
+      setTimeout(function(){
+        if (sim) sim.scrollIntoView({behavior:'smooth', block:'nearest'});
+      }, 150);
     }
   }
 }
@@ -1614,167 +1559,6 @@ tocIds.forEach(function(id) { var el = document.getElementById(id); if (el) spy.
 
 
 
-/* ════ INTEGER OPERATIONS SIMULATION ════ */
-(function() {
-  var C = {
-    brand:'#F4AB52', info:'#74ACFC', success:'#6AC88A',
-    error:'#F97279', warning:'#F68D50', purple:'#D386F7',
-    dotA:'#EC9A32', dotB:'#C26FE2',
-    axis:'#5B5854', tick:'#C6C0B8', tickLbl:'#84807B',
-    zero:'#33312F', bg:'#FFFFFF'
-  };
-  var JCOLORS = [C.brand, C.info, C.success, C.warning, C.error, C.purple];
-  var MAX_ARCS = 8;
-
-  var simMode = 'add', simA = 3, simB = 4;
-  var CFG = {
-    add:{ sym:'+', aLbl:'First number',  bLbl:'Second number', aMin:-10,aMax:10, bMin:-10,bMax:10, a0:3,  b0:4  },
-    sub:{ sym:'−', aLbl:'Start value',   bLbl:'Subtract',      aMin:-10,aMax:10, bMin:-10,bMax:10, a0:8,  b0:3  },
-    mul:{ sym:'×', aLbl:'Groups (a)',    bLbl:'Size each (b)', aMin:-5, aMax:5,  bMin:-5, bMax:5,  a0:3,  b0:4  },
-    div:{ sym:'÷', aLbl:'Dividend (a)',  bLbl:'Divisor (b)',   aMin:-24,aMax:24, bMin:-6, bMax:6,  a0:12, b0:3  }
-  };
-
-  function simResult() {
-    if (simMode==='add') return simA+simB;
-    if (simMode==='sub') return simA-simB;
-    if (simMode==='mul') return simA*simB;
-    if (simMode==='div') return simB!==0 ? simA/simB : null;
-  }
-  function isInt(v){ return v!==null && Number.isInteger(v); }
-
-  window.simSetMode = function(m) {
-    simMode = m;
-    var c = CFG[m]; simA = c.a0; simB = c.b0;
-    document.querySelectorAll('#int-ops-sim .sim-tab').forEach(function(b,i){
-      b.classList.toggle('active', ['add','sub','mul','div'][i]===m);
-    });
-    document.getElementById('sim-lbl-a').textContent = c.aLbl;
-    document.getElementById('sim-lbl-b').textContent = c.bLbl;
-    var sA = document.getElementById('sim-sA'), sB = document.getElementById('sim-sB');
-    sA.min=c.aMin; sA.max=c.aMax; sA.value=simA;
-    sB.min=c.bMin; sB.max=c.bMax; sB.value=simB;
-    if (m==='div' && simB===0) { simB=1; sB.value=1; }
-    document.getElementById('sim-val-a').textContent = simA;
-    document.getElementById('sim-val-b').textContent = simB;
-    simRender();
-  };
-  window.simOnA = function(v){ simA=+v; document.getElementById('sim-val-a').textContent=v; simRender(); };
-  window.simOnB = function(v){
-    var n=+v;
-    if (simMode==='div' && n===0){ n=v>0?1:-1; document.getElementById('sim-sB').value=n; }
-    simB=n; document.getElementById('sim-val-b').textContent=n; simRender();
-  };
-
-  function simRender() {
-    var canvas = document.getElementById('sim-canvas'); if (!canvas) return;
-    var W=640, H=220, LY=140, PX=48;
-    if(canvas.width!==W||canvas.height!==H){canvas.width=W;canvas.height=H;}
-    var ctx = canvas.getContext('2d');
-    ctx.clearRect(0,0,W,H);
-    ctx.fillStyle=C.bg; ctx.fillRect(0,0,W,H);
-
-    var r=simResult();
-    // Compute range
-    var pts=[0,simA]; if(r!==null) pts.push(r);
-    if(simMode==='mul'&&simA!==0&&simB!==0){var ef=Math.sign(simA)*simB;for(var i=1;i<=Math.min(Math.abs(simA),MAX_ARCS+1);i++)pts.push(i*ef);}
-    if(simMode==='div'&&r!==null&&isInt(r)&&r!==0){var ef2=Math.sign(r)*simB;for(var i=1;i<=Math.min(Math.abs(r),MAX_ARCS+1);i++)pts.push(i*ef2);}
-    var mn=Math.min.apply(null,pts), mx=Math.max.apply(null,pts);
-    var span=mx-mn, pad=Math.max(Math.ceil(span*.18),3);
-    mn=Math.floor(mn-pad); mx=Math.ceil(mx+pad);
-    if(mx-mn<12){var mid=(mn+mx)/2;mn=Math.floor(mid-6);mx=Math.ceil(mid+6);}
-
-    function toX(v){return PX+(v-mn)/(mx-mn)*(W-PX*2);}
-
-    // Axis
-    ctx.strokeStyle=C.axis; ctx.lineWidth=2;
-    ctx.beginPath(); ctx.moveTo(PX-10,LY); ctx.lineTo(W-PX+10,LY); ctx.stroke();
-    ctx.fillStyle=C.axis;
-    // Arrowheads
-    ctx.beginPath(); ctx.moveTo(W-PX+10,LY); ctx.lineTo(W-PX+2,LY-4); ctx.lineTo(W-PX+2,LY+4); ctx.fill();
-    ctx.beginPath(); ctx.moveTo(PX-10,LY); ctx.lineTo(PX-2,LY-4); ctx.lineTo(PX-2,LY+4); ctx.fill();
-
-    // Ticks and labels
-    var range=mx-mn, step=range<=24?1:range<=50?2:5;
-    for(var v=Math.ceil(mn);v<=Math.floor(mx);v++){
-      var x=toX(v), zz=v===0, isA=v===simA, isR=r!==null&&isInt(r)&&v===r;
-      ctx.strokeStyle=zz?C.zero:C.tick; ctx.lineWidth=zz?2:1;
-      var th=zz||isA||isR?10:5;
-      ctx.beginPath(); ctx.moveTo(x,LY-th); ctx.lineTo(x,LY+th); ctx.stroke();
-      if(v%step===0||isA||isR){
-        ctx.textAlign='center'; ctx.textBaseline='top';
-        if(isA){ctx.fillStyle=C.dotA;ctx.font='bold 12px sans-serif';}
-        else if(isR){ctx.fillStyle=C.success;ctx.font='bold 12px sans-serif';}
-        else{ctx.fillStyle=zz?C.zero:C.tickLbl;ctx.font=(zz?'bold ':'')+'11px sans-serif';}
-        ctx.fillText(v,x,LY+14);
-      }
-    }
-
-    // Bezier arc helper
-    function drawArc(x1,x2,col,h,lbl){
-      if(Math.abs(x2-x1)<1)return;
-      ctx.strokeStyle=col; ctx.lineWidth=2.5; ctx.fillStyle=col;
-      ctx.beginPath(); ctx.moveTo(x1,LY);
-      ctx.bezierCurveTo(x1,LY-h,x2,LY-h,x2,LY); ctx.stroke();
-      // Arrowhead
-      ctx.beginPath(); ctx.moveTo(x2,LY+1); ctx.lineTo(x2-5,LY-9); ctx.lineTo(x2+5,LY-9); ctx.fill();
-      if(lbl){ctx.font='bold 11px sans-serif';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(lbl,(x1+x2)/2,LY-h-4);}
-    }
-    // Dot helper
-    function drawDot(x,col,sz){
-      ctx.fillStyle=col; ctx.beginPath(); ctx.arc(x,LY,sz,0,Math.PI*2); ctx.fill();
-    }
-    // Note helper
-    function drawNote(txt,col){
-      ctx.fillStyle=col||C.tickLbl; ctx.font='11px sans-serif';
-      ctx.textAlign='left'; ctx.textBaseline='top'; ctx.fillText(txt,PX,10);
-    }
-
-    if(simMode==='add'||simMode==='sub'){
-      var move=simMode==='add'?simB:-simB;
-      var col=move>=0?C.info:C.error;
-      var h=18+Math.min(Math.abs(move),20)/20*62;
-      var lbl=simMode==='add'?(simB>=0?'+':'')+simB:(simB>=0?'−':'+')+Math.abs(simB);
-      if(move!==0&&r!==null) drawArc(toX(simA),toX(r),col,h,lbl);
-      drawDot(toX(simA),C.dotA,7);
-      if(r!==null) drawDot(toX(r),C.success,8);
-      drawNote((simMode==='add'?'Move ':'Subtract ')+(simMode==='add'?(simB>=0?'+':'')+simB:simB)+' from '+simA,col);
-    } else if(simMode==='mul'){
-      if(simA===0||simB===0){drawDot(toX(0),C.success,8);drawNote('Any number × 0 = 0',C.tickLbl);}
-      else{
-        var nJ=Math.abs(simA), eff=Math.sign(simA)*simB, h2=22+Math.min(Math.abs(eff),10)/10*56, drawN=Math.min(nJ,MAX_ARCS);
-        for(var i=0;i<drawN;i++){drawArc(toX(i*eff),toX((i+1)*eff),JCOLORS[i%JCOLORS.length],h2,i===0?String(simB):null);if(i>0)drawDot(toX(i*eff),JCOLORS[i%JCOLORS.length],5);}
-        drawDot(toX(0),C.tick,5);
-        if(r!==null)drawDot(toX(r),C.success,8);
-        drawNote(Math.abs(simA)+' jump'+(Math.abs(simA)!==1?'s':'')+' of '+simB+(simA<0?' (reversed)':''),C.tickLbl);
-      }
-    } else if(simMode==='div'){
-      if(simB===0){ctx.fillStyle=C.error;ctx.font='13px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('Division by zero is undefined',W/2,LY-40);}
-      else if(!isInt(r)){drawDot(toX(simA),C.error,7);ctx.fillStyle=C.error;ctx.font='12px sans-serif';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(simA+' ÷ '+simB+' = '+r.toFixed(2)+' — not a whole number',W/2,LY-20);}
-      else if(r===0){drawDot(toX(0),C.success,8);}
-      else{
-        var nJ2=Math.abs(r), eff2=Math.sign(r)*simB, h3=20+Math.min(Math.abs(simB),6)/6*45, drawN2=Math.min(nJ2,MAX_ARCS);
-        for(var i=0;i<drawN2;i++){drawArc(toX(i*eff2),toX((i+1)*eff2),JCOLORS[i%JCOLORS.length],h3,i===0?String(simB):null);if(i>0)drawDot(toX(i*eff2),JCOLORS[i%JCOLORS.length],5);}
-        drawDot(toX(0),C.tick,5);drawDot(toX(simA),C.success,8);
-        drawNote(nJ2+' equal jump'+(nJ2!==1?'s':'')+' of '+simB+' reaches '+simA,C.tickLbl);
-      }
-    }
-
-    // Equation
-    var c=CFG[simMode], res=simResult();
-    var rHtml;
-    if(res===null) rHtml='<span class="eq-err">undefined</span>';
-    else if(!isInt(res)) rHtml='<span class="eq-err">'+res.toFixed(2)+' (not whole)</span>';
-    else rHtml='<span class="eq-r">'+res+'</span>';
-    document.getElementById('sim-eq').innerHTML=
-      '<span class="eq-a">'+simA+'</span> <span class="eq-op">'+c.sym+'</span> '+
-      '<span class="eq-b">'+simB+'</span> <span class="eq-eq">=</span> '+rHtml;
-  }
-
-  // Initial render on load
-  // Render immediately (script is at end of body) AND on resize
-  setTimeout(simRender, 0);
-  window.addEventListener('resize', simRender);
-})();
   const mtocBtn = document.getElementById('mobile-toc-btn');
   const mtocBody = document.getElementById('mobile-toc-body');
   if (mtocBtn && mtocBody) {
