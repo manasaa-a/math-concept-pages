@@ -1798,8 +1798,8 @@ var spy = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
     var link = document.querySelector('#toc-list a[href="#' + e.target.id + '"]');
     if (e.isIntersecting && link) {
-      document.querySelectorAll('#toc-list a').forEach(function(l) { l.style.color = 'var(--muted)'; l.style.background = 'none'; l.style.fontWeight = '300'; });
-      link.style.color = 'var(--blue)'; link.style.background = 'var(--blue-light)'; link.style.fontWeight = '500';
+      document.querySelectorAll('#toc-list a').forEach(function(l) { l.style.color = ''; l.style.background = ''; l.style.fontWeight = ''; l.style.borderLeftColor = ''; l.classList.remove('active'); });
+      link.classList.add('active');
     }
   });
 }, { rootMargin: '-20% 0px -60% 0px' });
