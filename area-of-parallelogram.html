@@ -43,7 +43,7 @@ body{font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-weight:
   .toc{position:sticky;top:calc(var(--nav-h) + 20px);max-height:calc(100vh - var(--nav-h) - 40px);overflow-y:auto;padding-bottom:20px}
   .toc-title{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
   .toc-list{list-style:none;display:flex;flex-direction:column;gap:2px}
-  .toc-list a{display:block;padding:8px 12px;border-radius:8px;font-size:14px;color:var(--ink2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.4}
+  .toc-list a{display:block;padding:8px 12px;border-radius:0;font-size:14px;color:var(--ink2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.4}
   .toc-list a:hover{background:var(--border);color:var(--ink);text-decoration:none}
   .toc-list a.active{background:var(--yellow-light);color:var(--ink);border-left-color:var(--yellow);font-weight:500}
   .toc-divider{height:1px;background:var(--border);margin:8px 12px}
@@ -93,7 +93,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 /* Callout */
 .callout{background:var(--yellow-light);border-left:4px solid var(--yellow);border-radius:0;padding:16px 20px;margin:24px 0;font-size:15px;color:var(--ink2)}
 /* Think box */
-.think-box{background:var(--surface);border:1.5px solid var(--border);border-left:4px solid var(--ink2);border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0}
+.think-box{background:var(--surface);border:1.5px solid var(--border);border-left:4px solid var(--ink2);border-radius:0;padding:16px 20px;margin:24px 0}
 .think-label{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
 .think-box p{color:var(--ink2);margin-bottom:0}
 /* RW strip */
@@ -106,14 +106,14 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 /* Formula cards */
 .formula-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px 0}
 @media(max-width:560px){.formula-grid{grid-template-columns:1fr}}
-.formula-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px 18px}
+.formula-card{background:var(--bg);border:1px solid var(--border);border-radius:0;padding:16px 18px}
 .formula-card .fc-tag{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
 .formula-card .fc-formula{font-family:monospace;font-size:19px;font-weight:700;color:var(--ink);margin-bottom:6px}
 .formula-card .fc-note{font-size:13px;color:var(--muted)}
-.formula-card.hl{background:var(--blue-light);border-color:#F6BE7C}
-.formula-card.hl .fc-formula{color:var(--blue)}
+.formula-card.hl{background:var(--yellow-light);border-color:#F6BE7C}
+.formula-card.hl .fc-formula{color:var(--ink)}
 /* Accordion */
-.accordion{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:16px 0}
+.accordion{border:1px solid var(--border);border-radius:0;overflow:hidden;margin:16px 0}
 .accordion-item{border-bottom:1px solid var(--border)}
 .accordion-item:last-child{border-bottom:none}
 .accordion-btn{width:100%;background:var(--surface);border:none;padding:16px 20px;text-align:left;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:16px;font-weight:500;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
@@ -122,24 +122,24 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .accordion-btn.open .acc-ch{transform:rotate(180deg)}
 .accordion-body{display:none;padding:0 20px 20px;background:var(--surface)}
 .accordion-body.open{display:block}
-.fbox{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px 18px;margin:12px 0;font-family:monospace;font-size:15px;color:var(--ink)}
+.fbox{background:var(--bg);border:1px solid var(--border);border-radius:0;padding:14px 18px;margin:12px 0;font-family:monospace;font-size:15px;color:var(--ink)}
 .flbl{font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
 .ex-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
 @media(max-width:550px){.ex-row{grid-template-columns:1fr}}
-.ex-card{background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:14px}
+.ex-card{background:var(--green-light);border-radius:0;padding:12px 14px;font-size:14px}
 .ex-lbl{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--green);margin-bottom:4px}
 .step-list{list-style:none;padding:0;margin:16px 0;counter-reset:step}
 .step-list li{counter-increment:step;display:flex;gap:14px;margin-bottom:14px;align-items:flex-start}
 .step-list li::before{content:counter(step);min-width:28px;height:28px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:2px}
 .step-list li p{margin-bottom:0;font-size:15px}
 /* Simulation */
-.sim-container{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0}
-.sim-canvas-wrap{width:100%;border-radius:10px;overflow:hidden;background:#FAF8F5;border:1px solid var(--border);touch-action:none}
+.sim-container{background:var(--surface);border:1px solid var(--border);border-radius:0;padding:24px;margin:16px 0}
+.sim-canvas-wrap{width:100%;border-radius:0;overflow:hidden;background:#FAF8F5;border:1px solid var(--border);touch-action:none}
 .sim-canvas-wrap canvas{display:block;width:100%;cursor:crosshair}
 .sim-canvas-wrap canvas.dragging{cursor:grabbing}
 .sim-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
 @media(max-width:480px){.sim-stats{grid-template-columns:1fr 1fr}}
-.sim-stat{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;text-align:center}
+.sim-stat{background:var(--bg);border:1px solid var(--border);border-radius:0;padding:10px 14px;text-align:center}
 .sim-stat .ss-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:2px}
 .sim-stat .ss-val{font-size:20px;font-weight:700;font-family:'Athletics',Georgia,serif;color:var(--ink)}
 .sim-stat .ss-unit{font-size:12px;color:var(--muted)}
@@ -148,9 +148,9 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .sim-reset{background:none;border:1px solid var(--border);border-radius:0;padding:6px 14px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:13px;cursor:pointer;color:var(--muted);margin-top:10px}
 .sim-reset:hover{border-color:var(--ink2);color:var(--ink)}
 /* CTA */
-.cta-inline{background:var(--yellow-light);border:1px solid var(--yellow);border-radius:8px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:24px 0}
+.cta-inline{background:var(--yellow-light);border:1px solid var(--yellow);border-radius:0;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:24px 0}
 .cta-inline p{margin-bottom:0;font-size:15px;color:var(--ink2)}
-.btn-primary{background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:0;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer}
+.btn-primary{background:var(--yellow);color:var(--ink);border:none;padding:10px 20px;border-radius:0;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer}
 .btn-primary:hover{background:var(--gold-600)}
 .cta-band{background:linear-gradient(135deg,#EC9A32 0%,#F6BE7C 100%);border-radius:0;overflow:hidden;display:grid;grid-template-columns:42% 58%;min-height:200px}
 
@@ -162,7 +162,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 /* Practice */
 .practice-progress{height:6px;background:var(--border);border-radius:3px;margin-bottom:24px;overflow:hidden}
 .practice-bar{height:100%;background:var(--green);border-radius:3px;transition:width .4s}
-.question-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px;margin-bottom:16px;display:none}
+.question-card{background:var(--surface);border:1px solid var(--border);border-radius:0;padding:28px;margin-bottom:16px;display:none}
 .question-card.active{display:block}
 .q-number{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
 .q-text{font-size:17px;font-weight:500;color:var(--ink);margin-bottom:20px}
@@ -173,12 +173,12 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .choice-btn.correct{background:var(--green-light);border-color:var(--green)}
 .choice-btn.wrong{background:var(--red-light);border-color:var(--red)}
 .hint-toggle{font-size:13px;color:var(--blue);cursor:pointer;margin-bottom:8px;background:none;border:none;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;padding:0}
-.hint-text{display:none;font-size:14px;color:var(--muted);background:var(--yellow-light);padding:10px 14px;border-radius:6px;margin-bottom:12px}
-.q-feedback{display:none;font-size:14px;padding:12px 16px;border-radius:8px;margin-top:12px}
+.hint-text{display:none;font-size:14px;color:var(--muted);background:var(--yellow-light);padding:10px 14px;border-radius:0;margin-bottom:12px}
+.q-feedback{display:none;font-size:14px;padding:12px 16px;border-radius:0;margin-top:12px}
 .q-feedback.correct{background:var(--green-light);color:#1C7C48}
 .q-feedback.wrong{background:var(--red-light);color:#842D34}
 .q-next{margin-top:16px;display:none}
-.completion-screen{display:none;text-align:center;padding:32px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.completion-screen{display:none;text-align:center;padding:32px;background:var(--surface);border:1px solid var(--border);border-radius:0}
 .score-big{font-size:48px;font-weight:700;color:var(--green);font-family:'Athletics',Georgia,serif}
 /* KT table */
 .kt-table{width:100%;border-collapse:collapse;margin:16px 0}
@@ -219,8 +219,8 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .concept-chip{background:var(--surface);border:1px solid var(--border);border-radius:0;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink2);text-decoration:none;text-align:center;display:block}
 .concept-chip:hover{border-color:var(--yellow);background:var(--yellow-light);color:var(--ink);text-decoration:none}
 /* Video embed */
-.video-embed{position:relative;width:100%;padding-bottom:56.25%;background:#292827;border-radius:12px;overflow:hidden;margin:20px 0}
-.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.video-embed{position:relative;width:100%;aspect-ratio:16/9;background:#292827;border-radius:0;overflow:hidden;margin:20px 0}
+.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}.yt-facade{position:absolute;top:0;left:0;width:100%;height:100%;cursor:pointer;background:#000}
 /* TOC */
 
 .toc-inner{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px}
@@ -274,7 +274,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   .eyebrow{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;display:block}
 
   /* YouTube facade */
-  .yt-facade{position:relative;cursor:pointer;background:#000}
+  .yt-facade{position:absolute;top:0;left:0;width:100%;height:100%;cursor:pointer;background:#000}
   .yt-facade img{width:100%;height:100%;object-fit:cover;display:block;opacity:.85}
   .yt-facade .yt-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:none;border:none;padding:0;cursor:pointer;transition:transform .1s}
   .yt-facade:hover .yt-play{transform:translate(-50%,-50%) scale(1.08)}
@@ -462,7 +462,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <div class="yt-facade" data-ytid="pfamBrBf8BQ">
         <img src="https://i.ytimg.com/vi/pfamBrBf8BQ/hqdefault.jpg" width="480" height="270" loading="lazy" decoding="async" alt="Video thumbnail" style="width:100%;height:100%;object-fit:cover">
         <button class="yt-play" onclick="(function(el){var id=el.closest('[data-ytid]').dataset.ytid;var w=el.closest('.video-wrap,.video-embed,.fv-embed');w.innerHTML='<iframe src=\"https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0\" style=\"position:absolute;top:0;left:0;width:100%;height:100%;border:0\" allow=\"autoplay;encrypted-media\" allowfullscreen loading="lazy"></iframe>'})(this)" aria-label="Play video"><svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.5 7.7C65.6 4.8 63.4 2.5 60.6 1.7 55.8 0 34 0 34 0S12.2 0 7.3 1.7C4.6 2.5 2.4 4.8 1.5 7.7 0 12.6 0 24 0 24s0 11.4 1.5 16.3c.9 2.9 3.1 5.2 5.8 6C12.2 48 34 48 34 48s21.8 0 26.7-1.7c2.7-.8 4.9-3.1 5.8-6C68 35.4 68 24 68 24s0-11.4-1.5-16.3z" fill="red"/><path d="M45 24L27 14v20z" fill="#fff"/></svg></button>
-      </div></iframe>
+      </div>
     </div>
 
     <!-- INLINE CTA -->
@@ -503,7 +503,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Using Base and Height</span><span class="acc-ch">▼</span>
+          <span>Using Base and Height</span><svg class="acc-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>A = base × height (h must be perpendicular to the base)</div>
@@ -545,7 +545,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Using Two Adjacent Sides and an Angle</span><span class="acc-ch">▼</span>
+          <span>Using Two Adjacent Sides and an Angle</span><svg class="acc-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>A = a × b × sin(θ)</div>
@@ -567,7 +567,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Finding Height When Area is Known</span><span class="acc-ch">▼</span>
+          <span>Finding Height When Area is Known</span><svg class="acc-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Rearranged formula</div>h = Area ÷ base</div>
@@ -589,7 +589,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
       <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Using Diagonals</span><span class="acc-ch">▼</span>
+          <span>Using Diagonals</span><svg class="acc-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
         <div class="accordion-body">
           <div class="fbox"><div class="flbl">Formula</div>A = ½ × d₁ × d₂ × sin(x)</div>
@@ -756,35 +756,35 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <h2>FAQs on Area of Parallelogram</h2>
     <div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">What is the area of a parallelogram?<span class="faq-ch">▼</span></button>
+        <button class="faq-btn" onclick="toggleFaq(this)">What is the area of a parallelogram?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button>
         <div class="faq-answer">The area of parallelogram is the 2D space enclosed within its four sides. The formula is A = base × perpendicular height. The result is always measured in square units (cm², m², etc.).</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">Is the area of a parallelogram the same as a rectangle?<span class="faq-ch">▼</span></button>
+        <button class="faq-btn" onclick="toggleFaq(this)">Is the area of a parallelogram the same as a rectangle?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button>
         <div class="faq-answer">Yes — if they share the same base and perpendicular height. You can prove this visually: slice the triangle off one slanted end of the parallelogram and slide it to the other end, forming a perfect rectangle. No area is added or removed.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">Why does the slant not affect the area?<span class="faq-ch">▼</span></button>
+        <button class="faq-btn" onclick="toggleFaq(this)">Why does the slant not affect the area?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button>
         <div class="faq-answer">Because area depends on base × perpendicular height, and the perpendicular height stays constant regardless of how much the shape leans. Imagine pushing the top row of a stack of papers sideways — the paper stack covers the same desktop area no matter how tilted it gets.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">How do you find the area without the height?<span class="faq-ch">▼</span></button>
+        <button class="faq-btn" onclick="toggleFaq(this)">How do you find the area without the height?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button>
         <div class="faq-answer">Use the adjacent-sides formula: A = a × b × sin(θ), where a and b are the two side lengths and θ is the angle between them. If you know the diagonals, use A = ½ × d₁ × d₂ × sin(x) instead.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">What is the area of a rhombus?<span class="faq-ch">▼</span></button>
+        <button class="faq-btn" onclick="toggleFaq(this)">What is the area of a rhombus?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button>
         <div class="faq-answer">A rhombus is a parallelogram with all four sides equal. Its area is A = base × height (same formula). If you know the diagonals d₁ and d₂, you can also use A = ½ × d₁ × d₂ because a rhombus's diagonals are always perpendicular.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">Can either pair of opposite sides be used as the base?<span class="faq-ch">▼</span></button>
+        <button class="faq-btn" onclick="toggleFaq(this)">Can either pair of opposite sides be used as the base?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button>
         <div class="faq-answer">Yes. A parallelogram has two pairs of parallel sides, so either pair can serve as the base — as long as you use the corresponding perpendicular height. Both choices give the same area.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">How do you find the height if only the area and base are known?<span class="faq-ch">▼</span></button>
+        <button class="faq-btn" onclick="toggleFaq(this)">How do you find the height if only the area and base are known?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button>
         <div class="faq-answer">Rearrange A = b × h to get h = A ÷ b. For example, if the area is 96 cm² and the base is 12 cm, then h = 96 ÷ 12 = 8 cm.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">What units is the area measured in?<span class="faq-ch">▼</span></button>
+        <button class="faq-btn" onclick="toggleFaq(this)">What units is the area measured in?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button>
         <div class="faq-answer">Area is always in square units. If base and height are in cm, the area is in cm². If in metres, it's m². Always write the unit squared in your answer.</div>
       </div>
     </div>
