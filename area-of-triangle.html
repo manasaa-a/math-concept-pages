@@ -364,8 +364,9 @@ strong{font-weight:500;color:var(--ink)}
   .breadcrumb-bar{border-bottom:1px solid var(--border);padding:12px 0;font-size:13px;color:var(--muted);background:var(--surface)}
   .breadcrumb-bar .inner{max-width:1120px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center}
   .breadcrumb a{color:var(--muted);text-decoration:none}
+  main{min-width:0}
   .page-grid{max-width:1120px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:220px 1fr;gap:52px;align-items:start;padding-top:40px;padding-bottom:80px}
-  main{font-family:'Athletics',Georgia,serif;font-size:18px;font-weight:700}
+  
   .toc{position:sticky;top:calc(var(--nav-h) + 20px);max-height:calc(100vh - var(--nav-h) - 40px);overflow-y:auto;padding-bottom:20px}
   .toc-title{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
   .toc-list{list-style:none;display:flex;flex-direction:column;gap:2px}
@@ -379,7 +380,7 @@ strong{font-weight:500;color:var(--ink)}
 
 
 /* mobile TOC */
-  .mobile-toc{display:none;border:1px solid var(--border);margin-bottom:28px;overflow:hidden;border-radius:0}
+  .mobile-toc{display:none !important;border:1px solid var(--border);margin-bottom:28px;overflow:hidden;border-radius:0}
   .mobile-toc summary{list-style:none;cursor:pointer;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;font-family:inherit;font-size:15px;font-weight:600;color:var(--ink);background:var(--surface)}
   .mobile-toc summary::-webkit-details-marker{display:none}
   .mobile-toc summary::marker{display:none}
@@ -635,13 +636,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 <aside class="toc">
   <div class="toc-title">On this page</div>
   <ul class="toc-list" id="toc-list">
-      <li><a href="#what-is" class="">What is the Area of a Triangle?</a></li>
-      <li><a href="#formulas" class="">How to Find the Area</a></li>
-      <li><a href="#how-to" class="">Area of a Triangle Formula</a></li>
-      <li><a href="#practice" class="">Practice questions</a></li>
-      <li><a href="#worksheet" class="">Downloadable worksheet</a></li>
-      <li><a href="#takeaways" class="">Key Takeaways</a></li>
-      <li><a href="#faq" class="">FAQ</a></li>
+      <li><a href="#what-is" >What is the Area of a Triangle?</a></li>
+      <li><a href="#formulas" >How to Find the Area</a></li>
+      <li><a href="#how-to" >Area of a Triangle Formula</a></li>
+      <li><a href="#practice" >Practice questions</a></li>
+      <li><a href="#worksheet" >Downloadable worksheet</a></li>
+      <li><a href="#takeaways" >Key Takeaways</a></li>
+      <li><a href="#faq" >FAQ</a></li>
   </ul>
 </aside>
 
