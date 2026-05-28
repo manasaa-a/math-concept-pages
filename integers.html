@@ -362,14 +362,12 @@ strong{font-weight:500;color:var(--ink)}
 .toc-list a.active{background:var(--yellow-light);color:var(--ink);border-left-color:var(--yellow);font-weight:500}
 .toc-divider{height:1px;background:var(--border);margin:8px 12px}
 /* mobile TOC */
-  .mobile-toc{display:none;border:1px solid var(--border);margin-bottom:28px;overflow:hidden;border-radius:0}
-  .mobile-toc summary{list-style:none;cursor:pointer;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;font-family:inherit;font-size:15px;font-weight:600;color:var(--ink);background:var(--surface)}
-  .mobile-toc summary::-webkit-details-marker{display:none}
-  .mobile-toc summary::marker{display:none}
-  .mobile-toc[open] .mtoc-chev{transform:rotate(180deg)}
-  .mobile-toc-body{padding:6px 0;border-top:1px solid var(--border)}
+  .mobile-toc{display:none;background:var(--surface);border:1px solid var(--border);border-radius:0;margin-bottom:28px;overflow:hidden}
+  .mobile-toc-btn{width:100%;background:none;border:none;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;color:var(--ink)}
+  .mobile-toc-body{display:none;border-top:1px solid var(--border);padding:6px 0}
+  .mobile-toc-body.open{display:block}
   .mobile-toc-body a{display:block;padding:9px 16px;font-size:14px;color:var(--ink2);text-decoration:none;border-left:3px solid transparent;transition:all .15s}
-  .mobile-toc-body a:hover{background:var(--bg);border-left-color:var(--yellow);color:var(--ink)}
+  .mobile-toc-body a:hover,.mobile-toc-body a.active{background:var(--bg);border-left-color:var(--yellow);color:var(--ink)}
   
   
   
@@ -662,22 +660,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 <main>
 
   <!-- MOBILE TOC -->
-  <details class="mobile-toc">
-      <summary>
-        <span>On this page</span>
-        <svg class="mtoc-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;transition:transform .2s"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </summary>
-      <div class="mobile-toc-body">
-        <a href="#what-is">What are Integers?</a>
-        <a href="#numberline">Integers on a Number Line</a>
-        <a href="#operations">Integer Operations</a>
-        <a href="#properties">Properties of Integers</a>
-        <a href="#practice">Practice questions</a>
-        <a href="#worksheets">Downloadable worksheet</a>
-        <a href="#takeaways">Key Takeaways</a>
-        <a href="#faq">FAQ</a>
-      </div>
-    </details>
     </div>
 
   <!-- INTRO -->
