@@ -584,7 +584,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 .toc-inner li{margin-bottom:4px}
 .toc-inner a{font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px;line-height:1.4}
 .toc-inner a:hover{color:var(--ink);background:var(--bg)}
-.toc-inner a.active{color:var(--blue);background:var(--blue-light);font-weight:500}
+.toc-inner a.active{color:#292827;background:#FEF3E2;border-left-color:#F4AB52;font-weight:500}
 
   @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
   .completion-screen{display:none;text-align:center;padding:28px 16px}
@@ -629,7 +629,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   <div class="toc-title">On this page</div>
   <ul class="toc-list" id="toc-list">
       <li><a href="#what-is" >What is the Area of a Triangle?</a></li>
-      <li><a href="#formulas" >How to Find the Area</a></li>
+      <li><a href="#how-to" >How to Find the Area</a></li>
       <li><a href="#practice" >Practice questions</a></li>
       <li><a href="#worksheet" >Downloadable worksheet</a></li>
       <li><a href="#takeaways" >Key Takeaways</a></li>
@@ -1263,7 +1263,7 @@ function selGrade(btn) { document.querySelectorAll('#grade-btns .grade-chip').fo
 function selFeeling(btn) { btn.closest('.feeling-btns').querySelectorAll('.feeling-btn').forEach(function(b) { b.classList.remove('selected'); }); btn.classList.add('selected'); }
 
 /* TOC SCROLL SPY */
-var tocIds = ['what-is','formulas','simulation','how-to','practice','takeaways','faq','worksheet','videos'];
+var tocIds = ['what-is','how-to','simulation','practice','takeaways','faq','worksheet','videos'];
 var spy = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
     var link = document.querySelector('#toc-list a[href="#' + e.target.id + '"]');
