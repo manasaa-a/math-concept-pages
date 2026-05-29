@@ -857,12 +857,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <div class="question-card active" id="q1">
       <div class="q-number">Question 1 of 5</div>
       <div class="q-text">What is the area of this triangle?</div>
-      <svg viewBox="0 0 280 160" style="width:100%;max-width:280px;display:block;margin:0 0 16px;background:#FAF8F5;border-radius:8px;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 320 160" style="width:100%;max-width:320px;display:block;margin:0 0 16px;background:#FAF8F5;border-radius:0;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
         <polygon points="50,130 230,130 140,40" fill="var(--blue-light)" stroke="var(--blue)" stroke-width="2"/>
         <line x1="140" y1="40" x2="140" y2="130" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="5,3"/>
-        <rect x="140" y="121" width="9" height="9" fill="none" stroke="var(--green)" stroke-width="1.5"/>
+        <rect x="131" y="121" width="9" height="9" fill="none" stroke="var(--green)" stroke-width="1.5"/>
         <text x="140" y="150" font-size="13" fill="var(--ink2)" font-family="Untitled Sans" text-anchor="middle">b = 6 cm</text>
-        <text x="158" y="90" font-size="13" fill="var(--green)" font-family="Untitled Sans">h = 4 cm</text>
+        <line x1="142" y1="85" x2="248" y2="85" stroke="var(--green)" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="252" y="89" font-size="13" fill="var(--green)" font-family="Untitled Sans" text-anchor="start">h = 4 cm</text>
       </svg>
       <div class="choices">
         <button class="choice-btn" onclick="checkAns(this,'wrong','q1')">24 cm²</button>
