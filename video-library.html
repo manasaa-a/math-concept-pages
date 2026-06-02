@@ -54,14 +54,14 @@
       font-family: var(--font-body);
       background: #FAF8F5;
       color: var(--black);
-      padding-top: 56px;
+      padding-top: 0;
     }
 
     /* ── NAV ─────────────────────────────────────────────────────────── */
     nav {
       display: flex; align-items: stretch;
       height: 56px;
-      border-bottom: 1px solid #EBE7E0; background: #FAF8F5;
+      border-bottom: 1px solid rgba(255,255,255,0.1); background: transparent;
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
     }
     .nav-logo {
@@ -83,7 +83,7 @@
     .nav-item > a, .nav-item > button {
       display: flex; align-items: center; justify-content: center; gap: 5px;
       width: 100%; height: 100%; padding: 0 14px;
-      font-size: 13px; font-weight: 600; color: #222;
+      font-size: 13px; font-weight: 600; color: inherit;
       text-decoration: none; background: none; border: none;
       cursor: pointer; white-space: nowrap;
       font-family: var(--font-body);
@@ -629,7 +629,7 @@
     }
     /* Mobile: single-col everything */
     @media (max-width: 640px) {
-      body { padding-top: 52px; }
+      body { padding-top: 0; }
       nav { height: 52px; }
       .nav-items { display: none; }
       .search-backdrop { top: 52px; }
@@ -765,14 +765,27 @@
   <a href="https://www.cuemath.com/en-us/" class="nav-cta">Book a Free Trial Class</a>
 </nav>
 
-<div class="hero">
-  <h1>
-    <span class="hero-static">The Best Math Explanations</span>
-    <span class="hero-cycling-line"><span class="hero-word" id="heroWord"></span><span class="hero-cursor"></span></span>
-  </h1>
-  <a class="hero-cta" id="heroScrollCta" href="#grid">
-    Start Learning <span class="hero-cta-sub">— it's free</span>
-  </a>
+<div class="hero-video-wrap">
+  <video class="hero-bg-video" autoplay muted loop playsinline
+         poster="https://d138zd1ktt9iqe.cloudfront.net/static/website-v3/Grade%203-5%2016-9.webp">
+    <source src="https://d138zd1ktt9iqe.cloudfront.net/static/website-v3/Grade%203-5%2016-9.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <h1>Math Concept<br>Explanations</h1>
+    <a class="hero-explore-btn" id="heroScrollCta" href="#grid">Explore Videos</a>
+  </div>
+
+  <div class="hero-bar">
+    <div class="hero-bar-item">School concepts</div>
+    <div class="hero-bar-plus">+</div>
+    <div class="hero-bar-item">Olympiad prep</div>
+    <div class="hero-bar-plus">+</div>
+    <div class="hero-bar-item">Tutor-made</div>
+    <div class="hero-bar-eq">=</div>
+    <div class="hero-bar-item">Real understanding</div>
+  </div>
 </div>
 
 <div class="filters-wrap">
@@ -1474,6 +1487,23 @@ document.querySelectorAll('.faq-q').forEach(btn => {
 });
 
 
+
+
+(function() {
+  const nav = document.querySelector('nav');
+  function updateNav() {
+    const hero = document.querySelector('.hero-video-wrap');
+    if (!hero) return;
+    const solid = window.scrollY > hero.offsetHeight - 80;
+    nav.style.background = solid ? '#FAF8F5' : 'transparent';
+    nav.style.borderBottomColor = solid ? '#EBE7E0' : 'rgba(255,255,255,0.1)';
+    nav.querySelectorAll('.nav-item > a, .nav-item > button').forEach(el => { el.style.color = solid ? '#292827' : '#fff'; });
+    const logo = nav.querySelector('.nav-logo img');
+    if (logo) logo.style.filter = solid ? 'none' : 'brightness(0) invert(1)';
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+})();
 
 // ── HERO SCROLL CTA ──────────────────────────────────────────────────────
 document.getElementById('heroScrollCta').addEventListener('click', e => {
