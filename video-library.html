@@ -54,14 +54,14 @@
       font-family: var(--font-body);
       background: #FAF8F5;
       color: var(--black);
-      padding-top: 0;
+      padding-top: 56px;
     }
 
     /* ── NAV ─────────────────────────────────────────────────────────── */
     nav {
       display: flex; align-items: stretch;
       height: 56px;
-      border-bottom: 1px solid rgba(255,255,255,0.1); background: transparent;
+      border-bottom: 1px solid #EBE7E0; background: #FAF8F5;
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
     }
     .nav-logo {
@@ -83,7 +83,7 @@
     .nav-item > a, .nav-item > button {
       display: flex; align-items: center; justify-content: center; gap: 5px;
       width: 100%; height: 100%; padding: 0 14px;
-      font-size: 13px; font-weight: 600; color: inherit;
+      font-size: 13px; font-weight: 600; color: #222;
       text-decoration: none; background: none; border: none;
       cursor: pointer; white-space: nowrap;
       font-family: var(--font-body);
@@ -121,6 +121,39 @@
       white-space: nowrap; transition: background 0.2s; flex-shrink: 0;
     }
     .nav-cta:hover { background: #EC9A32; }
+    /* ── HERO ────────────────────────────────────────────────────────── */
+    .hero {
+      max-width: 720px; margin: 64px auto 48px;
+      padding: 0 24px; text-align: center;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: 42px; font-weight: 800;
+      letter-spacing: -1.2px; line-height: 1.15; margin-bottom: 0;
+    }
+    .hero-static {
+      display: block; white-space: nowrap;
+    }
+    .hero-cycling-line {
+      display: block; min-height: 1.2em;
+      font-size: 30px; font-weight: 700; letter-spacing: -0.6px;
+    }
+    .hero-word { color: var(--yellow); }
+    .hero-cursor {
+      display: inline-block; width: 2px; height: 0.72em;
+      background: var(--yellow); margin-left: 2px;
+      vertical-align: middle; border-radius: 1px;
+      animation: blink-cur 0.9s step-end infinite;
+    }
+    @keyframes blink-cur { 0%,100%{opacity:1} 50%{opacity:0} }
+    .hero-cta {
+      display: inline-block; margin-top: 22px;
+      font-family: var(--font-body); font-size: 16px; font-weight: 600;
+      color: var(--text); text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .hero-cta:hover { opacity: 0.6; }
+    .hero-cta-sub { font-weight: 400; color: var(--text); }
     /* ── INLINE SEARCH (hover-to-expand) ────────────────────────────── */
     .search-wrap {
       margin-left: auto; flex-shrink: 0;
@@ -596,7 +629,7 @@
     }
     /* Mobile: single-col everything */
     @media (max-width: 640px) {
-      body { padding-top: 0; }
+      body { padding-top: 52px; }
       nav { height: 52px; }
       .nav-items { display: none; }
       .search-backdrop { top: 52px; }
@@ -732,29 +765,14 @@
   <a href="https://www.cuemath.com/en-us/" class="nav-cta">Book a Free Trial Class</a>
 </nav>
 
-<div class="hero-video-wrap">
-  <!-- ↓ Replace src with actual brand video URL when available ↓ -->
-  <video class="hero-bg-video" autoplay muted loop playsinline
-         poster="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/grade-3-5-16-9-1682668610.webp"
-         src="">
-    <!-- <source src="YOUR_BRAND_VIDEO.mp4" type="video/mp4"> -->
-  </video>
-  <div class="hero-overlay"></div>
-
-  <div class="hero-content">
-    <h1>Math Concept<br>Explanations</h1>
-    <a class="hero-explore-btn" id="heroScrollCta" href="#grid">Explore Videos</a>
-  </div>
-
-  <div class="hero-bar">
-    <div class="hero-bar-item">School concepts</div>
-    <div class="hero-bar-plus">+</div>
-    <div class="hero-bar-item">Olympiad prep</div>
-    <div class="hero-bar-plus">+</div>
-    <div class="hero-bar-item">Tutor-made</div>
-    <div class="hero-bar-eq">=</div>
-    <div class="hero-bar-item">Real understanding</div>
-  </div>
+<div class="hero">
+  <h1>
+    <span class="hero-static">The Best Math Explanations</span>
+    <span class="hero-cycling-line"><span class="hero-word" id="heroWord"></span><span class="hero-cursor"></span></span>
+  </h1>
+  <a class="hero-cta" id="heroScrollCta" href="#grid">
+    Start Learning <span class="hero-cta-sub">— it's free</span>
+  </a>
 </div>
 
 <div class="filters-wrap">
@@ -1456,24 +1474,6 @@ document.querySelectorAll('.faq-q').forEach(btn => {
 });
 
 
-// Nav becomes solid on scroll
-(function() {
-  const nav = document.querySelector('nav');
-  function updateNav() {
-    const heroH = document.querySelector('.hero-video-wrap');
-    if (!heroH) return;
-    const solid = window.scrollY > heroH.offsetHeight - 80;
-    nav.style.background = solid ? '#FAF8F5' : 'transparent';
-    nav.style.borderBottomColor = solid ? '#EBE7E0' : 'rgba(255,255,255,0.1)';
-    nav.querySelectorAll('.nav-item > a, .nav-item > button').forEach(el => {
-      el.style.color = solid ? '#292827' : '#fff';
-    });
-    const logo = nav.querySelector('.nav-logo img');
-    if (logo) logo.style.filter = solid ? 'none' : 'brightness(0) invert(1)';
-  }
-  window.addEventListener('scroll', updateNav, { passive: true });
-  updateNav();
-})();
 
 // ── HERO SCROLL CTA ──────────────────────────────────────────────────────
 document.getElementById('heroScrollCta').addEventListener('click', e => {
