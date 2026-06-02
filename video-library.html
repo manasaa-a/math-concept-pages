@@ -434,6 +434,34 @@
     }
     .share-sheet-copy-btn:hover { background: #65b8ff; }
     .share-sheet-copy-btn.copied { background: #4ade80; }
+
+    /* ── MID-PAGE TUTOR CTA ─────────────────────────────────────────── */
+    .tutor-cta {
+      max-width: 1100px; margin: 56px auto 0; padding: 0 24px;
+    }
+    .tutor-cta-inner {
+      background: #FAF1E6; border: 1px solid #F6BE7C;
+      padding: 40px 48px; display: flex; align-items: center;
+      justify-content: space-between; gap: 32px; flex-wrap: wrap;
+    }
+    .tutor-cta-text h2 {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 800; letter-spacing: -0.3px;
+      color: var(--black); margin-bottom: 8px;
+    }
+    .tutor-cta-text p { font-size: 15px; color: var(--grey-text); line-height: 1.6; max-width: 420px; }
+    .tutor-cta-btn {
+      background: var(--yellow); color: var(--black);
+      padding: 14px 28px; border-radius: 0; border: none;
+      font-family: var(--font-body); font-size: 15px; font-weight: 700;
+      white-space: nowrap; cursor: pointer; text-decoration: none;
+      transition: background 0.2s; flex-shrink: 0; display: inline-block;
+    }
+    .tutor-cta-btn:hover { background: #EC9A32; color: var(--black); }
+    @media (max-width: 640px) {
+      .tutor-cta-inner { padding: 28px 20px; flex-direction: column; align-items: flex-start; gap: 20px; }
+      .tutor-cta-text h2 { font-size: 18px; }
+    }
     /* ── BOTTOM CTA ──────────────────────────────────────────────────── */
     .bottom-cta { margin: 72px 0 0; border-top: 1px solid var(--black); }
     .bottom-cta-inner {
@@ -600,7 +628,7 @@
       <a href="https://www.cuemath.com/become-a-tutor/">Become a Tutor</a>
     </div>
   </div>
-  <a href="https://www.cuemath.com/en-us/" class="nav-cta">Try a free class →</a>
+  <a href="https://www.cuemath.com/en-us/" class="nav-cta">Book a Free Trial Class</a>
 </nav>
 
 <div class="hero">
@@ -646,13 +674,24 @@
   <button class="page-btn" id="nextBtn">Next →</button>
 </div>
 
+
+<div class="tutor-cta" id="tutorCta">
+  <div class="tutor-cta-inner">
+    <div class="tutor-cta-text">
+      <h2>Watch with a tutor</h2>
+      <p>Videos show what understanding can feel like. A Cuemath tutor makes it your child's everyday — personalised, live, 1:1.</p>
+    </div>
+    <a href="https://www.cuemath.com/en-us/" class="tutor-cta-btn">Book a Free Trial Class</a>
+  </div>
+</div>
+
 <div class="bottom-cta">
   <div class="bottom-cta-inner">
     <div>
-      <h3>Want to go deeper?</h3>
-      <p>Get personalised 1:1 math tutoring with a Cuemath expert.</p>
+      <h3>Ready to go further?</h3>
+      <p>Every concept has more depth. A Cuemath tutor unlocks it — live, personalised, at your child's pace.</p>
     </div>
-    <a href="https://www.cuemath.com/en-us/" class="cta-btn">Try a free class →</a>
+    <a href="https://www.cuemath.com/en-us/" class="cta-btn">Book a Free Trial Class</a>
   </div>
 </div>
 
@@ -782,7 +821,7 @@
         </button>
       </div>
     </div>
-    <a href="https://www.cuemath.com/en-us/" class="modal-cta" target="_blank" rel="noopener">Try a free class →</a>
+    <a href="https://www.cuemath.com/en-us/" class="modal-cta" target="_blank" rel="noopener">Book a Free Trial Class</a>
     <div class="modal-next" id="modalNext" style="display:none">
       <div class="modal-next-label">Watch next</div>
       <div class="modal-next-card" id="modalNextCard">
