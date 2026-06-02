@@ -646,85 +646,6 @@
     .proof-item strong { font-size: 15px; font-weight: 700; color: #292827; }
     .proof-divider { width: 1px; height: 20px; background: #EBE7E0; flex-shrink: 0; }
 
-    /* ── FEATURED VIDEO ─────────────────────────────────────────────── */
-    .featured-wrap {
-      max-width: 1100px; margin: 48px auto 0; padding: 0 24px;
-    }
-    .featured-label {
-      font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
-      text-transform: uppercase; color: #F4AB52; margin-bottom: 16px;
-    }
-    .featured-inner {
-      display: grid; grid-template-columns: 1fr 420px; gap: 0;
-      border: 1px solid #EBE7E0; overflow: hidden; cursor: pointer;
-    }
-    .featured-inner:hover .featured-thumb-img { opacity: 0.9; }
-    .featured-thumb {
-      position: relative; aspect-ratio: 16/9; background: #000; overflow: hidden;
-    }
-    .featured-thumb-img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: opacity 0.2s;
-    }
-    .featured-play {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 64px; height: 64px; background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(6px); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s;
-    }
-    .featured-inner:hover .featured-play { background: rgba(244,171,82,0.85); }
-    .featured-play::after {
-      content: ''; width: 0; height: 0; border-style: solid;
-      border-width: 10px 0 10px 20px;
-      border-color: transparent transparent transparent rgba(255,255,255,0.95);
-      margin-left: 4px;
-    }
-    .featured-info {
-      background: #FAF8F5; padding: 32px 36px;
-      display: flex; flex-direction: column; justify-content: center; gap: 16px;
-    }
-    .featured-tag {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 11px; font-weight: 700; letter-spacing: 0.3px;
-      text-transform: uppercase; padding: 4px 10px;
-    }
-    .featured-tag.concept   { background: #FAF1E6; color: #CE7E12; }
-    .featured-tag.olympiad  { background: #f5f0ff; color: #7c3aed; }
-    .featured-tag.puzzle    { background: #ECF9EF; color: #16a34a; }
-    .featured-tag.realworld { background: #fff4e0; color: #CE7E12; }
-    .featured-tag-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
-    .featured-tag.concept .featured-tag-dot   { background: #CE7E12; }
-    .featured-tag.olympiad .featured-tag-dot  { background: #7c3aed; }
-    .featured-tag.puzzle .featured-tag-dot    { background: #16a34a; }
-    .featured-tag.realworld .featured-tag-dot { background: #CE7E12; }
-    .featured-title {
-      font-family: var(--font-display);
-      font-size: 22px; font-weight: 800; letter-spacing: -0.3px;
-      line-height: 1.3; color: #292827;
-    }
-    .featured-topic { font-size: 14px; color: #5B5854; }
-    .featured-watch {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: #292827; color: #fff;
-      padding: 12px 22px; font-family: var(--font-body);
-      font-size: 14px; font-weight: 700; border: none;
-      cursor: pointer; transition: background 0.2s; text-decoration: none;
-      align-self: flex-start;
-    }
-    .featured-watch:hover { background: #F4AB52; color: #292827; }
-    @media (max-width: 860px) {
-      .featured-inner { grid-template-columns: 1fr; }
-      .featured-info { padding: 24px 20px; }
-      .featured-title { font-size: 18px; }
-    }
-    @media (max-width: 640px) {
-      .featured-wrap { padding: 0 16px; margin-top: 32px; }
-      .proof-strip { gap: 16px; }
-      .proof-divider { display: none; }
-    }
-
     /* ── FAQ SECTION ─────────────────────────────────────────────────── */
     .faq-section {
       max-width: 1100px; margin: 72px auto 0; padding: 0 24px;
@@ -862,27 +783,6 @@
     </div>
   </div>
 </div>
-
-<div class="featured-wrap">
-  <div class="featured-label">Featured</div>
-  <div class="featured-inner" id="featuredCard">
-    <div class="featured-thumb">
-      <img class="featured-thumb-img" src="https://img.youtube.com/vi/pfamBrBf8BQ/maxresdefault.jpg"
-           onerror="this.src='https://img.youtube.com/vi/pfamBrBf8BQ/hqdefault.jpg'" alt="Featured video">
-      <div class="featured-play"></div>
-    </div>
-    <div class="featured-info">
-      <span class="featured-tag concept"><span class="featured-tag-dot"></span>Concept</span>
-      <div class="featured-title">Area of a Parallelogram — Why Base × Height Works</div>
-      <div class="featured-topic">Geometry · Grades 6–8</div>
-      <button class="featured-watch" id="featuredWatch">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 3l14 9-14 9V3z" fill="currentColor"/></svg>
-        Watch now
-      </button>
-    </div>
-  </div>
-</div>
-
 
 <div class="grid" id="grid"></div>
 
@@ -1546,11 +1446,6 @@ fetch('videos.json')
     grid.innerHTML = '<div class="no-results">Could not load videos. Please refresh.</div>';
   });
 
-
-// Featured video
-const FEATURED_VIDEO = { id: 'pfamBrBf8BQ', type: 'concept', title: 'Area of a Parallelogram — Why Base × Height Works', topic: 'Geometry · Grades 6–8' };
-document.getElementById('featuredWatch').addEventListener('click', () => openModal(FEATURED_VIDEO));
-document.getElementById('featuredCard').addEventListener('click', (e) => { if (!e.target.closest('button')) openModal(FEATURED_VIDEO); });
 
 // FAQ accordion
 document.querySelectorAll('.faq-q').forEach(btn => {
