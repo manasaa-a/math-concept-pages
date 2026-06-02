@@ -773,6 +773,38 @@
     .proof-item strong { font-size: 15px; font-weight: 700; color: #292827; }
     .proof-divider { width: 1px; height: 20px; background: #EBE7E0; flex-shrink: 0; }
 
+
+    /* ── EXPLORE CTA ─────────────────────────────────────────────────── */
+    .explore-cta {
+      max-width: 1100px; margin: 72px auto; padding: 0 24px;
+    }
+    .explore-cta-inner {
+      background: #fff; border: 1.5px solid #292827;
+      box-shadow: 6px 6px 0 #292827;
+      padding: 40px 44px;
+    }
+    .explore-cta-eyebrow {
+      font-family: var(--font-body); font-size: 13px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase; color: #292827;
+      margin-bottom: 16px;
+    }
+    .explore-cta-body {
+      font-family: var(--font-body); font-size: 18px; color: #292827;
+      line-height: 1.5; margin-bottom: 28px; max-width: 640px;
+    }
+    .explore-cta-btn {
+      display: inline-block; background: #292827; color: #fff;
+      font-family: var(--font-body); font-size: 15px; font-weight: 700;
+      padding: 16px 40px; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .explore-cta-btn:hover { background: #F4AB52; color: #292827; }
+    @media (max-width: 640px) {
+      .explore-cta { padding: 0 16px; margin: 48px auto; }
+      .explore-cta-inner { padding: 28px 24px; }
+      .explore-cta-body { font-size: 16px; }
+      .explore-cta-btn { padding: 14px 28px; }
+    }
     /* ── FAQ SECTION ─────────────────────────────────────────────────── */
     .faq-section {
       max-width: 1100px; margin: 72px auto 0; padding: 0 24px;
@@ -972,23 +1004,11 @@
   </div>
 </div>
 
-<div class="tutor-cta" id="tutorCta">
-  <div class="tutor-cta-inner">
-    <div class="tutor-cta-text">
-      <h2>Watch with a tutor</h2>
-      <p>Videos show what understanding can feel like. A Cuemath tutor makes it your child's everyday — personalised, live, 1:1.</p>
-    </div>
-    <a href="https://www.cuemath.com/en-us/" class="tutor-cta-btn">Book a Free Trial Class</a>
-  </div>
-</div>
-
-<div class="bottom-cta">
-  <div class="bottom-cta-inner">
-    <div>
-      <h3>Ready to go further?</h3>
-      <p>Every concept has more depth. A Cuemath tutor unlocks it — live, personalised, at your child's pace.</p>
-    </div>
-    <a href="https://www.cuemath.com/en-us/" class="cta-btn">Book a Free Trial Class</a>
+<div class="explore-cta">
+  <div class="explore-cta-inner">
+    <div class="explore-cta-eyebrow">Explore with a tutor</div>
+    <p class="explore-cta-body">Videos show what understanding can feel like. A tutor makes it your child's everyday.</p>
+    <a href="https://www.cuemath.com/en-us/" class="explore-cta-btn">Book a Free Trial Class</a>
   </div>
 </div>
 
