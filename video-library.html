@@ -813,6 +813,51 @@
       .explore-cta-body { font-size: 16px; }
       .explore-cta-btn { padding: 14px 28px; }
     }
+
+    /* ── BOOKING MODAL ───────────────────────────────────────────────── */
+    .booking-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.6); z-index: 2000;
+      align-items: center; justify-content: center; padding: 24px;
+    }
+    .booking-overlay.open { display: flex; }
+    .booking-box {
+      background: #FAF8F5; width: 100%; max-width: 480px;
+      padding: 36px; position: relative; max-height: 90vh; overflow-y: auto;
+    }
+    .booking-close {
+      position: absolute; top: 16px; right: 16px;
+      background: none; border: none; font-size: 22px; cursor: pointer;
+      color: #84807B; line-height: 1; padding: 0;
+    }
+    .booking-close:hover { color: #292827; }
+    .booking-title {
+      font-family: 'Athletics', 'Open Sans', sans-serif;
+      font-size: 24px; font-weight: 700; color: #292827; margin-bottom: 24px;
+    }
+    .booking-field { margin-bottom: 16px; }
+    .booking-field label {
+      display: block; font-size: 13px; font-weight: 600;
+      color: #5B5854; margin-bottom: 6px;
+      font-family: 'Untitled Sans', 'Open Sans', sans-serif;
+    }
+    .booking-field input, .booking-field select {
+      width: 100%; padding: 11px 14px;
+      border: 1.5px solid #EBE7E0; background: #fff;
+      font-family: 'Untitled Sans', 'Open Sans', sans-serif;
+      font-size: 15px; color: #292827; outline: none;
+      transition: border-color 0.15s;
+    }
+    .booking-field input:focus, .booking-field select:focus { border-color: #F4AB52; }
+    .booking-submit {
+      width: 100%; background: #292827; color: #fff;
+      border: none; padding: 14px;
+      font-family: 'Athletics', 'Open Sans', sans-serif;
+      font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 8px;
+      transition: background 0.2s;
+    }
+    .booking-submit:hover { background: #F4AB52; color: #292827; }
+
     /* ── FAQ SECTION ─────────────────────────────────────────────────── */
     .faq-section {
       max-width: 1100px; margin: 72px auto 0; padding: 0 24px;
@@ -977,7 +1022,7 @@
 
 
 <div class="faq-section">
-  <h2 style="text-align:center">Frequently asked questions</h2>
+  <h2 style="text-align:center">FAQs</h2>
   <div class="faq-list">
     <div class="faq-item">
       <button class="faq-q">What is Cuemath Math Concept Explanations? <svg class="faq-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button>
@@ -997,7 +1042,7 @@
     </div>
 <div class="faq-item">
       <button class="faq-q">Can my child learn with a tutor? <svg class="faq-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button>
-      <div class="faq-a">Yes. Every concept in these videos can be explored in a live 1:1 Cuemath class. A tutor adapts the explanation to your child specifically — their pace, their gaps, their questions. <a href="#exploreCta" onclick="document.getElementById('exploreCta').scrollIntoView({behavior:'smooth'});return false;" style="color:#CE7E12;font-weight:600;text-decoration:underline">See how it works →</a></div>
+      <div class="faq-a">Yes. Every concept in these videos can be explored in a live 1:1 Cuemath class. A tutor adapts the explanation to your child specifically — their pace, their gaps, their questions.<br><br><button onclick="openBookingModal()" style="background:#292827;color:#fff;border:none;padding:12px 28px;font-family:'Athletics','Open Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;margin-top:4px;transition:background 0.2s" onmouseover="this.style.background='#F4AB52';this.style.color='#292827'" onmouseout="this.style.background='#292827';this.style.color='#fff'">Get started</button></div>
     </div>
     </div>
   </div>
@@ -1661,6 +1706,19 @@ document.querySelectorAll('.faq-q').forEach(btn => {
   window.addEventListener('resize', loadVideo, { passive: true });
 })();
 
+
+function openBookingModal() {
+  document.getElementById('bookingOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeBookingModal() {
+  document.getElementById('bookingOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('bookingOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeBookingModal();
+});
+
 // ── HERO SCROLL CTA ──────────────────────────────────────────────────────
 document.getElementById('heroScrollCta').addEventListener('click', e => {
   e.preventDefault();
@@ -1690,6 +1748,35 @@ document.getElementById('heroScrollCta').addEventListener('click', e => {
   tick();
 })();
 </script>
+
+<div class="booking-overlay" id="bookingOverlay">
+  <div class="booking-box">
+    <button class="booking-close" onclick="closeBookingModal()">×</button>
+    <div class="booking-title">Book a free trial class</div>
+    <div class="booking-field">
+      <label>Your name</label>
+      <input type="text" placeholder="e.g. Priya">
+    </div>
+    <div class="booking-field">
+      <label>Child's grade</label>
+      <select>
+        <option>Grade 1</option><option>Grade 2</option><option>Grade 3</option>
+        <option>Grade 4</option><option>Grade 5</option><option selected>Grade 6</option>
+        <option>Grade 7</option><option>Grade 8</option><option>Grade 9</option>
+        <option>Grade 10</option><option>Grade 11</option><option>Grade 12</option>
+      </select>
+    </div>
+    <div class="booking-field">
+      <label>Phone</label>
+      <input type="tel" placeholder="+91 ...">
+    </div>
+    <div class="booking-field">
+      <label>Email</label>
+      <input type="email" placeholder="you@example.com">
+    </div>
+    <button class="booking-submit" onclick="closeBookingModal()">Book my free class</button>
+  </div>
+</div>
 
 </body>
 </html>
