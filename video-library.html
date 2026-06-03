@@ -34,20 +34,20 @@
   <meta name="twitter:image:alt"   content="Cuemath Math Concept Explanations - School Math, Olympiad, Puzzles and Math Facts">
 
   <!-- ── Fonts: Cuemath brand fonts + Open Sans fallback ───────────── -->
+  <link rel="stylesheet" href="cuedesign.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* Athletics & Untitled Sans load from cuemath.com's CDN when integrated.
-       Open Sans is the exact fallback Cuemath specifies. */
     :root {
+      /* fonts loaded via cuedesign.css */
       --font-display: 'Athletics', 'Open Sans', sans-serif;
       --font-body:    'Untitled Sans', 'Open Sans', sans-serif;
-      --yellow:       #F4AB52;   /* gold-500 */
-      --black:        #292827;   /* neutral-1000 */
-      --grey-light:   #F6F3ED;   /* neutral-200 */
-      --grey-mid:     #EBE7E0;   /* neutral-300 */
-      --grey-text:    #5B5854;   /* neutral-700 */
+      --yellow:       #F4AB52;
+      --black:        #292827;
+      --grey-light:   #F6F3ED;
+      --grey-mid:     #EBE7E0;
+      --grey-text:    #5B5854;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -160,10 +160,10 @@
       padding: 8px 20px; margin-bottom: 20px; display: inline-block;
     }
     .hero h1 {
-      font-family: var(--font-display);
+      font-family: 'Athletics', 'Open Sans', sans-serif;
       font-size: clamp(32px,5.5vw,72px); font-weight: 800;
       letter-spacing: -1.5px; line-height: 1.08;
-      color: #fff; margin: 0 0 10px;
+      color: #ffffff; margin: 0 0 10px;
     }
     .hero-h2 {
       font-family: var(--font-body);
