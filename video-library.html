@@ -121,88 +121,95 @@
       white-space: nowrap; transition: background 0.2s; flex-shrink: 0;
     }
     .nav-cta:hover { background: #EC9A32; }
-    /* ── HERO ────────────────────────────────────────────────────────── */
-    @keyframes blink-cur { 0%,100%{opacity:1} 50%{opacity:0} }
+    /* ── HERO — exact playground values ─────────────────────────────── */
     .hero-video-wrap {
       position: relative; width: 100%;
-      aspect-ratio: 1280/778;
-      overflow: hidden; background: #0a0a0a;
+      height: 718px; overflow: hidden; background: #0a0a0a;
     }
-    @media (max-width: 767px) { .hero-video-wrap { aspect-ratio: 372/692; } }
-    @media (min-width: 768px) and (max-width: 1023px) { .hero-video-wrap { aspect-ratio: 768/816; } }
+    @media (max-width: 767px)  { .hero-video-wrap { height: 661px; } }
+    @media (min-width: 768px) and (max-width: 1024px) { .hero-video-wrap { height: 100vw; } }
+
     .hero-bg-video {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
+      position: absolute; inset: 0; width: 100%; height: 100%;
       object-fit: cover; z-index: 0;
       opacity: 0; transition: opacity 0.5s ease-in-out;
     }
     .hero-bg-video.visible { opacity: 1; }
     .hero-poster {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%; object-fit: cover; z-index: 0;
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: 0;
     }
     .hero-overlay {
       position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(to bottom,
-        rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.72) 100%);
+      background: rgba(0,0,0,0.5); /* exact playground value */
+      pointer-events: none;
     }
     .hero-content {
-      position: absolute; inset: 0; z-index: 2;
+      position: absolute; inset: 0; z-index: 3;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      text-align: center; padding: 0 24px;
+      text-align: center; color: #ffffff;
+      padding: 0 32px; /* SPACING.container.desktop */
     }
-    .hero-subhead {
-      font-family: var(--font-body); font-size: 13px; font-weight: 700;
-      letter-spacing: 2px; text-transform: uppercase;
-      color: rgba(255,255,255,0.9);
-      background: rgba(255,255,255,0.12);
-      padding: 8px 20px; margin-bottom: 20px; display: inline-block;
-    }
+    @media (max-width: 767px) { .hero-content { padding: 0 16px; } }
+
+    /* H1: h1Medium (desktop 64px/72lh) → headingMedium (tablet 48px) → aH1Bold (mobile 32px) */
+    /* weight prop = 700 on playground */
     .hero h1 {
       font-family: 'Athletics', 'Open Sans', sans-serif;
-      font-size: clamp(36px, 6vw, 80px); font-weight: 800;
-      letter-spacing: -2px; line-height: 1.0;
-      color: #ffffff; margin: 0 0 16px;
+      font-size: 64px; line-height: 72px;
+      font-weight: 700; letter-spacing: 0;
+      color: #ffffff; margin: 0 0 16px; /* SPACING.content.title.desktop = 16 */
     }
-    .hero-h2 {
-      font-family: 'Athletics', 'Open Sans', sans-serif;
-      font-size: clamp(16px, 1.8vw, 22px); font-weight: 500;
-      color: rgba(255,255,255,0.9); margin: 0 0 18px;
-      letter-spacing: 0.2px; line-height: 1.4;
-    }
-    .hero-body {
-      font-family: 'Untitled Sans', 'Open Sans', sans-serif;
-      font-size: clamp(15px, 1.5vw, 18px); color: rgba(255,255,255,0.78);
-      max-width: 520px; line-height: 1.65; margin: 0 auto 36px;
-    }
-    .hero-explore-btn {
-      background: #fff; color: #292827;
-      font-family: var(--font-body); font-size: 16px; font-weight: 700;
-      padding: 16px 0; min-width: 320px; text-align: center;
-      border: none; cursor: pointer; text-decoration: none;
-      display: inline-block; transition: background 0.2s, color 0.2s;
-    }
-    .hero-explore-btn:hover { background: #F4AB52; color: #292827; }
-    .hero-bar {
-      position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
-      border-top: 1px solid rgba(255,255,255,0.15);
-      padding: 20px 24px;
-      display: flex; align-items: center; justify-content: center;
-      gap: 32px; flex-wrap: wrap;
-    }
-    .hero-bar-item {
-      font-family: var(--font-body);
-      font-size: 14px; font-weight: 600; color: #fff;
-    }
-    .hero-bar-plus, .hero-bar-eq { color: #F4AB52; font-size: 18px; font-weight: 700; }
     @media (max-width: 767px) {
-      .hero-bar { gap: 14px; padding: 14px 16px; }
-      .hero-bar-item { font-size: 12px; }
-      .hero-explore-btn { min-width: 260px; font-size: 15px; padding: 14px 0; }
-      .hero-subhead { font-size: 11px; padding: 6px 14px; }
+      .hero h1 { font-size: 32px; line-height: 40px;
+        margin: 0 0 12px; /* SPACING.content.title.mobile = 12 */ }
+    }
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .hero h1 { font-size: 48px; line-height: 56px; }
     }
 
+    /* H2: aC3Black style (16px, Athletics-Black, uppercase, ls:1, semi-transparent bg pill) */
+    .hero-h2 {
+      font-family: 'Athletics', 'Open Sans', sans-serif;
+      font-size: 16px; line-height: 24px;
+      font-weight: 900; letter-spacing: 1px; text-transform: uppercase;
+      color: #ffffff;
+      background: rgba(255,255,255,0.1);
+      padding: 12px 16px; margin: 0 0 32px; /* SPACING.content.button = 32 */
+      display: inline-block;
+    }
+    @media (max-width: 767px) { .hero-h2 { font-size: 12px; padding: 8px 12px; } }
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .hero-h2 { font-weight: 400; font-size: 16px; text-transform: none; letter-spacing: 0; }
+    }
+
+    /* Body: body1Regular v2 (desktop 20px/28lh, mobile 16px/24lh, Untitled Sans Regular) */
+    .hero-body {
+      font-family: 'Untitled Sans', 'Open Sans', sans-serif;
+      font-size: 20px; line-height: 28px; font-weight: 400;
+      color: rgba(255,255,255,0.85);
+      max-width: 560px; margin: 0 auto 32px;
+    }
+    @media (max-width: 767px) { .hero-body { font-size: 16px; line-height: 24px; } }
+
+    /* Button: BUTTON_SIZES desktop 280×64, tablet 253×56, mobile 219×48 */
+    .hero-explore-btn {
+      background: #ffffff; color: #292827;
+      font-family: 'Athletics', 'Open Sans', sans-serif;
+      font-size: 16px; font-weight: 700;
+      width: 280px; height: 64px;
+      display: inline-flex; align-items: center; justify-content: center;
+      border: none; cursor: pointer; text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .hero-explore-btn:hover { background: #F4AB52; color: #292827; }
+    @media (max-width: 767px) {
+      .hero-explore-btn { width: 219px; height: 48px; font-size: 15px; }
+    }
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .hero-explore-btn { width: 253px; height: 56px; }
+    }
     /* ── SOCIAL PROOF ────────────────────────────────────────────────── */
     .social-proof {
       background: #F6F3ED; padding: 48px 24px;
