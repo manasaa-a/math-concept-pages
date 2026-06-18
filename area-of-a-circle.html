@@ -226,7 +226,9 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <ul id="toc-list" style="list-style:none;padding:0">
       <li style="margin-bottom:4px"><a href="#what-is" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">What is the Area?</a></li>
       <li style="margin-bottom:4px"><a href="#formulas" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Formulas</a></li>
+      <li style="margin-bottom:4px"><a href="#examples" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Worked Examples</a></li>
       <li style="margin-bottom:4px"><a href="#derivation" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Discover πr²</a></li>
+      <li style="margin-bottom:4px"><a href="#area-vs-circum" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Area vs Circumference</a></li>
       <li style="margin-bottom:4px"><a href="#practice" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Practice</a></li>
       <li style="margin-bottom:4px"><a href="#takeaways" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Key Takeaways</a></li>
       <li style="margin-bottom:4px"><a href="#faq" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">FAQ</a></li>
@@ -242,7 +244,9 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <ul>
       <li><a href="#what-is">What is the Area?</a></li>
       <li><a href="#formulas">Formulas</a></li>
+      <li><a href="#examples">Worked Examples</a></li>
       <li><a href="#derivation">Discover πr²</a></li>
+      <li><a href="#area-vs-circum">Area vs Circumference</a></li>
       <li><a href="#practice">Practice</a></li>
       <li><a href="#takeaways">Key Takeaways</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -352,6 +356,71 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     </div>
   </div>
 
+  <!-- ══ WORKED EXAMPLES ══ -->
+  <div class="section" id="examples">
+    <h2>Area of a Circle — Examples</h2>
+    <p>Let's apply the formulas to real numbers. Each example shows the full working.</p>
+
+    <div class="accordion">
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          <span>Example 1 — Find the area given the radius</span><span class="chevron">▼</span>
+        </button>
+        <div class="accordion-body">
+          <p style="font-size:15px;color:var(--ink2)"><strong>Given:</strong> A circle has radius r = 14 cm. Find its circumference and area.</p>
+          <div class="formula-box"><div class="flabel">Step 1 — Circumference</div>C = 2πr = 2 × (22/7) × 14 = <strong>88 cm</strong></div>
+          <div class="formula-box"><div class="flabel">Step 2 — Area</div>A = πr² = (22/7) × 14² = (22/7) × 196 = 22 × 28 = <strong>616 cm²</strong></div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          <span>Example 2 — Find the area given the diameter</span><span class="chevron">▼</span>
+        </button>
+        <div class="accordion-body">
+          <p style="font-size:15px;color:var(--ink2)"><strong>Given:</strong> A circular clock face has a diameter of 12 inches. Find its area.</p>
+          <div class="formula-box"><div class="flabel">Step 1 — Find the radius</div>r = d/2 = 12/2 = <strong>6 inches</strong></div>
+          <div class="formula-box"><div class="flabel">Step 2 — Apply A = πr²</div>A = π × 6² = 36π ≈ 3.14 × 36 ≈ <strong>113.1 in²</strong></div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          <span>Example 3 — Find the area from the circumference</span><span class="chevron">▼</span>
+        </button>
+        <div class="accordion-body">
+          <p style="font-size:15px;color:var(--ink2)"><strong>Given:</strong> A circular track has a circumference of 88 cm. Find its area.</p>
+          <div class="formula-box"><div class="flabel">Step 1 — Find radius from C = 2πr</div>2πr = 88 → r = 88/(2 × 22/7) = 88 × 7/44 = <strong>14 cm</strong></div>
+          <div class="formula-box"><div class="flabel">Step 2 — Apply A = πr²</div>A = (22/7) × 14² = (22/7) × 196 = <strong>616 cm²</strong></div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          <span>Example 4 — Ring (annulus) area</span><span class="chevron">▼</span>
+        </button>
+        <div class="accordion-body">
+          <p style="font-size:15px;color:var(--ink2)"><strong>Given:</strong> A circular running track has an outer radius of 63 yd and an inner radius of 56 yd. Find the area of the track.</p>
+          <div class="formula-box"><div class="flabel">Ring area = π(R² − r²)</div>= (22/7) × (63² − 56²) = (22/7) × (3969 − 3136) = (22/7) × 833 ≈ <strong>2,618 yd²</strong></div>
+          <p style="font-size:14px;color:var(--muted);margin-top:8px;margin-bottom:0">The area between two concentric circles is found by subtracting the smaller circle's area from the larger.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          <span>Example 5 — Find the radius given the area</span><span class="chevron">▼</span>
+        </button>
+        <div class="accordion-body">
+          <p style="font-size:15px;color:var(--ink2)"><strong>Given:</strong> The area of a circle is 25π cm². Find the radius.</p>
+          <div class="formula-box"><div class="flabel">Rearrange A = πr²</div>πr² = 25π → r² = 25 → r = √25 = <strong>5 cm</strong></div>
+          <p style="font-size:14px;color:var(--muted);margin-top:8px;margin-bottom:0">The π cancels on both sides — always divide both sides by π first when working backwards from area to radius.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ══ DERIVATION / SIMULATION ══ -->
   <div class="section" id="derivation">
     <h2>Discover πr² — the slice-and-rearrange proof</h2>
@@ -381,6 +450,54 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
     <div style="background:var(--yellow-light);border-left:4px solid var(--yellow);border-radius:8px;padding:16px 20px;margin-top:16px;font-size:15px;color:var(--ink2)">
       <strong>The key insight:</strong> π is the ratio that makes the unrolled circle's width work out exactly. A = πr² is simply the area of the rectangle you just built from the sliced circle.
+    </div>
+  </div>
+
+  <!-- ══ AREA VS CIRCUMFERENCE ══ -->
+  <div class="section" id="area-vs-circum">
+    <h2>Differences Between Area and Circumference of a Circle</h2>
+    <p>Area and circumference are both fundamental properties of a circle, but they measure different things and behave differently when the radius changes.</p>
+
+    <table class="kt-table">
+      <thead>
+        <tr>
+          <th>Aspect</th>
+          <th>Circumference (C)</th>
+          <th>Area (A)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Definition</td>
+          <td style="font-size:15px;color:var(--ink2)">The length of the circle's boundary</td>
+          <td style="font-size:15px;color:var(--ink2)">The amount of space enclosed within the circle</td>
+        </tr>
+        <tr>
+          <td>Formula</td>
+          <td style="font-size:15px;color:var(--ink2)">C = 2πr</td>
+          <td style="font-size:15px;color:var(--ink2)">A = πr²</td>
+        </tr>
+        <tr>
+          <td>Units</td>
+          <td style="font-size:15px;color:var(--ink2)">Linear units (cm, m, in)</td>
+          <td style="font-size:15px;color:var(--ink2)">Square units (cm², m², in²)</td>
+        </tr>
+        <tr>
+          <td>When radius doubles</td>
+          <td style="font-size:15px;color:var(--ink2)">Doubles (proportional to r)</td>
+          <td style="font-size:15px;color:var(--ink2)">Quadruples (proportional to r²)</td>
+        </tr>
+        <tr>
+          <td>Example (r = 7 cm)</td>
+          <td style="font-size:15px;color:var(--ink2)">C = 2 × (22/7) × 7 = <strong>44 cm</strong></td>
+          <td style="font-size:15px;color:var(--ink2)">A = (22/7) × 49 = <strong>154 cm²</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="think-box">
+      <div class="think-label">Key distinction</div>
+      <p>Circumference tells you how far you'd walk around the edge of a circle. Area tells you how much paint you'd need to fill it. A pizza's circumference is the crust length; its area is the amount of topping.</p>
     </div>
   </div>
 
@@ -728,7 +845,7 @@ function selGrade(btn){document.querySelectorAll('#grade-btns .grade-chip').forE
 function selFeeling(btn){btn.closest('.feeling-btns').querySelectorAll('.feeling-btn').forEach(function(b){b.classList.remove('selected');});btn.classList.add('selected');}
 
 /* TOC SCROLL SPY */
-var tocIds=['what-is','formulas','derivation','practice','takeaways','faq','videos'];
+var tocIds=['what-is','formulas','examples','derivation','area-vs-circum','practice','takeaways','faq','videos'];
 var spy=new IntersectionObserver(function(entries){entries.forEach(function(e){var link=document.querySelector('#toc-list a[href="#'+e.target.id+'"]');if(e.isIntersecting&&link){document.querySelectorAll('#toc-list a').forEach(function(l){l.style.color='var(--muted)';l.style.background='none';l.style.fontWeight='300';});link.style.color='var(--blue)';link.style.background='var(--blue-light)';link.style.fontWeight='500';}});},{rootMargin:'-20% 0px -60% 0px'});
 tocIds.forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el);});
 </script>
