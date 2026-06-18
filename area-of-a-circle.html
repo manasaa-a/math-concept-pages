@@ -166,6 +166,15 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .tag-concept{background:var(--blue-light);color:var(--blue);padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
 .tag-rw{background:var(--green-light);color:var(--green);padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
 .tag-puzzle{background:var(--yellow-light);color:#7E4800;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+/* Worksheets */
+.ws-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+@media(max-width:500px){.ws-grid{grid-template-columns:1fr}}
+.ws-card{background:var(--yellow-light);border:1px solid var(--border);border-radius:0;padding:18px 20px;display:flex;align-items:center;gap:14px}
+.ws-icon{font-size:28px;flex-shrink:0}
+.ws-card strong{display:block;font-size:14px;margin-bottom:2px}
+.ws-card span{font-size:12px;color:var(--muted)}
+.ws-btn{display:inline-block;background:var(--ink);color:#fff;padding:7px 14px;border-radius:0;font-size:13px;font-weight:500;margin-top:8px;text-decoration:none}
+.ws-btn:hover{background:var(--ink2);text-decoration:none}
 .concepts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
 @media(max-width:600px){.concepts-grid{grid-template-columns:1fr 1fr}}
 .concept-chip{background:var(--surface);border:1px solid var(--border);border-radius:0;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink2);text-decoration:none;text-align:center;display:block}
@@ -230,6 +239,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <li style="margin-bottom:4px"><a href="#derivation" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Discover πr²</a></li>
       <li style="margin-bottom:4px"><a href="#area-vs-circum" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Area vs Circumference</a></li>
       <li style="margin-bottom:4px"><a href="#practice" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Practice</a></li>
+      <li style="margin-bottom:4px"><a href="#worksheets" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Worksheets</a></li>
       <li style="margin-bottom:4px"><a href="#takeaways" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Key Takeaways</a></li>
       <li style="margin-bottom:4px"><a href="#faq" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">FAQ</a></li>
       <li style="margin-bottom:4px"><a href="#videos" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Related Videos</a></li>
@@ -248,6 +258,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <li><a href="#derivation">Discover πr²</a></li>
       <li><a href="#area-vs-circum">Area vs Circumference</a></li>
       <li><a href="#practice">Practice</a></li>
+      <li><a href="#worksheets">Worksheets</a></li>
       <li><a href="#takeaways">Key Takeaways</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#videos">Related Videos</a></li>
@@ -544,6 +555,46 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <div class="rw-card"><div class="emoji">🕐</div><strong>Clock Faces</strong><p>Painting a 12-inch round clock? You need its exact area to calculate the paint required.</p></div>
       <div class="rw-card"><div class="emoji">🎯</div><strong>Dartboard</strong><p>A regulation bullseye is 12.7 mm across. Its painted area is π × 6.35² ≈ 126.7 mm².</p></div>
       <div class="rw-card"><div class="emoji">🌾</div><strong>Irrigation</strong><p>A circular sprinkler with radius 15 m covers π × 225 ≈ 707 m² of farmland per rotation.</p></div>
+    </div>
+  </div>
+
+  <!-- ══ WORKSHEETS ══ -->
+  <div class="section" id="worksheets">
+    <p class="section-label">Downloadable Worksheets</p>
+    <p>Two practice sets with full answer keys — print and work through at your own pace.</p>
+    <div class="ws-grid">
+      <div class="ws-card">
+        <div class="ws-icon">📝</div>
+        <div>
+          <strong>Questions — Set 1</strong>
+          <span>Area of a Circle · Practice problems</span><br>
+          <a class="ws-btn" href="circle-qset1.pdf" download="Cuemath-Area-of-Circle-Questions-Set1.pdf">Download PDF ↓</a>
+        </div>
+      </div>
+      <div class="ws-card">
+        <div class="ws-icon">✅</div>
+        <div>
+          <strong>Answers — Set 1</strong>
+          <span>Area of a Circle · Answer key</span><br>
+          <a class="ws-btn" href="circles-answers1.pdf" download="Cuemath-Area-of-Circle-Answers-Set1.pdf">Download PDF ↓</a>
+        </div>
+      </div>
+      <div class="ws-card">
+        <div class="ws-icon">📝</div>
+        <div>
+          <strong>Questions — Set 2</strong>
+          <span>Area of a Circle · Practice problems</span><br>
+          <a class="ws-btn" href="circle-qset2.pdf" download="Cuemath-Area-of-Circle-Questions-Set2.pdf">Download PDF ↓</a>
+        </div>
+      </div>
+      <div class="ws-card">
+        <div class="ws-icon">✅</div>
+        <div>
+          <strong>Answers — Set 2</strong>
+          <span>Area of a Circle · Answer key</span><br>
+          <a class="ws-btn" href="circles-answers2.pdf" download="Cuemath-Area-of-Circle-Answers-Set2.pdf">Download PDF ↓</a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -845,7 +896,7 @@ function selGrade(btn){document.querySelectorAll('#grade-btns .grade-chip').forE
 function selFeeling(btn){btn.closest('.feeling-btns').querySelectorAll('.feeling-btn').forEach(function(b){b.classList.remove('selected');});btn.classList.add('selected');}
 
 /* TOC SCROLL SPY */
-var tocIds=['what-is','formulas','examples','derivation','area-vs-circum','practice','takeaways','faq','videos'];
+var tocIds=['what-is','formulas','examples','derivation','area-vs-circum','practice','worksheets','takeaways','faq','videos'];
 var spy=new IntersectionObserver(function(entries){entries.forEach(function(e){var link=document.querySelector('#toc-list a[href="#'+e.target.id+'"]');if(e.isIntersecting&&link){document.querySelectorAll('#toc-list a').forEach(function(l){l.style.color='var(--muted)';l.style.background='none';l.style.fontWeight='300';});link.style.color='var(--blue)';link.style.background='var(--blue-light)';link.style.fontWeight='500';}});},{rootMargin:'-20% 0px -60% 0px'});
 tocIds.forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el);});
 </script>
