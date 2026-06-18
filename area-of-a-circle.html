@@ -285,10 +285,16 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
     <p>The formula uses the <strong>radius</strong> (r) — the distance from the centre to any point on the edge — and the constant <strong>π (pi) ≈ 3.14159</strong>, which is the same for every circle in the universe.</p>
 
-    <div class="formula-hero">
-      <div class="f">A = πr²</div>
-      <div class="fsub">Square the radius, multiply by π. Units are always square units (cm², m², in²).</div>
+    <p style="font-size:15px;color:var(--ink2)">Drag the slider below to increase the number of slices. As the pieces get thinner, they rearrange into a shape that becomes a rectangle — with width πr and height r. That rectangle's area is what gives us the formula.</p>
+
+    <div class="sim-container">
+      <iframe
+        src="https://www.geogebra.org/material/iframe/id/fyqAUV22/width/780/height/480/border/ffffff/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/false"
+        width="100%" height="480" style="border:none;display:block;" allowfullscreen>
+      </iframe>
     </div>
+
+    <p class="sim-discover">💡 Try this: start with a small number of slices — the edges are bumpy. Drag up to 64 or more — the shape flattens into a rectangle of width πr and height r. Area = πr × r = πr².</p>
 
     <div class="think-box">
       <div class="think-label">Mini-check</div>
@@ -363,18 +369,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       </div>
       <div class="ch-feedback" id="ch-feedback"></div>
     </div>
-
-    <!-- GeoGebra simulation -->
-    <p style="font-size:15px;color:var(--ink2);margin-top:24px">Drag the slider below to increase the number of slices. As the pieces get thinner, they rearrange into a shape that becomes a rectangle — with width πr and height r.</p>
-
-    <div class="sim-container">
-      <iframe
-        src="https://www.geogebra.org/material/iframe/id/fyqAUV22/width/780/height/480/border/ffffff/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/false"
-        width="100%" height="480" style="border:none;display:block;" allowfullscreen>
-      </iframe>
-    </div>
-
-    <p class="sim-discover">💡 Try this: start with a small number of slices — the edges are bumpy. Drag up to 64 or more — the shape flattens into a rectangle of width πr and height r. Area = πr × r = πr².</p>
 
     <!-- Reveal diagram -->
     <h3 style="margin-top:32px;margin-bottom:12px">Why width = πr and height = r</h3>
