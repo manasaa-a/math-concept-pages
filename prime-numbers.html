@@ -204,8 +204,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <li style="margin-bottom:4px"><a href="#coprime" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Co-prime Numbers</a></li>
       <li style="margin-bottom:4px"><a href="#find-primes" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Easy Way to Find</a></li>
       <li style="margin-bottom:4px"><a href="#simulation" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Sieve of Eratosthenes</a></li>
-      <li style="margin-bottom:4px"><a href="#examples" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Examples</a></li>
       <li style="margin-bottom:4px"><a href="#practice" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Practice</a></li>
+      <li style="margin-bottom:4px"><a href="#worksheets" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Worksheet</a></li>
       <li style="margin-bottom:4px"><a href="#takeaways" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Key Takeaways</a></li>
       <li style="margin-bottom:4px"><a href="#faq" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">FAQ</a></li>
       <li style="margin-bottom:4px"><a href="#videos" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Related Videos</a></li>
@@ -225,8 +225,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <li><a href="#coprime">Co-prime Numbers</a></li>
       <li><a href="#find-primes">Easy Way to Find</a></li>
       <li><a href="#simulation">Sieve of Eratosthenes</a></li>
-      <li><a href="#examples">Examples</a></li>
       <li><a href="#practice">Practice</a></li>
+      <li><a href="#worksheets">Worksheet</a></li>
       <li><a href="#takeaways">Key Takeaways</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#videos">Related Videos</a></li>
@@ -242,12 +242,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
   <!-- WHAT ARE PRIME NUMBERS -->
   <div class="section" id="what-is">
-    <h2>Every whole number greater than 1 is either prime or built from primes — making primes the atoms of all arithmetic.</h2>
-
-    <div class="think-box">
-      <div class="think-label">Think about it</div>
-      <p>You have 12 objects and want to arrange them in equal rows. You can do 2×6, 3×4, 4×3, 6×2, or 1×12 — six arrangements. Now try 13 objects. The only equal-row arrangements are 1×13 and 13×1. That's what makes 13 prime — it only divides by 1 and itself.</p>
-    </div>
+    <h2>What are Prime Numbers?</h2>
 
     <p>A <strong>prime number</strong> is a whole number greater than 1 that has exactly <strong>two factors</strong>: 1 and itself. The first few primes: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29…</p>
     <p>The number <strong>1 is NOT prime</strong> — it has only one factor. The number <strong>2 is the only even prime</strong> — every other even number is divisible by 2, giving it a third factor.</p>
@@ -282,18 +277,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <text x="120" y="38" font-size="10" fill="#84807B">Grey = composite or 1</text>
     </svg>
 
-    <span style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-top:32px;display:block;margin-bottom:12px">Where primes appear</span>
-    <div class="rw-strip">
-      <div class="rw-card"><div class="emoji">🔐</div><strong>Encryption</strong><p>RSA encryption — used every time you visit a secure website — multiplies two huge primes. Factoring the result back is nearly impossible.</p></div>
-      <div class="rw-card"><div class="emoji">🦗</div><strong>Cicadas</strong><p>Periodical cicadas emerge every 13 or 17 years — both prime. This ensures they rarely synchronise with predator population cycles.</p></div>
-      <div class="rw-card"><div class="emoji">💳</div><strong>Credit Cards</strong><p>The last digit of your credit card is verified using an algorithm built on modular arithmetic with prime numbers.</p></div>
-      <div class="rw-card"><div class="emoji">⚙️</div><strong>Gear Design</strong><p>Engineers choose prime tooth counts for gears — prime-toothed gears spread wear evenly because no pair of teeth meets twice in a row.</p></div>
-    </div>
-
-    <div class="cta-inline">
-      <p>Want to explore number theory with an expert tutor?</p>
-      <button class="btn-primary" onclick="openModal()">Book a free class →</button>
-    </div>
   </div>
 
   <!-- PRIME NUMBERS LIST -->
@@ -473,52 +456,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     </div>
   </div>
 
-  <!-- PRIME NUMBER EXAMPLES -->
-  <div class="section" id="examples">
-    <h2>Prime Number Examples</h2>
-
-    <div class="accordion">
-      <div class="accordion-item">
-        <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Example 1 — Is 13 prime? Is 15 prime?</span><span class="chevron">▼</span>
-        </button>
-        <div class="accordion-body">
-          <div class="example-row">
-            <div class="ex-card"><div class="ex-label">13</div>Factors: 1, 13 — exactly two. <strong>13 is prime ✓</strong></div>
-            <div class="ex-card" style="background:var(--red-light)"><div class="ex-label" style="color:var(--red)">15</div>Factors: 1, 3, 5, 15 — four factors. <strong>15 is composite ✗</strong></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Example 2 — Why is 20 not prime?</span><span class="chevron">▼</span>
-        </button>
-        <div class="accordion-body">
-          <p style="font-size:15px;color:var(--ink2)">The factors of 20 are 1, 2, 4, 5, 10, and 20 — that's six factors, not two. Since 20 has more than two factors, it is a composite number, not a prime.</p>
-          <div class="formula-box"><div class="flabel">Prime factorisation</div>20 = 2² × 5</div>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Example 3 — True or false?</span><span class="chevron">▼</span>
-        </button>
-        <div class="accordion-body">
-          <table class="ops-table">
-            <thead><tr><th>Statement</th><th>Answer</th><th>Reason</th></tr></thead>
-            <tbody>
-              <tr><td>1 is a prime number</td><td style="color:var(--red);font-weight:600">False</td><td>1 has only one factor — primes need exactly two</td></tr>
-              <tr><td>2 is the only even prime</td><td style="color:var(--green);font-weight:600">True</td><td>Every other even number is divisible by 2</td></tr>
-              <tr><td>The first five primes are 2, 3, 5, 7, 9</td><td style="color:var(--red);font-weight:600">False</td><td>9 = 3 × 3 is composite; fifth prime is 11</td></tr>
-              <tr><td>All prime numbers are odd</td><td style="color:var(--red);font-weight:600">False</td><td>2 is prime and even</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- CTA BAND -->
   <div class="section" style="padding:40px 0">
     <div class="cta-band">
@@ -630,6 +567,33 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     </div>
   </div>
 
+  <!-- REAL-WORLD STRIP (after practice) -->
+  <div style="padding:40px 0;border-bottom:1px solid var(--border)">
+    <span class="eyebrow">Real world examples</span>
+    <div class="rw-strip">
+      <div class="rw-card"><div class="emoji">🔐</div><strong>Encryption</strong><p>RSA encryption — used every time you visit a secure website — multiplies two huge primes. Factoring the result back is nearly impossible.</p></div>
+      <div class="rw-card"><div class="emoji">🦗</div><strong>Cicadas</strong><p>Periodical cicadas emerge every 13 or 17 years — both prime. This ensures they rarely synchronise with predator population cycles.</p></div>
+      <div class="rw-card"><div class="emoji">💳</div><strong>Credit Cards</strong><p>The last digit of your credit card is verified using an algorithm built on modular arithmetic with prime numbers.</p></div>
+      <div class="rw-card"><div class="emoji">⚙️</div><strong>Gear Design</strong><p>Engineers choose prime tooth counts for gears — prime-toothed gears spread wear evenly because no pair of teeth meets twice in a row.</p></div>
+    </div>
+  </div>
+
+  <!-- WORKSHEET -->
+  <div class="section" id="worksheets">
+    <p class="section-label">Downloadable Worksheet</p>
+    <p>Practice problems on prime numbers with full answer key.</p>
+    <div class="ws-grid" style="grid-template-columns:1fr 1fr;max-width:480px">
+      <div class="ws-card">
+        <div class="ws-icon">📝</div>
+        <div>
+          <strong>Prime Numbers Worksheet</strong>
+          <span>Practice problems · Grades 6–8</span><br>
+          <a class="ws-btn" href="prime-numbers-worksheet.pdf" download="Cuemath-Prime-Numbers-Worksheet.pdf">Download PDF ↓</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- KEY TAKEAWAYS -->
   <div class="section" id="takeaways">
     <p class="section-label">Key Takeaways</p>
@@ -673,9 +637,9 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <div class="video-thumb"><img src="https://img.youtube.com/vi/X8stN-xBrZE/mqdefault.jpg" alt="How prime numbers prevent mechanical breakdowns" loading="lazy"><div class="play-ov"><div class="play-circle">▶</div></div></div>
         <div class="video-info"><div class="video-tag"><span class="tag-rw">Real World</span> · Grades 6–8</div><div class="video-title">How prime numbers prevent mechanical breakdowns</div></div>
       </a>
-      <a class="video-card" href="https://www.youtube.com/watch?v=NTxL0V_4ULM" target="_blank" rel="noopener">
-        <div class="video-thumb"><img src="https://img.youtube.com/vi/NTxL0V_4ULM/mqdefault.jpg" alt="Perfect numbers" loading="lazy"><div class="play-ov"><div class="play-circle">▶</div></div></div>
-        <div class="video-info"><div class="video-tag"><span class="tag-concept">Concept</span> · Grades 6–8</div><div class="video-title">Perfect numbers</div></div>
+      <a class="video-card" href="https://www.youtube.com/watch?v=tJTwLxrjXQw" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/tJTwLxrjXQw/mqdefault.jpg" alt="Can bugs do math?" loading="lazy"><div class="play-ov"><div class="play-circle">▶</div></div></div>
+        <div class="video-info"><div class="video-tag"><span class="tag-rw">Real World</span> · Grades 6–8</div><div class="video-title">Can bugs do math?</div></div>
       </a>
     </div>
   </div>
@@ -827,7 +791,7 @@ function selGrade(btn){document.querySelectorAll('#grade-btns .grade-chip').forE
 function selFeeling(btn){btn.closest('.feeling-btns').querySelectorAll('.feeling-btn').forEach(function(b){b.classList.remove('selected');});btn.classList.add('selected');}
 
 /* TOC SCROLL SPY */
-var tocIds=['what-is','prime-list','properties','prime-composite','coprime','find-primes','simulation','examples','practice','takeaways','faq','videos'];
+var tocIds=['what-is','prime-list','properties','prime-composite','coprime','find-primes','simulation','practice','worksheets','takeaways','faq','videos'];
 var spy=new IntersectionObserver(function(entries){entries.forEach(function(e){var link=document.querySelector('#toc-list a[href="#'+e.target.id+'"]');if(e.isIntersecting&&link){document.querySelectorAll('#toc-list a').forEach(function(l){l.style.color='var(--muted)';l.style.background='none';l.style.fontWeight='300';});link.style.color='var(--blue)';link.style.background='var(--blue-light)';link.style.fontWeight='500';}});},{rootMargin:'-20% 0px -60% 0px'});
 tocIds.forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el);});
 </script>
