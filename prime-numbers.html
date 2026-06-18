@@ -198,8 +198,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px">On this page</div>
     <ul id="toc-list" style="list-style:none;padding:0">
       <li style="margin-bottom:4px"><a href="#what-is" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">What are Prime Numbers?</a></li>
+      <li style="margin-bottom:4px"><a href="#prime-list" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Prime Numbers List</a></li>
       <li style="margin-bottom:4px"><a href="#properties" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Properties</a></li>
+      <li style="margin-bottom:4px"><a href="#prime-composite" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Prime and Composite</a></li>
+      <li style="margin-bottom:4px"><a href="#coprime" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Co-prime Numbers</a></li>
+      <li style="margin-bottom:4px"><a href="#find-primes" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Easy Way to Find</a></li>
       <li style="margin-bottom:4px"><a href="#simulation" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Sieve of Eratosthenes</a></li>
+      <li style="margin-bottom:4px"><a href="#examples" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Examples</a></li>
       <li style="margin-bottom:4px"><a href="#practice" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Practice</a></li>
       <li style="margin-bottom:4px"><a href="#takeaways" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Key Takeaways</a></li>
       <li style="margin-bottom:4px"><a href="#faq" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">FAQ</a></li>
@@ -214,8 +219,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <summary>Jump to a section</summary>
     <ul>
       <li><a href="#what-is">What are Prime Numbers?</a></li>
+      <li><a href="#prime-list">Prime Numbers List</a></li>
       <li><a href="#properties">Properties</a></li>
+      <li><a href="#prime-composite">Prime and Composite</a></li>
+      <li><a href="#coprime">Co-prime Numbers</a></li>
+      <li><a href="#find-primes">Easy Way to Find</a></li>
       <li><a href="#simulation">Sieve of Eratosthenes</a></li>
+      <li><a href="#examples">Examples</a></li>
       <li><a href="#practice">Practice</a></li>
       <li><a href="#takeaways">Key Takeaways</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -272,11 +282,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <text x="120" y="38" font-size="10" fill="#84807B">Grey = composite or 1</text>
     </svg>
 
-    <div class="think-box">
-      <div class="think-label">Mini-check</div>
-      <p>Which of these are prime? 1, 2, 9, 11, 15, 17, 51. For each, find all factors to check — a prime has exactly two.</p>
-    </div>
-
     <span style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-top:32px;display:block;margin-bottom:12px">Where primes appear</span>
     <div class="rw-strip">
       <div class="rw-card"><div class="emoji">🔐</div><strong>Encryption</strong><p>RSA encryption — used every time you visit a secure website — multiplies two huge primes. Factoring the result back is nearly impossible.</p></div>
@@ -289,6 +294,31 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <p>Want to explore number theory with an expert tutor?</p>
       <button class="btn-primary" onclick="openModal()">Book a free class →</button>
     </div>
+  </div>
+
+  <!-- PRIME NUMBERS LIST -->
+  <div class="section" id="prime-list">
+    <h2>Prime Numbers List</h2>
+    <p>There are exactly <strong>25 prime numbers between 1 and 100</strong>. Here they are, organised by range:</p>
+
+    <table class="ops-table">
+      <thead><tr><th>Range</th><th>Prime Numbers</th><th>Count</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1 – 10</strong></td><td>2, 3, 5, 7</td><td>4</td></tr>
+        <tr><td><strong>11 – 20</strong></td><td>11, 13, 17, 19</td><td>4</td></tr>
+        <tr><td><strong>21 – 30</strong></td><td>23, 29</td><td>2</td></tr>
+        <tr><td><strong>31 – 40</strong></td><td>31, 37</td><td>2</td></tr>
+        <tr><td><strong>41 – 50</strong></td><td>41, 43, 47</td><td>3</td></tr>
+        <tr><td><strong>51 – 60</strong></td><td>53, 59</td><td>2</td></tr>
+        <tr><td><strong>61 – 70</strong></td><td>61, 67</td><td>2</td></tr>
+        <tr><td><strong>71 – 80</strong></td><td>71, 73, 79</td><td>3</td></tr>
+        <tr><td><strong>81 – 90</strong></td><td>83, 89</td><td>2</td></tr>
+        <tr><td><strong>91 – 100</strong></td><td>97</td><td>1</td></tr>
+        <tr><td style="font-weight:600">Total</td><td></td><td><strong>25</strong></td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:14px;color:var(--muted);margin-top:8px">The density of primes decreases as numbers grow larger — this is captured by the Prime Number Theorem. There are infinitely many primes (proved by Euclid ~300 BC), but they become increasingly sparse.</p>
   </div>
 
   <!-- PROPERTIES -->
@@ -354,18 +384,70 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       </div>
     </div>
 
-    <!-- Prime vs Composite comparison -->
-    <h3 style="margin-top:32px;margin-bottom:12px">Prime vs Composite</h3>
+  </div>
+
+  <!-- PRIME AND COMPOSITE -->
+  <div class="section" id="prime-composite">
+    <h2>Prime and Composite Numbers</h2>
+    <p>Every whole number greater than 1 is either prime or composite. The number 1 belongs to neither category.</p>
+
     <table class="ops-table">
       <thead><tr><th></th><th>Prime</th><th>Composite</th></tr></thead>
       <tbody>
-        <tr><td><strong>Factor count</strong></td><td>Exactly 2</td><td>More than 2</td></tr>
+        <tr><td><strong>Definition</strong></td><td>Greater than 1, exactly 2 factors</td><td>Greater than 1, more than 2 factors</td></tr>
         <tr><td><strong>Smallest</strong></td><td>2</td><td>4</td></tr>
-        <tr><td><strong>Even examples</strong></td><td>2 only</td><td>4, 6, 8, 10, …</td></tr>
+        <tr><td><strong>Even numbers</strong></td><td>2 only</td><td>4, 6, 8, 10, …</td></tr>
         <tr><td><strong>Examples</strong></td><td>2, 3, 5, 7, 11, 13</td><td>4, 6, 8, 9, 10, 12</td></tr>
         <tr><td><strong>Special case</strong></td><td>1 is NOT prime</td><td>Every composite = product of primes</td></tr>
       </tbody>
     </table>
+
+    <p style="font-size:15px;color:var(--ink2);margin-top:12px">For example, 5 is prime — its only factors are 1 and 5. But 4 is composite — its factors are 1, 2, and 4, which is more than two.</p>
+  </div>
+
+  <!-- CO-PRIME NUMBERS -->
+  <div class="section" id="coprime">
+    <h2>Prime Numbers and Co-prime Numbers</h2>
+    <p>Prime numbers and co-prime numbers are related but distinct concepts.</p>
+
+    <table class="ops-table">
+      <thead><tr><th></th><th>Prime Numbers</th><th>Co-prime Numbers</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Definition</strong></td><td>A single number with exactly 2 factors</td><td>A pair of numbers with GCF = 1</td></tr>
+        <tr><td><strong>Type</strong></td><td>A property of one number</td><td>A property of a pair of numbers</td></tr>
+        <tr><td><strong>Can be composite?</strong></td><td>No</td><td>Yes — e.g. 8 and 9 are co-prime</td></tr>
+        <tr><td><strong>Examples</strong></td><td>2, 3, 5, 7, 11</td><td>(5, 9), (6, 11), (18, 35)</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:15px;color:var(--ink2);margin-top:12px">If a pair of numbers has no common factor apart from 1, the numbers are called <strong>co-prime</strong>. For example, 5 and 9 share only 1 as a common factor — so they are co-prime, even though 9 is composite (not prime).</p>
+  </div>
+
+  <!-- EASY WAY TO FIND PRIME NUMBERS -->
+  <div class="section" id="find-primes">
+    <h2>Easy Way to Find Prime Numbers</h2>
+    <p>Every prime number greater than 3 can be written in the form <strong>6n + 1</strong> or <strong>6n − 1</strong> for some positive integer n.</p>
+
+    <div class="formula-box"><div class="flabel">Formula</div>For all primes p &gt; 3: &nbsp; p = 6n + 1 &nbsp; or &nbsp; p = 6n − 1</div>
+
+    <table class="ops-table" style="margin-top:12px">
+      <thead><tr><th>n</th><th>6n − 1</th><th>6n + 1</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>5 ✓ prime</td><td>7 ✓ prime</td></tr>
+        <tr><td>2</td><td>11 ✓ prime</td><td>13 ✓ prime</td></tr>
+        <tr><td>3</td><td>17 ✓ prime</td><td>19 ✓ prime</td></tr>
+        <tr><td>4</td><td>23 ✓ prime</td><td>25 = 5² ✗ composite</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:14px;color:var(--muted);margin-top:8px">Note: not every 6n ± 1 number is prime (e.g. 25, 35, 49) — but every prime greater than 3 must be of this form.</p>
+
+    <h3 style="margin-top:28px;margin-bottom:8px">List of Odd Prime Numbers</h3>
+    <p>All prime numbers are odd <em>except</em> for 2. The number 2 is the only even prime. Every other even number is divisible by 2, which gives it at least three factors — making it composite.</p>
+    <p style="font-size:14px;color:var(--muted)">Odd primes: 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, …</p>
+
+    <h3 style="margin-top:28px;margin-bottom:8px">History of Prime Numbers</h3>
+    <p>The study of prime numbers dates back to ancient Greece. <strong>Euclid</strong> (~300 BC) proved that there are infinitely many prime numbers — one of the oldest proofs in mathematics. <strong>Eratosthenes</strong> (~240 BC) developed the Sieve of Eratosthenes, a simple algorithm to find all primes up to a given number, which is still used as a teaching tool today.</p>
   </div>
 
   <!-- SIEVE SIMULATION -->
@@ -388,6 +470,52 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <div class="sieve-grid" id="sieve-grid"></div>
 
       <p style="font-size:13px;color:var(--purple);font-weight:500;margin-top:12px">💡 Try this: click Sieve 2s → Sieve 3s → Sieve 5s → Sieve 7s → Show All Primes. The 25 gold numbers are every prime up to 100.</p>
+    </div>
+  </div>
+
+  <!-- PRIME NUMBER EXAMPLES -->
+  <div class="section" id="examples">
+    <h2>Prime Number Examples</h2>
+
+    <div class="accordion">
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          <span>Example 1 — Is 13 prime? Is 15 prime?</span><span class="chevron">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="example-row">
+            <div class="ex-card"><div class="ex-label">13</div>Factors: 1, 13 — exactly two. <strong>13 is prime ✓</strong></div>
+            <div class="ex-card" style="background:var(--red-light)"><div class="ex-label" style="color:var(--red)">15</div>Factors: 1, 3, 5, 15 — four factors. <strong>15 is composite ✗</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          <span>Example 2 — Why is 20 not prime?</span><span class="chevron">▼</span>
+        </button>
+        <div class="accordion-body">
+          <p style="font-size:15px;color:var(--ink2)">The factors of 20 are 1, 2, 4, 5, 10, and 20 — that's six factors, not two. Since 20 has more than two factors, it is a composite number, not a prime.</p>
+          <div class="formula-box"><div class="flabel">Prime factorisation</div>20 = 2² × 5</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          <span>Example 3 — True or false?</span><span class="chevron">▼</span>
+        </button>
+        <div class="accordion-body">
+          <table class="ops-table">
+            <thead><tr><th>Statement</th><th>Answer</th><th>Reason</th></tr></thead>
+            <tbody>
+              <tr><td>1 is a prime number</td><td style="color:var(--red);font-weight:600">False</td><td>1 has only one factor — primes need exactly two</td></tr>
+              <tr><td>2 is the only even prime</td><td style="color:var(--green);font-weight:600">True</td><td>Every other even number is divisible by 2</td></tr>
+              <tr><td>The first five primes are 2, 3, 5, 7, 9</td><td style="color:var(--red);font-weight:600">False</td><td>9 = 3 × 3 is composite; fifth prime is 11</td></tr>
+              <tr><td>All prime numbers are odd</td><td style="color:var(--red);font-weight:600">False</td><td>2 is prime and even</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -552,15 +680,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     </div>
   </div>
 
-  <!-- RELATED CONCEPTS -->
-  <div class="section" id="related" style="padding-bottom:40px">
-    <p class="section-label">Related Concepts</p>
-    <div class="concepts-grid">
-      <a class="concept-chip" href="integers.html">Integers</a>
-      <a class="concept-chip" href="exponent-rules.html">Exponent Rules</a>
-      <a class="concept-chip" href="fractions.html">Fractions</a>
-    </div>
-  </div>
 
 </main>
 </div>
@@ -708,7 +827,7 @@ function selGrade(btn){document.querySelectorAll('#grade-btns .grade-chip').forE
 function selFeeling(btn){btn.closest('.feeling-btns').querySelectorAll('.feeling-btn').forEach(function(b){b.classList.remove('selected');});btn.classList.add('selected');}
 
 /* TOC SCROLL SPY */
-var tocIds=['what-is','properties','simulation','practice','takeaways','faq','videos'];
+var tocIds=['what-is','prime-list','properties','prime-composite','coprime','find-primes','simulation','examples','practice','takeaways','faq','videos'];
 var spy=new IntersectionObserver(function(entries){entries.forEach(function(e){var link=document.querySelector('#toc-list a[href="#'+e.target.id+'"]');if(e.isIntersecting&&link){document.querySelectorAll('#toc-list a').forEach(function(l){l.style.color='var(--muted)';l.style.background='none';l.style.fontWeight='300';});link.style.color='var(--blue)';link.style.background='var(--blue-light)';link.style.fontWeight='500';}});},{rootMargin:'-20% 0px -60% 0px'});
 tocIds.forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el);});
 </script>
