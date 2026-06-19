@@ -437,26 +437,10 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <h2>Interactive Simulation</h2>
     <p>Adjust the two legs — the hypotenuse and the squares on each side update instantly to show a² + b² = c².</p>
 
-    <div class="sim-container">
-      <div class="sim-sliders">
-        <div>
-          <label style="font-size:14px;font-weight:500;color:var(--ink2);display:block;margin-bottom:6px">Leg a: <strong id="val-a">3</strong></label>
-          <input type="range" id="slider-a" min="1" max="15" value="3" style="width:100%;accent-color:#16A34A">
-        </div>
-        <div>
-          <label style="font-size:14px;font-weight:500;color:var(--ink2);display:block;margin-bottom:6px">Leg b: <strong id="val-b">4</strong></label>
-          <input type="range" id="slider-b" min="1" max="15" value="4" style="width:100%;accent-color:#DC2626">
-        </div>
-      </div>
-      <div style="background:var(--bg);border:1px solid var(--border);padding:14px 18px;margin-bottom:16px;text-align:center">
-        <span style="font-size:20px;font-weight:600;font-family:'Athletics',Georgia,serif;color:var(--ink)" id="sim-eq">3² + 4² = 5.00²</span><br>
-        <span style="font-size:14px;color:var(--muted)" id="sim-eq2">9 + 16 = 25</span>
-      </div>
-      <div style="border:1px solid var(--border);overflow:hidden;background:#FAF8F5">
-        <canvas id="sim-canvas" height="260" style="display:block;width:100%"></canvas>
-      </div>
-      <p style="margin-top:12px;font-size:13px;color:var(--purple);font-weight:500">💡 Try a=3, b=4 → c=5. Then a=5, b=12 → c=13. These are Pythagorean triples — c comes out as a whole number.</p>
+    <div style="border:1px solid var(--border);overflow:hidden;background:#FAF8F5">
+      <iframe src="https://www.geogebra.org/material/iframe/id/sfqu5r9r/width/780/height/480/border/FAF8F5/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/false" width="100%" height="480" style="border:none;display:block;" allowfullscreen></iframe>
     </div>
+    <p style="margin-top:12px;font-size:13px;color:var(--purple);font-weight:500">💡 Drag the points to explore how a² + b² = c² holds for any right triangle.</p>
   </div>
 
   <!-- CTA BAND -->
@@ -728,53 +712,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 /* ACCORDION */
 function toggleAcc(btn){var body=btn.nextElementSibling,isOpen=btn.classList.contains('open');btn.closest('.accordion').querySelectorAll('.accordion-btn').forEach(function(b){b.classList.remove('open');b.nextElementSibling.classList.remove('open');});if(!isOpen){btn.classList.add('open');body.classList.add('open');}}
 function toggleFaq(btn){var a=btn.nextElementSibling,o=btn.classList.contains('open');btn.classList.toggle('open',!o);a.classList.toggle('open',!o);}
-
-/* SIMULATION */
-function drawSim(){
-  var a=parseInt(document.getElementById('slider-a').value);
-  var b=parseInt(document.getElementById('slider-b').value);
-  document.getElementById('val-a').textContent=a;
-  document.getElementById('val-b').textContent=b;
-  var c=Math.sqrt(a*a+b*b);
-  var cDisp=Number.isInteger(c)?String(c):c.toFixed(2);
-  document.getElementById('sim-eq').textContent=a+'² + '+b+'² = '+cDisp+'²';
-  document.getElementById('sim-eq2').textContent=a*a+' + '+b*b+' = '+(a*a+b*b);
-  var canvas=document.getElementById('sim-canvas');if(!canvas)return;
-  canvas.width=canvas.parentElement.offsetWidth||400;
-  var W=canvas.width,H=260;canvas.height=H;
-  var ctx=canvas.getContext('2d');ctx.clearRect(0,0,W,H);
-  ctx.fillStyle='#FAF8F5';ctx.fillRect(0,0,W,H);
-  var unit=Math.min((W-80)/(a+c+4),(H-60)/(b+c+4),16);
-  var ox=20+c*unit,oy=H-20-c*unit;
-  var ax=ox+a*unit,ay=oy;
-  var bx=ox,by=oy-b*unit;
-  var sa=a*unit;
-  ctx.beginPath();ctx.rect(ox,oy,sa,sa*0.6);ctx.fillStyle='#DCFCE7';ctx.fill();ctx.strokeStyle='#16A34A';ctx.lineWidth=1.5;ctx.stroke();
-  ctx.fillStyle='#16A34A';ctx.font='bold 12px Untitled Sans,system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
-  ctx.fillText('a²='+a*a,ox+sa/2,oy+sa*0.3);
-  var sb=b*unit;
-  ctx.beginPath();ctx.rect(ox-sb*0.6,by,sb*0.6,sb);ctx.fillStyle='#FEE2E2';ctx.fill();ctx.strokeStyle='#DC2626';ctx.stroke();
-  ctx.fillStyle='#DC2626';ctx.textAlign='center';ctx.textBaseline='middle';
-  ctx.fillText('b²='+b*b,ox-sb*0.3,by+sb/2);
-  ctx.beginPath();ctx.moveTo(ox,oy);ctx.lineTo(ax,ay);ctx.lineTo(bx,by);ctx.closePath();
-  ctx.fillStyle='#FEF3C7';ctx.fill();ctx.strokeStyle='#F59E0B';ctx.lineWidth=2.5;ctx.stroke();
-  var sz=Math.max(8,unit*0.7);
-  ctx.strokeStyle='#CE7E12';ctx.lineWidth=1.8;
-  ctx.beginPath();ctx.moveTo(ox+sz,oy);ctx.lineTo(ox+sz,oy-sz);ctx.lineTo(ox,oy-sz);ctx.stroke();
-  ctx.fillStyle='#16A34A';ctx.font='bold 14px Untitled Sans,system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
-  ctx.fillText('a='+a,ox+a*unit/2,oy-14);
-  ctx.fillStyle='#DC2626';ctx.fillText('b='+b,ox-18,oy-b*unit/2);
-  ctx.fillStyle='#5492F1';
-  var hmx=(ax+bx)/2,hmy=(ay+by)/2;
-  ctx.fillText('c='+cDisp,hmx+18,hmy);
-  ctx.fillStyle='rgba(84,146,241,0.12)';ctx.fillRect(hmx+2,hmy-16,65,20);
-  ctx.fillStyle='#5492F1';ctx.font='11px Untitled Sans,system-ui,sans-serif';ctx.textAlign='left';
-  ctx.fillText('c²='+(a*a+b*b),hmx+5,hmy-3);
-}
-document.getElementById('slider-a').addEventListener('input',drawSim);
-document.getElementById('slider-b').addEventListener('input',drawSim);
-window.addEventListener('resize',drawSim);
-drawSim();
 
 /* PRACTICE */
 var score=0,answered={},retryCount=0;
