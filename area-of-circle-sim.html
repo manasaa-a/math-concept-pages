@@ -12,7 +12,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 24px 16px 32px;
+      padding: 16px 16px 12px;
+    }
+    .sim-desc {
+      font-size: 14px;
+      color: #44403c;
+      margin-bottom: 12px;
+      text-align: center;
+      max-width: 680px;
+      line-height: 1.5;
     }
     #canvas-wrap {
       position: relative;
@@ -94,6 +102,8 @@
 </head>
 <body>
 
+<p class="sim-desc">Use the sliders to increase slices, unfold the sectors, then rearrange them into a rectangle. Watch how the circle's area becomes πr × r = πr².</p>
+
 <div id="canvas-wrap">
   <div class="ctrl-panel">
     <div class="sl-row">
@@ -125,7 +135,7 @@ const CM = {
   surface: '#FFFFFF',
 };
 
-const W = 720, H = 630;
+const W = 720, H = 560;
 const SLIDER_H = 345;
 const R   = 88;
 const GAP = 20;
