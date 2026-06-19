@@ -232,7 +232,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <li><a href="#formula">Pythagoras Theorem Formula</a></li>
       <li><a href="#proof">Pythagoras Theorem Proof</a></li>
       <li><a href="#triangles">Pythagoras Theorem Triangles</a></li>
-      <li><a href="#simulation">Interactive Simulation</a></li>
       <li><a href="#practice">Practice questions</a></li>
       <li><a href="#worksheets">Downloadable worksheet</a></li>
       <li><a href="#takeaways">Key Takeaways</a></li>
@@ -250,7 +249,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <li><a href="#formula">Pythagoras Theorem Formula</a></li>
       <li><a href="#proof">Pythagoras Theorem Proof</a></li>
       <li><a href="#triangles">Pythagoras Theorem Triangles</a></li>
-      <li><a href="#simulation">Interactive Simulation</a></li>
       <li><a href="#practice">Practice questions</a></li>
       <li><a href="#worksheets">Downloadable worksheet</a></li>
       <li><a href="#takeaways">Key Takeaways</a></li>
@@ -357,13 +355,38 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
 
     <div class="accordion">
       <div class="accordion-item">
-        <button class="accordion-btn" onclick="toggleAcc(this)">
+        <button class="accordion-btn open" onclick="toggleAcc(this)">
           <span>Algebraic Proof (by rearrangement)</span>
           <svg class="acc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
-        <div class="accordion-body">
+        <div class="accordion-body open">
           <p style="font-size:15px;color:var(--ink2)">Arrange four congruent right triangles (each with legs a and b and hypotenuse c) inside a large square of side (a + b). They leave a tilted square of side c in the middle.</p>
-          <div class="formula-box"><div class="flabel">Key step</div>(a + b)² = 4 × (½ab) + c²<br>a² + 2ab + b² = 2ab + c²<br>∴ <strong>a² + b² = c²</strong></div>
+<div class="formula-box">
+  <div class="flabel">Key step</div>
+  (a + b)² = 4 × (½ab) + c²<br>
+  a² + 2ab + b² = 2ab + c²<br>
+  ∴ <strong>a² + b² = c²</strong>
+</div>
+
+<p style="font-size:15px;color:var(--ink2)">
+  Drag the points to change the dimensions of the right triangle. Notice how
+  the total area of the two smaller squares always equals the area of the
+  square on the hypotenuse.
+</p>
+
+<div style="border:1px solid var(--border);overflow:hidden;background:#FAF8F5;margin-top:16px">
+  <iframe
+    src="https://www.geogebra.org/material/iframe/id/sfqu5r9r/width/780/height/480/border/FAF8F5/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false"
+    width="100%"
+    height="480"
+    style="border:none;display:block;"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<p style="margin-top:12px;font-size:13px;color:var(--purple);font-weight:500">
+  💡 Watch how a² + b² = c² remains true for every right triangle.
+</p>
         </div>
       </div>
       <div class="accordion-item">
@@ -371,7 +394,14 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           <span>Similar Triangles Proof</span>
           <svg class="acc-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
         </button>
+        
         <div class="accordion-body">
+          <img
+    src="pyth_similar_triangles.png"
+    alt="Similar triangles proof of the Pythagorean theorem showing altitude to the hypotenuse"
+    style="width:100%;max-width:480px;display:block;margin:24px auto;border:1px solid var(--border)"
+    loading="lazy"
+  >
           <p style="font-size:15px;color:var(--ink2)">Drop a perpendicular from the right-angle vertex to the hypotenuse. This creates two smaller triangles, each similar to the original. From the similarity ratios:</p>
           <div class="formula-box"><div class="flabel">Result</div>AD × AC = AB² &nbsp; and &nbsp; CD × AC = BC²<br>Adding: AB² + BC² = AC(AD + DC) = <strong>AC²</strong></div>
         </div>
@@ -432,16 +462,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     </div>
   </div>
 
-  <!-- SIMULATION -->
-  <div class="section" id="simulation">
-    <h2>Interactive Simulation</h2>
-    <p>Adjust the two legs — the hypotenuse and the squares on each side update instantly to show a² + b² = c².</p>
-
-    <div style="border:1px solid var(--border);overflow:hidden;background:#FAF8F5">
-      <iframe src="https://www.geogebra.org/material/iframe/id/sfqu5r9r/width/780/height/480/border/FAF8F5/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/false" width="100%" height="480" style="border:none;display:block;" allowfullscreen></iframe>
-    </div>
-    <p style="margin-top:12px;font-size:13px;color:var(--purple);font-weight:500">💡 Drag the points to explore how a² + b² = c² holds for any right triangle.</p>
-  </div>
 
   <!-- CTA BAND -->
   <div class="section" style="padding:40px 0">
@@ -758,7 +778,7 @@ function selFeeling(btn){btn.closest('.feeling-btns').querySelectorAll('.feeling
 
 /* TOC SCROLL SPY */
 var tocLinks=document.querySelectorAll('.toc-list a');
-var tocIds=['what-is','formula','proof','triangles','simulation','practice','worksheets','takeaways','faq'];
+var tocIds=['what-is','formula','proof','triangles','practice','worksheets','takeaways','faq'];
 var spy=new IntersectionObserver(function(entries){entries.forEach(function(e){var link=document.querySelector('.toc-list a[href="#'+e.target.id+'"]');if(e.isIntersecting&&link){tocLinks.forEach(function(l){l.classList.remove('active');});link.classList.add('active');}});},{rootMargin:'-20% 0px -60% 0px'});
 tocIds.forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el);});
 </script>
