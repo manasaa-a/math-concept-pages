@@ -141,6 +141,14 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .tag-olympiad{background:var(--purple-light);color:var(--purple);padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
 .tag-concept{background:var(--blue-light);color:var(--blue);padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
 .tag-rw{background:var(--green-light);color:var(--green);padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.ws-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+@media(max-width:500px){.ws-grid{grid-template-columns:1fr}}
+.ws-card{background:var(--yellow-light);border:1px solid var(--border);border-radius:0;padding:18px 20px;display:flex;align-items:center;gap:14px}
+.ws-icon{font-size:28px;flex-shrink:0}
+.ws-card strong{display:block;font-size:14px;margin-bottom:2px}
+.ws-card span{font-size:12px;color:var(--muted)}
+.ws-btn{display:inline-block;background:var(--ink);color:#fff;padding:7px 14px;border-radius:0;font-size:13px;font-weight:500;margin-top:8px;text-decoration:none}
+.ws-btn:hover{background:var(--ink2);text-decoration:none}
 .concepts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
 @media(max-width:600px){.concepts-grid{grid-template-columns:1fr 1fr}}
 .concept-chip{background:var(--surface);border:1px solid var(--border);border-radius:0;padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink2);text-decoration:none;text-align:center;display:block}
@@ -198,7 +206,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px">On this page</div>
     <ul id="toc-list" style="list-style:none;padding:0">
       <li style="margin-bottom:4px"><a href="#what-is" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">What are Prime Numbers?</a></li>
-      <li style="margin-bottom:4px"><a href="#prime-list" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Prime Numbers List</a></li>
+
       <li style="margin-bottom:4px"><a href="#properties" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Properties</a></li>
       <li style="margin-bottom:4px"><a href="#prime-composite" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Prime and Composite</a></li>
       <li style="margin-bottom:4px"><a href="#coprime" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Co-prime Numbers</a></li>
@@ -219,7 +227,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <summary>Jump to a section</summary>
     <ul>
       <li><a href="#what-is">What are Prime Numbers?</a></li>
-      <li><a href="#prime-list">Prime Numbers List</a></li>
+
       <li><a href="#properties">Properties</a></li>
       <li><a href="#prime-composite">Prime and Composite</a></li>
       <li><a href="#coprime">Co-prime Numbers</a></li>
@@ -280,30 +288,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   </div>
 
   <!-- PRIME NUMBERS LIST -->
-  <div class="section" id="prime-list">
-    <h2>Prime Numbers List</h2>
-    <p>There are exactly <strong>25 prime numbers between 1 and 100</strong>. Here they are, organised by range:</p>
-
-    <table class="ops-table">
-      <thead><tr><th>Range</th><th>Prime Numbers</th><th>Count</th></tr></thead>
-      <tbody>
-        <tr><td><strong>1 – 10</strong></td><td>2, 3, 5, 7</td><td>4</td></tr>
-        <tr><td><strong>11 – 20</strong></td><td>11, 13, 17, 19</td><td>4</td></tr>
-        <tr><td><strong>21 – 30</strong></td><td>23, 29</td><td>2</td></tr>
-        <tr><td><strong>31 – 40</strong></td><td>31, 37</td><td>2</td></tr>
-        <tr><td><strong>41 – 50</strong></td><td>41, 43, 47</td><td>3</td></tr>
-        <tr><td><strong>51 – 60</strong></td><td>53, 59</td><td>2</td></tr>
-        <tr><td><strong>61 – 70</strong></td><td>61, 67</td><td>2</td></tr>
-        <tr><td><strong>71 – 80</strong></td><td>71, 73, 79</td><td>3</td></tr>
-        <tr><td><strong>81 – 90</strong></td><td>83, 89</td><td>2</td></tr>
-        <tr><td><strong>91 – 100</strong></td><td>97</td><td>1</td></tr>
-        <tr><td style="font-weight:600">Total</td><td></td><td><strong>25</strong></td></tr>
-      </tbody>
-    </table>
-
-    <p style="font-size:14px;color:var(--muted);margin-top:8px">The density of primes decreases as numbers grow larger — this is captured by the Prime Number Theorem. There are infinitely many primes (proved by Euclid ~300 BC), but they become increasingly sparse.</p>
-  </div>
-
   <!-- PROPERTIES -->
   <div class="section" id="properties">
     <h2>Properties of Prime Numbers</h2>
@@ -424,13 +408,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     </table>
 
     <p style="font-size:14px;color:var(--muted);margin-top:8px">Note: not every 6n ± 1 number is prime (e.g. 25, 35, 49) — but every prime greater than 3 must be of this form.</p>
-
-    <h3 style="margin-top:28px;margin-bottom:8px">List of Odd Prime Numbers</h3>
-    <p>All prime numbers are odd <em>except</em> for 2. The number 2 is the only even prime. Every other even number is divisible by 2, which gives it at least three factors — making it composite.</p>
-    <p style="font-size:14px;color:var(--muted)">Odd primes: 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, …</p>
-
-    <h3 style="margin-top:28px;margin-bottom:8px">History of Prime Numbers</h3>
-    <p>The study of prime numbers dates back to ancient Greece. <strong>Euclid</strong> (~300 BC) proved that there are infinitely many prime numbers — one of the oldest proofs in mathematics. <strong>Eratosthenes</strong> (~240 BC) developed the Sieve of Eratosthenes, a simple algorithm to find all primes up to a given number, which is still used as a teaching tool today.</p>
   </div>
 
   <!-- SIEVE SIMULATION -->
@@ -582,12 +559,12 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   <div class="section" id="worksheets">
     <p class="section-label">Downloadable Worksheet</p>
     <p>Practice problems on prime numbers with full answer key.</p>
-    <div class="ws-grid" style="grid-template-columns:1fr 1fr;max-width:480px">
+    <div class="ws-grid">
       <div class="ws-card">
         <div class="ws-icon">📝</div>
         <div>
           <strong>Prime Numbers Worksheet</strong>
-          <span>Practice problems · Grades 6–8</span><br>
+          <span>Prime Numbers · Practice problems</span><br>
           <a class="ws-btn" href="prime-numbers-worksheet.pdf" download="Cuemath-Prime-Numbers-Worksheet.pdf">Download PDF ↓</a>
         </div>
       </div>
@@ -791,7 +768,7 @@ function selGrade(btn){document.querySelectorAll('#grade-btns .grade-chip').forE
 function selFeeling(btn){btn.closest('.feeling-btns').querySelectorAll('.feeling-btn').forEach(function(b){b.classList.remove('selected');});btn.classList.add('selected');}
 
 /* TOC SCROLL SPY */
-var tocIds=['what-is','prime-list','properties','prime-composite','coprime','find-primes','simulation','practice','worksheets','takeaways','faq','videos'];
+var tocIds=['what-is','properties','prime-composite','coprime','find-primes','simulation','practice','worksheets','takeaways','faq','videos'];
 var spy=new IntersectionObserver(function(entries){entries.forEach(function(e){var link=document.querySelector('#toc-list a[href="#'+e.target.id+'"]');if(e.isIntersecting&&link){document.querySelectorAll('#toc-list a').forEach(function(l){l.style.color='var(--muted)';l.style.background='none';l.style.fontWeight='300';});link.style.color='var(--blue)';link.style.background='var(--blue-light)';link.style.fontWeight='500';}});},{rootMargin:'-20% 0px -60% 0px'});
 tocIds.forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el);});
 </script>
