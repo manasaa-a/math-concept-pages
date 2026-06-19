@@ -83,6 +83,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .sieve-btn{padding:8px 14px;border-radius:6px;border:1px solid var(--border);background:var(--bg);font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:13px;font-weight:500;cursor:pointer;color:var(--ink2)}
 .sieve-btn:hover{border-color:var(--blue);background:var(--blue-light);color:var(--blue)}
 /* CTA */
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;display:block}
 .cta-inline{background:var(--yellow-light);border:1px solid var(--yellow);border-radius:0;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:24px 0}
 .cta-inline p{margin-bottom:0;font-size:15px;color:var(--ink2)}
 .btn-primary{background:var(--yellow);color:var(--ink);border:none;padding:10px 20px;border-radius:0;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center}
@@ -221,12 +222,12 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <li style="margin-bottom:4px"><a href="#prime-composite" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Prime and Composite</a></li>
       <li style="margin-bottom:4px"><a href="#coprime" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Co-prime Numbers</a></li>
       <li style="margin-bottom:4px"><a href="#find-primes" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Easy Way to Find</a></li>
-      <li style="margin-bottom:4px"><a href="#simulation" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Sieve of Eratosthenes</a></li>
       <li style="margin-bottom:4px"><a href="#practice" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Practice</a></li>
       <li style="margin-bottom:4px"><a href="#worksheets" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Worksheet</a></li>
       <li style="margin-bottom:4px"><a href="#takeaways" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Key Takeaways</a></li>
       <li style="margin-bottom:4px"><a href="#faq" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">FAQ</a></li>
       <li style="margin-bottom:4px"><a href="#videos" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Related Videos</a></li>
+      <li style="margin-bottom:4px"><a href="#related" style="font-size:13px;color:var(--muted);text-decoration:none;display:block;padding:4px 8px;border-radius:4px">Related Concepts</a></li>
     </ul>
   </div>
 </aside>
@@ -237,17 +238,17 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <summary>Jump to a section</summary>
     <ul>
       <li><a href="#what-is">What are Prime Numbers?</a></li>
-
+      <li><a href="#simulation">Sieve of Eratosthenes</a></li>
       <li><a href="#properties">Properties</a></li>
       <li><a href="#prime-composite">Prime and Composite</a></li>
       <li><a href="#coprime">Co-prime Numbers</a></li>
       <li><a href="#find-primes">Easy Way to Find</a></li>
-      <li><a href="#simulation">Sieve of Eratosthenes</a></li>
       <li><a href="#practice">Practice</a></li>
       <li><a href="#worksheets">Worksheet</a></li>
       <li><a href="#takeaways">Key Takeaways</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#videos">Related Videos</a></li>
+      <li><a href="#related">Related Concepts</a></li>
     </ul>
   </details>
 
@@ -552,16 +553,9 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     </div>
   </div>
 
-  <div style="padding:24px 0">
-    <div class="cta-inline">
-      <p>Ready to explore number theory deeper with a Cuemath tutor?</p>
-      <button class="btn-primary" onclick="openModal()">Get 1:1 help <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></button>
-    </div>
-  </div>
-
   <!-- REAL-WORLD STRIP (after practice) -->
   <div style="padding:40px 0;border-bottom:1px solid var(--border)">
-    <span class="eyebrow">Real world examples</span>
+    <span class="eyebrow" style="margin-top:28px">Real world examples</span>
     <div class="rw-strip">
       <div class="rw-card"><div class="emoji">🔐</div><strong>Encryption</strong><p>RSA encryption — used every time you visit a secure website — multiplies two huge primes. Factoring the result back is nearly impossible.</p></div>
       <div class="rw-card"><div class="emoji">🦗</div><strong>Cicadas</strong><p>Periodical cicadas emerge every 13 or 17 years — both prime. This ensures they rarely synchronise with predator population cycles.</p></div>
@@ -606,14 +600,14 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   <div class="section" id="faq">
     <h2>Frequently Asked Questions</h2>
     <div>
-      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">What is a prime number?<span class="faq-ch">▼</span></button><div class="faq-answer">A whole number greater than 1 with exactly two factors: 1 and itself. Examples: 2, 3, 5, 7, 11, 13. The number 4 is not prime because it has three factors: 1, 2, 4.</div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">Is 1 a prime number?<span class="faq-ch">▼</span></button><div class="faq-answer">No. 1 has only one factor (itself), not two. Mathematicians exclude 1 from the primes so that every integer has a unique prime factorisation — if 1 were prime, factorisation would not be unique.</div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">Is 2 a prime number?<span class="faq-ch">▼</span></button><div class="faq-answer">Yes — 2 is the only even prime. Its factors are 1 and 2, and that's exactly two. Every other even number is divisible by 2 and therefore has at least three factors.</div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">How do you check if a number is prime?<span class="faq-ch">▼</span></button><div class="faq-answer">Divide by every integer from 2 up to √n. If none divides evenly, the number is prime. For example, to test 37: check 2, 3, 4, 5, 6 (since √37 ≈ 6.1). None divide 37, so 37 is prime.</div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">What are twin primes?<span class="faq-ch">▼</span></button><div class="faq-answer">Pairs of primes that differ by 2: (3,5), (11,13), (17,19), (29,31). Whether infinitely many twin primes exist is one of the oldest unsolved problems in mathematics.</div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">Can prime numbers be negative?<span class="faq-ch">▼</span></button><div class="faq-answer">No — by definition, prime numbers are positive integers greater than 1. Negative numbers and fractions are not prime.</div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">What is the largest known prime?<span class="faq-ch">▼</span></button><div class="faq-answer">As of 2024, the largest known prime has over 41 million digits — discovered using distributed computing. There are infinitely many primes (proved by Euclid around 300 BC), so there is no largest prime.</div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">What is the difference between prime and co-prime?<span class="faq-ch">▼</span></button><div class="faq-answer">A prime is a single number with exactly two factors. Co-prime describes a pair of numbers whose only common factor is 1. For example, 8 and 9 are co-prime (GCF = 1), but neither is prime alone.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">What is a prime number?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button><div class="faq-answer">A whole number greater than 1 with exactly two factors: 1 and itself. Examples: 2, 3, 5, 7, 11, 13. The number 4 is not prime because it has three factors: 1, 2, 4.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">Is 1 a prime number?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button><div class="faq-answer">No. 1 has only one factor (itself), not two. Mathematicians exclude 1 from the primes so that every integer has a unique prime factorisation — if 1 were prime, factorisation would not be unique.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">Is 2 a prime number?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button><div class="faq-answer">Yes — 2 is the only even prime. Its factors are 1 and 2, and that's exactly two. Every other even number is divisible by 2 and therefore has at least three factors.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">How do you check if a number is prime?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button><div class="faq-answer">Divide by every integer from 2 up to √n. If none divides evenly, the number is prime. For example, to test 37: check 2, 3, 4, 5, 6 (since √37 ≈ 6.1). None divide 37, so 37 is prime.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">What are twin primes?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button><div class="faq-answer">Pairs of primes that differ by 2: (3,5), (11,13), (17,19), (29,31). Whether infinitely many twin primes exist is one of the oldest unsolved problems in mathematics.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">Can prime numbers be negative?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button><div class="faq-answer">No — by definition, prime numbers are positive integers greater than 1. Negative numbers and fractions are not prime.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">What is the largest known prime?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button><div class="faq-answer">As of 2024, the largest known prime has over 41 million digits — discovered using distributed computing. There are infinitely many primes (proved by Euclid around 300 BC), so there is no largest prime.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">What is the difference between prime and co-prime?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .2s;display:inline-block"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button><div class="faq-answer">A prime is a single number with exactly two factors. Co-prime describes a pair of numbers whose only common factor is 1. For example, 8 and 9 are co-prime (GCF = 1), but neither is prime alone.</div></div>
     </div>
   </div>
 
@@ -636,6 +630,15 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     </div>
   </div>
 
+  <!-- RELATED CONCEPTS -->
+  <div class="section" id="related" style="padding-bottom:40px">
+    <p class="section-label">Related Concepts</p>
+    <div class="concepts-grid">
+      <a class="concept-chip" href="integers.html">Integers</a>
+      <a class="concept-chip" href="exponent-rules.html">Exponent Rules</a>
+      <a class="concept-chip" href="fractions.html">Fractions</a>
+    </div>
+  </div>
 
 </main>
 </div>
@@ -811,7 +814,7 @@ function selGrade(btn){document.querySelectorAll('#grade-btns .grade-chip').forE
 function selFeeling(btn){btn.closest('.feeling-btns').querySelectorAll('.feeling-btn').forEach(function(b){b.classList.remove('selected');});btn.classList.add('selected');}
 
 /* TOC SCROLL SPY */
-var tocIds=['what-is','simulation','properties','prime-composite','coprime','find-primes','practice','worksheets','takeaways','faq','videos'];
+var tocIds=['what-is','simulation','properties','prime-composite','coprime','find-primes','practice','worksheets','takeaways','faq','videos','related'];
 var spy=new IntersectionObserver(function(entries){entries.forEach(function(e){var link=document.querySelector('#toc-list a[href="#'+e.target.id+'"]');if(e.isIntersecting&&link){document.querySelectorAll('#toc-list a').forEach(function(l){l.style.color='var(--muted)';l.style.background='none';l.style.fontWeight='300';});link.style.color='var(--blue)';link.style.background='var(--blue-light)';link.style.fontWeight='500';}});},{rootMargin:'-20% 0px -60% 0px'});
 tocIds.forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el);});
 </script>
