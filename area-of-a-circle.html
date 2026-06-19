@@ -430,9 +430,14 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   <div class="section" id="what-is">
     <h2>What is the Area of a Circle?</h2>
 
-    <p>The <strong>area of a circle</strong> is the amount of 2D space enclosed within the circular boundary, measured in square units (cm², m², in²). Unlike rectangles and triangles, a circle has no straight sides — yet it still encloses a precise, calculable area.</p>
+    <p>The <strong>area of a circle</strong> is the amount of space enclosed within the boundary of a circle. The region within the boundary of the circle is the area occupied by the circle — it may also be referred to as the total number of square units inside that circle.</p>
 
-    <p>The formula uses the <strong>radius</strong> (r) — the distance from the centre to any point on the edge — and the constant <strong>π (pi) ≈ 3.14159</strong>, which is the same for every circle in the universe.</p>
+    <p>Area of Circle = <strong>πr²</strong> or <strong>πd²/4</strong> in square units, where:</p>
+    <ul style="margin:0 0 14px 20px;color:var(--ink2);font-size:15px;line-height:1.8">
+      <li><strong>π (Pi)</strong> = 22/7 or 3.14 — the ratio of circumference to diameter of any circle, a special mathematical constant</li>
+      <li><strong>r</strong> = radius of the circle (distance from centre to edge)</li>
+      <li><strong>d</strong> = diameter of the circle (d = 2r)</li>
+    </ul>
 
     <p style="font-size:15px;color:var(--ink2)">Use the sliders to increase slices, unfold the sectors, then rearrange them into a rectangle. Watch how the circle's area becomes πr × r = πr².</p>
 
@@ -474,6 +479,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         </button>
         <div class="accordion-body">
           <div class="formula-box"><div class="flabel">Formula</div>A = πd²/4 &nbsp;&nbsp; (since r = d/2, so πr² = π(d/2)² = πd²/4)</div>
+          <img src="circle-area-diameter.png" alt="Area of a Circle using Diameter — Area = π/4 × diameter²" style="width:100%;max-width:400px;display:block;margin:16px 0;border:1px solid var(--border)">
           <p style="font-size:15px;color:var(--ink2)">Use this when the diameter is given directly. A pizza described as "14 inches" means 14-inch diameter — r = 7.</p>
           <div class="example-row">
             <div class="ex-card"><div class="ex-label">d = 14 in (pizza)</div>A = π × 196/4 = 49π ≈ <strong>153.94 in²</strong></div>
@@ -488,6 +494,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         </button>
         <div class="accordion-body">
           <div class="formula-box"><div class="flabel">Formula</div>A = C²/(4π) &nbsp;&nbsp; (from C = 2πr → r = C/2π → πr² = C²/4π)</div>
+          <img src="circle-area-circumference.png" alt="Area of a Circle using Circumference — Area = C²/4π" style="width:100%;max-width:400px;display:block;margin:16px 0;border:1px solid var(--border)">
           <p style="font-size:15px;color:var(--ink2)">Useful when you've measured the perimeter of a round object — for example, a wire bent into a circle.</p>
           <div class="example-row">
             <div class="ex-card"><div class="ex-label">C = 88 cm</div>A = 88²/4π = 7744/12.566 ≈ <strong>616 cm²</strong></div>
