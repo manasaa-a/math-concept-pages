@@ -363,8 +363,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <li><a href="#worksheets">Downloadable worksheet</a></li>
       <li><a href="#takeaways">Key Takeaways</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#videos">Related Videos</a></li>
-      <li><a href="#related">Related Concepts</a></li>
     </ul>
   </div>
 </aside>
@@ -383,8 +381,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <li><a href="#worksheets">Downloadable worksheet</a></li>
       <li><a href="#takeaways">Key Takeaways</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#videos">Related Videos</a></li>
-      <li><a href="#related">Related Concepts</a></li>
     </ul>
   </details>
 
@@ -948,7 +944,7 @@ function selGrade(btn){document.querySelectorAll('#grade-btns .grade-chip').forE
 function selFeeling(btn){btn.closest('.feeling-btns').querySelectorAll('.feeling-btn').forEach(function(b){b.classList.remove('selected');});btn.classList.add('selected');}
 
 /* TOC SCROLL SPY */
-var tocIds=['what-is','simulation','properties','prime-composite','coprime','practice','worksheets','takeaways','faq','videos','related'];
+var tocIds=['what-is','simulation','properties','prime-composite','coprime','practice','worksheets','takeaways','faq'];
 var tocLinks=document.querySelectorAll('.toc-list a');
 var spy=new IntersectionObserver(function(entries){entries.forEach(function(e){var link=document.querySelector('.toc-list a[href="#'+e.target.id+'"]');if(e.isIntersecting&&link){tocLinks.forEach(function(l){l.classList.remove('active');});link.classList.add('active');}});},{rootMargin:'-20% 0px -60% 0px'});
 tocIds.forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el);});
