@@ -135,7 +135,15 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .prac-fb.wrong{background:var(--red-light);color:#842D34}
 .prac-next{margin-top:16px;text-align:right;display:none}
 .prac-next.show{display:block}
-.completion-screen{display:none;text-align:center;padding:32px}
+.hint-toggle{font-size:13px;color:var(--blue);cursor:pointer;margin:8px 0 4px;background:none;border:none;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;padding:0;display:block}
+.hint-text{display:none;font-size:14px;color:var(--muted);background:var(--yellow-light);padding:10px 14px;border-radius:0;margin-bottom:8px}
+.completion-screen{display:none;text-align:center;padding:28px 16px}
+.completion-screen.show{display:block}
+.done-emoji{font-size:52px;margin-bottom:8px}
+.btn-retry{background:var(--yellow);color:var(--ink);border:none;padding:10px 22px;border-radius:0;font-family:inherit;font-weight:600;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-top:12px}
+.btn-retry:hover{background:var(--gold-600)}
+.completion-cta{margin-top:16px}
+.completion-cta p{font-size:14px;color:var(--ink2);margin-bottom:10px}
 .completion-screen.show{display:block}
 .score-big{font-size:48px;font-weight:700;color:var(--green);font-family:'Athletics',Georgia,serif}
 /* KT + FAQ */
@@ -464,9 +472,14 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         <div class="prac-next" id="prac-next"><button class="btn-primary" id="next-btn">Next →</button></div>
       </div>
       <div class="completion-screen" id="prac-done">
+        <div class="done-emoji" id="done-emoji">🎉</div>
         <div class="score-big" id="done-score"></div>
         <p id="done-msg" style="color:var(--ink2);font-size:16px;margin-top:8px"></p>
-        <button class="btn-primary" style="margin-top:20px" onclick="openModal()">Book a free class to go deeper →</button>
+        <button class="btn-retry" id="btn-retry" onclick="retryPractice()">Try again <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.5643 19.4917C13.3074 18.1914 12.045 17.3455 10.7446 17.6025L10.512 16.4252C11.8124 16.1683 12.6582 14.9059 12.4013 13.6055L13.5785 13.3729C13.7557 14.2696 13.5833 15.1543 13.1557 15.886C15.3545 15.4032 17 13.4438 17 11.1C17 8.39381 14.8062 6.2 12.1 6.2C9.39381 6.2 7.2 8.39381 7.2 11.1C7.2 12.0814 7.48789 12.9937 7.98364 13.7593L6.97637 14.4116C6.35863 13.4576 6 12.3197 6 11.1C6 7.73106 8.73106 5 12.1 5C15.4689 5 18.2 7.73106 18.2 11.1C18.2 14.0369 16.1245 16.4891 13.3602 17.0697C14.0515 17.5842 14.5614 18.3471 14.7416 19.2591L13.5643 19.4917Z" fill="currentColor"/></svg></button>
+        <div class="completion-cta" id="cta-deeper" style="display:none">
+          <p>Ready to go deeper? Work 1-on-1 with a Cuemath tutor.</p>
+          <button class="btn-primary" onclick="openModal()">Get started <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-left:5px;flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></button>
+        </div>
       </div>
     </div>
   </div>
@@ -529,9 +542,9 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <thead><tr><th>Term</th><th>Definition</th></tr></thead>
       <tbody>
         <tr><td>Area of a Circle</td><td>The region enclosed within the circle boundary. Measured in square units (cm², m², in²).</td></tr>
-        <tr><td>Formula (radius)</td><td>A = πr² — square the radius, multiply by π.</td></tr>
-        <tr><td>Formula (diameter)</td><td>A = πd²/4 — since r = d/2.</td></tr>
-        <tr><td>Formula (circumference)</td><td>A = C²/(4π) — useful when the perimeter is known.</td></tr>
+        <tr><td>Radius</td><td>A = πr² — square the radius, multiply by π.</td></tr>
+        <tr><td>Diameter</td><td>A = πd²/4 — since r = d/2.</td></tr>
+        <tr><td>Circumference</td><td>A = C²/(4π) — useful when the perimeter is known.</td></tr>
         <tr><td>π (pi)</td><td>≈ 3.14159. The ratio of circumference to diameter. The same for every circle.</td></tr>
         <tr><td>Radius doubles → Area ×4</td><td>Area ∝ r². Doubling r makes r² grow by 4× — area quadruples, not doubles.</td></tr>
         <tr><td>Derivation</td><td>Slice into wedges, rearrange into a rectangle of width πr and height r. Area = πr × r = πr².</td></tr>
@@ -745,15 +758,20 @@ chOptions.forEach(function(o){
 
 /* PRACTICE */
 const questions=[
-  {q:'A circle has radius 4 cm. What is its area?',visual:{type:'circle',r:60,label:'4 cm'},options:['8π cm²','16π cm²','4π cm²','64 cm²'],correct:1,fb:{right:'✓ πr² with r=4 gives π×16 = 16π cm² ≈ 50.27 cm².',wrong:'✗ Use πr². With r=4: π×4² = π×16 = 16π cm².'}},
-  {q:'A round cake has radius 6 inches. What is the area of its top?',visual:{type:'cake',n:8},options:['12π in²','36π in²','6π in²','36 in²'],correct:1,fb:{right:'✓ π×6² = 36π in² ≈ 113 in².',wrong:'✗ πr² with r=6: π×36 = 36π in².'}},
-  {q:'You double the radius of a circle. What happens to its area?',options:['It doubles','It triples','It quadruples','It stays the same'],correct:2,fb:{right:'✓ Area is πr². Doubling r gives π(2r)² = 4πr² — four times as big.',wrong:'✗ Watch the squaring: (2r)² = 4r². Area goes up 4×, not 2×.'}},
-  {q:'A circle\'s area is 25π cm². What is its radius?',options:['5 cm','12.5 cm','25 cm','√(25π) cm'],correct:0,fb:{right:'✓ πr² = 25π → r² = 25 → r = 5 cm.',wrong:'✗ Divide both sides by π: r² = 25 → r = 5 cm.'}},
-  {q:'A pizza is 14 inches across (diameter). What is its area?',options:['14π in²','49π in²','196π in²','7π in²'],correct:1,fb:{right:'✓ Diameter 14 means radius 7. π×7² = 49π ≈ 153.9 in².',wrong:'✗ Diameter = 2×radius, so r=7. Area = π×49 = 49π in².'}},
+  {q:'A circle has radius 4 cm. What is its area?',visual:{type:'circle',r:60,label:'4 cm'},options:['8π cm²','16π cm²','4π cm²','64 cm²'],correct:1,hint:'Use A = πr². Square the radius first.',fb:{right:'✓ πr² with r=4 gives π×16 = 16π cm² ≈ 50.27 cm².',wrong:'✗ Use πr². With r=4: π×4² = π×16 = 16π cm².'}},
+  {q:'A round cake has radius 6 inches. What is the area of its top?',visual:{type:'cake',n:8},options:['12π in²','36π in²','6π in²','36 in²'],correct:1,hint:'A = πr² with r = 6. Square 6 first.',fb:{right:'✓ π×6² = 36π in² ≈ 113 in².',wrong:'✗ πr² with r=6: π×36 = 36π in².'}},
+  {q:'You double the radius of a circle. What happens to its area?',options:['It doubles','It triples','It quadruples','It stays the same'],correct:2,hint:'Area = πr². What happens to r² when r becomes 2r?',fb:{right:'✓ Area is πr². Doubling r gives π(2r)² = 4πr² — four times as big.',wrong:'✗ Watch the squaring: (2r)² = 4r². Area goes up 4×, not 2×.'}},
+  {q:'A circle\'s area is 25π cm². What is its radius?',options:['5 cm','12.5 cm','25 cm','√(25π) cm'],correct:0,hint:'Set πr² = 25π and divide both sides by π.',fb:{right:'✓ πr² = 25π → r² = 25 → r = 5 cm.',wrong:'✗ Divide both sides by π: r² = 25 → r = 5 cm.'}},
+  {q:'A pizza is 14 inches across (diameter). What is its area?',options:['14π in²','49π in²','196π in²','7π in²'],correct:1,hint:'Diameter = 2 × radius. Find r first, then use A = πr².',fb:{right:'✓ Diameter 14 means radius 7. π×7² = 49π ≈ 153.9 in².',wrong:'✗ Diameter = 2×radius, so r=7. Area = π×49 = 49π in².'}},
 ];
 
-let qi=0,score=0,answered=false;
+let qi=0,score=0,answered=false,retryCount=0;
 const nextBtn=document.getElementById('next-btn');
+
+function toggleHintQ(){
+  const ht=document.getElementById('hint-text-q');
+  ht.style.display=ht.style.display==='block'?'none':'block';
+}
 
 function renderQ(){
   const q=questions[qi];
@@ -778,7 +796,15 @@ function renderQ(){
   }
   const optsBox=document.getElementById('prac-opts');optsBox.innerHTML='';
   q.options.forEach(function(label,i){const b=document.createElement('button');b.className='opt-btn';b.textContent=label;b.addEventListener('click',function(){answerQ(i);});optsBox.appendChild(b);});
-  document.getElementById('prac-fb').className='prac-fb';document.getElementById('prac-fb').textContent='';
+  /* Hint */
+  const fb=document.getElementById('prac-fb');
+  fb.className='prac-fb';fb.textContent='';
+  /* Remove old hint elements */
+  const oldHint=document.getElementById('hint-wrap-q');
+  if(oldHint)oldHint.remove();
+  const hw=document.createElement('div');hw.id='hint-wrap-q';
+  hw.innerHTML='<button class="hint-toggle" onclick="toggleHintQ()">💡 Show hint</button><div class="hint-text" id="hint-text-q" style="display:none">'+q.hint+'</div>';
+  optsBox.after(hw);
   document.getElementById('prac-next').className='prac-next';
   answered=false;
   nextBtn.textContent=(qi===questions.length-1)?'See results →':'Next →';
@@ -805,13 +831,26 @@ nextBtn.addEventListener('click',function(){
   if(qi>=questions.length){
     document.getElementById('prac-stage').style.display='none';
     const done=document.getElementById('prac-done');done.classList.add('show');
+    const pct=score/questions.length;
+    document.getElementById('done-emoji').textContent=pct===1?'🏆':pct>=0.8?'🎉':'👍';
     document.getElementById('done-score').textContent=score+'/'+questions.length;
     const msgs=['No worries — replay the simulation and try again.','Keep going — you\'re nearly there.','Solid effort — review the formulas once more.','Good work — almost perfect!','Perfect score! πr² is yours for life.'];
     document.getElementById('done-msg').textContent=msgs[Math.min(score,4)];
     document.getElementById('q-counter').textContent=score+' of '+questions.length+' correct';
     document.getElementById('prog-fill').style.width='100%';
+    if(retryCount<1){document.getElementById('btn-retry').style.display='inline-flex';document.getElementById('cta-deeper').style.display='none';}
+    else{document.getElementById('btn-retry').style.display='none';document.getElementById('cta-deeper').style.display='block';}
   }else{renderQ();}
 });
+
+function retryPractice(){
+  retryCount++;qi=0;score=0;answered=false;
+  document.querySelectorAll('.opt-btn').forEach(function(b){b.disabled=false;b.classList.remove('correct','wrong');});
+  document.getElementById('prac-done').classList.remove('show');
+  document.getElementById('prac-stage').style.display='';
+  document.getElementById('prog-fill').style.width='0%';
+  renderQ();
+}
 renderQ();
 
 /* MODAL */
