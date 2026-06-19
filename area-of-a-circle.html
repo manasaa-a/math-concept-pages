@@ -407,7 +407,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       By the end of this page, you'll know the formula A = πr², how to calculate area from radius, diameter, or circumference, and — most importantly — you'll see exactly why the formula has to be πr².
     </div>
 
-    <h2>If you doubled a pizza's radius, you wouldn't get twice the pizza — you'd get four times as much. The r² in πr² is why.</h2>
+    <h2>If you doubled a pizza's radius, you wouldn't get twice the pizza — you'd get four times as much. But how?</h2>
 
     <!-- VIDEO EMBED -->
     <div class="video-embed">
@@ -468,7 +468,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           <p style="font-size:15px;color:var(--ink2)">The most common form. Square the radius, then multiply by π. Use π ≈ 3.14 for approximate answers or keep it as π for exact answers.</p>
           <div class="example-row">
             <div class="ex-card"><div class="ex-label">r = 4 cm</div>A = π × 4² = 16π ≈ <strong>50.27 cm²</strong></div>
-            <div class="ex-card"><div class="ex-label">r = 7 cm</div>A = π × 7² = 49π ≈ <strong>153.94 cm²</strong></div>
+            <div class="ex-card"><div class="ex-label">r = 14 cm</div>A = (22/7) × 14² = (22/7) × 196 = <strong>616 cm²</strong></div>
           </div>
         </div>
       </div>
@@ -483,7 +483,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           <p style="font-size:15px;color:var(--ink2)">Use this when the diameter is given directly. A pizza described as "14 inches" means 14-inch diameter — r = 7.</p>
           <div class="example-row">
             <div class="ex-card"><div class="ex-label">d = 14 in (pizza)</div>A = π × 196/4 = 49π ≈ <strong>153.94 in²</strong></div>
-            <div class="ex-card"><div class="ex-label">d = 12 in</div>r = 6, A = π × 36 = <strong>36π ≈ 113.1 in²</strong></div>
+            <div class="ex-card"><div class="ex-label">d = 12 in</div>r = 6 in &nbsp;→&nbsp; A = π × 36 = <strong>36π ≈ 113.1 in²</strong></div>
           </div>
         </div>
       </div>
@@ -497,33 +497,9 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
           <img src="circle-area-circumference.png" alt="Area of a Circle using Circumference — Area = C²/4π" style="width:100%;max-width:400px;display:block;margin:16px 0;border:1px solid var(--border)">
           <p style="font-size:15px;color:var(--ink2)">Useful when you've measured the perimeter of a round object — for example, a wire bent into a circle.</p>
           <div class="example-row">
-            <div class="ex-card"><div class="ex-label">C = 88 cm</div>A = 88²/4π = 7744/12.566 ≈ <strong>616 cm²</strong></div>
-            <div class="ex-card"><div class="ex-label">Check</div>r = 88/2π = 14 → π×14² = 196π ≈ 616 cm² ✓</div>
+            <div class="ex-card"><div class="ex-label">C = 88 cm</div>2πr = 88 → r = 14 cm &nbsp;→&nbsp; A = (22/7) × 196 = <strong>616 cm²</strong></div>
+            <div class="ex-card"><div class="ex-label">C = 132 m</div>r = 132/(2 × 22/7) = 21 m &nbsp;→&nbsp; A = (22/7) × 441 = <strong>1386 m²</strong></div>
           </div>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span>Worked Examples</span><span class="chevron">▼</span>
-        </button>
-        <div class="accordion-body">
-          <p style="font-size:15px;color:var(--ink2);margin-bottom:16px">Five examples covering all three formula types and reverse problems.</p>
-
-          <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px">Example 1 — radius given (r = 14 cm)</p>
-          <div class="formula-box" style="margin-bottom:14px">C = 2πr = 2 × (22/7) × 14 = <strong>88 cm</strong> &nbsp;|&nbsp; A = πr² = (22/7) × 196 = <strong>616 cm²</strong></div>
-
-          <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px">Example 2 — diameter given (d = 12 in)</p>
-          <div class="formula-box" style="margin-bottom:14px">r = 12/2 = 6 in &nbsp;→&nbsp; A = π × 6² = 36π ≈ <strong>113.1 in²</strong></div>
-
-          <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px">Example 3 — circumference given (C = 88 cm)</p>
-          <div class="formula-box" style="margin-bottom:14px">2πr = 88 → r = 14 cm &nbsp;→&nbsp; A = (22/7) × 196 = <strong>616 cm²</strong></div>
-
-          <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px">Example 4 — ring/annulus (outer r = 63 yd, inner r = 56 yd)</p>
-          <div class="formula-box" style="margin-bottom:14px">A = π(R² − r²) = (22/7)(3969 − 3136) = (22/7) × 833 ≈ <strong>2,618 yd²</strong></div>
-
-          <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px">Example 5 — find radius from area (A = 25π cm²)</p>
-          <div class="formula-box">πr² = 25π → r² = 25 → r = <strong>5 cm</strong></div>
         </div>
       </div>
 
