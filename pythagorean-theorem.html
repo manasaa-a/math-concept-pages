@@ -296,6 +296,21 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         </button>
         <div class="accordion-body">
           <div class="formula-box"><div class="flabel">Formula</div>c = √(a² + b²)</div>
+          <!-- Diagram: find hypotenuse -->
+          <svg viewBox="0 0 280 180" style="width:100%;max-width:280px;display:block;margin:16px 0;background:#FAF8F5;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="30,150 30,40 220,150" fill="#FEF3C7" stroke="#97938C" stroke-width="1.5"/>
+            <!-- right angle -->
+            <polyline points="30,132 48,132 48,150" fill="none" stroke="#CE7E12" stroke-width="1.8"/>
+            <!-- leg a (green, bottom) -->
+            <line x1="30" y1="150" x2="220" y2="150" stroke="#16A34A" stroke-width="2.5"/>
+            <text x="122" y="168" font-size="14" font-weight="700" fill="#16A34A" font-family="Athletics,Georgia,serif" text-anchor="middle">a</text>
+            <!-- leg b (blue, left) -->
+            <line x1="30" y1="40" x2="30" y2="150" stroke="#5492F1" stroke-width="2.5"/>
+            <text x="14" y="100" font-size="14" font-weight="700" fill="#5492F1" font-family="Athletics,Georgia,serif" text-anchor="middle">b</text>
+            <!-- hypotenuse c (gold, unknown) -->
+            <line x1="30" y1="40" x2="220" y2="150" stroke="#CE7E12" stroke-width="3" stroke-dasharray="8,4"/>
+            <text x="142" y="82" font-size="14" font-weight="700" fill="#CE7E12" font-family="Athletics,Georgia,serif" text-anchor="middle">c = ?</text>
+          </svg>
           <p style="font-size:15px;color:var(--ink2)">Square both legs, add the results, then take the square root.</p>
           <div class="example-row">
             <div class="ex-card"><div class="ex-label">a=3, b=4</div>c = √(9+16) = √25 = <strong>5</strong></div>
@@ -310,6 +325,20 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         </button>
         <div class="accordion-body">
           <div class="formula-box"><div class="flabel">Formula</div>a = √(c² − b²)</div>
+          <!-- Diagram: find missing leg -->
+          <svg viewBox="0 0 280 180" style="width:100%;max-width:280px;display:block;margin:16px 0;background:#FAF8F5;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="30,150 30,40 220,150" fill="#FEF3C7" stroke="#97938C" stroke-width="1.5"/>
+            <polyline points="30,132 48,132 48,150" fill="none" stroke="#CE7E12" stroke-width="1.8"/>
+            <!-- leg a (green dashed, unknown) -->
+            <line x1="30" y1="150" x2="220" y2="150" stroke="#16A34A" stroke-width="2.5" stroke-dasharray="8,4"/>
+            <text x="122" y="168" font-size="14" font-weight="700" fill="#16A34A" font-family="Athletics,Georgia,serif" text-anchor="middle">a = ?</text>
+            <!-- leg b (blue, known) -->
+            <line x1="30" y1="40" x2="30" y2="150" stroke="#5492F1" stroke-width="2.5"/>
+            <text x="14" y="100" font-size="14" font-weight="700" fill="#5492F1" font-family="Athletics,Georgia,serif" text-anchor="middle">b</text>
+            <!-- hypotenuse c (gold, known) -->
+            <line x1="30" y1="40" x2="220" y2="150" stroke="#CE7E12" stroke-width="2.5"/>
+            <text x="142" y="82" font-size="14" font-weight="700" fill="#CE7E12" font-family="Athletics,Georgia,serif" text-anchor="middle">c</text>
+          </svg>
           <p style="font-size:15px;color:var(--ink2)">When the hypotenuse and one leg are known, subtract leg² from hypotenuse² and take the square root.</p>
           <div class="example-row">
             <div class="ex-card"><div class="ex-label">c=13, b=5</div>a = √(169−25) = √144 = <strong>12</strong></div>
@@ -324,6 +353,22 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
         </button>
         <div class="accordion-body">
           <div class="formula-box"><div class="flabel">Converse</div>If a² + b² = c², the triangle has a right angle at the vertex opposite side c.</div>
+          <!-- Diagram: converse — right-angled vs not -->
+          <svg viewBox="0 0 300 160" style="width:100%;max-width:340px;display:block;margin:16px 0;background:#FAF8F5;border:1px solid var(--border)" xmlns="http://www.w3.org/2000/svg">
+            <!-- Left: right-angled triangle (green) -->
+            <polygon points="20,135 20,45 120,135" fill="#DCFCE7" stroke="#16A34A" stroke-width="2"/>
+            <polyline points="20,118 36,118 36,135" fill="none" stroke="#16A34A" stroke-width="1.8"/>
+            <text x="16" y="88" font-size="11" fill="#16A34A" font-family="Untitled Sans,system-ui">3</text>
+            <text x="65" y="150" font-size="11" fill="#16A34A" font-family="Untitled Sans,system-ui">4</text>
+            <text x="76" y="82" font-size="11" fill="#16A34A" font-family="Untitled Sans,system-ui">5</text>
+            <text x="30" y="20" font-size="11" font-weight="700" fill="#16A34A" font-family="Untitled Sans,system-ui">3²+4²=5² ✓</text>
+            <!-- Right: non-right triangle (red) -->
+            <polygon points="170,135 185,45 290,135" fill="#FEE2E2" stroke="#DC2626" stroke-width="2"/>
+            <text x="164" y="92" font-size="11" fill="#DC2626" font-family="Untitled Sans,system-ui">5</text>
+            <text x="226" y="150" font-size="11" fill="#DC2626" font-family="Untitled Sans,system-ui">6</text>
+            <text x="246" y="82" font-size="11" fill="#DC2626" font-family="Untitled Sans,system-ui">8</text>
+            <text x="174" y="20" font-size="11" font-weight="700" fill="#DC2626" font-family="Untitled Sans,system-ui">5²+6²≠8² ✗</text>
+          </svg>
           <p style="font-size:15px;color:var(--ink2)">If the sum of the squares of any two sides equals the square of the third (largest) side, the triangle is right-angled. Builders use the 3-4-5 rule to verify right angles.</p>
           <div class="example-row">
             <div class="ex-card"><div class="ex-label">Right-angled ✓</div>6, 8, 10 → 36+64 = 100 = 10² ✓</div>
