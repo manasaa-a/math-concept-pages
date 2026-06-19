@@ -12,7 +12,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 24px 16px 32px;
+      padding: 8px 16px 8px;
     }
     #canvas-wrap {
       position: relative;
@@ -21,13 +21,13 @@
     }
     .ctrl-panel {
       position: absolute;
-      top: 150px; left: 12px; right: 12px;
+      top: 8px; left: 12px; right: 12px;
       background: #F3F0EB;
       border: 1px solid #E8E4DD;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      padding: 18px 20px;
+      gap: 12px;
+      padding: 14px 18px;
       z-index: 10;
     }
     .sl-row {
@@ -125,8 +125,8 @@ const CM = {
   surface: '#FFFFFF',
 };
 
-const W = 720, H = 630;
-const SLIDER_H = 345;
+const W = 720, H = 530;
+const SLIDER_H = 230;
 const R   = 88;
 const GAP = 20;
 const CX = W / 2;
@@ -233,7 +233,7 @@ new p5(function(p) {
       p.text('r', rectLeft - 28, CY);
       p.textFont(HEADING); p.textSize(20); p.textStyle(p.BOLD);
       p.textAlign(p.CENTER, p.TOP);
-      p.text('Area = πr × r = πr²', CX, rBot + 20);
+      p.text('Area = πr × r = πr²', CX, CY + R + 14);
       p.textStyle(p.NORMAL);
     }
     const cap = unfold < 0.05 && rearrange < 0.05
