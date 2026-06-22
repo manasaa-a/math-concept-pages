@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<!--
+  PROTOTYPE: Curriculum Home Page
+  URL pattern: cuemath.com/math/
+  Purpose: Entry point — grade selector, board/geo filter, trust signals, links to grade pages
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Curriculum for Grades K–8 — Cuemath</title>
+<link rel="stylesheet" href="cuedesign.css">
+<meta name="description" content="Explore Cuemath's complete math curriculum for Grades K–8. Chapter-by-chapter breakdown aligned to Common Core, CBSE, ICSE, and other major standards.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-weight:300;font-size:16px;line-height:1.6;color:var(--ink);background:var(--bg)}
+h1,h2,h3{font-family:'Athletics',Georgia,serif;font-weight:700;color:var(--ink);line-height:1.25}
+p{margin-bottom:12px;color:var(--ink2)}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+strong{font-weight:500;color:var(--ink)}
+
+/* Nav */
+nav{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Athletics',Georgia,serif;font-weight:700;font-size:20px;color:var(--ink);text-decoration:none}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:14px;color:var(--ink2);text-decoration:none;font-weight:400}
+.nav-links a:hover{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-signin{font-size:14px;color:var(--ink2);font-weight:500;padding:8px 16px;border:1px solid var(--border)}
+.nav-signin:hover{border-color:var(--yellow);color:var(--ink);text-decoration:none}
+.nav-cta{background:var(--yellow);color:var(--ink);font-weight:600;font-size:14px;padding:9px 20px;text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.nav-cta:hover{background:var(--gold-600);text-decoration:none}
+@media(max-width:700px){.nav-links{display:none}}
+
+/* Breadcrumb */
+.breadcrumb-wrap{background:var(--surface);border-bottom:1px solid var(--border);padding:10px 0}
+.breadcrumb{max-width:1200px;margin:0 auto;padding:0 24px;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.breadcrumb a{color:var(--muted)}
+
+/* Hero */
+.hero{background:var(--surface);border-bottom:1px solid var(--border);padding:60px 24px 56px}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:center}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}}
+.hero-eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--yellow);margin-bottom:12px;display:block}
+.hero h1{font-size:clamp(30px,4vw,46px);margin-bottom:16px}
+.hero-sub{font-size:17px;color:var(--ink2);max-width:520px;margin-bottom:28px;line-height:1.65}
+.hero-stats{display:flex;gap:28px;flex-wrap:wrap;margin-bottom:0}
+.hero-stat{text-align:center}
+.hero-stat-num{font-family:'Athletics',Georgia,serif;font-size:28px;font-weight:700;color:var(--ink);display:block;line-height:1}
+.hero-stat-label{font-size:12px;color:var(--muted);margin-top:4px}
+
+/* Hero grade picker card */
+.hero-card{background:var(--bg);border:1px solid var(--border);padding:28px}
+.hero-card-title{font-family:'Athletics',Georgia,serif;font-size:18px;font-weight:700;margin-bottom:6px}
+.hero-card-sub{font-size:13px;color:var(--muted);margin-bottom:20px}
+.board-tabs{display:flex;gap:0;border:1px solid var(--border);margin-bottom:20px;overflow:hidden}
+.board-tab{flex:1;padding:9px 8px;background:var(--surface);border:none;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;border-right:1px solid var(--border);text-align:center}
+.board-tab:last-child{border-right:none}
+.board-tab.active{background:var(--yellow-light);color:#7E4800;font-weight:600}
+.board-tab:hover:not(.active){background:var(--bg);color:var(--ink)}
+.grade-grid-hero{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:20px}
+.grade-btn{padding:12px 6px;border:1px solid var(--border);background:var(--surface);font-family:'Athletics',Georgia,serif;font-size:15px;font-weight:700;color:var(--ink);cursor:pointer;text-align:center;text-decoration:none;display:block}
+.grade-btn:hover{border-color:var(--yellow);background:var(--yellow-light);color:#7E4800;text-decoration:none}
+.grade-btn.active{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+.grade-btn small{display:block;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:10px;font-weight:400;color:var(--muted);margin-top:2px}
+.grade-btn.active small{color:#7E4800}
+.explore-btn{width:100%;background:var(--ink);color:#fff;border:none;padding:14px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.explore-btn:hover{background:var(--ink2);text-decoration:none;color:#fff}
+
+/* Trust bar */
+.trust-bar{background:var(--ink);padding:14px 24px}
+.trust-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.8);font-size:13px;font-weight:500}
+.trust-item svg{opacity:.7}
+
+/* Main content */
+.main{max-width:1200px;margin:0 auto;padding:56px 24px 80px}
+
+/* Section */
+.section-eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--yellow);margin-bottom:8px;display:block}
+.section-title{font-size:clamp(22px,3vw,30px);margin-bottom:8px}
+.section-sub{font-size:15px;color:var(--ink2);max-width:560px;margin-bottom:32px}
+
+/* Board selector */
+.board-selector{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.board-chip{padding:8px 18px;border:1px solid var(--border);background:var(--surface);font-size:13px;font-weight:500;color:var(--ink2);cursor:pointer}
+.board-chip:hover{border-color:var(--yellow);color:var(--ink)}
+.board-chip.active{background:var(--yellow-light);border-color:var(--yellow);color:#7E4800;font-weight:600}
+
+/* Grade cards grid */
+.grade-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
+@media(max-width:820px){.grade-cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.grade-cards{grid-template-columns:1fr}}
+
+.grade-card{background:var(--surface);border:1px solid var(--border);display:block;text-decoration:none;overflow:hidden;transition:border-color .15s}
+.grade-card:hover{border-color:var(--yellow);text-decoration:none}
+.grade-card-top{padding:20px 20px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.grade-card-badge{font-family:'Athletics',Georgia,serif;font-size:32px;font-weight:700;color:var(--ink);line-height:1}
+.grade-card-age{font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--border);padding:3px 8px;white-space:nowrap;align-self:flex-start}
+.grade-card-body{padding:8px 20px 20px}
+.grade-card-name{font-family:'Athletics',Georgia,serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.grade-card-topics{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.5}
+.grade-card-meta{display:flex;gap:16px}
+.grade-card-stat{font-size:12px;color:var(--ink2);display:flex;align-items:center;gap:5px}
+.grade-card-dot{width:6px;height:6px;border-radius:50%;background:var(--yellow);flex-shrink:0}
+.grade-card-footer{padding:12px 20px;border-top:1px solid var(--border);background:var(--bg);display:flex;align-items:center;justify-content:space-between;font-size:13px}
+.grade-card-footer span{color:var(--muted)}
+.grade-card-footer strong{color:var(--blue);font-weight:500}
+
+/* Features section */
+.features{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:56px 24px;margin:0 -24px 56px}
+@media(max-width:900px){.features{margin:0 0 56px}}
+.features-inner{max-width:1200px;margin:0 auto}
+.features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+@media(max-width:820px){.features-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.features-grid{grid-template-columns:1fr}}
+.feature-card{padding:20px;border:1px solid var(--border);background:var(--bg)}
+.feature-icon{font-size:28px;margin-bottom:12px}
+.feature-title{font-family:'Athletics',Georgia,serif;font-size:16px;font-weight:700;margin-bottom:6px}
+.feature-desc{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:0}
+
+/* CTA band */
+.cta-band{background:linear-gradient(135deg,#EC9A32 0%,#F6BE7C 100%);padding:48px 24px;margin:0 -24px}
+@media(max-width:900px){.cta-band{margin:0}}
+.cta-band-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
+@media(max-width:640px){.cta-band-inner{grid-template-columns:1fr}}
+.cta-band h2{font-size:clamp(22px,3vw,32px);color:#292827;margin-bottom:8px}
+.cta-band p{font-size:15px;color:#5B4100;margin-bottom:0}
+.cta-band-btns{display:flex;gap:12px;flex-direction:column;flex-shrink:0}
+.btn-cta-white{background:#fff;color:var(--ink);border:none;padding:14px 28px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;font-weight:600;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn-cta-white:hover{background:#F3F0EB;text-decoration:none;color:var(--ink)}
+.btn-cta-outline{background:transparent;color:#292827;border:2px solid rgba(0,0,0,.2);padding:13px 28px;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;font-weight:500;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.btn-cta-outline:hover{border-color:rgba(0,0,0,.4);text-decoration:none;color:#292827}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-btn{width:100%;background:none;border:none;padding:16px 0;text-align:left;font-family:'Untitled Sans',-apple-system,system-ui,sans-serif;font-size:15px;font-weight:500;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-ch{color:var(--muted);flex-shrink:0;transition:transform .2s}
+.faq-btn.open .faq-ch{transform:rotate(180deg)}
+.faq-answer{display:none;padding-bottom:14px;font-size:14px;color:var(--ink2);line-height:1.65}
+.faq-answer.open{display:block}
+
+footer{background:var(--surface);border-top:1px solid var(--border);padding:28px 24px;margin-top:64px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-links a{font-size:14px;color:var(--muted);text-decoration:none}
+.footer-copy{font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">Cuemath</a>
+    <div class="nav-links">
+      <a href="#">Math Classes</a>
+      <a href="#" style="color:var(--ink);font-weight:500;border-bottom:2px solid var(--yellow);padding-bottom:2px">Curriculum</a>
+      <a href="#">Test Prep</a>
+      <a href="#">Pricing</a>
+    </div>
+    <div class="nav-right">
+      <a class="nav-signin" href="#">Sign in</a>
+      <a class="nav-cta" href="#">Start for free <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+<div class="breadcrumb-wrap">
+  <div class="breadcrumb">
+    <a href="https://www.cuemath.com/math-concept-explanations/">Math</a>
+    <span>›</span>
+    <span>Curriculum</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="hero-eyebrow">K–8 Math Curriculum</span>
+      <h1>Math curriculum that goes deeper, not just faster.</h1>
+      <p class="hero-sub">Cuemath's structured curriculum covers every concept from Kindergarten through Grade 8 — chapter by chapter, lesson by lesson. Aligned to Common Core, CBSE, and 8 other major standards.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">9</span>
+          <div class="hero-stat-label">Grades covered</div>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">400+</span>
+          <div class="hero-stat-label">Lessons</div>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">10</span>
+          <div class="hero-stat-label">Curriculum standards</div>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">1:1</span>
+          <div class="hero-stat-label">Live tutoring</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grade picker -->
+    <div class="hero-card">
+      <div class="hero-card-title">Find your grade</div>
+      <div class="hero-card-sub">Select a curriculum standard and grade to explore</div>
+
+      <div class="board-tabs">
+        <button class="board-tab active" onclick="setBoard(this,'Common Core')">Common Core</button>
+        <button class="board-tab" onclick="setBoard(this,'CBSE')">CBSE</button>
+        <button class="board-tab" onclick="setBoard(this,'ICSE')">ICSE</button>
+        <button class="board-tab" onclick="setBoard(this,'UK')">UK</button>
+      </div>
+
+      <div class="grade-grid-hero">
+        <a href="#" class="grade-btn" onclick="selectGrade(this,'K')">K<small>Ages 5–6</small></a>
+        <a href="#" class="grade-btn" onclick="selectGrade(this,'1')">1<small>Ages 6–7</small></a>
+        <a href="#" class="grade-btn" onclick="selectGrade(this,'2')">2<small>Ages 7–8</small></a>
+        <a href="curriculum-grade-3.html" class="grade-btn active" id="grade-btn-3" onclick="return selectGradeNav(this,'3')">3<small>Ages 8–9</small></a>
+        <a href="#" class="grade-btn" onclick="selectGrade(this,'4')">4<small>Ages 9–10</small></a>
+        <a href="#" class="grade-btn" onclick="selectGrade(this,'5')">5<small>Ages 10–11</small></a>
+        <a href="#" class="grade-btn" onclick="selectGrade(this,'6')">6<small>Ages 11–12</small></a>
+        <a href="#" class="grade-btn" onclick="selectGrade(this,'7')">7<small>Ages 12–13</small></a>
+        <a href="#" class="grade-btn" onclick="selectGrade(this,'8')">8<small>Ages 13–14</small></a>
+      </div>
+
+      <a id="explore-link" href="curriculum-grade-3.html" class="explore-btn">
+        Explore Grade 3 curriculum
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Trust bar -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Common Core aligned
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      CBSE &amp; ICSE aligned
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      200,000+ students
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" stroke="white" stroke-width="1.8"/></svg>
+      4.9 star rating
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- Board filter + Grade cards -->
+  <span class="section-eyebrow">Curriculum by grade</span>
+  <h2 class="section-title">Choose your grade</h2>
+  <p class="section-sub">Click any grade to see the full chapter list, lessons, and skills covered.</p>
+
+  <div class="board-selector">
+    <button class="board-chip active" onclick="filterBoard(this,'Common Core')">🇺🇸 Common Core (US)</button>
+    <button class="board-chip" onclick="filterBoard(this,'CBSE')">🇮🇳 CBSE (India)</button>
+    <button class="board-chip" onclick="filterBoard(this,'ICSE')">🇮🇳 ICSE (India)</button>
+    <button class="board-chip" onclick="filterBoard(this,'UK')">🇬🇧 UK National</button>
+    <button class="board-chip" onclick="filterBoard(this,'Singapore')">🇸🇬 Singapore</button>
+    <button class="board-chip" onclick="filterBoard(this,'Australia')">🇦🇺 Australia</button>
+  </div>
+
+  <div class="grade-cards">
+
+    <a href="#" class="grade-card">
+      <div class="grade-card-top">
+        <div class="grade-card-badge">K</div>
+        <span class="grade-card-age">Ages 5–6</span>
+      </div>
+      <div class="grade-card-body">
+        <div class="grade-card-name">Kindergarten</div>
+        <div class="grade-card-topics">Counting to 20, shapes, patterns, addition &amp; subtraction intro, comparing numbers</div>
+        <div class="grade-card-meta">
+          <span class="grade-card-stat"><span class="grade-card-dot"></span>5 chapters</span>
+          <span class="grade-card-stat"><span class="grade-card-dot"></span>38 lessons</span>
+        </div>
+      </div>
+      <div class="grade-card-footer">
+        <span>Kindergarten Math</span>
+        <strong>View curriculum →</strong>
+      </div>
+    </a>
+
+    <a href="#" class="grade-card">
+      <div class="grade-card-top">
+        <div class="grade-card-badge">1</div>
+        <span class="grade-card-age">Ages 6–7</span>
+      </div>
+      <div class="grade-card-body">
+        <div class="grade-card-name">Grade 1</div>
+        <div class="grade-card-topics">Place value to 100, addition &amp; subtraction, measurement, time, geometry basics</div>
+        <div class="grade-card-meta">
+          <span class="grade-card-stat"><span class="grade-card-dot"></span>6 chapters</span>
+          <span class="grade-card-stat"><span class="grade-card-dot"></span>44 lessons</span>
+        </div>
+      </div>
+      <div class="grade-card-footer">
+        <span>Grade 1 Math</span>
+        <strong>View curriculum →</strong>
+      </div>
+    </a>
+
+    <a href="#" class="grade-card">
+      <div class="grade-card-top">
+        <div class="grade-card-badge">2</div>
+        <span class="grade-card-age">Ages 7–8</span>
+      </div>
+      <div class="grade-card-body">
+        <div class="grade-card-name">Grade 2</div>
+        <div class="grade-card-topics">3-digit numbers, addition &amp; subtraction strategies, money, measurement, arrays</div>
+        <div class="grade-card-meta">
+          <span class="grade-card-stat"><span class="grade-card-dot"></span>6 chapters</span>
+          <span class="grade-card-stat"><span class="grade-card-dot"></span>48 lessons</span>
+        </div>
+      </div>
+      <div class="grade-card-footer">
+        <span>Grade 2 Math</span>
+        <strong>View curriculum →</strong>
+      </div>
+    </a>
+
+    <!-- Grade 3 — LINKED -->
+    <a href="curriculum-grade-3.html" class="grade-card" style="border-color:var(--yellow)">
+      <div class="grade-card-top">
+        <div class="grade-card-badge" style="color:var(--yellow)">3</div>
+        <span class="grade-card-age" style="background:var(--yellow-light);border-color:var(--yellow);color:#7E4800">Ages 8–9</span>
+      </div>
+      <div class="grade-card-body">
+        <div class="grade-card-name">Grade 3</div>
+        <div class="grade-card-topics">Multiplication &amp; division, fractions intro, measurement, geometry, data &amp; graphs</div>
+        <div class="grade-card-meta">
+          <span class="grade-card-stat"><span class="grade-card-dot"></span>7 chapters</span>
+          <span class="grade-card-stat"><span class="grade-card-dot"></span>53 lessons</span>
+        </div>
+      </div>
+      <div class="grade-card-footer" style="background:var(--yellow-light);border-color:var(--yellow)">
+        <span style="color:#7E4800">Grade 3 Math</span>
+        <strong style="color:#7E4800">View curriculum →</strong>
+      </div>
+    </a>
+
+    <a href="#" class="grade-card">
+      <div class="grade-card-top">
+        <div class="grade-card-badge">4</div>
+        <span class="grade-card-age">Ages 9–10</span>
+      </div>
+      <div class="grade-card-body">
+        <div class="grade-card-name">Grade 4</div>
+        <div class="grade-card-topics">Multi-digit multiplication, factors &amp; multiples, fractions, decimals intro, angles</div>
+        <div class="grade-card-meta">
+          <span class="grade-card-stat"><span class="grade-card-dot"></span>7 chapters</span>
+          <span class="grade-card-stat"><span class="grade-card-dot"></span>55 lessons</span>
+        </div>
+      </div>
+      <div class="grade-card-footer">
+        <span>Grade 4 Math</span>
+        <strong>View curriculum →</strong>
+      </div>
+    </a>
+
+    <a href="#" class="grade-card">
+      <div class="grade-card-top">
+        <div class="grade-card-badge">5</div>
+        <span class="grade-card-age">Ages 10–11</span>
+      </div>
+      <div class="grade-card-body">
+        <div class="grade-card-name">Grade 5</div>
+        <div class="grade-card-topics">Fractions operations, decimals, volume, coordinate plane, patterns &amp; rules</div>
+        <div class="grade-card-meta">
+          <span class="grade-card-stat"><span class="grade-card-dot"></span>7 chapters</span>
+          <span class="grade-card-stat"><span class="grade-card-dot"></span>56 lessons</span>
+        </div>
+      </div>
+      <div class="grade-card-footer">
+        <span>Grade 5 Math</span>
+        <strong>View curriculum →</strong>
+      </div>
+    </a>
+
+    <a href="#" class="grade-card">
+      <div class="grade-card-top">
+        <div class="grade-card-badge">6</div>
+        <span class="grade-card-age">Ages 11–12</span>
+      </div>
+      <div class="grade-card-body">
+        <div class="grade-card-name">Grade 6</div>
+        <div class="grade-card-topics">Ratios &amp; proportions, integers, expressions &amp; equations, geometry, statistics</div>
+        <div class="grade-card-meta">
+          <span class="grade-card-stat"><span class="grade-card-dot"></span>8 chapters</span>
+          <span class="grade-card-stat"><span class="grade-card-dot"></span>58 lessons</span>
+        </div>
+      </div>
+      <div class="grade-card-footer">
+        <span>Grade 6 Math</span>
+        <strong>View curriculum →</strong>
+      </div>
+    </a>
+
+    <a href="#" class="grade-card">
+      <div class="grade-card-top">
+        <div class="grade-card-badge">7</div>
+        <span class="grade-card-age">Ages 12–13</span>
+      </div>
+      <div class="grade-card-body">
+        <div class="grade-card-name">Grade 7</div>
+        <div class="grade-card-topics">Proportional relationships, negative numbers, expressions, geometry, probability</div>
+        <div class="grade-card-meta">
+          <span class="grade-card-stat"><span class="grade-card-dot"></span>8 chapters</span>
+          <span class="grade-card-stat"><span class="grade-card-dot"></span>60 lessons</span>
+        </div>
+      </div>
+      <div class="grade-card-footer">
+        <span>Grade 7 Math</span>
+        <strong>View curriculum →</strong>
+      </div>
+    </a>
+
+    <a href="#" class="grade-card">
+      <div class="grade-card-top">
+        <div class="grade-card-badge">8</div>
+        <span class="grade-card-age">Ages 13–14</span>
+      </div>
+      <div class="grade-card-body">
+        <div class="grade-card-name">Grade 8</div>
+        <div class="grade-card-topics">Linear equations, functions, systems of equations, geometry, statistics &amp; scatter plots</div>
+        <div class="grade-card-meta">
+          <span class="grade-card-stat"><span class="grade-card-dot"></span>8 chapters</span>
+          <span class="grade-card-stat"><span class="grade-card-dot"></span>62 lessons</span>
+        </div>
+      </div>
+      <div class="grade-card-footer">
+        <span>Grade 8 Math</span>
+        <strong>View curriculum →</strong>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Features -->
+  <div class="features">
+    <div class="features-inner">
+      <span class="section-eyebrow">Why Cuemath curriculum</span>
+      <h2 class="section-title" style="margin-bottom:28px">Built for understanding, not just answers</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📐</div>
+          <div class="feature-title">Concept-first teaching</div>
+          <p class="feature-desc">Every lesson builds understanding before introducing procedures — so students know why, not just how.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🗺️</div>
+          <div class="feature-title">Standards-aligned</div>
+          <p class="feature-desc">Mapped to Common Core, CBSE, ICSE, Singapore Math, UK National Curriculum, and more.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👩‍💻</div>
+          <div class="feature-title">Live 1:1 sessions</div>
+          <p class="feature-desc">Each chapter is delivered by a dedicated Cuemath tutor in personalised live sessions — not videos.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <div class="feature-title">Adaptive practice</div>
+          <p class="feature-desc">Students get practice that adjusts to their level — closing gaps before they reach the next chapter.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA band -->
+  <div class="cta-band">
+    <div class="cta-band-inner">
+      <div>
+        <h2>Ready to get started?</h2>
+        <p>Book a free class and see how Cuemath teaches your child's exact grade curriculum — live, personalised, and built for deep understanding.</p>
+      </div>
+      <div class="cta-band-btns">
+        <a href="#" class="btn-cta-white">Book a free class <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></a>
+        <a href="#" class="btn-cta-outline">Explore all grades</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <span class="section-eyebrow" style="margin-top:56px">FAQs</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div style="margin-top:16px;margin-bottom:48px">
+    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">What curriculum standard does Cuemath follow?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button><div class="faq-answer">Cuemath supports multiple standards: Common Core State Standards (US), CBSE and ICSE (India), UK National Curriculum, Singapore Math, and Australian Curriculum. The core content is the same — we adapt terminology and sequencing to match each standard.</div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">Can I preview the curriculum before booking?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button><div class="faq-answer">Yes — every grade page shows the complete chapter list and all lessons. Click any grade card to see the full curriculum structure, including what topics are covered in each chapter.</div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">Does Cuemath follow the school curriculum exactly?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button><div class="faq-answer">Cuemath covers all the topics your child encounters in school, aligned to the same grade-level standards. Tutors also address gaps from previous grades when needed — so students are always building on solid foundations.</div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">How long does it take to complete a grade's curriculum?<svg class="faq-ch" width="14" height="14" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg></button><div class="faq-answer">Most students complete a full grade curriculum in one academic year at 2–3 sessions per week. Cuemath tutors personalise the pace — some students move faster, others spend more time on foundational chapters.</div></div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a style="font-family:'Athletics',Georgia,serif;font-weight:700;font-size:18px;color:var(--ink);text-decoration:none" href="/">Cuemath</a>
+    <div class="footer-links">
+      <a href="curriculum-home.html">Curriculum</a>
+      <a href="#">Math Classes</a>
+      <a href="#">For Schools</a>
+      <a href="#">About</a>
+    </div>
+    <span class="footer-copy">© 2024 Cuemath</span>
+  </div>
+</footer>
+
+<script>
+let selectedGrade = '3';
+const gradeLinks = {
+  '3': 'curriculum-grade-3.html',
+};
+
+function selectGrade(el, grade) {
+  event.preventDefault();
+  document.querySelectorAll('.grade-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  selectedGrade = grade;
+  const link = document.getElementById('explore-link');
+  link.textContent = '';
+  link.innerHTML = 'Explore Grade ' + grade + ' curriculum <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.2481 11.4 15.1143 9.37891 15.1143 7H13.9143C13.9143 8.80489 14.8299 10.3831 16.2357 11.4L4 11.4V12.6L16.2357 12.6C14.8299 13.6169 13.9143 15.1951 13.9143 17H15.1143C15.1143 14.6211 17.2481 12.6 20 12.6V11.4Z" fill="currentColor"/></svg>';
+  link.href = gradeLinks[grade] || '#';
+  return false;
+}
+
+function selectGradeNav(el, grade) {
+  selectGrade(el, grade);
+  // Grade 3 has a real page — let navigation happen
+  return grade === '3';
+}
+
+function setBoard(btn, board) {
+  document.querySelectorAll('.board-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function filterBoard(btn, board) {
+  document.querySelectorAll('.board-chip').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function toggleFaq(btn) {
+  const a = btn.nextElementSibling, o = btn.classList.contains('open');
+  btn.classList.toggle('open', !o); a.classList.toggle('open', !o);
+}
+</script>
+</body>
+</html>
