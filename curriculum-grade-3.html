@@ -106,6 +106,18 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .chapter-body{display:none;border-top:1px solid var(--border)}
 .chapter-card.open .chapter-body{display:block}
 
+/* Lesson objectives (from Leap) */
+.lesson-objectives{background:#F0F7FF;border-bottom:1px solid var(--border);padding:20px 20px 16px}
+.obj-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.obj-title{font-family:'Athletics',Georgia,serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:10px}
+.obj-list{list-style:none;padding:0;margin-bottom:14px}
+.obj-list li{font-size:14px;color:var(--ink2);padding:4px 0 4px 20px;position:relative}
+.obj-list li::before{content:'✦';position:absolute;left:0;color:#F4AB52;font-size:11px;top:5px}
+.obj-cta{display:flex;align-items:center;gap:16px}
+.obj-start-btn{background:var(--blue);color:#fff;font-size:13px;font-weight:600;padding:8px 16px;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+.obj-start-btn:hover{background:#3464B1;text-decoration:none}
+.obj-note{font-size:13px;color:var(--blue);font-weight:500}
+
 /* Lessons list */
 .lessons-list{padding:0}
 .lesson-item{display:flex;align-items:center;gap:14px;padding:12px 20px;border-bottom:1px solid var(--border);cursor:pointer;text-decoration:none}
@@ -173,7 +185,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:28px
 
 <div style="background:var(--surface);border-bottom:1px solid var(--border);padding:10px 24px;font-size:13px;color:var(--muted)">
   <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:6px">
-    <a href="https://www.cuemath.com/math-concept-explanations/" style="color:var(--muted)">Math</a>
+    <a href="curriculum-home.html" style="color:var(--muted)">Math</a>
     <span>›</span>
     <a href="#" style="color:var(--muted)">Curriculum</a>
     <span>›</span>
@@ -275,6 +287,23 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:28px
         <svg class="chapter-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
       </div>
       <div class="chapter-body">
+        <!-- Lesson objectives — pulled from Leap (same as app) -->
+        <div class="lesson-objectives">
+          <div class="obj-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Lesson 1 objectives · Counting to 1,000
+          </div>
+          <div class="obj-title">By the end of this lesson, I will be able to:</div>
+          <ul class="obj-list">
+            <li>Count and write numbers up to 109 in figures and words</li>
+            <li>Count and write numbers up to 119 in figures and words</li>
+            <li>Count and write numbers up to 199 in figures and words</li>
+          </ul>
+          <div class="obj-cta">
+            <a href="#" class="obj-start-btn">Start lesson <svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 11.4C17.25 11.4 15.11 9.38 15.11 7H13.91C13.91 8.8 14.83 10.38 16.24 11.4L4 11.4V12.6L16.24 12.6C14.83 13.62 13.91 15.2 13.91 17H15.11C15.11 14.62 17.25 12.6 20 12.6V11.4Z" fill="currentColor"/></svg></a>
+            <span class="obj-note">or get help from a tutor →</span>
+          </div>
+        </div>
         <div class="lessons-list">
           <a class="lesson-item" href="#"><div class="lesson-icon done">✓</div><span class="lesson-name">Counting to 1,000</span><span class="lesson-skills">12 skills</span></a>
           <a class="lesson-item" href="#"><div class="lesson-icon done">✓</div><span class="lesson-name">Place value: hundreds, tens, ones</span><span class="lesson-skills">10 skills</span></a>
@@ -462,7 +491,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:28px
   <div class="footer-inner">
     <a style="font-family:'Athletics',Georgia,serif;font-weight:700;font-size:18px;color:var(--ink);text-decoration:none" href="/">Cuemath</a>
     <div class="footer-links">
-      <a href="#">Curriculum</a>
+      <a href="curriculum-home.html">Curriculum</a>
       <a href="#">Math Classes</a>
       <a href="#">For Schools</a>
       <a href="#">About</a>
