@@ -106,6 +106,20 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .chapter-body{display:none;border-top:1px solid var(--border);position:relative;z-index:0}
 .chapter-card.open .chapter-body{display:block}
 
+/* Lesson content type tags */
+.lesson-types{display:flex;gap:6px;margin-left:auto;flex-shrink:0}
+.ltype{font-size:10px;font-weight:600;padding:2px 7px;border:1px solid var(--border);color:var(--muted);letter-spacing:.04em;background:var(--bg)}
+.ltype.learn{border-color:var(--blue);color:var(--blue);background:var(--blue-light)}
+.ltype.pdf{border-color:var(--green);color:var(--green);background:var(--green-light)}
+
+/* Chapter end section (Test + Download) */
+.chapter-end{padding:14px 20px;background:var(--bg);border-top:1px solid var(--border);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.chapter-end-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.chapter-end-btn{font-size:12px;font-weight:500;padding:6px 14px;border:1px solid var(--border);color:var(--ink2);background:var(--surface);cursor:pointer;display:inline-flex;align-items:center;gap:5px;text-decoration:none}
+.chapter-end-btn:hover{border-color:var(--yellow);color:var(--ink);background:var(--yellow-light);text-decoration:none}
+.chapter-cta{margin-left:auto;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none}
+.chapter-cta:hover{text-decoration:underline}
+
 /* Lesson objectives (from Leap) */
 .lesson-objectives{background:#F0F7FF;border-bottom:1px solid var(--border);padding:20px 20px 16px}
 .obj-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin-bottom:10px;display:flex;align-items:center;gap:6px}
@@ -233,13 +247,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:28px
       </div>
 
       <nav class="chapter-nav" id="chapter-nav">
-        <a href="#ch1" class="chapter-nav-item active">Numbers &amp; Place Value <span class="chapter-nav-count">8</span></a>
-        <a href="#ch2" class="chapter-nav-item">Multiplication <span class="chapter-nav-count">10</span></a>
-        <a href="#ch3" class="chapter-nav-item">Division <span class="chapter-nav-count">8</span></a>
-        <a href="#ch4" class="chapter-nav-item">Fractions <span class="chapter-nav-count">9</span></a>
-        <a href="#ch5" class="chapter-nav-item">Measurement &amp; Time <span class="chapter-nav-count">7</span></a>
-        <a href="#ch6" class="chapter-nav-item">Geometry <span class="chapter-nav-count">6</span></a>
-        <a href="#ch7" class="chapter-nav-item">Data &amp; Graphs <span class="chapter-nav-count">5</span></a>
+        <a href="#ch1" class="chapter-nav-item active">Magic with Numbers <span class="chapter-nav-count">7</span></a>
+        <a href="#ch2" class="chapter-nav-item">Multiply It! <span class="chapter-nav-count">10</span></a>
+        <a href="#ch3" class="chapter-nav-item">Divide and Conquer <span class="chapter-nav-count">8</span></a>
+        <a href="#ch4" class="chapter-nav-item">Fractions Uncovered <span class="chapter-nav-count">9</span></a>
+        <a href="#ch5" class="chapter-nav-item">Measure Up <span class="chapter-nav-count">7</span></a>
+        <a href="#ch6" class="chapter-nav-item">Shapes Around Us <span class="chapter-nav-count">6</span></a>
+        <a href="#ch7" class="chapter-nav-item">Data Detectives <span class="chapter-nav-count">5</span></a>
       </nav>
     </div>
 
@@ -281,8 +295,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:28px
       <div class="chapter-header" onclick="toggleChapter(this)">
         <div class="chapter-number">1</div>
         <div class="chapter-info">
-          <div class="chapter-title">Numbers &amp; Place Value</div>
-          <div class="chapter-meta">8 lessons · 3-digit numbers, rounding, comparing</div>
+          <div class="chapter-title">Magic with Numbers</div>
+          <div class="chapter-meta">7 lessons · Core 0/7 · Counting, place value, comparing 3-digit numbers</div>
         </div>
         <svg class="chapter-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4002 17C11.4002 13.6495 8.68402 10.9333 5.3335 10.9333L5.3335 9.73333C8.31742 9.73333 10.8813 11.5319 12.0002 14.104C13.1191 11.5319 15.6829 9.73333 18.6668 9.73333V10.9333C15.3163 10.9333 12.6002 13.6495 12.6002 17H11.4002Z" fill="currentColor"/></svg>
       </div>
@@ -305,14 +319,19 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:28px
           </div>
         </div>
         <div class="lessons-list">
-          <a class="lesson-item" href="#"><div class="lesson-icon done">✓</div><span class="lesson-name">Counting to 1,000</span><span class="lesson-skills">12 skills</span></a>
-          <a class="lesson-item" href="#"><div class="lesson-icon done">✓</div><span class="lesson-name">Place value: hundreds, tens, ones</span><span class="lesson-skills">10 skills</span></a>
-          <a class="lesson-item" href="#"><div class="lesson-icon">3</div><span class="lesson-name">Reading &amp; writing numbers to 1,000</span><span class="lesson-skills">8 skills</span><span class="lesson-tag key" style="margin-left:8px">Key</span></a>
-          <a class="lesson-item" href="#"><div class="lesson-icon">4</div><span class="lesson-name">Comparing and ordering numbers</span><span class="lesson-skills">9 skills</span></a>
-          <a class="lesson-item" href="#"><div class="lesson-icon">5</div><span class="lesson-name">Rounding to the nearest 10 and 100</span><span class="lesson-skills">11 skills</span></a>
-          <a class="lesson-item" href="#"><div class="lesson-icon">6</div><span class="lesson-name">Even and odd numbers</span><span class="lesson-skills">7 skills</span></a>
-          <a class="lesson-item" href="#"><div class="lesson-icon">7</div><span class="lesson-name">Number patterns and sequences</span><span class="lesson-skills">8 skills</span><span class="lesson-tag new" style="margin-left:8px">New</span></a>
-          <a class="lesson-item" href="#"><div class="lesson-icon">8</div><span class="lesson-name">Skip counting by 2s, 5s, 10s, and 100s</span><span class="lesson-skills">9 skills</span></a>
+          <a class="lesson-item" href="#"><div class="lesson-icon done">✓</div><span class="lesson-name">Count and Write Numbers up to 200</span><div class="lesson-types"><span class="ltype learn">Learn</span><span class="ltype pdf">PDF</span></div></a>
+          <a class="lesson-item" href="#"><div class="lesson-icon">2</div><span class="lesson-name">Count and Write Numbers up to 1000</span><div class="lesson-types"><span class="ltype learn">Learn</span><span class="ltype pdf">PDF</span></div></a>
+          <a class="lesson-item" href="#"><div class="lesson-icon">3</div><span class="lesson-name">Identify Numbers Before, After, and Between Numbers up to 1000</span><div class="lesson-types"><span class="ltype learn">Learn</span><span class="ltype pdf">PDF</span></div></a>
+          <a class="lesson-item" href="#"><div class="lesson-icon">4</div><span class="lesson-name">Identify Place, Place Value, and Face Value in 3-digit numbers</span><div class="lesson-types"><span class="ltype learn">Learn</span><span class="ltype pdf">PDF</span></div></a>
+          <a class="lesson-item" href="#"><div class="lesson-icon">5</div><span class="lesson-name">Write Expanded Form and Standard Form of 3-digit Numbers</span><div class="lesson-types"><span class="ltype learn">Learn</span><span class="ltype pdf">PDF</span></div></a>
+          <a class="lesson-item" href="#"><div class="lesson-icon">6</div><span class="lesson-name">Compare 3-Digit Numbers</span><div class="lesson-types"><span class="ltype learn">Learn</span><span class="ltype pdf">PDF</span></div></a>
+          <a class="lesson-item" href="#"><div class="lesson-icon">7</div><span class="lesson-name">Order 3-Digit Numbers</span><div class="lesson-types"><span class="ltype learn">Learn</span><span class="ltype pdf">PDF</span></div></a>
+        </div>
+        <!-- Chapter end: Test + Download (from Leap) -->
+        <div class="chapter-end">
+          <a href="#" class="chapter-end-btn">🧪 Chapter Test · Magic with Numbers</a>
+          <a href="#" class="chapter-end-btn">⬇ Chapter PDF · Magic with Numbers</a>
+          <a href="#" class="chapter-cta">Get help with this chapter →</a>
         </div>
       </div>
     </div>
