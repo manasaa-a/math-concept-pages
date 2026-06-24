@@ -94,8 +94,8 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .cp-cta{font-size:13px;font-weight:600;color:var(--blue);cursor:pointer;white-space:nowrap}
 
 /* Chapter card */
-.chapter-card{background:var(--surface);border:1px solid var(--border);margin-bottom:12px;overflow:hidden}
-.chapter-header{padding:18px 20px;cursor:pointer;display:flex;align-items:center;gap:16px;user-select:none}
+.chapter-card{background:var(--surface);border:1px solid var(--border);margin-bottom:12px}
+.chapter-header{padding:18px 20px;cursor:pointer;display:flex;align-items:center;gap:16px;user-select:none;position:relative;z-index:1;background:var(--surface)}
 .chapter-header:hover{background:var(--bg)}
 .chapter-number{width:32px;height:32px;background:var(--yellow-light);border:1px solid var(--yellow);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#7E4800;flex-shrink:0}
 .chapter-info{flex:1}
@@ -103,7 +103,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .chapter-meta{font-size:13px;color:var(--muted)}
 .chapter-chevron{color:var(--muted);transition:transform .2s;flex-shrink:0}
 .chapter-card.open .chapter-chevron{transform:rotate(180deg)}
-.chapter-body{display:none;border-top:1px solid var(--border)}
+.chapter-body{display:none;border-top:1px solid var(--border);position:relative;z-index:0}
 .chapter-card.open .chapter-body{display:block}
 
 /* Lesson objectives (from Leap) */
