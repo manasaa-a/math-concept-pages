@@ -214,14 +214,10 @@ body{font-family:'UntitledSans',-apple-system,system-ui,sans-serif;font-weight:4
         </div>
       </div>
 
-      <div class="sel-divider"></div>
-
-      <!-- Curriculum (changes based on country) -->
-      <div class="sel-group">
-        <span class="sel-label">Curriculum</span>
-        <div class="curriculum-pills" id="curriculum-pills">
-          <!-- Populated by JS -->
-        </div>
+      <!-- Curriculum (only shown when country has multiple boards) -->
+      <div class="sel-group" id="curriculum-group" style="display:none">
+        <div class="sel-divider" style="margin-right:8px"></div>
+        <div class="curriculum-pills" id="curriculum-pills"></div>
       </div>
 
       <!-- View toggle -->
@@ -468,9 +464,16 @@ function selectCountry(el, label, code) {
 function renderCurriculum(code) {
   const list = curricula[code] || curricula.us;
   const container = document.getElementById('curriculum-pills');
-  container.innerHTML = list.map((c,i) =>
-    `<button class="cp${i===0?' active':''}" onclick="setCurriculum(this)">${c.label}</button>`
-  ).join('');
+  const group = document.getElementById('curriculum-group');
+  if (list.length <= 1) {
+    group.style.display = 'none';
+    container.innerHTML = '';
+  } else {
+    group.style.display = 'flex';
+    container.innerHTML = list.map((c,i) =>
+      `<button class="cp${i===0?' active':''}" onclick="setCurriculum(this)">${c.label}</button>`
+    ).join('');
+  }
 }
 
 function setCurriculum(btn) {
