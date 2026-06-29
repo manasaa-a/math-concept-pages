@@ -148,19 +148,19 @@ body{font-family:'UntitledSans',-apple-system,system-ui,sans-serif;font-weight:4
     </div>
     <div class="grade-wrap">
       <div class="grade-switcher">
-        <button class="gs-pill" onclick="location.href='maths.html'">K</button>
-        <button class="gs-pill">Grade 1</button>
-        <button class="gs-pill">Grade 2</button>
-        <button class="gs-pill active">Grade 3</button>
-        <button class="gs-pill">Grade 4</button>
-        <button class="gs-pill">Grade 5</button>
-        <button class="gs-pill">Grade 6</button>
-        <button class="gs-pill">Grade 7</button>
-        <button class="gs-pill">Grade 8</button>
-        <button class="gs-pill">Grade 9</button>
-        <button class="gs-pill">Grade 10</button>
-        <button class="gs-pill">Grade 11</button>
-        <button class="gs-pill">Grade 12</button>
+        <button class="gs-pill" data-grade="K" onclick="location.href='maths.html'">K</button>
+        <button class="gs-pill" data-grade="1" onclick="void(0)">Grade 1</button>
+        <button class="gs-pill" data-grade="2" onclick="loadGrade(2)">Grade 2</button>
+        <button class="gs-pill active" data-grade="3" onclick="loadGrade(3)">Grade 3</button>
+        <button class="gs-pill" data-grade="4" onclick="loadGrade(4)">Grade 4</button>
+        <button class="gs-pill" data-grade="5" onclick="void(0)">Grade 5</button>
+        <button class="gs-pill" data-grade="6" onclick="void(0)">Grade 6</button>
+        <button class="gs-pill" data-grade="7" onclick="void(0)">Grade 7</button>
+        <button class="gs-pill" data-grade="8" onclick="void(0)">Grade 8</button>
+        <button class="gs-pill" data-grade="9" onclick="void(0)">Grade 9</button>
+        <button class="gs-pill" data-grade="10" onclick="void(0)">Grade 10</button>
+        <button class="gs-pill" data-grade="11" onclick="void(0)">Grade 11</button>
+        <button class="gs-pill" data-grade="12" onclick="void(0)">Grade 12</button>
       </div>
       <div class="grade-section-header">
         <span style="font-size:18px">📓</span>
@@ -217,21 +217,111 @@ body{font-family:'UntitledSans',-apple-system,system-ui,sans-serif;font-weight:4
 </div>
 
 <script>
-const chapters={
-  1:{name:'Magic with Numbers',emoji:'🔢',total:7,lessons:['Count and Write Numbers up to 200','Count and Write Numbers up to 1000','Identify Numbers Before, After, and Between up to 1000','Identify Place, Place Value, and Face Value in 3-digit Numbers','Write Expanded Form and Standard Form of 3-digit Numbers','Compare 3-Digit Numbers','Order 3-Digit Numbers']},
-  2:{name:'Multiply It!',emoji:'✖️',total:10,lessons:['Understanding multiplication as equal groups','Multiplication with arrays','Multiplication facts: 1s, 2s, 5s, 10s','Multiplication facts: 3s, 4s, 6s','Multiplication facts: 7s, 8s, 9s','Commutative and associative properties','Distributive property','Multiplying by multiples of 10','Multiplication word problems','Two-step word problems']},
-  3:{name:'Divide and Conquer',emoji:'➗',total:8,lessons:['Understanding division as equal sharing','Relating multiplication and division','Division facts: 1s, 2s, 5s, 10s','Division facts: 3s through 9s','Dividing by multiples of 10','Division with remainders (intro)','Division word problems','Mixed multiplication & division problems']},
-  4:{name:'Fractions Uncovered',emoji:'½',total:9,lessons:['Understanding fractions as equal parts','Unit fractions','Fractions on a number line','Equivalent fractions','Comparing fractions — same numerator','Comparing fractions — same denominator','Fractions of a whole','Fractions of a set','Fractions word problems']},
-  5:{name:'Measure Up',emoji:'📏',total:7,lessons:['Measuring length with standard units','Estimating and measuring in metric units','Mass: grams and kilograms','Liquid volume: liters and milliliters','Telling time to the minute','Elapsed time','Area and perimeter (intro)']},
-  6:{name:'Shapes Around Us',emoji:'📐',total:6,lessons:['2D shapes and their attributes','Quadrilaterals: squares, rectangles, rhombuses','Lines: parallel, perpendicular, intersecting','Angles: right, acute, obtuse','Symmetry and congruence','3D shapes (intro)']},
-  7:{name:'Data Detectives',emoji:'📊',total:5,lessons:['Picture graphs','Bar graphs — reading and interpreting','Creating bar graphs','Line plots','Data word problems']},
+// Grade data keyed by grade number
+const gradeData={
+  2:{
+    label:'USCC · Grade 2',
+    chapters:[
+      {name:'Magic with Numbers',emoji:'🔢',total:8},
+      {name:'Addition and Subtraction',emoji:'➕',total:9},
+      {name:'Together and Apart',emoji:'🚀',total:7},
+      {name:'Multiplication',emoji:'✖️',total:8},
+      {name:'Time',emoji:'🕐',total:6},
+      {name:'Shapes and Patterns',emoji:'🔷',total:7},
+      {name:'How Long Is It?',emoji:'📏',total:6},
+      {name:'Pictographs',emoji:'📊',total:5},
+      {name:'Hot or Cold?',emoji:'🌡️',total:5},
+      {name:'Odd One Out',emoji:'🔵',total:4},
+      {name:'Aptitude - Ability',emoji:'⚙️',total:6},
+      {name:'Diagnostic Test',emoji:'📋',total:4},
+      {name:'Multiplication Magic',emoji:'✖️',total:6},
+      {name:'Puzzle Cards',emoji:'🃏',total:4},
+      {name:'Sharing is Caring',emoji:'🚀',total:5},
+      {name:'Piece of Pie',emoji:'🚀',total:5},
+      {name:'Skip Counting and Round Off',emoji:'🔢',total:6},
+      {name:"Clock a Doodle Doo!",emoji:'🕐',total:5},
+      {name:'Playing with Numbers',emoji:'🚀',total:6},
+      {name:'Fill It Up',emoji:'🚀',total:5},
+    ]
+  },
+  3:{
+    label:'USCC · Grade 3',
+    chapters:[
+      {name:'Number System',emoji:'🔢',total:7},
+      {name:'Addition and Subtraction of Large Numbers',emoji:'➕',total:8},
+      {name:'Multiplication',emoji:'✖️',total:9},
+      {name:'Division',emoji:'➗',total:8},
+      {name:'An Introduction to Fractions',emoji:'🍕',total:8},
+      {name:'Time',emoji:'🕐',total:6},
+      {name:'Geometry',emoji:'📐',total:7},
+      {name:'Measurement of Mass',emoji:'⚖️',total:5},
+      {name:'Area and Perimeter',emoji:'📏',total:6},
+      {name:'Data Handling',emoji:'📊',total:5},
+      {name:'Money',emoji:'🐷',total:5},
+      {name:'Aptitude - Ability',emoji:'🚀',total:5},
+      {name:'Puzzle Cards',emoji:'🃏',total:4},
+    ]
+  },
+  4:{
+    label:'USCC · Grade 4',
+    chapters:[
+      {name:'Number Systems',emoji:'🔢',total:8},
+      {name:'Addition and Subtraction',emoji:'➕',total:7},
+      {name:'Division',emoji:'➗',total:8},
+      {name:'Factors, Multiples, and Primes',emoji:'🔷',total:7},
+      {name:'Understanding Fractions',emoji:'🍕',total:8},
+      {name:'Fraction Operations',emoji:'🚀',total:7},
+      {name:'Time',emoji:'🕐',total:5},
+      {name:'Geometry',emoji:'📐',total:7},
+      {name:'Symmetry and Patterns',emoji:'🚀',total:6},
+      {name:'Measurement',emoji:'📏',total:6},
+      {name:'Data Handling',emoji:'📊',total:5},
+      {name:'Money',emoji:'💰',total:5},
+      {name:'Number System',emoji:'🚀',total:5},
+      {name:'Sharing is Caring',emoji:'🚀',total:5},
+    ]
+  }
 };
+
+let currentGrade=3;
+
+function loadGrade(g){
+  currentGrade=g;
+  const gd=gradeData[g];
+  if(!gd)return;
+  // Update header
+  document.querySelector('.grade-section-title').textContent=gd.label;
+  // Update pills
+  document.querySelectorAll('.gs-pill').forEach(p=>{
+    p.classList.toggle('active',p.dataset.grade==g);
+  });
+  // Rebuild chapter grid
+  const grid=document.getElementById('chapter-grid');
+  grid.innerHTML=gd.chapters.map((ch,i)=>`
+    <div class="ch-card${i===0?' selected':''}" id="ch-${i+1}" onclick="selectChapter(${i+1})">
+      <span class="ch-num">${i+1}</span>
+      <div class="ch-circle" style="background:#EDD5BE;font-size:26px;display:flex;align-items:center;justify-content:center">${ch.emoji}</div>
+      <div class="ch-name">${ch.name}</div>
+    </div>
+  `).join('');
+  loadGrade(3);
+}
+
+// chapters alias for selectChapter compatibility
+function getChapter(n){
+  const gd=gradeData[currentGrade];
+  if(!gd||!gd.chapters[n-1])return null;
+  const ch=gd.chapters[n-1];
+  // Generate placeholder lessons
+  const lessons=Array.from({length:ch.total},(_,i)=>'Lesson '+(i+1)+' — '+ch.name);
+  return{name:ch.name,emoji:ch.emoji,total:ch.total,lessons};
+}
 let openDD=null;
 
 function selectChapter(n){
   document.querySelectorAll('.ch-card').forEach(c=>c.classList.remove('selected'));
   document.getElementById('ch-'+n).classList.add('selected');
-  const ch=chapters[n];
+  const ch=getChapter(n); if(!ch)return;
   document.getElementById('cp-label').textContent='CHAPTER '+n;
   document.getElementById('cp-name').textContent=ch.name;
   document.getElementById('cp-learnt').textContent='0/'+ch.total+' Learnt ✓';
@@ -266,7 +356,7 @@ function openModal(num,name){
 }
 function closeModal(){document.getElementById('modal').classList.remove('open');}
 
-selectChapter(1);
+loadGrade(3);
 </script>
 </body>
 </html>
