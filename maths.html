@@ -88,18 +88,11 @@ body{font-family:'UntitledSans',-apple-system,system-ui,sans-serif;font-weight:4
 .grade-card{background:#fff;border:1px solid #E8E4DD;cursor:pointer;text-decoration:none;display:block;transition:border-color .12s,box-shadow .12s}
 .grade-card:hover{border-color:#F4AB52;box-shadow:0 2px 8px rgba(0,0,0,.07);text-decoration:none}
 
-.gc-top{height:64px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.gc-badge{font-family:'Athletics';font-size:32px;font-weight:700;color:#fff;position:relative;z-index:1}
-.gc-header{padding:12px 16px 10px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #F5F3EF}
-.gc-head-info{}
-.gc-grade-label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:#78716C;margin-bottom:1px}
-.gc-grade-name{font-family:'Athletics';font-size:15px;font-weight:700;color:#1C1917}
-
-.gc-body{padding:10px 16px 12px}
-.gc-topics{font-size:12px;color:#44403C;line-height:1.55;margin-bottom:10px}
-.gc-meta{display:flex;gap:12px}
-.gc-stat{font-size:11px;color:#78716C}
-.gc-stat strong{color:#1C1917;font-weight:600}
+.gc-inner{padding:20px 16px 16px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px}
+.gc-circle{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.gc-num{font-family:'Athletics';font-size:26px;font-weight:700;color:#fff;line-height:1}
+.gc-label{font-family:'Athletics';font-size:15px;font-weight:700;color:#1C1917}
+.gc-meta{font-size:11px;color:#78716C}
 
 /* Band labels */
 .band-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#78716C;margin:20px 0 10px;display:flex;align-items:center;gap:10px}
@@ -250,77 +243,129 @@ body{font-family:'UntitledSans',-apple-system,system-ui,sans-serif;font-weight:4
         <div class="band-label">Elementary</div>
         <div class="grade-grid">
           <a href="#" class="grade-card" onclick="event.preventDefault()">
-            <div class="gc-top" style="background:linear-gradient(135deg,#9CA3AF,#9CA3AF99)"><span class="gc-badge">K</span></div>
-            <div class="gc-header"><div class="gc-head-info"><div class="gc-grade-label">Kindergarten</div><div class="gc-grade-name">Kindergarten</div></div></div>
-            <div class="gc-body"><div class="gc-topics">Counting, shapes, patterns, comparing numbers, addition &amp; subtraction intro</div><div class="gc-meta"><span class="gc-stat"><strong>5</strong> chapters</span><span class="gc-stat"><strong>38</strong> lessons</span></div></div>
+            <div class="gc-inner">
+              <div class="gc-circle" style="background:#9CA3AF">
+                <span class="gc-num">K</span>
+              </div>
+              <div class="gc-label">Kindergarten</div>
+              <div class="gc-meta">5 chapters &middot; 38 lessons</div>
+            </div>
           </a>
-<a href="#" class="grade-card" onclick="event.preventDefault()">
-            <div class="gc-top" style="background:linear-gradient(135deg,#F97279,#F9727999)"><span class="gc-badge">1</span></div>
-            <div class="gc-header"><div class="gc-head-info"><div class="gc-grade-label">Grade 1</div><div class="gc-grade-name">First Grade</div></div></div>
-            <div class="gc-body"><div class="gc-topics">Place value to 100, addition &amp; subtraction, measurement, time, geometry basics</div><div class="gc-meta"><span class="gc-stat"><strong>6</strong> chapters</span><span class="gc-stat"><strong>44</strong> lessons</span></div></div>
+          <a href="#" class="grade-card" onclick="event.preventDefault()">
+            <div class="gc-inner">
+              <div class="gc-circle" style="background:#F97279">
+                <span class="gc-num">1</span>
+              </div>
+              <div class="gc-label">Grade 1</div>
+              <div class="gc-meta">6 chapters &middot; 44 lessons</div>
+            </div>
           </a>
-<a href="#" class="grade-card" onclick="event.preventDefault()">
-            <div class="gc-top" style="background:linear-gradient(135deg,#F4AB52,#F4AB5299)"><span class="gc-badge">2</span></div>
-            <div class="gc-header"><div class="gc-head-info"><div class="gc-grade-label">Grade 2</div><div class="gc-grade-name">Second Grade</div></div></div>
-            <div class="gc-body"><div class="gc-topics">3-digit numbers, addition &amp; subtraction strategies, money, measurement, arrays</div><div class="gc-meta"><span class="gc-stat"><strong>6</strong> chapters</span><span class="gc-stat"><strong>48</strong> lessons</span></div></div>
+          <a href="#" class="grade-card" onclick="event.preventDefault()">
+            <div class="gc-inner">
+              <div class="gc-circle" style="background:#F4AB52">
+                <span class="gc-num">2</span>
+              </div>
+              <div class="gc-label">Grade 2</div>
+              <div class="gc-meta">6 chapters &middot; 48 lessons</div>
+            </div>
           </a>
-<a href="maths-grade-3.html" class="grade-card" style="border-color:#F4AB52" >
-            <div class="gc-top" style="background:linear-gradient(135deg,#D994F8,#D994F899)"><span class="gc-badge">3</span></div>
-            <div class="gc-header"><div class="gc-head-info"><div class="gc-grade-label">Grade 3</div><div class="gc-grade-name">Third Grade</div></div></div>
-            <div class="gc-body"><div class="gc-topics">Multiplication &amp; division, fractions, measurement, geometry, data &amp; graphs</div><div class="gc-meta"><span class="gc-stat"><strong>7</strong> chapters</span><span class="gc-stat"><strong>53</strong> lessons</span></div></div>
+          <a href="maths-grade-3.html" class="grade-card" style="border-color:#F4AB52">
+            <div class="gc-inner">
+              <div class="gc-circle" style="background:#D994F8">
+                <span class="gc-num">3</span>
+              </div>
+              <div class="gc-label">Grade 3</div>
+              <div class="gc-meta">7 chapters &middot; 53 lessons</div>
+            </div>
           </a>
-<a href="#" class="grade-card" onclick="event.preventDefault()">
-            <div class="gc-top" style="background:linear-gradient(135deg,#74ACFC,#74ACFC99)"><span class="gc-badge">4</span></div>
-            <div class="gc-header"><div class="gc-head-info"><div class="gc-grade-label">Grade 4</div><div class="gc-grade-name">Fourth Grade</div></div></div>
-            <div class="gc-body"><div class="gc-topics">Multi-digit multiplication, factors &amp; multiples, fractions, decimals intro, angles</div><div class="gc-meta"><span class="gc-stat"><strong>7</strong> chapters</span><span class="gc-stat"><strong>55</strong> lessons</span></div></div>
+          <a href="#" class="grade-card" onclick="event.preventDefault()">
+            <div class="gc-inner">
+              <div class="gc-circle" style="background:#74ACFC">
+                <span class="gc-num">4</span>
+              </div>
+              <div class="gc-label">Grade 4</div>
+              <div class="gc-meta">7 chapters &middot; 55 lessons</div>
+            </div>
           </a>
-<a href="#" class="grade-card" onclick="event.preventDefault()">
-            <div class="gc-top" style="background:linear-gradient(135deg,#6AC88A,#6AC88A99)"><span class="gc-badge">5</span></div>
-            <div class="gc-header"><div class="gc-head-info"><div class="gc-grade-label">Grade 5</div><div class="gc-grade-name">Fifth Grade</div></div></div>
-            <div class="gc-body"><div class="gc-topics">Fraction operations, decimals, volume, coordinate plane, patterns &amp; rules</div><div class="gc-meta"><span class="gc-stat"><strong>7</strong> chapters</span><span class="gc-stat"><strong>56</strong> lessons</span></div></div>
+          <a href="#" class="grade-card" onclick="event.preventDefault()">
+            <div class="gc-inner">
+              <div class="gc-circle" style="background:#6AC88A">
+                <span class="gc-num">5</span>
+              </div>
+              <div class="gc-label">Grade 5</div>
+              <div class="gc-meta">7 chapters &middot; 56 lessons</div>
+            </div>
           </a>
         </div>
 
         <div class="band-label">Middle School</div>
         <div class="grade-grid">
           <a href="#" class="grade-card" onclick="event.preventDefault()">
-            <div class="gc-top" style="background:linear-gradient(135deg,#F4AB52,#F4AB5299)"><span class="gc-badge">6</span></div>
-            <div class="gc-header"><div class="gc-head-info"><div class="gc-grade-label">Grade 6</div><div class="gc-grade-name">Sixth Grade</div></div></div>
-            <div class="gc-body"><div class="gc-topics">Ratios &amp; proportions, integers, expressions &amp; equations, geometry, statistics</div><div class="gc-meta"><span class="gc-stat"><strong>8</strong> chapters</span><span class="gc-stat"><strong>58</strong> lessons</span></div></div>
+            <div class="gc-inner">
+              <div class="gc-circle" style="background:#F4AB52">
+                <span class="gc-num">6</span>
+              </div>
+              <div class="gc-label">Grade 6</div>
+              <div class="gc-meta">8 chapters &middot; 58 lessons</div>
+            </div>
           </a>
-<a href="#" class="grade-card" onclick="event.preventDefault()">
-            <div class="gc-top" style="background:linear-gradient(135deg,#F97279,#F9727999)"><span class="gc-badge">7</span></div>
-            <div class="gc-header"><div class="gc-head-info"><div class="gc-grade-label">Grade 7</div><div class="gc-grade-name">Seventh Grade</div></div></div>
-            <div class="gc-body"><div class="gc-topics">Proportional relationships, negative numbers, linear equations, geometry, probability</div><div class="gc-meta"><span class="gc-stat"><strong>8</strong> chapters</span><span class="gc-stat"><strong>60</strong> lessons</span></div></div>
+          <a href="#" class="grade-card" onclick="event.preventDefault()">
+            <div class="gc-inner">
+              <div class="gc-circle" style="background:#F97279">
+                <span class="gc-num">7</span>
+              </div>
+              <div class="gc-label">Grade 7</div>
+              <div class="gc-meta">8 chapters &middot; 60 lessons</div>
+            </div>
           </a>
-<a href="#" class="grade-card" onclick="event.preventDefault()">
-            <div class="gc-top" style="background:linear-gradient(135deg,#D994F8,#D994F899)"><span class="gc-badge">8</span></div>
-            <div class="gc-header"><div class="gc-head-info"><div class="gc-grade-label">Grade 8</div><div class="gc-grade-name">Eighth Grade</div></div></div>
-            <div class="gc-body"><div class="gc-topics">Linear equations, functions, systems, geometry transformations, statistics</div><div class="gc-meta"><span class="gc-stat"><strong>8</strong> chapters</span><span class="gc-stat"><strong>62</strong> lessons</span></div></div>
+          <a href="#" class="grade-card" onclick="event.preventDefault()">
+            <div class="gc-inner">
+              <div class="gc-circle" style="background:#D994F8">
+                <span class="gc-num">8</span>
+              </div>
+              <div class="gc-label">Grade 8</div>
+              <div class="gc-meta">8 chapters &middot; 62 lessons</div>
+            </div>
           </a>
         </div>
 
         <div class="band-label">High School</div>
         <div class="grade-grid">
           <a href="#" class="grade-card" onclick="event.preventDefault()">
-            <div class="gc-top" style="background:linear-gradient(135deg,#74ACFC,#74ACFC99)"><span class="gc-badge">9</span></div>
-            <div class="gc-header"><div class="gc-head-info"><div class="gc-grade-label">Grade 9</div><div class="gc-grade-name">Algebra I</div></div></div>
-            <div class="gc-body"><div class="gc-topics">Linear equations &amp; inequalities, quadratics, polynomials, functions, statistics</div><div class="gc-meta"><span class="gc-stat"><strong>9</strong> chapters</span><span class="gc-stat"><strong>68</strong> lessons</span></div></div>
+            <div class="gc-inner">
+              <div class="gc-circle" style="background:#74ACFC">
+                <span class="gc-num">9</span>
+              </div>
+              <div class="gc-label">Grade 9</div>
+              <div class="gc-meta">9 chapters &middot; 68 lessons</div>
+            </div>
           </a>
-<a href="#" class="grade-card" onclick="event.preventDefault()">
-            <div class="gc-top" style="background:linear-gradient(135deg,#6AC88A,#6AC88A99)"><span class="gc-badge">10</span></div>
-            <div class="gc-header"><div class="gc-head-info"><div class="gc-grade-label">Grade 10</div><div class="gc-grade-name">Geometry</div></div></div>
-            <div class="gc-body"><div class="gc-topics">Congruence, similarity, trigonometry, circles, coordinate geometry, proofs</div><div class="gc-meta"><span class="gc-stat"><strong>9</strong> chapters</span><span class="gc-stat"><strong>70</strong> lessons</span></div></div>
+          <a href="#" class="grade-card" onclick="event.preventDefault()">
+            <div class="gc-inner">
+              <div class="gc-circle" style="background:#6AC88A">
+                <span class="gc-num">10</span>
+              </div>
+              <div class="gc-label">Grade 10</div>
+              <div class="gc-meta">9 chapters &middot; 70 lessons</div>
+            </div>
           </a>
-<a href="#" class="grade-card" onclick="event.preventDefault()">
-            <div class="gc-top" style="background:linear-gradient(135deg,#F4AB52,#F4AB5299)"><span class="gc-badge">11</span></div>
-            <div class="gc-header"><div class="gc-head-info"><div class="gc-grade-label">Grade 11</div><div class="gc-grade-name">Algebra II</div></div></div>
-            <div class="gc-body"><div class="gc-topics">Polynomials, rational functions, exponentials &amp; logarithms, sequences, probability</div><div class="gc-meta"><span class="gc-stat"><strong>9</strong> chapters</span><span class="gc-stat"><strong>72</strong> lessons</span></div></div>
+          <a href="#" class="grade-card" onclick="event.preventDefault()">
+            <div class="gc-inner">
+              <div class="gc-circle" style="background:#F4AB52">
+                <span class="gc-num">11</span>
+              </div>
+              <div class="gc-label">Grade 11</div>
+              <div class="gc-meta">9 chapters &middot; 72 lessons</div>
+            </div>
           </a>
-<a href="#" class="grade-card" onclick="event.preventDefault()">
-            <div class="gc-top" style="background:linear-gradient(135deg,#F97279,#F9727999)"><span class="gc-badge">12</span></div>
-            <div class="gc-header"><div class="gc-head-info"><div class="gc-grade-label">Grade 12</div><div class="gc-grade-name">Pre-Calculus</div></div></div>
-            <div class="gc-body"><div class="gc-topics">Trigonometric functions, vectors, matrices, limits intro, parametric equations</div><div class="gc-meta"><span class="gc-stat"><strong>8</strong> chapters</span><span class="gc-stat"><strong>66</strong> lessons</span></div></div>
+          <a href="#" class="grade-card" onclick="event.preventDefault()">
+            <div class="gc-inner">
+              <div class="gc-circle" style="background:#F97279">
+                <span class="gc-num">12</span>
+              </div>
+              <div class="gc-label">Grade 12</div>
+              <div class="gc-meta">8 chapters &middot; 66 lessons</div>
+            </div>
           </a>
         </div>
 
