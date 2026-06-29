@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <!--
   cuemath.com/maths/3-grade/
-  Layer 1: Shell (left nav + right panel)
-  Layer 2: Grade page — chapter grid with progress, lesson list
+  App-feel grade page — chapter grid + lesson panel
 -->
 <html lang="en">
 <head>
@@ -14,180 +13,112 @@
 @font-face{font-family:'Athletics';src:url('fonts/Athletics-Regular.woff2') format('woff2');font-weight:400}
 @font-face{font-family:'UntitledSans';src:url('fonts/UntitledSans-Regular.woff2') format('woff2');font-weight:400}
 @font-face{font-family:'UntitledSans';src:url('fonts/UntitledSans-Medium.woff2') format('woff2');font-weight:500}
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;overflow:hidden}
-body{font-family:'UntitledSans',-apple-system,system-ui,sans-serif;font-weight:400;font-size:15px;line-height:1.5;color:#1C1917;background:#F5F3EF}
-
-/* ── SHELL ── */
-.shell{display:grid;grid-template-columns:64px 1fr 280px;height:100vh;overflow:hidden}
-
-/* ── LEFT NAV ── */
-.leftnav{background:#1C1917;display:flex;flex-direction:column;align-items:center;padding:12px 0;gap:0;z-index:10}
-.ln-avatar{width:40px;height:40px;border-radius:50%;background:#E8995A;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:24px;cursor:pointer;flex-shrink:0}
+body{font-family:'UntitledSans',-apple-system,system-ui,sans-serif;font-weight:400;font-size:15px;line-height:1.5;color:#1C1917;background:#F5F0E8}
+.shell{display:grid;grid-template-columns:64px 1fr 260px;height:100vh;overflow:hidden}
+/* LEFT NAV */
+.leftnav{background:#1C1917;display:flex;flex-direction:column;align-items:center;padding:12px 0;z-index:10}
+.ln-avatar{width:40px;height:40px;border-radius:50%;background:#E8995A;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:24px;flex-shrink:0}
 .ln-items{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1}
 .ln-item{width:48px;display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;cursor:pointer;border-radius:10px}
 .ln-item:hover{background:rgba(255,255,255,.08)}
 .ln-item.active{background:rgba(255,255,255,.1)}
-.ln-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center}
 .ln-icon svg{width:22px;height:22px;opacity:.45}
-.ln-item.active .ln-icon svg{opacity:1}
-.ln-item:hover .ln-icon svg{opacity:.75}
+.ln-item.active .ln-icon svg,.ln-item:hover .ln-icon svg{opacity:.9}
 .ln-label{font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.4)}
-.ln-item.active .ln-label{color:rgba(255,255,255,.9)}
-.ln-item:hover .ln-label{color:rgba(255,255,255,.6)}
+.ln-item.active .ln-label,.ln-item:hover .ln-label{color:rgba(255,255,255,.8)}
 .ln-logo{margin-top:auto;margin-bottom:8px;font-family:'Athletics';font-size:8px;font-weight:700;color:rgba(255,255,255,.25);letter-spacing:.12em;text-transform:uppercase}
-
-/* ── MAIN ── */
-.main{overflow-y:auto;display:flex;flex-direction:column;min-height:0}
-
-/* Top bar */
-.topbar{background:#F5F3EF;border-bottom:1px solid #E8E4DD;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:5}
-.topbar-bc{font-size:13px;color:#78716C;display:flex;align-items:center;gap:6px}
-.topbar-bc a{color:#78716C;text-decoration:none}
+/* MAIN */
+.main{overflow-y:auto;display:flex;flex-direction:column;min-height:0;background:#F5F0E8}
+.topbar{background:#F5F0E8;border-bottom:1px solid rgba(0,0,0,.08);padding:0 24px;height:48px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:5}
+.topbar-bc{font-size:13px;color:#97948E;display:flex;align-items:center;gap:6px}
+.topbar-bc a{color:#97948E;text-decoration:none}
 .topbar-bc a:hover{color:#1C1917}
 .topbar-bc .cur{color:#1C1917;font-weight:500}
-.topbar-right{display:flex;align-items:center;gap:10px}
-.tb-search{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #E8E4DD;padding:7px 14px;font-family:'UntitledSans';font-size:13px;color:#78716C;cursor:text;min-width:200px}
-.tb-search svg{width:14px;height:14px;color:#78716C;flex-shrink:0}
-.tb-btn{background:#F4AB52;color:#1C1917;border:none;padding:8px 18px;font-family:'UntitledSans';font-size:13px;font-weight:500;cursor:pointer}
+.tb-btn{background:#F4AB52;color:#1C1917;border:none;padding:7px 16px;font-family:'UntitledSans';font-size:13px;font-weight:500;cursor:pointer}
 .tb-btn:hover{background:#CE7E12}
-
-/* Grade header */
-.grade-header{background:linear-gradient(135deg,#D994F8 0%,#EBC8FC 60%,#F5E8FF 100%);padding:28px 24px 24px;flex-shrink:0}
-.gh-top{display:flex;align-items:flex-start;gap:20px;margin-bottom:20px}
-.gh-artwork{width:72px;height:72px;background:rgba(255,255,255,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0}
-.gh-info{}
-.gh-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.7);margin-bottom:4px}
-.gh-title{font-family:'Athletics';font-size:26px;font-weight:700;color:#fff;margin-bottom:4px}
-.gh-meta{font-size:13px;color:rgba(255,255,255,.75)}
-
-/* Overall mastery bar */
-.mastery-bar-wrap{background:rgba(255,255,255,.2);height:6px;border-radius:3px;margin-bottom:6px;overflow:hidden}
-.mastery-bar{height:100%;background:#fff;border-radius:3px;transition:width .6s ease}
-.mastery-label{font-size:12px;color:rgba(255,255,255,.8)}
-
+.grade-wrap{padding:20px 24px;flex:1}
 /* Grade switcher */
-.grade-switcher{display:flex;gap:6px;margin-top:16px;flex-wrap:wrap}
-.gs-btn{padding:5px 14px;border:1px solid rgba(255,255,255,.4);background:none;font-family:'UntitledSans';font-size:12px;font-weight:500;color:rgba(255,255,255,.7);cursor:pointer;border-radius:20px}
-.gs-btn:hover{background:rgba(255,255,255,.15);color:#fff}
-.gs-btn.active{background:#fff;color:#6B21A8;border-color:#fff}
-
-/* Main content */
-.main-content{padding:24px;flex:1}
-.section-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:#78716C;margin-bottom:12px;display:block}
-
+.grade-switcher{display:flex;gap:6px;margin-bottom:20px;overflow-x:auto;scrollbar-width:none}
+.grade-switcher::-webkit-scrollbar{display:none}
+.gs-pill{padding:5px 14px;border:1px solid rgba(0,0,0,.12);background:none;font-family:'UntitledSans';font-size:12px;font-weight:500;color:#97948E;cursor:pointer;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.gs-pill:hover{border-color:#1C1917;color:#1C1917}
+.gs-pill.active{background:#1C1917;color:#fff;border-color:#1C1917}
+/* Grade header */
+.grade-section-header{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.grade-section-title{font-family:'Athletics';font-size:17px;font-weight:700;color:#1C1917}
+.grade-section-pct{font-size:12px;color:#97948E;margin-left:auto}
+.mastery-track{height:3px;background:#E5DDD4;margin-bottom:20px}
+.mastery-fill{height:100%;background:#1C1917;width:0}
 /* Chapter grid */
-.chapter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
-@media(max-width:1100px){.chapter-grid{grid-template-columns:repeat(3,1fr)}}
-
-.ch-card{background:#fff;border:1px solid #E8E4DD;cursor:pointer;text-decoration:none;display:block;transition:border-color .12s}
-.ch-card:hover{border-color:#D994F8;text-decoration:none}
-.ch-card.active-ch{border-color:#D994F8;box-shadow:0 0 0 3px rgba(217,148,248,.15)}
-
-.ch-card-top{padding:16px;display:flex;align-items:center;gap:12px}
-.ch-progress-ring{width:48px;height:48px;flex-shrink:0;position:relative}
-.ch-progress-ring svg{width:48px;height:48px;transform:rotate(-90deg)}
-.ch-ring-bg{fill:none;stroke:#F5F3EF;stroke-width:4}
-.ch-ring-fill{fill:none;stroke-width:4;stroke-linecap:round;transition:stroke-dashoffset .5s ease}
-.ch-ring-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Athletics';font-size:15px;font-weight:700;color:#1C1917}
-.ch-info{flex:1;min-width:0}
-.ch-num{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:#78716C;margin-bottom:2px}
-.ch-name{font-family:'Athletics';font-size:14px;font-weight:700;color:#1C1917;line-height:1.3}
-.ch-card-foot{padding:8px 16px;border-top:1px solid #F5F3EF;display:flex;align-items:center;justify-content:space-between}
-.ch-lessons-count{font-size:11px;color:#78716C}
-.ch-status{font-size:11px;font-weight:500}
-.ch-status.done{color:#16A34A}
-.ch-status.partial{color:#F4AB52}
-.ch-status.locked{color:#78716C}
-
-/* Lesson list panel */
-.lesson-panel{background:#fff;border:1px solid #E8E4DD;margin-bottom:24px}
-.lp-header{padding:16px 20px;border-bottom:1px solid #E8E4DD;display:flex;align-items:center;gap:16px}
-.lp-chapter-art{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;background:linear-gradient(135deg,#D994F8,#EBC8FC)}
-.lp-chapter-info{flex:1}
-.lp-chapter-label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:#78716C;margin-bottom:2px}
-.lp-chapter-name{font-family:'Athletics';font-size:17px;font-weight:700;color:#1C1917}
-.lp-chapter-progress{font-size:12px;color:#78716C;margin-top:2px}
-.lp-close{background:none;border:none;cursor:pointer;color:#78716C;font-size:18px;padding:4px}
-
+.chapter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
+@media(max-width:900px){.chapter-grid{grid-template-columns:repeat(3,1fr)}}
+.ch-card{background:#fff;border:1px solid rgba(0,0,0,.07);cursor:pointer;padding:14px 10px 12px;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;transition:box-shadow .12s}
+.ch-card:hover{box-shadow:0 2px 10px rgba(0,0,0,.1)}
+.ch-card.selected{box-shadow:0 0 0 2px #F4AB52}
+.ch-num{position:absolute;top:8px;left:10px;font-size:11px;font-weight:600;color:#97948E}
+.ch-circle{width:68px;height:68px;border-radius:50%;background:#EDD5BE;display:flex;align-items:center;justify-content:center}
+.ch-name{font-size:11px;font-weight:500;color:#1C1917;text-align:center;line-height:1.35}
+/* Chapter panel */
+.chapter-panel{background:#fff;border:1px solid rgba(0,0,0,.08)}
+.cp-header{background:linear-gradient(135deg,#F4AB52 0%,#E89040 100%);padding:18px 20px;display:flex;align-items:center;gap:14px}
+.cp-back{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.9);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;font-size:13px}
+.cp-artwork{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.25);border:2px solid rgba(0,0,0,.1);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.cp-info{flex:1}
+.cp-chapter-label{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:rgba(0,0,0,.45);margin-bottom:2px}
+.cp-chapter-name{font-family:'Athletics';font-size:18px;font-weight:700;color:#1C1917;margin-bottom:3px;line-height:1.2}
+.cp-learnt{font-size:12px;color:rgba(0,0,0,.55);display:flex;align-items:center;gap:5px}
 /* Lesson rows */
-.lesson-row{display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid #F5F3EF;transition:background .1s}
+.lesson-list{padding:0}
+.lesson-row{display:flex;align-items:center;gap:12px;padding:13px 18px;border-bottom:1px solid #F5F0E8}
 .lesson-row:last-child{border-bottom:none}
 .lesson-row:hover{background:#FAFAF8}
-.lr-num{width:32px;height:32px;border-radius:50%;border:2px solid #E8E4DD;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#78716C;flex-shrink:0;position:relative}
-.lr-num.done{background:#F4AB52;border-color:#F4AB52;color:#fff}
-.lr-num.done::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px}
-.lr-num.done span{display:none}
+.lr-circle{width:30px;height:30px;border-radius:50%;background:#EDD5BE;border:1px solid #E0C9A8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#7A5C3A;flex-shrink:0;position:relative}
+.lr-circle.done{background:#F4AB52;border-color:#E89040}
+.lr-circle.done .lr-num{display:none}
+.lr-circle.done::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff}
 .lr-info{flex:1;min-width:0}
-.lr-name{font-size:14px;font-weight:500;color:#1C1917;margin-bottom:2px;line-height:1.35}
-.lr-mastery{font-size:11px;color:#F4AB52;display:flex;align-items:center;gap:4px}
-.lr-mastery svg{width:11px;height:11px}
-.lr-types{display:flex;gap:5px;margin-left:auto;flex-shrink:0}
-.lr-type{font-size:10px;font-weight:500;padding:2px 8px;border:1px solid #E8E4DD;color:#78716C;background:#F5F3EF;white-space:nowrap}
-.lr-type.learn{border-color:#74ACFC;color:#3464B1;background:#EEF6FF}
-.lr-type.pdf{border-color:#6AC88A;color:#16A34A;background:#DCFCE7}
-.lr-btn{flex-shrink:0;border:none;padding:7px 16px;font-family:'UntitledSans';font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;min-width:72px;text-align:center}
-.lr-btn.start{background:#F5F3EF;border:1px solid #E8E4DD;color:#1C1917}
-.lr-btn.start:hover{background:#E8E4DD}
-.lr-btn.resume{background:#1C1917;color:#fff}
-.lr-btn.resume:hover{background:#333}
-.lr-btn.review{background:#F5F3EF;border:1px solid #E8E4DD;color:#1C1917}
-.lr-btn.review:hover{background:#E8E4DD}
-.lr-menu{background:none;border:none;cursor:pointer;color:#78716C;padding:4px 6px;font-size:16px}
-
-/* Chapter end row */
-.chapter-end-row{padding:12px 20px;background:#FAFAF8;border-top:1px solid #E8E4DD;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.cer-btn{display:flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid #E8E4DD;background:#fff;font-family:'UntitledSans';font-size:12px;font-weight:500;color:#44403C;cursor:pointer;text-decoration:none}
-.cer-btn:hover{border-color:#1C1917;color:#1C1917;text-decoration:none}
-.cer-spacer{flex:1}
-.cer-cta{font-size:12px;font-weight:500;color:#D994F8;cursor:pointer;text-decoration:none;white-space:nowrap}
-.cer-cta:hover{text-decoration:underline}
-
-/* ── RIGHT PANEL ── */
-.rightpanel{background:#F5F3EF;border-left:1px solid #E8E4DD;display:flex;flex-direction:column;overflow-y:auto}
-.rp-inner{padding:16px;display:flex;flex-direction:column;gap:12px}
-
-.rp-gami{background:#fff;border:1px solid #E8E4DD;padding:14px}
-.rp-gami-label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:#78716C;margin-bottom:10px}
-.rp-gami-row{display:flex;gap:8px}
-.gami-item{flex:1;background:#F5F3EF;border:1px solid #E8E4DD;padding:10px 8px;text-align:center;position:relative}
-.gami-lock{position:absolute;top:4px;right:4px;font-size:10px;color:#B0AAA5}
-.gami-icon{font-size:18px;margin-bottom:2px}
-.gami-label{font-size:10px;color:#78716C;display:block;margin-bottom:2px}
-.gami-val{font-family:'Athletics';font-size:16px;font-weight:700;color:#E8E4DD}
-
-.rp-signin{background:#fff;border:1px solid #E8E4DD;padding:16px}
-.rp-signin-title{font-family:'Athletics';font-size:14px;font-weight:700;margin-bottom:4px}
-.rp-signin-sub{font-size:12px;color:#78716C;margin-bottom:12px;line-height:1.5}
-.rp-signin-btn{width:100%;background:#1C1917;color:#fff;border:none;padding:10px;font-family:'UntitledSans';font-size:13px;font-weight:500;cursor:pointer;margin-bottom:8px}
-.rp-signin-btn:hover{background:#333}
-.rp-signin-link{display:block;text-align:center;font-size:12px;color:#78716C;cursor:pointer}
-.rp-signin-link:hover{color:#1C1917}
-
-.rp-cta{overflow:hidden}
-.rp-cta-inner{background:linear-gradient(135deg,#EC9A32 0%,#F6BE7C 50%,#D994F8 100%);padding:18px}
-.rp-cta-tag{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#7E4800;margin-bottom:6px;display:block}
-.rp-cta-title{font-family:'Athletics';font-size:16px;font-weight:700;color:#292827;margin-bottom:4px;line-height:1.3}
-.rp-cta-sub{font-size:12px;color:#5B4100;margin-bottom:14px;line-height:1.5}
-.rp-cta-btn{background:#1C1917;color:#fff;border:none;padding:10px 20px;font-family:'UntitledSans';font-size:13px;font-weight:500;cursor:pointer;width:100%}
-.rp-cta-btn:hover{background:#333}
-
-.rp-free{background:#fff;border:1px solid #E8E4DD;padding:14px}
-.rp-free-title{font-size:12px;font-weight:500;color:#1C1917;margin-bottom:10px}
-.free-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px}
-.free-list li{font-size:12px;color:#44403C;display:flex;align-items:center;gap:8px;line-height:1.4}
-.free-dot{width:5px;height:5px;border-radius:50%;background:#6AC88A;flex-shrink:0}
-.locked-dot{width:5px;height:5px;border-radius:50%;background:#E8E4DD;flex-shrink:0}
-
+.lr-name{font-size:13px;font-weight:500;color:#1C1917;line-height:1.3;margin-bottom:2px}
+.lr-mastery{font-size:11px;color:#F4AB52;display:flex;align-items:center;gap:3px}
+.lr-mastery::before{content:'●';font-size:7px}
+.lr-btn{flex-shrink:0;border:1.5px solid #1C1917;padding:5px 12px;font-family:'UntitledSans';font-size:11px;font-weight:600;cursor:pointer;background:none;color:#1C1917;letter-spacing:.04em;white-space:nowrap;min-width:64px;text-align:center}
+.lr-btn.review{border-color:#C6C0B8;color:#7A7470}
+.lr-btn.resume{background:#1C1917;color:#fff;border-color:#1C1917}
+.lr-btn.start:hover{background:#1C1917;color:#fff}
+.lr-btn.dim{border-color:#D5CFC9;color:#C6C0B8;cursor:default}
+.lr-menu{background:none;border:none;cursor:pointer;color:#97948E;padding:3px 7px;font-size:15px;flex-shrink:0;position:relative}
+.lr-dropdown{position:absolute;right:48px;background:#fff;border:1px solid rgba(0,0,0,.1);box-shadow:0 4px 12px rgba(0,0,0,.1);z-index:20;min-width:130px;display:none}
+.lr-dropdown.open{display:block}
+.lr-dropdown-item{padding:9px 14px;font-size:12px;cursor:pointer;color:#1C1917}
+.lr-dropdown-item:hover{background:#F5F0E8}
+/* RIGHT PANEL */
+.rightpanel{background:#F5F0E8;border-left:1px solid rgba(0,0,0,.08);overflow-y:auto}
+.rp-inner{padding:14px;display:flex;flex-direction:column;gap:10px}
+.rp-cta-inner{background:linear-gradient(135deg,#EC9A32 0%,#F6BE7C 50%,#D994F8 100%);padding:16px}
+.rp-cta-tag{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#7E4800;margin-bottom:5px;display:block}
+.rp-cta-title{font-family:'Athletics';font-size:15px;font-weight:700;color:#292827;margin-bottom:4px;line-height:1.3}
+.rp-cta-sub{font-size:11px;color:#5B4100;margin-bottom:12px;line-height:1.5}
+.rp-cta-btn{background:#1C1917;color:#fff;border:none;padding:9px;font-family:'UntitledSans';font-size:12px;font-weight:500;cursor:pointer;width:100%}
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-card{background:#FAF5EE;width:100%;max-width:400px;padding:26px;position:relative}
+.modal-close{position:absolute;top:12px;right:14px;background:none;border:none;font-size:18px;cursor:pointer;color:#97948E}
+.modal-lesson-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#97948E;margin-bottom:5px}
+.modal-lesson-title{font-family:'Athletics';font-size:19px;font-weight:700;color:#1C1917;margin-bottom:12px;line-height:1.3}
+.modal-tags{display:flex;gap:6px;margin-bottom:18px}
+.modal-tag{padding:4px 12px;border:1px solid rgba(0,0,0,.13);border-radius:20px;font-size:11px;font-weight:500;color:#44403C;background:rgba(255,255,255,.6)}
+.modal-skills-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#97948E;margin-bottom:8px}
+.modal-skill{font-size:12px;color:#44403C;display:flex;align-items:center;gap:7px;margin-bottom:7px}
+.modal-skill::before{content:'→→';font-size:10px;color:#F4AB52;letter-spacing:-2px}
+.modal-continue{width:100%;background:#1C1917;color:#fff;border:none;padding:13px;font-family:'UntitledSans';font-size:13px;font-weight:600;cursor:pointer;letter-spacing:.04em;margin-top:18px}
 @media(max-width:768px){.shell{grid-template-columns:64px 1fr}.rightpanel{display:none}}
 @media(max-width:480px){.shell{grid-template-columns:1fr}.leftnav{display:none}}
 </style>
 </head>
 <body>
 <div class="shell">
-
-  <!-- LEFT NAV -->
   <nav class="leftnav">
     <div class="ln-avatar">😊</div>
     <div class="ln-items">
@@ -207,344 +138,135 @@ body{font-family:'UntitledSans',-apple-system,system-ui,sans-serif;font-weight:4
     <div class="ln-logo">Cuemath</div>
   </nav>
 
-  <!-- MAIN -->
   <div class="main">
-
-    <!-- Top bar -->
     <div class="topbar">
       <div class="topbar-bc">
-        <a href="maths.html">Maths</a>
-        <span>›</span>
+        <a href="maths.html">Maths</a><span>›</span>
         <span class="cur">Grade 3</span>
       </div>
-      <div class="topbar-right">
-        <div class="tb-search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          Search in Grade 3…
-        </div>
-        <button class="tb-btn">Book a free class</button>
-      </div>
+      <button class="tb-btn">Book a free class</button>
     </div>
-
-    <!-- Grade header -->
-    <div class="grade-header">
-      <div class="gh-top">
-        <div class="gh-artwork">🔢</div>
-        <div class="gh-info">
-          <div class="gh-label">USCC · Grade 3</div>
-          <div class="gh-title">Grade 3 Mathematics</div>
-          <div class="gh-meta">7 chapters · 53 lessons · Common Core aligned</div>
-        </div>
-      </div>
-      <div class="mastery-bar-wrap">
-        <div class="mastery-bar" style="width:0%"></div>
-      </div>
-      <div class="mastery-label">0% learnt — sign in to track progress</div>
-      <!-- Grade switcher -->
+    <div class="grade-wrap">
       <div class="grade-switcher">
-        <button class="gs-btn" onclick="location.href='maths.html'">K</button>
-        <button class="gs-btn" onclick="void(0)">1</button>
-        <button class="gs-btn" onclick="void(0)">2</button>
-        <button class="gs-btn active">3</button>
-        <button class="gs-btn" onclick="void(0)">4</button>
-        <button class="gs-btn" onclick="void(0)">5</button>
-        <button class="gs-btn" onclick="void(0)">6</button>
-        <button class="gs-btn" onclick="void(0)">7</button>
-        <button class="gs-btn" onclick="void(0)">8</button>
+        <button class="gs-pill" onclick="location.href='maths.html'">K</button>
+        <button class="gs-pill">Grade 1</button>
+        <button class="gs-pill">Grade 2</button>
+        <button class="gs-pill active">Grade 3</button>
+        <button class="gs-pill">Grade 4</button>
+        <button class="gs-pill">Grade 5</button>
+        <button class="gs-pill">Grade 6</button>
+        <button class="gs-pill">Grade 7</button>
+        <button class="gs-pill">Grade 8</button>
+        <button class="gs-pill">Grade 9</button>
+        <button class="gs-pill">Grade 10</button>
+        <button class="gs-pill">Grade 11</button>
+        <button class="gs-pill">Grade 12</button>
       </div>
-    </div>
-
-    <!-- Content -->
-    <div class="main-content">
-
-      <!-- Chapter grid -->
-      <span class="section-label">Chapters</span>
+      <div class="grade-section-header">
+        <span style="font-size:18px">📓</span>
+        <span class="grade-section-title">USCC · Grade 3</span>
+        <span class="grade-section-pct">0% learnt</span>
+      </div>
+      <div class="mastery-track"><div class="mastery-fill"></div></div>
       <div class="chapter-grid" id="chapter-grid">
-
-        <!-- Chapters — click opens lesson panel -->
-        <a href="#" class="ch-card active-ch" id="card-1" onclick="showChapter(event,1)">
-          <div class="ch-card-top">
-            <div class="ch-progress-ring">
-              <svg viewBox="0 0 48 48"><circle class="ch-ring-bg" cx="24" cy="24" r="20"/><circle class="ch-ring-fill" cx="24" cy="24" r="20" stroke="#D994F8" stroke-dasharray="125.6" stroke-dashoffset="125.6" id="ring-1"/></svg>
-              <div class="ch-ring-num" id="rnum-1">1</div>
-            </div>
-            <div class="ch-info">
-              <div class="ch-num">Chapter 1</div>
-              <div class="ch-name">Magic with Numbers</div>
-            </div>
-          </div>
-          <div class="ch-card-foot">
-            <span class="ch-lessons-count">7 lessons</span>
-            <span class="ch-status locked">Not started</span>
-          </div>
-        </a>
-
-        <a href="#" class="ch-card" id="card-2" onclick="showChapter(event,2)">
-          <div class="ch-card-top">
-            <div class="ch-progress-ring">
-              <svg viewBox="0 0 48 48"><circle class="ch-ring-bg" cx="24" cy="24" r="20"/><circle class="ch-ring-fill" cx="24" cy="24" r="20" stroke="#F4AB52" stroke-dasharray="125.6" stroke-dashoffset="125.6" id="ring-2"/></svg>
-              <div class="ch-ring-num" id="rnum-2">2</div>
-            </div>
-            <div class="ch-info">
-              <div class="ch-num">Chapter 2</div>
-              <div class="ch-name">Multiply It!</div>
-            </div>
-          </div>
-          <div class="ch-card-foot">
-            <span class="ch-lessons-count">10 lessons</span>
-            <span class="ch-status locked">Not started</span>
-          </div>
-        </a>
-
-        <a href="#" class="ch-card" id="card-3" onclick="showChapter(event,3)">
-          <div class="ch-card-top">
-            <div class="ch-progress-ring">
-              <svg viewBox="0 0 48 48"><circle class="ch-ring-bg" cx="24" cy="24" r="20"/><circle class="ch-ring-fill" cx="24" cy="24" r="20" stroke="#6AC88A" stroke-dasharray="125.6" stroke-dashoffset="125.6" id="ring-3"/></svg>
-              <div class="ch-ring-num" id="rnum-3">3</div>
-            </div>
-            <div class="ch-info">
-              <div class="ch-num">Chapter 3</div>
-              <div class="ch-name">Divide and Conquer</div>
-            </div>
-          </div>
-          <div class="ch-card-foot">
-            <span class="ch-lessons-count">8 lessons</span>
-            <span class="ch-status locked">Not started</span>
-          </div>
-        </a>
-
-        <a href="#" class="ch-card" id="card-4" onclick="showChapter(event,4)">
-          <div class="ch-card-top">
-            <div class="ch-progress-ring">
-              <svg viewBox="0 0 48 48"><circle class="ch-ring-bg" cx="24" cy="24" r="20"/><circle class="ch-ring-fill" cx="24" cy="24" r="20" stroke="#74ACFC" stroke-dasharray="125.6" stroke-dashoffset="125.6" id="ring-4"/></svg>
-              <div class="ch-ring-num" id="rnum-4">4</div>
-            </div>
-            <div class="ch-info">
-              <div class="ch-num">Chapter 4</div>
-              <div class="ch-name">Fractions Uncovered</div>
-            </div>
-          </div>
-          <div class="ch-card-foot">
-            <span class="ch-lessons-count">9 lessons</span>
-            <span class="ch-status locked">Not started</span>
-          </div>
-        </a>
-
-        <a href="#" class="ch-card" id="card-5" onclick="showChapter(event,5)">
-          <div class="ch-card-top">
-            <div class="ch-progress-ring">
-              <svg viewBox="0 0 48 48"><circle class="ch-ring-bg" cx="24" cy="24" r="20"/><circle class="ch-ring-fill" cx="24" cy="24" r="20" stroke="#F97279" stroke-dasharray="125.6" stroke-dashoffset="125.6" id="ring-5"/></svg>
-              <div class="ch-ring-num" id="rnum-5">5</div>
-            </div>
-            <div class="ch-info">
-              <div class="ch-num">Chapter 5</div>
-              <div class="ch-name">Measure Up</div>
-            </div>
-          </div>
-          <div class="ch-card-foot">
-            <span class="ch-lessons-count">7 lessons</span>
-            <span class="ch-status locked">Not started</span>
-          </div>
-        </a>
-
-        <a href="#" class="ch-card" id="card-6" onclick="showChapter(event,6)">
-          <div class="ch-card-top">
-            <div class="ch-progress-ring">
-              <svg viewBox="0 0 48 48"><circle class="ch-ring-bg" cx="24" cy="24" r="20"/><circle class="ch-ring-fill" cx="24" cy="24" r="20" stroke="#D994F8" stroke-dasharray="125.6" stroke-dashoffset="125.6" id="ring-6"/></svg>
-              <div class="ch-ring-num" id="rnum-6">6</div>
-            </div>
-            <div class="ch-info">
-              <div class="ch-num">Chapter 6</div>
-              <div class="ch-name">Shapes Around Us</div>
-            </div>
-          </div>
-          <div class="ch-card-foot">
-            <span class="ch-lessons-count">6 lessons</span>
-            <span class="ch-status locked">Not started</span>
-          </div>
-        </a>
-
-        <a href="#" class="ch-card" id="card-7" onclick="showChapter(event,7)">
-          <div class="ch-card-top">
-            <div class="ch-progress-ring">
-              <svg viewBox="0 0 48 48"><circle class="ch-ring-bg" cx="24" cy="24" r="20"/><circle class="ch-ring-fill" cx="24" cy="24" r="20" stroke="#F4AB52" stroke-dasharray="125.6" stroke-dashoffset="125.6" id="ring-7"/></svg>
-              <div class="ch-ring-num" id="rnum-7">7</div>
-            </div>
-            <div class="ch-info">
-              <div class="ch-num">Chapter 7</div>
-              <div class="ch-name">Data Detectives</div>
-            </div>
-          </div>
-          <div class="ch-card-foot">
-            <span class="ch-lessons-count">5 lessons</span>
-            <span class="ch-status locked">Not started</span>
-          </div>
-        </a>
-
+        <div class="ch-card selected" id="ch-1" onclick="selectChapter(1)"><span class="ch-num">1</span><div class="ch-circle" style="background:#EDD5BE"></div><div class="ch-name">Magic with Numbers</div></div>
+        <div class="ch-card" id="ch-2" onclick="selectChapter(2)"><span class="ch-num">2</span><div class="ch-circle" style="background:#EDD5BE"></div><div class="ch-name">Multiply It!</div></div>
+        <div class="ch-card" id="ch-3" onclick="selectChapter(3)"><span class="ch-num">3</span><div class="ch-circle" style="background:#EDD5BE"></div><div class="ch-name">Divide and Conquer</div></div>
+        <div class="ch-card" id="ch-4" onclick="selectChapter(4)"><span class="ch-num">4</span><div class="ch-circle" style="background:#EDD5BE"></div><div class="ch-name">Fractions Uncovered</div></div>
+        <div class="ch-card" id="ch-5" onclick="selectChapter(5)"><span class="ch-num">5</span><div class="ch-circle" style="background:#EDD5BE"></div><div class="ch-name">Measure Up</div></div>
+        <div class="ch-card" id="ch-6" onclick="selectChapter(6)"><span class="ch-num">6</span><div class="ch-circle" style="background:#EDD5BE"></div><div class="ch-name">Shapes Around Us</div></div>
+        <div class="ch-card" id="ch-7" onclick="selectChapter(7)"><span class="ch-num">7</span><div class="ch-circle" style="background:#EDD5BE"></div><div class="ch-name">Data Detectives</div></div>
       </div>
-
-      <!-- Lesson panel (shown when chapter selected) -->
-      <div class="lesson-panel" id="lesson-panel">
-        <div class="lp-header">
-          <div class="lp-chapter-art" id="lp-art">🔢</div>
-          <div class="lp-chapter-info">
-            <div class="lp-chapter-label" id="lp-label">CHAPTER 1</div>
-            <div class="lp-chapter-name" id="lp-name">Magic with Numbers</div>
-            <div class="lp-chapter-progress">7 lessons · 0/7 done</div>
-          </div>
-          <button class="lp-close" onclick="closePanel()">✕</button>
-        </div>
-
-        <!-- Lessons -->
-        <div id="lesson-list">
-          <div class="lesson-row">
-            <div class="lr-num"><span>1</span></div>
-            <div class="lr-info">
-              <div class="lr-name">Count and Write Numbers up to 200</div>
-            </div>
-            <div class="lr-types"><span class="lr-type learn">Learn</span><span class="lr-type pdf">PDF</span></div>
-            <button class="lr-btn start" onclick="goLesson()">Start</button>
-            <button class="lr-menu">⋯</button>
-          </div>
-          <div class="lesson-row">
-            <div class="lr-num"><span>2</span></div>
-            <div class="lr-info">
-              <div class="lr-name">Count and Write Numbers up to 1000</div>
-            </div>
-            <div class="lr-types"><span class="lr-type learn">Learn</span><span class="lr-type pdf">PDF</span></div>
-            <button class="lr-btn start" onclick="goLesson()">Start</button>
-            <button class="lr-menu">⋯</button>
-          </div>
-          <div class="lesson-row">
-            <div class="lr-num"><span>3</span></div>
-            <div class="lr-info">
-              <div class="lr-name">Identify Numbers Before, After, and Between Numbers up to 1000</div>
-            </div>
-            <div class="lr-types"><span class="lr-type learn">Learn</span><span class="lr-type pdf">PDF</span></div>
-            <button class="lr-btn start" onclick="goLesson()">Start</button>
-            <button class="lr-menu">⋯</button>
-          </div>
-          <div class="lesson-row">
-            <div class="lr-num"><span>4</span></div>
-            <div class="lr-info">
-              <div class="lr-name">Identify Place, Place Value, and Face Value in 3-digit Numbers</div>
-            </div>
-            <div class="lr-types"><span class="lr-type learn">Learn</span><span class="lr-type pdf">PDF</span></div>
-            <button class="lr-btn start" onclick="goLesson()">Start</button>
-            <button class="lr-menu">⋯</button>
-          </div>
-          <div class="lesson-row">
-            <div class="lr-num"><span>5</span></div>
-            <div class="lr-info">
-              <div class="lr-name">Write Expanded Form and Standard Form of 3-digit Numbers</div>
-            </div>
-            <div class="lr-types"><span class="lr-type learn">Learn</span><span class="lr-type pdf">PDF</span></div>
-            <button class="lr-btn start" onclick="goLesson()">Start</button>
-            <button class="lr-menu">⋯</button>
-          </div>
-          <div class="lesson-row">
-            <div class="lr-num"><span>6</span></div>
-            <div class="lr-info">
-              <div class="lr-name">Compare 3-Digit Numbers</div>
-            </div>
-            <div class="lr-types"><span class="lr-type learn">Learn</span><span class="lr-type pdf">PDF</span></div>
-            <button class="lr-btn start" onclick="goLesson()">Start</button>
-            <button class="lr-menu">⋯</button>
-          </div>
-          <div class="lesson-row">
-            <div class="lr-num"><span>7</span></div>
-            <div class="lr-info">
-              <div class="lr-name">Order 3-Digit Numbers</div>
-            </div>
-            <div class="lr-types"><span class="lr-type learn">Learn</span><span class="lr-type pdf">PDF</span></div>
-            <button class="lr-btn start" onclick="goLesson()">Start</button>
-            <button class="lr-menu">⋯</button>
+      <div class="chapter-panel" id="chapter-panel">
+        <div class="cp-header">
+          <button class="cp-back" onclick="location.href='maths.html'">←</button>
+          <div class="cp-artwork" id="cp-art">🔢</div>
+          <div class="cp-info">
+            <div class="cp-chapter-label" id="cp-label">CHAPTER 1</div>
+            <div class="cp-chapter-name" id="cp-name">Magic with Numbers</div>
+            <div class="cp-learnt" id="cp-learnt">0/7 Learnt ✓</div>
           </div>
         </div>
-
-        <!-- Chapter end -->
-        <div class="chapter-end-row">
-          <a href="#" class="cer-btn" onclick="event.preventDefault()">📝 Chapter Test</a>
-          <a href="#" class="cer-btn" onclick="event.preventDefault()">⬇ Chapter PDF</a>
-          <div class="cer-spacer"></div>
-          <a href="#" class="cer-cta" onclick="event.preventDefault()">Get help with this chapter →</a>
-        </div>
+        <div class="lesson-list" id="lesson-list"></div>
       </div>
-
     </div>
   </div>
 
-  <!-- RIGHT PANEL -->
   <div class="rightpanel">
     <div class="rp-inner">
       <div class="rp-cta-inner">
         <span class="rp-cta-tag">1:1 live tutoring</span>
         <div class="rp-cta-title">Learn faster with a personal tutor</div>
-        <div class="rp-cta-sub">Live sessions, personalised to your grade and gaps. Same curriculum, expert-led.</div>
+        <div class="rp-cta-sub">Live sessions, personalised to Grade 3. Same curriculum, expert-led.</div>
         <button class="rp-cta-btn">Book a free class</button>
       </div>
     </div>
   </div>
+</div>
 
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-lesson-label" id="modal-label">LESSON 1</div>
+    <div class="modal-lesson-title" id="modal-title">Count and Write Numbers up to 200</div>
+    <div class="modal-tags"><span class="modal-tag">📊 Medium</span><span class="modal-tag">📖 Learn</span></div>
+    <div class="modal-skills-label">Skills covered</div>
+    <div id="modal-skills"></div>
+    <button class="modal-continue" onclick="closeModal()">CONTINUE</button>
+  </div>
 </div>
 
 <script>
-const chapters = {
-  1:{name:'Magic with Numbers',art:'🔢',color:'#D994F8',lessons:['Count and Write Numbers up to 200','Count and Write Numbers up to 1000','Identify Numbers Before, After, and Between Numbers up to 1000','Identify Place, Place Value, and Face Value in 3-digit Numbers','Write Expanded Form and Standard Form of 3-digit Numbers','Compare 3-Digit Numbers','Order 3-Digit Numbers']},
-  2:{name:'Multiply It!',art:'✖️',color:'#F4AB52',lessons:['Understanding multiplication as equal groups','Multiplication with arrays','Multiplication facts: 1s, 2s, 5s, 10s','Multiplication facts: 3s, 4s, 6s','Multiplication facts: 7s, 8s, 9s','Commutative and associative properties','Distributive property','Multiplying by multiples of 10','Multiplication word problems','Two-step word problems']},
-  3:{name:'Divide and Conquer',art:'➗',color:'#6AC88A',lessons:['Understanding division as equal sharing','Relating multiplication and division','Division facts: 1s, 2s, 5s, 10s','Division facts: 3s through 9s','Dividing by multiples of 10','Division with remainders (intro)','Division word problems','Mixed multiplication & division problems']},
-  4:{name:'Fractions Uncovered',art:'½',color:'#74ACFC',lessons:['Understanding fractions as equal parts','Unit fractions (½, ⅓, ¼, ⅙, ⅛)','Fractions on a number line','Equivalent fractions','Comparing fractions — same numerator','Comparing fractions — same denominator','Fractions of a whole','Fractions of a set','Fractions word problems']},
-  5:{name:'Measure Up',art:'📏',color:'#F97279',lessons:['Measuring length with standard units','Estimating and measuring in metric units','Mass: grams and kilograms','Liquid volume: liters and milliliters','Telling time to the minute','Elapsed time','Area and perimeter (intro)']},
-  6:{name:'Shapes Around Us',art:'📐',color:'#D994F8',lessons:['2D shapes and their attributes','Quadrilaterals: squares, rectangles, rhombuses','Lines: parallel, perpendicular, intersecting','Angles: right, acute, obtuse','Symmetry and congruence','3D shapes (intro)']},
-  7:{name:'Data Detectives',art:'📊',color:'#F4AB52',lessons:['Picture graphs','Bar graphs — reading and interpreting','Creating bar graphs','Line plots','Data word problems']},
+const chapters={
+  1:{name:'Magic with Numbers',emoji:'🔢',total:7,lessons:['Count and Write Numbers up to 200','Count and Write Numbers up to 1000','Identify Numbers Before, After, and Between up to 1000','Identify Place, Place Value, and Face Value in 3-digit Numbers','Write Expanded Form and Standard Form of 3-digit Numbers','Compare 3-Digit Numbers','Order 3-Digit Numbers']},
+  2:{name:'Multiply It!',emoji:'✖️',total:10,lessons:['Understanding multiplication as equal groups','Multiplication with arrays','Multiplication facts: 1s, 2s, 5s, 10s','Multiplication facts: 3s, 4s, 6s','Multiplication facts: 7s, 8s, 9s','Commutative and associative properties','Distributive property','Multiplying by multiples of 10','Multiplication word problems','Two-step word problems']},
+  3:{name:'Divide and Conquer',emoji:'➗',total:8,lessons:['Understanding division as equal sharing','Relating multiplication and division','Division facts: 1s, 2s, 5s, 10s','Division facts: 3s through 9s','Dividing by multiples of 10','Division with remainders (intro)','Division word problems','Mixed multiplication & division problems']},
+  4:{name:'Fractions Uncovered',emoji:'½',total:9,lessons:['Understanding fractions as equal parts','Unit fractions','Fractions on a number line','Equivalent fractions','Comparing fractions — same numerator','Comparing fractions — same denominator','Fractions of a whole','Fractions of a set','Fractions word problems']},
+  5:{name:'Measure Up',emoji:'📏',total:7,lessons:['Measuring length with standard units','Estimating and measuring in metric units','Mass: grams and kilograms','Liquid volume: liters and milliliters','Telling time to the minute','Elapsed time','Area and perimeter (intro)']},
+  6:{name:'Shapes Around Us',emoji:'📐',total:6,lessons:['2D shapes and their attributes','Quadrilaterals: squares, rectangles, rhombuses','Lines: parallel, perpendicular, intersecting','Angles: right, acute, obtuse','Symmetry and congruence','3D shapes (intro)']},
+  7:{name:'Data Detectives',emoji:'📊',total:5,lessons:['Picture graphs','Bar graphs — reading and interpreting','Creating bar graphs','Line plots','Data word problems']},
 };
+let openDD=null;
 
-let activeChapter = 1;
-
-function showChapter(e, n) {
-  e.preventDefault();
-  activeChapter = n;
-  const ch = chapters[n];
-
-  // Update active card
-  document.querySelectorAll('.ch-card').forEach(c => c.classList.remove('active-ch'));
-  document.getElementById('card-'+n).classList.add('active-ch');
-
-  // Update panel header
-  document.getElementById('lp-art').textContent = ch.art;
-  document.getElementById('lp-art').style.background = `linear-gradient(135deg,${ch.color},${ch.color}88)`;
-  document.getElementById('lp-label').textContent = 'CHAPTER '+n;
-  document.getElementById('lp-name').textContent = ch.name;
-
-  // Rebuild lesson list
-  const list = document.getElementById('lesson-list');
-  list.innerHTML = ch.lessons.map((l,i) => `
-    <div class="lesson-row">
-      <div class="lr-num"><span>${i+1}</span></div>
-      <div class="lr-info"><div class="lr-name">${l}</div></div>
-      <div class="lr-types"><span class="lr-type learn">Learn</span><span class="lr-type pdf">PDF</span></div>
-      <button class="lr-btn start" onclick="goLesson()">Start</button>
-      <button class="lr-menu">⋯</button>
-    </div>
-  `).join('');
-
-  // Scroll to panel
-  document.getElementById('lesson-panel').scrollIntoView({behavior:'smooth', block:'nearest'});
+function selectChapter(n){
+  document.querySelectorAll('.ch-card').forEach(c=>c.classList.remove('selected'));
+  document.getElementById('ch-'+n).classList.add('selected');
+  const ch=chapters[n];
+  document.getElementById('cp-label').textContent='CHAPTER '+n;
+  document.getElementById('cp-name').textContent=ch.name;
+  document.getElementById('cp-learnt').textContent='0/'+ch.total+' Learnt ✓';
+  document.getElementById('cp-art').textContent=ch.emoji;
+  const list=document.getElementById('lesson-list');
+  list.innerHTML=ch.lessons.map((name,i)=>{
+    const num=i+1;
+    const canStart=num<=2;
+    const btnHtml=canStart
+      ?`<button class="lr-btn start" onclick="openModal(${num},'${name.replace(/'/g,"\\'")}')">START</button><button class="lr-menu" onclick="toggleDD('dd${n}${num}',event)">⋯<div class="lr-dropdown" id="dd${n}${num}"><div class="lr-dropdown-item">Mark as Learnt</div><div class="lr-dropdown-item">Skip</div></div></button>`
+      :`<button class="lr-btn dim" disabled>START</button>`;
+    return `<div class="lesson-row"><div class="lr-circle"><span class="lr-num">${num}</span></div><div class="lr-info"><div class="lr-name">${name}</div></div>${btnHtml}</div>`;
+  }).join('');
+  document.getElementById('chapter-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-function closePanel() {
-  document.querySelectorAll('.ch-card').forEach(c => c.classList.remove('active-ch'));
-  // reset lesson list
-  document.getElementById('lp-name').textContent = 'Select a chapter to view lessons';
-  document.getElementById('lesson-list').innerHTML = '<div style="padding:32px;text-align:center;color:#78716C;font-size:14px">Click any chapter above to see lessons</div>';
+function toggleDD(id,e){
+  e.stopPropagation();
+  if(openDD&&openDD!==id){document.getElementById(openDD)?.classList.remove('open');}
+  const el=document.getElementById(id);
+  if(el){el.classList.toggle('open');openDD=el.classList.contains('open')?id:null;}
 }
+document.addEventListener('click',()=>{
+  if(openDD){document.getElementById(openDD)?.classList.remove('open');openDD=null;}
+});
 
-function goLesson() {
-  window.location.href = 'maths-grade-3-chapter.html';
+function openModal(num,name){
+  document.getElementById('modal-label').textContent='LESSON '+num;
+  document.getElementById('modal-title').textContent=name;
+  document.getElementById('modal-skills').innerHTML=[name,name,name,name].map(s=>`<div class="modal-skill">${s}</div>`).join('');
+  document.getElementById('modal').classList.add('open');
 }
+function closeModal(){document.getElementById('modal').classList.remove('open');}
 
-// Show chapter 1 on load
-showChapter({preventDefault:()=>{}}, 1);
+selectChapter(1);
 </script>
 </body>
 </html>
